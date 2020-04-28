@@ -1,0 +1,115 @@
+{
+    "plugins": [
+        "jest",
+        "import",
+        "immutable"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended"
+    ],
+    "env": {
+        "browser": true,
+        "jest": true,
+        "es6": true
+    },
+    "rules": {
+        "default-case": "off",
+        "quotes": ["error", "double", {"avoidEscape": true, "allowTemplateLiterals": true}],
+        "no-multiple-empty-lines": ["error", {"max": 1, "maxEOF": 1}],
+        "arrow-parens": ["error", "as-needed"],
+        "max-len": "off",
+        "spaced-comment": "off",
+        "indent": "off",
+        "linebreak-style": "off",
+        "lines-between-class-members": "off",
+        "implicit-arrow-linebreak": "off",
+        "operator-linebreak": "off",
+        "no-mixed-operators": "off",
+
+        "no-console": "off",
+        "global-require": "off",
+        "jsx-a11y": "off",
+        "jsx-a11y/href-no-hash": "off",
+        "jsx-a11y/anchor-is-valid": "off",
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/mouse-events-have-key-events": "off",
+        "jsx-a11y/no-static-element-interactions": "off",
+        "jsx-a11y/no-noninteractive-tabindex": "off",
+        "jsx-a11y/no-noninteractive-element-interactions": "off",
+        "jsx-a11y/aria-role": "off",
+        "jsx-a11y/accessible-emoji": "off",
+        "jsx-a11y/label-has-associated-control": "off",
+        "prefer-destructuring": "off",
+        "no-underscore-dangle": "off",
+        "no-unused-vars": "off",
+        "new-cap": "off",
+        "import/first": "off",
+        "import/no-cycle": "off",
+        "import/no-unresolved": "off",
+        "import/no-extraneous-dependencies": "off",
+        "import/prefer-default-export": "off",
+        "import/named": "off",
+        "import/no-named-as-default": "off",
+        "class-methods-use-this": "off",
+        "consistent-return": "off",
+        "no-param-reassign": "error",
+        "prefer-const": "error",
+        "no-nested-ternary": "error",
+        "no-else-return": "error",
+        "no-eval": "error",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/indent": [
+            "error",
+            2
+        ],
+        "@typescript-eslint/explicit-member-accessibility": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/camelcase": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/ban-ts-ignore": "off",
+        "@typescript-eslint/no-unused-vars": [
+            "error",
+            {
+                "ignoreRestSiblings": true
+            }
+        ],
+        "immutable/no-let": "error",
+        "immutable/no-this": "off"
+
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {"extensions": [".d.ts", ".ts", ".tsx", "js", "jsx"]}
+        },
+        "import/extensions": [".d.ts", ".ts", ".tsx", "js", "jsx"],
+        "import/parsers": {
+            "@typescript-eslint/parser": [".d.ts", ".ts", ".tsx"]
+        }
+    },
+    "overrides": [{
+        "files": [".d.ts", ".ts", ".tsx"],
+        "parser": "@typescript-eslint/parser",
+        "parserOptions": {"jsx": true, "useJSXTextNode": true},
+        "rules": {
+            "import/namespace": "off",
+            "import/no-duplicates": "off",
+            "import/no-unresolved": "off",
+            "no-restricted-globals": "off",
+            "no-undef": "off"
+        }
+    }],
+    "globals": {
+        "__API_URL__": true,
+        "__DEV__": true,
+        "__BUILD_TIME__": true,
+        "__ECHO__": true,
+        "__FRONT_ENV__": true,
+        "__SERVERLESS_API_URL__": true,
+        "__FRONT_URL__": true,
+        "__TEST__": true,
+        "__ENABLE_PRODUCTS__": true,
+        "__MOCKED_GRAPHQL__": true
+    }
+}
