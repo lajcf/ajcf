@@ -1,5 +1,6 @@
+import * as React from 'react';
+
 import smoothscroll from 'smoothscroll-polyfill';
-import React from 'react';
 import PropTypes from 'prop-types';
 
 const Element = props => {

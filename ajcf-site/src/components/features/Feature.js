@@ -1,3 +1,4 @@
+import * as React from 'react';
 import {Link} from 'gatsby';
 
 const Feature = ({href, image, heading, description, to}) =>

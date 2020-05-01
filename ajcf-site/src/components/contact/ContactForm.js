@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 const ContactForm = () =>
   <section>
     <form method="post" action="#">

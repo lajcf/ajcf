@@ -1,3 +1,4 @@
+import * as React from 'react';
 import Scroll from '../common/Scroll';
 
 const Introduction = () =>

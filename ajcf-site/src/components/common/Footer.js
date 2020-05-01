@@ -1,3 +1,4 @@
+import * as React from 'react';
 import '../../assets/sass/main.scss';
 
 const Footer = () => (

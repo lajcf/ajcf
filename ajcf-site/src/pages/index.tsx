@@ -4,11 +4,11 @@ import Layout from '../components/common/layout';
 import Footer from '../components/common/Footer';
 import Sidebar from '../components/common/Sidebar';
 
-import Introduction from '../components/introduction/Introduction';
 import Features from '../components/features/Features';
 import Capabilities from '../components/capabilities/Capabilities';
 import Contact from '../components/contact/Contact';
 import { Header } from '../components/common/Header';
+import HomePage from "../components/HomePage/HomePage";
 
 const IndexPage = () => (
   <Layout>
@@ -16,7 +16,7 @@ const IndexPage = () => (
     <Sidebar />
 
     <div id="wrapper">
-      <Introduction />
+      <HomePage />
       <Features />
       <Capabilities />
       <Contact />

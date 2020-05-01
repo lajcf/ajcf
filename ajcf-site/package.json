@@ -13,6 +13,7 @@
   "dependencies": {
     "@types/react-scrollspy": "^3.3.2",
     "@types/typography": "^0.16.3",
+    "classnames": "^2.2.6",
     "gatsby": "^2.20.29",
     "gatsby-plugin-manifest": "^2.3.6",
     "gatsby-plugin-offline": "^3.1.4",
@@ -54,5 +55,8 @@
   "bugs": {
     "url": "https://github.com/anubhavsrivastava/gatsby-starter-hyperspace/issues"
   },
-  "homepage": "https://github.com/anubhavsrivastava/gatsby-starter-hyperspace#readme"
+  "homepage": "https://github.com/anubhavsrivastava/gatsby-starter-hyperspace#readme",
+  "devDependencies": {
+    "@types/classnames": "^2.2.10"
+  }
 }

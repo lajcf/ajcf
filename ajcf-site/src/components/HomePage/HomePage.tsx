@@ -1,7 +1,10 @@
 import React from 'react';
+import { WelcomeSection } from "./WelcomeSection";
 
 const HomePage = () => {
-  return <div></div>;
+  return (
+    <WelcomeSection />
+  );
 };
 
 export default HomePage;

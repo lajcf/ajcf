@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 const ContactInformation = () =>
   <section>
     <ul className="contact">

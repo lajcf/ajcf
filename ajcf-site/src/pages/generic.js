@@ -1,3 +1,4 @@
+/*
 import pic4 from '../images/pic04.jpg';
 
 import Layout from '../components/common/layout';
@@ -43,3 +44,4 @@ const SecondPage = () => (
 );
 
 export default SecondPage;
+*/

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import ContactForm from './ContactForm';
 import ContactInformation from './ContactInformation';
 

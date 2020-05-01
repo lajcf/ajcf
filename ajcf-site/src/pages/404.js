@@ -1,3 +1,4 @@
+/*
 import Layout from '../components/common/layout';
 
 const NotFoundPage = () => (
@@ -8,3 +9,4 @@ const NotFoundPage = () => (
 );
 
 export default NotFoundPage;
+*/

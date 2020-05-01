@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import Scroll from './Scroll';
 
 const Tab = ({content, href, className}) =>
