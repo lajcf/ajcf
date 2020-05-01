@@ -1,0 +1,133 @@
+{
+  "plugins": [
+    "jest",
+    "import",
+    "immutable",
+    "react-hooks"
+  ],
+  //"parser": "@typescript-eslint/parser",
+  // would be great to activate one day...
+  //"parserOptions": {
+  //  "project": ["./front/tsconfig.json"],
+  //  "ecmaFeatures": {
+  //    "jsx": true
+  //  }
+  //},
+  "extends": [
+    "airbnb",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "jest": true,
+    "es6": true
+  },
+  //"parser": "@typescript-eslint/parser",
+  //"parserOptions": {"jsx": true, "useJSXTextNode": true},
+  "rules": {
+    "react/default-props-match-prop-types": "off",
+    "react/prefer-stateless-function": "off",
+    "react/prop-types": "off",
+    "react/sort-comp": "off",
+    "react/jsx-filename-extension": "off",
+    "react/require-default-props": "off",
+    "react/display-name": "off",
+    "react/no-unused-prop-types": "error",
+    "react/destructuring-assignment": "error",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-closing-tag-location": "off",
+    "react/jsx-wrap-multilines": "off",
+    "react/jsx-indent": "off",
+    "react/no-unescaped-entities": "off",
+    "react/jsx-curly-newline": "off",
+    "default-case": "off",
+    "no-mixed-operators": "off",
+    "arrow-body-style": "off",
+    "no-console": "off",
+    "global-require": "off",
+    "jsx-a11y": "off",
+    "jsx-a11y/href-no-hash": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/anchor-has-content": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/mouse-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/no-noninteractive-tabindex": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "jsx-a11y/aria-role": "off",
+    "jsx-a11y/accessible-emoji": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "jsx-a11y/media-has-caption": "off",
+    "jsx-a11y/alt-text": "off",
+    "jsx-a11y/interactive-supports-focus": "off",
+    "prefer-destructuring": ["error"],
+    "no-underscore-dangle": "off",
+    "no-unused-vars": "off",
+    "new-cap": "warn",
+
+    "import/first": "off",
+    "import/no-cycle": "off",
+    "import/no-unresolved": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
+    "import/named": "off",
+    "import/no-named-as-default": "off",
+    //"import/no-unused-modules":  [1, {"unusedExports": true}],
+
+    "class-methods-use-this": "off",
+    "consistent-return": "off",
+    "no-param-reassign": "error",
+    "prefer-const": "error",
+
+    "no-nested-ternary": "error",
+    "no-else-return": "error",
+    "no-eval": "error",
+
+    "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/ban-ts-ignore": "off",
+    "@typescript-eslint/prefer-optional-chain": "error",
+    "@typescript-eslint/no-unused-vars": ["error", { "ignoreRestSiblings": true }],
+    "@typescript-eslint/no-floating-promises": "off",
+    "@typescript-eslint/interface-name-prefix": "off",
+
+
+    "immutable/no-let": "error",
+    "immutable/no-this": "off",
+
+    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "off", // Checks effect dependencies
+    "import/extensions": [
+      "error",
+      "never"
+    ]
+    //    "max-len": "off",
+    //    "spaced-comment": "off",
+    //    "indent": "off",
+    //    "linebreak-style": "off",
+    //    "lines-between-class-members": "off",
+    //    "implicit-arrow-linebreak": "off",
+    //    "operator-linebreak": "off",
+    //    "@typescript-eslint/indent": ["error", 2],
+    //    "react/jsx-closing-bracket-location": ["error", "line-aligned"],
+    // "quotes": ["error", "double", { "avoidEscape": true, "allowTemplateLiterals": true }]
+    //    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
+    //    "arrow-parens": ["error", "as-needed"],
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {"extensions": [".d.ts", ".ts", ".tsx", "js", "jsx"]}
+    },
+    "import/extensions": [".d.ts", ".ts", ".tsx", "js", "jsx"],
+    "import/parsers": {
+      "@typescript-eslint/parser": [".d.ts", ".ts", ".tsx"]
+    }
+  },
+  "globals": {
+  }
+}

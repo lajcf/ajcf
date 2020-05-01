@@ -4,17 +4,6 @@
   "private": true,
   "dependencies": {
     "@bearer/node": "^2.0.0",
-    "@types/axios": "^0.14.0",
-    "@types/dotenv": "^8.2.0",
-    "@types/express": "^4.17.2",
-    "@types/jest": "^24.0.22",
-    "@types/lodash": "^4.14.149",
-    "@types/moment": "^2.13.0",
-    "@types/node": "^12.12.6",
-    "@types/node-mailjet": "^3.3.3",
-    "@types/p-limit": "^2.2.0",
-    "@typescript-eslint/eslint-plugin": "^2.6.1",
-    "@typescript-eslint/parser": "^2.6.1",
     "acorn": "^7.1.1",
     "aws-sdk": "^2.638.0",
     "axios": "^0.19.0",
@@ -48,13 +37,15 @@
     "db:migrate": "ts-node --project tsconfig.json node_modules/typeorm/cli.js migration:run"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.3.5",
-    "@commitlint/config-conventional": "^8.3.4",
     "babel-loader": "^8.0.6",
-    "eslint": "^6.6.0",
-    "eslint-plugin-immutable": "^1.0.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^23.0.3",
-    "husky": "^4.2.3"
+    "@types/axios": "^0.14.0",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.2",
+    "@types/jest": "^24.0.22",
+    "@types/lodash": "^4.14.149",
+    "@types/moment": "^2.13.0",
+    "@types/node": "^12.12.6",
+    "@types/node-mailjet": "^3.3.3",
+    "@types/p-limit": "^2.2.0"
   }
 }
