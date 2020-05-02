@@ -20,7 +20,9 @@
 		element-margin:		2em,
 		sidebar-width:		12.5em,
 		sidebar-height:		3.5em,	// when <=large is active
-		inner-width:		75em
+		inner-width:		75em,
+		gutter:				2.5em,
+					main-content-padding: 1em,
 	);
 
 // Font.
@@ -34,6 +36,9 @@
 
 // Palette.
 	$palette: (
+					bg-sidebar: #ffd856,
+					bg-header: #E4572E,
+					white: #ffffff,
 		bg: #ffffff,
 		bg-alt:				darken(#312450, 5),
 		fg: rgba(150, 150, 150, 1),
@@ -41,10 +46,15 @@
 		fg-light: rgb(180, 180, 180),
 		border:				rgba(255,255,255,0.15),
 		border-bg:			rgba(255,255,255,0.05),
-		accent1: #d54646,
-		accent1-alt:		darken(#d54646, 10),
-		accent2:			#5052b5,
-		accent2-alt:		darken(#5052b5, 10),
-		accent3: #ffde68,
-		accent3-alt:		darken(#ffde68, 10)
+		color-talk: #ba2d1d,
+					color-talk-light: #f66454,
+
+					color-talk-alt:		darken(#ba2d1d, 10),
+		color-meet:			#009ad7,
+		color-meet-alt:		darken(#009ad7, 10),
+		accent3: #FFC914,
+					color-enjoy-light: #ffd856,
+		accent3-alt:		darken(#FFC914, 10),
+		color-learn:			#05d2a0,
+		color-learn-alt:		darken(#05d2a0, 10)
 	);

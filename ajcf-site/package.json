@@ -26,6 +26,8 @@
     "react-helmet": "^5.2.1",
     "react-scrollspy": "^3.4.0",
     "react-typography": "^0.16.19",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.88.2",
     "smoothscroll-polyfill": "^0.4.4",
     "typography": "^0.16.19",
     "typography-theme-funston": "^0.16.19"
@@ -35,7 +37,7 @@
     "build": "gatsby build",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "serve": "gatsby serve",
-    "clean": "rimraf .cache public",
+    "clean": "gatsby clean",
     "format": "prettier --write '**/*.js'",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .ts --config .eslintrc.json"
@@ -52,10 +54,6 @@
     "gatsby-starter-hyperspace"
   ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/anubhavsrivastava/gatsby-starter-hyperspace/issues"
-  },
-  "homepage": "https://github.com/anubhavsrivastava/gatsby-starter-hyperspace#readme",
   "devDependencies": {
     "@types/classnames": "^2.2.10"
   }

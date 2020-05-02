@@ -1,13 +1,13 @@
-import React from 'react';
+/*import "semantic-ui-css/semantic.min.css";*/
 
-import Layout from '../components/common/layout';
-import Footer from '../components/common/Footer';
-import Sidebar from '../components/common/Sidebar';
+import React from "react";
 
-import Features from '../components/features/Features';
-import Capabilities from '../components/capabilities/Capabilities';
-import Contact from '../components/contact/Contact';
-import { Header } from '../components/common/Header';
+import Layout from "../components/common/layout";
+import Footer from "../components/common/Footer";
+import Sidebar from "../components/common/Sidebar";
+
+import Contact from "../components/contact/Contact";
+import { Header } from "../components/common/Header";
 import HomePage from "../components/HomePage/HomePage";
 
 const IndexPage = () => (
@@ -17,8 +17,6 @@ const IndexPage = () => (
 
     <div id="wrapper">
       <HomePage />
-      <Features />
-      <Capabilities />
       <Contact />
     </div>
 

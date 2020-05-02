@@ -8,7 +8,7 @@
 
 #header {
   @include vendor('display', 'flex');
-  background-color: _palette(bg);
+  background-color: _palette(bg-header);
   cursor: default;
   padding: 1.75em 2em;
   z-index: _misc(z-index-header);
@@ -46,15 +46,15 @@
         }
         a {
           border: 0;
-          color: _palette(fg-light);
+          color: _palette(white);
           display: inline-block;
-          font-size: 0.6em;
+          font-size: 0.75em;
           font-weight: _font(weight-bold);
           letter-spacing: _font(kerning-alt);
           text-transform: uppercase;
 
           &:hover {
-            color: _palette(fg);
+            color: _palette(color-enjoy-light);
           }
 
           &.active {

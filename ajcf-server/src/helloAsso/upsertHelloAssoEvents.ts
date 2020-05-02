@@ -21,6 +21,6 @@ export const formatHelloAssoEvent = (campaign: HelloAssoCampaign) => ({
 });
 
 export const upsertHelloAssoEvents = async (): Promise<Event[]> => {
-  const helloAssoEvents = await fetchCampaigns({campaignType: "EVENT"});
+  const helloAssoEvents = await fetchCampaigns({ campaignType: "EVENT" });
   return getRepository(Event).save(helloAssoEvents.map(formatHelloAssoEvent));
 };

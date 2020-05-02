@@ -1,6 +1,6 @@
-import React, { memo } from 'react';
-import { LandingLink } from '../LandingLink';
-import { AJCFLogo } from '../AJCFLogo';
+import React, { memo } from "react";
+import { LandingLink } from "../LandingLink";
+import { AJCFLogo } from "../AJCFLogo";
 
 const LandingHeaderInner = () => {
   return (
@@ -24,12 +24,24 @@ const LandingHeaderInner = () => {
   );
 };
 
+const style: React.CSSProperties = {
+  paddingTop: "0.5em",
+  paddingLeft: "1em",
+  paddingRight: "1em",
+  fontWeight: "bolder",
+  color: "white",
+};
+
 const Header = memo(({ className }: { className?: string }) => {
   return (
     <header className={className} id="header">
       <LandingLink href="/home/">
         <AJCFLogo />
       </LandingLink>
+      <div style={style}>
+        <h4>Association des Jeunes Chinois de France</h4>
+        法国华裔青年协会
+      </div>
       <nav className="ui text item menu">
         <LandingHeaderInner />
       </nav>

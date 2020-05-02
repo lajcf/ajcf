@@ -1,4 +1,4 @@
-import React, { HTMLProps } from 'react';
+import React, { HTMLProps } from "react";
 
 const LandingLink = ({ ...props }: HTMLProps<HTMLAnchorElement>) => {
   // const localizedHref = useLocalizedHref(cleanProps.href);

@@ -15,7 +15,7 @@ export abstract class HelloAssoBaseEntity {
 
   @UpdateDateColumn({
     name: "updated_at",
-    type: "timestamp"
+    type: "timestamp",
   })
   updatedAt: Date;
 }

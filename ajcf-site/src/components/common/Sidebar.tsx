@@ -1,14 +1,15 @@
-import React from 'react';
-import Scrollspy from 'react-scrollspy';
+import React from "react";
+import Scrollspy from "react-scrollspy";
 
-import Tab from './Tab';
+import Tab from "./Tab";
+import { Icon } from "semantic-ui-react";
 
 const Sidebar = () => {
   const [tabs] = React.useState([
-    { content: 'Accueil', href: 'home', className: 'main-link' },
-    { content: 'Qui sommes-nous ?', href: 'one', className: 'main-link' },
-    { content: 'Projets', href: 'two', className: 'main-link' },
-    { content: 'Actualités', href: 'three', className: 'main-link' },
+    { content: "Accueil", href: "home", className: "main-link" },
+    { content: "Espaces", href: "areas", className: "main-link" },
+    { content: "Actualités", href: "news", className: "main-link" },
+    { content: "À propos", href: "about", className: "main-link" },
   ]);
   return (
     <section id="sidebar">
@@ -17,13 +18,14 @@ const Sidebar = () => {
           <Scrollspy
             items={tabs.map((s) => s.href)}
             currentClassName="active"
-            offset={0}
+            offset={-500}
           >
             {tabs.map((tab) => (
               <Tab key={tab.href} {...tab} />
             ))}
           </Scrollspy>
         </nav>
+        <Icon name="facebook" size="large" />
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 // import { SemanticICONS } from "semantic-ui-react";
 const c = {
   MODIFY_UI: "modifyUI",
-/*
+  /*
   ICON_DOWNLOAD: "cloud download" as SemanticICONS,
   ICON_EDIT: "edit outline" as SemanticICONS,
   ICON_DELETE: "delete" as SemanticICONS,
@@ -27,7 +27,8 @@ const hoursSecondsEquivalent = {
 
 const errorMessageConstants = {
   GOOGLE_PLACES_API_NO_CITY_ERROR: "Google Places API Error: no city",
-  GQL_GOOGLE_PLACES_API_NO_CITY_ERROR: "GraphQL error: Google Places API Error: no city",
+  GQL_GOOGLE_PLACES_API_NO_CITY_ERROR:
+    "GraphQL error: Google Places API Error: no city",
 };
 
 const cookieNamesConstants = {
@@ -56,4 +57,10 @@ const localeConstants = {
 
 export type SupportedLocales = typeof localeConstants["SUPPORTED_LOCALES"][number];
 
-export { c as default, hoursSecondsEquivalent, errorMessageConstants, cookieNamesConstants, localeConstants };
+export {
+  c as default,
+  hoursSecondsEquivalent,
+  errorMessageConstants,
+  cookieNamesConstants,
+  localeConstants,
+};

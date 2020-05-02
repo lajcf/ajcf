@@ -5,7 +5,10 @@ type UseImageBlurPlaceholderT = (
   isIntersection?: boolean
 ) => [boolean, RefObject<HTMLImageElement>, () => void];
 
-const useImageBlurPlaceholder: UseImageBlurPlaceholderT = (_id, isIntersecting) => {
+const useImageBlurPlaceholder: UseImageBlurPlaceholderT = (
+  _id,
+  isIntersecting
+) => {
   const [loadImage, setLoadImage] = useState(false);
   const imageRef = useRef<HTMLImageElement>(null);
 

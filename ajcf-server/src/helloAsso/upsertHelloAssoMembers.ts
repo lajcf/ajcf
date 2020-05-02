@@ -12,14 +12,20 @@ export enum CustomInfoEnum {
   motivation = "Pourquoi veux-tu rejoindre l'AJCF ?",
 }
 
-export const getDateInfo = (member: HelloAssoAction, infoType: CustomInfoEnum): Date | null => {
-  const date = member.custom_infos.find(e => e.label === infoType);
+export const getDateInfo = (
+  member: HelloAssoAction,
+  infoType: CustomInfoEnum
+): Date | null => {
+  const date = member.custom_infos.find((e) => e.label === infoType);
   if (date) return moment.utc(date.value, "DD/MM/YYYY").toDate();
   return null;
 };
 
-export const getStringInfo = (member: HelloAssoAction, infoType: CustomInfoEnum): string | null => {
-  const info = member.custom_infos.find(e => e.label === infoType);
+export const getStringInfo = (
+  member: HelloAssoAction,
+  infoType: CustomInfoEnum
+): string | null => {
+  const info = member.custom_infos.find((e) => e.label === infoType);
   return info ? info.value : null;
 };
 
@@ -36,12 +42,15 @@ export const formatMembers = (member: HelloAssoAction) => {
     firstSubscriptionDate: moment.utc(member.date).toDate(),
     lastSubscriptionDate: moment.utc(member.date).toDate(),
     activeMember: false,
-  }
+  };
 };
 
 export const fetchHelloAssoMembers = async (): Promise<HelloAssoAction[]> => {
-  const campaigns = await fetchCampaigns({campaignType: "MEMBERSHIP"});
-  if (campaigns.length === 0) throw new Error(`No membership campaign found for organismId ${process.env.ID_HELLOASSO_AJCF}`);
+  const campaigns = await fetchCampaigns({ campaignType: "MEMBERSHIP" });
+  if (campaigns.length === 0)
+    throw new Error(
+      `No membership campaign found for organismId ${process.env.ID_HELLOASSO_AJCF}`
+    );
   console.log(`Membership campaign: ${JSON.stringify(campaigns, null, 2)}`);
   return fetchActions({
     campaignId: campaigns[0].id,

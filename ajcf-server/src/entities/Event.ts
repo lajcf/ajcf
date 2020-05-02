@@ -61,14 +61,13 @@ export class Event extends HelloAssoBaseEntity {
 
   @Column({
     name: "creation_date",
-    type: "timestamp"
+    type: "timestamp",
   })
   creationDate: Date;
 
   @Column({
     name: "last_update_on_hello_asso",
-    type: "timestamp"
+    type: "timestamp",
   })
   lastUpdateOnHelloAsso: Date;
-
 }

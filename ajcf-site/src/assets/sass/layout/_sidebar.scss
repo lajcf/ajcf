@@ -8,7 +8,7 @@
 
 #sidebar {
   @include padding(2em, 1.5em);
-  background: _palette(bg);
+  background: _palette(bg-sidebar);
   cursor: default;
   height: 100vh;
   left: 0;
@@ -82,9 +82,9 @@
     a {
       @include vendor('transition', 'color #{_duration(transition)} ease');
       border: 0;
-      color: _palette(fg-light);
+      color: _palette(white);
       display: block;
-      font-size: 0.6em;
+      font-size: 0.75em;
       font-weight: _font(weight-bold);
       letter-spacing: _font(kerning-alt);
       line-height: 1.75;
@@ -106,13 +106,13 @@
       }
 
       &:before {
-        background: lighten(_palette(bg), 5);
+        background: _palette(bg-sidebar);
       }
 
       &:after {
         @include vendor(
           'background-image',
-          'linear-gradient(to right, #{_palette(accent1)}, #{_palette(accent3)})'
+          'linear-gradient(to right, #{_palette(color-talk-light)}, #{_palette(color-talk-light)})'
         );
         @include vendor(
           'transition',

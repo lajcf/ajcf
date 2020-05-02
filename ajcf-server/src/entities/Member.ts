@@ -63,5 +63,4 @@ export class Member extends HelloAssoBaseEntity {
     default: false,
   })
   welcomeMailSent: boolean;
-
 }
