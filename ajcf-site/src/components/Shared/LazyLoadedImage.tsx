@@ -23,15 +23,20 @@ const placeholderContainerStyle = (
   ...imageStyle,
 });
 
-const ratioPreserveDivStyle = (ratio: number) => ({
-  paddingBottom: `${ratio}%`,
-});
-
 const LazyLoadedImage = memo(
-  (props: PropsWithChildren<LazyLoadedImageProps>) => {
+  ({
+    containerClassName,
+    srcLarge,
+    id,
+    alt,
+    imageStyle,
+    dominantColor,
+    containerStyle,
+    children,
+  }: PropsWithChildren<LazyLoadedImageProps>) => {
     const [intersectionEntry, setNode] = useIntersectionObserver({});
     const [loadImage, imageRef, onImageLoad] = useImageBlurPlaceholder(
-      props.id,
+      id,
       intersectionEntry?.isIntersecting
     );
 
@@ -39,25 +44,22 @@ const LazyLoadedImage = memo(
       <>
         <div
           ref={setNode}
-          id={props.id}
-          data-large={props.srcLarge}
-          style={placeholderContainerStyle(
-            props.dominantColor,
-            props.containerStyle
-          )}
-          className={cx("image-placeholder", props.containerClassName)}
+          id={id}
+          data-large={srcLarge}
+          style={placeholderContainerStyle(dominantColor, containerStyle)}
+          className={cx("image-placeholder", containerClassName)}
         >
-          {props.children}
+          {children}
           {loadImage && (
             <img
               ref={imageRef}
-              src={props.srcLarge}
+              src={srcLarge}
               onLoad={onImageLoad}
-              style={props.imageStyle}
-              alt={props.alt}
+              style={imageStyle}
+              alt={alt}
             />
           )}
-          {/*<div className="preserve-image-ratio-placeholder" style={ratioPreserveDivStyle(props.widthHeightRatio)} />*/}
+          {/*<div className="preserve-image-ratio-placeholder" style={ratioPreserveDivStyle(widthHeightRatio)} />*/}
         </div>
       </>
     );

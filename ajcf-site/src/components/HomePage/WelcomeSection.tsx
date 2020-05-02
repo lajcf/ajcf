@@ -6,6 +6,11 @@ const textSectionStyle: React.CSSProperties = {
   margin: "1em",
 };
 
+const imageStyle: React.CSSProperties = {
+  display: "flex",
+  justifyContent: "center",
+};
+
 export const WelcomeSection = () => {
   return (
     <section id="home">
@@ -15,6 +20,7 @@ export const WelcomeSection = () => {
         srcLarge={AJCFWelcomeImage}
         id="ajcf-welcome"
         alt="AJCF Welcome Image"
+        containerStyle={imageStyle}
       />
       <section style={textSectionStyle}>
         <h2>

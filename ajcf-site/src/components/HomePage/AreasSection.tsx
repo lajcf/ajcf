@@ -1,7 +1,7 @@
-import AJCFTalkLogo from "../../assets/img/AJCFTalkLogo.png";
-import AJCFLearnLogo from "../../assets/img/AJCFLearnLogo.png";
-import AJCFMeetLogo from "../../assets/img/AJCFMeetLogo.png";
-import AJCFEnjoyLogo from "../../assets/img/AJCFEnjoyLogo.png";
+import AJCFTalkLogo from "../../assets/img/AJCFTalkLogo.jpg";
+import AJCFLearnLogo from "../../assets/img/AJCFLearnLogo.jpg";
+import AJCFMeetLogo from "../../assets/img/AJCFMeetLogo.jpg";
+import AJCFEnjoyLogo from "../../assets/img/AJCFEnjoyLogo.jpg";
 import React from "react";
 import { Area } from "./Area";
 
