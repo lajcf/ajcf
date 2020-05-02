@@ -22,6 +22,9 @@ const useIntersectionObserver: UseIntersectionObserverT = ({
   const observer = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
     if (!("IntersectionObserver" in window)) {
       return;
     }
@@ -41,6 +44,9 @@ const useIntersectionObserver: UseIntersectionObserverT = ({
     return () => observer.current?.disconnect();
   }, [node, root, rootMargin, threshold]);
 
+  if (typeof window === "undefined") {
+    return [{ isIntersecting: true } as IntersectionObserverEntry, setNode];
+  }
   if (!("IntersectionObserver" in window)) {
     return [{ isIntersecting: true } as IntersectionObserverEntry, setNode];
   }
