@@ -6,7 +6,6 @@ import { useImageBlurPlaceholder } from "../../assets/hooks/UI/useImageBlurPlace
 
 interface LazyLoadedImageProps {
   containerClassName?: string;
-  widthHeightRatio: number;
   srcLarge: string;
   id: string;
   alt?: string;
@@ -19,7 +18,7 @@ const placeholderContainerStyle = (
   dominantColor?: ColorProperty,
   imageStyle?: CSSProperties
 ) => ({
-  backgroundColor: dominantColor || "#F6F6F6",
+  backgroundColor: dominantColor || "rgb(256, 256, 256, 0)",
   ...imageStyle,
 });
 

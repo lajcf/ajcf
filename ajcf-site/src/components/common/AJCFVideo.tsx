@@ -64,8 +64,7 @@ const Video = memo(({ onExitFullScreen, videoSource }: VideoProps) => {
 interface LandingVideoProps {
   containerStyle?: CSSProperties;
   videoOverlayImageSource: string;
-  videoOverlayImageWidthHeightRatio: number;
-  videoOverlayImageDominantColor: string;
+  videoOverlayImageDominantColor?: string;
   videoOverlayImageAlt: string;
   videoOverlayImageId: string;
   videoOverlayImageStyle?: CSSProperties;
@@ -80,7 +79,6 @@ const AJCFVideo = ({
   videoOverlayImageContainerStyle,
   videoOverlayImageSource,
   videoOverlayImageStyle,
-  videoOverlayImageWidthHeightRatio,
   videoOverlayImageDominantColor,
   videoOverlayImageAlt,
   videoOverlayImageId,
@@ -99,7 +97,6 @@ const AJCFVideo = ({
       className={cx("video-container", containerClassName)}
     >
       <LazyLoadedImage
-        widthHeightRatio={videoOverlayImageWidthHeightRatio}
         srcLarge={videoOverlayImageSource}
         imageStyle={videoOverlayImageStyle}
         containerStyle={videoOverlayImageContainerStyle}
