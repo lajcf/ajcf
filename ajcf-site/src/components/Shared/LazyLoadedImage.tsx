@@ -15,10 +15,7 @@ interface LazyLoadedImageProps {
   containerStyle?: CSSProperties;
 }
 
-const placeholderContainerStyle = (
-  dominantColor?: ColorProperty,
-  imageStyle?: CSSProperties
-) => ({
+const placeholderContainerStyle = (dominantColor?: ColorProperty, imageStyle?: CSSProperties) => ({
   backgroundColor: dominantColor || "#F6F6F6",
   ...imageStyle,
 });
@@ -35,10 +32,7 @@ const LazyLoadedImage = memo(
     children,
   }: PropsWithChildren<LazyLoadedImageProps>) => {
     const [intersectionEntry, setNode] = useIntersectionObserver({});
-    const [loadImage, imageRef, onImageLoad] = useImageBlurPlaceholder(
-      id,
-      intersectionEntry?.isIntersecting
-    );
+    const [loadImage, imageRef, onImageLoad] = useImageBlurPlaceholder(id, intersectionEntry?.isIntersecting);
 
     return (
       <>
@@ -50,15 +44,7 @@ const LazyLoadedImage = memo(
           className={cx("image-placeholder", containerClassName)}
         >
           {children}
-          {loadImage && (
-            <img
-              ref={imageRef}
-              src={srcLarge}
-              onLoad={onImageLoad}
-              style={imageStyle}
-              alt={alt}
-            />
-          )}
+          {loadImage && <img ref={imageRef} src={srcLarge} onLoad={onImageLoad} style={imageStyle} alt={alt} />}
           {/*<div className="preserve-image-ratio-placeholder" style={ratioPreserveDivStyle(widthHeightRatio)} />*/}
         </div>
       </>

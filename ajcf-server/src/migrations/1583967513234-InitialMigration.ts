@@ -11,10 +11,7 @@ export class InitialMigration1583967513234 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(
-      "DROP INDEX `IDX_9cc50bc474e863541dfe05cbbc` ON `Member`",
-      undefined
-    );
+    await queryRunner.query("DROP INDEX `IDX_9cc50bc474e863541dfe05cbbc` ON `Member`", undefined);
     await queryRunner.query("DROP TABLE `Member`", undefined);
   }
 }

@@ -17,9 +17,7 @@ const secretManager = new AWS.SecretsManager({
   region: "eu-west-3",
 });
 
-export const memoizedSecret = memoizeOne((SecretId: string) =>
-  secretManager.getSecretValue({ SecretId }).promise()
-);
+export const memoizedSecret = memoizeOne((SecretId: string) => secretManager.getSecretValue({ SecretId }).promise());
 
 export const fetchAwsSecret = async <T>(secretId: string) => {
   const data = await memoizedSecret(secretId);
@@ -29,25 +27,18 @@ export const fetchAwsSecret = async <T>(secretId: string) => {
   throw new Error(`${secretId} not found`);
 };
 
-export const fetchDbCredentials = async (
-  isProd?: boolean,
-  localCredentials?: boolean
-) => {
+export const fetchDbCredentials = async (isProd?: boolean, localCredentials?: boolean) => {
   if (localCredentials)
     AWS.config.credentials = new AWS.SharedIniFileCredentials({
       profile: "ajcf",
     });
-  const SecretId = isProd
-    ? "ajcf-server-prod-db-credentials"
-    : "ajcf-server-dev-db-credentials"; // secrets stored in AWS Secret
+  const SecretId = isProd ? "ajcf-server-prod-db-credentials" : "ajcf-server-dev-db-credentials"; // secrets stored in AWS Secret
   return fetchAwsSecret<DBCredentials>(SecretId);
 };
 
 export const openConnectionToDb = async () => {
   const credentials = await fetchDbCredentials(process.env.STAGE === "prod");
-  console.log(
-    `DB_CONNECTION :: Opening connection to database in ${process.env.STAGE}`
-  );
+  console.log(`DB_CONNECTION :: Opening connection to database in ${process.env.STAGE}`);
   try {
     await createConnection({
       type: credentials.engine,

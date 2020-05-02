@@ -1,6 +1,6 @@
 import bearer from "@bearer/node";
 import { zipObject } from "lodash";
-import { EntityIdType, FetchGoogleSheetResponse, GoogleDriveCreationResponse, RowData, } from "./resources";
+import { EntityIdType, FetchGoogleSheetResponse, GoogleDriveCreationResponse, RowData } from "./resources";
 
 export interface GoogleSheetUpddateValuesResponse {
   spreadsheetId: string;
@@ -11,9 +11,7 @@ export interface GoogleSheetUpddateValuesResponse {
   updatedData?: object;
 }
 
-export const addEntitiesToGoogleSheet = async <T extends object>(
-  entities: T[]
-): Promise<number> => {
+export const addEntitiesToGoogleSheet = async <T extends object>(entities: T[]): Promise<number> => {
   if (entities.length === 0) return 0;
   const bearerClient = bearer(process.env.BEARER_SECRET_KEY);
   const entityKeys = Object.keys(entities[0]);
@@ -58,9 +56,7 @@ export const createGoogleSheet = async (sheetName: string): Promise<string> => {
   throw new Error("Error while creating file in google drive");
 };
 
-export const fetchGoogleSheet = async (
-  sheetId: string
-): Promise<FetchGoogleSheetResponse | null> => {
+export const fetchGoogleSheet = async (sheetId: string): Promise<FetchGoogleSheetResponse | null> => {
   try {
     const bearerClient = bearer(process.env.BEARER_SECRET_KEY);
     const response = await bearerClient
@@ -73,9 +69,7 @@ export const fetchGoogleSheet = async (
       });
     return response.data;
   } catch (e) {
-    console.log(
-      `Error in fetching gsheet: ${JSON.stringify(e.response.data, null, 2)}.`
-    );
+    console.log(`Error in fetching gsheet: ${JSON.stringify(e.response.data, null, 2)}.`);
     return null;
   }
 };
@@ -83,17 +77,11 @@ export const fetchGoogleSheet = async (
 export const convertGoogleSheetToObjectArray = (rowData: RowData[]) => {
   if (rowData.length === 0) return [];
   const headers = rowData[0].values.map((v) => v.formattedValue);
-  const values = rowData
-    .slice(1)
-    .map((r) => r.values.map((v) => v.formattedValue)); // [[rowValues], [rowValues]]...
+  const values = rowData.slice(1).map((r) => r.values.map((v) => v.formattedValue)); // [[rowValues], [rowValues]]...
   return values.map((rowValues) => zipObject(headers, rowValues));
 };
 
-export const extractEntityFromSheet = (
-  entityId: string,
-  idType: EntityIdType,
-  rowData: RowData[]
-) => {
+export const extractEntityFromSheet = (entityId: string, idType: EntityIdType, rowData: RowData[]) => {
   const dataToObjectArray = convertGoogleSheetToObjectArray(rowData);
   const entityRow = dataToObjectArray.find((o) => o[idType]);
   return entityRow;

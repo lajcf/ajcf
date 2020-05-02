@@ -13,13 +13,7 @@ interface LinkItemProps {
   href: string;
 }
 
-const LinkItem = ({
-  href,
-  children,
-  isURIScheme,
-  iconName,
-  onClick,
-}: PropsWithChildren<LinkItemProps>) => {
+const LinkItem = ({ href, children, isURIScheme, iconName, onClick }: PropsWithChildren<LinkItemProps>) => {
   if (isURIScheme) {
     return (
       <a href={href} onClick={onClick}>

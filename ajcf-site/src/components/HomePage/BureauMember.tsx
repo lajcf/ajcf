@@ -7,11 +7,7 @@ const style: React.CSSProperties = {
   textAlign: "center",
 };
 
-export const BureauMember = ({
-  imageSource,
-  name,
-  role,
-}: BureauMemberProps) => {
+export const BureauMember = ({ imageSource, name, role }: BureauMemberProps) => {
   return (
     <AJCFColumn className={"four"}>
       <span>
