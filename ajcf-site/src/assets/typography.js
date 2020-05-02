@@ -27,7 +27,6 @@ funstonTheme.overrideThemeStyles = () => ({
     "font-weight": "bolder"
   }
 })
-console.log(funstonTheme)
 const typography = new Typography(funstonTheme);
 
 export default typography;
