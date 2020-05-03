@@ -9,8 +9,7 @@ export const Area = ({ imageSource, to }: AreaProps) => {
         <img src={imageSource} alt="" />
       </span>
       <Link to={to}>
-        <div className="content">
-        </div>
+        <div className="content"></div>
       </Link>
     </article>
   );

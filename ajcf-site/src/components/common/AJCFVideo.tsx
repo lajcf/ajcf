@@ -1,4 +1,4 @@
-import React, { CSSProperties, memo, PropsWithChildren, useCallback, useRef, useState, } from "react";
+import React, { CSSProperties, memo, PropsWithChildren, useCallback, useRef, useState } from "react";
 import { Modal } from "semantic-ui-react";
 import cx from "classnames";
 import { LazyLoadedImage } from "../Shared/LazyLoadedImage";
@@ -49,16 +49,7 @@ const Video = memo(({ onExitFullScreen, videoSource }: VideoProps) => {
 
   useExitFullScreenEvent(videoRef, onExitFullScreen);
 
-  return (
-    <video
-      autoPlay
-      controls
-      preload="auto"
-      ref={videoRef}
-      src={videoSource}
-      style={videoStyle}
-    />
-  );
+  return <video autoPlay controls preload="auto" ref={videoRef} src={videoSource} style={videoStyle} />;
 });
 
 interface LandingVideoProps {
@@ -94,10 +85,7 @@ const AJCFVideo = ({
   }, [openVideoDialog]);
 
   return (
-    <div
-      style={containerStyle}
-      className={cx("video-container", containerClassName)}
-    >
+    <div style={containerStyle} className={cx("video-container", containerClassName)}>
       <LazyLoadedImage
         widthHeightRatio={videoOverlayImageWidthHeightRatio}
         srcLarge={videoOverlayImageSource}
@@ -121,10 +109,7 @@ const AJCFVideo = ({
         size="large"
         closeIcon
       >
-        <Video
-          onExitFullScreen={handleOpenVideoDialog}
-          videoSource={videoSource}
-        />
+        <Video onExitFullScreen={handleOpenVideoDialog} videoSource={videoSource} />
       </Modal>
     </div>
   );

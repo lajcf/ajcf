@@ -1,7 +1,7 @@
-import { HelloAssoCampaign } from "./resources";
 import { getRepository } from "typeorm";
-import { Event } from "../entities/Event";
 import moment from "moment";
+import { HelloAssoCampaign } from "./resources";
+import { Event } from "../entities/Event";
 import { fetchCampaigns } from "./fetchCampaigns";
 
 export const formatHelloAssoEvent = (campaign: HelloAssoCampaign) => ({
@@ -20,7 +20,9 @@ export const formatHelloAssoEvent = (campaign: HelloAssoCampaign) => ({
   lastUpdateOnHelloAsso: moment.utc(campaign.last_update).toDate(),
 });
 
-export const upsertHelloAssoEvents = async (): Promise<Event[]> => {
+export const upsertHelloAssoEvents = async () => {
   const helloAssoEvents = await fetchCampaigns({ campaignType: "EVENT" });
-  return getRepository(Event).save(helloAssoEvents.map(formatHelloAssoEvent));
+  const insertedEventsToDb = await getRepository(Event).save(helloAssoEvents.map(formatHelloAssoEvent));
+  console.log(`Upserted ${insertedEventsToDb.length} events into DB`);
+  return true;
 };

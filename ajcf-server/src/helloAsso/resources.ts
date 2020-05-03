@@ -1,9 +1,4 @@
-export type HelloAssoCampaignType =
-  | "EVENT"
-  | "FORM"
-  | "FUNDRAISER"
-  | "MEMBERSHIP"
-  | "PAYMENT_FORM";
+export type HelloAssoCampaignType = "EVENT" | "FORM" | "FUNDRAISER" | "MEMBERSHIP" | "PAYMENT_FORM";
 
 export interface HelloAssoCampaign {
   id: string;
@@ -86,36 +81,17 @@ export interface HelloAssoPayment {
   }[];
 }
 
+export const ID_HELLOASSO_AJCF = "000001697101";
+
 export const GET_CAMPAIGN_URL = (campaignType?: HelloAssoCampaignType) =>
-  `https://api.helloasso.com/v3/organizations/${
-    process.env.ID_HELLOASSO_AJCF
-  }/campaigns.json${campaignType ? `?type=${campaignType}` : ""}`;
-export const GET_ACTIONS_URL = (
-  campaignId: string,
-  actionType?: HelloAssoActionType
-) =>
+  `https://api.helloasso.com/v3/organizations/${ID_HELLOASSO_AJCF}/campaigns.json${
+    campaignType ? `?type=${campaignType}` : ""
+  }`;
+export const GET_ACTIONS_URL = (campaignId: string, actionType?: HelloAssoActionType) =>
   `https://api.helloasso.com/v3/campaigns/${campaignId}/actions.json${
     actionType ? `?type=${actionType}` : ""
   }&results_per_page=100`;
-export const GET_PAYMENTS_URL = (
-  campaignId: string,
-  paymentType?: HelloAssoPaymentType
-) =>
-  `https://api.helloasso.com/v3/organizations/${
-    process.env.ID_HELLOASSO_AJCF
-  }/campaigns/${campaignId}/payments.json${
+export const GET_PAYMENTS_URL = (campaignId: string, paymentType?: HelloAssoPaymentType) =>
+  `https://api.helloasso.com/v3/organizations/${ID_HELLOASSO_AJCF}/campaigns/${campaignId}/payments.json${
     paymentType ? `?type=${paymentType}` : ""
   }&results_per_page=100`;
-
-export interface AJCFMember extends AJCFPerson {
-  jobStudy?: string;
-  subscriptionDate: Date;
-}
-
-export interface AJCFPerson {
-  firstName: string;
-  lastName: string;
-  birthDate?: string;
-  email: string;
-  phone?: string;
-}

@@ -15,11 +15,7 @@ const Sidebar = () => {
     <section id="sidebar">
       <div className="inner">
         <nav>
-          <Scrollspy
-            items={tabs.map((s) => s.href)}
-            currentClassName="active"
-            offset={-500}
-          >
+          <Scrollspy items={tabs.map((s) => s.href)} currentClassName="active" offset={-500}>
             {tabs.map((tab) => (
               <Tab key={tab.href} {...tab} />
             ))}
