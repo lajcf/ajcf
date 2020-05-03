@@ -27,8 +27,7 @@ const hoursSecondsEquivalent = {
 
 const errorMessageConstants = {
   GOOGLE_PLACES_API_NO_CITY_ERROR: "Google Places API Error: no city",
-  GQL_GOOGLE_PLACES_API_NO_CITY_ERROR:
-    "GraphQL error: Google Places API Error: no city",
+  GQL_GOOGLE_PLACES_API_NO_CITY_ERROR: "GraphQL error: Google Places API Error: no city",
 };
 
 const cookieNamesConstants = {
@@ -57,10 +56,4 @@ const localeConstants = {
 
 export type SupportedLocales = typeof localeConstants["SUPPORTED_LOCALES"][number];
 
-export {
-  c as default,
-  hoursSecondsEquivalent,
-  errorMessageConstants,
-  cookieNamesConstants,
-  localeConstants,
-};
+export { c as default, hoursSecondsEquivalent, errorMessageConstants, cookieNamesConstants, localeConstants };

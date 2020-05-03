@@ -1,8 +1,5 @@
 import { upsertHelloAssoMembers } from "../src/helloAsso/upsertHelloAssoMembers";
-import {
-  closeConnectionToDb,
-  openConnectionToDb,
-} from "../src/utils/dbHandlers";
+import { closeConnectionToDb, openConnectionToDb } from "../src/utils/dbHandlers";
 import { addEntitiesToGoogleSheet } from "../src/googleSheet/googleSheetOperations";
 import { fetchAllMembersFromDb } from "../src/services/members/queries/fetchAllMembersFromDb";
 import { upsertHelloAssoEvents } from "../src/helloAsso/upsertHelloAssoEvents";
@@ -13,25 +10,9 @@ import { sendWelcomeMails } from "../src/services/members/mutations/sendWelcomeM
 export const updateDatabaseFromHelloAsso = async () => {
   try {
     await openConnectionToDb();
-    const [insertedMembersToDb, insertedEventsToDb] = await Promise.all([
-      upsertHelloAssoMembers(),
-      upsertHelloAssoEvents(),
-    ]);
-    console.log(`Upserted ${insertedMembersToDb.length} members into DB`);
-    console.log(`Upserted ${insertedEventsToDb.length} events into DB`);
-    const [membersFromDb, eventsFromDb] = await Promise.all([
-      fetchAllMembersFromDb(),
-      fetchAllEventsFromDb(),
-    ]);
-    const [
-      insertedMembersToGSheetNb,
-      insertedEventsToGSheetNb,
-    ] = await Promise.all([
-      addEntitiesToGoogleSheet<Member>(membersFromDb),
-      addEntitiesToGoogleSheet(eventsFromDb),
-    ]);
-    console.log(`Inserted ${insertedMembersToGSheetNb} members into GSheet`);
-    console.log(`Inserted ${insertedEventsToGSheetNb} events into GSheet`);
+    await Promise.all([upsertHelloAssoMembers(), upsertHelloAssoEvents()]);
+    const [membersFromDb, eventsFromDb] = await Promise.all([fetchAllMembersFromDb(), fetchAllEventsFromDb()]);
+    await Promise.all([addEntitiesToGoogleSheet<Member>(membersFromDb), addEntitiesToGoogleSheet(eventsFromDb)]);
     await sendWelcomeMails(membersFromDb);
     await closeConnectionToDb();
   } catch (e) {
