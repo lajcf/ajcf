@@ -1,9 +1,8 @@
 import * as React from "react";
 import { PropsWithChildren } from "react";
-import "../../assets/sass/main.scss";
-import { LandingLink } from "../LandingLink";
 import cx from "classnames";
 import { Icon } from "semantic-ui-react";
+import { LandingLink } from "../LandingLink";
 
 interface LinkItemProps {
   onClick?: () => void;
@@ -32,14 +31,14 @@ const LinkItem = ({ href, children, isURIScheme, iconName, onClick }: PropsWithC
 };
 
 const Footer = () => (
-  <footer className={cx("grey" && "grey-background")}>
+  <footer className="footer">
     <i className="ui icon facebook f circular" />
     <div className="flex ui">
-      {/*<AJCFColumn>
+      {/* <AJCFColumn>
         <ul className="menu">
           <li>&copy; Untitled. All rights reserved.</li>
         </ul>
-      </AJCFColumn>*/}
+      </AJCFColumn> */}
       <div>
         allo
         <Icon name="facebook" size="large" />

@@ -1,10 +1,10 @@
-import * as React from 'react';
+import * as React from "react";
 
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
-import {StaticQuery} from 'gatsby';
+import PropTypes from "prop-types";
+import Helmet from "react-helmet";
+import { StaticQuery } from "gatsby";
 
-import '../../assets/sass/main.scss';
+import "../../assets/css/index.scss";
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -17,13 +17,13 @@ const Layout = ({ children }) => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <>
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
-            { name: 'description', content: 'Hyperspace' },
-            { name: 'keywords', content: 'site, web' },
+            { name: "description", content: "Hyperspace" },
+            { name: "keywords", content: "site, web" },
           ]}
         >
           <html lang="en" />

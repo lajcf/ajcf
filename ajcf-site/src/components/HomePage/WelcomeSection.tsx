@@ -13,16 +13,15 @@ const imageStyle: React.CSSProperties = {
 
 export const WelcomeSection = () => {
   return (
-    <section id="home">
+    <section id="welcome">
       <LazyLoadedImage
         dominantColor="#ffffff"
-        widthHeightRatio={47}
         srcLarge={AJCFWelcomeImage}
         id="ajcf-welcome"
         alt="AJCF Welcome Image"
         containerStyle={imageStyle}
       />
-      <section style={textSectionStyle}>
+      <div className="text-content">
         <h2>
           Français d’origine chinoise, Franco-Chinois, Chinois de France… Nous sommes l’un des visages de la France.
         </h2>
@@ -31,7 +30,7 @@ export const WelcomeSection = () => {
           développement pour les jeunes Français d’origine chinoise, vise à améliorer leur inclusion dans le paysage
           culturel français et à promouvoir la culture chinoise en France.
         </p>
-      </section>
+      </div>
     </section>
   );
 };

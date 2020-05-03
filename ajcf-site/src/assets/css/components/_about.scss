@@ -1,0 +1,18 @@
+@use "../variables/colors";
+
+#bureau {
+  text-align: center;
+  .column.ui.four {
+    width: 25%;
+    padding: 2em !important;
+    background-color: colors.$alternate-bg-color;
+    .bureau-member {
+      margin: 1em;
+    }
+    img {
+      border-radius: 120px;
+      width: 120px;
+      height: 120px;
+    }
+  }
+}

@@ -1,0 +1,156 @@
+@use "../variables/colors";
+@use "../variables/z-indices";
+@use "../variables/sizes";
+
+#sidebar {
+  padding: 2em 1.5em;
+  background-color: colors.$color-enjoy-light;
+  text-align: right;
+  width: sizes.$sidebar-width;
+  height: 100vh;
+  z-index: z-indices.$z-index-sidebar;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  > .inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateY(0);
+    transition: opacity 1s ease;
+    min-height: 100%;
+    opacity: 1;
+    width: 100%;
+    position: relative;
+
+    body.is-ie & {
+      height: 100%;
+    }
+  }
+  nav {
+    > ul {
+      list-style: none;
+      padding: 0;
+      > li {
+        transform: translateY(0);
+        transition: opacity 0.15s ease, transform 0.75s ease;
+        margin: 4em 0 0 0;
+        opacity: 1;
+        padding: 0;
+        position: relative;
+
+        &:nth-child(1) {
+          transition-delay: 0.2s + 0.25s;
+        }
+        &:nth-child(2) {
+          transition-delay: 0.4s + 0.25s;
+        }
+        &:nth-child(3) {
+          transition-delay: 0.6s + 0.25s;
+        }
+        &:nth-child(4) {
+          transition-delay: 0.8s + 0.25s;
+        }
+        &.active {
+          a {
+            color: black;
+
+            &:after {
+              max-width: 100%;
+            }
+          }
+        }
+      }
+    }
+
+    a {
+      transition: color 0.2s ease;
+      border :0;
+      color: colors.$ajcf-white;
+      display: block;
+      font-size: 1.3em;
+      letter-spacing: 0.25em;
+      line-height: 1.75;
+      text-transform: uppercase;
+      outline: 0;
+      position: relative;
+
+      &:before,
+      &:after {
+        border-radius: 0.2em;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 0.15em;
+        width: 100%;
+        content: '';
+      }
+
+      &:before {
+        background: colors.$color-enjoy-light;
+      }
+
+      &:after {
+        background-image: linear-gradient(to right, colors.$color-talk-light, colors.$color-talk-light);
+        transition: max-width 0.2s ease;
+        max-width: 0;
+      }
+
+      &:hover {
+        color: colors.$color-talk-light
+      }
+
+      &:active {
+        color: black;
+        &:after {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+  #sidebar-social-icons {
+    position: absolute;
+    bottom: 0;
+    padding-left: 0.4em;
+    > ul {
+      padding: 0;
+      list-style: none;
+      > li {
+        text-align: center;
+        > a {
+          padding: 0.3em;
+
+          > i {
+            color: colors.$color-talk-light;
+            transition: background-color .1s ease-in-out;
+            background-color: colors.$color-enjoy-light;
+            line-height: 2em !important;
+            width: 40px !important;
+            height:40px !important;
+
+            &:hover {
+              background-color: colors.$color-enjoy;
+            }
+          }
+        }
+      }
+    }
+  }
+  body.is-preload & {
+    > .inner {
+      opacity: 0;
+    }
+
+    nav {
+      ul {
+        li {
+          transform: translateY(2em);
+          opacity: 0;
+        }
+      }
+    }
+  }
+}

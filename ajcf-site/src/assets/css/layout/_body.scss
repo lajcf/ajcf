@@ -1,0 +1,20 @@
+@use "../variables/sizes";
+
+#body {
+  #sidebar + & {
+    margin-left: sizes.$sidebar-width;
+  }
+
+  #header + & {
+    > .wrapper {
+      > .inner {
+        margin: 0 auto;
+      }
+
+    }
+  }
+
+  div.text-content {
+    margin: 3em;
+  }
+}

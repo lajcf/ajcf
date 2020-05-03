@@ -7,17 +7,11 @@ const style: React.CSSProperties = {
   textAlign: "center",
 };
 
-export const BureauMember = ({ imageSource, name, role }: BureauMemberProps) => {
+export const BureauMember = ({ imageSource, name, role, id }: BureauMemberProps) => {
   return (
-    <AJCFColumn className={"four"}>
+    <AJCFColumn className="ui four">
       <span>
-        <LazyLoadedImage
-          dominantColor="#ffffff"
-          widthHeightRatio={47}
-          srcLarge={imageSource}
-          id="bureau-laetitia"
-          alt="Laetitia Présidente"
-        />
+        <LazyLoadedImage srcLarge={imageSource} id={id} alt={name} />
       </span>
       <div style={style}>
         <h2>{name}</h2>

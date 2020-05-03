@@ -1,12 +1,12 @@
 import React from "react";
 import Scrollspy from "react-scrollspy";
 
-import Tab from "./Tab";
-import { Icon } from "semantic-ui-react";
+import Tab from "../Tab";
+import { SocialIcons } from "./SocialIcons";
 
 const Sidebar = () => {
   const [tabs] = React.useState([
-    { content: "Accueil", href: "home", className: "main-link" },
+    { content: "Accueil", href: "welcome", className: "main-link" },
     { content: "Espaces", href: "areas", className: "main-link" },
     { content: "Actualités", href: "news", className: "main-link" },
     { content: "À propos", href: "about", className: "main-link" },
@@ -21,7 +21,7 @@ const Sidebar = () => {
             ))}
           </Scrollspy>
         </nav>
-        <Icon name="facebook" size="large" />
+        <SocialIcons />
       </div>
     </section>
   );
