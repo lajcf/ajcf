@@ -10,17 +10,9 @@ import { sendWelcomeMails } from "../src/services/members/mutations/sendWelcomeM
 export const updateDatabaseFromHelloAsso = async () => {
   try {
     await openConnectionToDb();
-    const [insertedMembersToDb, insertedEventsToDb] = await Promise.all([
-      upsertHelloAssoMembers(),
-      upsertHelloAssoEvents(),
-    ]);
+    await Promise.all([upsertHelloAssoMembers(), upsertHelloAssoEvents()]);
     const [membersFromDb, eventsFromDb] = await Promise.all([fetchAllMembersFromDb(), fetchAllEventsFromDb()]);
-    const [insertedMembersToGSheetNb, insertedEventsToGSheetNb] = await Promise.all([
-      addEntitiesToGoogleSheet<Member>(membersFromDb),
-      addEntitiesToGoogleSheet(eventsFromDb),
-    ]);
-    console.log(`Inserted ${insertedMembersToGSheetNb} members into GSheet`);
-    console.log(`Inserted ${insertedEventsToGSheetNb} events into GSheet`);
+    await Promise.all([addEntitiesToGoogleSheet<Member>(membersFromDb), addEntitiesToGoogleSheet(eventsFromDb)]);
     await sendWelcomeMails(membersFromDb);
     await closeConnectionToDb();
   } catch (e) {

@@ -11,12 +11,12 @@ export interface GoogleSheetUpddateValuesResponse {
   updatedData?: object;
 }
 
-export const addEntitiesToGoogleSheet = async <T extends object>(entities: T[]): Promise<number> => {
+export const addEntitiesToGoogleSheet = async <T extends object>(entities: T[]) => {
   if (entities.length === 0) return 0;
   const bearerClient = bearer(process.env.BEARER_SECRET_KEY);
   const entityKeys = Object.keys(entities[0]);
   const formattedEntities = entities.map((m) => Object.values(m));
-  return bearerClient
+  const insertedEntitiesToGSheetNb = await bearerClient
     .integration("google_sheets")
     .auth(process.env.GOOGLE_SHEET_API_BEARER_KEY!)
     .put<GoogleSheetUpddateValuesResponse>(
@@ -35,6 +35,8 @@ export const addEntitiesToGoogleSheet = async <T extends object>(entities: T[]):
       console.log(e);
       throw new Error(`Error in adding entity to gsheet: ${e.response.data}.`);
     });
+  console.log(`Inserted ${insertedEntitiesToGSheetNb} entities into GSheet`);
+  return true;
 };
 
 export const createGoogleSheet = async (sheetName: string): Promise<string> => {

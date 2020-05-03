@@ -1,12 +1,12 @@
-const path = require('path');
-const slsw = require('serverless-webpack');
-const webpack = require('webpack');
+const path = require("path");
+const slsw = require("serverless-webpack");
+const webpack = require("webpack");
 
 module.exports = {
   entry: slsw.lib.entries,
-  target: 'node',
+  target: "node",
   resolve: {
-    extensions: ['.ts', '.js', '.json'],
+    extensions: [".ts", ".js", ".json"],
   },
   devtool: "eval",
   mode: "development",
@@ -14,34 +14,33 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        loader: 'ts-loader',
+        loader: "ts-loader",
         exclude: /node_modules/,
         options: {
           transpileOnly: true,
           experimentalWatchApi: true,
-
         },
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env']
-          }
-        }
+            presets: ["@babel/preset-env"],
+          },
+        },
       },
       {
-        type: 'javascript/auto',
+        type: "javascript/auto",
         test: /\.mjs$/,
-        use: 'babel-loader',
+        use: "babel-loader",
       },
       {
         test: /\.graphql/,
         exclude: /node_modules/,
-        use: "graphql-tag/loader"
-      }
+        use: "graphql-tag/loader",
+      },
     ],
   },
   optimization: {
@@ -50,15 +49,11 @@ module.exports = {
     removeEmptyChunks: false,
   },
   stats: false,
-  plugins: [
-    new webpack.IgnorePlugin(/^pg-native$/),
-    new webpack.DefinePlugin({ 'global.GENTLY': false }),
-  ],
+  plugins: [new webpack.IgnorePlugin(/^pg-native$/), new webpack.DefinePlugin({ "global.GENTLY": false })],
   output: {
-    libraryTarget: 'commonjs',
-    path: path.join(__dirname, '../dist'),
-    filename: '[name].js',
+    libraryTarget: "commonjs",
+    path: path.join(__dirname, "../dist"),
+    filename: "[name].js",
     pathinfo: false,
   },
 };
-

@@ -19,10 +19,12 @@
     "node-mailjet": "^3.3.1",
     "p-limit": "^2.2.2",
     "serverless": "^1.66.0",
+    "serverless-plugin-aws-alerts": "^1.4.0",
     "serverless-webpack": "^5.3.1",
     "ts-jest": "^25.4.0",
     "ts-loader": "^6.2.1",
     "ts-node": "^8.4.1",
+    "tsconfig-paths": "^3.9.0",
     "typeorm": "^0.2.24",
     "typescript": "^3.7.2",
     "webpack": "^4.42.0"
@@ -33,11 +35,19 @@
     }
   },
   "scripts": {
-    "db:generate": "ts-node --project tsconfig.json node_modules/typeorm/cli.js migration:generate",
-    "db:migrate": "ts-node --project tsconfig.json node_modules/typeorm/cli.js migration:run"
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "db:generate": "yarn typeorm migration:generate",
+    "db:generate:empty": "yarn typeorm migration:create",
+    "db:migrate": "yarn ts-node ./node_modules/typeorm/cli.js migration:run",
+    "db:revert": "yarn ts-node ./node_modules/typeorm/cli.js migration:revert",
+    "deploy": "node --max-old-space-size=4096 node_modules/serverless/bin/serverless deploy"
   },
   "devDependencies": {
-    "babel-loader": "^8.0.6",
+    "@babel/core": "^7.9.6",
+    "@babel/node": "^7.8.7",
+    "@babel/plugin-transform-modules-commonjs": "^7.9.6",
+    "@babel/plugin-transform-typescript": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
     "@types/axios": "^0.14.0",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.2",
@@ -46,6 +56,7 @@
     "@types/moment": "^2.13.0",
     "@types/node": "^12.12.6",
     "@types/node-mailjet": "^3.3.3",
-    "@types/p-limit": "^2.2.0"
+    "@types/p-limit": "^2.2.0",
+    "babel-loader": "^8.0.6"
   }
 }

@@ -12,6 +12,18 @@ custom:
       forceExclude:
         - aws-sdk
     packager: "yarn"
+  alerts:
+    stages:
+      - prod
+    topics:
+      alarm:
+        topic: ${self:service}-${opt:stage}-alerts-alarm
+        notifications:
+          - protocol: email
+            endpoint: nicolas.li@hotmail.fr
+    alarms:
+      - functionErrors
+      - functionThrottles
 
 provider:
   name: aws
@@ -23,23 +35,12 @@ provider:
   #   lambda: true
   environment:
     STAGE: ${self:provider.stage}
-    USER_AJCF: ${env:USER_AJCF, file(./env.js):env.USER_AJCF}
-    PASSWORD_AJCF: ${env:PASSWORD_AJCF, file(./env.js):env.PASSWORD_AJCF}
-    ID_HELLOASSO_AJCF: ${env:ID_HELLOASSO_AJCF, file(./env.js):env.ID_HELLOASSO_AJCF}
     BEARER_SECRET_KEY: ${env:BEARER_SECRET_KEY, file(./env.js):env.BEARER_SECRET_KEY}
     GOOGLE_DRIVE_DB_FOLDER_ID: ${env:GOOGLE_DRIVE_DB_FOLDER_ID, file(./env.js):env.GOOGLE_DRIVE_DB_FOLDER_ID}
     GOOGLE_SHEET_API_BEARER_KEY: ${env:GOOGLE_SHEET_API_BEARER_KEY, file(./env.js):env.GOOGLE_SHEET_API_BEARER_KEY}
     GOOGLE_SHEET_MEMBERS_ID: ${env:GOOGLE_SHEET_MEMBERS_ID, file(./env.js):env.GOOGLE_SHEET_MEMBERS_ID}
     GOOGLE_DRIVE_API_BEARER_KEY: ${env:GOOGLE_DRIVE_API_BEARER_KEY, file(./env.js):env.GOOGLE_DRIVE_API_BEARER_KEY}
     GOOGLE_SHEET_LOOKUP: ${env:GOOGLE_SHEET_LOOKUP, file(./env.js):env.GOOGLE_SHEET_LOOKUP}
-    DB_HOST: ${env:DB_HOST, file(./env.js):env.DB_HOST}
-    DB_PASSWORD: ${env:DB_PASSWORD, file(./env.js):env.DB_PASSWORD}
-    DB_USERNAME: ${env:DB_USERNAME, file(./env.js):env.DB_USERNAME}
-    DB_PORT: ${env:DB_PORT, file(./env.js):env.DB_PORT}
-    DB_NAME_PROD: ${env:DB_NAME_PROD, file(./env.js):env.DB_NAME_PROD}
-    DB_NAME_DEV: ${env:DB_NAME_DEV, file(./env.js):env.DB_NAME_DEV}
-    MAILJET_API_KEY: ${env:MAILJET_API_KEY, file(./env.js):env.MAILJET_API_KEY}
-    MAILJET_API_SECRET: ${env:MAILJET_API_SECRET, file(./env.js):env.MAILJET_API_SECRET}
 
   memorySize: 3008
   logRetentionInDays: 30
@@ -58,6 +59,8 @@ provider:
 functions:
   updateDatabaseFromHelloAsso:
     handler: handlers/updateDatabaseFromHelloAsso.handler
+    events:
+      - schedule: rate(1 hour)
     #reservedConcurrency: 200
 #    events:
 #      - http:
