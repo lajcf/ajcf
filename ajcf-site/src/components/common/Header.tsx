@@ -31,8 +31,8 @@ const Header = memo(({ className }: { className?: string }) => {
         <AJCFLogo />
       </LandingLink>
       <div className="main-title">
-        <h3>Association des Jeunes Chinois de France</h3>
-        法国华裔青年协会
+        <h3 className="french-name">Association des Jeunes Chinois de France</h3>
+        <h3 className="chinese-name">法国华裔青年协会</h3>
       </div>
       <nav className="ui text item menu">
         <LandingHeaderInner />

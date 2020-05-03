@@ -2,10 +2,6 @@ import * as React from "react";
 import AJCFWelcomeImage from "../../assets/img/ajcf-welcome.jpg";
 import { LazyLoadedImage } from "../Shared/LazyLoadedImage";
 
-const textSectionStyle: React.CSSProperties = {
-  margin: "1em",
-};
-
 const imageStyle: React.CSSProperties = {
   display: "flex",
   justifyContent: "center",
@@ -17,7 +13,7 @@ export const WelcomeSection = () => {
       <LazyLoadedImage
         dominantColor="#ffffff"
         srcLarge={AJCFWelcomeImage}
-        id="ajcf-welcome"
+        id="ajcf-welcome-image"
         alt="AJCF Welcome Image"
         containerStyle={imageStyle}
       />

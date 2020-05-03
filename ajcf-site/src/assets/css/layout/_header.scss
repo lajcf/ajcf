@@ -9,10 +9,15 @@
     > .main-title {
         font-weight: bold;
         color: colors.$ajcf-white;
-        padding-top: 2.5em;
-
-        > h3 {
+        padding-top: 1.75em;
+        > h3.french-name {
             color: colors.$ajcf-white;
+            letter-spacing: 0.1em;
+        }
+        > h3.chinese-name {
+            color: colors.$ajcf-white;
+            letter-spacing: 0.1em;
+            margin-top: 1em !important;
         }
     }
     > nav {
@@ -43,7 +48,7 @@
                 display: inline-block;
                 font-size: 1em;
                 text-transform: uppercase;
-
+                letter-spacing: 0.1em;
                 &:hover {
                     color: colors.$color-enjoy-light;
                 }

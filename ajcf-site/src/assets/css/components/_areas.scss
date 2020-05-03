@@ -7,10 +7,11 @@
   background-color: colors.$alternate-bg-color;
   article {
     text-align: center;
+    width: 50%;
     img {
       transition: transform 0.5s ease;
       border-radius: 10px;
-      width: 60%;
+      width: 40%;
       &:hover {
         transition: transform 0.5s ease;
         transform: scale(1.1);

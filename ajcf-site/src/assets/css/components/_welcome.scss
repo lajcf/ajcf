@@ -2,4 +2,8 @@
 
 #welcome {
   background-color: colors.$ajcf-white;
+  #ajcf-welcome-image {
+    display: flex;
+    justify-content: center;
+  }
 }
