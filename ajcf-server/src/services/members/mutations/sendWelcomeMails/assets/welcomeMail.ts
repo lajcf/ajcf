@@ -11,7 +11,8 @@ export const welcomeMail = `<p>Bienvenue cher(e) membre de l&#39;AJCF !</p>
 <p>Et, si tu le souhaites, l’adhésion permet de devenir <strong>membre adhérent actif</strong> et de contribuer directement à l’organisation des événements de l&#39;association. En effet, <strong style="color: red">la vie de l&#39;AJCF</strong> repose uniquement sur l&#39;énergie et le temps accordés par nos bénévoles. Si toi aussi, tu veux apporter une pierre à l&#39;édifice &quot;AJCF&quot;, contacte-nous en remplissant le formulaire suivant : <a href="https://forms.gle/Waf4UxScggWfb3C26">https://forms.gle/Waf4UxScggWfb3C26</a></p>
 <p>Enfin, si ce n’est pas encore le cas, nous t’invitons à nous suivre sur les réseaux sociaux pour rester informé(e) de toute l’actualité de l’AJCF 😎</p>
 <ul>
-    <li>Facebook : <a href="https://www.facebook.com/lajcf/">https://www.facebook.com/lajcf/</a></li>
+    <li>Page Facebook : <a href="https://www.facebook.com/lajcf/">https://www.facebook.com/lajcf/</a></li>
+    <li>Communauté Facebook : <a href="https://www.facebook.com/groups/LAJCF/">https://www.facebook.com/groups/LAJCF/</a></li>
     <li>Instagram : <a href="https://www.instagram.com/ajcf_fr/">https://www.instagram.com/ajcf_fr/</a></li>
     <li>Twitter : <a href="https://twitter.com/ajcf_fr">https://twitter.com/ajcf_fr</a></li>
     <li>LinkedIn : <a href="https://www.linkedin.com/company/12670165">https://www.linkedin.com/company/12670165</a></li>

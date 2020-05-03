@@ -6,7 +6,6 @@ import { useImageBlurPlaceholder } from "../../assets/hooks/UI/useImageBlurPlace
 
 interface LazyLoadedImageProps {
   containerClassName?: string;
-  widthHeightRatio: number;
   srcLarge: string;
   id: string;
   alt?: string;
@@ -15,41 +14,19 @@ interface LazyLoadedImageProps {
   containerStyle?: CSSProperties;
 }
 
-const placeholderContainerStyle = (dominantColor?: ColorProperty, imageStyle?: CSSProperties) => ({
-  backgroundColor: dominantColor || "#F6F6F6",
-  ...imageStyle,
+const LazyLoadedImage = memo(({ srcLarge, id, alt, imageStyle, children }: PropsWithChildren<LazyLoadedImageProps>) => {
+  const [intersectionEntry, setNode] = useIntersectionObserver({});
+  const [loadImage, imageRef, onImageLoad] = useImageBlurPlaceholder(id, intersectionEntry?.isIntersecting);
+
+  return (
+    <>
+      <div ref={setNode} id={id} data-large={srcLarge} className={cx("bureau-member")}>
+        {children}
+        {loadImage && <img ref={imageRef} src={srcLarge} onLoad={onImageLoad} style={imageStyle} alt={alt} />}
+        {/*<div className="preserve-image-ratio-placeholder" style={ratioPreserveDivStyle(widthHeightRatio)} />*/}
+      </div>
+    </>
+  );
 });
-
-const LazyLoadedImage = memo(
-  ({
-    containerClassName,
-    srcLarge,
-    id,
-    alt,
-    imageStyle,
-    dominantColor,
-    containerStyle,
-    children,
-  }: PropsWithChildren<LazyLoadedImageProps>) => {
-    const [intersectionEntry, setNode] = useIntersectionObserver({});
-    const [loadImage, imageRef, onImageLoad] = useImageBlurPlaceholder(id, intersectionEntry?.isIntersecting);
-
-    return (
-      <>
-        <div
-          ref={setNode}
-          id={id}
-          data-large={srcLarge}
-          style={placeholderContainerStyle(dominantColor, containerStyle)}
-          className={cx("image-placeholder", containerClassName)}
-        >
-          {children}
-          {loadImage && <img ref={imageRef} src={srcLarge} onLoad={onImageLoad} style={imageStyle} alt={alt} />}
-          {/*<div className="preserve-image-ratio-placeholder" style={ratioPreserveDivStyle(widthHeightRatio)} />*/}
-        </div>
-      </>
-    );
-  }
-);
 
 export { LazyLoadedImage };

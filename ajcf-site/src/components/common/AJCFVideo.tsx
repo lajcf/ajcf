@@ -18,27 +18,6 @@ const videoModalStyle: CSSProperties = {
   border: ".28571429rem",
 };
 
-const playContainerStyle = {
-  zIndex: 2,
-  userSelect: "none",
-  backgroundColor: "white",
-  position: "absolute",
-  cursor: "pointer",
-  borderRadius: 80,
-  top: "calc(50% - 40px)",
-  left: "calc(50% - 40px)",
-} as const;
-
-const playIconStyle = {
-  boxShadow: "none",
-  lineHeight: "80px",
-  fontSize: 25,
-  margin: 0,
-  width: 80,
-  height: 80,
-  paddingLeft: 7,
-};
-
 interface VideoProps {
   onExitFullScreen: any;
   videoSource: string;
@@ -55,8 +34,7 @@ const Video = memo(({ onExitFullScreen, videoSource }: VideoProps) => {
 interface LandingVideoProps {
   containerStyle?: CSSProperties;
   videoOverlayImageSource: string;
-  videoOverlayImageWidthHeightRatio: number;
-  videoOverlayImageDominantColor: string;
+  videoOverlayImageDominantColor?: string;
   videoOverlayImageAlt: string;
   videoOverlayImageId: string;
   videoOverlayImageStyle?: CSSProperties;
@@ -71,7 +49,6 @@ const AJCFVideo = ({
   videoOverlayImageContainerStyle,
   videoOverlayImageSource,
   videoOverlayImageStyle,
-  videoOverlayImageWidthHeightRatio,
   videoOverlayImageDominantColor,
   videoOverlayImageAlt,
   videoOverlayImageId,
@@ -85,9 +62,8 @@ const AJCFVideo = ({
   }, [openVideoDialog]);
 
   return (
-    <div style={containerStyle} className={cx("video-container", containerClassName)}>
+    <div onClick={handleOpenVideoDialog} style={containerStyle} className={cx("video-container", containerClassName)}>
       <LazyLoadedImage
-        widthHeightRatio={videoOverlayImageWidthHeightRatio}
         srcLarge={videoOverlayImageSource}
         imageStyle={videoOverlayImageStyle}
         containerStyle={videoOverlayImageContainerStyle}
@@ -95,8 +71,8 @@ const AJCFVideo = ({
         id={videoOverlayImageId}
         alt={videoOverlayImageAlt}
       />
-      <div style={playContainerStyle} className="btn-play">
-        <i className="ui icon play" style={playIconStyle} />
+      <div className="btn-play">
+        <i className="ui icon play" />
       </div>
       {children}
       <Modal

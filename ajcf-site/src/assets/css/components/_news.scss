@@ -1,0 +1,41 @@
+@use "../variables/colors";
+
+#news {
+  position: relative;
+
+  > div.video-container {
+    margin-top: 2em;
+    display: flex;
+    text-align: center;
+  }
+  img {
+    cursor: pointer;
+    border-radius: 10px;
+    width: 50%;
+  }
+  .btn-play {
+    cursor: pointer;
+    user-select: none;
+    background-color: colors.$ajcf-white;
+    border-radius: 80px;
+    z-index: 2;
+    position: absolute;
+    top: calc(50% - 100px);
+    left: calc(50% - 40px);
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > .ui.icon.play {
+      position: absolute;
+      top: calc(50% - 10px);
+      left: calc(50% - 25px);
+      width: 50px;
+      height: 50px;
+      font-size: 25px;
+    }
+  }
+
+}

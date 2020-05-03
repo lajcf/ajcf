@@ -1,0 +1,62 @@
+@use '../variables/colors';
+@use '../variables/z-indices';
+
+#header {
+    background-color: colors.$color-talk-light;
+    display: flex;
+    z-index: z-indices.$z-index-header;
+    position: sticky;
+    > .main-title {
+        font-weight: bold;
+        color: colors.$ajcf-white;
+        padding-top: 2.5em;
+
+        > h3 {
+            color: colors.$ajcf-white;
+        }
+    }
+    > nav {
+        flex: 1;
+        text-align: right;
+        padding: 2em;
+
+        > ul {
+            margin: 0;
+            padding: 0 2em 0 0;
+            width: 100%;
+
+            > li {
+                display: inline-block;
+                margin-left: 1.75em;
+                padding: 0;
+                vertical-align: middle;
+
+                &.active {
+                    a {
+                        color: black
+                    }
+                }
+            }
+            a {
+                border: 0;
+                color: colors.$ajcf-white;
+                display: inline-block;
+                font-size: 1em;
+                text-transform: uppercase;
+
+                &:hover {
+                    color: colors.$color-enjoy-light;
+                }
+
+                &.active {
+                    color: black;
+                }
+            }
+        }
+    }
+}
+
+#ajcf-logo {
+    margin: 1em;
+    width: 50px;
+}

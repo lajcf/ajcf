@@ -1,12 +1,7 @@
-/*import "semantic-ui-css/semantic.min.css";*/
-
 import React from "react";
 
 import Layout from "../components/common/layout";
-import Footer from "../components/common/Footer";
-import Sidebar from "../components/common/Sidebar";
-
-import Contact from "../components/contact/Contact";
+import Sidebar from "../components/common/Sidebar/Sidebar";
 import { Header } from "../components/common/Header";
 import HomePage from "../components/HomePage/HomePage";
 
@@ -15,12 +10,10 @@ const IndexPage = () => (
     <Header />
     <Sidebar />
 
-    <div id="wrapper">
+    <div id="body">
       <HomePage />
-      <Contact />
     </div>
 
-    <Footer />
   </Layout>
 );
 

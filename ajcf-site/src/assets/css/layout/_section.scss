@@ -1,0 +1,9 @@
+@use "../variables/sizes";
+
+section, article {
+  &.special {
+    text-align: center;
+  }
+  padding: sizes.$main-content-padding;
+
+}
