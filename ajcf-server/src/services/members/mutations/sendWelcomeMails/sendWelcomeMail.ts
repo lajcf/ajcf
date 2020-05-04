@@ -11,6 +11,12 @@ export const sendWelcomeMail = async (member: Member) => {
         Name: member.firstName,
       },
     ],
+    Bcc: [
+      {
+        Email: "nicolas.li@hotmail.fr",
+        Name: "Nicolas",
+      },
+    ],
     From: {
       Email: "bureau@lajcf.fr",
       Name: "Association des Jeunes Chinois de France",
