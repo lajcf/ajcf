@@ -7,47 +7,50 @@ import { Area } from "./Area";
 
 export interface AreaProps {
   imageSource: string;
-  heading: string;
   description: string;
   to: string;
+  className: string;
 }
 
 const areas: AreaProps[] = [
   {
     imageSource: AJCFTalkLogo,
-    heading: "",
     description:
       "Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.",
     to: "/areas/talk",
+    className: "ajcf-talk",
   },
   {
     imageSource: AJCFLearnLogo,
-    heading: "",
     description:
       "Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.",
     to: "/areas/learn",
+    className: "ajcf-learn",
   },
   {
     imageSource: AJCFMeetLogo,
-    heading: "",
     description:
       "Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.",
     to: "/areas/meet",
+    className: "ajcf-meet",
   },
   {
     imageSource: AJCFEnjoyLogo,
-    heading: "",
     description:
       "Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.",
     to: "/areas/enjoy",
+    className: "ajcf-enjoy",
   },
 ];
 
 export const AreasSection = () => {
   return (
     <section id="areas" className="tiles">
+      <div className="section-title">
+        <h1>Les Espaces AJCF</h1>
+      </div>
       {areas.map((area) => (
-        <Area key={area.heading} {...area} />
+        <Area key={area.className} className={area.className} {...area} />
       ))}
     </section>
   );

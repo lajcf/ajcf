@@ -1,5 +1,9 @@
 @use "../variables/colors";
 
+#about {
+  position: relative;
+}
+
 #bureau {
   text-align: center;
   .column.ui.four {
