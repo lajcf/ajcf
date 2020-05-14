@@ -5,7 +5,9 @@ import ajcfImproImage from "../../assets/img/ajcf-impro.jpg";
 export const NewsSection = () => {
   return (
     <section id="news">
-      <h1>Prochains évènements</h1>
+      <div className="section-title">
+        <h1>Prochains évènements</h1>
+      </div>
       <AJCFVideo
         videoOverlayImageSource={ajcfImproImage}
         videoOverlayImageAlt="Cours d'improvisation AJCF"

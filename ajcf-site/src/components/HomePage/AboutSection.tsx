@@ -9,6 +9,9 @@ export const AboutSection = () => {
   return (
     <section id="about" style={style}>
       <div className="text-content">
+        <div className="section-title">
+          <h1>À propos</h1>
+        </div>
         <h1>Qui sommes-nous ?</h1>
         <p>
           Créée en 2009, l’Association des jeunes chinois de France (AJCF) est une association à but non lucratif (loi

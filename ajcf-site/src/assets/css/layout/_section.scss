@@ -1,9 +1,24 @@
 @use "../variables/sizes";
+@use "../variables/colors";
 
 section, article {
   &.special {
     text-align: center;
   }
-  padding: sizes.$main-content-padding;
+  padding: 3em sizes.$main-content-padding 3em sizes.$main-content-padding;
 
+  div.section-title {
+    position: absolute;
+    top: -1.5em;
+    left: 0;
+    width: 30%;
+    background-color: colors.$color-talk-light;
+    padding: 0.5em 1em 0.5em 1em;
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+    margin-bottom: 1em;
+    > h1 {
+      color: colors.$ajcf-white;
+    }
+  }
 }
