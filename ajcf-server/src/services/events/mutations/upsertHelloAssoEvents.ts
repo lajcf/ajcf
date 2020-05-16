@@ -1,8 +1,8 @@
 import { getRepository } from "typeorm";
 import moment from "moment";
-import { HelloAssoCampaign } from "./resources";
-import { Event } from "../entities/Event";
-import { fetchCampaigns } from "./fetchCampaigns";
+import { HelloAssoCampaign } from "../../helloAsso/resources";
+import { Event } from "../../../entities/Event";
+import { fetchCampaigns } from "../../helloAsso/fetchCampaigns";
 
 export const formatHelloAssoEvent = (campaign: HelloAssoCampaign) => ({
   id: parseInt(campaign.id, 10).toString(),
