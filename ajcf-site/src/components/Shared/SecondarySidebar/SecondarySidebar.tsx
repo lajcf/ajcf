@@ -33,7 +33,15 @@ export const SecondarySidebar = ({ sectionName }: SecondarySidebarProps) => {
           <ul>
             {tabs.map((tab) => (
               <li key={tab.key} className={cx(tab.className)}>
-                <Link to={tab.href}>{tab.content}</Link>
+                <Link
+                  to={tab.href}
+                  activeStyle={{
+                    color: "blue",
+                    fontWeight: 700,
+                  }}
+                >
+                  {tab.content}
+                </Link>
               </li>
             ))}
           </ul>

@@ -8,9 +8,7 @@ const IndexPage = () => (
   <Layout>
     <Sidebar />
 
-    <div id="body">
       <HomePage />
-    </div>
   </Layout>
 );
 

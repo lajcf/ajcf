@@ -10,28 +10,30 @@ export const TalkPage = () => {
     {
       imageSource: ConferencesCover,
       to: "/areas/talk/conferences",
-      className: "talk-cover",
+      className: "pole-cover",
       poleId: "conferences",
     },
     {
       imageSource: MemoryCover,
       to: "/areas/talk/memory",
-      className: "talk-cover",
+      className: "pole-cover",
       poleId: "memory",
     },
     {
       imageSource: RightsCover,
       to: "/areas/talk/rights",
-      className: "talk-cover",
+      className: "pole-cover",
       poleId: "rights",
     },
   ];
   return (
-    <div id="talk-page">
-      <AreaTitle title="Identité / 探讨" />
-      {poles.map((pole) => (
-        <CoverPole key={pole.className} className={pole.className} {...pole} />
-      ))}
+    <div id="talk-page" className="body">
+      <AreaTitle title="Talk - Identité / 探讨" />
+      <div className="area-poles">
+        {poles.map((pole) => (
+          <CoverPole key={pole.className} className={pole.className} {...pole} />
+        ))}
+      </div>
     </div>
   );
 };

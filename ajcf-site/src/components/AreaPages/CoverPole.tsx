@@ -12,8 +12,9 @@ export interface CoverPoleProps {
 export const CoverPole = ({ className, imageSource, to }: CoverPoleProps) => {
   return (
     <div className={className}>
-      <img src={imageSource} alt="" />
-      <Link to={to} />
+      <Link to={to}>
+        <img src={imageSource} alt="" />
+      </Link>
     </div>
   );
 };

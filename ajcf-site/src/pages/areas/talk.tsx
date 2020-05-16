@@ -6,9 +6,7 @@ import { SecondarySidebar } from "../../components/Shared/SecondarySidebar/Secon
 const Talk = () => (
   <Layout>
     <SecondarySidebar sectionName="talk" />
-    <div id="body">
-      <TalkPage />
-    </div>
+    <TalkPage />
   </Layout>
 );
 
