@@ -34,6 +34,7 @@ provider:
   # tracing:
   #   lambda: true
   environment:
+    ENV: ${self:provider.stage}
     STAGE: ${self:provider.stage}
     BEARER_SECRET_KEY: ${env:BEARER_SECRET_KEY, file(./env.js):env.BEARER_SECRET_KEY}
     GOOGLE_DRIVE_DB_FOLDER_ID: ${env:GOOGLE_DRIVE_DB_FOLDER_ID, file(./env.js):env.GOOGLE_DRIVE_DB_FOLDER_ID}
@@ -69,7 +70,7 @@ provider:
 
 functions:
   updateDatabaseFromHelloAsso:
-    handler: handlers/updateDatabaseFromHelloAsso.handler
+    handler: src/handlers/updateDatabaseFromHelloAsso.handler
     events:
       - schedule: rate(1 hour)
     #reservedConcurrency: 200

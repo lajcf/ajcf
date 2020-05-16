@@ -1,12 +1,12 @@
 import dotenv from "dotenv";
-import { upsertHelloAssoMembers } from "../src/helloAsso/upsertHelloAssoMembers";
-import { closeConnectionToDb, openConnectionToDb } from "../src/utils/dbHandlers";
-import { addEntitiesToGoogleSheet } from "../src/googleSheet/googleSheetOperations";
-import { fetchAllMembersFromDb } from "../src/services/members/queries/fetchAllMembersFromDb";
-import { upsertHelloAssoEvents } from "../src/helloAsso/upsertHelloAssoEvents";
-import { fetchAllEventsFromDb } from "../src/services/events/query/fetchAllEventsFromDb";
-import { Member } from "../src/entities/Member";
-import { sendWelcomeMails } from "../src/services/members/mutations/sendWelcomeMails/sendWelcomeMails";
+import { upsertHelloAssoMembers } from "../services/members/mutations/upsertHelloAssoMembers";
+import { closeConnectionToDb, openConnectionToDb } from "../utils/dbHandlers";
+import { addEntitiesToGoogleSheet } from "../services/googleSheet/googleSheetOperations";
+import { fetchAllMembersFromDb } from "../services/members/queries/fetchAllMembersFromDb";
+import { upsertHelloAssoEvents } from "../services/events/mutations/upsertHelloAssoEvents";
+import { fetchAllEventsFromDb } from "../services/events/query/fetchAllEventsFromDb";
+import { Member } from "../entities/Member";
+import { sendWelcomeMails } from "../services/members/mutations/sendWelcomeMails/sendWelcomeMails";
 
 dotenv.config();
 

@@ -1,9 +1,9 @@
 import moment from "moment";
 import { getRepository } from "typeorm";
-import { fetchCampaigns } from "./fetchCampaigns";
-import { fetchActions } from "./fetchActions";
-import { HelloAssoAction } from "./resources";
-import { Member } from "../entities/Member";
+import { fetchCampaigns } from "../../helloAsso/fetchCampaigns";
+import { fetchActions } from "../../helloAsso/fetchActions";
+import { HelloAssoAction } from "../../helloAsso/resources";
+import { Member } from "../../../entities/Member";
 
 export enum CustomInfoEnum {
   birthDate = "Date de naissance",
