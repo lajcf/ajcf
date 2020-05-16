@@ -1,5 +1,5 @@
 import React from "react";
-import { AJCFVideo } from "../common/AJCFVideo";
+import { AJCFVideo } from "../Shared/AJCFVideo";
 import ajcfImproImage from "../../assets/img/ajcf-impro.jpg";
 
 export const NewsSection = () => {

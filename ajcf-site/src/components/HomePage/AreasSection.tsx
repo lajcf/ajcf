@@ -4,6 +4,7 @@ import AJCFMeetLogo from "../../assets/img/AJCFMeetLogo.jpg";
 import AJCFEnjoyLogo from "../../assets/img/AJCFEnjoyLogo.jpg";
 import React from "react";
 import { Area } from "./Area";
+import AJCFSpace from "../Layout/AJCFSpace";
 
 export interface AreaProps {
   imageSource: string;
@@ -15,29 +16,25 @@ export interface AreaProps {
 const areas: AreaProps[] = [
   {
     imageSource: AJCFTalkLogo,
-    description:
-      "Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.",
+    description: "Comprendre et défendre l'identité franco-chinoise",
     to: "/areas/talk",
     className: "ajcf-talk",
   },
   {
     imageSource: AJCFLearnLogo,
-    description:
-      "Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.",
+    description: "Se développer et explorer de nouveaux horizons",
     to: "/areas/learn",
     className: "ajcf-learn",
   },
   {
     imageSource: AJCFMeetLogo,
-    description:
-      "Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.",
+    description: "Connaître et intégrer le réseau franco-chinois",
     to: "/areas/meet",
     className: "ajcf-meet",
   },
   {
     imageSource: AJCFEnjoyLogo,
-    description:
-      "Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.",
+    description: "Apprendre en s'amusant et se dépasser",
     to: "/areas/enjoy",
     className: "ajcf-enjoy",
   },
@@ -49,6 +46,10 @@ export const AreasSection = () => {
       <div className="section-title">
         <h1>Les Espaces AJCF</h1>
       </div>
+      <div className="text-content">
+        <p>Les différents projets de l'AJCF sont répartis au sein de quatre espaces thématiques :</p>
+      </div>
+      <AJCFSpace height={1} />
       {areas.map((area) => (
         <Area key={area.className} className={area.className} {...area} />
       ))}

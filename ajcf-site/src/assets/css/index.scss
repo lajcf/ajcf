@@ -4,9 +4,11 @@
 @import 'variables/colors';
 @import 'layout/header';
 @import 'layout/sidebar';
+@import 'layout/secondarysidebar';
 @import 'layout/body';
 @import 'layout/section';
 @import 'components/welcome';
 @import 'components/areas';
 @import 'components/news';
 @import 'components/about';
+@import "components/talk";

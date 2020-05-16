@@ -2,9 +2,8 @@
 @use "../variables/z-indices";
 @use "../variables/sizes";
 
-#sidebar {
+#secondary-sidebar {
   padding: 2em 1.5em;
-  background-color: colors.$color-enjoy-light;
   text-align: right;
   width: sizes.$sidebar-width;
   height: 100vh;
@@ -25,10 +24,6 @@
     opacity: 1;
     width: 100%;
     position: relative;
-
-    body.is-ie & {
-      height: 100%;
-    }
   }
   nav {
     > ul {
@@ -71,7 +66,7 @@
       border :0;
       color: colors.$ajcf-white;
       display: block;
-      font-size: sizes.$sidebar-title-font-size;
+      font-size: sizes.$secondary-sidebar-title-font-size;
       letter-spacing: 0.25em;
       line-height: 1.75;
       text-transform: uppercase;
@@ -90,7 +85,7 @@
       }
 
       &:before {
-        background: colors.$color-enjoy-light;
+        background: colors.$color-talk;
       }
 
       &:after {
@@ -155,4 +150,8 @@
       }
     }
   }
+}
+
+.talk {
+  background-color: colors.$color-talk;
 }

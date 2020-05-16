@@ -1,8 +1,14 @@
 @use "../variables/sizes";
+@use "../variables/colors";
 
 #body {
+  background-color: colors.$alternate-bg-color;
+  height: 100%;
   #sidebar + & {
     margin-left: sizes.$sidebar-width;
+  }
+  #secondary-sidebar + & {
+    margin-left: sizes.$secondary-sidebar-width;
   }
 
   #header + & {
@@ -16,5 +22,10 @@
 
   div.text-content {
     margin: 3em;
+  }
+
+  .area-title {
+    padding: 1em 3em 1em 1em;
+    text-align: right;
   }
 }

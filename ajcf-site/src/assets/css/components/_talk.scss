@@ -1,0 +1,15 @@
+@use "../variables/colors";
+
+#talk-page {
+  position: relative;
+  > div.talk-cover {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+    > img {
+      width: 100%;
+    }
+  }
+}

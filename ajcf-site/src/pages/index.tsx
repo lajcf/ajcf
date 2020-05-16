@@ -1,19 +1,16 @@
 import React from "react";
 
-import Layout from "../components/common/layout";
-import Sidebar from "../components/common/Sidebar/Sidebar";
-import { Header } from "../components/common/Header";
+import Layout from "../components/Shared/layout";
+import Sidebar from "../components/Shared/Sidebar/Sidebar";
 import HomePage from "../components/HomePage/HomePage";
 
 const IndexPage = () => (
   <Layout>
-    <Header />
     <Sidebar />
 
     <div id="body">
       <HomePage />
     </div>
-
   </Layout>
 );
 
