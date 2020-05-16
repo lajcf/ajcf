@@ -1,33 +1,18 @@
 import { createConnection, getConnection } from "typeorm";
 import { Member } from "../entities/Member";
 import { Event } from "../entities/Event";
-import { fetchAwsSecret } from "./fetchAwsSecret";
-
-export interface DBCredentials {
-  username: string;
-  engine: "mysql";
-  host: string;
-  password: string;
-  port: number;
-  dbname: string;
-}
-
-export const fetchDbCredentials = async (isProd?: boolean) => {
-  const SecretId = isProd ? "ajcf-server-prod-db-credentials" : "ajcf-server-dev-db-credentials"; // secrets stored in AWS Secret
-  return fetchAwsSecret<DBCredentials>(SecretId);
-};
 
 export const openConnectionToDb = async () => {
-  const credentials = await fetchDbCredentials(process.env.STAGE === "prod");
+  console.log("DB_CONNECTION :: Fetched credentials...");
   console.log(`DB_CONNECTION :: Opening connection to database in ${process.env.STAGE}`);
   try {
     await createConnection({
-      type: credentials.engine,
-      host: credentials.host,
-      port: credentials.port,
-      username: credentials.username,
-      password: credentials.password,
-      database: credentials.dbname,
+      type: "mysql",
+      host: process.env.DB_HOST!,
+      port: parseInt(process.env.DB_PORT!, 10),
+      username: process.env.DB_USERNAME!,
+      password: process.env.DB_PASSWORD!,
+      database: process.env.ENV === "prod" ? process.env.DB_NAME_PROD! : process.env.DB_NAME_DEV!,
       entities: [Member, Event],
       migrations: ["../migrations/*.ts"],
       synchronize: false,

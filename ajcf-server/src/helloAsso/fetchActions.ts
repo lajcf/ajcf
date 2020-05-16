@@ -1,6 +1,5 @@
 import axios from "axios";
 import { GET_ACTIONS_URL, HelloAssoAction, HelloAssoActionType } from "./resources";
-import { fetchAwsSecret } from "../utils/fetchAwsSecret";
 
 interface GetActionsInterface {
   campaignId: string;
@@ -12,10 +11,7 @@ interface HelloAssoActionsQueryResponse {
 }
 
 export const fetchActions = async (args: GetActionsInterface): Promise<HelloAssoAction[]> => {
-  const helloAssoCredentials = await fetchAwsSecret<{ USER_AJCF: string; PASSWORD_AJCF: string }>(
-    "HELLOASSO_CREDENTIALS"
-  );
-  const encodedAuth = Buffer.from(`${helloAssoCredentials.USER_AJCF}:${helloAssoCredentials.PASSWORD_AJCF}`).toString(
+  const encodedAuth = Buffer.from(`${process.env.HELLOASSO_USERNAME}:${process.env.HELLOASSO_PASSWORD}`).toString(
     "base64"
   );
   const url = GET_ACTIONS_URL(args.campaignId, args.actionType);
