@@ -3,7 +3,7 @@
 @use "../variables/sizes";
 
 #secondary-sidebar {
-  padding: 2em 1.5em;
+  padding: 2em 1.25em;
   text-align: right;
   width: sizes.$sidebar-width;
   height: 100vh;
@@ -14,17 +14,6 @@
   left: 0;
   top: 0;
 
-  > .inner {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transform: translateY(0);
-    transition: opacity 1s ease;
-    min-height: 100%;
-    opacity: 1;
-    width: 100%;
-    position: relative;
-  }
   nav {
     > ul {
       list-style: none;
@@ -61,7 +50,7 @@
       }
     }
 
-    a {
+    /*a {
       transition: color 0.2s ease;
       border :0;
       color: colors.$ajcf-white;
@@ -104,7 +93,7 @@
           max-width: 100%;
         }
       }
-    }
+    }*/
   }
   #sidebar-social-icons {
     position: absolute;

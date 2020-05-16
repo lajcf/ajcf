@@ -2,10 +2,6 @@
 @use '../variables/z-indices';
 
 #header {
-    background-color: colors.$color-talk-light;
-    display: flex;
-    z-index: z-indices.$z-index-header;
-    position: sticky;
     > .main-title {
         font-weight: bold;
         color: colors.$ajcf-white;
@@ -59,9 +55,4 @@
             }
         }
     }
-}
-
-#ajcf-logo {
-    margin: 1em;
-    width: 50px;
 }

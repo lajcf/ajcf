@@ -7,8 +7,7 @@ import HomePage from "../components/HomePage/HomePage";
 const IndexPage = () => (
   <Layout>
     <Sidebar />
-
-      <HomePage />
+    <HomePage />
   </Layout>
 );
 

@@ -2,11 +2,9 @@
 
 #talk-page {
   position: relative;
+  display: flex;
+  flex-flow: column;
   > div.area-poles {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
     padding-left: 1em;
     padding-right: 1em;
     height: 100%;

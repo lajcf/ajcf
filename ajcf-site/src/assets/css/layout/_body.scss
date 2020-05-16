@@ -3,7 +3,6 @@
 
 .body {
   background-color: colors.$alternate-bg-color;
-  height: 100%;
   #sidebar + & {
     margin-left: sizes.$sidebar-width;
   }
@@ -22,10 +21,5 @@
 
   div.text-content {
     margin: 3em;
-  }
-
-  .area-title {
-    padding: 1em 3em 1em 1em;
-    text-align: right;
   }
 }

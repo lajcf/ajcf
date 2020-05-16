@@ -2,6 +2,10 @@ import React, { memo } from "react";
 import { LandingLink } from "../LandingLink";
 import { AJCFLogo } from "../AJCFLogo";
 import { Link } from "gatsby";
+import { css } from "@emotion/core";
+import { colors } from "../../assets/css/variables/colors";
+import { zIndices } from "../../assets/css/variables/zIndices";
+import { sizes } from "../../assets/css/variables/sizes";
 
 const LandingHeaderInner = () => {
   return (
@@ -25,9 +29,16 @@ const LandingHeaderInner = () => {
   );
 };
 
-const Header = memo(({ className }: { className?: string }) => {
+const Header = memo(() => {
+  const headerStyle = css({
+    backgroundColor: colors.colorTalkLight,
+    display: "flex",
+    zIndex: zIndices.zIndexHeader,
+    position: "sticky",
+    height: sizes.headerHeight,
+  });
   return (
-    <header className={className} id="header">
+    <header css={headerStyle} id="header">
       <Link to="/">
         <AJCFLogo />
       </Link>

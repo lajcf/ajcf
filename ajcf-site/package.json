@@ -11,11 +11,15 @@
     "email": "anubhav.srivastava00@gmail.com"
   },
   "dependencies": {
+    "@babel/core": "^7.9.6",
+    "@emotion/babel-preset-css-prop": "^10.0.27",
+    "@emotion/core": "^10.0.28",
     "@types/react-scroll": "^1.5.5",
     "@types/react-scrollspy": "^3.3.2",
     "@types/typography": "^0.16.3",
     "classnames": "^2.2.6",
     "gatsby": "^2.20.29",
+    "gatsby-plugin-emotion": "^4.3.1",
     "gatsby-plugin-manifest": "^2.3.6",
     "gatsby-plugin-offline": "^3.1.4",
     "gatsby-plugin-react-helmet": "^3.2.4",
@@ -61,6 +65,8 @@
   "license": "MIT",
   "devDependencies": {
     "@types/classnames": "^2.2.10",
+    "babel-plugin-emotion": "^10.0.33",
+    "babel-preset-gatsby": "^0.4.2",
     "sass": "^1.26.5"
   }
 }
