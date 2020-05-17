@@ -2,6 +2,8 @@ import React from "react";
 import Scrollspy from "react-scrollspy";
 import Tab, { TabProps } from "./Tab";
 import { SocialIcons } from "./SocialIcons";
+import { AreaPageTheme } from "../../../pages/areas/talk";
+import { colors } from "../../../assets/css/variables/colors";
 
 const Sidebar = () => {
   const [tabs] = React.useState<TabProps[]>([
@@ -10,6 +12,14 @@ const Sidebar = () => {
     { content: "Actualités", sectionId: "news", href: "/#news", className: "main-link" },
     { content: "À propos", sectionId: "about", href: "/#about", className: "main-link" },
   ]);
+  const pageTheme: AreaPageTheme = {
+    mainColor: colors.colorEnjoy,
+    mainColorLight: colors.colorEnjoyLight,
+    secondaryColor: colors.colorTalk,
+    secondaryColorLight: colors.colorTalkLight,
+    secondaryColorLighter: colors.colorTalkLight,
+    secondaryColorLightest: colors.colorTalkLight,
+  };
   return (
     <section id="sidebar">
       <div className="inner">
@@ -20,7 +30,7 @@ const Sidebar = () => {
             ))}
           </Scrollspy>
         </nav>
-        <SocialIcons />
+        <SocialIcons pageTheme={pageTheme} />
       </div>
     </section>
   );

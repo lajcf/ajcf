@@ -14,6 +14,7 @@
     "@babel/core": "^7.9.6",
     "@emotion/babel-preset-css-prop": "^10.0.27",
     "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
     "@types/react-scroll": "^1.5.5",
     "@types/react-scrollspy": "^3.3.2",
     "@types/typography": "^0.16.3",

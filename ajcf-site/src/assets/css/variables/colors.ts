@@ -7,6 +7,8 @@ export const colors = {
   colorMeetLight: "#009ad7",
   colorEnjoy: "#FFC914",
   colorEnjoyLight: "#ffd856",
+  colorEnjoyLighter: "rgb(255, 230, 180)",
+  colorEnjoyLightest: "rgb(255, 237, 200)",
   alternateBgColor: "#F7F9F9",
   ajcfWhite: "#fdfdf6",
   ajcfDark: "#403526",
