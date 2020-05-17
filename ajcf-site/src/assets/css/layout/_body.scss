@@ -1,8 +1,13 @@
 @use "../variables/sizes";
+@use "../variables/colors";
 
-#body {
+.body {
+  background-color: colors.$alternate-bg-color;
   #sidebar + & {
     margin-left: sizes.$sidebar-width;
+  }
+  #secondary-sidebar + & {
+    margin-left: sizes.$secondary-sidebar-width;
   }
 
   #header + & {

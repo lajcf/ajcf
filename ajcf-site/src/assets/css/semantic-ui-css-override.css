@@ -1,0 +1,484 @@
+html,
+body {
+  height: unset;
+}
+
+img,
+a,
+h1,
+h2,
+h3,
+h4,
+h6,
+h6,
+i {
+  outline: none;
+}
+
+.ui.form .field > label {
+  font-weight: 600;
+}
+
+.ui.button {
+  font-weight: 500 !important;
+}
+
+.ui.basic.label {
+  background-color: white !important;
+}
+
+.ui.basic.pointing.label::before {
+  background-color: white;
+}
+
+.visible.transition {
+  display: unset !important;
+}
+
+.dimmed.dimmable > .ui.visible.dimmer, .ui.active.dimmer {
+  display: -ms-flexbox;
+  display: flex !important;
+  opacity: 1;
+}
+
+.ui.vertical.left.pointing.menu .item:after {
+  right: auto;
+  left: 0;
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  margin: 0 0 0 -.5px;
+  border: none;
+  border-bottom: 1px solid #D4D4D5;
+  border-left: 1px solid #D4D4D5;
+}
+
+.ui.secondary.vertical.left.pointing.menu .item:after {
+  right: auto;
+  left: 0;
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  margin: 0 0 0 -.5px;
+  border: none;
+  border-bottom: 1px solid #D4D4D5;
+  border-left: 1px solid #D4D4D5;
+}
+
+.ui.dropdown.customAlignedDropdown {
+  color: rgb(120,120,120) !important;
+}
+
+.ui.dropdown.customAlignedDropdown:hover {
+  color: rgba(0,0,0,0.87) !important;
+}
+
+.ui.dropdown.customAlignedDropdown > .dropdown.icon {
+  right: 5px;
+  position: absolute;
+  top: 5px;
+}
+
+.ui.popup.popup__under-modal {
+  z-index: 999;
+}
+
+.ui .list.ul.large.icon.notifications--icon {
+  padding: 0;
+}
+
+.ui .menu .item,
+.ui a.item {
+  outline: none;
+}
+
+.ui table thead tr th.header-cell--disabled {
+  cursor: default;
+}
+
+.ui table thead tr th.header-cell--disabled:hover {
+  background-color: #f9fafb !important;
+  cursor: default;
+}
+
+.ui .grid .row.row__cropped {
+  width: calc(100% - 50px) !important;
+  max-width: 950px;
+}
+
+.ui .grid .column.column__cropped {
+  width: 10% !important;
+  max-width: 105px !important;
+}
+
+.ui.buttons > .ui.button.spaced:not(:first-child):not(:last-child) {
+  margin-left: 1px;
+  margin-right: 1px;
+}
+.ui.buttons > .ui.button.spaced:first-child { margin-right: 1px; }
+.ui.buttons > .ui.button.spaced:last-child { margin-left: 1px; }
+
+.ui.modal.fullscreen {
+  width: 91% !important;
+  left: 6% !important;
+}
+
+.loader--grey::before {
+  border-radius: 500rem !important;
+  border: .2em solid rgba(0,0,0,.1) !important;
+}
+.loader--grey::after {
+  border-color: #767676 transparent transparent !important;
+  box-shadow: 0 0 0 1px transparent !important;
+}
+
+.ui.progress .bar {
+  min-width: 0 !important;
+}
+
+.ui.active.progress .bar {
+  min-width: 0 !important;
+}
+
+div.ui.modal.modal__content {
+  display: block !important;
+}
+
+.progress--border-none {
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+.progress--border-none .bar {
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+.ui.popup.popup--big {
+  max-width: 350px !important;
+}
+
+.form__document-type .ui.dropdown .icon {
+  float: right !important;
+  margin-top: 0.5em !important;
+}
+
+.order-wall__sticky .ui.fixed.top.sticky {
+  margin-top: 5.5em !important;
+  transition: .2s margin-top ease-in-out !important;
+}
+
+.search-bar__hide-results div.results.transition {
+  display: none !important;
+}
+
+.search-bar .input i.icon {
+  left: 0;
+}
+
+.search-bar .ui.icon.input > input {
+  padding-left: 2.67142857em !important;
+  padding-right: 1em !important;
+}
+
+.search-input i.icon {
+  left: 3px;
+}
+
+.search-input div.ui.icon.input input {
+  padding-left: 2.67142857em;
+}
+
+.dropdown-text__small .ui.dropdown div.text,
+.dropdown-text__small .ui.dropdown div[role="option"] {
+  font-size: 10px !important;
+}
+
+.ui.selection.dropdown .menu > .item.no-hover {
+  background-color: rgba(10,20,30,0.01);
+}
+
+.ui.selection.dropdown .menu > .item.no-hover:hover {
+  background-color: rgba(10,20,30,0.01);
+}
+
+.grey-when-unchecked.ui.slider.checkbox:not(.checked) label,
+.grey-when-unchecked.ui.toggle.checkbox:not(.checked) label {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.ui.basic.label.duck-blue {
+  background-color: rgb(215, 231, 226) !important;
+  color: rgb(47, 89, 97) !important;
+  border: none;
+}
+
+
+.ui.basic.label.beige {
+  background-color: rgb(249, 238, 216) !important;
+  border: none;
+  color: rgba(0,0,0,0.87) !important;
+}
+
+div.ui.statistic > div.value.statistic-value__small {
+  font-size: 1em !important;
+}
+
+.button__label .label {
+  height: 25px !important;
+  padding-top: 5.5px;
+}
+.button__label .button {
+  padding-top: 5.5px !important;
+  height: 25px !important;
+}
+.button__label {
+  padding: 2.8px 14px 2.8px 10px !important;
+  margin: 0 !important;
+}
+
+.button__label .icon {
+  padding: 2px 0 3px 0 !important;
+  margin: 0 !important;
+}
+
+.dropdown-text__overflow-hidden div.text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+
+.dropdown__less-margin-left .dropdown .icon {
+  margin-left: 7px !important;
+}
+
+.tabs__inline {
+  width: 100%;
+}
+
+.tabs__inline .ui.tabular.menu,
+.tabs__inline .buttons-bar {
+  height: 52px;
+}
+
+.tabs__inline .item {
+  border-bottom: 2px solid white;
+  border-bottom-color: white !important;
+  margin-bottom: -1px !important;
+}
+
+.tabs__inline ~ .segment {
+  border-top: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: .28571429rem !important;
+}
+
+.tabs__inline .buttons-bar {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+[class^="color__"] {
+  width: 100%;
+}
+
+.tab__no-padding-bottom ~ .attached.segment {
+  padding-bottom: 0 !important;
+}
+
+.color__new > .item > .circular.label {
+  background-color: #767676 !important;
+}
+.color__new ~ .attached.segment,
+.color__new .active.item {
+  border-color: #767676 !important;
+}
+.color__new .menu,
+.color__new .buttons-bar,
+.color__new.border-bottom {
+  border-bottom-color: #767676 !important;
+}
+
+.color__purchase_ready > .item > .circular.label {
+  background-color: #fbbd08 !important;
+}
+.color__purchase_ready ~ .attached.segment,
+.color__purchase_ready .active.item {
+  border-color: #fbbd08 !important;
+}
+.color__purchase_ready .menu,
+.color__purchase_ready .buttons-bar,
+.color__purchase_ready.border-bottom {
+  border-bottom-color: #fbbd08 !important;
+}
+
+.color__declined > .item > .circular.label {
+  background-color: #830705 !important;
+}
+.color__declined ~ .attached.segment,
+.color__declined .active.item {
+  border-color: #830705 !important;
+}
+.color__declined .menu,
+.color__declined .buttons-bar,
+.color__declined.border-bottom {
+  border-bottom-color: #830705 !important;
+}
+
+.color__expired > .item > .circular.label {
+  background-color: #830705 !important;
+}
+.color__expired ~ .attached.segment,
+.color__expired .active.item {
+  border-color: #830705 !important;
+}
+.color__expired .menu,
+.color__expired .buttons-bar,
+.color__expired.border-bottom {
+  border-bottom-color: #830705 !important;
+}
+
+
+.color__sent > .item > .circular.label {
+  background-color: #2185d0 !important;
+}
+.color__sent .menu,
+.color__sent .buttons-bar,
+.color__sent.border-bottom,
+.color__finalized .menu,
+.color__finalized .buttons-bar,
+.color__finalized.border-bottom {
+  border-bottom-color: #2185d0 !important;
+}
+.color__finalized ~ .attached.segment,
+.color__finalized .active.item,
+.color__sent ~ .attached.segment,
+.color__sent .active.item {
+  border-color: #2185d0 !important;
+}
+
+.color__accepted > .item > .circular.label {
+  background-color: #21ba45 !important;
+}
+.color__accepted ~ .attached.segment,
+.color__accepted .active.item {
+  border-color: #21ba45 !important;
+}
+.color__accepted .menu,
+.color__accepted .buttons-bar,
+.color__accepted.border-bottom {
+  border-bottom-color: #21ba45 !important;
+}
+
+i.icon.circular-step-icon {
+  height: 30px !important;
+  width: 30px !important;
+  padding-top: 10px !important;
+}
+
+.checkbox__padded-left .ui.checkbox input ~ label {
+  padding-left: 1.5em !important;
+}
+
+.color__primary-text {
+  color: rgba(0,0,0,0.87) !important;
+}
+
+.wall__feed i.icon.warehouse::before {
+  font-size: 15px;
+  padding-top: 0;
+  margin-top: 0;
+  display: block;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.wall__feed .timeline i.icon.warehouse::before {
+  font-size: 11px;
+  display: inline;
+  color: inherit;
+}
+
+.wall__feed .vertical-timeline-step .dot {
+  left: calc(1em + 1px) !important;
+}
+
+.warehouse-icon-container__small i.icon.warehouse::before {
+  font-size: 15px;
+  padding-top: 0;
+  margin-top: 0;
+  display: block;
+}
+
+body.hermes .ui.dimmer:not(.inverted),
+body.atlas .ui.dimmer:not(.inverted) {
+  background-color: rgba(0,0,0,0.35);
+}
+
+.ui.styled.accordion .title.no-hover:hover {
+  color: rgba(0,0,0,.4) !important;
+
+}
+
+.card--beige {
+  background-color: #ffedd5 !important;
+  color: #573A08 !important;
+}
+
+.atlas .ui.table thead tr th,
+.hermes .ui.table thead tr th {
+  white-space: normal;
+}
+
+.ui.popup.inverted * {
+  color: white !important;
+}
+
+.dropdown-active__inherit-border > .ui.active.dropdown {
+  border: 1px solid #96C8DA !important;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, .15) !important;
+  background-color: white !important;
+}
+.dropdown-active__inherit-border > .ui.dropdown div.default.text {
+  font-weight: 500 !important;
+}
+.dropdown-active__inherit-border > .ui.active.dropdown div.text {
+  font-weight: 600 !important;
+}
+
+form.form__light-labels label {
+  /*font-weight: 500 !important;*/
+  font-size: 13px !important;
+  color: rgba(0, 0, 0, 0.7) !important;
+}
+
+form.form__light-labels .ui.red.label::before {
+  display: none;
+}
+form.form__light-labels .ui.red.label {
+  background-color: transparent !important;
+  display: block;
+  border: none;
+  padding: 0;
+}
+
+div.labels__size-twelve label {
+  font-size: 12px !important;
+}
+
+.dropdown__dropdown-item__small-padding .ui.selection.dropdown .menu > .item {
+  padding: 8px 5px !important;
+}
+
+.tab__active--inline-block.ui.tab.active {
+  display: inline-block;
+}
+
+#marginPercentInput {
+  padding: 5px;
+  padding-right: 10px!important;
+}
+
+.row.grid-row-no-box-shadow,
+.row.grid-row-no-box-shadow::before {
+  box-shadow: none !important;
+}

@@ -1,4 +1,5 @@
 @import "~semantic-ui-css/semantic.min.css";
+@import "semantic-ui-css-override.css";
 @import 'main';
 @import 'fonts';
 @import 'variables/colors';
@@ -10,3 +11,4 @@
 @import 'components/areas';
 @import 'components/news';
 @import 'components/about';
+@import "components/talk";

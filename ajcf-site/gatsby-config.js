@@ -12,21 +12,16 @@ module.exports = {
         allExtensions: true, // defaults to false
       },
     },
-    /* {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-          pathToConfigModule: `src/assets/typography`,
-      },
-    }, */
+    `gatsby-plugin-emotion`,
     "gatsby-plugin-react-helmet",
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: "Hyperspace",
-        short_name: "starter",
+        name: "Association des Jeunes Chinois de France",
+        short_name: "AJCF",
         start_url: "/",
-        background_color: "#663399",
-        theme_color: "#663399",
+        background_color: "#ba2d1d",
+        theme_color: "#ba2d1d",
         display: "standalone",
         icon: "src/assets/img/website-icon.png", // This path is relative to the root of the site.
       },

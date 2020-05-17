@@ -1,7 +1,7 @@
 import React, { CSSProperties, memo, PropsWithChildren, useCallback, useRef, useState } from "react";
 import { Modal } from "semantic-ui-react";
 import cx from "classnames";
-import { LazyLoadedImage } from "../Shared/LazyLoadedImage";
+import { LazyLoadedImage } from "./LazyLoadedImage";
 import { useExitFullScreenEvent } from "../../assets/hooks/UI/useExitFullScreenEvent";
 
 const videoStyle = {

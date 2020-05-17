@@ -6,12 +6,12 @@ import { AboutSection } from "./AboutSection";
 
 const HomePage = () => {
   return (
-    <>
+    <div className="body">
       <WelcomeSection />
       <AreasSection />
       <NewsSection />
       <AboutSection />
-    </>
+    </div>
   );
 };
 

@@ -1,0 +1,22 @@
+@use "../variables/colors";
+
+#talk-page {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  > div.area-poles {
+    padding-left: 1em;
+    padding-right: 1em;
+    height: 100%;
+    > div.pole-cover {
+      padding: 1em;
+      width: 33%;
+      > a {
+        img {
+          border-radius: 5px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
