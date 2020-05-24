@@ -1,8 +1,8 @@
 import React from "react";
-import laetitiaImage from "../../assets/img/bureau-laetitia.jpg";
-import danielImage from "../../assets/img/bureau-daniel.jpg";
-import huanyuImage from "../../assets/img/bureau-huanyu.jpg";
-import antoineImage from "../../assets/img/bureau-antoine.jpg";
+import laetitiaImage from "../../assets/img/homepage/bureau-laetitia.jpg";
+import danielImage from "../../assets/img/homepage/bureau-daniel.jpg";
+import huanyuImage from "../../assets/img/homepage/bureau-huanyu.jpg";
+import antoineImage from "../../assets/img/homepage/bureau-antoine.jpg";
 import { BureauMember } from "./BureauMember";
 import AJCFGrid from "../Layout/AJCFGrid";
 

@@ -8,7 +8,7 @@ import { AreaName } from "../constants";
 import { colors } from "../../../assets/css/variables/colors";
 import { sizes } from "../../../assets/css/variables/sizes";
 import { AreaTitle } from "../AreaTitle";
-import { AreaPageTheme, PoleProps } from "../../../pages/areas/talk";
+import { AreaPageTheme, PoleProps } from "../../../pages/talk";
 import { zIndices } from "../../../assets/css/variables/zIndices";
 
 interface SecondarySidebarProps {

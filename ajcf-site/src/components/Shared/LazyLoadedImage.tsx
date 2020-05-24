@@ -23,7 +23,6 @@ const LazyLoadedImage = memo(({ srcLarge, id, alt, imageStyle, children }: Props
       <div ref={setNode} id={id} data-large={srcLarge} className={cx("bureau-member")}>
         {children}
         {loadImage && <img ref={imageRef} src={srcLarge} onLoad={onImageLoad} style={imageStyle} alt={alt} />}
-        {/*<div className="preserve-image-ratio-placeholder" style={ratioPreserveDivStyle(widthHeightRatio)} />*/}
       </div>
     </>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import Scrollspy from "react-scrollspy";
 import Tab, { TabProps } from "./Tab";
 import { SocialIcons } from "./SocialIcons";
-import { AreaPageTheme } from "../../../pages/areas/talk";
+import { AreaPageTheme } from "../../../pages/talk";
 import { colors } from "../../../assets/css/variables/colors";
 
 const Sidebar = () => {

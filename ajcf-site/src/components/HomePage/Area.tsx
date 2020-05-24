@@ -1,12 +1,28 @@
 import { Link } from "gatsby";
 import * as React from "react";
-import { AreaProps } from "./AreasSection";
+import { EspaceProps } from "./EspacesSection";
+import Img from "gatsby-image";
 
-export const Area = ({ imageSource, to, className, description }: AreaProps) => {
+const articleStyle: React.CSSProperties = {
+  display: "flex",
+  position: "relative",
+  justifyContent: "center",
+  width: "25%",
+};
+
+const espaceImageStyle: React.CSSProperties = {
+  height: "100%",
+  width: "100%",
+  borderRadius: "10px",
+  transition: "opacity 0.5s ease",
+};
+
+export const Area = ({ imageSource, to, className, description }: EspaceProps) => {
+  console.log(imageSource);
   return (
-    <article className="style1">
+    <article style={articleStyle}>
       <div className={className}>
-        <img src={imageSource} alt="" />
+        <Img style={espaceImageStyle} fluid={imageSource} alt="" />
         <Link to={to}>
           <div className="area-tile-content">
             <p>{description}</p>

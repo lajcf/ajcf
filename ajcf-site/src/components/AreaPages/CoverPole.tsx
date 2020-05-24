@@ -2,26 +2,38 @@ import React from "react";
 import { Link } from "gatsby";
 import { css } from "@emotion/core";
 import { sizes } from "../../assets/css/variables/sizes";
-import { AreaPageTheme, PoleProps } from "../../pages/areas/talk";
+import { AreaPageTheme, PoleProps } from "../../pages/talk";
 
 export type CoverPoleProps = {
   pageTheme: AreaPageTheme;
+  numberOfPoles: number;
 } & PoleProps;
 
-export const CoverPole = ({ imageSource, to, index, description, pageTheme }: CoverPoleProps & { index: number }) => {
+export const CoverPole = ({
+  imageSource,
+  to,
+  index,
+  description,
+  pageTheme,
+  numberOfPoles,
+}: CoverPoleProps & { index: number }) => {
   const coverPoleSectionStyle = (poleIndex: number): React.CSSProperties => ({
     display: "flex",
     flexDirection: "row",
-    height: `calc((100vh - ${sizes.headerHeight}) / 3)`,
+    height: `calc((100vh - ${sizes.headerHeight}) / ${numberOfPoles})`,
     // textAlign: "end",
     backgroundColor: poleIndex % 2 === 0 ? pageTheme.secondaryColorLighter : pageTheme.secondaryColorLightest,
   });
 
   const coverPoleStyle = css`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     max-width: 505px;
     width: auto;
     img {
-      height: 100%;
+      max-height: 284px;
+      height: auto;
     }
   `;
 

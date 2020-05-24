@@ -14,12 +14,15 @@
     width: 25%;
     > div {
       position: relative;
-      width: 225px;
-      height: 225px;
+      max-width: 225px;
+      max-height: 225px;
+      width: auto;
+      height: auto;
       margin: 1em;
       border-radius: 10px;
       transition: transform 0.5s ease, opacity 0.5s ease ;
       > img {
+        height: 100%;
         width: 100%;
         border-radius: 10px;
         transition: opacity 0.5s ease ;

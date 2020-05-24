@@ -1,7 +1,7 @@
 import React from "react";
 import { css } from "@emotion/core";
 import { colors } from "../../../assets/css/variables/colors";
-import { AreaPageTheme } from "../../../pages/areas/talk";
+import { AreaPageTheme } from "../../../pages/talk";
 
 interface SocialIconsProps {
   pageTheme: AreaPageTheme;

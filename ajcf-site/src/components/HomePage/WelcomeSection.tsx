@@ -1,22 +1,20 @@
 import * as React from "react";
-import AJCFWelcomeImage from "../../assets/img/ajcf-welcome.jpg";
-import { LazyLoadedImage } from "../Shared/LazyLoadedImage";
+import Img from "gatsby-image";
+import { ImageSharpFluid } from "../../../gatsby-graphql";
+
+interface WelcomeSectionProps {
+  coverImage?: ImageSharpFluid | null;
+}
 
 const imageStyle: React.CSSProperties = {
   display: "flex",
   justifyContent: "center",
 };
 
-export const WelcomeSection = () => {
+export const WelcomeSection = ({ coverImage }: WelcomeSectionProps) => {
   return (
     <section id="welcome">
-      <LazyLoadedImage
-        dominantColor="#ffffff"
-        srcLarge={AJCFWelcomeImage}
-        id="ajcf-welcome-image"
-        alt="AJCF Welcome Image"
-        containerStyle={imageStyle}
-      />
+      <Img style={imageStyle} fluid={coverImage} alt="Memoire cover" />
       <div className="text-content">
         <h2>
           Français d’origine chinoise, Franco-Chinois, Chinois de France… Nous sommes l’un des visages de la France.
