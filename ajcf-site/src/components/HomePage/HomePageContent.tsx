@@ -9,9 +9,9 @@ interface HomePageProps {
   homePageImages: ImageSharpFluid[];
 }
 
-const HomePage = ({ homePageImages }: HomePageProps) => {
+const HomePageContent = ({ homePageImages }: HomePageProps) => {
   return (
-    <div className="body">
+    <div className="main">
       <WelcomeSection coverImage={homePageImages.find((image) => image.src.includes("ajcf-welcome.jpg"))} />
       <EspacesSection espaceImages={homePageImages.filter((image) => image.src.includes("espace"))} />
       <NewsSection />
@@ -20,4 +20,4 @@ const HomePage = ({ homePageImages }: HomePageProps) => {
   );
 };
 
-export default HomePage;
+export default HomePageContent;

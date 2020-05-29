@@ -6,8 +6,19 @@ import { graphql, StaticQuery } from "gatsby";
 
 import "../../assets/css/index.scss";
 import { Header } from "./Header";
+import { css, Global } from "@emotion/core";
+import { sizes } from "../../assets/css/variables/sizes";
 
 const Layout = ({ children }: { children: ReactNode }) => {
+  const globalStyle = css`
+    .main {
+      height: calc(100vh - ${sizes.headerHeight});
+      margin-left: ${sizes.secondarySidebarWidth};
+    }
+    .text-content {
+      margin: 3em;
+    }
+  `;
   return (
     <StaticQuery
       query={graphql`
@@ -21,6 +32,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       `}
       render={(data) => (
         <>
+          <Global styles={globalStyle} />
           <Helmet
             title={data.site.siteMetadata.title}
             meta={[

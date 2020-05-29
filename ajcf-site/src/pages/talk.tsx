@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/Shared/Layout";
-import { AreaPage } from "../components/AreaPages/AreaPage";
+import { EspaceContent } from "../components/EspacePages/EspaceContent";
 import { SecondarySidebar } from "../components/Shared/SecondarySidebar/SecondarySidebar";
 import { EnjoyPoleId, LearnPoleId, MeetPoleId, TalkPoleId } from "../components/Shared/constants";
 import { talkTheme } from "../assets/poles/pageThemes";
@@ -34,7 +34,7 @@ const Talk = () => {
         pageFrenchTitle={talkPageFrenchTitle}
         pageChineseTitle={talkPageChineseTitle}
       />
-      <AreaPage poles={talkPoles} pageTheme={talkTheme} numberOfPoles={3} />
+      <EspaceContent poles={talkPoles} pageTheme={talkTheme} numberOfPoles={3} />
     </Layout>
   );
 };

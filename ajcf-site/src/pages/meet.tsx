@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/Shared/Layout";
-import { AreaPage } from "../components/AreaPages/AreaPage";
+import { EspaceContent } from "../components/EspacePages/EspaceContent";
 import { SecondarySidebar } from "../components/Shared/SecondarySidebar/SecondarySidebar";
 import ClubProCover from "../assets/img/covers/cover-club-pro.jpg";
 import RencontreMensuelleCover from "../assets/img/covers/cover-rencontre-mensuelle.jpg";
@@ -46,7 +46,7 @@ const Meet = () => {
         pageFrenchTitle={pageFrenchTitle}
         pageChineseTitle={pageChineseTitle}
       />
-      <AreaPage poles={poles} pageTheme={pageTheme} numberOfPoles={2} />
+      <EspaceContent poles={poles} pageTheme={pageTheme} numberOfPoles={2} />
     </Layout>
   );
 };

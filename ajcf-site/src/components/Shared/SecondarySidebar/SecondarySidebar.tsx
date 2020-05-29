@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 import { css } from "@emotion/core";
 import { Icon } from "semantic-ui-react";
 import { SocialIcons } from "../Sidebar/SocialIcons";
-import { AreaName } from "../constants";
+import { EspaceId } from "../constants";
 import { colors } from "../../../assets/css/variables/colors";
 import { sizes } from "../../../assets/css/variables/sizes";
 import { AreaTitle } from "../AreaTitle";
@@ -12,7 +12,7 @@ import { AreaPageTheme, PoleProps } from "../../../pages/talk";
 import { zIndices } from "../../../assets/css/variables/zIndices";
 
 interface SecondarySidebarProps {
-  sectionName: AreaName;
+  sectionName: EspaceId;
   pageTheme: AreaPageTheme;
   poles: PoleProps[];
   pageFrenchTitle: string;

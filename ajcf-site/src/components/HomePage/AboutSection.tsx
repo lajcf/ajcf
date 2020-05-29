@@ -16,11 +16,20 @@ export const AboutSection = () => {
         <p>
           Créée en 2009, l’Association des jeunes chinois de France (AJCF) est une association à but non lucratif (loi
           du 1er juillet 1901) qui a pour objet de :
-          <br />- Procurer un espace d’échange et d’expression pour les jeunes citoyens français d’origine chinoise ; -
-          Faciliter l’entraide et la solidarité entre eux, consolider leur identité, favoriser leur épanouissement
-          personnel et professionnel, afin d’améliorer leur visibilité au sein de la société multiculturelle française ;
-          - Permettre à la société française d’approfondir sa connaissance de la culture chinoise et de ses
-          représentants en France ; Lutter contre le racisme anti-asiatique et venir en aide aux victimes.
+          <br />
+          <ul>
+            <li>Procurer un espace d’échange et d’expression pour les jeunes citoyens français d’origine chinoise ;</li>
+            <li>
+              Faciliter l’entraide et la solidarité entre eux, consolider leur identité, favoriser leur épanouissement
+              personnel et professionnel, afin d’améliorer leur visibilité au sein de la société multiculturelle
+              française ;
+            </li>
+            <li>
+              Permettre à la société française d’approfondir sa connaissance de la culture chinoise et de ses
+              représentants en France ;
+            </li>
+            <li>Lutter contre le racisme anti-asiatique et venir en aide aux victimes.</li>
+          </ul>
         </p>
         <h1>L'histoire de l'AJCF</h1>
         <p>

@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/Shared/Layout";
-import { AreaPage } from "../components/AreaPages/AreaPage";
+import { EspaceContent } from "../components/EspacePages/EspaceContent";
 import { SecondarySidebar } from "../components/Shared/SecondarySidebar/SecondarySidebar";
 import DevPersoCover from "../assets/img/covers/cover-dev-perso.jpg";
 import EchangeLinguistiqueCover from "../assets/img/covers/cover-echange-linguistique.jpg";
@@ -47,7 +47,7 @@ const Learn = () => {
         pageFrenchTitle={pageFrenchTitle}
         pageChineseTitle={pageChineseTitle}
       />
-      <AreaPage poles={poles} pageTheme={pageTheme} numberOfPoles={2} />
+      <EspaceContent poles={poles} pageTheme={pageTheme} numberOfPoles={2} />
     </Layout>
   );
 };

@@ -1,14 +1,16 @@
 import React from "react";
-import { Area } from "./Area";
+import { Espace } from "./Espace";
 import AJCFSpace from "../Layout/AJCFSpace";
 import { ImageSharpFluid } from "../../../gatsby-graphql";
 import { colors } from "../../assets/css/variables/colors";
+import { EspaceId } from "../Shared/constants";
 
 export interface EspaceProps {
   imageSource?: ImageSharpFluid;
   description: string;
   to: string;
-  className: string;
+  espaceId: EspaceId;
+  backgroundColor: string;
 }
 
 interface EspacesSectionProps {
@@ -30,25 +32,29 @@ export const EspacesSection = ({ espaceImages }: EspacesSectionProps) => {
       imageSource: espaceImages.find((img) => img.src.includes("talk")),
       description: "Comprendre et défendre l'identité franco-chinoise",
       to: "/talk",
-      className: "ajcf-talk",
+      espaceId: "talk",
+      backgroundColor: colors.colorTalk,
     },
     {
       imageSource: espaceImages.find((img) => img.src.includes("learn")),
       description: "Se développer et explorer de nouveaux horizons",
       to: "/learn",
-      className: "ajcf-learn",
+      espaceId: "learn",
+      backgroundColor: colors.colorLearn,
     },
     {
       imageSource: espaceImages.find((img) => img.src.includes("meet")),
       description: "Connaître et intégrer le réseau franco-chinois",
       to: "/meet",
-      className: "ajcf-meet",
+      espaceId: "meet",
+      backgroundColor: colors.colorMeet,
     },
     {
       imageSource: espaceImages.find((img) => img.src.includes("enjoy")),
       description: "Apprendre en s'amusant et se dépasser",
       to: "/enjoy",
-      className: "ajcf-enjoy",
+      espaceId: "enjoy",
+      backgroundColor: colors.colorEnjoy,
     },
   ];
   return (
@@ -61,7 +67,7 @@ export const EspacesSection = ({ espaceImages }: EspacesSectionProps) => {
       </div>
       <AJCFSpace height={1} />
       {areas.map((area) => (
-        <Area key={area.className} className={area.className} {...area} />
+        <Espace key={area.espaceId} {...area} />
       ))}
     </section>
   );

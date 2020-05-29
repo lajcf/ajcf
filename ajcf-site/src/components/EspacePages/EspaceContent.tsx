@@ -1,7 +1,5 @@
 import React from "react";
-import { css } from "@emotion/core";
 import { CoverPole } from "./CoverPole";
-import { sizes } from "../../assets/css/variables/sizes";
 import { AreaPageTheme, PoleProps } from "../../pages/talk";
 
 interface TalkPageProps {
@@ -10,13 +8,9 @@ interface TalkPageProps {
   numberOfPoles: number;
 }
 
-export const AreaPage = ({ poles, pageTheme, numberOfPoles }: TalkPageProps) => {
-  const areaPolesStyle = css({
-    height: `calc(100vh - ${sizes.headerHeight})`,
-    marginLeft: sizes.secondarySidebarWidth,
-  });
+export const EspaceContent = ({ poles, pageTheme, numberOfPoles }: TalkPageProps) => {
   return (
-    <div css={areaPolesStyle}>
+    <div className="main">
       {poles.map((pole, index) => (
         <CoverPole
           key={pole.className}
