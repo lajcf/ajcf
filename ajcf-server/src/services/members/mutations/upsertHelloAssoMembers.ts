@@ -14,7 +14,11 @@ export enum CustomInfoEnum {
 
 export const getDateInfo = (member: HelloAssoAction, infoType: CustomInfoEnum): Date | null => {
   const date = member.custom_infos.find((e) => e.label === infoType);
-  if (date) return moment.utc(date.value, "DD/MM/YYYY").toDate();
+  if (date) {
+    const parsedDateInFrench = moment.utc(date.value, "DD/MM/YYYY");
+    if (parsedDateInFrench.isValid()) return parsedDateInFrench.toDate();
+    return moment.utc(date.value).toDate();
+  }
   return null;
 };
 
