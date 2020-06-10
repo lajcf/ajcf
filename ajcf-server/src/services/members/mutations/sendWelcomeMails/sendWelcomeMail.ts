@@ -1,5 +1,5 @@
 import { Member } from "../../../../entities/Member";
-import { sendEmail } from "./sendEmail";
+import { sendEmail } from "../../../mailjet/sendEmail";
 import { welcomeMail } from "./assets/welcomeMail";
 import { brochureAJCF } from "./assets/brochureAJCF";
 

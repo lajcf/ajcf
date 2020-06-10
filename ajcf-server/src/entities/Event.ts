@@ -1,5 +1,6 @@
-import { Column, Entity } from "typeorm";
+import { Column, Entity, OneToMany } from "typeorm";
 import { HelloAssoBaseEntity } from "./AjcfBaseEntity";
+import { Ticket } from "./Ticket";
 
 // TODO: ajouter id du pole
 @Entity("Event")
@@ -70,4 +71,13 @@ export class Event extends HelloAssoBaseEntity {
     type: "timestamp",
   })
   lastUpdateOnHelloAsso: Date;
+
+  @OneToMany(() => Ticket, (ticket) => ticket.event)
+  tickets: Ticket[];
+
+  @Column("varchar", {
+    name: "mailjet_list_id",
+    nullable: true,
+  })
+  mailjetListId: string | null;
 }
