@@ -1,6 +1,6 @@
 import { closeConnectionToDb, openConnectionToDb } from "../utils/dbHandlers";
 import { updateEventEntities } from "../services/events/mutations/updateEventEntities";
-import { updateTicketAttendeeEntities } from "../services/events/mutations/updateTicketAttendeeEntities";
+import { updateTicketAttendeeEntities } from "../services/attendees/mutations/updateTicketAttendeeEntities";
 
 export const updateEvents = async () => {
   try {

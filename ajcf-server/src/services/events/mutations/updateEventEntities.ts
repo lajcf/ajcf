@@ -4,7 +4,7 @@ import { orderBy } from "lodash";
 import { HelloAssoCampaign } from "../../helloAsso/resources";
 import { Event } from "../../../entities/Event";
 import { fetchCampaigns } from "../../helloAsso/fetchCampaigns";
-import { createMailingLists } from "./createMailingLists";
+import { createMailingListsForEvents } from "./createMailingListsForEvents";
 import { saveMultipleEntities } from "../../../utils/saveUtils";
 
 export const formatHelloAssoEvent = (campaign: HelloAssoCampaign): Partial<Event> => ({
@@ -31,7 +31,7 @@ export const updateEventEntities = async (): Promise<Event[]> => {
     "id"
   );
   console.log(`Upserted ${updatedEvents.length} events into DB`);
-  const updatedEventsWithMailingList = await createMailingLists(updatedEvents);
+  const updatedEventsWithMailingList = await createMailingListsForEvents(updatedEvents);
   console.log(`Upserted ${updatedEventsWithMailingList.length} mailing lists on MailJet`);
   return orderBy(updatedEventsWithMailingList, (event) => event.creationDate);
 };

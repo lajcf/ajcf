@@ -15,7 +15,7 @@ export const createAndSaveMailingListId = async (event: Event) => {
   );
 };
 
-export const createMailingLists = async (events: Event[]): Promise<Event[]> => {
+export const createMailingListsForEvents = async (events: Event[]): Promise<Event[]> => {
   const eventsWithMailingList = events.filter((event) => !!event.mailjetListId);
   const eventsWithoutList = events.filter((event) => !event.mailjetListId);
   const updatedEventsWithoutList = await Promise.all(eventsWithoutList.map(createAndSaveMailingListId));
