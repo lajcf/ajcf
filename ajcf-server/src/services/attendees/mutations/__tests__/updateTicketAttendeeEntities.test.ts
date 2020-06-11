@@ -23,6 +23,15 @@ const event = {
 };
 const helloAssoTickets = [
   {
+    id: "2",
+    date: moment.utc("2020-06-11").format("YYYY-MM-DD"),
+    first_name: "Nicolas",
+    last_name: "Li",
+    email: "premierhomme@gmail.com",
+    amount: 3,
+    option_label: "label_3",
+  },
+  {
     id: "0",
     date: moment.utc("2020-06-10").format("YYYY-MM-DD"),
     first_name: "Laetitia",
@@ -40,37 +49,47 @@ const helloAssoTickets = [
     amount: 2,
     option_label: "label_2",
   },
-  {
-    id: "2",
-    date: moment.utc("2020-06-11").format("YYYY-MM-DD"),
-    first_name: "Nicolas",
-    last_name: "Li",
-    email: "premierhomme@gmail.com",
-    amount: 3,
-    option_label: "label_3",
-  },
 ];
 
 const attendees = [
+  {
+    email: "premierhomme@gmail.com",
+    firstName: "Nicolas",
+    lastName: "Li",
+    lastParticipationDate: moment.utc("2020-06-11").toDate(),
+  },
   {
     email: "dictatriceajcf@gmail.com",
     firstName: "Laetitia",
     lastName: "Chhiv",
     lastParticipationDate: moment.utc("2020-06-10").toDate(),
   },
-  {
-    email: "premierhomme@gmail.com",
-    firstName: "Nicolas",
-    lastName: "Li",
-    lastParticipationDate: moment.utc("2020-06-08").toDate(),
-  },
 ];
 
 const tickets = [
   {
+    id: "2",
+    attendee: {
+      email: "premierhomme@gmail.com",
+      firstName: "Nicolas",
+      lastName: "Li",
+      lastParticipationDate: moment.utc("2020-06-11").toDate(),
+    },
+    event: {
+      mailjetListId: "0",
+      name: "test",
+    },
+    date: moment.utc("2020-06-11").toDate(),
+    amount: 3,
+    ticketType: "label_3",
+  },
+  {
     id: "0",
     attendee: {
       email: "dictatriceajcf@gmail.com",
+      firstName: "Laetitia",
+      lastName: "Chhiv",
+      lastParticipationDate: moment.utc("2020-06-10").toDate(),
     },
     event: {
       mailjetListId: "0",
@@ -84,6 +103,9 @@ const tickets = [
     id: "1",
     attendee: {
       email: "premierhomme@gmail.com",
+      firstName: "Nicolas",
+      lastName: "Li",
+      lastParticipationDate: moment.utc("2020-06-11").toDate(),
     },
     event: {
       mailjetListId: "0",
@@ -92,19 +114,6 @@ const tickets = [
     date: moment.utc("2020-06-08").toDate(),
     amount: 2,
     ticketType: "label_2",
-  },
-  {
-    id: "2",
-    attendee: {
-      email: "premierhomme@gmail.com",
-    },
-    event: {
-      mailjetListId: "0",
-      name: "test",
-    },
-    date: moment.utc("2020-06-12").toDate(),
-    amount: 3,
-    ticketType: "label_3",
   },
 ];
 
@@ -115,61 +124,8 @@ describe("updateTicketAttendeeEntities", () => {
     upsertTickets.mockImplementation(async () => tickets);
     // @ts-ignore
     await updateSingleEventTicketAttendeeEntities(event);
-    expect(upsertAttendees).toHaveBeenCalledWith([
-      {
-        email: "dictatriceajcf@gmail.com",
-        firstName: "Laetitia",
-        lastName: "Chhiv",
-        lastParticipationDate: moment.utc("2020-06-10").toDate(),
-      },
-      {
-        email: "premierhomme@gmail.com",
-        firstName: "Nicolas",
-        lastName: "Li",
-        lastParticipationDate: moment.utc("2020-06-08").toDate(),
-      },
-    ]);
-    expect(upsertTickets).toHaveBeenCalledWith([
-      {
-        id: "0",
-        attendee: {
-          email: "dictatriceajcf@gmail.com",
-          firstName: "Laetitia",
-          lastName: "Chhiv",
-          lastParticipationDate: moment.utc("2020-06-10").toDate(),
-        },
-        event,
-        date: moment.utc("2020-06-10").toDate(),
-        amount: 1,
-        ticketType: "label_1",
-      },
-      {
-        id: "1",
-        attendee: {
-          email: "premierhomme@gmail.com",
-          firstName: "Nicolas",
-          lastName: "Li",
-          lastParticipationDate: moment.utc("2020-06-08").toDate(),
-        },
-        event,
-        date: moment.utc("2020-06-08").toDate(),
-        amount: 2,
-        ticketType: "label_2",
-      },
-      {
-        id: "2",
-        attendee: {
-          email: "premierhomme@gmail.com",
-          firstName: "Nicolas",
-          lastName: "Li",
-          lastParticipationDate: moment.utc("2020-06-12").toDate(),
-        },
-        event,
-        date: moment.utc("2020-06-12").toDate(),
-        amount: 3,
-        ticketType: "label_2",
-      },
-    ]);
+    expect(upsertAttendees).toHaveBeenCalledWith(attendees);
+    expect(upsertTickets).toHaveBeenCalledWith(tickets);
     expect(updateEvent).toHaveBeenCalled();
     expect(linkContactsToMailingList).toHaveBeenCalledWith({ attendees, event });
   });
