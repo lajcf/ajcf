@@ -4,3 +4,5 @@ node_modules
 /ajcf-site/public
 /**/*.json
 /**/*.pdf
+/**/.env
+/dist/

@@ -1,8 +1,11 @@
 import { getRepository } from "typeorm";
 import moment from "moment";
+import { orderBy } from "lodash";
 import { HelloAssoCampaign } from "../../helloAsso/resources";
 import { Event } from "../../../entities/Event";
 import { fetchCampaigns } from "../../helloAsso/fetchCampaigns";
+import { createMailingListsForEvents } from "./createMailingListsForEvents";
+import { saveMultipleEntities } from "../../../utils/saveUtils";
 
 export const formatHelloAssoEvent = (campaign: HelloAssoCampaign) => ({
   id: parseInt(campaign.id, 10).toString(),
@@ -20,9 +23,13 @@ export const formatHelloAssoEvent = (campaign: HelloAssoCampaign) => ({
   lastUpdateOnHelloAsso: moment.utc(campaign.last_update).toDate(),
 });
 
-export const upsertHelloAssoEvents = async () => {
+export const updateEventEntities = async (): Promise<Event[]> => {
   const helloAssoEvents = await fetchCampaigns({ campaignType: "EVENT" });
-  const insertedEventsToDb = await getRepository(Event).save(helloAssoEvents.map(formatHelloAssoEvent));
-  console.log(`Upserted ${insertedEventsToDb.length} events into DB`);
-  return true;
+  const formattedHelloAssoEvents = helloAssoEvents.map(formatHelloAssoEvent);
+  const currentEvents = formattedHelloAssoEvents.filter((event) => event.startDate > new Date());
+  const updatedEvents = await saveMultipleEntities(currentEvents, getRepository(Event), "id");
+  console.log(`Upserted ${updatedEvents.length} events into DB`);
+  const updatedEventsWithMailingList = await createMailingListsForEvents(updatedEvents);
+  console.log(`Upserted ${updatedEventsWithMailingList.length} mailing lists on MailJet`);
+  return orderBy(updatedEventsWithMailingList, (event) => event.creationDate);
 };
