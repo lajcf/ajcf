@@ -14,8 +14,8 @@ const { upsertTickets } = require("../../../tickets/upsertTickets");
 jest.mock("../../../events/mutations/updateEvent");
 const { updateEvent } = require("../../../events/mutations/updateEvent");
 
-jest.mock("../../../mailjet/linkContactsToMailingList");
-const { linkContactsToMailingList } = require("../../../mailjet/linkContactsToMailingList");
+jest.mock("../../mutations/utils/subscribeAttendeesToEventMailingList");
+const { subscribeAttendeesToEventMailingList } = require("../utils/subscribeAttendeesToEventMailingList");
 
 const event = {
   mailjetListId: "0",
@@ -127,6 +127,6 @@ describe("updateTicketAttendeeEntities", () => {
     expect(upsertAttendees).toHaveBeenCalledWith(attendees);
     expect(upsertTickets).toHaveBeenCalledWith(tickets);
     expect(updateEvent).toHaveBeenCalled();
-    expect(linkContactsToMailingList).toHaveBeenCalledWith({ attendees, event });
+    expect(subscribeAttendeesToEventMailingList).toHaveBeenCalledWith({ attendees, event });
   });
 });

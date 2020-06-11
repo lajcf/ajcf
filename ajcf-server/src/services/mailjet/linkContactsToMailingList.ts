@@ -1,6 +1,4 @@
 import mailjet from "node-mailjet";
-import { Attendee } from "../../entities/Attendee";
-import { Event } from "../../entities/Event";
 
 export enum MailingListAction {
   addnoforce = "addnoforce",
@@ -20,8 +18,8 @@ export interface CreateMailingListArgs {
 }
 
 export interface LinkContactsToMailingListArgs {
-  attendees: Attendee[];
-  event: Event;
+  emails: string[];
+  mailjetListId: string;
 }
 
 export const linkContactsToMailingList = async (args: LinkContactsToMailingListArgs) => {
@@ -29,17 +27,15 @@ export const linkContactsToMailingList = async (args: LinkContactsToMailingListA
     console.log("Developement environment, do not link contacts to mailing list");
     return;
   }
-  const mailingListId = args.event.mailjetListId;
-  if (!mailingListId) throw new Error(`Event ${args.event.name} does not have a related mailing list on Mailjet`);
   try {
     const mailjetArgs: CreateMailingListArgs = {
-      Contacts: args.attendees.map((attendee) => ({
-        Email: attendee.email,
+      Contacts: args.emails.map((email) => ({
+        Email: email,
       })),
       ContactsLists: [
         {
           Action: MailingListAction.addnoforce,
-          ListID: mailingListId,
+          ListID: args.mailjetListId,
         },
       ],
     };

@@ -1,4 +1,4 @@
-export const welcomeMail = `<p>Bienvenue cher(e) membre de l&#39;AJCF !</p>
+export const welcomeMail = (firstName: string) => `<p>Bienvenue ${firstName}</p>
 <p>Toute l’équipe AJCF est heureuse de t’accueillir 🤗</p>
 <p>En adhérant à l’AJCF, tu manifestes ton soutien pour notre association et les idéaux que nous portons : nous t’en remercions vivement 😍</p>
 <p>L&#39;adhésion à l’AJCF offre les avantages suivants, pour une durée d&#39;un an renouvelable, à partir de ce jour :</p>
