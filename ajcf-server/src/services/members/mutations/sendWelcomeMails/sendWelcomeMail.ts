@@ -22,7 +22,7 @@ export const sendWelcomeMail = async (member: Member) => {
       Name: "Association des Jeunes Chinois de France",
     },
     Subject: "Bienvenue à l'AJCF !",
-    HTMLPart: welcomeMail,
+    HTMLPart: welcomeMail(member.firstName),
     Attachments: [
       {
         ContentType: "application/pdf",

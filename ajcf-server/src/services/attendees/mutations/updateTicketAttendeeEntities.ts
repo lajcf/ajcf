@@ -3,7 +3,6 @@ import { uniqBy } from "lodash";
 import { Ticket } from "../../../entities/Ticket";
 import { Event } from "../../../entities/Event";
 import { fetchActions } from "../../helloAsso/fetchActions";
-import { linkContactsToMailingList } from "../../mailjet/linkContactsToMailingList";
 import { limit } from "../../../utils/pLimit";
 import { upsertAttendees } from "./upsertAttendees";
 import { updateEvent } from "../../events/mutations/updateEvent";
@@ -11,6 +10,7 @@ import { upsertTickets } from "../../tickets/upsertTickets";
 import { formatTicketToAttendee } from "./utils/formatHelloAssoActionToAttendee";
 import { formatHelloAssoTicketToTicket } from "./utils/formatHelloAssoActionToTicket";
 import { Attendee } from "../../../entities/Attendee";
+import { subscribeAttendeesToEventMailingList } from "./utils/subscribeAttendeesToEventMailingList";
 
 export const updateSingleEventTicketAttendeeEntities = async (event: Event) => {
   const helloAssoActions = await fetchActions({ actionType: "INSCRIPTION", campaignId: `00000${event.id}` });
@@ -20,7 +20,7 @@ export const updateSingleEventTicketAttendeeEntities = async (event: Event) => {
     ...event,
     tickets,
   });
-  await linkContactsToMailingList({ attendees, event });
+  await subscribeAttendeesToEventMailingList({ attendees, event });
   console.log(`Processed attendees and tickets of event ${event.name}`);
   await waait(2000);
   return { attendees, tickets };
