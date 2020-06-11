@@ -7,7 +7,7 @@ import { fetchCampaigns } from "../../helloAsso/fetchCampaigns";
 import { createMailingListsForEvents } from "./createMailingListsForEvents";
 import { saveMultipleEntities } from "../../../utils/saveUtils";
 
-export const formatHelloAssoEvent = (campaign: HelloAssoCampaign): Partial<Event> => ({
+export const formatHelloAssoEvent = (campaign: HelloAssoCampaign) => ({
   id: parseInt(campaign.id, 10).toString(),
   name: campaign.name,
   funding: campaign.funding,
@@ -25,11 +25,9 @@ export const formatHelloAssoEvent = (campaign: HelloAssoCampaign): Partial<Event
 
 export const updateEventEntities = async (): Promise<Event[]> => {
   const helloAssoEvents = await fetchCampaigns({ campaignType: "EVENT" });
-  const updatedEvents = await saveMultipleEntities(
-    helloAssoEvents.map(formatHelloAssoEvent),
-    getRepository(Event),
-    "id"
-  );
+  const formattedHelloAssoEvents = helloAssoEvents.map(formatHelloAssoEvent);
+  const currentEvents = formattedHelloAssoEvents.filter((event) => event.startDate > new Date());
+  const updatedEvents = await saveMultipleEntities(currentEvents, getRepository(Event), "id");
   console.log(`Upserted ${updatedEvents.length} events into DB`);
   const updatedEventsWithMailingList = await createMailingListsForEvents(updatedEvents);
   console.log(`Upserted ${updatedEventsWithMailingList.length} mailing lists on MailJet`);

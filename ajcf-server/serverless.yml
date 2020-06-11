@@ -71,10 +71,12 @@ provider:
 functions:
   updateMembers:
     handler: src/handlers/updateMembers.handler
-    # events:
-    #   - schedule: rate(1 hour)
+    events:
+      - schedule: rate(1 hour)
   updateEvents:
     handler: src/handlers/updateEvents.handler
+    events:
+      - schedule: rate(1 day)
     # events:
     #   - schedule: rate(1 hour)
     #reservedConcurrency: 200

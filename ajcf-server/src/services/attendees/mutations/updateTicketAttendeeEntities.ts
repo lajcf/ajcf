@@ -22,7 +22,7 @@ export const updateSingleEventTicketAttendeeEntities = async (event: Event) => {
   });
   await linkContactsToMailingList({ attendees, event });
   console.log(`Processed attendees and tickets of event ${event.name}`);
-  await waait(1000);
+  await waait(2000);
   return { attendees, tickets };
 };
 

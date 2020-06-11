@@ -4,6 +4,7 @@ import { createMailingList } from "../../mailjet/createMailingList";
 import { saveSingleEntity } from "../../../utils/saveUtils";
 
 export const createAndSaveMailingListId = async (event: Event) => {
+  console.log(`Processing event ${JSON.stringify(event, null, 2)}...`);
   const mailjetListId = await createMailingList(event.name);
   return saveSingleEntity(
     {

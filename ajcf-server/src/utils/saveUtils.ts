@@ -13,9 +13,7 @@ export const saveMultipleEntities = async <T, P>(input: T[], repository: Reposit
 };
 
 export const saveSingleEntity = async <T, P>(input: T, repository: Repository<P>, key: keyof P) => {
-  console.log("HOHOHO", JSON.stringify(input, null, 2));
   const savedEntity = await repository.save(input, { chunk: 200 });
-  console.log("HIHIHI", JSON.stringify(savedEntity, null, 2));
   const fullEntity = await repository.findOne({
     where: [
       {

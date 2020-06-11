@@ -20,7 +20,7 @@ export const createMailingList = async (name: string) => {
   try {
     const mailjetClient = mailjet.connect(process.env.MAILJET_API_KEY!, process.env.MAILJET_API_SECRET!);
     const request = (await mailjetClient.post("contactslist", { version: "v3" }).request({
-      Name: name,
+      Name: name.slice(0, 60),
     })) as { body: CreateMailingListMailjetResponse };
     const response = request.body.Data;
     if (response.length === 0) {
@@ -28,6 +28,7 @@ export const createMailingList = async (name: string) => {
     }
     return response[0].ID;
   } catch (e) {
+    console.log(`An error happened with event ${name}.`);
     console.log(e);
     throw e;
   }
