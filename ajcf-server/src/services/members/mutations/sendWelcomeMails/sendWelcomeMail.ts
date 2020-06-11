@@ -1,5 +1,5 @@
 import { Member } from "../../../../entities/Member";
-import { sendEmail } from "./sendEmail";
+import { sendEmail } from "../../../mailjet/sendEmail";
 import { welcomeMail } from "./assets/welcomeMail";
 import { brochureAJCF } from "./assets/brochureAJCF";
 
@@ -22,7 +22,7 @@ export const sendWelcomeMail = async (member: Member) => {
       Name: "Association des Jeunes Chinois de France",
     },
     Subject: "Bienvenue à l'AJCF !",
-    HTMLPart: welcomeMail,
+    HTMLPart: welcomeMail(member.firstName),
     Attachments: [
       {
         ContentType: "application/pdf",

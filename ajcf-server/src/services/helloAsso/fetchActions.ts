@@ -1,5 +1,6 @@
 import axios from "axios";
 import { GET_ACTIONS_URL, HelloAssoAction, HelloAssoActionType } from "./resources";
+import { orderBy } from "lodash";
 
 interface GetActionsInterface {
   campaignId: string;
@@ -21,7 +22,7 @@ export const fetchActions = async (args: GetActionsInterface): Promise<HelloAsso
         Authorization: `Basic ${encodedAuth}`,
       },
     });
-    return result.data.resources;
+    return orderBy(result.data.resources, (a) => a.date, "desc");
   } catch (e) {
     console.log(e);
     throw e;

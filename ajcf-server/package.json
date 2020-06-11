@@ -27,6 +27,7 @@
     "tsconfig-paths": "^3.9.0",
     "typeorm": "^0.2.24",
     "typescript": "^3.7.2",
+    "waait": "^1.0.5",
     "webpack": "^4.42.0"
   },
   "husky": {
