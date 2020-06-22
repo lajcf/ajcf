@@ -12,11 +12,15 @@ import { sizes } from "../../assets/css/variables/sizes";
 const Layout = ({ children }: { children: ReactNode }) => {
   const globalStyle = css`
     .main {
-      height: calc(100vh - ${sizes.headerHeight});
+      margin-top: ${sizes.headerHeight});
       margin-left: ${sizes.secondarySidebarWidth};
+      padding-bottom: 4em;
+      padding-left: 4em;
+      padding-right: 4em;
     }
     .text-content {
-      margin: 3em;
+      margin-top: 2em;
+      margin-bottom: 2em;
     }
   `;
   return (

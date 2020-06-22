@@ -4,8 +4,10 @@ import Layout from "../../components/Shared/Layout";
 import { SecondarySidebar } from "../../components/Shared/SecondarySidebar/SecondarySidebar";
 import { talkTheme } from "../../assets/poles/pageThemes";
 import { talkPageChineseTitle, talkPageFrenchTitle, talkPoles } from "../../assets/poles/talkPoles";
-import { MemoryPageQueryQuery } from "../../../gatsby-graphql";
 import { PoleContent } from "../../components/EspacePages/PolePages/PoleContent";
+import { RecentArticles } from "../../components/Shared/RecentArticles";
+import { MemoryPageQueryQuery } from "../../generated/types";
+import { uniqBy } from "lodash";
 
 const Memoire = () => {
   const data = useStaticQuery<MemoryPageQueryQuery>(graphql`
@@ -26,17 +28,33 @@ const Memoire = () => {
           }
         }
       }
-      contentfulPost(pole: { eq: "memoire" }) {
-        title
-        author
-        content {
-          childContentfulRichText {
-            html
+      allContentfulPost(filter: { pole: { eq: "memoire" } }) {
+        edges {
+          node {
+            slug
+            createdAt
+            title
+            author
+            content {
+              childContentfulRichText {
+                html
+              }
+            }
+            image {
+              fluid(maxWidth: 3000, quality: 100) {
+                base64
+                aspectRatio
+                src
+                srcSet
+                sizes
+              }
+            }
           }
         }
       }
     }
   `);
+  console.log(data);
   return (
     <Layout>
       <SecondarySidebar
@@ -46,7 +64,10 @@ const Memoire = () => {
         pageFrenchTitle={talkPageFrenchTitle}
         pageChineseTitle={talkPageChineseTitle}
       />
-      <PoleContent poleCover={data.file?.childImageSharp?.fluid} />
+      <div className="main">
+        <PoleContent poleCover={data.file?.childImageSharp?.fluid} />
+        <RecentArticles articles={uniqBy(data.allContentfulPost.edges, (article) => article.node.slug)} />
+      </div>
     </Layout>
   );
 };

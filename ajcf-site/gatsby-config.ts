@@ -1,5 +1,7 @@
 import { BLOCKS } from "@contentful/rich-text-types";
 import * as path from "path";
+import moment from "moment";
+import "moment/locale/fr";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const dotenv = require("dotenv");
 
@@ -7,19 +9,21 @@ if (process.env.NODE_ENV !== "production") {
   dotenv.config();
 }
 
+moment.locale("fr");
+
 export const pathPrefix = `/`; // This path is subpath of your hosting https://domain/portfolio
 export const siteMetadata = {
   title: "Association des Jeunes Chinois de France",
 };
 export const plugins = [
-  {
+  /*{
     resolve: `gatsby-plugin-graphql-codegen`,
     options: {
       codegen: true,
       fileName: `gatsby-graphql.d.ts`,
-      documentPaths: ["./src/**/*.{ts,tsx}", "./node_modules/gatsby-*/**/*.js", "./gatsby-node.ts"],
+      documentPaths: ["./src/!**!/!*.{ts,tsx}", "./node_modules/gatsby-*!/!**!/!*.js", "./gatsby-node.ts"],
     },
-  },
+  },*/
   {
     resolve: `gatsby-plugin-typescript`,
     options: {
