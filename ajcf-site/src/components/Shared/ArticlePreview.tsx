@@ -6,6 +6,7 @@ import moment from "moment";
 import { css } from "@emotion/core";
 import { ContentfulPost } from "../../generated/types";
 import { colors } from "../../assets/css/variables/colors";
+import { EspaceId, PoleId } from "./constants";
 
 const styles = css`
   .previewTitle {
@@ -30,6 +31,8 @@ const previewTitleStyle = css`
 `;
 
 interface ArticlePreviewArgs {
+  espaceId: EspaceId;
+  poleId: PoleId;
   article: ContentfulPost;
 }
 
@@ -46,13 +49,13 @@ const tagStyle: CSSProperties = {
 
 export const extractArticleExcerpt = (text?: string | null) => (text ? `${text.slice(0, 300)}...` : "");
 
-export default ({ article }: ArticlePreviewArgs) => {
+export default ({ article, espaceId, poleId }: ArticlePreviewArgs) => {
   console.log(article);
   return (
     <div>
       <Img alt="" fluid={article.image?.length && article.image?.length > 0 && article.image[0]?.fluid} />
       <h3 css={previewTitleStyle}>
-        <Link to={`/blog/${article.slug}`}>{article.title}</Link>
+        <Link to={`/${espaceId}/${poleId}/${article.slug}`}>{article.title}</Link>
       </h3>
       <p>{moment.utc(article.createdAt).format("LL")}</p>
       <div

@@ -3,8 +3,8 @@ import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import Layout from "../components/Shared/Layout";
 import Sidebar from "../components/Shared/Sidebar/Sidebar";
-import HomePageContent from "../components/HomePage/HomePageContent";
-import { HomePageQueryQuery } from "../../gatsby-graphql";
+import HomePageContent from "../components/HomePageComponents/HomePageContent";
+import { HomePageQueryQuery } from "../generated/types";
 
 const IndexPage = () => {
   const data = useStaticQuery<HomePageQueryQuery>(graphql`

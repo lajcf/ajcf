@@ -1,13 +1,14 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
+import { uniqBy } from "lodash";
 import Layout from "../../components/Shared/Layout";
 import { SecondarySidebar } from "../../components/Shared/SecondarySidebar/SecondarySidebar";
 import { talkTheme } from "../../assets/poles/pageThemes";
 import { talkPageChineseTitle, talkPageFrenchTitle, talkPoles } from "../../assets/poles/talkPoles";
-import { PoleContent } from "../../components/EspacePages/PolePages/PoleContent";
+import { PoleContent } from "../../components/EspaceComponents/PoleComponents/PoleContent";
 import { RecentArticles } from "../../components/Shared/RecentArticles";
 import { MemoryPageQueryQuery } from "../../generated/types";
-import { uniqBy } from "lodash";
+import { generateSidebarTheme } from "../../components/Shared/utils/generateSidebarTheme";
 
 const Memoire = () => {
   const data = useStaticQuery<MemoryPageQueryQuery>(graphql`
@@ -54,19 +55,17 @@ const Memoire = () => {
       }
     }
   `);
-  console.log(data);
+  const sidebarTheme = generateSidebarTheme("memoire");
   return (
     <Layout>
-      <SecondarySidebar
-        sectionName="talk"
-        pageTheme={talkTheme}
-        poles={talkPoles}
-        pageFrenchTitle={talkPageFrenchTitle}
-        pageChineseTitle={talkPageChineseTitle}
-      />
+      <SecondarySidebar {...sidebarTheme} />
       <div className="main">
         <PoleContent poleCover={data.file?.childImageSharp?.fluid} />
-        <RecentArticles articles={uniqBy(data.allContentfulPost.edges, (article) => article.node.slug)} />
+        <RecentArticles
+          articles={uniqBy(data.allContentfulPost.edges, (article) => article.node.slug)}
+          espaceId="talk"
+          poleId="memoire"
+        />
       </div>
     </Layout>
   );

@@ -2,9 +2,12 @@ import React from "react";
 import { css } from "@emotion/core";
 import ArticlePreview from "./ArticlePreview";
 import { ContentfulPost } from "../../generated/types";
+import { EspaceId, PoleId } from "./constants";
 
 type RecentArticlesArgs = {
   articles: { node: ContentfulPost }[];
+  espaceId: EspaceId;
+  poleId: PoleId;
 };
 
 const titleStyle = css`
@@ -21,7 +24,7 @@ const articlesListStyle = css`
   grid-gap: 5vmin;
 `;
 
-export const RecentArticles = ({ articles }: RecentArticlesArgs) => {
+export const RecentArticles = ({ articles, espaceId, poleId }: RecentArticlesArgs) => {
   return (
     <div>
       <h2 css={titleStyle}>Recent articles</h2>
@@ -29,7 +32,7 @@ export const RecentArticles = ({ articles }: RecentArticlesArgs) => {
         {articles.map((article) => {
           return (
             <li key={article.node.slug}>
-              <ArticlePreview article={article.node} />
+              <ArticlePreview article={article.node} espaceId={espaceId} poleId={poleId} />
             </li>
           );
         })}

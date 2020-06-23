@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/Shared/Layout";
-import { EspaceContent } from "../components/EspacePages/EspaceContent";
+import { EspaceContent } from "../components/EspaceComponents/EspaceContent";
 import { SecondarySidebar } from "../components/Shared/SecondarySidebar/SecondarySidebar";
 import ClubProCover from "../assets/img/covers/cover-club-pro.jpg";
 import RencontreMensuelleCover from "../assets/img/covers/cover-rencontre-mensuelle.jpg";

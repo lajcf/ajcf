@@ -1,8 +1,8 @@
 import React from "react";
 import Layout from "../components/Shared/Layout";
-import { EspaceContent } from "../components/EspacePages/EspaceContent";
+import { EspaceContent } from "../components/EspaceComponents/EspaceContent";
 import { SecondarySidebar } from "../components/Shared/SecondarySidebar/SecondarySidebar";
-import { EnjoyPoleId, LearnPoleId, MeetPoleId, TalkPoleId } from "../components/Shared/constants";
+import { PoleId } from "../components/Shared/constants";
 import { talkTheme } from "../assets/poles/pageThemes";
 import { talkPageChineseTitle, talkPageFrenchTitle, talkPoles } from "../assets/poles/talkPoles";
 
@@ -19,7 +19,7 @@ export interface PoleProps {
   className: string;
   imageSource: string;
   to: string;
-  id: TalkPoleId | LearnPoleId | MeetPoleId | EnjoyPoleId;
+  id: PoleId;
   title: string;
   description: string;
 }

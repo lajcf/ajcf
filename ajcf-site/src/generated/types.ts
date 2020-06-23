@@ -4327,6 +4327,20 @@ export type PostBySlugQuery = { __typename?: "Query" } & {
             childContentfulRichText?: Maybe<{ __typename?: "ContentfulRichText" } & Pick<ContentfulRichText, "html">>;
           }
         >;
+        image?: Maybe<
+          Array<
+            Maybe<
+              { __typename?: "ContentfulAsset" } & {
+                fluid?: Maybe<
+                  { __typename?: "ContentfulFluid" } & Pick<
+                    ContentfulFluid,
+                    "base64" | "aspectRatio" | "src" | "srcSet" | "sizes"
+                  >
+                >;
+              }
+            >
+          >
+        >;
       }
   >;
 };

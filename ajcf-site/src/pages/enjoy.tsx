@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/Shared/Layout";
-import { EspaceContent } from "../components/EspacePages/EspaceContent";
+import { EspaceContent } from "../components/EspaceComponents/EspaceContent";
 import { SecondarySidebar } from "../components/Shared/SecondarySidebar/SecondarySidebar";
 import CfdCover from "../assets/img/covers/cover-cfd.jpg";
 import SportsSortiesCover from "../assets/img/covers/cover-sports-sorties.jpg";

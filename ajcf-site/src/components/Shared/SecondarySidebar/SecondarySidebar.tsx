@@ -19,7 +19,13 @@ interface SecondarySidebarProps {
   pageChineseTitle: string;
 }
 
-export const SecondarySidebar = ({ pageFrenchTitle, pageChineseTitle, pageTheme, poles }: SecondarySidebarProps) => {
+export const SecondarySidebar = ({
+  sectionName,
+  pageFrenchTitle,
+  pageChineseTitle,
+  pageTheme,
+  poles,
+}: SecondarySidebarProps) => {
   const secondaryTabLinkStyle = css`
     transition: color 0.2s ease;
     border: 0;
@@ -38,7 +44,7 @@ export const SecondarySidebar = ({ pageFrenchTitle, pageChineseTitle, pageTheme,
   `;
 
   const activeLinkStyle = {
-    borderRadius: "0.2em",
+    /*borderRadius: "0.2em",
     // position: "absolute",
     bottom: "0",
     right: "0",
@@ -47,6 +53,7 @@ export const SecondarySidebar = ({ pageFrenchTitle, pageChineseTitle, pageTheme,
     content: "",
     maxWidth: "100%",
     backgroundImage: `linear-gradient(to right, ${colors.colorTalkLight}, ${colors.colorTalkLight})`,
+    color: colors.colorTalkLight,*/
     color: colors.colorTalkLight,
   };
 
@@ -128,7 +135,7 @@ export const SecondarySidebar = ({ pageFrenchTitle, pageChineseTitle, pageTheme,
   return (
     <section id="secondary-sidebar" css={secondarySidebarStyle}>
       <div css={secondarySidebarContentStyle}>
-        <Link to="/">
+        <Link to={`/${sectionName}`}>
           <Icon css={backToHomePageIconStyle} className="arrow left" size="big" />
         </Link>
         <AreaTitle titleFrench={pageFrenchTitle} titleChinese={pageChineseTitle} />
