@@ -2,14 +2,14 @@ import React from "react";
 import { Link } from "gatsby";
 import { css } from "@emotion/core";
 import { sizes } from "../../assets/css/variables/sizes";
-import { AreaPageTheme, PoleProps } from "../../pages/talk";
+import { EspacePageTheme, PoleProps } from "../../pages/talk";
 
 export type CoverPoleProps = {
-  pageTheme: AreaPageTheme;
+  pageTheme: EspacePageTheme;
   numberOfPoles: number;
 } & PoleProps;
 
-export const CoverPole = ({
+export const EspacePoleCover = ({
   imageSource,
   to,
   index,
@@ -32,7 +32,7 @@ export const CoverPole = ({
     max-width: 505px;
     width: auto;
     img {
-      max-height: 284px;
+      max-height: 270px;
       height: auto;
     }
   `;

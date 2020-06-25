@@ -1,8 +1,8 @@
 import React from "react";
 import { css } from "@emotion/core";
 import ArticlePreview from "./ArticlePreview";
-import { ContentfulPost } from "../../generated/types";
-import { EspaceId, PoleId } from "./constants";
+import { ContentfulPost } from "../../../generated/types";
+import { EspaceId, PoleId } from "../../../assets/poles/constants";
 
 type RecentArticlesArgs = {
   articles: { node: ContentfulPost }[];

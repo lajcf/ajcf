@@ -5,19 +5,19 @@ import Layout from "../../components/Shared/Layout";
 import { SecondarySidebar } from "../../components/Shared/SecondarySidebar/SecondarySidebar";
 import { PoleContent } from "../../components/EspaceComponents/PoleComponents/PoleContent";
 import { RecentArticles } from "../../components/EspaceComponents/PoleComponents/RecentArticles";
-import { MemoryPageQueryQuery, ImageSharpFluid } from "../../generated/types";
+import { DddPageQueryQuery, ImageSharpFluid } from "../../generated/types";
 import { generateSidebarTheme } from "../../components/Shared/utils/generateSidebarTheme";
-import { memoirePole } from "../../assets/poles/talkPoles";
+import { dddPole } from "../../assets/poles/talkPoles";
 
-const Memoire = () => {
-  const data = useStaticQuery<MemoryPageQueryQuery>(graphql`
-    query memoryPageQuery {
+const Ddd = () => {
+  const data = useStaticQuery<DddPageQueryQuery>(graphql`
+    query dddPageQuery {
       site {
         siteMetadata {
           title
         }
       }
-      file(relativePath: { eq: "memoire.jpeg" }) {
+      file(relativePath: { eq: "ddd.jpeg" }) {
         childImageSharp {
           fluid(maxWidth: 3000, quality: 100) {
             base64
@@ -28,7 +28,7 @@ const Memoire = () => {
           }
         }
       }
-      allContentfulPost(filter: { pole: { eq: "memoire" } }) {
+      allContentfulPost(filter: { pole: { eq: "ddd" } }) {
         edges {
           node {
             slug
@@ -54,20 +54,20 @@ const Memoire = () => {
       }
     }
   `);
-  const sidebarTheme = generateSidebarTheme(memoirePole.id);
+  const sidebarTheme = generateSidebarTheme(dddPole.id);
   return (
     <Layout>
-      <SecondarySidebar {...sidebarTheme} activePoleId={memoirePole.id} />
+      <SecondarySidebar {...sidebarTheme} activePoleId={dddPole.id} />
       <div className="main with-padding">
-        <PoleContent poleCover={data.file?.childImageSharp?.fluid as ImageSharpFluid} poleProps={memoirePole} />
+        <PoleContent poleCover={data.file?.childImageSharp?.fluid as ImageSharpFluid} poleProps={dddPole} />
         <RecentArticles
           articles={uniqBy(data.allContentfulPost.edges, (article) => article.node.slug)}
           espaceId="talk"
-          poleId={memoirePole.id}
+          poleId={dddPole.id}
         />
       </div>
     </Layout>
   );
 };
 
-export default Memoire;
+export default Ddd;

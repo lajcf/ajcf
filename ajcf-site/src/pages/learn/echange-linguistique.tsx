@@ -5,19 +5,20 @@ import Layout from "../../components/Shared/Layout";
 import { SecondarySidebar } from "../../components/Shared/SecondarySidebar/SecondarySidebar";
 import { PoleContent } from "../../components/EspaceComponents/PoleComponents/PoleContent";
 import { RecentArticles } from "../../components/EspaceComponents/PoleComponents/RecentArticles";
-import { MemoryPageQueryQuery, ImageSharpFluid } from "../../generated/types";
+import { EchangeLinguistiquePageQueryQuery, ImageSharpFluid } from "../../generated/types";
 import { generateSidebarTheme } from "../../components/Shared/utils/generateSidebarTheme";
-import { memoirePole } from "../../assets/poles/talkPoles";
+import { conferencesPole } from "../../assets/poles/talkPoles";
+import { devPersoPole, echangeLinguistiquePole } from "../../assets/poles/learnPoles";
 
-const Memoire = () => {
-  const data = useStaticQuery<MemoryPageQueryQuery>(graphql`
-    query memoryPageQuery {
+const EchangeLinguistique = () => {
+  const data = useStaticQuery<EchangeLinguistiquePageQueryQuery>(graphql`
+    query echangeLinguistiquePageQuery {
       site {
         siteMetadata {
           title
         }
       }
-      file(relativePath: { eq: "memoire.jpeg" }) {
+      file(relativePath: { eq: "echange-linguistique.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 3000, quality: 100) {
             base64
@@ -28,7 +29,7 @@ const Memoire = () => {
           }
         }
       }
-      allContentfulPost(filter: { pole: { eq: "memoire" } }) {
+      allContentfulPost(filter: { pole: { eq: "echange-linguistique" } }) {
         edges {
           node {
             slug
@@ -54,20 +55,23 @@ const Memoire = () => {
       }
     }
   `);
-  const sidebarTheme = generateSidebarTheme(memoirePole.id);
+  const sidebarTheme = generateSidebarTheme(echangeLinguistiquePole.id);
   return (
     <Layout>
-      <SecondarySidebar {...sidebarTheme} activePoleId={memoirePole.id} />
+      <SecondarySidebar {...sidebarTheme} activePoleId={echangeLinguistiquePole.id} />
       <div className="main with-padding">
-        <PoleContent poleCover={data.file?.childImageSharp?.fluid as ImageSharpFluid} poleProps={memoirePole} />
+        <PoleContent
+          poleCover={data.file?.childImageSharp?.fluid as ImageSharpFluid}
+          poleProps={echangeLinguistiquePole}
+        />
         <RecentArticles
           articles={uniqBy(data.allContentfulPost.edges, (article) => article.node.slug)}
-          espaceId="talk"
-          poleId={memoirePole.id}
+          espaceId="learn"
+          poleId={echangeLinguistiquePole.id}
         />
       </div>
     </Layout>
   );
 };
 
-export default Memoire;
+export default EchangeLinguistique;

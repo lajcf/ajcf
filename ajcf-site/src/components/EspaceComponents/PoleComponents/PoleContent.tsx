@@ -2,9 +2,11 @@ import React from "react";
 import Img from "gatsby-image";
 import { css } from "@emotion/core";
 import { ImageSharpFluid } from "../../../generated/types";
+import { PoleProps } from "../../../pages/talk";
 
 interface PoleContentProps {
-  poleCover?: ImageSharpFluid;
+  poleCover?: ImageSharpFluid | null;
+  poleProps: PoleProps;
 }
 
 const titleStyle: React.CSSProperties = {
@@ -23,22 +25,15 @@ const divImageStyle = css`
   }
 `;
 
-export const PoleContent = ({ poleCover }: PoleContentProps) => {
+export const PoleContent = ({ poleCover, poleProps }: PoleContentProps) => {
   return (
     <div>
-      <h1 style={titleStyle}>Mémoire</h1>
+      <h1 style={titleStyle}>{poleProps.title}</h1>
       <div css={divImageStyle}>
-        <Img fluid={poleCover} alt="Memoire cover" />
+        <Img fluid={poleCover} alt="" />
       </div>
       <div className="text-content">
-        <p>
-          L’espace “Conférences-débats” explore des thématiques en rapport à l’histoire commune et le profil culturel
-          des Français d’origine chinoise. Des sujets touchant à la culture chinoise et l’actualité de la Chine
-          contemporaine y sont également discutés. Ce lieu d’échange permet ainsi aux membres de l’association de
-          partager leurs réflexions, leurs vécus et leurs ressentis, autour de questions qui les touchent directement.
-          Les activités organisées dans cet Espace se présentent sous des formats divers : questionnaires, témoignages,
-          cafés-débats, interviews...
-        </p>
+        <p>{poleProps.description}</p>
       </div>
     </div>
   );

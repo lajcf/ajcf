@@ -14,6 +14,8 @@ const Layout = ({ children }: { children: ReactNode }) => {
     .main {
       margin-top: ${sizes.headerHeight});
       margin-left: ${sizes.secondarySidebarWidth};
+    }
+    .with-padding {
       padding-bottom: 4em;
       padding-left: 4em;
       padding-right: 4em;

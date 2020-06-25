@@ -1,9 +1,9 @@
 import React from "react";
 import { Espace } from "./Espace";
 import AJCFSpace from "../Layout/AJCFSpace";
-import { ImageSharpFluid } from "../../../gatsby-graphql";
 import { colors } from "../../assets/css/variables/colors";
-import { EspaceId } from "../Shared/constants";
+import { EspaceId } from "../../assets/poles/constants";
+import { ImageSharpFluid } from "../../generated/types";
 
 export interface EspaceProps {
   imageSource?: ImageSharpFluid;

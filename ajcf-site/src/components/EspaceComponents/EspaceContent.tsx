@@ -1,10 +1,10 @@
 import React from "react";
-import { CoverPole } from "./CoverPole";
-import { AreaPageTheme, PoleProps } from "../../pages/talk";
+import { EspacePageTheme, PoleProps } from "../../pages/talk";
+import { EspacePoleCover } from "./EspacePoleCover";
 
 interface TalkPageProps {
   poles: PoleProps[];
-  pageTheme: AreaPageTheme;
+  pageTheme: EspacePageTheme;
   numberOfPoles: number;
 }
 
@@ -12,7 +12,7 @@ export const EspaceContent = ({ poles, pageTheme, numberOfPoles }: TalkPageProps
   return (
     <div className="main">
       {poles.map((pole, index) => (
-        <CoverPole
+        <EspacePoleCover
           key={pole.className}
           className={pole.className}
           imageSource={pole.imageSource}

@@ -5,7 +5,7 @@ import { SecondarySidebar } from "../components/Shared/SecondarySidebar/Secondar
 import ClubProCover from "../assets/img/covers/cover-club-pro.jpg";
 import RencontreMensuelleCover from "../assets/img/covers/cover-rencontre-mensuelle.jpg";
 import { colors } from "../assets/css/variables/colors";
-import { AreaPageTheme, PoleProps } from "./talk";
+import { EspacePageTheme, PoleProps } from "./talk";
 
 const Meet = () => {
   const pageFrenchTitle = "Connexion";
@@ -29,7 +29,7 @@ const Meet = () => {
       description: "Lorem Ipsum",
     },
   ];
-  const pageTheme: AreaPageTheme = {
+  const pageTheme: EspacePageTheme = {
     mainColor: colors.colorMeet,
     mainColorLight: colors.colorMeetLight,
     secondaryColor: colors.colorEnjoy,

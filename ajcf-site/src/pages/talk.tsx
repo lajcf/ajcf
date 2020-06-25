@@ -2,11 +2,11 @@ import React from "react";
 import Layout from "../components/Shared/Layout";
 import { EspaceContent } from "../components/EspaceComponents/EspaceContent";
 import { SecondarySidebar } from "../components/Shared/SecondarySidebar/SecondarySidebar";
-import { PoleId } from "../components/Shared/constants";
+import { PoleId } from "../assets/poles/constants";
 import { talkTheme } from "../assets/poles/pageThemes";
 import { talkPageChineseTitle, talkPageFrenchTitle, talkPoles } from "../assets/poles/talkPoles";
 
-export interface AreaPageTheme {
+export interface EspacePageTheme {
   mainColor: string;
   mainColorLight: string;
   secondaryColor: string;

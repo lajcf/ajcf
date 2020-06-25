@@ -1,10 +1,10 @@
 import React from "react";
 import { css } from "@emotion/core";
 import { colors } from "../../../assets/css/variables/colors";
-import { AreaPageTheme } from "../../../pages/talk";
+import { EspacePageTheme } from "../../../pages/talk";
 
 interface SocialIconsProps {
-  pageTheme: AreaPageTheme;
+  pageTheme: EspacePageTheme;
 }
 
 export const SocialIcons = ({ pageTheme }: SocialIconsProps) => {

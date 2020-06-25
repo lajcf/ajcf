@@ -5,19 +5,19 @@ import Layout from "../../components/Shared/Layout";
 import { SecondarySidebar } from "../../components/Shared/SecondarySidebar/SecondarySidebar";
 import { PoleContent } from "../../components/EspaceComponents/PoleComponents/PoleContent";
 import { RecentArticles } from "../../components/EspaceComponents/PoleComponents/RecentArticles";
-import { MemoryPageQueryQuery, ImageSharpFluid } from "../../generated/types";
+import { ConferencesPageQueryQuery, ImageSharpFluid, ContentfulPost } from "../../generated/types";
 import { generateSidebarTheme } from "../../components/Shared/utils/generateSidebarTheme";
-import { memoirePole } from "../../assets/poles/talkPoles";
+import { conferencesPole } from "../../assets/poles/talkPoles";
 
-const Memoire = () => {
-  const data = useStaticQuery<MemoryPageQueryQuery>(graphql`
-    query memoryPageQuery {
+const Conferences = () => {
+  const data = useStaticQuery<ConferencesPageQueryQuery>(graphql`
+    query conferencesPageQuery {
       site {
         siteMetadata {
           title
         }
       }
-      file(relativePath: { eq: "memoire.jpeg" }) {
+      file(relativePath: { eq: "conferences.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 3000, quality: 100) {
             base64
@@ -28,7 +28,7 @@ const Memoire = () => {
           }
         }
       }
-      allContentfulPost(filter: { pole: { eq: "memoire" } }) {
+      allContentfulPost(filter: { pole: { eq: "conferences" } }) {
         edges {
           node {
             slug
@@ -54,20 +54,20 @@ const Memoire = () => {
       }
     }
   `);
-  const sidebarTheme = generateSidebarTheme(memoirePole.id);
+  const sidebarTheme = generateSidebarTheme(conferencesPole.id);
   return (
     <Layout>
-      <SecondarySidebar {...sidebarTheme} activePoleId={memoirePole.id} />
+      <SecondarySidebar {...sidebarTheme} activePoleId={conferencesPole.id} />
       <div className="main with-padding">
-        <PoleContent poleCover={data.file?.childImageSharp?.fluid as ImageSharpFluid} poleProps={memoirePole} />
+        <PoleContent poleCover={data.file?.childImageSharp?.fluid as ImageSharpFluid} poleProps={conferencesPole} />
         <RecentArticles
           articles={uniqBy(data.allContentfulPost.edges, (article) => article.node.slug)}
           espaceId="talk"
-          poleId={memoirePole.id}
+          poleId={conferencesPole.id}
         />
       </div>
     </Layout>
   );
 };
 
-export default Memoire;
+export default Conferences;

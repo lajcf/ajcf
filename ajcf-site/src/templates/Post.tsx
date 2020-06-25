@@ -5,18 +5,30 @@ import { PostBySlugQuery } from "../generated/types";
 import Layout from "../components/Shared/Layout";
 import { generateSidebarTheme } from "../components/Shared/utils/generateSidebarTheme";
 import { SecondarySidebar } from "../components/Shared/SecondarySidebar/SecondarySidebar";
+import { css } from "@emotion/core";
+import { PoleId } from "../assets/poles/constants";
 
 interface PostProps {
   data: PostBySlugQuery;
 }
 
+const imageStyle = css`
+  margin-top: 1em;
+`;
+
+const titleStyle = css`
+  padding-bottom: 1em;
+  border-bottom: 1px solid #ddd;
+`;
+
 const Post: React.FC<PostProps> = ({ data }) => {
-  const sidebarTheme = generateSidebarTheme(data.contentfulPost?.pole);
+  const sidebarTheme = generateSidebarTheme(data.contentfulPost?.pole as PoleId);
   return (
     <Layout>
-      <SecondarySidebar {...sidebarTheme} />
-      <div className="main">
+      <SecondarySidebar {...sidebarTheme} activePoleId={data.contentfulPost?.pole as PoleId} />
+      <div className="main with-padding">
         <Img
+          css={imageStyle}
           alt=""
           fluid={
             data.contentfulPost?.image?.length &&
@@ -24,7 +36,7 @@ const Post: React.FC<PostProps> = ({ data }) => {
             data.contentfulPost?.image[0]?.fluid
           }
         />
-        <div>{data?.contentfulPost?.title}</div>
+        <h1 css={titleStyle}>{data?.contentfulPost?.title}</h1>
         <div
           dangerouslySetInnerHTML={{
             __html: data.contentfulPost?.content?.childContentfulRichText?.html || "",

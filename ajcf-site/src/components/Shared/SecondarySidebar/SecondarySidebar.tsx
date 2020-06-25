@@ -4,19 +4,20 @@ import { Link } from "gatsby";
 import { css } from "@emotion/core";
 import { Icon } from "semantic-ui-react";
 import { SocialIcons } from "../Sidebar/SocialIcons";
-import { EspaceId } from "../constants";
+import { EspaceId, PoleId } from "../../../assets/poles/constants";
 import { colors } from "../../../assets/css/variables/colors";
 import { sizes } from "../../../assets/css/variables/sizes";
-import { AreaTitle } from "../AreaTitle";
-import { AreaPageTheme, PoleProps } from "../../../pages/talk";
+import { AreaTitle } from "./AreaTitle";
+import { EspacePageTheme, PoleProps } from "../../../pages/talk";
 import { zIndices } from "../../../assets/css/variables/zIndices";
 
 interface SecondarySidebarProps {
   sectionName: EspaceId;
-  pageTheme: AreaPageTheme;
+  pageTheme: EspacePageTheme;
   poles: PoleProps[];
   pageFrenchTitle: string;
   pageChineseTitle: string;
+  activePoleId?: PoleId;
 }
 
 export const SecondarySidebar = ({
@@ -25,6 +26,7 @@ export const SecondarySidebar = ({
   pageChineseTitle,
   pageTheme,
   poles,
+  activePoleId,
 }: SecondarySidebarProps) => {
   const secondaryTabLinkStyle = css`
     transition: color 0.2s ease;
@@ -42,20 +44,6 @@ export const SecondarySidebar = ({
       color: ${pageTheme.secondaryColor};
     }
   `;
-
-  const activeLinkStyle = {
-    /*borderRadius: "0.2em",
-    // position: "absolute",
-    bottom: "0",
-    right: "0",
-    height: "0.15em",
-    width: "100%",
-    content: "",
-    maxWidth: "100%",
-    backgroundImage: `linear-gradient(to right, ${colors.colorTalkLight}, ${colors.colorTalkLight})`,
-    color: colors.colorTalkLight,*/
-    color: colors.colorTalkLight,
-  };
 
   const backToHomePageIconStyle = css`
     color: ${colors.ajcfWhite};
@@ -102,7 +90,7 @@ export const SecondarySidebar = ({
           }
           &.active {
             a {
-              color: colors.$color-talk-light;
+              color: ${colors.colorTalkLight};
 
               &:after {
                 max-width: 100%;
@@ -135,15 +123,17 @@ export const SecondarySidebar = ({
   return (
     <section id="secondary-sidebar" css={secondarySidebarStyle}>
       <div css={secondarySidebarContentStyle}>
-        <Link to={`/${sectionName}`}>
+        <Link to={activePoleId ? `/${sectionName}` : `/`}>
           <Icon css={backToHomePageIconStyle} className="arrow left" size="big" />
         </Link>
-        <AreaTitle titleFrench={pageFrenchTitle} titleChinese={pageChineseTitle} />
+        <Link to={`/${sectionName}`}>
+          <AreaTitle titleFrench={pageFrenchTitle} titleChinese={pageChineseTitle} />
+        </Link>
         <nav>
           <ul>
             {tabs.map((tab) => (
-              <li key={tab.key} className={cx(tab.className)}>
-                <Link to={tab.href} css={secondaryTabLinkStyle} activeStyle={activeLinkStyle}>
+              <li key={tab.key} className={cx(tab.className, activePoleId === tab.key ? "active" : undefined)}>
+                <Link to={tab.href} css={secondaryTabLinkStyle}>
                   {tab.content}
                 </Link>
               </li>

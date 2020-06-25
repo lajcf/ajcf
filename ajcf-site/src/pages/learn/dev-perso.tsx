@@ -5,19 +5,20 @@ import Layout from "../../components/Shared/Layout";
 import { SecondarySidebar } from "../../components/Shared/SecondarySidebar/SecondarySidebar";
 import { PoleContent } from "../../components/EspaceComponents/PoleComponents/PoleContent";
 import { RecentArticles } from "../../components/EspaceComponents/PoleComponents/RecentArticles";
-import { MemoryPageQueryQuery, ImageSharpFluid } from "../../generated/types";
+import { DevPersoPageQueryQuery, ImageSharpFluid, ContentfulPost } from "../../generated/types";
 import { generateSidebarTheme } from "../../components/Shared/utils/generateSidebarTheme";
-import { memoirePole } from "../../assets/poles/talkPoles";
+import { conferencesPole } from "../../assets/poles/talkPoles";
+import { devPersoPole } from "../../assets/poles/learnPoles";
 
-const Memoire = () => {
-  const data = useStaticQuery<MemoryPageQueryQuery>(graphql`
-    query memoryPageQuery {
+const DevPerso = () => {
+  const data = useStaticQuery<DevPersoPageQueryQuery>(graphql`
+    query devPersoPageQuery {
       site {
         siteMetadata {
           title
         }
       }
-      file(relativePath: { eq: "memoire.jpeg" }) {
+      file(relativePath: { eq: "dev-perso.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 3000, quality: 100) {
             base64
@@ -28,7 +29,7 @@ const Memoire = () => {
           }
         }
       }
-      allContentfulPost(filter: { pole: { eq: "memoire" } }) {
+      allContentfulPost(filter: { pole: { eq: "dev-perso" } }) {
         edges {
           node {
             slug
@@ -54,20 +55,20 @@ const Memoire = () => {
       }
     }
   `);
-  const sidebarTheme = generateSidebarTheme(memoirePole.id);
+  const sidebarTheme = generateSidebarTheme(devPersoPole.id);
   return (
     <Layout>
-      <SecondarySidebar {...sidebarTheme} activePoleId={memoirePole.id} />
+      <SecondarySidebar {...sidebarTheme} activePoleId={devPersoPole.id} />
       <div className="main with-padding">
-        <PoleContent poleCover={data.file?.childImageSharp?.fluid as ImageSharpFluid} poleProps={memoirePole} />
+        <PoleContent poleCover={data.file?.childImageSharp?.fluid as ImageSharpFluid} poleProps={devPersoPole} />
         <RecentArticles
           articles={uniqBy(data.allContentfulPost.edges, (article) => article.node.slug)}
-          espaceId="talk"
-          poleId={memoirePole.id}
+          espaceId="learn"
+          poleId={devPersoPole.id}
         />
       </div>
     </Layout>
   );
 };
 
-export default Memoire;
+export default DevPerso;

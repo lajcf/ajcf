@@ -5,7 +5,7 @@ import { SecondarySidebar } from "../components/Shared/SecondarySidebar/Secondar
 import CfdCover from "../assets/img/covers/cover-cfd.jpg";
 import SportsSortiesCover from "../assets/img/covers/cover-sports-sorties.jpg";
 import { colors } from "../assets/css/variables/colors";
-import { AreaPageTheme, PoleProps } from "./talk";
+import { EspacePageTheme, PoleProps } from "./talk";
 
 const Enjoy = () => {
   const pageFrenchTitle = "Loisir";
@@ -30,7 +30,7 @@ const Enjoy = () => {
         "Les activités sportives amènent les jeunes à se dépasser physiquement et mentalement, d’améliorer leur esprit d’équipe, en n’oubliant pas l’essentiel : se faire plaisir !",
     },
   ];
-  const pageTheme: AreaPageTheme = {
+  const pageTheme: EspacePageTheme = {
     mainColor: colors.colorEnjoy,
     mainColorLight: colors.colorEnjoyLight,
     secondaryColor: colors.colorEnjoy,

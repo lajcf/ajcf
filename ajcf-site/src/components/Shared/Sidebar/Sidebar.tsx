@@ -2,7 +2,7 @@ import React from "react";
 import Scrollspy from "react-scrollspy";
 import Tab, { TabProps } from "./Tab";
 import { SocialIcons } from "./SocialIcons";
-import { AreaPageTheme } from "../../../pages/talk";
+import { EspacePageTheme } from "../../../pages/talk";
 import { colors } from "../../../assets/css/variables/colors";
 
 const Sidebar = () => {
@@ -12,7 +12,7 @@ const Sidebar = () => {
     { content: "Actualités", sectionId: "news", href: "/#news", className: "main-link" },
     { content: "À propos", sectionId: "about", href: "/#about", className: "main-link" },
   ]);
-  const pageTheme: AreaPageTheme = {
+  const pageTheme: EspacePageTheme = {
     mainColor: colors.colorEnjoy,
     mainColorLight: colors.colorEnjoyLight,
     secondaryColor: colors.colorTalk,
