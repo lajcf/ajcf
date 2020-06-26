@@ -4325,6 +4325,96 @@ export type SiteTitleQueryQuery = (
   )> }
 );
 
+export type CfdPageQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type CfdPageQueryQuery = (
+  { __typename?: 'Query' }
+  & { site?: Maybe<(
+    { __typename?: 'Site' }
+    & { siteMetadata?: Maybe<(
+      { __typename?: 'SiteSiteMetadata' }
+      & Pick<SiteSiteMetadata, 'title'>
+    )> }
+  )>, file?: Maybe<(
+    { __typename?: 'File' }
+    & { childImageSharp?: Maybe<(
+      { __typename?: 'ImageSharp' }
+      & { fluid?: Maybe<(
+        { __typename?: 'ImageSharpFluid' }
+        & Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
+      )> }
+    )> }
+  )>, allContentfulPost: (
+    { __typename?: 'ContentfulPostConnection' }
+    & { edges: Array<(
+      { __typename?: 'ContentfulPostEdge' }
+      & { node: (
+        { __typename?: 'ContentfulPost' }
+        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author' | 'pole'>
+        & { content?: Maybe<(
+          { __typename?: 'contentfulPostContentRichTextNode' }
+          & { childContentfulRichText?: Maybe<(
+            { __typename?: 'ContentfulRichText' }
+            & Pick<ContentfulRichText, 'html'>
+          )> }
+        )>, image?: Maybe<Array<Maybe<(
+          { __typename?: 'ContentfulAsset' }
+          & { fluid?: Maybe<(
+            { __typename?: 'ContentfulFluid' }
+            & Pick<ContentfulFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
+          )> }
+        )>>> }
+      ) }
+    )> }
+  ) }
+);
+
+export type SportsSortiesPageQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type SportsSortiesPageQueryQuery = (
+  { __typename?: 'Query' }
+  & { site?: Maybe<(
+    { __typename?: 'Site' }
+    & { siteMetadata?: Maybe<(
+      { __typename?: 'SiteSiteMetadata' }
+      & Pick<SiteSiteMetadata, 'title'>
+    )> }
+  )>, file?: Maybe<(
+    { __typename?: 'File' }
+    & { childImageSharp?: Maybe<(
+      { __typename?: 'ImageSharp' }
+      & { fluid?: Maybe<(
+        { __typename?: 'ImageSharpFluid' }
+        & Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
+      )> }
+    )> }
+  )>, allContentfulPost: (
+    { __typename?: 'ContentfulPostConnection' }
+    & { edges: Array<(
+      { __typename?: 'ContentfulPostEdge' }
+      & { node: (
+        { __typename?: 'ContentfulPost' }
+        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author' | 'pole'>
+        & { content?: Maybe<(
+          { __typename?: 'contentfulPostContentRichTextNode' }
+          & { childContentfulRichText?: Maybe<(
+            { __typename?: 'ContentfulRichText' }
+            & Pick<ContentfulRichText, 'html'>
+          )> }
+        )>, image?: Maybe<Array<Maybe<(
+          { __typename?: 'ContentfulAsset' }
+          & { fluid?: Maybe<(
+            { __typename?: 'ContentfulFluid' }
+            & Pick<ContentfulFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
+          )> }
+        )>>> }
+      ) }
+    )> }
+  ) }
+);
+
 export type HomePageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -4349,6 +4439,28 @@ export type HomePageQueryQuery = (
             & GatsbyImageSharpFluidFragment
           )> }
         )> }
+      ) }
+    )> }
+  ), allContentfulPost: (
+    { __typename?: 'ContentfulPostConnection' }
+    & { edges: Array<(
+      { __typename?: 'ContentfulPostEdge' }
+      & { node: (
+        { __typename?: 'ContentfulPost' }
+        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author' | 'pole'>
+        & { content?: Maybe<(
+          { __typename?: 'contentfulPostContentRichTextNode' }
+          & { childContentfulRichText?: Maybe<(
+            { __typename?: 'ContentfulRichText' }
+            & Pick<ContentfulRichText, 'html'>
+          )> }
+        )>, image?: Maybe<Array<Maybe<(
+          { __typename?: 'ContentfulAsset' }
+          & { fluid?: Maybe<(
+            { __typename?: 'ContentfulFluid' }
+            & Pick<ContentfulFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
+          )> }
+        )>>> }
       ) }
     )> }
   ) }
@@ -4380,7 +4492,7 @@ export type DevPersoPageQueryQuery = (
       { __typename?: 'ContentfulPostEdge' }
       & { node: (
         { __typename?: 'ContentfulPost' }
-        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author'>
+        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author' | 'pole'>
         & { content?: Maybe<(
           { __typename?: 'contentfulPostContentRichTextNode' }
           & { childContentfulRichText?: Maybe<(
@@ -4425,7 +4537,97 @@ export type EchangeLinguistiquePageQueryQuery = (
       { __typename?: 'ContentfulPostEdge' }
       & { node: (
         { __typename?: 'ContentfulPost' }
-        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author'>
+        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author' | 'pole'>
+        & { content?: Maybe<(
+          { __typename?: 'contentfulPostContentRichTextNode' }
+          & { childContentfulRichText?: Maybe<(
+            { __typename?: 'ContentfulRichText' }
+            & Pick<ContentfulRichText, 'html'>
+          )> }
+        )>, image?: Maybe<Array<Maybe<(
+          { __typename?: 'ContentfulAsset' }
+          & { fluid?: Maybe<(
+            { __typename?: 'ContentfulFluid' }
+            & Pick<ContentfulFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
+          )> }
+        )>>> }
+      ) }
+    )> }
+  ) }
+);
+
+export type ClubProPageQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ClubProPageQueryQuery = (
+  { __typename?: 'Query' }
+  & { site?: Maybe<(
+    { __typename?: 'Site' }
+    & { siteMetadata?: Maybe<(
+      { __typename?: 'SiteSiteMetadata' }
+      & Pick<SiteSiteMetadata, 'title'>
+    )> }
+  )>, file?: Maybe<(
+    { __typename?: 'File' }
+    & { childImageSharp?: Maybe<(
+      { __typename?: 'ImageSharp' }
+      & { fluid?: Maybe<(
+        { __typename?: 'ImageSharpFluid' }
+        & Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
+      )> }
+    )> }
+  )>, allContentfulPost: (
+    { __typename?: 'ContentfulPostConnection' }
+    & { edges: Array<(
+      { __typename?: 'ContentfulPostEdge' }
+      & { node: (
+        { __typename?: 'ContentfulPost' }
+        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author' | 'pole'>
+        & { content?: Maybe<(
+          { __typename?: 'contentfulPostContentRichTextNode' }
+          & { childContentfulRichText?: Maybe<(
+            { __typename?: 'ContentfulRichText' }
+            & Pick<ContentfulRichText, 'html'>
+          )> }
+        )>, image?: Maybe<Array<Maybe<(
+          { __typename?: 'ContentfulAsset' }
+          & { fluid?: Maybe<(
+            { __typename?: 'ContentfulFluid' }
+            & Pick<ContentfulFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
+          )> }
+        )>>> }
+      ) }
+    )> }
+  ) }
+);
+
+export type RencontreMensuellePageQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type RencontreMensuellePageQueryQuery = (
+  { __typename?: 'Query' }
+  & { site?: Maybe<(
+    { __typename?: 'Site' }
+    & { siteMetadata?: Maybe<(
+      { __typename?: 'SiteSiteMetadata' }
+      & Pick<SiteSiteMetadata, 'title'>
+    )> }
+  )>, file?: Maybe<(
+    { __typename?: 'File' }
+    & { childImageSharp?: Maybe<(
+      { __typename?: 'ImageSharp' }
+      & { fluid?: Maybe<(
+        { __typename?: 'ImageSharpFluid' }
+        & Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
+      )> }
+    )> }
+  )>, allContentfulPost: (
+    { __typename?: 'ContentfulPostConnection' }
+    & { edges: Array<(
+      { __typename?: 'ContentfulPostEdge' }
+      & { node: (
+        { __typename?: 'ContentfulPost' }
+        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author' | 'pole'>
         & { content?: Maybe<(
           { __typename?: 'contentfulPostContentRichTextNode' }
           & { childContentfulRichText?: Maybe<(
@@ -4470,7 +4672,7 @@ export type ConferencesPageQueryQuery = (
       { __typename?: 'ContentfulPostEdge' }
       & { node: (
         { __typename?: 'ContentfulPost' }
-        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author'>
+        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author' | 'pole'>
         & { content?: Maybe<(
           { __typename?: 'contentfulPostContentRichTextNode' }
           & { childContentfulRichText?: Maybe<(
@@ -4515,7 +4717,7 @@ export type DddPageQueryQuery = (
       { __typename?: 'ContentfulPostEdge' }
       & { node: (
         { __typename?: 'ContentfulPost' }
-        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author'>
+        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author' | 'pole'>
         & { content?: Maybe<(
           { __typename?: 'contentfulPostContentRichTextNode' }
           & { childContentfulRichText?: Maybe<(
@@ -4560,7 +4762,7 @@ export type MemoryPageQueryQuery = (
       { __typename?: 'ContentfulPostEdge' }
       & { node: (
         { __typename?: 'ContentfulPost' }
-        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author'>
+        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author' | 'pole'>
         & { content?: Maybe<(
           { __typename?: 'contentfulPostContentRichTextNode' }
           & { childContentfulRichText?: Maybe<(

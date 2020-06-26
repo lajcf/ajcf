@@ -17,7 +17,7 @@ const Ddd = () => {
           title
         }
       }
-      file(relativePath: { eq: "ddd.jpeg" }) {
+      file(relativePath: { eq: "covers/cover-ddd.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 3000, quality: 100) {
             base64
@@ -35,6 +35,7 @@ const Ddd = () => {
             createdAt
             title
             author
+            pole
             content {
               childContentfulRichText {
                 html

@@ -71,9 +71,6 @@ const AJCFVideo = ({
         id={videoOverlayImageId}
         alt={videoOverlayImageAlt}
       />
-      <div className="btn-play">
-        <i className="ui icon play" />
-      </div>
       {children}
       <Modal
         basic

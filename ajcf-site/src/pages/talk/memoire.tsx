@@ -17,7 +17,7 @@ const Memoire = () => {
           title
         }
       }
-      file(relativePath: { eq: "memoire.jpeg" }) {
+      file(relativePath: { eq: "covers/cover-memoire.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 3000, quality: 100) {
             base64
@@ -35,6 +35,7 @@ const Memoire = () => {
             createdAt
             title
             author
+            pole
             content {
               childContentfulRichText {
                 html
@@ -60,11 +61,7 @@ const Memoire = () => {
       <SecondarySidebar {...sidebarTheme} activePoleId={memoirePole.id} />
       <div className="main with-padding">
         <PoleContent poleCover={data.file?.childImageSharp?.fluid as ImageSharpFluid} poleProps={memoirePole} />
-        <RecentArticles
-          articles={uniqBy(data.allContentfulPost.edges, (article) => article.node.slug)}
-          espaceId="talk"
-          poleId={memoirePole.id}
-        />
+        <RecentArticles articles={uniqBy(data.allContentfulPost.edges, (article) => article.node.slug)} />
       </div>
     </Layout>
   );

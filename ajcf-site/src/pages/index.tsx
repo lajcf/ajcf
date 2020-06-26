@@ -1,5 +1,5 @@
 import React from "react";
-
+import { uniqBy } from "lodash";
 import { graphql, useStaticQuery } from "gatsby";
 import Layout from "../components/Shared/Layout";
 import Sidebar from "../components/Shared/Sidebar/Sidebar";
@@ -14,7 +14,6 @@ const IndexPage = () => {
           title
         }
       }
-
       allFile(filter: { relativeDirectory: { eq: "homepage" } }) {
         edges {
           node {
@@ -26,13 +25,41 @@ const IndexPage = () => {
           }
         }
       }
+      allContentfulPost {
+        edges {
+          node {
+            slug
+            createdAt
+            title
+            author
+            pole
+            content {
+              childContentfulRichText {
+                html
+              }
+            }
+            image {
+              fluid(maxWidth: 3000, quality: 100) {
+                base64
+                aspectRatio
+                src
+                srcSet
+                sizes
+              }
+            }
+          }
+        }
+      }
     }
   `);
   const fluidImages = data.allFile.edges.map((edge) => edge.node.childImageSharp?.fluid);
   return (
     <Layout>
       <Sidebar />
-      <HomePageContent homePageImages={fluidImages} />
+      <HomePageContent
+        homePageImages={fluidImages}
+        articles={uniqBy(data.allContentfulPost.edges, (article) => article.node.slug)}
+      />
     </Layout>
   );
 };

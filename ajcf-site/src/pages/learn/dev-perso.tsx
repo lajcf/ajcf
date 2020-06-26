@@ -5,9 +5,8 @@ import Layout from "../../components/Shared/Layout";
 import { SecondarySidebar } from "../../components/Shared/SecondarySidebar/SecondarySidebar";
 import { PoleContent } from "../../components/EspaceComponents/PoleComponents/PoleContent";
 import { RecentArticles } from "../../components/EspaceComponents/PoleComponents/RecentArticles";
-import { DevPersoPageQueryQuery, ImageSharpFluid, ContentfulPost } from "../../generated/types";
+import { DevPersoPageQueryQuery, ImageSharpFluid } from "../../generated/types";
 import { generateSidebarTheme } from "../../components/Shared/utils/generateSidebarTheme";
-import { conferencesPole } from "../../assets/poles/talkPoles";
 import { devPersoPole } from "../../assets/poles/learnPoles";
 
 const DevPerso = () => {
@@ -18,7 +17,7 @@ const DevPerso = () => {
           title
         }
       }
-      file(relativePath: { eq: "dev-perso.jpg" }) {
+      file(relativePath: { eq: "covers/cover-dev-perso.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 3000, quality: 100) {
             base64
@@ -36,6 +35,7 @@ const DevPerso = () => {
             createdAt
             title
             author
+            pole
             content {
               childContentfulRichText {
                 html
@@ -61,11 +61,7 @@ const DevPerso = () => {
       <SecondarySidebar {...sidebarTheme} activePoleId={devPersoPole.id} />
       <div className="main with-padding">
         <PoleContent poleCover={data.file?.childImageSharp?.fluid as ImageSharpFluid} poleProps={devPersoPole} />
-        <RecentArticles
-          articles={uniqBy(data.allContentfulPost.edges, (article) => article.node.slug)}
-          espaceId="learn"
-          poleId={devPersoPole.id}
-        />
+        <RecentArticles articles={uniqBy(data.allContentfulPost.edges, (article) => article.node.slug)} />
       </div>
     </Layout>
   );

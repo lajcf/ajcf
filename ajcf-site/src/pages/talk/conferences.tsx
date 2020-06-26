@@ -17,7 +17,7 @@ const Conferences = () => {
           title
         }
       }
-      file(relativePath: { eq: "conferences.jpg" }) {
+      file(relativePath: { eq: "covers/cover-conferences.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 3000, quality: 100) {
             base64
@@ -35,6 +35,7 @@ const Conferences = () => {
             createdAt
             title
             author
+            pole
             content {
               childContentfulRichText {
                 html

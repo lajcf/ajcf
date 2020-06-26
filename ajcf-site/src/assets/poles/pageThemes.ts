@@ -31,7 +31,7 @@ export const meetTheme: EspacePageTheme = {
 export const enjoyTheme: EspacePageTheme = {
   mainColor: colors.colorEnjoy,
   mainColorLight: colors.colorEnjoyLight,
-  secondaryColor: colors.colorEnjoy,
+  secondaryColor: colors.colorTalkLight,
   secondaryColorLight: colors.colorEnjoyLight,
   secondaryColorLighter: colors.colorEnjoyLighter,
   secondaryColorLightest: colors.colorEnjoyLightest,

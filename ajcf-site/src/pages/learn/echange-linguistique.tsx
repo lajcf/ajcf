@@ -7,8 +7,7 @@ import { PoleContent } from "../../components/EspaceComponents/PoleComponents/Po
 import { RecentArticles } from "../../components/EspaceComponents/PoleComponents/RecentArticles";
 import { EchangeLinguistiquePageQueryQuery, ImageSharpFluid } from "../../generated/types";
 import { generateSidebarTheme } from "../../components/Shared/utils/generateSidebarTheme";
-import { conferencesPole } from "../../assets/poles/talkPoles";
-import { devPersoPole, echangeLinguistiquePole } from "../../assets/poles/learnPoles";
+import { echangeLinguistiquePole } from "../../assets/poles/learnPoles";
 
 const EchangeLinguistique = () => {
   const data = useStaticQuery<EchangeLinguistiquePageQueryQuery>(graphql`
@@ -18,7 +17,7 @@ const EchangeLinguistique = () => {
           title
         }
       }
-      file(relativePath: { eq: "echange-linguistique.jpg" }) {
+      file(relativePath: { eq: "covers/cover-echange-linguistique.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 3000, quality: 100) {
             base64
@@ -36,6 +35,7 @@ const EchangeLinguistique = () => {
             createdAt
             title
             author
+            pole
             content {
               childContentfulRichText {
                 html
@@ -64,11 +64,7 @@ const EchangeLinguistique = () => {
           poleCover={data.file?.childImageSharp?.fluid as ImageSharpFluid}
           poleProps={echangeLinguistiquePole}
         />
-        <RecentArticles
-          articles={uniqBy(data.allContentfulPost.edges, (article) => article.node.slug)}
-          espaceId="learn"
-          poleId={echangeLinguistiquePole.id}
-        />
+        <RecentArticles articles={uniqBy(data.allContentfulPost.edges, (article) => article.node.slug)} />
       </div>
     </Layout>
   );

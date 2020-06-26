@@ -90,7 +90,7 @@ export const SecondarySidebar = ({
           }
           &.active {
             a {
-              color: ${colors.colorTalkLight};
+              color: ${pageTheme.secondaryColor};
 
               &:after {
                 max-width: 100%;

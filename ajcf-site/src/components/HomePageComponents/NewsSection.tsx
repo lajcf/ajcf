@@ -1,12 +1,18 @@
 import React from "react";
 import { AJCFVideo } from "../Shared/AJCFVideo";
 import ajcfImproImage from "../../assets/img/ajcf-impro.jpg";
+import { RecentArticles } from "../EspaceComponents/PoleComponents/RecentArticles";
+import { ContentfulPost } from "../../generated/types";
 
-export const NewsSection = () => {
+export type NewsSectionProps = {
+  articles: ContentfulPost[];
+};
+
+export const NewsSection = ({ articles }: NewsSectionProps) => {
   return (
     <section id="news">
       <div className="section-title">
-        <h1>Prochains évènements</h1>
+        <h1>Actualités</h1>
       </div>
       <AJCFVideo
         videoOverlayImageSource={ajcfImproImage}
@@ -21,6 +27,7 @@ export const NewsSection = () => {
           programme, pleins d'exercices pour développer votre créativité, votre réactivité et votre confiance en vous
         </p>
       </div>
+      <RecentArticles articles={articles} />
     </section>
   );
 };
