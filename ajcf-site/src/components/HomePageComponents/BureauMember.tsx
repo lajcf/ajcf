@@ -1,7 +1,7 @@
 import React from "react";
 import { BureauMemberProps } from "./Bureau";
-import AJCFColumn from "../Layout/AJCFColumn";
-import { LazyLoadedImage } from "../Shared/LazyLoadedImage";
+import AJCFColumn from "../Shared/Layout/AJCFColumn";
+import { LazyLoadedImage } from "../Shared/Components/LazyLoadedImage";
 
 const style: React.CSSProperties = {
   textAlign: "center",

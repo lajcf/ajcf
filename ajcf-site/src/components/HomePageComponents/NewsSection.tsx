@@ -1,12 +1,18 @@
 import React from "react";
-import { AJCFVideo } from "../Shared/AJCFVideo";
+import { AJCFVideo } from "../Shared/Components/AJCFVideo";
 import ajcfImproImage from "../../assets/img/ajcf-impro.jpg";
-import { RecentArticles } from "../EspaceComponents/PoleComponents/RecentArticles";
+import { RecentArticles } from "../PoleComponents/RecentArticles";
 import { ContentfulPost } from "../../generated/types";
+import { css } from "@emotion/core";
 
 export type NewsSectionProps = {
   articles: ContentfulPost[];
 };
+
+const titleStyle = css`
+  padding-bottom: 1em 0;
+  border-bottom: 1px solid #ddd;
+`;
 
 export const NewsSection = ({ articles }: NewsSectionProps) => {
   return (
@@ -14,6 +20,7 @@ export const NewsSection = ({ articles }: NewsSectionProps) => {
       <div className="section-title">
         <h1>Actualités</h1>
       </div>
+      <h2 css={titleStyle}>À la une</h2>
       <AJCFVideo
         videoOverlayImageSource={ajcfImproImage}
         videoOverlayImageAlt="Cours d'improvisation AJCF"

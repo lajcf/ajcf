@@ -1,22 +1,18 @@
 import React from "react";
+import Img from "gatsby-image";
 import { Link } from "gatsby";
 import { css } from "@emotion/core";
 import { sizes } from "../../assets/css/variables/sizes";
-import { EspacePageTheme, PoleProps } from "../../pages/talk";
+import { ImageSharpFluid, ContentfulPoleFragmentFragment } from "../../generated/types";
+import { EspacePageTheme } from "../../assets/poles/pageThemes";
 
 export type CoverPoleProps = {
+  pole: ContentfulPoleFragmentFragment;
   pageTheme: EspacePageTheme;
   numberOfPoles: number;
-} & PoleProps;
+};
 
-export const EspacePoleCover = ({
-  imageSource,
-  to,
-  index,
-  description,
-  pageTheme,
-  numberOfPoles,
-}: CoverPoleProps & { index: number }) => {
+export const EspacePoleCover = ({ pole, index, pageTheme, numberOfPoles }: CoverPoleProps & { index: number }) => {
   const coverPoleSectionStyle = (poleIndex: number): React.CSSProperties => ({
     display: "flex",
     flexDirection: "row",
@@ -31,7 +27,7 @@ export const EspacePoleCover = ({
     justify-content: center;
     max-width: 505px;
     width: auto;
-    img {
+    > img {
       max-height: 270px;
       height: auto;
     }
@@ -59,19 +55,20 @@ export const EspacePoleCover = ({
       }
     }
   `;
+  console.log(pole.cover);
   return (
     <div style={coverPoleSectionStyle(index)}>
       <div css={descriptionPoleStyle}>
-        <p>{description}</p>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: pole.description?.childContentfulRichText?.html || "",
+          }}
+        />
         <div css={learnMoreButtonStyle}>
-          <Link to={to}>En savoir plus</Link>
+          <Link to={pole?.slug || ""}>En savoir plus</Link>
         </div>
       </div>
-      <div css={coverPoleStyle}>
-        <Link to={to}>
-          <img src={imageSource} alt="" />
-        </Link>
-      </div>
+      <Img css={coverPoleStyle} fluid={pole.cover?.fluid as ImageSharpFluid} alt="" />
     </div>
   );
 };

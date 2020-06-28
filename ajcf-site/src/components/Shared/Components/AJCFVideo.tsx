@@ -2,7 +2,7 @@ import React, { CSSProperties, memo, PropsWithChildren, useCallback, useRef, use
 import { Modal } from "semantic-ui-react";
 import cx from "classnames";
 import { LazyLoadedImage } from "./LazyLoadedImage";
-import { useExitFullScreenEvent } from "../../assets/hooks/UI/useExitFullScreenEvent";
+import { useExitFullScreenEvent } from "../../../assets/hooks/UI/useExitFullScreenEvent";
 
 const videoStyle = {
   marginBottom: -2,

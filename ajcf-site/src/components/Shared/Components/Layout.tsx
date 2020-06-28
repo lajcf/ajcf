@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { graphql, StaticQuery } from "gatsby";
 
-import "../../assets/css/index.scss";
-import { Header } from "./Header";
+import "../../../assets/css/index.scss";
 import { css, Global } from "@emotion/core";
-import { sizes } from "../../assets/css/variables/sizes";
+import { Header } from "./Header";
+import { sizes } from "../../../assets/css/variables/sizes";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   const globalStyle = css`

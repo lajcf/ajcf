@@ -2,7 +2,7 @@ import * as React from "react";
 import { PropsWithChildren } from "react";
 import cx from "classnames";
 import { Icon } from "semantic-ui-react";
-import { LandingLink } from "../LandingLink";
+import { LandingLink } from "./LandingLink";
 
 interface LinkItemProps {
   onClick?: () => void;

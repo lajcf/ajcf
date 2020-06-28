@@ -1,10 +1,10 @@
 import React from "react";
 import { css } from "@emotion/core";
 import ArticlePreview from "./ArticlePreview";
-import { ContentfulPost } from "../../../generated/types";
+import { ContentfulPostFragmentFragment } from "../../generated/types";
 
 type RecentArticlesArgs = {
-  articles: { node: ContentfulPost }[];
+  articles: { node: ContentfulPostFragmentFragment }[];
 };
 
 const titleStyle = css`

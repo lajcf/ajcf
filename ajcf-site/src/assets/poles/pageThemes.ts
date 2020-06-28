@@ -1,5 +1,13 @@
-import { EspacePageTheme } from "./../../pages/talk";
 import { colors } from "../css/variables/colors";
+
+export type EspacePageTheme = {
+  mainColor: string;
+  mainColorLight: string;
+  secondaryColor: string;
+  secondaryColorLight: string;
+  secondaryColorLighter: string;
+  secondaryColorLightest: string;
+};
 
 export const talkTheme: EspacePageTheme = {
   mainColor: colors.colorTalk,

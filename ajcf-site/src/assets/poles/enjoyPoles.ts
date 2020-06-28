@@ -1,11 +1,8 @@
-import { PoleProps } from "./../../pages/talk";
-import CfdCover from "../img/covers/cover-cfd.jpg";
-import SportsSortiesCover from "../img/covers/cover-sports-sorties.jpg";
+import { PoleProps } from "./constants";
 
 export const enjoyPageFrenchTitle = "Loisir";
 export const enjoyPageChineseTitle = "享受";
 export const cfdPole: PoleProps = {
-  imageSource: CfdCover,
   to: "/enjoy/cfd",
   className: "pole-cover",
   id: "cfd",
@@ -14,7 +11,6 @@ export const cfdPole: PoleProps = {
     "Jusqu’ici appelé Chinese Food Week, cet événement a changé de format, mais son objectif reste le même : faire découvrir au grand public la diversité et la richesse de la cuisine chinoise.",
 };
 export const sportsSortiesPole: PoleProps = {
-  imageSource: SportsSortiesCover,
   to: "/enjoy/sports-sorties",
   className: "pole-cover",
   id: "sports-sorties",

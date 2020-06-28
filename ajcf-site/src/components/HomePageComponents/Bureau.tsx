@@ -4,7 +4,7 @@ import danielImage from "../../assets/img/homepage/bureau-daniel.jpg";
 import huanyuImage from "../../assets/img/homepage/bureau-huanyu.jpg";
 import antoineImage from "../../assets/img/homepage/bureau-antoine.jpg";
 import { BureauMember } from "./BureauMember";
-import AJCFGrid from "../Layout/AJCFGrid";
+import AJCFGrid from "../Shared/Layout/AJCFGrid";
 
 export interface BureauMemberProps {
   imageSource: string;

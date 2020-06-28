@@ -1,12 +1,13 @@
 import React from "react";
+import { uniqBy } from "lodash";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
+import { css } from "@emotion/core";
 import { PostBySlugQuery } from "../generated/types";
-import Layout from "../components/Shared/Layout";
+import Layout from "../components/Shared/Components/Layout";
 import { generateSidebarTheme } from "../components/Shared/utils/generateSidebarTheme";
 import { SecondarySidebar } from "../components/Shared/SecondarySidebar/SecondarySidebar";
-import { css } from "@emotion/core";
-import { PoleId } from "../assets/poles/constants";
+import { PoleId, EspaceId } from "../assets/poles/constants";
 
 interface PostProps {
   data: PostBySlugQuery;
@@ -22,10 +23,21 @@ const titleStyle = css`
 `;
 
 const Post: React.FC<PostProps> = ({ data }) => {
-  const sidebarTheme = generateSidebarTheme(data.contentfulPost?.pole as PoleId);
+  const theme = generateSidebarTheme(data.contentfulPost?.pole?.espace?.espaceId as EspaceId);
+  const poles = uniqBy(
+    data.allContentfulPole.edges.map((edge) => edge.node),
+    (pole) => pole.poleId
+  );
   return (
     <Layout>
-      <SecondarySidebar {...sidebarTheme} activePoleId={data.contentfulPost?.pole as PoleId} />
+      <SecondarySidebar
+        espaceId={data.contentfulPost?.pole?.espace?.espaceId as EspaceId}
+        pageTheme={theme}
+        poles={poles}
+        pageFrenchTitle={data.contentfulPost?.pole?.espace?.frenchTitle || ""}
+        pageChineseTitle={data.contentfulPost?.pole?.espace?.chineseTitle || ""}
+        activePoleId={data.contentfulPost?.pole as PoleId}
+      />
       <div className="main with-padding">
         <Img
           css={imageStyle}
@@ -50,30 +62,21 @@ const Post: React.FC<PostProps> = ({ data }) => {
 export default Post;
 
 export const query = graphql`
-  query postBySlug($slug: String!) {
+  query postBySlug($slug: String!, $espaceId: String!) {
     site {
       siteMetadata {
         title
       }
     }
+    allContentfulPole(filter: { espace: { espaceId: { eq: $espaceId } } }) {
+      edges {
+        node {
+          ...ContentfulPoleFragment
+        }
+      }
+    }
     contentfulPost(slug: { eq: $slug }) {
-      title
-      author
-      pole
-      content {
-        childContentfulRichText {
-          html
-        }
-      }
-      image {
-        fluid(maxWidth: 3000, quality: 100) {
-          base64
-          aspectRatio
-          src
-          srcSet
-          sizes
-        }
-      }
+      ...ContentfulPostFragment
     }
   }
 `;

@@ -74,7 +74,7 @@
   "license": "MIT",
   "devDependencies": {
     "@graphql-codegen/cli": "1.15.4",
-    "@graphql-codegen/fragment-matcher": "1.15.4",
+    "@graphql-codegen/fragment-matcher": "^1.15.4",
     "@graphql-codegen/introspection": "1.15.4",
     "@graphql-codegen/typescript": "^1.15.4",
     "@graphql-codegen/typescript-document-nodes": "1.15.4",

@@ -1,6 +1,6 @@
 import React from "react";
 import { Espace } from "./Espace";
-import AJCFSpace from "../Layout/AJCFSpace";
+import AJCFSpace from "../Shared/Layout/AJCFSpace";
 import { colors } from "../../assets/css/variables/colors";
 import { EspaceId } from "../../assets/poles/constants";
 import { ImageSharpFluid } from "../../generated/types";

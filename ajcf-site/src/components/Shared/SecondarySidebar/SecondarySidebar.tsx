@@ -8,20 +8,21 @@ import { EspaceId, PoleId } from "../../../assets/poles/constants";
 import { colors } from "../../../assets/css/variables/colors";
 import { sizes } from "../../../assets/css/variables/sizes";
 import { AreaTitle } from "./AreaTitle";
-import { EspacePageTheme, PoleProps } from "../../../pages/talk";
 import { zIndices } from "../../../assets/css/variables/zIndices";
+import { ContentfulPoleFragmentFragment } from "../../../generated/types";
+import { EspacePageTheme } from "../../../assets/poles/pageThemes";
 
 interface SecondarySidebarProps {
-  sectionName: EspaceId;
+  espaceId: EspaceId;
   pageTheme: EspacePageTheme;
-  poles: PoleProps[];
+  poles: ContentfulPoleFragmentFragment[];
   pageFrenchTitle: string;
   pageChineseTitle: string;
   activePoleId?: PoleId;
 }
 
 export const SecondarySidebar = ({
-  sectionName,
+  espaceId,
   pageFrenchTitle,
   pageChineseTitle,
   pageTheme,
@@ -116,17 +117,17 @@ export const SecondarySidebar = ({
   `;
   const tabs = poles.map((pole) => ({
     content: pole.title,
-    key: pole.id,
-    href: pole.to,
+    key: pole.poleId,
+    href: pole.slug,
     className: "main-link",
   }));
   return (
     <section id="secondary-sidebar" css={secondarySidebarStyle}>
       <div css={secondarySidebarContentStyle}>
-        <Link to={activePoleId ? `/${sectionName}` : `/`}>
+        <Link to={activePoleId ? `/${espaceId}` : `/`}>
           <Icon css={backToHomePageIconStyle} className="arrow left" size="big" />
         </Link>
-        <Link to={`/${sectionName}`}>
+        <Link to={`/${espaceId}`}>
           <AreaTitle titleFrench={pageFrenchTitle} titleChinese={pageChineseTitle} />
         </Link>
         <nav>

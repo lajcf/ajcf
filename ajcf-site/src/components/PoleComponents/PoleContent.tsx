@@ -1,12 +1,11 @@
 import React from "react";
 import Img from "gatsby-image";
 import { css } from "@emotion/core";
-import { ImageSharpFluid } from "../../../generated/types";
-import { PoleProps } from "../../../pages/talk";
+import { ImageSharpFluid, ContentfulPoleFragmentFragment } from "../../generated/types";
 
 interface PoleContentProps {
   poleCover?: ImageSharpFluid | null;
-  poleProps: PoleProps;
+  poleProps: ContentfulPoleFragmentFragment;
 }
 
 const titleStyle: React.CSSProperties = {
@@ -32,9 +31,12 @@ export const PoleContent = ({ poleCover, poleProps }: PoleContentProps) => {
       <div css={divImageStyle}>
         <Img fluid={poleCover} alt="" />
       </div>
-      <div className="text-content">
-        <p>{poleProps.description}</p>
-      </div>
+      <div
+        className="text-content"
+        dangerouslySetInnerHTML={{
+          __html: poleProps.description?.childContentfulRichText?.html || "",
+        }}
+      />
     </div>
   );
 };

@@ -1,11 +1,11 @@
 import React, { memo } from "react";
-import { LandingLink } from "../LandingLink";
-import { AJCFLogo } from "../AJCFLogo";
+import { LandingLink } from "./LandingLink";
+import { AJCFLogo } from "./AJCFLogo";
 import { Link } from "gatsby";
 import { css } from "@emotion/core";
-import { colors } from "../../assets/css/variables/colors";
-import { zIndices } from "../../assets/css/variables/zIndices";
-import { sizes } from "../../assets/css/variables/sizes";
+import { colors } from "../../../assets/css/variables/colors";
+import { zIndices } from "../../../assets/css/variables/zIndices";
+import { sizes } from "../../../assets/css/variables/sizes";
 
 const LandingHeaderInner = () => {
   return (

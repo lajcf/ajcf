@@ -1,7 +1,7 @@
 import React from "react";
 import { uniqBy } from "lodash";
 import { graphql, useStaticQuery } from "gatsby";
-import Layout from "../components/Shared/Layout";
+import Layout from "../components/Shared/Components/Layout";
 import Sidebar from "../components/Shared/Sidebar/Sidebar";
 import HomePageContent from "../components/HomePageComponents/HomePageContent";
 import { HomePageQueryQuery } from "../generated/types";
@@ -32,7 +32,12 @@ const IndexPage = () => {
             createdAt
             title
             author
-            pole
+            pole {
+              poleId
+              espace {
+                espaceId
+              }
+            }
             content {
               childContentfulRichText {
                 html

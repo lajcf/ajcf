@@ -1,8 +1,8 @@
 import React, { CSSProperties, memo, PropsWithChildren } from "react";
 import { ColorProperty } from "csstype";
 import cx from "classnames";
-import { useIntersectionObserver } from "../../assets/hooks/UI/useIntersectionObserver";
-import { useImageBlurPlaceholder } from "../../assets/hooks/UI/useImageBlurPlaceHolder";
+import { useIntersectionObserver } from "../../../assets/hooks/UI/useIntersectionObserver";
+import { useImageBlurPlaceholder } from "../../../assets/hooks/UI/useImageBlurPlaceHolder";
 
 interface LazyLoadedImageProps {
   containerClassName?: string;

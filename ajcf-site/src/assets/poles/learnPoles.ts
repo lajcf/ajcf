@@ -1,11 +1,8 @@
-import { PoleProps } from "./../../pages/talk";
-import DevPersoCover from "../img/covers/cover-dev-perso.jpg";
-import EchangeLinguistiqueCover from "../img/covers/cover-echange-linguistique.jpg";
+import { PoleProps } from "./constants";
 
 export const learnPageFrenchTitle = "Découverte";
 export const learnPageChineseTitle = "体会";
 export const devPersoPole: PoleProps = {
-  imageSource: DevPersoCover,
   to: "/learn/dev-perso",
   className: "pole-cover",
   id: "dev-perso",
@@ -14,7 +11,6 @@ export const devPersoPole: PoleProps = {
     "La participation à des ateliers (impro, théâtre, prise de parole, …) permet aux membres de l’association de s’épanouir et de se réaliser dans une meilleure connaissance de soi.",
 };
 export const echangeLinguistiquePole: PoleProps = {
-  imageSource: EchangeLinguistiqueCover,
   to: "/learn/echange-linguistique",
   className: "pole-cover",
   id: "echange-linguistique",

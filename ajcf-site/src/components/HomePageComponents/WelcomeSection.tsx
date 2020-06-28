@@ -14,7 +14,7 @@ const imageStyle: React.CSSProperties = {
 export const WelcomeSection = ({ coverImage }: WelcomeSectionProps) => {
   return (
     <section id="welcome">
-      <Img style={imageStyle} fluid={coverImage} alt="Memoire cover" />
+      <Img style={imageStyle} fluid={coverImage} alt="" />
       <div className="text-content">
         <h2>
           Français d’origine chinoise, Franco-Chinois, Chinois de France… Nous sommes l’un des visages de la France.

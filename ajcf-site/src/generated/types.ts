@@ -27,6 +27,12 @@ export type Query = {
   allImageSharp: ImageSharpConnection;
   contentfulAsset?: Maybe<ContentfulAsset>;
   allContentfulAsset: ContentfulAssetConnection;
+  contentfulEspace?: Maybe<ContentfulEspace>;
+  allContentfulEspace: ContentfulEspaceConnection;
+  contentfulPoleDescriptionRichTextNode?: Maybe<ContentfulPoleDescriptionRichTextNode>;
+  allContentfulPoleDescriptionRichTextNode: ContentfulPoleDescriptionRichTextNodeConnection;
+  contentfulPole?: Maybe<ContentfulPole>;
+  allContentfulPole: ContentfulPoleConnection;
   contentfulRichText?: Maybe<ContentfulRichText>;
   allContentfulRichText: ContentfulRichTextConnection;
   contentfulPostContentRichTextNode?: Maybe<ContentfulPostContentRichTextNode>;
@@ -238,6 +244,83 @@ export type QueryAllContentfulAssetArgs = {
 };
 
 
+export type QueryContentfulEspaceArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  espaceId?: Maybe<StringQueryOperatorInput>;
+  frenchTitle?: Maybe<StringQueryOperatorInput>;
+  chineseTitle?: Maybe<StringQueryOperatorInput>;
+  pole?: Maybe<ContentfulPoleFilterListInput>;
+  spaceId?: Maybe<StringQueryOperatorInput>;
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
+  sys?: Maybe<ContentfulEspaceSysFilterInput>;
+  node_locale?: Maybe<StringQueryOperatorInput>;
+};
+
+
+export type QueryAllContentfulEspaceArgs = {
+  filter?: Maybe<ContentfulEspaceFilterInput>;
+  sort?: Maybe<ContentfulEspaceSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryContentfulPoleDescriptionRichTextNodeArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  content?: Maybe<ContentfulPoleDescriptionRichTextNodeContentFilterListInput>;
+  nodeType?: Maybe<StringQueryOperatorInput>;
+  description?: Maybe<StringQueryOperatorInput>;
+  json?: Maybe<JsonQueryOperatorInput>;
+  childContentfulRichText?: Maybe<ContentfulRichTextFilterInput>;
+};
+
+
+export type QueryAllContentfulPoleDescriptionRichTextNodeArgs = {
+  filter?: Maybe<ContentfulPoleDescriptionRichTextNodeFilterInput>;
+  sort?: Maybe<ContentfulPoleDescriptionRichTextNodeSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryContentfulPoleArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  poleId?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  slug?: Maybe<StringQueryOperatorInput>;
+  espace?: Maybe<ContentfulEspaceFilterInput>;
+  cover?: Maybe<ContentfulAssetFilterInput>;
+  description?: Maybe<ContentfulPoleDescriptionRichTextNodeFilterInput>;
+  spaceId?: Maybe<StringQueryOperatorInput>;
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
+  sys?: Maybe<ContentfulPoleSysFilterInput>;
+  node_locale?: Maybe<StringQueryOperatorInput>;
+  post?: Maybe<ContentfulPostFilterListInput>;
+  childContentfulPoleDescriptionRichTextNode?: Maybe<ContentfulPoleDescriptionRichTextNodeFilterInput>;
+};
+
+
+export type QueryAllContentfulPoleArgs = {
+  filter?: Maybe<ContentfulPoleFilterInput>;
+  sort?: Maybe<ContentfulPoleSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
 export type QueryContentfulRichTextArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -283,8 +366,8 @@ export type QueryContentfulPostArgs = {
   internal?: Maybe<InternalFilterInput>;
   title?: Maybe<StringQueryOperatorInput>;
   author?: Maybe<StringQueryOperatorInput>;
-  pole?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
+  pole?: Maybe<ContentfulPoleFilterInput>;
   image?: Maybe<ContentfulAssetFilterListInput>;
   content?: Maybe<ContentfulPostContentRichTextNodeFilterInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
@@ -1533,7 +1616,8 @@ export type DirectoryGroupConnection = {
 
 export type SitePageContextFilterInput = {
   slug?: Maybe<StringQueryOperatorInput>;
-  pole?: Maybe<StringQueryOperatorInput>;
+  poleId?: Maybe<StringQueryOperatorInput>;
+  espaceId?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginFilterInput = {
@@ -1634,7 +1718,8 @@ export type SitePage = Node & {
 export type SitePageContext = {
   __typename?: 'SitePageContext';
   slug?: Maybe<Scalars['String']>;
-  pole?: Maybe<Scalars['String']>;
+  poleId?: Maybe<Scalars['String']>;
+  espaceId?: Maybe<Scalars['String']>;
 };
 
 export type SitePlugin = Node & {
@@ -1825,7 +1910,8 @@ export enum SitePageFieldsEnum {
   internal___type = 'internal___type',
   isCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
   context___slug = 'context___slug',
-  context___pole = 'context___pole',
+  context___poleId = 'context___poleId',
+  context___espaceId = 'context___espaceId',
   pluginCreator___id = 'pluginCreator___id',
   pluginCreator___parent___id = 'pluginCreator___parent___id',
   pluginCreator___parent___parent___id = 'pluginCreator___parent___parent___id',
@@ -2778,6 +2864,282 @@ export type ContentfulAssetGroupConnection = {
   fieldValue?: Maybe<Scalars['String']>;
 };
 
+export type ContentfulPoleFilterListInput = {
+  elemMatch?: Maybe<ContentfulPoleFilterInput>;
+};
+
+export type ContentfulPoleFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  poleId?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  slug?: Maybe<StringQueryOperatorInput>;
+  espace?: Maybe<ContentfulEspaceFilterInput>;
+  cover?: Maybe<ContentfulAssetFilterInput>;
+  description?: Maybe<ContentfulPoleDescriptionRichTextNodeFilterInput>;
+  spaceId?: Maybe<StringQueryOperatorInput>;
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
+  sys?: Maybe<ContentfulPoleSysFilterInput>;
+  node_locale?: Maybe<StringQueryOperatorInput>;
+  post?: Maybe<ContentfulPostFilterListInput>;
+  childContentfulPoleDescriptionRichTextNode?: Maybe<ContentfulPoleDescriptionRichTextNodeFilterInput>;
+};
+
+export type ContentfulEspaceFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  espaceId?: Maybe<StringQueryOperatorInput>;
+  frenchTitle?: Maybe<StringQueryOperatorInput>;
+  chineseTitle?: Maybe<StringQueryOperatorInput>;
+  pole?: Maybe<ContentfulPoleFilterListInput>;
+  spaceId?: Maybe<StringQueryOperatorInput>;
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
+  sys?: Maybe<ContentfulEspaceSysFilterInput>;
+  node_locale?: Maybe<StringQueryOperatorInput>;
+};
+
+export type ContentfulEspaceSysFilterInput = {
+  revision?: Maybe<IntQueryOperatorInput>;
+  contentType?: Maybe<ContentfulEspaceSysContentTypeFilterInput>;
+};
+
+export type ContentfulEspaceSysContentTypeFilterInput = {
+  sys?: Maybe<ContentfulEspaceSysContentTypeSysFilterInput>;
+};
+
+export type ContentfulEspaceSysContentTypeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  linkType?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+};
+
+export type ContentfulPoleDescriptionRichTextNodeFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  content?: Maybe<ContentfulPoleDescriptionRichTextNodeContentFilterListInput>;
+  nodeType?: Maybe<StringQueryOperatorInput>;
+  description?: Maybe<StringQueryOperatorInput>;
+  json?: Maybe<JsonQueryOperatorInput>;
+  childContentfulRichText?: Maybe<ContentfulRichTextFilterInput>;
+};
+
+export type ContentfulPoleDescriptionRichTextNodeContentFilterListInput = {
+  elemMatch?: Maybe<ContentfulPoleDescriptionRichTextNodeContentFilterInput>;
+};
+
+export type ContentfulPoleDescriptionRichTextNodeContentFilterInput = {
+  content?: Maybe<ContentfulPoleDescriptionRichTextNodeContentContentFilterListInput>;
+  nodeType?: Maybe<StringQueryOperatorInput>;
+};
+
+export type ContentfulPoleDescriptionRichTextNodeContentContentFilterListInput = {
+  elemMatch?: Maybe<ContentfulPoleDescriptionRichTextNodeContentContentFilterInput>;
+};
+
+export type ContentfulPoleDescriptionRichTextNodeContentContentFilterInput = {
+  value?: Maybe<StringQueryOperatorInput>;
+  nodeType?: Maybe<StringQueryOperatorInput>;
+};
+
+export type JsonQueryOperatorInput = {
+  eq?: Maybe<Scalars['JSON']>;
+  ne?: Maybe<Scalars['JSON']>;
+  in?: Maybe<Array<Maybe<Scalars['JSON']>>>;
+  nin?: Maybe<Array<Maybe<Scalars['JSON']>>>;
+  regex?: Maybe<Scalars['JSON']>;
+  glob?: Maybe<Scalars['JSON']>;
+};
+
+
+export type ContentfulRichTextFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  html?: Maybe<StringQueryOperatorInput>;
+  timeToRead?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ContentfulPoleSysFilterInput = {
+  revision?: Maybe<IntQueryOperatorInput>;
+  contentType?: Maybe<ContentfulPoleSysContentTypeFilterInput>;
+};
+
+export type ContentfulPoleSysContentTypeFilterInput = {
+  sys?: Maybe<ContentfulPoleSysContentTypeSysFilterInput>;
+};
+
+export type ContentfulPoleSysContentTypeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  linkType?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+};
+
+export type ContentfulPostFilterListInput = {
+  elemMatch?: Maybe<ContentfulPostFilterInput>;
+};
+
+export type ContentfulPostFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  author?: Maybe<StringQueryOperatorInput>;
+  slug?: Maybe<StringQueryOperatorInput>;
+  pole?: Maybe<ContentfulPoleFilterInput>;
+  image?: Maybe<ContentfulAssetFilterListInput>;
+  content?: Maybe<ContentfulPostContentRichTextNodeFilterInput>;
+  spaceId?: Maybe<StringQueryOperatorInput>;
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
+  sys?: Maybe<ContentfulPostSysFilterInput>;
+  node_locale?: Maybe<StringQueryOperatorInput>;
+  childContentfulPostContentRichTextNode?: Maybe<ContentfulPostContentRichTextNodeFilterInput>;
+};
+
+export type ContentfulAssetFilterListInput = {
+  elemMatch?: Maybe<ContentfulAssetFilterInput>;
+};
+
+export type ContentfulPostContentRichTextNodeFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  content?: Maybe<StringQueryOperatorInput>;
+  nodeType?: Maybe<StringQueryOperatorInput>;
+  json?: Maybe<JsonQueryOperatorInput>;
+  childContentfulRichText?: Maybe<ContentfulRichTextFilterInput>;
+};
+
+export type ContentfulPostSysFilterInput = {
+  revision?: Maybe<IntQueryOperatorInput>;
+  contentType?: Maybe<ContentfulPostSysContentTypeFilterInput>;
+};
+
+export type ContentfulPostSysContentTypeFilterInput = {
+  sys?: Maybe<ContentfulPostSysContentTypeSysFilterInput>;
+};
+
+export type ContentfulPostSysContentTypeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  linkType?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+};
+
+export type ContentfulEspace = Node & {
+  __typename?: 'ContentfulEspace';
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  espaceId?: Maybe<Scalars['String']>;
+  frenchTitle?: Maybe<Scalars['String']>;
+  chineseTitle?: Maybe<Scalars['String']>;
+  pole?: Maybe<Array<Maybe<ContentfulPole>>>;
+  spaceId?: Maybe<Scalars['String']>;
+  contentful_id?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  sys?: Maybe<ContentfulEspaceSys>;
+  node_locale?: Maybe<Scalars['String']>;
+};
+
+
+export type ContentfulEspaceCreatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+export type ContentfulEspaceUpdatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulPole = Node & {
+  __typename?: 'ContentfulPole';
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  poleId?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
+  espace?: Maybe<ContentfulEspace>;
+  cover?: Maybe<ContentfulAsset>;
+  description?: Maybe<ContentfulPoleDescriptionRichTextNode>;
+  spaceId?: Maybe<Scalars['String']>;
+  contentful_id?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  sys?: Maybe<ContentfulPoleSys>;
+  node_locale?: Maybe<Scalars['String']>;
+  post?: Maybe<Array<Maybe<ContentfulPost>>>;
+  childContentfulPoleDescriptionRichTextNode?: Maybe<ContentfulPoleDescriptionRichTextNode>;
+};
+
+
+export type ContentfulPoleCreatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+export type ContentfulPoleUpdatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulPoleDescriptionRichTextNode = Node & {
+  __typename?: 'contentfulPoleDescriptionRichTextNode';
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  content?: Maybe<Array<Maybe<ContentfulPoleDescriptionRichTextNodeContent>>>;
+  /** @deprecated This field is deprecated, please use 'json' instead. */
+  nodeType?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  json?: Maybe<Scalars['JSON']>;
+  childContentfulRichText?: Maybe<ContentfulRichText>;
+};
+
+export type ContentfulPoleDescriptionRichTextNodeContent = {
+  __typename?: 'contentfulPoleDescriptionRichTextNodeContent';
+  content?: Maybe<Array<Maybe<ContentfulPoleDescriptionRichTextNodeContentContent>>>;
+  nodeType?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulPoleDescriptionRichTextNodeContentContent = {
+  __typename?: 'contentfulPoleDescriptionRichTextNodeContentContent';
+  value?: Maybe<Scalars['String']>;
+  nodeType?: Maybe<Scalars['String']>;
+};
+
 export type ContentfulRichText = Node & {
   __typename?: 'ContentfulRichText';
   id: Scalars['ID'];
@@ -2788,13 +3150,1366 @@ export type ContentfulRichText = Node & {
   timeToRead?: Maybe<Scalars['Int']>;
 };
 
-export type ContentfulRichTextFilterInput = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  html?: Maybe<StringQueryOperatorInput>;
-  timeToRead?: Maybe<IntQueryOperatorInput>;
+export type ContentfulPoleSys = {
+  __typename?: 'ContentfulPoleSys';
+  revision?: Maybe<Scalars['Int']>;
+  contentType?: Maybe<ContentfulPoleSysContentType>;
+};
+
+export type ContentfulPoleSysContentType = {
+  __typename?: 'ContentfulPoleSysContentType';
+  sys?: Maybe<ContentfulPoleSysContentTypeSys>;
+};
+
+export type ContentfulPoleSysContentTypeSys = {
+  __typename?: 'ContentfulPoleSysContentTypeSys';
+  type?: Maybe<Scalars['String']>;
+  linkType?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  contentful_id?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulPost = Node & {
+  __typename?: 'ContentfulPost';
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  title?: Maybe<Scalars['String']>;
+  author?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
+  pole?: Maybe<ContentfulPole>;
+  image?: Maybe<Array<Maybe<ContentfulAsset>>>;
+  content?: Maybe<ContentfulPostContentRichTextNode>;
+  spaceId?: Maybe<Scalars['String']>;
+  contentful_id?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  sys?: Maybe<ContentfulPostSys>;
+  node_locale?: Maybe<Scalars['String']>;
+  childContentfulPostContentRichTextNode?: Maybe<ContentfulPostContentRichTextNode>;
+};
+
+
+export type ContentfulPostCreatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+export type ContentfulPostUpdatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulPostContentRichTextNode = Node & {
+  __typename?: 'contentfulPostContentRichTextNode';
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  content?: Maybe<Scalars['String']>;
+  /** @deprecated This field is deprecated, please use 'json' instead. */
+  nodeType?: Maybe<Scalars['String']>;
+  json?: Maybe<Scalars['JSON']>;
+  childContentfulRichText?: Maybe<ContentfulRichText>;
+};
+
+export type ContentfulPostSys = {
+  __typename?: 'ContentfulPostSys';
+  revision?: Maybe<Scalars['Int']>;
+  contentType?: Maybe<ContentfulPostSysContentType>;
+};
+
+export type ContentfulPostSysContentType = {
+  __typename?: 'ContentfulPostSysContentType';
+  sys?: Maybe<ContentfulPostSysContentTypeSys>;
+};
+
+export type ContentfulPostSysContentTypeSys = {
+  __typename?: 'ContentfulPostSysContentTypeSys';
+  type?: Maybe<Scalars['String']>;
+  linkType?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  contentful_id?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulEspaceSys = {
+  __typename?: 'ContentfulEspaceSys';
+  revision?: Maybe<Scalars['Int']>;
+  contentType?: Maybe<ContentfulEspaceSysContentType>;
+};
+
+export type ContentfulEspaceSysContentType = {
+  __typename?: 'ContentfulEspaceSysContentType';
+  sys?: Maybe<ContentfulEspaceSysContentTypeSys>;
+};
+
+export type ContentfulEspaceSysContentTypeSys = {
+  __typename?: 'ContentfulEspaceSysContentTypeSys';
+  type?: Maybe<Scalars['String']>;
+  linkType?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  contentful_id?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulEspaceSortInput = {
+  fields?: Maybe<Array<Maybe<ContentfulEspaceFieldsEnum>>>;
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
+export enum ContentfulEspaceFieldsEnum {
+  id = 'id',
+  parent___id = 'parent___id',
+  parent___parent___id = 'parent___parent___id',
+  parent___parent___parent___id = 'parent___parent___parent___id',
+  parent___parent___parent___children = 'parent___parent___parent___children',
+  parent___parent___children = 'parent___parent___children',
+  parent___parent___children___id = 'parent___parent___children___id',
+  parent___parent___children___children = 'parent___parent___children___children',
+  parent___parent___internal___content = 'parent___parent___internal___content',
+  parent___parent___internal___contentDigest = 'parent___parent___internal___contentDigest',
+  parent___parent___internal___description = 'parent___parent___internal___description',
+  parent___parent___internal___fieldOwners = 'parent___parent___internal___fieldOwners',
+  parent___parent___internal___ignoreType = 'parent___parent___internal___ignoreType',
+  parent___parent___internal___mediaType = 'parent___parent___internal___mediaType',
+  parent___parent___internal___owner = 'parent___parent___internal___owner',
+  parent___parent___internal___type = 'parent___parent___internal___type',
+  parent___children = 'parent___children',
+  parent___children___id = 'parent___children___id',
+  parent___children___parent___id = 'parent___children___parent___id',
+  parent___children___parent___children = 'parent___children___parent___children',
+  parent___children___children = 'parent___children___children',
+  parent___children___children___id = 'parent___children___children___id',
+  parent___children___children___children = 'parent___children___children___children',
+  parent___children___internal___content = 'parent___children___internal___content',
+  parent___children___internal___contentDigest = 'parent___children___internal___contentDigest',
+  parent___children___internal___description = 'parent___children___internal___description',
+  parent___children___internal___fieldOwners = 'parent___children___internal___fieldOwners',
+  parent___children___internal___ignoreType = 'parent___children___internal___ignoreType',
+  parent___children___internal___mediaType = 'parent___children___internal___mediaType',
+  parent___children___internal___owner = 'parent___children___internal___owner',
+  parent___children___internal___type = 'parent___children___internal___type',
+  parent___internal___content = 'parent___internal___content',
+  parent___internal___contentDigest = 'parent___internal___contentDigest',
+  parent___internal___description = 'parent___internal___description',
+  parent___internal___fieldOwners = 'parent___internal___fieldOwners',
+  parent___internal___ignoreType = 'parent___internal___ignoreType',
+  parent___internal___mediaType = 'parent___internal___mediaType',
+  parent___internal___owner = 'parent___internal___owner',
+  parent___internal___type = 'parent___internal___type',
+  children = 'children',
+  children___id = 'children___id',
+  children___parent___id = 'children___parent___id',
+  children___parent___parent___id = 'children___parent___parent___id',
+  children___parent___parent___children = 'children___parent___parent___children',
+  children___parent___children = 'children___parent___children',
+  children___parent___children___id = 'children___parent___children___id',
+  children___parent___children___children = 'children___parent___children___children',
+  children___parent___internal___content = 'children___parent___internal___content',
+  children___parent___internal___contentDigest = 'children___parent___internal___contentDigest',
+  children___parent___internal___description = 'children___parent___internal___description',
+  children___parent___internal___fieldOwners = 'children___parent___internal___fieldOwners',
+  children___parent___internal___ignoreType = 'children___parent___internal___ignoreType',
+  children___parent___internal___mediaType = 'children___parent___internal___mediaType',
+  children___parent___internal___owner = 'children___parent___internal___owner',
+  children___parent___internal___type = 'children___parent___internal___type',
+  children___children = 'children___children',
+  children___children___id = 'children___children___id',
+  children___children___parent___id = 'children___children___parent___id',
+  children___children___parent___children = 'children___children___parent___children',
+  children___children___children = 'children___children___children',
+  children___children___children___id = 'children___children___children___id',
+  children___children___children___children = 'children___children___children___children',
+  children___children___internal___content = 'children___children___internal___content',
+  children___children___internal___contentDigest = 'children___children___internal___contentDigest',
+  children___children___internal___description = 'children___children___internal___description',
+  children___children___internal___fieldOwners = 'children___children___internal___fieldOwners',
+  children___children___internal___ignoreType = 'children___children___internal___ignoreType',
+  children___children___internal___mediaType = 'children___children___internal___mediaType',
+  children___children___internal___owner = 'children___children___internal___owner',
+  children___children___internal___type = 'children___children___internal___type',
+  children___internal___content = 'children___internal___content',
+  children___internal___contentDigest = 'children___internal___contentDigest',
+  children___internal___description = 'children___internal___description',
+  children___internal___fieldOwners = 'children___internal___fieldOwners',
+  children___internal___ignoreType = 'children___internal___ignoreType',
+  children___internal___mediaType = 'children___internal___mediaType',
+  children___internal___owner = 'children___internal___owner',
+  children___internal___type = 'children___internal___type',
+  internal___content = 'internal___content',
+  internal___contentDigest = 'internal___contentDigest',
+  internal___description = 'internal___description',
+  internal___fieldOwners = 'internal___fieldOwners',
+  internal___ignoreType = 'internal___ignoreType',
+  internal___mediaType = 'internal___mediaType',
+  internal___owner = 'internal___owner',
+  internal___type = 'internal___type',
+  espaceId = 'espaceId',
+  frenchTitle = 'frenchTitle',
+  chineseTitle = 'chineseTitle',
+  pole = 'pole',
+  pole___id = 'pole___id',
+  pole___parent___id = 'pole___parent___id',
+  pole___parent___parent___id = 'pole___parent___parent___id',
+  pole___parent___parent___children = 'pole___parent___parent___children',
+  pole___parent___children = 'pole___parent___children',
+  pole___parent___children___id = 'pole___parent___children___id',
+  pole___parent___children___children = 'pole___parent___children___children',
+  pole___parent___internal___content = 'pole___parent___internal___content',
+  pole___parent___internal___contentDigest = 'pole___parent___internal___contentDigest',
+  pole___parent___internal___description = 'pole___parent___internal___description',
+  pole___parent___internal___fieldOwners = 'pole___parent___internal___fieldOwners',
+  pole___parent___internal___ignoreType = 'pole___parent___internal___ignoreType',
+  pole___parent___internal___mediaType = 'pole___parent___internal___mediaType',
+  pole___parent___internal___owner = 'pole___parent___internal___owner',
+  pole___parent___internal___type = 'pole___parent___internal___type',
+  pole___children = 'pole___children',
+  pole___children___id = 'pole___children___id',
+  pole___children___parent___id = 'pole___children___parent___id',
+  pole___children___parent___children = 'pole___children___parent___children',
+  pole___children___children = 'pole___children___children',
+  pole___children___children___id = 'pole___children___children___id',
+  pole___children___children___children = 'pole___children___children___children',
+  pole___children___internal___content = 'pole___children___internal___content',
+  pole___children___internal___contentDigest = 'pole___children___internal___contentDigest',
+  pole___children___internal___description = 'pole___children___internal___description',
+  pole___children___internal___fieldOwners = 'pole___children___internal___fieldOwners',
+  pole___children___internal___ignoreType = 'pole___children___internal___ignoreType',
+  pole___children___internal___mediaType = 'pole___children___internal___mediaType',
+  pole___children___internal___owner = 'pole___children___internal___owner',
+  pole___children___internal___type = 'pole___children___internal___type',
+  pole___internal___content = 'pole___internal___content',
+  pole___internal___contentDigest = 'pole___internal___contentDigest',
+  pole___internal___description = 'pole___internal___description',
+  pole___internal___fieldOwners = 'pole___internal___fieldOwners',
+  pole___internal___ignoreType = 'pole___internal___ignoreType',
+  pole___internal___mediaType = 'pole___internal___mediaType',
+  pole___internal___owner = 'pole___internal___owner',
+  pole___internal___type = 'pole___internal___type',
+  pole___poleId = 'pole___poleId',
+  pole___title = 'pole___title',
+  pole___slug = 'pole___slug',
+  pole___espace___id = 'pole___espace___id',
+  pole___espace___parent___id = 'pole___espace___parent___id',
+  pole___espace___parent___children = 'pole___espace___parent___children',
+  pole___espace___children = 'pole___espace___children',
+  pole___espace___children___id = 'pole___espace___children___id',
+  pole___espace___children___children = 'pole___espace___children___children',
+  pole___espace___internal___content = 'pole___espace___internal___content',
+  pole___espace___internal___contentDigest = 'pole___espace___internal___contentDigest',
+  pole___espace___internal___description = 'pole___espace___internal___description',
+  pole___espace___internal___fieldOwners = 'pole___espace___internal___fieldOwners',
+  pole___espace___internal___ignoreType = 'pole___espace___internal___ignoreType',
+  pole___espace___internal___mediaType = 'pole___espace___internal___mediaType',
+  pole___espace___internal___owner = 'pole___espace___internal___owner',
+  pole___espace___internal___type = 'pole___espace___internal___type',
+  pole___espace___espaceId = 'pole___espace___espaceId',
+  pole___espace___frenchTitle = 'pole___espace___frenchTitle',
+  pole___espace___chineseTitle = 'pole___espace___chineseTitle',
+  pole___espace___pole = 'pole___espace___pole',
+  pole___espace___pole___id = 'pole___espace___pole___id',
+  pole___espace___pole___children = 'pole___espace___pole___children',
+  pole___espace___pole___poleId = 'pole___espace___pole___poleId',
+  pole___espace___pole___title = 'pole___espace___pole___title',
+  pole___espace___pole___slug = 'pole___espace___pole___slug',
+  pole___espace___pole___spaceId = 'pole___espace___pole___spaceId',
+  pole___espace___pole___contentful_id = 'pole___espace___pole___contentful_id',
+  pole___espace___pole___createdAt = 'pole___espace___pole___createdAt',
+  pole___espace___pole___updatedAt = 'pole___espace___pole___updatedAt',
+  pole___espace___pole___node_locale = 'pole___espace___pole___node_locale',
+  pole___espace___pole___post = 'pole___espace___pole___post',
+  pole___espace___spaceId = 'pole___espace___spaceId',
+  pole___espace___contentful_id = 'pole___espace___contentful_id',
+  pole___espace___createdAt = 'pole___espace___createdAt',
+  pole___espace___updatedAt = 'pole___espace___updatedAt',
+  pole___espace___sys___revision = 'pole___espace___sys___revision',
+  pole___espace___node_locale = 'pole___espace___node_locale',
+  pole___cover___id = 'pole___cover___id',
+  pole___cover___parent___id = 'pole___cover___parent___id',
+  pole___cover___parent___children = 'pole___cover___parent___children',
+  pole___cover___children = 'pole___cover___children',
+  pole___cover___children___id = 'pole___cover___children___id',
+  pole___cover___children___children = 'pole___cover___children___children',
+  pole___cover___internal___content = 'pole___cover___internal___content',
+  pole___cover___internal___contentDigest = 'pole___cover___internal___contentDigest',
+  pole___cover___internal___description = 'pole___cover___internal___description',
+  pole___cover___internal___fieldOwners = 'pole___cover___internal___fieldOwners',
+  pole___cover___internal___ignoreType = 'pole___cover___internal___ignoreType',
+  pole___cover___internal___mediaType = 'pole___cover___internal___mediaType',
+  pole___cover___internal___owner = 'pole___cover___internal___owner',
+  pole___cover___internal___type = 'pole___cover___internal___type',
+  pole___cover___contentful_id = 'pole___cover___contentful_id',
+  pole___cover___file___url = 'pole___cover___file___url',
+  pole___cover___file___fileName = 'pole___cover___file___fileName',
+  pole___cover___file___contentType = 'pole___cover___file___contentType',
+  pole___cover___title = 'pole___cover___title',
+  pole___cover___description = 'pole___cover___description',
+  pole___cover___node_locale = 'pole___cover___node_locale',
+  pole___cover___fixed___base64 = 'pole___cover___fixed___base64',
+  pole___cover___fixed___tracedSVG = 'pole___cover___fixed___tracedSVG',
+  pole___cover___fixed___aspectRatio = 'pole___cover___fixed___aspectRatio',
+  pole___cover___fixed___width = 'pole___cover___fixed___width',
+  pole___cover___fixed___height = 'pole___cover___fixed___height',
+  pole___cover___fixed___src = 'pole___cover___fixed___src',
+  pole___cover___fixed___srcSet = 'pole___cover___fixed___srcSet',
+  pole___cover___fixed___srcWebp = 'pole___cover___fixed___srcWebp',
+  pole___cover___fixed___srcSetWebp = 'pole___cover___fixed___srcSetWebp',
+  pole___cover___resolutions___base64 = 'pole___cover___resolutions___base64',
+  pole___cover___resolutions___tracedSVG = 'pole___cover___resolutions___tracedSVG',
+  pole___cover___resolutions___aspectRatio = 'pole___cover___resolutions___aspectRatio',
+  pole___cover___resolutions___width = 'pole___cover___resolutions___width',
+  pole___cover___resolutions___height = 'pole___cover___resolutions___height',
+  pole___cover___resolutions___src = 'pole___cover___resolutions___src',
+  pole___cover___resolutions___srcSet = 'pole___cover___resolutions___srcSet',
+  pole___cover___resolutions___srcWebp = 'pole___cover___resolutions___srcWebp',
+  pole___cover___resolutions___srcSetWebp = 'pole___cover___resolutions___srcSetWebp',
+  pole___cover___fluid___base64 = 'pole___cover___fluid___base64',
+  pole___cover___fluid___tracedSVG = 'pole___cover___fluid___tracedSVG',
+  pole___cover___fluid___aspectRatio = 'pole___cover___fluid___aspectRatio',
+  pole___cover___fluid___src = 'pole___cover___fluid___src',
+  pole___cover___fluid___srcSet = 'pole___cover___fluid___srcSet',
+  pole___cover___fluid___srcWebp = 'pole___cover___fluid___srcWebp',
+  pole___cover___fluid___srcSetWebp = 'pole___cover___fluid___srcSetWebp',
+  pole___cover___fluid___sizes = 'pole___cover___fluid___sizes',
+  pole___cover___sizes___base64 = 'pole___cover___sizes___base64',
+  pole___cover___sizes___tracedSVG = 'pole___cover___sizes___tracedSVG',
+  pole___cover___sizes___aspectRatio = 'pole___cover___sizes___aspectRatio',
+  pole___cover___sizes___src = 'pole___cover___sizes___src',
+  pole___cover___sizes___srcSet = 'pole___cover___sizes___srcSet',
+  pole___cover___sizes___srcWebp = 'pole___cover___sizes___srcWebp',
+  pole___cover___sizes___srcSetWebp = 'pole___cover___sizes___srcSetWebp',
+  pole___cover___sizes___sizes = 'pole___cover___sizes___sizes',
+  pole___cover___resize___base64 = 'pole___cover___resize___base64',
+  pole___cover___resize___tracedSVG = 'pole___cover___resize___tracedSVG',
+  pole___cover___resize___src = 'pole___cover___resize___src',
+  pole___cover___resize___width = 'pole___cover___resize___width',
+  pole___cover___resize___height = 'pole___cover___resize___height',
+  pole___cover___resize___aspectRatio = 'pole___cover___resize___aspectRatio',
+  pole___description___id = 'pole___description___id',
+  pole___description___parent___id = 'pole___description___parent___id',
+  pole___description___parent___children = 'pole___description___parent___children',
+  pole___description___children = 'pole___description___children',
+  pole___description___children___id = 'pole___description___children___id',
+  pole___description___children___children = 'pole___description___children___children',
+  pole___description___internal___content = 'pole___description___internal___content',
+  pole___description___internal___contentDigest = 'pole___description___internal___contentDigest',
+  pole___description___internal___description = 'pole___description___internal___description',
+  pole___description___internal___fieldOwners = 'pole___description___internal___fieldOwners',
+  pole___description___internal___ignoreType = 'pole___description___internal___ignoreType',
+  pole___description___internal___mediaType = 'pole___description___internal___mediaType',
+  pole___description___internal___owner = 'pole___description___internal___owner',
+  pole___description___internal___type = 'pole___description___internal___type',
+  pole___description___content = 'pole___description___content',
+  pole___description___content___content = 'pole___description___content___content',
+  pole___description___content___nodeType = 'pole___description___content___nodeType',
+  pole___description___nodeType = 'pole___description___nodeType',
+  pole___description___description = 'pole___description___description',
+  pole___description___json = 'pole___description___json',
+  pole___description___childContentfulRichText___id = 'pole___description___childContentfulRichText___id',
+  pole___description___childContentfulRichText___children = 'pole___description___childContentfulRichText___children',
+  pole___description___childContentfulRichText___html = 'pole___description___childContentfulRichText___html',
+  pole___description___childContentfulRichText___timeToRead = 'pole___description___childContentfulRichText___timeToRead',
+  pole___spaceId = 'pole___spaceId',
+  pole___contentful_id = 'pole___contentful_id',
+  pole___createdAt = 'pole___createdAt',
+  pole___updatedAt = 'pole___updatedAt',
+  pole___sys___revision = 'pole___sys___revision',
+  pole___node_locale = 'pole___node_locale',
+  pole___post = 'pole___post',
+  pole___post___id = 'pole___post___id',
+  pole___post___parent___id = 'pole___post___parent___id',
+  pole___post___parent___children = 'pole___post___parent___children',
+  pole___post___children = 'pole___post___children',
+  pole___post___children___id = 'pole___post___children___id',
+  pole___post___children___children = 'pole___post___children___children',
+  pole___post___internal___content = 'pole___post___internal___content',
+  pole___post___internal___contentDigest = 'pole___post___internal___contentDigest',
+  pole___post___internal___description = 'pole___post___internal___description',
+  pole___post___internal___fieldOwners = 'pole___post___internal___fieldOwners',
+  pole___post___internal___ignoreType = 'pole___post___internal___ignoreType',
+  pole___post___internal___mediaType = 'pole___post___internal___mediaType',
+  pole___post___internal___owner = 'pole___post___internal___owner',
+  pole___post___internal___type = 'pole___post___internal___type',
+  pole___post___title = 'pole___post___title',
+  pole___post___author = 'pole___post___author',
+  pole___post___slug = 'pole___post___slug',
+  pole___post___pole___id = 'pole___post___pole___id',
+  pole___post___pole___children = 'pole___post___pole___children',
+  pole___post___pole___poleId = 'pole___post___pole___poleId',
+  pole___post___pole___title = 'pole___post___pole___title',
+  pole___post___pole___slug = 'pole___post___pole___slug',
+  pole___post___pole___spaceId = 'pole___post___pole___spaceId',
+  pole___post___pole___contentful_id = 'pole___post___pole___contentful_id',
+  pole___post___pole___createdAt = 'pole___post___pole___createdAt',
+  pole___post___pole___updatedAt = 'pole___post___pole___updatedAt',
+  pole___post___pole___node_locale = 'pole___post___pole___node_locale',
+  pole___post___pole___post = 'pole___post___pole___post',
+  pole___post___image = 'pole___post___image',
+  pole___post___image___id = 'pole___post___image___id',
+  pole___post___image___children = 'pole___post___image___children',
+  pole___post___image___contentful_id = 'pole___post___image___contentful_id',
+  pole___post___image___title = 'pole___post___image___title',
+  pole___post___image___description = 'pole___post___image___description',
+  pole___post___image___node_locale = 'pole___post___image___node_locale',
+  pole___post___content___id = 'pole___post___content___id',
+  pole___post___content___children = 'pole___post___content___children',
+  pole___post___content___content = 'pole___post___content___content',
+  pole___post___content___nodeType = 'pole___post___content___nodeType',
+  pole___post___content___json = 'pole___post___content___json',
+  pole___post___spaceId = 'pole___post___spaceId',
+  pole___post___contentful_id = 'pole___post___contentful_id',
+  pole___post___createdAt = 'pole___post___createdAt',
+  pole___post___updatedAt = 'pole___post___updatedAt',
+  pole___post___sys___revision = 'pole___post___sys___revision',
+  pole___post___node_locale = 'pole___post___node_locale',
+  pole___post___childContentfulPostContentRichTextNode___id = 'pole___post___childContentfulPostContentRichTextNode___id',
+  pole___post___childContentfulPostContentRichTextNode___children = 'pole___post___childContentfulPostContentRichTextNode___children',
+  pole___post___childContentfulPostContentRichTextNode___content = 'pole___post___childContentfulPostContentRichTextNode___content',
+  pole___post___childContentfulPostContentRichTextNode___nodeType = 'pole___post___childContentfulPostContentRichTextNode___nodeType',
+  pole___post___childContentfulPostContentRichTextNode___json = 'pole___post___childContentfulPostContentRichTextNode___json',
+  pole___childContentfulPoleDescriptionRichTextNode___id = 'pole___childContentfulPoleDescriptionRichTextNode___id',
+  pole___childContentfulPoleDescriptionRichTextNode___parent___id = 'pole___childContentfulPoleDescriptionRichTextNode___parent___id',
+  pole___childContentfulPoleDescriptionRichTextNode___parent___children = 'pole___childContentfulPoleDescriptionRichTextNode___parent___children',
+  pole___childContentfulPoleDescriptionRichTextNode___children = 'pole___childContentfulPoleDescriptionRichTextNode___children',
+  pole___childContentfulPoleDescriptionRichTextNode___children___id = 'pole___childContentfulPoleDescriptionRichTextNode___children___id',
+  pole___childContentfulPoleDescriptionRichTextNode___children___children = 'pole___childContentfulPoleDescriptionRichTextNode___children___children',
+  pole___childContentfulPoleDescriptionRichTextNode___internal___content = 'pole___childContentfulPoleDescriptionRichTextNode___internal___content',
+  pole___childContentfulPoleDescriptionRichTextNode___internal___contentDigest = 'pole___childContentfulPoleDescriptionRichTextNode___internal___contentDigest',
+  pole___childContentfulPoleDescriptionRichTextNode___internal___description = 'pole___childContentfulPoleDescriptionRichTextNode___internal___description',
+  pole___childContentfulPoleDescriptionRichTextNode___internal___fieldOwners = 'pole___childContentfulPoleDescriptionRichTextNode___internal___fieldOwners',
+  pole___childContentfulPoleDescriptionRichTextNode___internal___ignoreType = 'pole___childContentfulPoleDescriptionRichTextNode___internal___ignoreType',
+  pole___childContentfulPoleDescriptionRichTextNode___internal___mediaType = 'pole___childContentfulPoleDescriptionRichTextNode___internal___mediaType',
+  pole___childContentfulPoleDescriptionRichTextNode___internal___owner = 'pole___childContentfulPoleDescriptionRichTextNode___internal___owner',
+  pole___childContentfulPoleDescriptionRichTextNode___internal___type = 'pole___childContentfulPoleDescriptionRichTextNode___internal___type',
+  pole___childContentfulPoleDescriptionRichTextNode___content = 'pole___childContentfulPoleDescriptionRichTextNode___content',
+  pole___childContentfulPoleDescriptionRichTextNode___content___content = 'pole___childContentfulPoleDescriptionRichTextNode___content___content',
+  pole___childContentfulPoleDescriptionRichTextNode___content___nodeType = 'pole___childContentfulPoleDescriptionRichTextNode___content___nodeType',
+  pole___childContentfulPoleDescriptionRichTextNode___nodeType = 'pole___childContentfulPoleDescriptionRichTextNode___nodeType',
+  pole___childContentfulPoleDescriptionRichTextNode___description = 'pole___childContentfulPoleDescriptionRichTextNode___description',
+  pole___childContentfulPoleDescriptionRichTextNode___json = 'pole___childContentfulPoleDescriptionRichTextNode___json',
+  pole___childContentfulPoleDescriptionRichTextNode___childContentfulRichText___id = 'pole___childContentfulPoleDescriptionRichTextNode___childContentfulRichText___id',
+  pole___childContentfulPoleDescriptionRichTextNode___childContentfulRichText___children = 'pole___childContentfulPoleDescriptionRichTextNode___childContentfulRichText___children',
+  pole___childContentfulPoleDescriptionRichTextNode___childContentfulRichText___html = 'pole___childContentfulPoleDescriptionRichTextNode___childContentfulRichText___html',
+  pole___childContentfulPoleDescriptionRichTextNode___childContentfulRichText___timeToRead = 'pole___childContentfulPoleDescriptionRichTextNode___childContentfulRichText___timeToRead',
+  spaceId = 'spaceId',
+  contentful_id = 'contentful_id',
+  createdAt = 'createdAt',
+  updatedAt = 'updatedAt',
+  sys___revision = 'sys___revision',
+  sys___contentType___sys___type = 'sys___contentType___sys___type',
+  sys___contentType___sys___linkType = 'sys___contentType___sys___linkType',
+  sys___contentType___sys___id = 'sys___contentType___sys___id',
+  sys___contentType___sys___contentful_id = 'sys___contentType___sys___contentful_id',
+  node_locale = 'node_locale'
+}
+
+export type ContentfulEspaceConnection = {
+  __typename?: 'ContentfulEspaceConnection';
+  totalCount: Scalars['Int'];
+  edges: Array<ContentfulEspaceEdge>;
+  nodes: Array<ContentfulEspace>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  group: Array<ContentfulEspaceGroupConnection>;
+};
+
+
+export type ContentfulEspaceConnectionDistinctArgs = {
+  field: ContentfulEspaceFieldsEnum;
+};
+
+
+export type ContentfulEspaceConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: ContentfulEspaceFieldsEnum;
+};
+
+export type ContentfulEspaceEdge = {
+  __typename?: 'ContentfulEspaceEdge';
+  next?: Maybe<ContentfulEspace>;
+  node: ContentfulEspace;
+  previous?: Maybe<ContentfulEspace>;
+};
+
+export type ContentfulEspaceGroupConnection = {
+  __typename?: 'ContentfulEspaceGroupConnection';
+  totalCount: Scalars['Int'];
+  edges: Array<ContentfulEspaceEdge>;
+  nodes: Array<ContentfulEspace>;
+  pageInfo: PageInfo;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulPoleDescriptionRichTextNodeSortInput = {
+  fields?: Maybe<Array<Maybe<ContentfulPoleDescriptionRichTextNodeFieldsEnum>>>;
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
+export enum ContentfulPoleDescriptionRichTextNodeFieldsEnum {
+  id = 'id',
+  parent___id = 'parent___id',
+  parent___parent___id = 'parent___parent___id',
+  parent___parent___parent___id = 'parent___parent___parent___id',
+  parent___parent___parent___children = 'parent___parent___parent___children',
+  parent___parent___children = 'parent___parent___children',
+  parent___parent___children___id = 'parent___parent___children___id',
+  parent___parent___children___children = 'parent___parent___children___children',
+  parent___parent___internal___content = 'parent___parent___internal___content',
+  parent___parent___internal___contentDigest = 'parent___parent___internal___contentDigest',
+  parent___parent___internal___description = 'parent___parent___internal___description',
+  parent___parent___internal___fieldOwners = 'parent___parent___internal___fieldOwners',
+  parent___parent___internal___ignoreType = 'parent___parent___internal___ignoreType',
+  parent___parent___internal___mediaType = 'parent___parent___internal___mediaType',
+  parent___parent___internal___owner = 'parent___parent___internal___owner',
+  parent___parent___internal___type = 'parent___parent___internal___type',
+  parent___children = 'parent___children',
+  parent___children___id = 'parent___children___id',
+  parent___children___parent___id = 'parent___children___parent___id',
+  parent___children___parent___children = 'parent___children___parent___children',
+  parent___children___children = 'parent___children___children',
+  parent___children___children___id = 'parent___children___children___id',
+  parent___children___children___children = 'parent___children___children___children',
+  parent___children___internal___content = 'parent___children___internal___content',
+  parent___children___internal___contentDigest = 'parent___children___internal___contentDigest',
+  parent___children___internal___description = 'parent___children___internal___description',
+  parent___children___internal___fieldOwners = 'parent___children___internal___fieldOwners',
+  parent___children___internal___ignoreType = 'parent___children___internal___ignoreType',
+  parent___children___internal___mediaType = 'parent___children___internal___mediaType',
+  parent___children___internal___owner = 'parent___children___internal___owner',
+  parent___children___internal___type = 'parent___children___internal___type',
+  parent___internal___content = 'parent___internal___content',
+  parent___internal___contentDigest = 'parent___internal___contentDigest',
+  parent___internal___description = 'parent___internal___description',
+  parent___internal___fieldOwners = 'parent___internal___fieldOwners',
+  parent___internal___ignoreType = 'parent___internal___ignoreType',
+  parent___internal___mediaType = 'parent___internal___mediaType',
+  parent___internal___owner = 'parent___internal___owner',
+  parent___internal___type = 'parent___internal___type',
+  children = 'children',
+  children___id = 'children___id',
+  children___parent___id = 'children___parent___id',
+  children___parent___parent___id = 'children___parent___parent___id',
+  children___parent___parent___children = 'children___parent___parent___children',
+  children___parent___children = 'children___parent___children',
+  children___parent___children___id = 'children___parent___children___id',
+  children___parent___children___children = 'children___parent___children___children',
+  children___parent___internal___content = 'children___parent___internal___content',
+  children___parent___internal___contentDigest = 'children___parent___internal___contentDigest',
+  children___parent___internal___description = 'children___parent___internal___description',
+  children___parent___internal___fieldOwners = 'children___parent___internal___fieldOwners',
+  children___parent___internal___ignoreType = 'children___parent___internal___ignoreType',
+  children___parent___internal___mediaType = 'children___parent___internal___mediaType',
+  children___parent___internal___owner = 'children___parent___internal___owner',
+  children___parent___internal___type = 'children___parent___internal___type',
+  children___children = 'children___children',
+  children___children___id = 'children___children___id',
+  children___children___parent___id = 'children___children___parent___id',
+  children___children___parent___children = 'children___children___parent___children',
+  children___children___children = 'children___children___children',
+  children___children___children___id = 'children___children___children___id',
+  children___children___children___children = 'children___children___children___children',
+  children___children___internal___content = 'children___children___internal___content',
+  children___children___internal___contentDigest = 'children___children___internal___contentDigest',
+  children___children___internal___description = 'children___children___internal___description',
+  children___children___internal___fieldOwners = 'children___children___internal___fieldOwners',
+  children___children___internal___ignoreType = 'children___children___internal___ignoreType',
+  children___children___internal___mediaType = 'children___children___internal___mediaType',
+  children___children___internal___owner = 'children___children___internal___owner',
+  children___children___internal___type = 'children___children___internal___type',
+  children___internal___content = 'children___internal___content',
+  children___internal___contentDigest = 'children___internal___contentDigest',
+  children___internal___description = 'children___internal___description',
+  children___internal___fieldOwners = 'children___internal___fieldOwners',
+  children___internal___ignoreType = 'children___internal___ignoreType',
+  children___internal___mediaType = 'children___internal___mediaType',
+  children___internal___owner = 'children___internal___owner',
+  children___internal___type = 'children___internal___type',
+  internal___content = 'internal___content',
+  internal___contentDigest = 'internal___contentDigest',
+  internal___description = 'internal___description',
+  internal___fieldOwners = 'internal___fieldOwners',
+  internal___ignoreType = 'internal___ignoreType',
+  internal___mediaType = 'internal___mediaType',
+  internal___owner = 'internal___owner',
+  internal___type = 'internal___type',
+  content = 'content',
+  content___content = 'content___content',
+  content___content___value = 'content___content___value',
+  content___content___nodeType = 'content___content___nodeType',
+  content___nodeType = 'content___nodeType',
+  nodeType = 'nodeType',
+  description = 'description',
+  json = 'json',
+  childContentfulRichText___id = 'childContentfulRichText___id',
+  childContentfulRichText___parent___id = 'childContentfulRichText___parent___id',
+  childContentfulRichText___parent___parent___id = 'childContentfulRichText___parent___parent___id',
+  childContentfulRichText___parent___parent___children = 'childContentfulRichText___parent___parent___children',
+  childContentfulRichText___parent___children = 'childContentfulRichText___parent___children',
+  childContentfulRichText___parent___children___id = 'childContentfulRichText___parent___children___id',
+  childContentfulRichText___parent___children___children = 'childContentfulRichText___parent___children___children',
+  childContentfulRichText___parent___internal___content = 'childContentfulRichText___parent___internal___content',
+  childContentfulRichText___parent___internal___contentDigest = 'childContentfulRichText___parent___internal___contentDigest',
+  childContentfulRichText___parent___internal___description = 'childContentfulRichText___parent___internal___description',
+  childContentfulRichText___parent___internal___fieldOwners = 'childContentfulRichText___parent___internal___fieldOwners',
+  childContentfulRichText___parent___internal___ignoreType = 'childContentfulRichText___parent___internal___ignoreType',
+  childContentfulRichText___parent___internal___mediaType = 'childContentfulRichText___parent___internal___mediaType',
+  childContentfulRichText___parent___internal___owner = 'childContentfulRichText___parent___internal___owner',
+  childContentfulRichText___parent___internal___type = 'childContentfulRichText___parent___internal___type',
+  childContentfulRichText___children = 'childContentfulRichText___children',
+  childContentfulRichText___children___id = 'childContentfulRichText___children___id',
+  childContentfulRichText___children___parent___id = 'childContentfulRichText___children___parent___id',
+  childContentfulRichText___children___parent___children = 'childContentfulRichText___children___parent___children',
+  childContentfulRichText___children___children = 'childContentfulRichText___children___children',
+  childContentfulRichText___children___children___id = 'childContentfulRichText___children___children___id',
+  childContentfulRichText___children___children___children = 'childContentfulRichText___children___children___children',
+  childContentfulRichText___children___internal___content = 'childContentfulRichText___children___internal___content',
+  childContentfulRichText___children___internal___contentDigest = 'childContentfulRichText___children___internal___contentDigest',
+  childContentfulRichText___children___internal___description = 'childContentfulRichText___children___internal___description',
+  childContentfulRichText___children___internal___fieldOwners = 'childContentfulRichText___children___internal___fieldOwners',
+  childContentfulRichText___children___internal___ignoreType = 'childContentfulRichText___children___internal___ignoreType',
+  childContentfulRichText___children___internal___mediaType = 'childContentfulRichText___children___internal___mediaType',
+  childContentfulRichText___children___internal___owner = 'childContentfulRichText___children___internal___owner',
+  childContentfulRichText___children___internal___type = 'childContentfulRichText___children___internal___type',
+  childContentfulRichText___internal___content = 'childContentfulRichText___internal___content',
+  childContentfulRichText___internal___contentDigest = 'childContentfulRichText___internal___contentDigest',
+  childContentfulRichText___internal___description = 'childContentfulRichText___internal___description',
+  childContentfulRichText___internal___fieldOwners = 'childContentfulRichText___internal___fieldOwners',
+  childContentfulRichText___internal___ignoreType = 'childContentfulRichText___internal___ignoreType',
+  childContentfulRichText___internal___mediaType = 'childContentfulRichText___internal___mediaType',
+  childContentfulRichText___internal___owner = 'childContentfulRichText___internal___owner',
+  childContentfulRichText___internal___type = 'childContentfulRichText___internal___type',
+  childContentfulRichText___html = 'childContentfulRichText___html',
+  childContentfulRichText___timeToRead = 'childContentfulRichText___timeToRead'
+}
+
+export type ContentfulPoleDescriptionRichTextNodeConnection = {
+  __typename?: 'contentfulPoleDescriptionRichTextNodeConnection';
+  totalCount: Scalars['Int'];
+  edges: Array<ContentfulPoleDescriptionRichTextNodeEdge>;
+  nodes: Array<ContentfulPoleDescriptionRichTextNode>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  group: Array<ContentfulPoleDescriptionRichTextNodeGroupConnection>;
+};
+
+
+export type ContentfulPoleDescriptionRichTextNodeConnectionDistinctArgs = {
+  field: ContentfulPoleDescriptionRichTextNodeFieldsEnum;
+};
+
+
+export type ContentfulPoleDescriptionRichTextNodeConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: ContentfulPoleDescriptionRichTextNodeFieldsEnum;
+};
+
+export type ContentfulPoleDescriptionRichTextNodeEdge = {
+  __typename?: 'contentfulPoleDescriptionRichTextNodeEdge';
+  next?: Maybe<ContentfulPoleDescriptionRichTextNode>;
+  node: ContentfulPoleDescriptionRichTextNode;
+  previous?: Maybe<ContentfulPoleDescriptionRichTextNode>;
+};
+
+export type ContentfulPoleDescriptionRichTextNodeGroupConnection = {
+  __typename?: 'contentfulPoleDescriptionRichTextNodeGroupConnection';
+  totalCount: Scalars['Int'];
+  edges: Array<ContentfulPoleDescriptionRichTextNodeEdge>;
+  nodes: Array<ContentfulPoleDescriptionRichTextNode>;
+  pageInfo: PageInfo;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulPoleSortInput = {
+  fields?: Maybe<Array<Maybe<ContentfulPoleFieldsEnum>>>;
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
+export enum ContentfulPoleFieldsEnum {
+  id = 'id',
+  parent___id = 'parent___id',
+  parent___parent___id = 'parent___parent___id',
+  parent___parent___parent___id = 'parent___parent___parent___id',
+  parent___parent___parent___children = 'parent___parent___parent___children',
+  parent___parent___children = 'parent___parent___children',
+  parent___parent___children___id = 'parent___parent___children___id',
+  parent___parent___children___children = 'parent___parent___children___children',
+  parent___parent___internal___content = 'parent___parent___internal___content',
+  parent___parent___internal___contentDigest = 'parent___parent___internal___contentDigest',
+  parent___parent___internal___description = 'parent___parent___internal___description',
+  parent___parent___internal___fieldOwners = 'parent___parent___internal___fieldOwners',
+  parent___parent___internal___ignoreType = 'parent___parent___internal___ignoreType',
+  parent___parent___internal___mediaType = 'parent___parent___internal___mediaType',
+  parent___parent___internal___owner = 'parent___parent___internal___owner',
+  parent___parent___internal___type = 'parent___parent___internal___type',
+  parent___children = 'parent___children',
+  parent___children___id = 'parent___children___id',
+  parent___children___parent___id = 'parent___children___parent___id',
+  parent___children___parent___children = 'parent___children___parent___children',
+  parent___children___children = 'parent___children___children',
+  parent___children___children___id = 'parent___children___children___id',
+  parent___children___children___children = 'parent___children___children___children',
+  parent___children___internal___content = 'parent___children___internal___content',
+  parent___children___internal___contentDigest = 'parent___children___internal___contentDigest',
+  parent___children___internal___description = 'parent___children___internal___description',
+  parent___children___internal___fieldOwners = 'parent___children___internal___fieldOwners',
+  parent___children___internal___ignoreType = 'parent___children___internal___ignoreType',
+  parent___children___internal___mediaType = 'parent___children___internal___mediaType',
+  parent___children___internal___owner = 'parent___children___internal___owner',
+  parent___children___internal___type = 'parent___children___internal___type',
+  parent___internal___content = 'parent___internal___content',
+  parent___internal___contentDigest = 'parent___internal___contentDigest',
+  parent___internal___description = 'parent___internal___description',
+  parent___internal___fieldOwners = 'parent___internal___fieldOwners',
+  parent___internal___ignoreType = 'parent___internal___ignoreType',
+  parent___internal___mediaType = 'parent___internal___mediaType',
+  parent___internal___owner = 'parent___internal___owner',
+  parent___internal___type = 'parent___internal___type',
+  children = 'children',
+  children___id = 'children___id',
+  children___parent___id = 'children___parent___id',
+  children___parent___parent___id = 'children___parent___parent___id',
+  children___parent___parent___children = 'children___parent___parent___children',
+  children___parent___children = 'children___parent___children',
+  children___parent___children___id = 'children___parent___children___id',
+  children___parent___children___children = 'children___parent___children___children',
+  children___parent___internal___content = 'children___parent___internal___content',
+  children___parent___internal___contentDigest = 'children___parent___internal___contentDigest',
+  children___parent___internal___description = 'children___parent___internal___description',
+  children___parent___internal___fieldOwners = 'children___parent___internal___fieldOwners',
+  children___parent___internal___ignoreType = 'children___parent___internal___ignoreType',
+  children___parent___internal___mediaType = 'children___parent___internal___mediaType',
+  children___parent___internal___owner = 'children___parent___internal___owner',
+  children___parent___internal___type = 'children___parent___internal___type',
+  children___children = 'children___children',
+  children___children___id = 'children___children___id',
+  children___children___parent___id = 'children___children___parent___id',
+  children___children___parent___children = 'children___children___parent___children',
+  children___children___children = 'children___children___children',
+  children___children___children___id = 'children___children___children___id',
+  children___children___children___children = 'children___children___children___children',
+  children___children___internal___content = 'children___children___internal___content',
+  children___children___internal___contentDigest = 'children___children___internal___contentDigest',
+  children___children___internal___description = 'children___children___internal___description',
+  children___children___internal___fieldOwners = 'children___children___internal___fieldOwners',
+  children___children___internal___ignoreType = 'children___children___internal___ignoreType',
+  children___children___internal___mediaType = 'children___children___internal___mediaType',
+  children___children___internal___owner = 'children___children___internal___owner',
+  children___children___internal___type = 'children___children___internal___type',
+  children___internal___content = 'children___internal___content',
+  children___internal___contentDigest = 'children___internal___contentDigest',
+  children___internal___description = 'children___internal___description',
+  children___internal___fieldOwners = 'children___internal___fieldOwners',
+  children___internal___ignoreType = 'children___internal___ignoreType',
+  children___internal___mediaType = 'children___internal___mediaType',
+  children___internal___owner = 'children___internal___owner',
+  children___internal___type = 'children___internal___type',
+  internal___content = 'internal___content',
+  internal___contentDigest = 'internal___contentDigest',
+  internal___description = 'internal___description',
+  internal___fieldOwners = 'internal___fieldOwners',
+  internal___ignoreType = 'internal___ignoreType',
+  internal___mediaType = 'internal___mediaType',
+  internal___owner = 'internal___owner',
+  internal___type = 'internal___type',
+  poleId = 'poleId',
+  title = 'title',
+  slug = 'slug',
+  espace___id = 'espace___id',
+  espace___parent___id = 'espace___parent___id',
+  espace___parent___parent___id = 'espace___parent___parent___id',
+  espace___parent___parent___children = 'espace___parent___parent___children',
+  espace___parent___children = 'espace___parent___children',
+  espace___parent___children___id = 'espace___parent___children___id',
+  espace___parent___children___children = 'espace___parent___children___children',
+  espace___parent___internal___content = 'espace___parent___internal___content',
+  espace___parent___internal___contentDigest = 'espace___parent___internal___contentDigest',
+  espace___parent___internal___description = 'espace___parent___internal___description',
+  espace___parent___internal___fieldOwners = 'espace___parent___internal___fieldOwners',
+  espace___parent___internal___ignoreType = 'espace___parent___internal___ignoreType',
+  espace___parent___internal___mediaType = 'espace___parent___internal___mediaType',
+  espace___parent___internal___owner = 'espace___parent___internal___owner',
+  espace___parent___internal___type = 'espace___parent___internal___type',
+  espace___children = 'espace___children',
+  espace___children___id = 'espace___children___id',
+  espace___children___parent___id = 'espace___children___parent___id',
+  espace___children___parent___children = 'espace___children___parent___children',
+  espace___children___children = 'espace___children___children',
+  espace___children___children___id = 'espace___children___children___id',
+  espace___children___children___children = 'espace___children___children___children',
+  espace___children___internal___content = 'espace___children___internal___content',
+  espace___children___internal___contentDigest = 'espace___children___internal___contentDigest',
+  espace___children___internal___description = 'espace___children___internal___description',
+  espace___children___internal___fieldOwners = 'espace___children___internal___fieldOwners',
+  espace___children___internal___ignoreType = 'espace___children___internal___ignoreType',
+  espace___children___internal___mediaType = 'espace___children___internal___mediaType',
+  espace___children___internal___owner = 'espace___children___internal___owner',
+  espace___children___internal___type = 'espace___children___internal___type',
+  espace___internal___content = 'espace___internal___content',
+  espace___internal___contentDigest = 'espace___internal___contentDigest',
+  espace___internal___description = 'espace___internal___description',
+  espace___internal___fieldOwners = 'espace___internal___fieldOwners',
+  espace___internal___ignoreType = 'espace___internal___ignoreType',
+  espace___internal___mediaType = 'espace___internal___mediaType',
+  espace___internal___owner = 'espace___internal___owner',
+  espace___internal___type = 'espace___internal___type',
+  espace___espaceId = 'espace___espaceId',
+  espace___frenchTitle = 'espace___frenchTitle',
+  espace___chineseTitle = 'espace___chineseTitle',
+  espace___pole = 'espace___pole',
+  espace___pole___id = 'espace___pole___id',
+  espace___pole___parent___id = 'espace___pole___parent___id',
+  espace___pole___parent___children = 'espace___pole___parent___children',
+  espace___pole___children = 'espace___pole___children',
+  espace___pole___children___id = 'espace___pole___children___id',
+  espace___pole___children___children = 'espace___pole___children___children',
+  espace___pole___internal___content = 'espace___pole___internal___content',
+  espace___pole___internal___contentDigest = 'espace___pole___internal___contentDigest',
+  espace___pole___internal___description = 'espace___pole___internal___description',
+  espace___pole___internal___fieldOwners = 'espace___pole___internal___fieldOwners',
+  espace___pole___internal___ignoreType = 'espace___pole___internal___ignoreType',
+  espace___pole___internal___mediaType = 'espace___pole___internal___mediaType',
+  espace___pole___internal___owner = 'espace___pole___internal___owner',
+  espace___pole___internal___type = 'espace___pole___internal___type',
+  espace___pole___poleId = 'espace___pole___poleId',
+  espace___pole___title = 'espace___pole___title',
+  espace___pole___slug = 'espace___pole___slug',
+  espace___pole___espace___id = 'espace___pole___espace___id',
+  espace___pole___espace___children = 'espace___pole___espace___children',
+  espace___pole___espace___espaceId = 'espace___pole___espace___espaceId',
+  espace___pole___espace___frenchTitle = 'espace___pole___espace___frenchTitle',
+  espace___pole___espace___chineseTitle = 'espace___pole___espace___chineseTitle',
+  espace___pole___espace___pole = 'espace___pole___espace___pole',
+  espace___pole___espace___spaceId = 'espace___pole___espace___spaceId',
+  espace___pole___espace___contentful_id = 'espace___pole___espace___contentful_id',
+  espace___pole___espace___createdAt = 'espace___pole___espace___createdAt',
+  espace___pole___espace___updatedAt = 'espace___pole___espace___updatedAt',
+  espace___pole___espace___node_locale = 'espace___pole___espace___node_locale',
+  espace___pole___cover___id = 'espace___pole___cover___id',
+  espace___pole___cover___children = 'espace___pole___cover___children',
+  espace___pole___cover___contentful_id = 'espace___pole___cover___contentful_id',
+  espace___pole___cover___title = 'espace___pole___cover___title',
+  espace___pole___cover___description = 'espace___pole___cover___description',
+  espace___pole___cover___node_locale = 'espace___pole___cover___node_locale',
+  espace___pole___description___id = 'espace___pole___description___id',
+  espace___pole___description___children = 'espace___pole___description___children',
+  espace___pole___description___content = 'espace___pole___description___content',
+  espace___pole___description___nodeType = 'espace___pole___description___nodeType',
+  espace___pole___description___description = 'espace___pole___description___description',
+  espace___pole___description___json = 'espace___pole___description___json',
+  espace___pole___spaceId = 'espace___pole___spaceId',
+  espace___pole___contentful_id = 'espace___pole___contentful_id',
+  espace___pole___createdAt = 'espace___pole___createdAt',
+  espace___pole___updatedAt = 'espace___pole___updatedAt',
+  espace___pole___sys___revision = 'espace___pole___sys___revision',
+  espace___pole___node_locale = 'espace___pole___node_locale',
+  espace___pole___post = 'espace___pole___post',
+  espace___pole___post___id = 'espace___pole___post___id',
+  espace___pole___post___children = 'espace___pole___post___children',
+  espace___pole___post___title = 'espace___pole___post___title',
+  espace___pole___post___author = 'espace___pole___post___author',
+  espace___pole___post___slug = 'espace___pole___post___slug',
+  espace___pole___post___image = 'espace___pole___post___image',
+  espace___pole___post___spaceId = 'espace___pole___post___spaceId',
+  espace___pole___post___contentful_id = 'espace___pole___post___contentful_id',
+  espace___pole___post___createdAt = 'espace___pole___post___createdAt',
+  espace___pole___post___updatedAt = 'espace___pole___post___updatedAt',
+  espace___pole___post___node_locale = 'espace___pole___post___node_locale',
+  espace___pole___childContentfulPoleDescriptionRichTextNode___id = 'espace___pole___childContentfulPoleDescriptionRichTextNode___id',
+  espace___pole___childContentfulPoleDescriptionRichTextNode___children = 'espace___pole___childContentfulPoleDescriptionRichTextNode___children',
+  espace___pole___childContentfulPoleDescriptionRichTextNode___content = 'espace___pole___childContentfulPoleDescriptionRichTextNode___content',
+  espace___pole___childContentfulPoleDescriptionRichTextNode___nodeType = 'espace___pole___childContentfulPoleDescriptionRichTextNode___nodeType',
+  espace___pole___childContentfulPoleDescriptionRichTextNode___description = 'espace___pole___childContentfulPoleDescriptionRichTextNode___description',
+  espace___pole___childContentfulPoleDescriptionRichTextNode___json = 'espace___pole___childContentfulPoleDescriptionRichTextNode___json',
+  espace___spaceId = 'espace___spaceId',
+  espace___contentful_id = 'espace___contentful_id',
+  espace___createdAt = 'espace___createdAt',
+  espace___updatedAt = 'espace___updatedAt',
+  espace___sys___revision = 'espace___sys___revision',
+  espace___node_locale = 'espace___node_locale',
+  cover___id = 'cover___id',
+  cover___parent___id = 'cover___parent___id',
+  cover___parent___parent___id = 'cover___parent___parent___id',
+  cover___parent___parent___children = 'cover___parent___parent___children',
+  cover___parent___children = 'cover___parent___children',
+  cover___parent___children___id = 'cover___parent___children___id',
+  cover___parent___children___children = 'cover___parent___children___children',
+  cover___parent___internal___content = 'cover___parent___internal___content',
+  cover___parent___internal___contentDigest = 'cover___parent___internal___contentDigest',
+  cover___parent___internal___description = 'cover___parent___internal___description',
+  cover___parent___internal___fieldOwners = 'cover___parent___internal___fieldOwners',
+  cover___parent___internal___ignoreType = 'cover___parent___internal___ignoreType',
+  cover___parent___internal___mediaType = 'cover___parent___internal___mediaType',
+  cover___parent___internal___owner = 'cover___parent___internal___owner',
+  cover___parent___internal___type = 'cover___parent___internal___type',
+  cover___children = 'cover___children',
+  cover___children___id = 'cover___children___id',
+  cover___children___parent___id = 'cover___children___parent___id',
+  cover___children___parent___children = 'cover___children___parent___children',
+  cover___children___children = 'cover___children___children',
+  cover___children___children___id = 'cover___children___children___id',
+  cover___children___children___children = 'cover___children___children___children',
+  cover___children___internal___content = 'cover___children___internal___content',
+  cover___children___internal___contentDigest = 'cover___children___internal___contentDigest',
+  cover___children___internal___description = 'cover___children___internal___description',
+  cover___children___internal___fieldOwners = 'cover___children___internal___fieldOwners',
+  cover___children___internal___ignoreType = 'cover___children___internal___ignoreType',
+  cover___children___internal___mediaType = 'cover___children___internal___mediaType',
+  cover___children___internal___owner = 'cover___children___internal___owner',
+  cover___children___internal___type = 'cover___children___internal___type',
+  cover___internal___content = 'cover___internal___content',
+  cover___internal___contentDigest = 'cover___internal___contentDigest',
+  cover___internal___description = 'cover___internal___description',
+  cover___internal___fieldOwners = 'cover___internal___fieldOwners',
+  cover___internal___ignoreType = 'cover___internal___ignoreType',
+  cover___internal___mediaType = 'cover___internal___mediaType',
+  cover___internal___owner = 'cover___internal___owner',
+  cover___internal___type = 'cover___internal___type',
+  cover___contentful_id = 'cover___contentful_id',
+  cover___file___url = 'cover___file___url',
+  cover___file___details___size = 'cover___file___details___size',
+  cover___file___fileName = 'cover___file___fileName',
+  cover___file___contentType = 'cover___file___contentType',
+  cover___title = 'cover___title',
+  cover___description = 'cover___description',
+  cover___node_locale = 'cover___node_locale',
+  cover___fixed___base64 = 'cover___fixed___base64',
+  cover___fixed___tracedSVG = 'cover___fixed___tracedSVG',
+  cover___fixed___aspectRatio = 'cover___fixed___aspectRatio',
+  cover___fixed___width = 'cover___fixed___width',
+  cover___fixed___height = 'cover___fixed___height',
+  cover___fixed___src = 'cover___fixed___src',
+  cover___fixed___srcSet = 'cover___fixed___srcSet',
+  cover___fixed___srcWebp = 'cover___fixed___srcWebp',
+  cover___fixed___srcSetWebp = 'cover___fixed___srcSetWebp',
+  cover___resolutions___base64 = 'cover___resolutions___base64',
+  cover___resolutions___tracedSVG = 'cover___resolutions___tracedSVG',
+  cover___resolutions___aspectRatio = 'cover___resolutions___aspectRatio',
+  cover___resolutions___width = 'cover___resolutions___width',
+  cover___resolutions___height = 'cover___resolutions___height',
+  cover___resolutions___src = 'cover___resolutions___src',
+  cover___resolutions___srcSet = 'cover___resolutions___srcSet',
+  cover___resolutions___srcWebp = 'cover___resolutions___srcWebp',
+  cover___resolutions___srcSetWebp = 'cover___resolutions___srcSetWebp',
+  cover___fluid___base64 = 'cover___fluid___base64',
+  cover___fluid___tracedSVG = 'cover___fluid___tracedSVG',
+  cover___fluid___aspectRatio = 'cover___fluid___aspectRatio',
+  cover___fluid___src = 'cover___fluid___src',
+  cover___fluid___srcSet = 'cover___fluid___srcSet',
+  cover___fluid___srcWebp = 'cover___fluid___srcWebp',
+  cover___fluid___srcSetWebp = 'cover___fluid___srcSetWebp',
+  cover___fluid___sizes = 'cover___fluid___sizes',
+  cover___sizes___base64 = 'cover___sizes___base64',
+  cover___sizes___tracedSVG = 'cover___sizes___tracedSVG',
+  cover___sizes___aspectRatio = 'cover___sizes___aspectRatio',
+  cover___sizes___src = 'cover___sizes___src',
+  cover___sizes___srcSet = 'cover___sizes___srcSet',
+  cover___sizes___srcWebp = 'cover___sizes___srcWebp',
+  cover___sizes___srcSetWebp = 'cover___sizes___srcSetWebp',
+  cover___sizes___sizes = 'cover___sizes___sizes',
+  cover___resize___base64 = 'cover___resize___base64',
+  cover___resize___tracedSVG = 'cover___resize___tracedSVG',
+  cover___resize___src = 'cover___resize___src',
+  cover___resize___width = 'cover___resize___width',
+  cover___resize___height = 'cover___resize___height',
+  cover___resize___aspectRatio = 'cover___resize___aspectRatio',
+  description___id = 'description___id',
+  description___parent___id = 'description___parent___id',
+  description___parent___parent___id = 'description___parent___parent___id',
+  description___parent___parent___children = 'description___parent___parent___children',
+  description___parent___children = 'description___parent___children',
+  description___parent___children___id = 'description___parent___children___id',
+  description___parent___children___children = 'description___parent___children___children',
+  description___parent___internal___content = 'description___parent___internal___content',
+  description___parent___internal___contentDigest = 'description___parent___internal___contentDigest',
+  description___parent___internal___description = 'description___parent___internal___description',
+  description___parent___internal___fieldOwners = 'description___parent___internal___fieldOwners',
+  description___parent___internal___ignoreType = 'description___parent___internal___ignoreType',
+  description___parent___internal___mediaType = 'description___parent___internal___mediaType',
+  description___parent___internal___owner = 'description___parent___internal___owner',
+  description___parent___internal___type = 'description___parent___internal___type',
+  description___children = 'description___children',
+  description___children___id = 'description___children___id',
+  description___children___parent___id = 'description___children___parent___id',
+  description___children___parent___children = 'description___children___parent___children',
+  description___children___children = 'description___children___children',
+  description___children___children___id = 'description___children___children___id',
+  description___children___children___children = 'description___children___children___children',
+  description___children___internal___content = 'description___children___internal___content',
+  description___children___internal___contentDigest = 'description___children___internal___contentDigest',
+  description___children___internal___description = 'description___children___internal___description',
+  description___children___internal___fieldOwners = 'description___children___internal___fieldOwners',
+  description___children___internal___ignoreType = 'description___children___internal___ignoreType',
+  description___children___internal___mediaType = 'description___children___internal___mediaType',
+  description___children___internal___owner = 'description___children___internal___owner',
+  description___children___internal___type = 'description___children___internal___type',
+  description___internal___content = 'description___internal___content',
+  description___internal___contentDigest = 'description___internal___contentDigest',
+  description___internal___description = 'description___internal___description',
+  description___internal___fieldOwners = 'description___internal___fieldOwners',
+  description___internal___ignoreType = 'description___internal___ignoreType',
+  description___internal___mediaType = 'description___internal___mediaType',
+  description___internal___owner = 'description___internal___owner',
+  description___internal___type = 'description___internal___type',
+  description___content = 'description___content',
+  description___content___content = 'description___content___content',
+  description___content___content___value = 'description___content___content___value',
+  description___content___content___nodeType = 'description___content___content___nodeType',
+  description___content___nodeType = 'description___content___nodeType',
+  description___nodeType = 'description___nodeType',
+  description___description = 'description___description',
+  description___json = 'description___json',
+  description___childContentfulRichText___id = 'description___childContentfulRichText___id',
+  description___childContentfulRichText___parent___id = 'description___childContentfulRichText___parent___id',
+  description___childContentfulRichText___parent___children = 'description___childContentfulRichText___parent___children',
+  description___childContentfulRichText___children = 'description___childContentfulRichText___children',
+  description___childContentfulRichText___children___id = 'description___childContentfulRichText___children___id',
+  description___childContentfulRichText___children___children = 'description___childContentfulRichText___children___children',
+  description___childContentfulRichText___internal___content = 'description___childContentfulRichText___internal___content',
+  description___childContentfulRichText___internal___contentDigest = 'description___childContentfulRichText___internal___contentDigest',
+  description___childContentfulRichText___internal___description = 'description___childContentfulRichText___internal___description',
+  description___childContentfulRichText___internal___fieldOwners = 'description___childContentfulRichText___internal___fieldOwners',
+  description___childContentfulRichText___internal___ignoreType = 'description___childContentfulRichText___internal___ignoreType',
+  description___childContentfulRichText___internal___mediaType = 'description___childContentfulRichText___internal___mediaType',
+  description___childContentfulRichText___internal___owner = 'description___childContentfulRichText___internal___owner',
+  description___childContentfulRichText___internal___type = 'description___childContentfulRichText___internal___type',
+  description___childContentfulRichText___html = 'description___childContentfulRichText___html',
+  description___childContentfulRichText___timeToRead = 'description___childContentfulRichText___timeToRead',
+  spaceId = 'spaceId',
+  contentful_id = 'contentful_id',
+  createdAt = 'createdAt',
+  updatedAt = 'updatedAt',
+  sys___revision = 'sys___revision',
+  sys___contentType___sys___type = 'sys___contentType___sys___type',
+  sys___contentType___sys___linkType = 'sys___contentType___sys___linkType',
+  sys___contentType___sys___id = 'sys___contentType___sys___id',
+  sys___contentType___sys___contentful_id = 'sys___contentType___sys___contentful_id',
+  node_locale = 'node_locale',
+  post = 'post',
+  post___id = 'post___id',
+  post___parent___id = 'post___parent___id',
+  post___parent___parent___id = 'post___parent___parent___id',
+  post___parent___parent___children = 'post___parent___parent___children',
+  post___parent___children = 'post___parent___children',
+  post___parent___children___id = 'post___parent___children___id',
+  post___parent___children___children = 'post___parent___children___children',
+  post___parent___internal___content = 'post___parent___internal___content',
+  post___parent___internal___contentDigest = 'post___parent___internal___contentDigest',
+  post___parent___internal___description = 'post___parent___internal___description',
+  post___parent___internal___fieldOwners = 'post___parent___internal___fieldOwners',
+  post___parent___internal___ignoreType = 'post___parent___internal___ignoreType',
+  post___parent___internal___mediaType = 'post___parent___internal___mediaType',
+  post___parent___internal___owner = 'post___parent___internal___owner',
+  post___parent___internal___type = 'post___parent___internal___type',
+  post___children = 'post___children',
+  post___children___id = 'post___children___id',
+  post___children___parent___id = 'post___children___parent___id',
+  post___children___parent___children = 'post___children___parent___children',
+  post___children___children = 'post___children___children',
+  post___children___children___id = 'post___children___children___id',
+  post___children___children___children = 'post___children___children___children',
+  post___children___internal___content = 'post___children___internal___content',
+  post___children___internal___contentDigest = 'post___children___internal___contentDigest',
+  post___children___internal___description = 'post___children___internal___description',
+  post___children___internal___fieldOwners = 'post___children___internal___fieldOwners',
+  post___children___internal___ignoreType = 'post___children___internal___ignoreType',
+  post___children___internal___mediaType = 'post___children___internal___mediaType',
+  post___children___internal___owner = 'post___children___internal___owner',
+  post___children___internal___type = 'post___children___internal___type',
+  post___internal___content = 'post___internal___content',
+  post___internal___contentDigest = 'post___internal___contentDigest',
+  post___internal___description = 'post___internal___description',
+  post___internal___fieldOwners = 'post___internal___fieldOwners',
+  post___internal___ignoreType = 'post___internal___ignoreType',
+  post___internal___mediaType = 'post___internal___mediaType',
+  post___internal___owner = 'post___internal___owner',
+  post___internal___type = 'post___internal___type',
+  post___title = 'post___title',
+  post___author = 'post___author',
+  post___slug = 'post___slug',
+  post___pole___id = 'post___pole___id',
+  post___pole___parent___id = 'post___pole___parent___id',
+  post___pole___parent___children = 'post___pole___parent___children',
+  post___pole___children = 'post___pole___children',
+  post___pole___children___id = 'post___pole___children___id',
+  post___pole___children___children = 'post___pole___children___children',
+  post___pole___internal___content = 'post___pole___internal___content',
+  post___pole___internal___contentDigest = 'post___pole___internal___contentDigest',
+  post___pole___internal___description = 'post___pole___internal___description',
+  post___pole___internal___fieldOwners = 'post___pole___internal___fieldOwners',
+  post___pole___internal___ignoreType = 'post___pole___internal___ignoreType',
+  post___pole___internal___mediaType = 'post___pole___internal___mediaType',
+  post___pole___internal___owner = 'post___pole___internal___owner',
+  post___pole___internal___type = 'post___pole___internal___type',
+  post___pole___poleId = 'post___pole___poleId',
+  post___pole___title = 'post___pole___title',
+  post___pole___slug = 'post___pole___slug',
+  post___pole___espace___id = 'post___pole___espace___id',
+  post___pole___espace___children = 'post___pole___espace___children',
+  post___pole___espace___espaceId = 'post___pole___espace___espaceId',
+  post___pole___espace___frenchTitle = 'post___pole___espace___frenchTitle',
+  post___pole___espace___chineseTitle = 'post___pole___espace___chineseTitle',
+  post___pole___espace___pole = 'post___pole___espace___pole',
+  post___pole___espace___spaceId = 'post___pole___espace___spaceId',
+  post___pole___espace___contentful_id = 'post___pole___espace___contentful_id',
+  post___pole___espace___createdAt = 'post___pole___espace___createdAt',
+  post___pole___espace___updatedAt = 'post___pole___espace___updatedAt',
+  post___pole___espace___node_locale = 'post___pole___espace___node_locale',
+  post___pole___cover___id = 'post___pole___cover___id',
+  post___pole___cover___children = 'post___pole___cover___children',
+  post___pole___cover___contentful_id = 'post___pole___cover___contentful_id',
+  post___pole___cover___title = 'post___pole___cover___title',
+  post___pole___cover___description = 'post___pole___cover___description',
+  post___pole___cover___node_locale = 'post___pole___cover___node_locale',
+  post___pole___description___id = 'post___pole___description___id',
+  post___pole___description___children = 'post___pole___description___children',
+  post___pole___description___content = 'post___pole___description___content',
+  post___pole___description___nodeType = 'post___pole___description___nodeType',
+  post___pole___description___description = 'post___pole___description___description',
+  post___pole___description___json = 'post___pole___description___json',
+  post___pole___spaceId = 'post___pole___spaceId',
+  post___pole___contentful_id = 'post___pole___contentful_id',
+  post___pole___createdAt = 'post___pole___createdAt',
+  post___pole___updatedAt = 'post___pole___updatedAt',
+  post___pole___sys___revision = 'post___pole___sys___revision',
+  post___pole___node_locale = 'post___pole___node_locale',
+  post___pole___post = 'post___pole___post',
+  post___pole___post___id = 'post___pole___post___id',
+  post___pole___post___children = 'post___pole___post___children',
+  post___pole___post___title = 'post___pole___post___title',
+  post___pole___post___author = 'post___pole___post___author',
+  post___pole___post___slug = 'post___pole___post___slug',
+  post___pole___post___image = 'post___pole___post___image',
+  post___pole___post___spaceId = 'post___pole___post___spaceId',
+  post___pole___post___contentful_id = 'post___pole___post___contentful_id',
+  post___pole___post___createdAt = 'post___pole___post___createdAt',
+  post___pole___post___updatedAt = 'post___pole___post___updatedAt',
+  post___pole___post___node_locale = 'post___pole___post___node_locale',
+  post___pole___childContentfulPoleDescriptionRichTextNode___id = 'post___pole___childContentfulPoleDescriptionRichTextNode___id',
+  post___pole___childContentfulPoleDescriptionRichTextNode___children = 'post___pole___childContentfulPoleDescriptionRichTextNode___children',
+  post___pole___childContentfulPoleDescriptionRichTextNode___content = 'post___pole___childContentfulPoleDescriptionRichTextNode___content',
+  post___pole___childContentfulPoleDescriptionRichTextNode___nodeType = 'post___pole___childContentfulPoleDescriptionRichTextNode___nodeType',
+  post___pole___childContentfulPoleDescriptionRichTextNode___description = 'post___pole___childContentfulPoleDescriptionRichTextNode___description',
+  post___pole___childContentfulPoleDescriptionRichTextNode___json = 'post___pole___childContentfulPoleDescriptionRichTextNode___json',
+  post___image = 'post___image',
+  post___image___id = 'post___image___id',
+  post___image___parent___id = 'post___image___parent___id',
+  post___image___parent___children = 'post___image___parent___children',
+  post___image___children = 'post___image___children',
+  post___image___children___id = 'post___image___children___id',
+  post___image___children___children = 'post___image___children___children',
+  post___image___internal___content = 'post___image___internal___content',
+  post___image___internal___contentDigest = 'post___image___internal___contentDigest',
+  post___image___internal___description = 'post___image___internal___description',
+  post___image___internal___fieldOwners = 'post___image___internal___fieldOwners',
+  post___image___internal___ignoreType = 'post___image___internal___ignoreType',
+  post___image___internal___mediaType = 'post___image___internal___mediaType',
+  post___image___internal___owner = 'post___image___internal___owner',
+  post___image___internal___type = 'post___image___internal___type',
+  post___image___contentful_id = 'post___image___contentful_id',
+  post___image___file___url = 'post___image___file___url',
+  post___image___file___fileName = 'post___image___file___fileName',
+  post___image___file___contentType = 'post___image___file___contentType',
+  post___image___title = 'post___image___title',
+  post___image___description = 'post___image___description',
+  post___image___node_locale = 'post___image___node_locale',
+  post___image___fixed___base64 = 'post___image___fixed___base64',
+  post___image___fixed___tracedSVG = 'post___image___fixed___tracedSVG',
+  post___image___fixed___aspectRatio = 'post___image___fixed___aspectRatio',
+  post___image___fixed___width = 'post___image___fixed___width',
+  post___image___fixed___height = 'post___image___fixed___height',
+  post___image___fixed___src = 'post___image___fixed___src',
+  post___image___fixed___srcSet = 'post___image___fixed___srcSet',
+  post___image___fixed___srcWebp = 'post___image___fixed___srcWebp',
+  post___image___fixed___srcSetWebp = 'post___image___fixed___srcSetWebp',
+  post___image___resolutions___base64 = 'post___image___resolutions___base64',
+  post___image___resolutions___tracedSVG = 'post___image___resolutions___tracedSVG',
+  post___image___resolutions___aspectRatio = 'post___image___resolutions___aspectRatio',
+  post___image___resolutions___width = 'post___image___resolutions___width',
+  post___image___resolutions___height = 'post___image___resolutions___height',
+  post___image___resolutions___src = 'post___image___resolutions___src',
+  post___image___resolutions___srcSet = 'post___image___resolutions___srcSet',
+  post___image___resolutions___srcWebp = 'post___image___resolutions___srcWebp',
+  post___image___resolutions___srcSetWebp = 'post___image___resolutions___srcSetWebp',
+  post___image___fluid___base64 = 'post___image___fluid___base64',
+  post___image___fluid___tracedSVG = 'post___image___fluid___tracedSVG',
+  post___image___fluid___aspectRatio = 'post___image___fluid___aspectRatio',
+  post___image___fluid___src = 'post___image___fluid___src',
+  post___image___fluid___srcSet = 'post___image___fluid___srcSet',
+  post___image___fluid___srcWebp = 'post___image___fluid___srcWebp',
+  post___image___fluid___srcSetWebp = 'post___image___fluid___srcSetWebp',
+  post___image___fluid___sizes = 'post___image___fluid___sizes',
+  post___image___sizes___base64 = 'post___image___sizes___base64',
+  post___image___sizes___tracedSVG = 'post___image___sizes___tracedSVG',
+  post___image___sizes___aspectRatio = 'post___image___sizes___aspectRatio',
+  post___image___sizes___src = 'post___image___sizes___src',
+  post___image___sizes___srcSet = 'post___image___sizes___srcSet',
+  post___image___sizes___srcWebp = 'post___image___sizes___srcWebp',
+  post___image___sizes___srcSetWebp = 'post___image___sizes___srcSetWebp',
+  post___image___sizes___sizes = 'post___image___sizes___sizes',
+  post___image___resize___base64 = 'post___image___resize___base64',
+  post___image___resize___tracedSVG = 'post___image___resize___tracedSVG',
+  post___image___resize___src = 'post___image___resize___src',
+  post___image___resize___width = 'post___image___resize___width',
+  post___image___resize___height = 'post___image___resize___height',
+  post___image___resize___aspectRatio = 'post___image___resize___aspectRatio',
+  post___content___id = 'post___content___id',
+  post___content___parent___id = 'post___content___parent___id',
+  post___content___parent___children = 'post___content___parent___children',
+  post___content___children = 'post___content___children',
+  post___content___children___id = 'post___content___children___id',
+  post___content___children___children = 'post___content___children___children',
+  post___content___internal___content = 'post___content___internal___content',
+  post___content___internal___contentDigest = 'post___content___internal___contentDigest',
+  post___content___internal___description = 'post___content___internal___description',
+  post___content___internal___fieldOwners = 'post___content___internal___fieldOwners',
+  post___content___internal___ignoreType = 'post___content___internal___ignoreType',
+  post___content___internal___mediaType = 'post___content___internal___mediaType',
+  post___content___internal___owner = 'post___content___internal___owner',
+  post___content___internal___type = 'post___content___internal___type',
+  post___content___content = 'post___content___content',
+  post___content___nodeType = 'post___content___nodeType',
+  post___content___json = 'post___content___json',
+  post___content___childContentfulRichText___id = 'post___content___childContentfulRichText___id',
+  post___content___childContentfulRichText___children = 'post___content___childContentfulRichText___children',
+  post___content___childContentfulRichText___html = 'post___content___childContentfulRichText___html',
+  post___content___childContentfulRichText___timeToRead = 'post___content___childContentfulRichText___timeToRead',
+  post___spaceId = 'post___spaceId',
+  post___contentful_id = 'post___contentful_id',
+  post___createdAt = 'post___createdAt',
+  post___updatedAt = 'post___updatedAt',
+  post___sys___revision = 'post___sys___revision',
+  post___node_locale = 'post___node_locale',
+  post___childContentfulPostContentRichTextNode___id = 'post___childContentfulPostContentRichTextNode___id',
+  post___childContentfulPostContentRichTextNode___parent___id = 'post___childContentfulPostContentRichTextNode___parent___id',
+  post___childContentfulPostContentRichTextNode___parent___children = 'post___childContentfulPostContentRichTextNode___parent___children',
+  post___childContentfulPostContentRichTextNode___children = 'post___childContentfulPostContentRichTextNode___children',
+  post___childContentfulPostContentRichTextNode___children___id = 'post___childContentfulPostContentRichTextNode___children___id',
+  post___childContentfulPostContentRichTextNode___children___children = 'post___childContentfulPostContentRichTextNode___children___children',
+  post___childContentfulPostContentRichTextNode___internal___content = 'post___childContentfulPostContentRichTextNode___internal___content',
+  post___childContentfulPostContentRichTextNode___internal___contentDigest = 'post___childContentfulPostContentRichTextNode___internal___contentDigest',
+  post___childContentfulPostContentRichTextNode___internal___description = 'post___childContentfulPostContentRichTextNode___internal___description',
+  post___childContentfulPostContentRichTextNode___internal___fieldOwners = 'post___childContentfulPostContentRichTextNode___internal___fieldOwners',
+  post___childContentfulPostContentRichTextNode___internal___ignoreType = 'post___childContentfulPostContentRichTextNode___internal___ignoreType',
+  post___childContentfulPostContentRichTextNode___internal___mediaType = 'post___childContentfulPostContentRichTextNode___internal___mediaType',
+  post___childContentfulPostContentRichTextNode___internal___owner = 'post___childContentfulPostContentRichTextNode___internal___owner',
+  post___childContentfulPostContentRichTextNode___internal___type = 'post___childContentfulPostContentRichTextNode___internal___type',
+  post___childContentfulPostContentRichTextNode___content = 'post___childContentfulPostContentRichTextNode___content',
+  post___childContentfulPostContentRichTextNode___nodeType = 'post___childContentfulPostContentRichTextNode___nodeType',
+  post___childContentfulPostContentRichTextNode___json = 'post___childContentfulPostContentRichTextNode___json',
+  post___childContentfulPostContentRichTextNode___childContentfulRichText___id = 'post___childContentfulPostContentRichTextNode___childContentfulRichText___id',
+  post___childContentfulPostContentRichTextNode___childContentfulRichText___children = 'post___childContentfulPostContentRichTextNode___childContentfulRichText___children',
+  post___childContentfulPostContentRichTextNode___childContentfulRichText___html = 'post___childContentfulPostContentRichTextNode___childContentfulRichText___html',
+  post___childContentfulPostContentRichTextNode___childContentfulRichText___timeToRead = 'post___childContentfulPostContentRichTextNode___childContentfulRichText___timeToRead',
+  childContentfulPoleDescriptionRichTextNode___id = 'childContentfulPoleDescriptionRichTextNode___id',
+  childContentfulPoleDescriptionRichTextNode___parent___id = 'childContentfulPoleDescriptionRichTextNode___parent___id',
+  childContentfulPoleDescriptionRichTextNode___parent___parent___id = 'childContentfulPoleDescriptionRichTextNode___parent___parent___id',
+  childContentfulPoleDescriptionRichTextNode___parent___parent___children = 'childContentfulPoleDescriptionRichTextNode___parent___parent___children',
+  childContentfulPoleDescriptionRichTextNode___parent___children = 'childContentfulPoleDescriptionRichTextNode___parent___children',
+  childContentfulPoleDescriptionRichTextNode___parent___children___id = 'childContentfulPoleDescriptionRichTextNode___parent___children___id',
+  childContentfulPoleDescriptionRichTextNode___parent___children___children = 'childContentfulPoleDescriptionRichTextNode___parent___children___children',
+  childContentfulPoleDescriptionRichTextNode___parent___internal___content = 'childContentfulPoleDescriptionRichTextNode___parent___internal___content',
+  childContentfulPoleDescriptionRichTextNode___parent___internal___contentDigest = 'childContentfulPoleDescriptionRichTextNode___parent___internal___contentDigest',
+  childContentfulPoleDescriptionRichTextNode___parent___internal___description = 'childContentfulPoleDescriptionRichTextNode___parent___internal___description',
+  childContentfulPoleDescriptionRichTextNode___parent___internal___fieldOwners = 'childContentfulPoleDescriptionRichTextNode___parent___internal___fieldOwners',
+  childContentfulPoleDescriptionRichTextNode___parent___internal___ignoreType = 'childContentfulPoleDescriptionRichTextNode___parent___internal___ignoreType',
+  childContentfulPoleDescriptionRichTextNode___parent___internal___mediaType = 'childContentfulPoleDescriptionRichTextNode___parent___internal___mediaType',
+  childContentfulPoleDescriptionRichTextNode___parent___internal___owner = 'childContentfulPoleDescriptionRichTextNode___parent___internal___owner',
+  childContentfulPoleDescriptionRichTextNode___parent___internal___type = 'childContentfulPoleDescriptionRichTextNode___parent___internal___type',
+  childContentfulPoleDescriptionRichTextNode___children = 'childContentfulPoleDescriptionRichTextNode___children',
+  childContentfulPoleDescriptionRichTextNode___children___id = 'childContentfulPoleDescriptionRichTextNode___children___id',
+  childContentfulPoleDescriptionRichTextNode___children___parent___id = 'childContentfulPoleDescriptionRichTextNode___children___parent___id',
+  childContentfulPoleDescriptionRichTextNode___children___parent___children = 'childContentfulPoleDescriptionRichTextNode___children___parent___children',
+  childContentfulPoleDescriptionRichTextNode___children___children = 'childContentfulPoleDescriptionRichTextNode___children___children',
+  childContentfulPoleDescriptionRichTextNode___children___children___id = 'childContentfulPoleDescriptionRichTextNode___children___children___id',
+  childContentfulPoleDescriptionRichTextNode___children___children___children = 'childContentfulPoleDescriptionRichTextNode___children___children___children',
+  childContentfulPoleDescriptionRichTextNode___children___internal___content = 'childContentfulPoleDescriptionRichTextNode___children___internal___content',
+  childContentfulPoleDescriptionRichTextNode___children___internal___contentDigest = 'childContentfulPoleDescriptionRichTextNode___children___internal___contentDigest',
+  childContentfulPoleDescriptionRichTextNode___children___internal___description = 'childContentfulPoleDescriptionRichTextNode___children___internal___description',
+  childContentfulPoleDescriptionRichTextNode___children___internal___fieldOwners = 'childContentfulPoleDescriptionRichTextNode___children___internal___fieldOwners',
+  childContentfulPoleDescriptionRichTextNode___children___internal___ignoreType = 'childContentfulPoleDescriptionRichTextNode___children___internal___ignoreType',
+  childContentfulPoleDescriptionRichTextNode___children___internal___mediaType = 'childContentfulPoleDescriptionRichTextNode___children___internal___mediaType',
+  childContentfulPoleDescriptionRichTextNode___children___internal___owner = 'childContentfulPoleDescriptionRichTextNode___children___internal___owner',
+  childContentfulPoleDescriptionRichTextNode___children___internal___type = 'childContentfulPoleDescriptionRichTextNode___children___internal___type',
+  childContentfulPoleDescriptionRichTextNode___internal___content = 'childContentfulPoleDescriptionRichTextNode___internal___content',
+  childContentfulPoleDescriptionRichTextNode___internal___contentDigest = 'childContentfulPoleDescriptionRichTextNode___internal___contentDigest',
+  childContentfulPoleDescriptionRichTextNode___internal___description = 'childContentfulPoleDescriptionRichTextNode___internal___description',
+  childContentfulPoleDescriptionRichTextNode___internal___fieldOwners = 'childContentfulPoleDescriptionRichTextNode___internal___fieldOwners',
+  childContentfulPoleDescriptionRichTextNode___internal___ignoreType = 'childContentfulPoleDescriptionRichTextNode___internal___ignoreType',
+  childContentfulPoleDescriptionRichTextNode___internal___mediaType = 'childContentfulPoleDescriptionRichTextNode___internal___mediaType',
+  childContentfulPoleDescriptionRichTextNode___internal___owner = 'childContentfulPoleDescriptionRichTextNode___internal___owner',
+  childContentfulPoleDescriptionRichTextNode___internal___type = 'childContentfulPoleDescriptionRichTextNode___internal___type',
+  childContentfulPoleDescriptionRichTextNode___content = 'childContentfulPoleDescriptionRichTextNode___content',
+  childContentfulPoleDescriptionRichTextNode___content___content = 'childContentfulPoleDescriptionRichTextNode___content___content',
+  childContentfulPoleDescriptionRichTextNode___content___content___value = 'childContentfulPoleDescriptionRichTextNode___content___content___value',
+  childContentfulPoleDescriptionRichTextNode___content___content___nodeType = 'childContentfulPoleDescriptionRichTextNode___content___content___nodeType',
+  childContentfulPoleDescriptionRichTextNode___content___nodeType = 'childContentfulPoleDescriptionRichTextNode___content___nodeType',
+  childContentfulPoleDescriptionRichTextNode___nodeType = 'childContentfulPoleDescriptionRichTextNode___nodeType',
+  childContentfulPoleDescriptionRichTextNode___description = 'childContentfulPoleDescriptionRichTextNode___description',
+  childContentfulPoleDescriptionRichTextNode___json = 'childContentfulPoleDescriptionRichTextNode___json',
+  childContentfulPoleDescriptionRichTextNode___childContentfulRichText___id = 'childContentfulPoleDescriptionRichTextNode___childContentfulRichText___id',
+  childContentfulPoleDescriptionRichTextNode___childContentfulRichText___parent___id = 'childContentfulPoleDescriptionRichTextNode___childContentfulRichText___parent___id',
+  childContentfulPoleDescriptionRichTextNode___childContentfulRichText___parent___children = 'childContentfulPoleDescriptionRichTextNode___childContentfulRichText___parent___children',
+  childContentfulPoleDescriptionRichTextNode___childContentfulRichText___children = 'childContentfulPoleDescriptionRichTextNode___childContentfulRichText___children',
+  childContentfulPoleDescriptionRichTextNode___childContentfulRichText___children___id = 'childContentfulPoleDescriptionRichTextNode___childContentfulRichText___children___id',
+  childContentfulPoleDescriptionRichTextNode___childContentfulRichText___children___children = 'childContentfulPoleDescriptionRichTextNode___childContentfulRichText___children___children',
+  childContentfulPoleDescriptionRichTextNode___childContentfulRichText___internal___content = 'childContentfulPoleDescriptionRichTextNode___childContentfulRichText___internal___content',
+  childContentfulPoleDescriptionRichTextNode___childContentfulRichText___internal___contentDigest = 'childContentfulPoleDescriptionRichTextNode___childContentfulRichText___internal___contentDigest',
+  childContentfulPoleDescriptionRichTextNode___childContentfulRichText___internal___description = 'childContentfulPoleDescriptionRichTextNode___childContentfulRichText___internal___description',
+  childContentfulPoleDescriptionRichTextNode___childContentfulRichText___internal___fieldOwners = 'childContentfulPoleDescriptionRichTextNode___childContentfulRichText___internal___fieldOwners',
+  childContentfulPoleDescriptionRichTextNode___childContentfulRichText___internal___ignoreType = 'childContentfulPoleDescriptionRichTextNode___childContentfulRichText___internal___ignoreType',
+  childContentfulPoleDescriptionRichTextNode___childContentfulRichText___internal___mediaType = 'childContentfulPoleDescriptionRichTextNode___childContentfulRichText___internal___mediaType',
+  childContentfulPoleDescriptionRichTextNode___childContentfulRichText___internal___owner = 'childContentfulPoleDescriptionRichTextNode___childContentfulRichText___internal___owner',
+  childContentfulPoleDescriptionRichTextNode___childContentfulRichText___internal___type = 'childContentfulPoleDescriptionRichTextNode___childContentfulRichText___internal___type',
+  childContentfulPoleDescriptionRichTextNode___childContentfulRichText___html = 'childContentfulPoleDescriptionRichTextNode___childContentfulRichText___html',
+  childContentfulPoleDescriptionRichTextNode___childContentfulRichText___timeToRead = 'childContentfulPoleDescriptionRichTextNode___childContentfulRichText___timeToRead'
+}
+
+export type ContentfulPoleConnection = {
+  __typename?: 'ContentfulPoleConnection';
+  totalCount: Scalars['Int'];
+  edges: Array<ContentfulPoleEdge>;
+  nodes: Array<ContentfulPole>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  group: Array<ContentfulPoleGroupConnection>;
+};
+
+
+export type ContentfulPoleConnectionDistinctArgs = {
+  field: ContentfulPoleFieldsEnum;
+};
+
+
+export type ContentfulPoleConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: ContentfulPoleFieldsEnum;
+};
+
+export type ContentfulPoleEdge = {
+  __typename?: 'ContentfulPoleEdge';
+  next?: Maybe<ContentfulPole>;
+  node: ContentfulPole;
+  previous?: Maybe<ContentfulPole>;
+};
+
+export type ContentfulPoleGroupConnection = {
+  __typename?: 'ContentfulPoleGroupConnection';
+  totalCount: Scalars['Int'];
+  edges: Array<ContentfulPoleEdge>;
+  nodes: Array<ContentfulPole>;
+  pageInfo: PageInfo;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
 };
 
 export type ContentfulRichTextSortInput = {
@@ -2930,40 +4645,6 @@ export type ContentfulRichTextGroupConnection = {
   pageInfo: PageInfo;
   field: Scalars['String'];
   fieldValue?: Maybe<Scalars['String']>;
-};
-
-export type JsonQueryOperatorInput = {
-  eq?: Maybe<Scalars['JSON']>;
-  ne?: Maybe<Scalars['JSON']>;
-  in?: Maybe<Array<Maybe<Scalars['JSON']>>>;
-  nin?: Maybe<Array<Maybe<Scalars['JSON']>>>;
-  regex?: Maybe<Scalars['JSON']>;
-  glob?: Maybe<Scalars['JSON']>;
-};
-
-
-export type ContentfulPostContentRichTextNode = Node & {
-  __typename?: 'contentfulPostContentRichTextNode';
-  id: Scalars['ID'];
-  parent?: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
-  content?: Maybe<Scalars['String']>;
-  /** @deprecated This field is deprecated, please use 'json' instead. */
-  nodeType?: Maybe<Scalars['String']>;
-  json?: Maybe<Scalars['JSON']>;
-  childContentfulRichText?: Maybe<ContentfulRichText>;
-};
-
-export type ContentfulPostContentRichTextNodeFilterInput = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  content?: Maybe<StringQueryOperatorInput>;
-  nodeType?: Maybe<StringQueryOperatorInput>;
-  json?: Maybe<JsonQueryOperatorInput>;
-  childContentfulRichText?: Maybe<ContentfulRichTextFilterInput>;
 };
 
 export type ContentfulPostContentRichTextNodeSortInput = {
@@ -3142,102 +4823,6 @@ export type ContentfulPostContentRichTextNodeGroupConnection = {
   fieldValue?: Maybe<Scalars['String']>;
 };
 
-export type ContentfulAssetFilterListInput = {
-  elemMatch?: Maybe<ContentfulAssetFilterInput>;
-};
-
-export type ContentfulPostSysFilterInput = {
-  revision?: Maybe<IntQueryOperatorInput>;
-  contentType?: Maybe<ContentfulPostSysContentTypeFilterInput>;
-};
-
-export type ContentfulPostSysContentTypeFilterInput = {
-  sys?: Maybe<ContentfulPostSysContentTypeSysFilterInput>;
-};
-
-export type ContentfulPostSysContentTypeSysFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>;
-  linkType?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  contentful_id?: Maybe<StringQueryOperatorInput>;
-};
-
-export type ContentfulPost = Node & {
-  __typename?: 'ContentfulPost';
-  id: Scalars['ID'];
-  parent?: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
-  title?: Maybe<Scalars['String']>;
-  author?: Maybe<Scalars['String']>;
-  pole?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
-  image?: Maybe<Array<Maybe<ContentfulAsset>>>;
-  content?: Maybe<ContentfulPostContentRichTextNode>;
-  spaceId?: Maybe<Scalars['String']>;
-  contentful_id?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-  sys?: Maybe<ContentfulPostSys>;
-  node_locale?: Maybe<Scalars['String']>;
-  childContentfulPostContentRichTextNode?: Maybe<ContentfulPostContentRichTextNode>;
-};
-
-
-export type ContentfulPostCreatedAtArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type ContentfulPostUpdatedAtArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-export type ContentfulPostSys = {
-  __typename?: 'ContentfulPostSys';
-  revision?: Maybe<Scalars['Int']>;
-  contentType?: Maybe<ContentfulPostSysContentType>;
-};
-
-export type ContentfulPostSysContentType = {
-  __typename?: 'ContentfulPostSysContentType';
-  sys?: Maybe<ContentfulPostSysContentTypeSys>;
-};
-
-export type ContentfulPostSysContentTypeSys = {
-  __typename?: 'ContentfulPostSysContentTypeSys';
-  type?: Maybe<Scalars['String']>;
-  linkType?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  contentful_id?: Maybe<Scalars['String']>;
-};
-
-export type ContentfulPostFilterInput = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  author?: Maybe<StringQueryOperatorInput>;
-  pole?: Maybe<StringQueryOperatorInput>;
-  slug?: Maybe<StringQueryOperatorInput>;
-  image?: Maybe<ContentfulAssetFilterListInput>;
-  content?: Maybe<ContentfulPostContentRichTextNodeFilterInput>;
-  spaceId?: Maybe<StringQueryOperatorInput>;
-  contentful_id?: Maybe<StringQueryOperatorInput>;
-  createdAt?: Maybe<DateQueryOperatorInput>;
-  updatedAt?: Maybe<DateQueryOperatorInput>;
-  sys?: Maybe<ContentfulPostSysFilterInput>;
-  node_locale?: Maybe<StringQueryOperatorInput>;
-  childContentfulPostContentRichTextNode?: Maybe<ContentfulPostContentRichTextNodeFilterInput>;
-};
-
 export type ContentfulPostSortInput = {
   fields?: Maybe<Array<Maybe<ContentfulPostFieldsEnum>>>;
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
@@ -3332,8 +4917,250 @@ export enum ContentfulPostFieldsEnum {
   internal___type = 'internal___type',
   title = 'title',
   author = 'author',
-  pole = 'pole',
   slug = 'slug',
+  pole___id = 'pole___id',
+  pole___parent___id = 'pole___parent___id',
+  pole___parent___parent___id = 'pole___parent___parent___id',
+  pole___parent___parent___children = 'pole___parent___parent___children',
+  pole___parent___children = 'pole___parent___children',
+  pole___parent___children___id = 'pole___parent___children___id',
+  pole___parent___children___children = 'pole___parent___children___children',
+  pole___parent___internal___content = 'pole___parent___internal___content',
+  pole___parent___internal___contentDigest = 'pole___parent___internal___contentDigest',
+  pole___parent___internal___description = 'pole___parent___internal___description',
+  pole___parent___internal___fieldOwners = 'pole___parent___internal___fieldOwners',
+  pole___parent___internal___ignoreType = 'pole___parent___internal___ignoreType',
+  pole___parent___internal___mediaType = 'pole___parent___internal___mediaType',
+  pole___parent___internal___owner = 'pole___parent___internal___owner',
+  pole___parent___internal___type = 'pole___parent___internal___type',
+  pole___children = 'pole___children',
+  pole___children___id = 'pole___children___id',
+  pole___children___parent___id = 'pole___children___parent___id',
+  pole___children___parent___children = 'pole___children___parent___children',
+  pole___children___children = 'pole___children___children',
+  pole___children___children___id = 'pole___children___children___id',
+  pole___children___children___children = 'pole___children___children___children',
+  pole___children___internal___content = 'pole___children___internal___content',
+  pole___children___internal___contentDigest = 'pole___children___internal___contentDigest',
+  pole___children___internal___description = 'pole___children___internal___description',
+  pole___children___internal___fieldOwners = 'pole___children___internal___fieldOwners',
+  pole___children___internal___ignoreType = 'pole___children___internal___ignoreType',
+  pole___children___internal___mediaType = 'pole___children___internal___mediaType',
+  pole___children___internal___owner = 'pole___children___internal___owner',
+  pole___children___internal___type = 'pole___children___internal___type',
+  pole___internal___content = 'pole___internal___content',
+  pole___internal___contentDigest = 'pole___internal___contentDigest',
+  pole___internal___description = 'pole___internal___description',
+  pole___internal___fieldOwners = 'pole___internal___fieldOwners',
+  pole___internal___ignoreType = 'pole___internal___ignoreType',
+  pole___internal___mediaType = 'pole___internal___mediaType',
+  pole___internal___owner = 'pole___internal___owner',
+  pole___internal___type = 'pole___internal___type',
+  pole___poleId = 'pole___poleId',
+  pole___title = 'pole___title',
+  pole___slug = 'pole___slug',
+  pole___espace___id = 'pole___espace___id',
+  pole___espace___parent___id = 'pole___espace___parent___id',
+  pole___espace___parent___children = 'pole___espace___parent___children',
+  pole___espace___children = 'pole___espace___children',
+  pole___espace___children___id = 'pole___espace___children___id',
+  pole___espace___children___children = 'pole___espace___children___children',
+  pole___espace___internal___content = 'pole___espace___internal___content',
+  pole___espace___internal___contentDigest = 'pole___espace___internal___contentDigest',
+  pole___espace___internal___description = 'pole___espace___internal___description',
+  pole___espace___internal___fieldOwners = 'pole___espace___internal___fieldOwners',
+  pole___espace___internal___ignoreType = 'pole___espace___internal___ignoreType',
+  pole___espace___internal___mediaType = 'pole___espace___internal___mediaType',
+  pole___espace___internal___owner = 'pole___espace___internal___owner',
+  pole___espace___internal___type = 'pole___espace___internal___type',
+  pole___espace___espaceId = 'pole___espace___espaceId',
+  pole___espace___frenchTitle = 'pole___espace___frenchTitle',
+  pole___espace___chineseTitle = 'pole___espace___chineseTitle',
+  pole___espace___pole = 'pole___espace___pole',
+  pole___espace___pole___id = 'pole___espace___pole___id',
+  pole___espace___pole___children = 'pole___espace___pole___children',
+  pole___espace___pole___poleId = 'pole___espace___pole___poleId',
+  pole___espace___pole___title = 'pole___espace___pole___title',
+  pole___espace___pole___slug = 'pole___espace___pole___slug',
+  pole___espace___pole___spaceId = 'pole___espace___pole___spaceId',
+  pole___espace___pole___contentful_id = 'pole___espace___pole___contentful_id',
+  pole___espace___pole___createdAt = 'pole___espace___pole___createdAt',
+  pole___espace___pole___updatedAt = 'pole___espace___pole___updatedAt',
+  pole___espace___pole___node_locale = 'pole___espace___pole___node_locale',
+  pole___espace___pole___post = 'pole___espace___pole___post',
+  pole___espace___spaceId = 'pole___espace___spaceId',
+  pole___espace___contentful_id = 'pole___espace___contentful_id',
+  pole___espace___createdAt = 'pole___espace___createdAt',
+  pole___espace___updatedAt = 'pole___espace___updatedAt',
+  pole___espace___sys___revision = 'pole___espace___sys___revision',
+  pole___espace___node_locale = 'pole___espace___node_locale',
+  pole___cover___id = 'pole___cover___id',
+  pole___cover___parent___id = 'pole___cover___parent___id',
+  pole___cover___parent___children = 'pole___cover___parent___children',
+  pole___cover___children = 'pole___cover___children',
+  pole___cover___children___id = 'pole___cover___children___id',
+  pole___cover___children___children = 'pole___cover___children___children',
+  pole___cover___internal___content = 'pole___cover___internal___content',
+  pole___cover___internal___contentDigest = 'pole___cover___internal___contentDigest',
+  pole___cover___internal___description = 'pole___cover___internal___description',
+  pole___cover___internal___fieldOwners = 'pole___cover___internal___fieldOwners',
+  pole___cover___internal___ignoreType = 'pole___cover___internal___ignoreType',
+  pole___cover___internal___mediaType = 'pole___cover___internal___mediaType',
+  pole___cover___internal___owner = 'pole___cover___internal___owner',
+  pole___cover___internal___type = 'pole___cover___internal___type',
+  pole___cover___contentful_id = 'pole___cover___contentful_id',
+  pole___cover___file___url = 'pole___cover___file___url',
+  pole___cover___file___fileName = 'pole___cover___file___fileName',
+  pole___cover___file___contentType = 'pole___cover___file___contentType',
+  pole___cover___title = 'pole___cover___title',
+  pole___cover___description = 'pole___cover___description',
+  pole___cover___node_locale = 'pole___cover___node_locale',
+  pole___cover___fixed___base64 = 'pole___cover___fixed___base64',
+  pole___cover___fixed___tracedSVG = 'pole___cover___fixed___tracedSVG',
+  pole___cover___fixed___aspectRatio = 'pole___cover___fixed___aspectRatio',
+  pole___cover___fixed___width = 'pole___cover___fixed___width',
+  pole___cover___fixed___height = 'pole___cover___fixed___height',
+  pole___cover___fixed___src = 'pole___cover___fixed___src',
+  pole___cover___fixed___srcSet = 'pole___cover___fixed___srcSet',
+  pole___cover___fixed___srcWebp = 'pole___cover___fixed___srcWebp',
+  pole___cover___fixed___srcSetWebp = 'pole___cover___fixed___srcSetWebp',
+  pole___cover___resolutions___base64 = 'pole___cover___resolutions___base64',
+  pole___cover___resolutions___tracedSVG = 'pole___cover___resolutions___tracedSVG',
+  pole___cover___resolutions___aspectRatio = 'pole___cover___resolutions___aspectRatio',
+  pole___cover___resolutions___width = 'pole___cover___resolutions___width',
+  pole___cover___resolutions___height = 'pole___cover___resolutions___height',
+  pole___cover___resolutions___src = 'pole___cover___resolutions___src',
+  pole___cover___resolutions___srcSet = 'pole___cover___resolutions___srcSet',
+  pole___cover___resolutions___srcWebp = 'pole___cover___resolutions___srcWebp',
+  pole___cover___resolutions___srcSetWebp = 'pole___cover___resolutions___srcSetWebp',
+  pole___cover___fluid___base64 = 'pole___cover___fluid___base64',
+  pole___cover___fluid___tracedSVG = 'pole___cover___fluid___tracedSVG',
+  pole___cover___fluid___aspectRatio = 'pole___cover___fluid___aspectRatio',
+  pole___cover___fluid___src = 'pole___cover___fluid___src',
+  pole___cover___fluid___srcSet = 'pole___cover___fluid___srcSet',
+  pole___cover___fluid___srcWebp = 'pole___cover___fluid___srcWebp',
+  pole___cover___fluid___srcSetWebp = 'pole___cover___fluid___srcSetWebp',
+  pole___cover___fluid___sizes = 'pole___cover___fluid___sizes',
+  pole___cover___sizes___base64 = 'pole___cover___sizes___base64',
+  pole___cover___sizes___tracedSVG = 'pole___cover___sizes___tracedSVG',
+  pole___cover___sizes___aspectRatio = 'pole___cover___sizes___aspectRatio',
+  pole___cover___sizes___src = 'pole___cover___sizes___src',
+  pole___cover___sizes___srcSet = 'pole___cover___sizes___srcSet',
+  pole___cover___sizes___srcWebp = 'pole___cover___sizes___srcWebp',
+  pole___cover___sizes___srcSetWebp = 'pole___cover___sizes___srcSetWebp',
+  pole___cover___sizes___sizes = 'pole___cover___sizes___sizes',
+  pole___cover___resize___base64 = 'pole___cover___resize___base64',
+  pole___cover___resize___tracedSVG = 'pole___cover___resize___tracedSVG',
+  pole___cover___resize___src = 'pole___cover___resize___src',
+  pole___cover___resize___width = 'pole___cover___resize___width',
+  pole___cover___resize___height = 'pole___cover___resize___height',
+  pole___cover___resize___aspectRatio = 'pole___cover___resize___aspectRatio',
+  pole___description___id = 'pole___description___id',
+  pole___description___parent___id = 'pole___description___parent___id',
+  pole___description___parent___children = 'pole___description___parent___children',
+  pole___description___children = 'pole___description___children',
+  pole___description___children___id = 'pole___description___children___id',
+  pole___description___children___children = 'pole___description___children___children',
+  pole___description___internal___content = 'pole___description___internal___content',
+  pole___description___internal___contentDigest = 'pole___description___internal___contentDigest',
+  pole___description___internal___description = 'pole___description___internal___description',
+  pole___description___internal___fieldOwners = 'pole___description___internal___fieldOwners',
+  pole___description___internal___ignoreType = 'pole___description___internal___ignoreType',
+  pole___description___internal___mediaType = 'pole___description___internal___mediaType',
+  pole___description___internal___owner = 'pole___description___internal___owner',
+  pole___description___internal___type = 'pole___description___internal___type',
+  pole___description___content = 'pole___description___content',
+  pole___description___content___content = 'pole___description___content___content',
+  pole___description___content___nodeType = 'pole___description___content___nodeType',
+  pole___description___nodeType = 'pole___description___nodeType',
+  pole___description___description = 'pole___description___description',
+  pole___description___json = 'pole___description___json',
+  pole___description___childContentfulRichText___id = 'pole___description___childContentfulRichText___id',
+  pole___description___childContentfulRichText___children = 'pole___description___childContentfulRichText___children',
+  pole___description___childContentfulRichText___html = 'pole___description___childContentfulRichText___html',
+  pole___description___childContentfulRichText___timeToRead = 'pole___description___childContentfulRichText___timeToRead',
+  pole___spaceId = 'pole___spaceId',
+  pole___contentful_id = 'pole___contentful_id',
+  pole___createdAt = 'pole___createdAt',
+  pole___updatedAt = 'pole___updatedAt',
+  pole___sys___revision = 'pole___sys___revision',
+  pole___node_locale = 'pole___node_locale',
+  pole___post = 'pole___post',
+  pole___post___id = 'pole___post___id',
+  pole___post___parent___id = 'pole___post___parent___id',
+  pole___post___parent___children = 'pole___post___parent___children',
+  pole___post___children = 'pole___post___children',
+  pole___post___children___id = 'pole___post___children___id',
+  pole___post___children___children = 'pole___post___children___children',
+  pole___post___internal___content = 'pole___post___internal___content',
+  pole___post___internal___contentDigest = 'pole___post___internal___contentDigest',
+  pole___post___internal___description = 'pole___post___internal___description',
+  pole___post___internal___fieldOwners = 'pole___post___internal___fieldOwners',
+  pole___post___internal___ignoreType = 'pole___post___internal___ignoreType',
+  pole___post___internal___mediaType = 'pole___post___internal___mediaType',
+  pole___post___internal___owner = 'pole___post___internal___owner',
+  pole___post___internal___type = 'pole___post___internal___type',
+  pole___post___title = 'pole___post___title',
+  pole___post___author = 'pole___post___author',
+  pole___post___slug = 'pole___post___slug',
+  pole___post___pole___id = 'pole___post___pole___id',
+  pole___post___pole___children = 'pole___post___pole___children',
+  pole___post___pole___poleId = 'pole___post___pole___poleId',
+  pole___post___pole___title = 'pole___post___pole___title',
+  pole___post___pole___slug = 'pole___post___pole___slug',
+  pole___post___pole___spaceId = 'pole___post___pole___spaceId',
+  pole___post___pole___contentful_id = 'pole___post___pole___contentful_id',
+  pole___post___pole___createdAt = 'pole___post___pole___createdAt',
+  pole___post___pole___updatedAt = 'pole___post___pole___updatedAt',
+  pole___post___pole___node_locale = 'pole___post___pole___node_locale',
+  pole___post___pole___post = 'pole___post___pole___post',
+  pole___post___image = 'pole___post___image',
+  pole___post___image___id = 'pole___post___image___id',
+  pole___post___image___children = 'pole___post___image___children',
+  pole___post___image___contentful_id = 'pole___post___image___contentful_id',
+  pole___post___image___title = 'pole___post___image___title',
+  pole___post___image___description = 'pole___post___image___description',
+  pole___post___image___node_locale = 'pole___post___image___node_locale',
+  pole___post___content___id = 'pole___post___content___id',
+  pole___post___content___children = 'pole___post___content___children',
+  pole___post___content___content = 'pole___post___content___content',
+  pole___post___content___nodeType = 'pole___post___content___nodeType',
+  pole___post___content___json = 'pole___post___content___json',
+  pole___post___spaceId = 'pole___post___spaceId',
+  pole___post___contentful_id = 'pole___post___contentful_id',
+  pole___post___createdAt = 'pole___post___createdAt',
+  pole___post___updatedAt = 'pole___post___updatedAt',
+  pole___post___sys___revision = 'pole___post___sys___revision',
+  pole___post___node_locale = 'pole___post___node_locale',
+  pole___post___childContentfulPostContentRichTextNode___id = 'pole___post___childContentfulPostContentRichTextNode___id',
+  pole___post___childContentfulPostContentRichTextNode___children = 'pole___post___childContentfulPostContentRichTextNode___children',
+  pole___post___childContentfulPostContentRichTextNode___content = 'pole___post___childContentfulPostContentRichTextNode___content',
+  pole___post___childContentfulPostContentRichTextNode___nodeType = 'pole___post___childContentfulPostContentRichTextNode___nodeType',
+  pole___post___childContentfulPostContentRichTextNode___json = 'pole___post___childContentfulPostContentRichTextNode___json',
+  pole___childContentfulPoleDescriptionRichTextNode___id = 'pole___childContentfulPoleDescriptionRichTextNode___id',
+  pole___childContentfulPoleDescriptionRichTextNode___parent___id = 'pole___childContentfulPoleDescriptionRichTextNode___parent___id',
+  pole___childContentfulPoleDescriptionRichTextNode___parent___children = 'pole___childContentfulPoleDescriptionRichTextNode___parent___children',
+  pole___childContentfulPoleDescriptionRichTextNode___children = 'pole___childContentfulPoleDescriptionRichTextNode___children',
+  pole___childContentfulPoleDescriptionRichTextNode___children___id = 'pole___childContentfulPoleDescriptionRichTextNode___children___id',
+  pole___childContentfulPoleDescriptionRichTextNode___children___children = 'pole___childContentfulPoleDescriptionRichTextNode___children___children',
+  pole___childContentfulPoleDescriptionRichTextNode___internal___content = 'pole___childContentfulPoleDescriptionRichTextNode___internal___content',
+  pole___childContentfulPoleDescriptionRichTextNode___internal___contentDigest = 'pole___childContentfulPoleDescriptionRichTextNode___internal___contentDigest',
+  pole___childContentfulPoleDescriptionRichTextNode___internal___description = 'pole___childContentfulPoleDescriptionRichTextNode___internal___description',
+  pole___childContentfulPoleDescriptionRichTextNode___internal___fieldOwners = 'pole___childContentfulPoleDescriptionRichTextNode___internal___fieldOwners',
+  pole___childContentfulPoleDescriptionRichTextNode___internal___ignoreType = 'pole___childContentfulPoleDescriptionRichTextNode___internal___ignoreType',
+  pole___childContentfulPoleDescriptionRichTextNode___internal___mediaType = 'pole___childContentfulPoleDescriptionRichTextNode___internal___mediaType',
+  pole___childContentfulPoleDescriptionRichTextNode___internal___owner = 'pole___childContentfulPoleDescriptionRichTextNode___internal___owner',
+  pole___childContentfulPoleDescriptionRichTextNode___internal___type = 'pole___childContentfulPoleDescriptionRichTextNode___internal___type',
+  pole___childContentfulPoleDescriptionRichTextNode___content = 'pole___childContentfulPoleDescriptionRichTextNode___content',
+  pole___childContentfulPoleDescriptionRichTextNode___content___content = 'pole___childContentfulPoleDescriptionRichTextNode___content___content',
+  pole___childContentfulPoleDescriptionRichTextNode___content___nodeType = 'pole___childContentfulPoleDescriptionRichTextNode___content___nodeType',
+  pole___childContentfulPoleDescriptionRichTextNode___nodeType = 'pole___childContentfulPoleDescriptionRichTextNode___nodeType',
+  pole___childContentfulPoleDescriptionRichTextNode___description = 'pole___childContentfulPoleDescriptionRichTextNode___description',
+  pole___childContentfulPoleDescriptionRichTextNode___json = 'pole___childContentfulPoleDescriptionRichTextNode___json',
+  pole___childContentfulPoleDescriptionRichTextNode___childContentfulRichText___id = 'pole___childContentfulPoleDescriptionRichTextNode___childContentfulRichText___id',
+  pole___childContentfulPoleDescriptionRichTextNode___childContentfulRichText___children = 'pole___childContentfulPoleDescriptionRichTextNode___childContentfulRichText___children',
+  pole___childContentfulPoleDescriptionRichTextNode___childContentfulRichText___html = 'pole___childContentfulPoleDescriptionRichTextNode___childContentfulRichText___html',
+  pole___childContentfulPoleDescriptionRichTextNode___childContentfulRichText___timeToRead = 'pole___childContentfulPoleDescriptionRichTextNode___childContentfulRichText___timeToRead',
   image = 'image',
   image___id = 'image___id',
   image___parent___id = 'image___parent___id',
@@ -4325,94 +6152,55 @@ export type SiteTitleQueryQuery = (
   )> }
 );
 
-export type CfdPageQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type CfdPageQueryQuery = (
-  { __typename?: 'Query' }
-  & { site?: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata?: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'title'>
-    )> }
-  )>, file?: Maybe<(
-    { __typename?: 'File' }
-    & { childImageSharp?: Maybe<(
-      { __typename?: 'ImageSharp' }
-      & { fluid?: Maybe<(
-        { __typename?: 'ImageSharpFluid' }
-        & Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-      )> }
-    )> }
-  )>, allContentfulPost: (
-    { __typename?: 'ContentfulPostConnection' }
-    & { edges: Array<(
-      { __typename?: 'ContentfulPostEdge' }
-      & { node: (
-        { __typename?: 'ContentfulPost' }
-        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author' | 'pole'>
-        & { content?: Maybe<(
-          { __typename?: 'contentfulPostContentRichTextNode' }
-          & { childContentfulRichText?: Maybe<(
-            { __typename?: 'ContentfulRichText' }
-            & Pick<ContentfulRichText, 'html'>
-          )> }
-        )>, image?: Maybe<Array<Maybe<(
-          { __typename?: 'ContentfulAsset' }
-          & { fluid?: Maybe<(
-            { __typename?: 'ContentfulFluid' }
-            & Pick<ContentfulFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-          )> }
-        )>>> }
-      ) }
-    )> }
-  ) }
+export type ContentfulEspaceFragmentFragment = (
+  { __typename?: 'ContentfulEspace' }
+  & Pick<ContentfulEspace, 'espaceId' | 'frenchTitle' | 'chineseTitle'>
 );
 
-export type SportsSortiesPageQueryQueryVariables = Exact<{ [key: string]: never; }>;
+export type ContentfulPoleFragmentFragment = (
+  { __typename?: 'ContentfulPole' }
+  & Pick<ContentfulPole, 'poleId' | 'title' | 'slug'>
+  & { description?: Maybe<(
+    { __typename?: 'contentfulPoleDescriptionRichTextNode' }
+    & { childContentfulRichText?: Maybe<(
+      { __typename?: 'ContentfulRichText' }
+      & Pick<ContentfulRichText, 'html'>
+    )> }
+  )>, espace?: Maybe<(
+    { __typename?: 'ContentfulEspace' }
+    & ContentfulEspaceFragmentFragment
+  )>, cover?: Maybe<(
+    { __typename?: 'ContentfulAsset' }
+    & { fluid?: Maybe<(
+      { __typename?: 'ContentfulFluid' }
+      & Pick<ContentfulFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
+    )> }
+  )> }
+);
 
-
-export type SportsSortiesPageQueryQuery = (
-  { __typename?: 'Query' }
-  & { site?: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata?: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'title'>
+export type ContentfulPostFragmentFragment = (
+  { __typename?: 'ContentfulPost' }
+  & Pick<ContentfulPost, 'title' | 'author' | 'slug' | 'createdAt'>
+  & { pole?: Maybe<(
+    { __typename?: 'ContentfulPole' }
+    & Pick<ContentfulPole, 'poleId'>
+    & { espace?: Maybe<(
+      { __typename?: 'ContentfulEspace' }
+      & ContentfulEspaceFragmentFragment
     )> }
-  )>, file?: Maybe<(
-    { __typename?: 'File' }
-    & { childImageSharp?: Maybe<(
-      { __typename?: 'ImageSharp' }
-      & { fluid?: Maybe<(
-        { __typename?: 'ImageSharpFluid' }
-        & Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-      )> }
+  )>, content?: Maybe<(
+    { __typename?: 'contentfulPostContentRichTextNode' }
+    & { childContentfulRichText?: Maybe<(
+      { __typename?: 'ContentfulRichText' }
+      & Pick<ContentfulRichText, 'html'>
     )> }
-  )>, allContentfulPost: (
-    { __typename?: 'ContentfulPostConnection' }
-    & { edges: Array<(
-      { __typename?: 'ContentfulPostEdge' }
-      & { node: (
-        { __typename?: 'ContentfulPost' }
-        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author' | 'pole'>
-        & { content?: Maybe<(
-          { __typename?: 'contentfulPostContentRichTextNode' }
-          & { childContentfulRichText?: Maybe<(
-            { __typename?: 'ContentfulRichText' }
-            & Pick<ContentfulRichText, 'html'>
-          )> }
-        )>, image?: Maybe<Array<Maybe<(
-          { __typename?: 'ContentfulAsset' }
-          & { fluid?: Maybe<(
-            { __typename?: 'ContentfulFluid' }
-            & Pick<ContentfulFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-          )> }
-        )>>> }
-      ) }
+  )>, image?: Maybe<Array<Maybe<(
+    { __typename?: 'ContentfulAsset' }
+    & { fluid?: Maybe<(
+      { __typename?: 'ContentfulFluid' }
+      & Pick<ContentfulFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
     )> }
-  ) }
+  )>>> }
 );
 
 export type HomePageQueryQueryVariables = Exact<{ [key: string]: never; }>;
@@ -4447,8 +6235,15 @@ export type HomePageQueryQuery = (
       { __typename?: 'ContentfulPostEdge' }
       & { node: (
         { __typename?: 'ContentfulPost' }
-        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author' | 'pole'>
-        & { content?: Maybe<(
+        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author'>
+        & { pole?: Maybe<(
+          { __typename?: 'ContentfulPole' }
+          & Pick<ContentfulPole, 'poleId'>
+          & { espace?: Maybe<(
+            { __typename?: 'ContentfulEspace' }
+            & Pick<ContentfulEspace, 'espaceId'>
+          )> }
+        )>, content?: Maybe<(
           { __typename?: 'contentfulPostContentRichTextNode' }
           & { childContentfulRichText?: Maybe<(
             { __typename?: 'ContentfulRichText' }
@@ -4466,10 +6261,12 @@ export type HomePageQueryQuery = (
   ) }
 );
 
-export type DevPersoPageQueryQueryVariables = Exact<{ [key: string]: never; }>;
+export type EspaceByIdQueryVariables = Exact<{
+  espaceId: Scalars['String'];
+}>;
 
 
-export type DevPersoPageQueryQuery = (
+export type EspaceByIdQuery = (
   { __typename?: 'Query' }
   & { site?: Maybe<(
     { __typename?: 'Site' }
@@ -4477,44 +6274,28 @@ export type DevPersoPageQueryQuery = (
       { __typename?: 'SiteSiteMetadata' }
       & Pick<SiteSiteMetadata, 'title'>
     )> }
-  )>, file?: Maybe<(
-    { __typename?: 'File' }
-    & { childImageSharp?: Maybe<(
-      { __typename?: 'ImageSharp' }
-      & { fluid?: Maybe<(
-        { __typename?: 'ImageSharpFluid' }
-        & Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-      )> }
-    )> }
-  )>, allContentfulPost: (
-    { __typename?: 'ContentfulPostConnection' }
+  )>, contentfulEspace?: Maybe<(
+    { __typename?: 'ContentfulEspace' }
+    & Pick<ContentfulEspace, 'espaceId' | 'frenchTitle' | 'chineseTitle'>
+  )>, allContentfulPole: (
+    { __typename?: 'ContentfulPoleConnection' }
     & { edges: Array<(
-      { __typename?: 'ContentfulPostEdge' }
+      { __typename?: 'ContentfulPoleEdge' }
       & { node: (
-        { __typename?: 'ContentfulPost' }
-        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author' | 'pole'>
-        & { content?: Maybe<(
-          { __typename?: 'contentfulPostContentRichTextNode' }
-          & { childContentfulRichText?: Maybe<(
-            { __typename?: 'ContentfulRichText' }
-            & Pick<ContentfulRichText, 'html'>
-          )> }
-        )>, image?: Maybe<Array<Maybe<(
-          { __typename?: 'ContentfulAsset' }
-          & { fluid?: Maybe<(
-            { __typename?: 'ContentfulFluid' }
-            & Pick<ContentfulFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-          )> }
-        )>>> }
+        { __typename?: 'ContentfulPole' }
+        & ContentfulPoleFragmentFragment
       ) }
     )> }
   ) }
 );
 
-export type EchangeLinguistiquePageQueryQueryVariables = Exact<{ [key: string]: never; }>;
+export type PoleByIdQueryVariables = Exact<{
+  poleId: Scalars['String'];
+  espaceId: Scalars['String'];
+}>;
 
 
-export type EchangeLinguistiquePageQueryQuery = (
+export type PoleByIdQuery = (
   { __typename?: 'Query' }
   & { site?: Maybe<(
     { __typename?: 'Site' }
@@ -4522,260 +6303,25 @@ export type EchangeLinguistiquePageQueryQuery = (
       { __typename?: 'SiteSiteMetadata' }
       & Pick<SiteSiteMetadata, 'title'>
     )> }
-  )>, file?: Maybe<(
-    { __typename?: 'File' }
-    & { childImageSharp?: Maybe<(
-      { __typename?: 'ImageSharp' }
-      & { fluid?: Maybe<(
-        { __typename?: 'ImageSharpFluid' }
-        & Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-      )> }
-    )> }
-  )>, allContentfulPost: (
-    { __typename?: 'ContentfulPostConnection' }
+  )>, allContentfulPole: (
+    { __typename?: 'ContentfulPoleConnection' }
     & { edges: Array<(
-      { __typename?: 'ContentfulPostEdge' }
+      { __typename?: 'ContentfulPoleEdge' }
       & { node: (
-        { __typename?: 'ContentfulPost' }
-        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author' | 'pole'>
-        & { content?: Maybe<(
-          { __typename?: 'contentfulPostContentRichTextNode' }
-          & { childContentfulRichText?: Maybe<(
-            { __typename?: 'ContentfulRichText' }
-            & Pick<ContentfulRichText, 'html'>
-          )> }
-        )>, image?: Maybe<Array<Maybe<(
-          { __typename?: 'ContentfulAsset' }
-          & { fluid?: Maybe<(
-            { __typename?: 'ContentfulFluid' }
-            & Pick<ContentfulFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-          )> }
-        )>>> }
+        { __typename?: 'ContentfulPole' }
+        & ContentfulPoleFragmentFragment
       ) }
     )> }
-  ) }
-);
-
-export type ClubProPageQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type ClubProPageQueryQuery = (
-  { __typename?: 'Query' }
-  & { site?: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata?: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'title'>
-    )> }
-  )>, file?: Maybe<(
-    { __typename?: 'File' }
-    & { childImageSharp?: Maybe<(
-      { __typename?: 'ImageSharp' }
-      & { fluid?: Maybe<(
-        { __typename?: 'ImageSharpFluid' }
-        & Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-      )> }
-    )> }
+  ), contentfulPole?: Maybe<(
+    { __typename?: 'ContentfulPole' }
+    & ContentfulPoleFragmentFragment
   )>, allContentfulPost: (
     { __typename?: 'ContentfulPostConnection' }
     & { edges: Array<(
       { __typename?: 'ContentfulPostEdge' }
       & { node: (
         { __typename?: 'ContentfulPost' }
-        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author' | 'pole'>
-        & { content?: Maybe<(
-          { __typename?: 'contentfulPostContentRichTextNode' }
-          & { childContentfulRichText?: Maybe<(
-            { __typename?: 'ContentfulRichText' }
-            & Pick<ContentfulRichText, 'html'>
-          )> }
-        )>, image?: Maybe<Array<Maybe<(
-          { __typename?: 'ContentfulAsset' }
-          & { fluid?: Maybe<(
-            { __typename?: 'ContentfulFluid' }
-            & Pick<ContentfulFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-          )> }
-        )>>> }
-      ) }
-    )> }
-  ) }
-);
-
-export type RencontreMensuellePageQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type RencontreMensuellePageQueryQuery = (
-  { __typename?: 'Query' }
-  & { site?: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata?: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'title'>
-    )> }
-  )>, file?: Maybe<(
-    { __typename?: 'File' }
-    & { childImageSharp?: Maybe<(
-      { __typename?: 'ImageSharp' }
-      & { fluid?: Maybe<(
-        { __typename?: 'ImageSharpFluid' }
-        & Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-      )> }
-    )> }
-  )>, allContentfulPost: (
-    { __typename?: 'ContentfulPostConnection' }
-    & { edges: Array<(
-      { __typename?: 'ContentfulPostEdge' }
-      & { node: (
-        { __typename?: 'ContentfulPost' }
-        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author' | 'pole'>
-        & { content?: Maybe<(
-          { __typename?: 'contentfulPostContentRichTextNode' }
-          & { childContentfulRichText?: Maybe<(
-            { __typename?: 'ContentfulRichText' }
-            & Pick<ContentfulRichText, 'html'>
-          )> }
-        )>, image?: Maybe<Array<Maybe<(
-          { __typename?: 'ContentfulAsset' }
-          & { fluid?: Maybe<(
-            { __typename?: 'ContentfulFluid' }
-            & Pick<ContentfulFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-          )> }
-        )>>> }
-      ) }
-    )> }
-  ) }
-);
-
-export type ConferencesPageQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type ConferencesPageQueryQuery = (
-  { __typename?: 'Query' }
-  & { site?: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata?: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'title'>
-    )> }
-  )>, file?: Maybe<(
-    { __typename?: 'File' }
-    & { childImageSharp?: Maybe<(
-      { __typename?: 'ImageSharp' }
-      & { fluid?: Maybe<(
-        { __typename?: 'ImageSharpFluid' }
-        & Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-      )> }
-    )> }
-  )>, allContentfulPost: (
-    { __typename?: 'ContentfulPostConnection' }
-    & { edges: Array<(
-      { __typename?: 'ContentfulPostEdge' }
-      & { node: (
-        { __typename?: 'ContentfulPost' }
-        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author' | 'pole'>
-        & { content?: Maybe<(
-          { __typename?: 'contentfulPostContentRichTextNode' }
-          & { childContentfulRichText?: Maybe<(
-            { __typename?: 'ContentfulRichText' }
-            & Pick<ContentfulRichText, 'html'>
-          )> }
-        )>, image?: Maybe<Array<Maybe<(
-          { __typename?: 'ContentfulAsset' }
-          & { fluid?: Maybe<(
-            { __typename?: 'ContentfulFluid' }
-            & Pick<ContentfulFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-          )> }
-        )>>> }
-      ) }
-    )> }
-  ) }
-);
-
-export type DddPageQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type DddPageQueryQuery = (
-  { __typename?: 'Query' }
-  & { site?: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata?: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'title'>
-    )> }
-  )>, file?: Maybe<(
-    { __typename?: 'File' }
-    & { childImageSharp?: Maybe<(
-      { __typename?: 'ImageSharp' }
-      & { fluid?: Maybe<(
-        { __typename?: 'ImageSharpFluid' }
-        & Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-      )> }
-    )> }
-  )>, allContentfulPost: (
-    { __typename?: 'ContentfulPostConnection' }
-    & { edges: Array<(
-      { __typename?: 'ContentfulPostEdge' }
-      & { node: (
-        { __typename?: 'ContentfulPost' }
-        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author' | 'pole'>
-        & { content?: Maybe<(
-          { __typename?: 'contentfulPostContentRichTextNode' }
-          & { childContentfulRichText?: Maybe<(
-            { __typename?: 'ContentfulRichText' }
-            & Pick<ContentfulRichText, 'html'>
-          )> }
-        )>, image?: Maybe<Array<Maybe<(
-          { __typename?: 'ContentfulAsset' }
-          & { fluid?: Maybe<(
-            { __typename?: 'ContentfulFluid' }
-            & Pick<ContentfulFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-          )> }
-        )>>> }
-      ) }
-    )> }
-  ) }
-);
-
-export type MemoryPageQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type MemoryPageQueryQuery = (
-  { __typename?: 'Query' }
-  & { site?: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata?: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'title'>
-    )> }
-  )>, file?: Maybe<(
-    { __typename?: 'File' }
-    & { childImageSharp?: Maybe<(
-      { __typename?: 'ImageSharp' }
-      & { fluid?: Maybe<(
-        { __typename?: 'ImageSharpFluid' }
-        & Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-      )> }
-    )> }
-  )>, allContentfulPost: (
-    { __typename?: 'ContentfulPostConnection' }
-    & { edges: Array<(
-      { __typename?: 'ContentfulPostEdge' }
-      & { node: (
-        { __typename?: 'ContentfulPost' }
-        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author' | 'pole'>
-        & { content?: Maybe<(
-          { __typename?: 'contentfulPostContentRichTextNode' }
-          & { childContentfulRichText?: Maybe<(
-            { __typename?: 'ContentfulRichText' }
-            & Pick<ContentfulRichText, 'html'>
-          )> }
-        )>, image?: Maybe<Array<Maybe<(
-          { __typename?: 'ContentfulAsset' }
-          & { fluid?: Maybe<(
-            { __typename?: 'ContentfulFluid' }
-            & Pick<ContentfulFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-          )> }
-        )>>> }
+        & ContentfulPostFragmentFragment
       ) }
     )> }
   ) }
@@ -4783,6 +6329,7 @@ export type MemoryPageQueryQuery = (
 
 export type PostBySlugQueryVariables = Exact<{
   slug: Scalars['String'];
+  espaceId: Scalars['String'];
 }>;
 
 
@@ -4794,21 +6341,17 @@ export type PostBySlugQuery = (
       { __typename?: 'SiteSiteMetadata' }
       & Pick<SiteSiteMetadata, 'title'>
     )> }
-  )>, contentfulPost?: Maybe<(
+  )>, allContentfulPole: (
+    { __typename?: 'ContentfulPoleConnection' }
+    & { edges: Array<(
+      { __typename?: 'ContentfulPoleEdge' }
+      & { node: (
+        { __typename?: 'ContentfulPole' }
+        & ContentfulPoleFragmentFragment
+      ) }
+    )> }
+  ), contentfulPost?: Maybe<(
     { __typename?: 'ContentfulPost' }
-    & Pick<ContentfulPost, 'title' | 'author' | 'pole'>
-    & { content?: Maybe<(
-      { __typename?: 'contentfulPostContentRichTextNode' }
-      & { childContentfulRichText?: Maybe<(
-        { __typename?: 'ContentfulRichText' }
-        & Pick<ContentfulRichText, 'html'>
-      )> }
-    )>, image?: Maybe<Array<Maybe<(
-      { __typename?: 'ContentfulAsset' }
-      & { fluid?: Maybe<(
-        { __typename?: 'ContentfulFluid' }
-        & Pick<ContentfulFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-      )> }
-    )>>> }
+    & ContentfulPostFragmentFragment
   )> }
 );
