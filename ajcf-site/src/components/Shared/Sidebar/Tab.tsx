@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "gatsby";
-import Scroll from "../Scroll";
+import Scroll from "../Components/Scroll";
 
 export interface TabProps {
   content: string;

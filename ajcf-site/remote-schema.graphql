@@ -1,0 +1,2853 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+}
+
+"Node Interface"
+interface Node {
+    children: [Node!]!
+    id: ID!
+    internal: Internal!
+    parent: Node
+}
+
+type ContentfulAsset implements Node {
+    children: [Node!]!
+    contentful_id: String
+    description: String
+    file: ContentfulAssetFile
+    fixed(background: String, cropFocus: ContentfulImageCropFocus, height: Int, quality: Int = 50, resizingBehavior: ImageResizingBehavior, toFormat: ContentfulImageFormat = NO_CHANGE, width: Int): ContentfulFixed
+    fluid(background: String, cropFocus: ContentfulImageCropFocus, maxHeight: Int, maxWidth: Int, quality: Int = 50, resizingBehavior: ImageResizingBehavior, sizes: String, toFormat: ContentfulImageFormat = NO_CHANGE): ContentfulFluid
+    id: ID!
+    internal: Internal!
+    node_locale: String
+    parent: Node
+    resize(background: String, cropFocus: ContentfulImageCropFocus, height: Int, jpegProgressive: Boolean = true, quality: Int = 50, resizingBehavior: ImageResizingBehavior, toFormat: ContentfulImageFormat = NO_CHANGE, width: Int): ContentfulResize
+    resolutions(background: String, cropFocus: ContentfulImageCropFocus, height: Int, quality: Int = 50, resizingBehavior: ImageResizingBehavior, toFormat: ContentfulImageFormat = NO_CHANGE, width: Int): ContentfulResolutions @deprecated(reason : "Resolutions was deprecated in Gatsby v2. It's been renamed to \"fixed\" https://example.com/write-docs-and-fix-this-example-link")
+    sizes(background: String, cropFocus: ContentfulImageCropFocus, maxHeight: Int, maxWidth: Int, quality: Int = 50, resizingBehavior: ImageResizingBehavior, sizes: String, toFormat: ContentfulImageFormat = NO_CHANGE): ContentfulSizes @deprecated(reason : "Sizes was deprecated in Gatsby v2. It's been renamed to \"fluid\" https://example.com/write-docs-and-fix-this-example-link")
+    title: String
+}
+
+type ContentfulAssetConnection {
+    distinct(field: ContentfulAssetFieldsEnum!): [String!]!
+    edges: [ContentfulAssetEdge!]!
+    group(field: ContentfulAssetFieldsEnum!, limit: Int, skip: Int): [ContentfulAssetGroupConnection!]!
+    nodes: [ContentfulAsset!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type ContentfulAssetEdge {
+    next: ContentfulAsset
+    node: ContentfulAsset!
+    previous: ContentfulAsset
+}
+
+type ContentfulAssetFile {
+    contentType: String
+    details: ContentfulAssetFileDetails
+    fileName: String
+    url: String
+}
+
+type ContentfulAssetFileDetails {
+    image: ContentfulAssetFileDetailsImage
+    size: Int
+}
+
+type ContentfulAssetFileDetailsImage {
+    height: Int
+    width: Int
+}
+
+type ContentfulAssetGroupConnection {
+    edges: [ContentfulAssetEdge!]!
+    field: String!
+    fieldValue: String
+    nodes: [ContentfulAsset!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type ContentfulContentType implements Node {
+    children: [Node!]!
+    description: String
+    displayField: String
+    id: ID!
+    internal: Internal!
+    name: String
+    parent: Node
+}
+
+type ContentfulContentTypeConnection {
+    distinct(field: ContentfulContentTypeFieldsEnum!): [String!]!
+    edges: [ContentfulContentTypeEdge!]!
+    group(field: ContentfulContentTypeFieldsEnum!, limit: Int, skip: Int): [ContentfulContentTypeGroupConnection!]!
+    nodes: [ContentfulContentType!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type ContentfulContentTypeEdge {
+    next: ContentfulContentType
+    node: ContentfulContentType!
+    previous: ContentfulContentType
+}
+
+type ContentfulContentTypeGroupConnection {
+    edges: [ContentfulContentTypeEdge!]!
+    field: String!
+    fieldValue: String
+    nodes: [ContentfulContentType!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type ContentfulFixed {
+    aspectRatio: Float
+    base64: String
+    height: Float!
+    src: String!
+    srcSet: String!
+    srcSetWebp: String
+    srcWebp: String
+    tracedSVG: String
+    width: Float!
+}
+
+type ContentfulFluid {
+    aspectRatio: Float!
+    base64: String
+    sizes: String!
+    src: String!
+    srcSet: String!
+    srcSetWebp: String
+    srcWebp: String
+    tracedSVG: String
+}
+
+type ContentfulPost implements Node {
+    author: String
+    childContentfulPostContentRichTextNode: contentfulPostContentRichTextNode
+    children: [Node!]!
+    content: contentfulPostContentRichTextNode
+    contentful_id: String
+    createdAt(
+        "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+        difference: String,
+        "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+        formatString: String,
+        "Returns a string generated with Moment.js' `fromNow` function"
+        fromNow: Boolean,
+        "Configures the locale Moment.js will use to format the date."
+        locale: String
+    ): Date
+    id: ID!
+    image: [ContentfulAsset]
+    internal: Internal!
+    node_locale: String
+    parent: Node
+    pole: String
+    slug: String
+    spaceId: String
+    sys: ContentfulPostSys
+    title: String
+    updatedAt(
+        "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+        difference: String,
+        "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+        formatString: String,
+        "Returns a string generated with Moment.js' `fromNow` function"
+        fromNow: Boolean,
+        "Configures the locale Moment.js will use to format the date."
+        locale: String
+    ): Date
+}
+
+type ContentfulPostConnection {
+    distinct(field: ContentfulPostFieldsEnum!): [String!]!
+    edges: [ContentfulPostEdge!]!
+    group(field: ContentfulPostFieldsEnum!, limit: Int, skip: Int): [ContentfulPostGroupConnection!]!
+    nodes: [ContentfulPost!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type ContentfulPostEdge {
+    next: ContentfulPost
+    node: ContentfulPost!
+    previous: ContentfulPost
+}
+
+type ContentfulPostGroupConnection {
+    edges: [ContentfulPostEdge!]!
+    field: String!
+    fieldValue: String
+    nodes: [ContentfulPost!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type ContentfulPostSys {
+    contentType: ContentfulPostSysContentType
+}
+
+type ContentfulPostSysContentType {
+    sys: ContentfulPostSysContentTypeSys
+}
+
+type ContentfulPostSysContentTypeSys {
+    contentful_id: String
+    id: String
+    linkType: String
+    type: String
+}
+
+type ContentfulResize {
+    aspectRatio: Float
+    base64: String
+    height: Int
+    src: String
+    tracedSVG: String
+    width: Int
+}
+
+type ContentfulResolutions {
+    aspectRatio: Float
+    base64: String
+    height: Float!
+    src: String!
+    srcSet: String!
+    srcSetWebp: String
+    srcWebp: String
+    tracedSVG: String
+    width: Float!
+}
+
+type ContentfulRichText implements Node {
+    children: [Node!]!
+    html: String
+    id: ID!
+    internal: Internal!
+    parent: Node
+    timeToRead: Int
+}
+
+type ContentfulRichTextConnection {
+    distinct(field: ContentfulRichTextFieldsEnum!): [String!]!
+    edges: [ContentfulRichTextEdge!]!
+    group(field: ContentfulRichTextFieldsEnum!, limit: Int, skip: Int): [ContentfulRichTextGroupConnection!]!
+    nodes: [ContentfulRichText!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type ContentfulRichTextEdge {
+    next: ContentfulRichText
+    node: ContentfulRichText!
+    previous: ContentfulRichText
+}
+
+type ContentfulRichTextGroupConnection {
+    edges: [ContentfulRichTextEdge!]!
+    field: String!
+    fieldValue: String
+    nodes: [ContentfulRichText!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type ContentfulSizes {
+    aspectRatio: Float!
+    base64: String
+    sizes: String!
+    src: String!
+    srcSet: String!
+    srcSetWebp: String
+    srcWebp: String
+    tracedSVG: String
+}
+
+type Directory implements Node {
+    absolutePath: String!
+    accessTime(
+        "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+        difference: String,
+        "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+        formatString: String,
+        "Returns a string generated with Moment.js' `fromNow` function"
+        fromNow: Boolean,
+        "Configures the locale Moment.js will use to format the date."
+        locale: String
+    ): Date!
+    atime(
+        "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+        difference: String,
+        "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+        formatString: String,
+        "Returns a string generated with Moment.js' `fromNow` function"
+        fromNow: Boolean,
+        "Configures the locale Moment.js will use to format the date."
+        locale: String
+    ): Date!
+    atimeMs: Float!
+    base: String!
+    birthTime(
+        "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+        difference: String,
+        "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+        formatString: String,
+        "Returns a string generated with Moment.js' `fromNow` function"
+        fromNow: Boolean,
+        "Configures the locale Moment.js will use to format the date."
+        locale: String
+    ): Date!
+    birthtime: Date @deprecated(reason : "Use `birthTime` instead")
+    birthtimeMs: Float @deprecated(reason : "Use `birthTime` instead")
+    changeTime(
+        "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+        difference: String,
+        "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+        formatString: String,
+        "Returns a string generated with Moment.js' `fromNow` function"
+        fromNow: Boolean,
+        "Configures the locale Moment.js will use to format the date."
+        locale: String
+    ): Date!
+    children: [Node!]!
+    ctime(
+        "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+        difference: String,
+        "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+        formatString: String,
+        "Returns a string generated with Moment.js' `fromNow` function"
+        fromNow: Boolean,
+        "Configures the locale Moment.js will use to format the date."
+        locale: String
+    ): Date!
+    ctimeMs: Float!
+    dev: Int!
+    dir: String!
+    ext: String!
+    extension: String!
+    gid: Int!
+    id: ID!
+    ino: Float!
+    internal: Internal!
+    mode: Int!
+    modifiedTime(
+        "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+        difference: String,
+        "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+        formatString: String,
+        "Returns a string generated with Moment.js' `fromNow` function"
+        fromNow: Boolean,
+        "Configures the locale Moment.js will use to format the date."
+        locale: String
+    ): Date!
+    mtime(
+        "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+        difference: String,
+        "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+        formatString: String,
+        "Returns a string generated with Moment.js' `fromNow` function"
+        fromNow: Boolean,
+        "Configures the locale Moment.js will use to format the date."
+        locale: String
+    ): Date!
+    mtimeMs: Float!
+    name: String!
+    nlink: Int!
+    parent: Node
+    prettySize: String!
+    rdev: Int!
+    relativeDirectory: String!
+    relativePath: String!
+    root: String!
+    size: Int!
+    sourceInstanceName: String!
+    uid: Int!
+}
+
+type DirectoryConnection {
+    distinct(field: DirectoryFieldsEnum!): [String!]!
+    edges: [DirectoryEdge!]!
+    group(field: DirectoryFieldsEnum!, limit: Int, skip: Int): [DirectoryGroupConnection!]!
+    nodes: [Directory!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type DirectoryEdge {
+    next: Directory
+    node: Directory!
+    previous: Directory
+}
+
+type DirectoryGroupConnection {
+    edges: [DirectoryEdge!]!
+    field: String!
+    fieldValue: String
+    nodes: [Directory!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type File implements Node {
+    absolutePath: String!
+    accessTime(
+        "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+        difference: String,
+        "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+        formatString: String,
+        "Returns a string generated with Moment.js' `fromNow` function"
+        fromNow: Boolean,
+        "Configures the locale Moment.js will use to format the date."
+        locale: String
+    ): Date!
+    atime(
+        "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+        difference: String,
+        "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+        formatString: String,
+        "Returns a string generated with Moment.js' `fromNow` function"
+        fromNow: Boolean,
+        "Configures the locale Moment.js will use to format the date."
+        locale: String
+    ): Date!
+    atimeMs: Float!
+    base: String!
+    birthTime(
+        "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+        difference: String,
+        "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+        formatString: String,
+        "Returns a string generated with Moment.js' `fromNow` function"
+        fromNow: Boolean,
+        "Configures the locale Moment.js will use to format the date."
+        locale: String
+    ): Date!
+    birthtime: Date @deprecated(reason : "Use `birthTime` instead")
+    birthtimeMs: Float @deprecated(reason : "Use `birthTime` instead")
+    changeTime(
+        "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+        difference: String,
+        "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+        formatString: String,
+        "Returns a string generated with Moment.js' `fromNow` function"
+        fromNow: Boolean,
+        "Configures the locale Moment.js will use to format the date."
+        locale: String
+    ): Date!
+    children: [Node!]!
+    ctime(
+        "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+        difference: String,
+        "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+        formatString: String,
+        "Returns a string generated with Moment.js' `fromNow` function"
+        fromNow: Boolean,
+        "Configures the locale Moment.js will use to format the date."
+        locale: String
+    ): Date!
+    ctimeMs: Float!
+    dev: Int!
+    dir: String!
+    ext: String!
+    extension: String!
+    gid: Int!
+    id: ID!
+    ino: Float!
+    internal: Internal!
+    mode: Int!
+    modifiedTime(
+        "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+        difference: String,
+        "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+        formatString: String,
+        "Returns a string generated with Moment.js' `fromNow` function"
+        fromNow: Boolean,
+        "Configures the locale Moment.js will use to format the date."
+        locale: String
+    ): Date!
+    mtime(
+        "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+        difference: String,
+        "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+        formatString: String,
+        "Returns a string generated with Moment.js' `fromNow` function"
+        fromNow: Boolean,
+        "Configures the locale Moment.js will use to format the date."
+        locale: String
+    ): Date!
+    mtimeMs: Float!
+    name: String!
+    nlink: Int!
+    parent: Node
+    prettySize: String!
+    rdev: Int!
+    relativeDirectory: String!
+    relativePath: String!
+    root: String!
+    size: Int!
+    sourceInstanceName: String!
+    uid: Int!
+}
+
+type FileConnection {
+    distinct(field: FileFieldsEnum!): [String!]!
+    edges: [FileEdge!]!
+    group(field: FileFieldsEnum!, limit: Int, skip: Int): [FileGroupConnection!]!
+    nodes: [File!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type FileEdge {
+    next: File
+    node: File!
+    previous: File
+}
+
+type FileGroupConnection {
+    edges: [FileEdge!]!
+    field: String!
+    fieldValue: String
+    nodes: [File!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type Internal {
+    content: String
+    contentDigest: String!
+    description: String
+    fieldOwners: [String]
+    ignoreType: Boolean
+    mediaType: String
+    owner: String!
+    type: String!
+}
+
+type PageInfo {
+    currentPage: Int!
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+    itemCount: Int!
+    pageCount: Int!
+    perPage: Int
+}
+
+type Query {
+    allContentfulAsset(filter: ContentfulAssetFilterInput, limit: Int, skip: Int, sort: ContentfulAssetSortInput): ContentfulAssetConnection!
+    allContentfulContentType(filter: ContentfulContentTypeFilterInput, limit: Int, skip: Int, sort: ContentfulContentTypeSortInput): ContentfulContentTypeConnection!
+    allContentfulPost(filter: ContentfulPostFilterInput, limit: Int, skip: Int, sort: ContentfulPostSortInput): ContentfulPostConnection!
+    allContentfulPostContentRichTextNode(filter: contentfulPostContentRichTextNodeFilterInput, limit: Int, skip: Int, sort: contentfulPostContentRichTextNodeSortInput): contentfulPostContentRichTextNodeConnection!
+    allContentfulRichText(filter: ContentfulRichTextFilterInput, limit: Int, skip: Int, sort: ContentfulRichTextSortInput): ContentfulRichTextConnection!
+    allDirectory(filter: DirectoryFilterInput, limit: Int, skip: Int, sort: DirectorySortInput): DirectoryConnection!
+    allFile(filter: FileFilterInput, limit: Int, skip: Int, sort: FileSortInput): FileConnection!
+    allSite(filter: SiteFilterInput, limit: Int, skip: Int, sort: SiteSortInput): SiteConnection!
+    allSiteBuildMetadata(filter: SiteBuildMetadataFilterInput, limit: Int, skip: Int, sort: SiteBuildMetadataSortInput): SiteBuildMetadataConnection!
+    allSitePage(filter: SitePageFilterInput, limit: Int, skip: Int, sort: SitePageSortInput): SitePageConnection!
+    allSitePlugin(filter: SitePluginFilterInput, limit: Int, skip: Int, sort: SitePluginSortInput): SitePluginConnection!
+    contentfulAsset(children: NodeFilterListInput, contentful_id: StringQueryOperatorInput, description: StringQueryOperatorInput, file: ContentfulAssetFileFilterInput, fixed: ContentfulFixedFilterInput, fluid: ContentfulFluidFilterInput, id: StringQueryOperatorInput, internal: InternalFilterInput, node_locale: StringQueryOperatorInput, parent: NodeFilterInput, resize: ContentfulResizeFilterInput, resolutions: ContentfulResolutionsFilterInput, sizes: ContentfulSizesFilterInput, title: StringQueryOperatorInput): ContentfulAsset
+    contentfulContentType(children: NodeFilterListInput, description: StringQueryOperatorInput, displayField: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, name: StringQueryOperatorInput, parent: NodeFilterInput): ContentfulContentType
+    contentfulPost(author: StringQueryOperatorInput, childContentfulPostContentRichTextNode: contentfulPostContentRichTextNodeFilterInput, children: NodeFilterListInput, content: contentfulPostContentRichTextNodeFilterInput, contentful_id: StringQueryOperatorInput, createdAt: DateQueryOperatorInput, id: StringQueryOperatorInput, image: ContentfulAssetFilterListInput, internal: InternalFilterInput, node_locale: StringQueryOperatorInput, parent: NodeFilterInput, pole: StringQueryOperatorInput, slug: StringQueryOperatorInput, spaceId: StringQueryOperatorInput, sys: ContentfulPostSysFilterInput, title: StringQueryOperatorInput, updatedAt: DateQueryOperatorInput): ContentfulPost
+    contentfulPostContentRichTextNode(childContentfulRichText: ContentfulRichTextFilterInput, children: NodeFilterListInput, content: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, json: JSONQueryOperatorInput, nodeType: StringQueryOperatorInput, parent: NodeFilterInput): contentfulPostContentRichTextNode
+    contentfulRichText(children: NodeFilterListInput, html: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, timeToRead: IntQueryOperatorInput): ContentfulRichText
+    directory(absolutePath: StringQueryOperatorInput, accessTime: DateQueryOperatorInput, atime: DateQueryOperatorInput, atimeMs: FloatQueryOperatorInput, base: StringQueryOperatorInput, birthTime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, changeTime: DateQueryOperatorInput, children: NodeFilterListInput, ctime: DateQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, dev: IntQueryOperatorInput, dir: StringQueryOperatorInput, ext: StringQueryOperatorInput, extension: StringQueryOperatorInput, gid: IntQueryOperatorInput, id: StringQueryOperatorInput, ino: FloatQueryOperatorInput, internal: InternalFilterInput, mode: IntQueryOperatorInput, modifiedTime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, name: StringQueryOperatorInput, nlink: IntQueryOperatorInput, parent: NodeFilterInput, prettySize: StringQueryOperatorInput, rdev: IntQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, root: StringQueryOperatorInput, size: IntQueryOperatorInput, sourceInstanceName: StringQueryOperatorInput, uid: IntQueryOperatorInput): Directory
+    file(absolutePath: StringQueryOperatorInput, accessTime: DateQueryOperatorInput, atime: DateQueryOperatorInput, atimeMs: FloatQueryOperatorInput, base: StringQueryOperatorInput, birthTime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, changeTime: DateQueryOperatorInput, children: NodeFilterListInput, ctime: DateQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, dev: IntQueryOperatorInput, dir: StringQueryOperatorInput, ext: StringQueryOperatorInput, extension: StringQueryOperatorInput, gid: IntQueryOperatorInput, id: StringQueryOperatorInput, ino: FloatQueryOperatorInput, internal: InternalFilterInput, mode: IntQueryOperatorInput, modifiedTime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, name: StringQueryOperatorInput, nlink: IntQueryOperatorInput, parent: NodeFilterInput, prettySize: StringQueryOperatorInput, rdev: IntQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, root: StringQueryOperatorInput, size: IntQueryOperatorInput, sourceInstanceName: StringQueryOperatorInput, uid: IntQueryOperatorInput): File
+    site(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, host: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, pathPrefix: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, port: IntQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput): Site
+    siteBuildMetadata(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput): SiteBuildMetadata
+    sitePage(children: NodeFilterListInput, component: StringQueryOperatorInput, componentChunkName: StringQueryOperatorInput, componentPath: StringQueryOperatorInput, context: SitePageContextFilterInput, id: StringQueryOperatorInput, internal: InternalFilterInput, internalComponentName: StringQueryOperatorInput, isCreatedByStatefulCreatePages: BooleanQueryOperatorInput, matchPath: StringQueryOperatorInput, parent: NodeFilterInput, path: StringQueryOperatorInput, pluginCreator: SitePluginFilterInput, pluginCreatorId: StringQueryOperatorInput): SitePage
+    sitePlugin(browserAPIs: StringQueryOperatorInput, children: NodeFilterListInput, id: StringQueryOperatorInput, internal: InternalFilterInput, name: StringQueryOperatorInput, nodeAPIs: StringQueryOperatorInput, packageJson: SitePluginPackageJsonFilterInput, parent: NodeFilterInput, pluginFilepath: StringQueryOperatorInput, pluginOptions: SitePluginPluginOptionsFilterInput, resolve: StringQueryOperatorInput, ssrAPIs: StringQueryOperatorInput, version: StringQueryOperatorInput): SitePlugin
+}
+
+type Site implements Node {
+    buildTime(
+        "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+        difference: String,
+        "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+        formatString: String,
+        "Returns a string generated with Moment.js' `fromNow` function"
+        fromNow: Boolean,
+        "Configures the locale Moment.js will use to format the date."
+        locale: String
+    ): Date
+    children: [Node!]!
+    host: String
+    id: ID!
+    internal: Internal!
+    parent: Node
+    pathPrefix: String
+    polyfill: Boolean
+    port: Int
+    siteMetadata: SiteSiteMetadata
+}
+
+type SiteBuildMetadata implements Node {
+    buildTime(
+        "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+        difference: String,
+        "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+        formatString: String,
+        "Returns a string generated with Moment.js' `fromNow` function"
+        fromNow: Boolean,
+        "Configures the locale Moment.js will use to format the date."
+        locale: String
+    ): Date
+    children: [Node!]!
+    id: ID!
+    internal: Internal!
+    parent: Node
+}
+
+type SiteBuildMetadataConnection {
+    distinct(field: SiteBuildMetadataFieldsEnum!): [String!]!
+    edges: [SiteBuildMetadataEdge!]!
+    group(field: SiteBuildMetadataFieldsEnum!, limit: Int, skip: Int): [SiteBuildMetadataGroupConnection!]!
+    nodes: [SiteBuildMetadata!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type SiteBuildMetadataEdge {
+    next: SiteBuildMetadata
+    node: SiteBuildMetadata!
+    previous: SiteBuildMetadata
+}
+
+type SiteBuildMetadataGroupConnection {
+    edges: [SiteBuildMetadataEdge!]!
+    field: String!
+    fieldValue: String
+    nodes: [SiteBuildMetadata!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type SiteConnection {
+    distinct(field: SiteFieldsEnum!): [String!]!
+    edges: [SiteEdge!]!
+    group(field: SiteFieldsEnum!, limit: Int, skip: Int): [SiteGroupConnection!]!
+    nodes: [Site!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type SiteEdge {
+    next: Site
+    node: Site!
+    previous: Site
+}
+
+type SiteGroupConnection {
+    edges: [SiteEdge!]!
+    field: String!
+    fieldValue: String
+    nodes: [Site!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type SitePage implements Node {
+    children: [Node!]!
+    component: String!
+    componentChunkName: String!
+    componentPath: String
+    context: SitePageContext
+    id: ID!
+    internal: Internal!
+    internalComponentName: String!
+    isCreatedByStatefulCreatePages: Boolean
+    matchPath: String
+    parent: Node
+    path: String!
+    pluginCreator: SitePlugin
+    pluginCreatorId: String
+}
+
+type SitePageConnection {
+    distinct(field: SitePageFieldsEnum!): [String!]!
+    edges: [SitePageEdge!]!
+    group(field: SitePageFieldsEnum!, limit: Int, skip: Int): [SitePageGroupConnection!]!
+    nodes: [SitePage!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type SitePageContext {
+    slug: String
+}
+
+type SitePageEdge {
+    next: SitePage
+    node: SitePage!
+    previous: SitePage
+}
+
+type SitePageGroupConnection {
+    edges: [SitePageEdge!]!
+    field: String!
+    fieldValue: String
+    nodes: [SitePage!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type SitePlugin implements Node {
+    browserAPIs: [String]
+    children: [Node!]!
+    id: ID!
+    internal: Internal!
+    name: String
+    nodeAPIs: [String]
+    packageJson: SitePluginPackageJson
+    parent: Node
+    pluginFilepath: String
+    pluginOptions: SitePluginPluginOptions
+    resolve: String
+    ssrAPIs: [String]
+    version: String
+}
+
+type SitePluginConnection {
+    distinct(field: SitePluginFieldsEnum!): [String!]!
+    edges: [SitePluginEdge!]!
+    group(field: SitePluginFieldsEnum!, limit: Int, skip: Int): [SitePluginGroupConnection!]!
+    nodes: [SitePlugin!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type SitePluginEdge {
+    next: SitePlugin
+    node: SitePlugin!
+    previous: SitePlugin
+}
+
+type SitePluginGroupConnection {
+    edges: [SitePluginEdge!]!
+    field: String!
+    fieldValue: String
+    nodes: [SitePlugin!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type SitePluginPackageJson {
+    dependencies: [SitePluginPackageJsonDependencies]
+    description: String
+    devDependencies: [SitePluginPackageJsonDevDependencies]
+    keywords: [String]
+    license: String
+    main: String
+    name: String
+    peerDependencies: [SitePluginPackageJsonPeerDependencies]
+    version: String
+}
+
+type SitePluginPackageJsonDependencies {
+    name: String
+    version: String
+}
+
+type SitePluginPackageJsonDevDependencies {
+    name: String
+    version: String
+}
+
+type SitePluginPackageJsonPeerDependencies {
+    name: String
+    version: String
+}
+
+type SitePluginPluginOptions {
+    accessToken: String
+    allExtensions: Boolean
+    background_color: String
+    display: String
+    documentPaths: [String]
+    fileName: String
+    host: String
+    icon: String
+    implementation: SitePluginPluginOptionsImplementation
+    isTSX: Boolean
+    name: String
+    path: String
+    pathCheck: Boolean
+    short_name: String
+    spaceId: String
+    start_url: String
+    theme_color: String
+}
+
+type SitePluginPluginOptionsImplementation {
+    info: String
+}
+
+type SiteSiteMetadata {
+    title: String
+}
+
+type contentfulPostContentRichTextNode implements Node {
+    childContentfulRichText: ContentfulRichText
+    children: [Node!]!
+    content: String
+    id: ID!
+    internal: Internal!
+    json: JSON
+    nodeType: String @deprecated(reason : "This field is deprecated, please use 'json' instead.")
+    parent: Node
+}
+
+type contentfulPostContentRichTextNodeConnection {
+    distinct(field: contentfulPostContentRichTextNodeFieldsEnum!): [String!]!
+    edges: [contentfulPostContentRichTextNodeEdge!]!
+    group(field: contentfulPostContentRichTextNodeFieldsEnum!, limit: Int, skip: Int): [contentfulPostContentRichTextNodeGroupConnection!]!
+    nodes: [contentfulPostContentRichTextNode!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type contentfulPostContentRichTextNodeEdge {
+    next: contentfulPostContentRichTextNode
+    node: contentfulPostContentRichTextNode!
+    previous: contentfulPostContentRichTextNode
+}
+
+type contentfulPostContentRichTextNodeGroupConnection {
+    edges: [contentfulPostContentRichTextNodeEdge!]!
+    field: String!
+    fieldValue: String
+    nodes: [contentfulPostContentRichTextNode!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+enum ContentfulAssetFieldsEnum {
+    children
+    children___children
+    children___children___children
+    children___children___children___children
+    children___children___children___id
+    children___children___id
+    children___children___internal___content
+    children___children___internal___contentDigest
+    children___children___internal___description
+    children___children___internal___fieldOwners
+    children___children___internal___ignoreType
+    children___children___internal___mediaType
+    children___children___internal___owner
+    children___children___internal___type
+    children___children___parent___children
+    children___children___parent___id
+    children___id
+    children___internal___content
+    children___internal___contentDigest
+    children___internal___description
+    children___internal___fieldOwners
+    children___internal___ignoreType
+    children___internal___mediaType
+    children___internal___owner
+    children___internal___type
+    children___parent___children
+    children___parent___children___children
+    children___parent___children___id
+    children___parent___id
+    children___parent___internal___content
+    children___parent___internal___contentDigest
+    children___parent___internal___description
+    children___parent___internal___fieldOwners
+    children___parent___internal___ignoreType
+    children___parent___internal___mediaType
+    children___parent___internal___owner
+    children___parent___internal___type
+    children___parent___parent___children
+    children___parent___parent___id
+    contentful_id
+    description
+    file___contentType
+    file___details___image___height
+    file___details___image___width
+    file___details___size
+    file___fileName
+    file___url
+    fixed___aspectRatio @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    fixed___base64 @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    fixed___height @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    fixed___src @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    fixed___srcSet @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    fixed___srcSetWebp @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    fixed___srcWebp @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    fixed___tracedSVG @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    fixed___width @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    fluid___aspectRatio @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    fluid___base64 @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    fluid___sizes @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    fluid___src @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    fluid___srcSet @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    fluid___srcSetWebp @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    fluid___srcWebp @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    fluid___tracedSVG @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    id
+    internal___content
+    internal___contentDigest
+    internal___description
+    internal___fieldOwners
+    internal___ignoreType
+    internal___mediaType
+    internal___owner
+    internal___type
+    node_locale
+    parent___children
+    parent___children___children
+    parent___children___children___children
+    parent___children___children___id
+    parent___children___id
+    parent___children___internal___content
+    parent___children___internal___contentDigest
+    parent___children___internal___description
+    parent___children___internal___fieldOwners
+    parent___children___internal___ignoreType
+    parent___children___internal___mediaType
+    parent___children___internal___owner
+    parent___children___internal___type
+    parent___children___parent___children
+    parent___children___parent___id
+    parent___id
+    parent___internal___content
+    parent___internal___contentDigest
+    parent___internal___description
+    parent___internal___fieldOwners
+    parent___internal___ignoreType
+    parent___internal___mediaType
+    parent___internal___owner
+    parent___internal___type
+    parent___parent___children
+    parent___parent___children___children
+    parent___parent___children___id
+    parent___parent___id
+    parent___parent___internal___content
+    parent___parent___internal___contentDigest
+    parent___parent___internal___description
+    parent___parent___internal___fieldOwners
+    parent___parent___internal___ignoreType
+    parent___parent___internal___mediaType
+    parent___parent___internal___owner
+    parent___parent___internal___type
+    parent___parent___parent___children
+    parent___parent___parent___id
+    resize___aspectRatio @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    resize___base64 @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    resize___height @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    resize___src @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    resize___tracedSVG @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    resize___width @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    resolutions___aspectRatio @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    resolutions___base64 @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    resolutions___height @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    resolutions___src @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    resolutions___srcSet @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    resolutions___srcSetWebp @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    resolutions___srcWebp @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    resolutions___tracedSVG @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    resolutions___width @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    sizes___aspectRatio @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    sizes___base64 @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    sizes___sizes @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    sizes___src @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    sizes___srcSet @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    sizes___srcSetWebp @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    sizes___srcWebp @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    sizes___tracedSVG @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    title
+}
+
+enum ContentfulContentTypeFieldsEnum {
+    children
+    children___children
+    children___children___children
+    children___children___children___children
+    children___children___children___id
+    children___children___id
+    children___children___internal___content
+    children___children___internal___contentDigest
+    children___children___internal___description
+    children___children___internal___fieldOwners
+    children___children___internal___ignoreType
+    children___children___internal___mediaType
+    children___children___internal___owner
+    children___children___internal___type
+    children___children___parent___children
+    children___children___parent___id
+    children___id
+    children___internal___content
+    children___internal___contentDigest
+    children___internal___description
+    children___internal___fieldOwners
+    children___internal___ignoreType
+    children___internal___mediaType
+    children___internal___owner
+    children___internal___type
+    children___parent___children
+    children___parent___children___children
+    children___parent___children___id
+    children___parent___id
+    children___parent___internal___content
+    children___parent___internal___contentDigest
+    children___parent___internal___description
+    children___parent___internal___fieldOwners
+    children___parent___internal___ignoreType
+    children___parent___internal___mediaType
+    children___parent___internal___owner
+    children___parent___internal___type
+    children___parent___parent___children
+    children___parent___parent___id
+    description
+    displayField
+    id
+    internal___content
+    internal___contentDigest
+    internal___description
+    internal___fieldOwners
+    internal___ignoreType
+    internal___mediaType
+    internal___owner
+    internal___type
+    name
+    parent___children
+    parent___children___children
+    parent___children___children___children
+    parent___children___children___id
+    parent___children___id
+    parent___children___internal___content
+    parent___children___internal___contentDigest
+    parent___children___internal___description
+    parent___children___internal___fieldOwners
+    parent___children___internal___ignoreType
+    parent___children___internal___mediaType
+    parent___children___internal___owner
+    parent___children___internal___type
+    parent___children___parent___children
+    parent___children___parent___id
+    parent___id
+    parent___internal___content
+    parent___internal___contentDigest
+    parent___internal___description
+    parent___internal___fieldOwners
+    parent___internal___ignoreType
+    parent___internal___mediaType
+    parent___internal___owner
+    parent___internal___type
+    parent___parent___children
+    parent___parent___children___children
+    parent___parent___children___id
+    parent___parent___id
+    parent___parent___internal___content
+    parent___parent___internal___contentDigest
+    parent___parent___internal___description
+    parent___parent___internal___fieldOwners
+    parent___parent___internal___ignoreType
+    parent___parent___internal___mediaType
+    parent___parent___internal___owner
+    parent___parent___internal___type
+    parent___parent___parent___children
+    parent___parent___parent___id
+}
+
+enum ContentfulImageCropFocus {
+    BOTTOM
+    BOTTOM_LEFT
+    BOTTOM_RIGHT
+    CENTER
+    FACE
+    FACES
+    LEFT
+    RIGHT
+    TOP
+    TOP_LEFT
+    TOP_RIGHT
+}
+
+enum ContentfulImageFormat {
+    JPG
+    NO_CHANGE
+    PNG
+    WEBP
+}
+
+enum ContentfulPostFieldsEnum {
+    author
+    childContentfulPostContentRichTextNode___childContentfulRichText___children
+    childContentfulPostContentRichTextNode___childContentfulRichText___children___children
+    childContentfulPostContentRichTextNode___childContentfulRichText___children___id
+    childContentfulPostContentRichTextNode___childContentfulRichText___html
+    childContentfulPostContentRichTextNode___childContentfulRichText___id
+    childContentfulPostContentRichTextNode___childContentfulRichText___internal___content
+    childContentfulPostContentRichTextNode___childContentfulRichText___internal___contentDigest
+    childContentfulPostContentRichTextNode___childContentfulRichText___internal___description
+    childContentfulPostContentRichTextNode___childContentfulRichText___internal___fieldOwners
+    childContentfulPostContentRichTextNode___childContentfulRichText___internal___ignoreType
+    childContentfulPostContentRichTextNode___childContentfulRichText___internal___mediaType
+    childContentfulPostContentRichTextNode___childContentfulRichText___internal___owner
+    childContentfulPostContentRichTextNode___childContentfulRichText___internal___type
+    childContentfulPostContentRichTextNode___childContentfulRichText___parent___children
+    childContentfulPostContentRichTextNode___childContentfulRichText___parent___id
+    childContentfulPostContentRichTextNode___childContentfulRichText___timeToRead
+    childContentfulPostContentRichTextNode___children
+    childContentfulPostContentRichTextNode___children___children
+    childContentfulPostContentRichTextNode___children___children___children
+    childContentfulPostContentRichTextNode___children___children___id
+    childContentfulPostContentRichTextNode___children___id
+    childContentfulPostContentRichTextNode___children___internal___content
+    childContentfulPostContentRichTextNode___children___internal___contentDigest
+    childContentfulPostContentRichTextNode___children___internal___description
+    childContentfulPostContentRichTextNode___children___internal___fieldOwners
+    childContentfulPostContentRichTextNode___children___internal___ignoreType
+    childContentfulPostContentRichTextNode___children___internal___mediaType
+    childContentfulPostContentRichTextNode___children___internal___owner
+    childContentfulPostContentRichTextNode___children___internal___type
+    childContentfulPostContentRichTextNode___children___parent___children
+    childContentfulPostContentRichTextNode___children___parent___id
+    childContentfulPostContentRichTextNode___content
+    childContentfulPostContentRichTextNode___id
+    childContentfulPostContentRichTextNode___internal___content
+    childContentfulPostContentRichTextNode___internal___contentDigest
+    childContentfulPostContentRichTextNode___internal___description
+    childContentfulPostContentRichTextNode___internal___fieldOwners
+    childContentfulPostContentRichTextNode___internal___ignoreType
+    childContentfulPostContentRichTextNode___internal___mediaType
+    childContentfulPostContentRichTextNode___internal___owner
+    childContentfulPostContentRichTextNode___internal___type
+    childContentfulPostContentRichTextNode___json
+    childContentfulPostContentRichTextNode___nodeType
+    childContentfulPostContentRichTextNode___parent___children
+    childContentfulPostContentRichTextNode___parent___children___children
+    childContentfulPostContentRichTextNode___parent___children___id
+    childContentfulPostContentRichTextNode___parent___id
+    childContentfulPostContentRichTextNode___parent___internal___content
+    childContentfulPostContentRichTextNode___parent___internal___contentDigest
+    childContentfulPostContentRichTextNode___parent___internal___description
+    childContentfulPostContentRichTextNode___parent___internal___fieldOwners
+    childContentfulPostContentRichTextNode___parent___internal___ignoreType
+    childContentfulPostContentRichTextNode___parent___internal___mediaType
+    childContentfulPostContentRichTextNode___parent___internal___owner
+    childContentfulPostContentRichTextNode___parent___internal___type
+    childContentfulPostContentRichTextNode___parent___parent___children
+    childContentfulPostContentRichTextNode___parent___parent___id
+    children
+    children___children
+    children___children___children
+    children___children___children___children
+    children___children___children___id
+    children___children___id
+    children___children___internal___content
+    children___children___internal___contentDigest
+    children___children___internal___description
+    children___children___internal___fieldOwners
+    children___children___internal___ignoreType
+    children___children___internal___mediaType
+    children___children___internal___owner
+    children___children___internal___type
+    children___children___parent___children
+    children___children___parent___id
+    children___id
+    children___internal___content
+    children___internal___contentDigest
+    children___internal___description
+    children___internal___fieldOwners
+    children___internal___ignoreType
+    children___internal___mediaType
+    children___internal___owner
+    children___internal___type
+    children___parent___children
+    children___parent___children___children
+    children___parent___children___id
+    children___parent___id
+    children___parent___internal___content
+    children___parent___internal___contentDigest
+    children___parent___internal___description
+    children___parent___internal___fieldOwners
+    children___parent___internal___ignoreType
+    children___parent___internal___mediaType
+    children___parent___internal___owner
+    children___parent___internal___type
+    children___parent___parent___children
+    children___parent___parent___id
+    content___childContentfulRichText___children
+    content___childContentfulRichText___children___children
+    content___childContentfulRichText___children___id
+    content___childContentfulRichText___html
+    content___childContentfulRichText___id
+    content___childContentfulRichText___internal___content
+    content___childContentfulRichText___internal___contentDigest
+    content___childContentfulRichText___internal___description
+    content___childContentfulRichText___internal___fieldOwners
+    content___childContentfulRichText___internal___ignoreType
+    content___childContentfulRichText___internal___mediaType
+    content___childContentfulRichText___internal___owner
+    content___childContentfulRichText___internal___type
+    content___childContentfulRichText___parent___children
+    content___childContentfulRichText___parent___id
+    content___childContentfulRichText___timeToRead
+    content___children
+    content___children___children
+    content___children___children___children
+    content___children___children___id
+    content___children___id
+    content___children___internal___content
+    content___children___internal___contentDigest
+    content___children___internal___description
+    content___children___internal___fieldOwners
+    content___children___internal___ignoreType
+    content___children___internal___mediaType
+    content___children___internal___owner
+    content___children___internal___type
+    content___children___parent___children
+    content___children___parent___id
+    content___content
+    content___id
+    content___internal___content
+    content___internal___contentDigest
+    content___internal___description
+    content___internal___fieldOwners
+    content___internal___ignoreType
+    content___internal___mediaType
+    content___internal___owner
+    content___internal___type
+    content___json
+    content___nodeType
+    content___parent___children
+    content___parent___children___children
+    content___parent___children___id
+    content___parent___id
+    content___parent___internal___content
+    content___parent___internal___contentDigest
+    content___parent___internal___description
+    content___parent___internal___fieldOwners
+    content___parent___internal___ignoreType
+    content___parent___internal___mediaType
+    content___parent___internal___owner
+    content___parent___internal___type
+    content___parent___parent___children
+    content___parent___parent___id
+    contentful_id
+    createdAt
+    id
+    image
+    image___children
+    image___children___children
+    image___children___children___children
+    image___children___children___id
+    image___children___id
+    image___children___internal___content
+    image___children___internal___contentDigest
+    image___children___internal___description
+    image___children___internal___fieldOwners
+    image___children___internal___ignoreType
+    image___children___internal___mediaType
+    image___children___internal___owner
+    image___children___internal___type
+    image___children___parent___children
+    image___children___parent___id
+    image___contentful_id
+    image___description
+    image___file___contentType
+    image___file___details___size
+    image___file___fileName
+    image___file___url
+    image___fixed___aspectRatio @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___fixed___base64 @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___fixed___height @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___fixed___src @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___fixed___srcSet @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___fixed___srcSetWebp @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___fixed___srcWebp @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___fixed___tracedSVG @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___fixed___width @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___fluid___aspectRatio @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___fluid___base64 @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___fluid___sizes @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___fluid___src @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___fluid___srcSet @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___fluid___srcSetWebp @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___fluid___srcWebp @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___fluid___tracedSVG @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___id
+    image___internal___content
+    image___internal___contentDigest
+    image___internal___description
+    image___internal___fieldOwners
+    image___internal___ignoreType
+    image___internal___mediaType
+    image___internal___owner
+    image___internal___type
+    image___node_locale
+    image___parent___children
+    image___parent___children___children
+    image___parent___children___id
+    image___parent___id
+    image___parent___internal___content
+    image___parent___internal___contentDigest
+    image___parent___internal___description
+    image___parent___internal___fieldOwners
+    image___parent___internal___ignoreType
+    image___parent___internal___mediaType
+    image___parent___internal___owner
+    image___parent___internal___type
+    image___parent___parent___children
+    image___parent___parent___id
+    image___resize___aspectRatio @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___resize___base64 @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___resize___height @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___resize___src @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___resize___tracedSVG @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___resize___width @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___resolutions___aspectRatio @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___resolutions___base64 @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___resolutions___height @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___resolutions___src @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___resolutions___srcSet @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___resolutions___srcSetWebp @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___resolutions___srcWebp @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___resolutions___tracedSVG @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___resolutions___width @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___sizes___aspectRatio @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___sizes___base64 @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___sizes___sizes @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___sizes___src @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___sizes___srcSet @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___sizes___srcSetWebp @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___sizes___srcWebp @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___sizes___tracedSVG @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    image___title
+    internal___content
+    internal___contentDigest
+    internal___description
+    internal___fieldOwners
+    internal___ignoreType
+    internal___mediaType
+    internal___owner
+    internal___type
+    node_locale
+    parent___children
+    parent___children___children
+    parent___children___children___children
+    parent___children___children___id
+    parent___children___id
+    parent___children___internal___content
+    parent___children___internal___contentDigest
+    parent___children___internal___description
+    parent___children___internal___fieldOwners
+    parent___children___internal___ignoreType
+    parent___children___internal___mediaType
+    parent___children___internal___owner
+    parent___children___internal___type
+    parent___children___parent___children
+    parent___children___parent___id
+    parent___id
+    parent___internal___content
+    parent___internal___contentDigest
+    parent___internal___description
+    parent___internal___fieldOwners
+    parent___internal___ignoreType
+    parent___internal___mediaType
+    parent___internal___owner
+    parent___internal___type
+    parent___parent___children
+    parent___parent___children___children
+    parent___parent___children___id
+    parent___parent___id
+    parent___parent___internal___content
+    parent___parent___internal___contentDigest
+    parent___parent___internal___description
+    parent___parent___internal___fieldOwners
+    parent___parent___internal___ignoreType
+    parent___parent___internal___mediaType
+    parent___parent___internal___owner
+    parent___parent___internal___type
+    parent___parent___parent___children
+    parent___parent___parent___id
+    pole
+    slug
+    spaceId
+    sys___contentType___sys___contentful_id
+    sys___contentType___sys___id
+    sys___contentType___sys___linkType
+    sys___contentType___sys___type
+    title
+    updatedAt
+}
+
+enum ContentfulRichTextFieldsEnum {
+    children
+    children___children
+    children___children___children
+    children___children___children___children
+    children___children___children___id
+    children___children___id
+    children___children___internal___content
+    children___children___internal___contentDigest
+    children___children___internal___description
+    children___children___internal___fieldOwners
+    children___children___internal___ignoreType
+    children___children___internal___mediaType
+    children___children___internal___owner
+    children___children___internal___type
+    children___children___parent___children
+    children___children___parent___id
+    children___id
+    children___internal___content
+    children___internal___contentDigest
+    children___internal___description
+    children___internal___fieldOwners
+    children___internal___ignoreType
+    children___internal___mediaType
+    children___internal___owner
+    children___internal___type
+    children___parent___children
+    children___parent___children___children
+    children___parent___children___id
+    children___parent___id
+    children___parent___internal___content
+    children___parent___internal___contentDigest
+    children___parent___internal___description
+    children___parent___internal___fieldOwners
+    children___parent___internal___ignoreType
+    children___parent___internal___mediaType
+    children___parent___internal___owner
+    children___parent___internal___type
+    children___parent___parent___children
+    children___parent___parent___id
+    html
+    id
+    internal___content
+    internal___contentDigest
+    internal___description
+    internal___fieldOwners
+    internal___ignoreType
+    internal___mediaType
+    internal___owner
+    internal___type
+    parent___children
+    parent___children___children
+    parent___children___children___children
+    parent___children___children___id
+    parent___children___id
+    parent___children___internal___content
+    parent___children___internal___contentDigest
+    parent___children___internal___description
+    parent___children___internal___fieldOwners
+    parent___children___internal___ignoreType
+    parent___children___internal___mediaType
+    parent___children___internal___owner
+    parent___children___internal___type
+    parent___children___parent___children
+    parent___children___parent___id
+    parent___id
+    parent___internal___content
+    parent___internal___contentDigest
+    parent___internal___description
+    parent___internal___fieldOwners
+    parent___internal___ignoreType
+    parent___internal___mediaType
+    parent___internal___owner
+    parent___internal___type
+    parent___parent___children
+    parent___parent___children___children
+    parent___parent___children___id
+    parent___parent___id
+    parent___parent___internal___content
+    parent___parent___internal___contentDigest
+    parent___parent___internal___description
+    parent___parent___internal___fieldOwners
+    parent___parent___internal___ignoreType
+    parent___parent___internal___mediaType
+    parent___parent___internal___owner
+    parent___parent___internal___type
+    parent___parent___parent___children
+    parent___parent___parent___id
+    timeToRead
+}
+
+enum DirectoryFieldsEnum {
+    absolutePath
+    accessTime
+    atime
+    atimeMs
+    base
+    birthTime
+    birthtime
+    birthtimeMs
+    changeTime
+    children
+    children___children
+    children___children___children
+    children___children___children___children
+    children___children___children___id
+    children___children___id
+    children___children___internal___content
+    children___children___internal___contentDigest
+    children___children___internal___description
+    children___children___internal___fieldOwners
+    children___children___internal___ignoreType
+    children___children___internal___mediaType
+    children___children___internal___owner
+    children___children___internal___type
+    children___children___parent___children
+    children___children___parent___id
+    children___id
+    children___internal___content
+    children___internal___contentDigest
+    children___internal___description
+    children___internal___fieldOwners
+    children___internal___ignoreType
+    children___internal___mediaType
+    children___internal___owner
+    children___internal___type
+    children___parent___children
+    children___parent___children___children
+    children___parent___children___id
+    children___parent___id
+    children___parent___internal___content
+    children___parent___internal___contentDigest
+    children___parent___internal___description
+    children___parent___internal___fieldOwners
+    children___parent___internal___ignoreType
+    children___parent___internal___mediaType
+    children___parent___internal___owner
+    children___parent___internal___type
+    children___parent___parent___children
+    children___parent___parent___id
+    ctime
+    ctimeMs
+    dev
+    dir
+    ext
+    extension
+    gid
+    id
+    ino
+    internal___content
+    internal___contentDigest
+    internal___description
+    internal___fieldOwners
+    internal___ignoreType
+    internal___mediaType
+    internal___owner
+    internal___type
+    mode
+    modifiedTime
+    mtime
+    mtimeMs
+    name
+    nlink
+    parent___children
+    parent___children___children
+    parent___children___children___children
+    parent___children___children___id
+    parent___children___id
+    parent___children___internal___content
+    parent___children___internal___contentDigest
+    parent___children___internal___description
+    parent___children___internal___fieldOwners
+    parent___children___internal___ignoreType
+    parent___children___internal___mediaType
+    parent___children___internal___owner
+    parent___children___internal___type
+    parent___children___parent___children
+    parent___children___parent___id
+    parent___id
+    parent___internal___content
+    parent___internal___contentDigest
+    parent___internal___description
+    parent___internal___fieldOwners
+    parent___internal___ignoreType
+    parent___internal___mediaType
+    parent___internal___owner
+    parent___internal___type
+    parent___parent___children
+    parent___parent___children___children
+    parent___parent___children___id
+    parent___parent___id
+    parent___parent___internal___content
+    parent___parent___internal___contentDigest
+    parent___parent___internal___description
+    parent___parent___internal___fieldOwners
+    parent___parent___internal___ignoreType
+    parent___parent___internal___mediaType
+    parent___parent___internal___owner
+    parent___parent___internal___type
+    parent___parent___parent___children
+    parent___parent___parent___id
+    prettySize
+    rdev
+    relativeDirectory
+    relativePath
+    root
+    size
+    sourceInstanceName
+    uid
+}
+
+enum FileFieldsEnum {
+    absolutePath
+    accessTime
+    atime
+    atimeMs
+    base
+    birthTime
+    birthtime
+    birthtimeMs
+    changeTime
+    children
+    children___children
+    children___children___children
+    children___children___children___children
+    children___children___children___id
+    children___children___id
+    children___children___internal___content
+    children___children___internal___contentDigest
+    children___children___internal___description
+    children___children___internal___fieldOwners
+    children___children___internal___ignoreType
+    children___children___internal___mediaType
+    children___children___internal___owner
+    children___children___internal___type
+    children___children___parent___children
+    children___children___parent___id
+    children___id
+    children___internal___content
+    children___internal___contentDigest
+    children___internal___description
+    children___internal___fieldOwners
+    children___internal___ignoreType
+    children___internal___mediaType
+    children___internal___owner
+    children___internal___type
+    children___parent___children
+    children___parent___children___children
+    children___parent___children___id
+    children___parent___id
+    children___parent___internal___content
+    children___parent___internal___contentDigest
+    children___parent___internal___description
+    children___parent___internal___fieldOwners
+    children___parent___internal___ignoreType
+    children___parent___internal___mediaType
+    children___parent___internal___owner
+    children___parent___internal___type
+    children___parent___parent___children
+    children___parent___parent___id
+    ctime
+    ctimeMs
+    dev
+    dir
+    ext
+    extension
+    gid
+    id
+    ino
+    internal___content
+    internal___contentDigest
+    internal___description
+    internal___fieldOwners
+    internal___ignoreType
+    internal___mediaType
+    internal___owner
+    internal___type
+    mode
+    modifiedTime
+    mtime
+    mtimeMs
+    name
+    nlink
+    parent___children
+    parent___children___children
+    parent___children___children___children
+    parent___children___children___id
+    parent___children___id
+    parent___children___internal___content
+    parent___children___internal___contentDigest
+    parent___children___internal___description
+    parent___children___internal___fieldOwners
+    parent___children___internal___ignoreType
+    parent___children___internal___mediaType
+    parent___children___internal___owner
+    parent___children___internal___type
+    parent___children___parent___children
+    parent___children___parent___id
+    parent___id
+    parent___internal___content
+    parent___internal___contentDigest
+    parent___internal___description
+    parent___internal___fieldOwners
+    parent___internal___ignoreType
+    parent___internal___mediaType
+    parent___internal___owner
+    parent___internal___type
+    parent___parent___children
+    parent___parent___children___children
+    parent___parent___children___id
+    parent___parent___id
+    parent___parent___internal___content
+    parent___parent___internal___contentDigest
+    parent___parent___internal___description
+    parent___parent___internal___fieldOwners
+    parent___parent___internal___ignoreType
+    parent___parent___internal___mediaType
+    parent___parent___internal___owner
+    parent___parent___internal___type
+    parent___parent___parent___children
+    parent___parent___parent___id
+    prettySize
+    rdev
+    relativeDirectory
+    relativePath
+    root
+    size
+    sourceInstanceName
+    uid
+}
+
+enum ImageResizingBehavior {
+    "Crop a part of the original image to match the specified size."
+    CROP
+    "Crop the image to the specified dimensions, if the original image is smaller than these dimensions, then the image will be upscaled."
+    FILL
+    NO_CHANGE
+    "Same as the default resizing, but adds padding so that the generated image has the specified dimensions."
+    PAD
+    "Scale the image regardless of the original aspect ratio."
+    SCALE
+    "When used in association with the f parameter below, creates a thumbnail from the image based on a focus area."
+    THUMB
+}
+
+enum SiteBuildMetadataFieldsEnum {
+    buildTime
+    children
+    children___children
+    children___children___children
+    children___children___children___children
+    children___children___children___id
+    children___children___id
+    children___children___internal___content
+    children___children___internal___contentDigest
+    children___children___internal___description
+    children___children___internal___fieldOwners
+    children___children___internal___ignoreType
+    children___children___internal___mediaType
+    children___children___internal___owner
+    children___children___internal___type
+    children___children___parent___children
+    children___children___parent___id
+    children___id
+    children___internal___content
+    children___internal___contentDigest
+    children___internal___description
+    children___internal___fieldOwners
+    children___internal___ignoreType
+    children___internal___mediaType
+    children___internal___owner
+    children___internal___type
+    children___parent___children
+    children___parent___children___children
+    children___parent___children___id
+    children___parent___id
+    children___parent___internal___content
+    children___parent___internal___contentDigest
+    children___parent___internal___description
+    children___parent___internal___fieldOwners
+    children___parent___internal___ignoreType
+    children___parent___internal___mediaType
+    children___parent___internal___owner
+    children___parent___internal___type
+    children___parent___parent___children
+    children___parent___parent___id
+    id
+    internal___content
+    internal___contentDigest
+    internal___description
+    internal___fieldOwners
+    internal___ignoreType
+    internal___mediaType
+    internal___owner
+    internal___type
+    parent___children
+    parent___children___children
+    parent___children___children___children
+    parent___children___children___id
+    parent___children___id
+    parent___children___internal___content
+    parent___children___internal___contentDigest
+    parent___children___internal___description
+    parent___children___internal___fieldOwners
+    parent___children___internal___ignoreType
+    parent___children___internal___mediaType
+    parent___children___internal___owner
+    parent___children___internal___type
+    parent___children___parent___children
+    parent___children___parent___id
+    parent___id
+    parent___internal___content
+    parent___internal___contentDigest
+    parent___internal___description
+    parent___internal___fieldOwners
+    parent___internal___ignoreType
+    parent___internal___mediaType
+    parent___internal___owner
+    parent___internal___type
+    parent___parent___children
+    parent___parent___children___children
+    parent___parent___children___id
+    parent___parent___id
+    parent___parent___internal___content
+    parent___parent___internal___contentDigest
+    parent___parent___internal___description
+    parent___parent___internal___fieldOwners
+    parent___parent___internal___ignoreType
+    parent___parent___internal___mediaType
+    parent___parent___internal___owner
+    parent___parent___internal___type
+    parent___parent___parent___children
+    parent___parent___parent___id
+}
+
+enum SiteFieldsEnum {
+    buildTime
+    children
+    children___children
+    children___children___children
+    children___children___children___children
+    children___children___children___id
+    children___children___id
+    children___children___internal___content
+    children___children___internal___contentDigest
+    children___children___internal___description
+    children___children___internal___fieldOwners
+    children___children___internal___ignoreType
+    children___children___internal___mediaType
+    children___children___internal___owner
+    children___children___internal___type
+    children___children___parent___children
+    children___children___parent___id
+    children___id
+    children___internal___content
+    children___internal___contentDigest
+    children___internal___description
+    children___internal___fieldOwners
+    children___internal___ignoreType
+    children___internal___mediaType
+    children___internal___owner
+    children___internal___type
+    children___parent___children
+    children___parent___children___children
+    children___parent___children___id
+    children___parent___id
+    children___parent___internal___content
+    children___parent___internal___contentDigest
+    children___parent___internal___description
+    children___parent___internal___fieldOwners
+    children___parent___internal___ignoreType
+    children___parent___internal___mediaType
+    children___parent___internal___owner
+    children___parent___internal___type
+    children___parent___parent___children
+    children___parent___parent___id
+    host
+    id
+    internal___content
+    internal___contentDigest
+    internal___description
+    internal___fieldOwners
+    internal___ignoreType
+    internal___mediaType
+    internal___owner
+    internal___type
+    parent___children
+    parent___children___children
+    parent___children___children___children
+    parent___children___children___id
+    parent___children___id
+    parent___children___internal___content
+    parent___children___internal___contentDigest
+    parent___children___internal___description
+    parent___children___internal___fieldOwners
+    parent___children___internal___ignoreType
+    parent___children___internal___mediaType
+    parent___children___internal___owner
+    parent___children___internal___type
+    parent___children___parent___children
+    parent___children___parent___id
+    parent___id
+    parent___internal___content
+    parent___internal___contentDigest
+    parent___internal___description
+    parent___internal___fieldOwners
+    parent___internal___ignoreType
+    parent___internal___mediaType
+    parent___internal___owner
+    parent___internal___type
+    parent___parent___children
+    parent___parent___children___children
+    parent___parent___children___id
+    parent___parent___id
+    parent___parent___internal___content
+    parent___parent___internal___contentDigest
+    parent___parent___internal___description
+    parent___parent___internal___fieldOwners
+    parent___parent___internal___ignoreType
+    parent___parent___internal___mediaType
+    parent___parent___internal___owner
+    parent___parent___internal___type
+    parent___parent___parent___children
+    parent___parent___parent___id
+    pathPrefix
+    polyfill
+    port
+    siteMetadata___title
+}
+
+enum SitePageFieldsEnum {
+    children
+    children___children
+    children___children___children
+    children___children___children___children
+    children___children___children___id
+    children___children___id
+    children___children___internal___content
+    children___children___internal___contentDigest
+    children___children___internal___description
+    children___children___internal___fieldOwners
+    children___children___internal___ignoreType
+    children___children___internal___mediaType
+    children___children___internal___owner
+    children___children___internal___type
+    children___children___parent___children
+    children___children___parent___id
+    children___id
+    children___internal___content
+    children___internal___contentDigest
+    children___internal___description
+    children___internal___fieldOwners
+    children___internal___ignoreType
+    children___internal___mediaType
+    children___internal___owner
+    children___internal___type
+    children___parent___children
+    children___parent___children___children
+    children___parent___children___id
+    children___parent___id
+    children___parent___internal___content
+    children___parent___internal___contentDigest
+    children___parent___internal___description
+    children___parent___internal___fieldOwners
+    children___parent___internal___ignoreType
+    children___parent___internal___mediaType
+    children___parent___internal___owner
+    children___parent___internal___type
+    children___parent___parent___children
+    children___parent___parent___id
+    component
+    componentChunkName
+    componentPath
+    context___slug
+    id
+    internalComponentName
+    internal___content
+    internal___contentDigest
+    internal___description
+    internal___fieldOwners
+    internal___ignoreType
+    internal___mediaType
+    internal___owner
+    internal___type
+    isCreatedByStatefulCreatePages
+    matchPath
+    parent___children
+    parent___children___children
+    parent___children___children___children
+    parent___children___children___id
+    parent___children___id
+    parent___children___internal___content
+    parent___children___internal___contentDigest
+    parent___children___internal___description
+    parent___children___internal___fieldOwners
+    parent___children___internal___ignoreType
+    parent___children___internal___mediaType
+    parent___children___internal___owner
+    parent___children___internal___type
+    parent___children___parent___children
+    parent___children___parent___id
+    parent___id
+    parent___internal___content
+    parent___internal___contentDigest
+    parent___internal___description
+    parent___internal___fieldOwners
+    parent___internal___ignoreType
+    parent___internal___mediaType
+    parent___internal___owner
+    parent___internal___type
+    parent___parent___children
+    parent___parent___children___children
+    parent___parent___children___id
+    parent___parent___id
+    parent___parent___internal___content
+    parent___parent___internal___contentDigest
+    parent___parent___internal___description
+    parent___parent___internal___fieldOwners
+    parent___parent___internal___ignoreType
+    parent___parent___internal___mediaType
+    parent___parent___internal___owner
+    parent___parent___internal___type
+    parent___parent___parent___children
+    parent___parent___parent___id
+    path
+    pluginCreatorId
+    pluginCreator___browserAPIs
+    pluginCreator___children
+    pluginCreator___children___children
+    pluginCreator___children___children___children
+    pluginCreator___children___children___id
+    pluginCreator___children___id
+    pluginCreator___children___internal___content
+    pluginCreator___children___internal___contentDigest
+    pluginCreator___children___internal___description
+    pluginCreator___children___internal___fieldOwners
+    pluginCreator___children___internal___ignoreType
+    pluginCreator___children___internal___mediaType
+    pluginCreator___children___internal___owner
+    pluginCreator___children___internal___type
+    pluginCreator___children___parent___children
+    pluginCreator___children___parent___id
+    pluginCreator___id
+    pluginCreator___internal___content
+    pluginCreator___internal___contentDigest
+    pluginCreator___internal___description
+    pluginCreator___internal___fieldOwners
+    pluginCreator___internal___ignoreType
+    pluginCreator___internal___mediaType
+    pluginCreator___internal___owner
+    pluginCreator___internal___type
+    pluginCreator___name
+    pluginCreator___nodeAPIs
+    pluginCreator___packageJson___dependencies
+    pluginCreator___packageJson___dependencies___name
+    pluginCreator___packageJson___dependencies___version
+    pluginCreator___packageJson___description
+    pluginCreator___packageJson___devDependencies
+    pluginCreator___packageJson___devDependencies___name
+    pluginCreator___packageJson___devDependencies___version
+    pluginCreator___packageJson___keywords
+    pluginCreator___packageJson___license
+    pluginCreator___packageJson___main
+    pluginCreator___packageJson___name
+    pluginCreator___packageJson___peerDependencies
+    pluginCreator___packageJson___peerDependencies___name
+    pluginCreator___packageJson___peerDependencies___version
+    pluginCreator___packageJson___version
+    pluginCreator___parent___children
+    pluginCreator___parent___children___children
+    pluginCreator___parent___children___id
+    pluginCreator___parent___id
+    pluginCreator___parent___internal___content
+    pluginCreator___parent___internal___contentDigest
+    pluginCreator___parent___internal___description
+    pluginCreator___parent___internal___fieldOwners
+    pluginCreator___parent___internal___ignoreType
+    pluginCreator___parent___internal___mediaType
+    pluginCreator___parent___internal___owner
+    pluginCreator___parent___internal___type
+    pluginCreator___parent___parent___children
+    pluginCreator___parent___parent___id
+    pluginCreator___pluginFilepath
+    pluginCreator___pluginOptions___accessToken
+    pluginCreator___pluginOptions___allExtensions
+    pluginCreator___pluginOptions___background_color
+    pluginCreator___pluginOptions___display
+    pluginCreator___pluginOptions___documentPaths
+    pluginCreator___pluginOptions___fileName
+    pluginCreator___pluginOptions___host
+    pluginCreator___pluginOptions___icon
+    pluginCreator___pluginOptions___implementation___info
+    pluginCreator___pluginOptions___isTSX
+    pluginCreator___pluginOptions___name
+    pluginCreator___pluginOptions___path
+    pluginCreator___pluginOptions___pathCheck
+    pluginCreator___pluginOptions___short_name
+    pluginCreator___pluginOptions___spaceId
+    pluginCreator___pluginOptions___start_url
+    pluginCreator___pluginOptions___theme_color
+    pluginCreator___resolve
+    pluginCreator___ssrAPIs
+    pluginCreator___version
+}
+
+enum SitePluginFieldsEnum {
+    browserAPIs
+    children
+    children___children
+    children___children___children
+    children___children___children___children
+    children___children___children___id
+    children___children___id
+    children___children___internal___content
+    children___children___internal___contentDigest
+    children___children___internal___description
+    children___children___internal___fieldOwners
+    children___children___internal___ignoreType
+    children___children___internal___mediaType
+    children___children___internal___owner
+    children___children___internal___type
+    children___children___parent___children
+    children___children___parent___id
+    children___id
+    children___internal___content
+    children___internal___contentDigest
+    children___internal___description
+    children___internal___fieldOwners
+    children___internal___ignoreType
+    children___internal___mediaType
+    children___internal___owner
+    children___internal___type
+    children___parent___children
+    children___parent___children___children
+    children___parent___children___id
+    children___parent___id
+    children___parent___internal___content
+    children___parent___internal___contentDigest
+    children___parent___internal___description
+    children___parent___internal___fieldOwners
+    children___parent___internal___ignoreType
+    children___parent___internal___mediaType
+    children___parent___internal___owner
+    children___parent___internal___type
+    children___parent___parent___children
+    children___parent___parent___id
+    id
+    internal___content
+    internal___contentDigest
+    internal___description
+    internal___fieldOwners
+    internal___ignoreType
+    internal___mediaType
+    internal___owner
+    internal___type
+    name
+    nodeAPIs
+    packageJson___dependencies
+    packageJson___dependencies___name
+    packageJson___dependencies___version
+    packageJson___description
+    packageJson___devDependencies
+    packageJson___devDependencies___name
+    packageJson___devDependencies___version
+    packageJson___keywords
+    packageJson___license
+    packageJson___main
+    packageJson___name
+    packageJson___peerDependencies
+    packageJson___peerDependencies___name
+    packageJson___peerDependencies___version
+    packageJson___version
+    parent___children
+    parent___children___children
+    parent___children___children___children
+    parent___children___children___id
+    parent___children___id
+    parent___children___internal___content
+    parent___children___internal___contentDigest
+    parent___children___internal___description
+    parent___children___internal___fieldOwners
+    parent___children___internal___ignoreType
+    parent___children___internal___mediaType
+    parent___children___internal___owner
+    parent___children___internal___type
+    parent___children___parent___children
+    parent___children___parent___id
+    parent___id
+    parent___internal___content
+    parent___internal___contentDigest
+    parent___internal___description
+    parent___internal___fieldOwners
+    parent___internal___ignoreType
+    parent___internal___mediaType
+    parent___internal___owner
+    parent___internal___type
+    parent___parent___children
+    parent___parent___children___children
+    parent___parent___children___id
+    parent___parent___id
+    parent___parent___internal___content
+    parent___parent___internal___contentDigest
+    parent___parent___internal___description
+    parent___parent___internal___fieldOwners
+    parent___parent___internal___ignoreType
+    parent___parent___internal___mediaType
+    parent___parent___internal___owner
+    parent___parent___internal___type
+    parent___parent___parent___children
+    parent___parent___parent___id
+    pluginFilepath
+    pluginOptions___accessToken
+    pluginOptions___allExtensions
+    pluginOptions___background_color
+    pluginOptions___display
+    pluginOptions___documentPaths
+    pluginOptions___fileName
+    pluginOptions___host
+    pluginOptions___icon
+    pluginOptions___implementation___info
+    pluginOptions___isTSX
+    pluginOptions___name
+    pluginOptions___path
+    pluginOptions___pathCheck
+    pluginOptions___short_name
+    pluginOptions___spaceId
+    pluginOptions___start_url
+    pluginOptions___theme_color
+    resolve
+    ssrAPIs
+    version
+}
+
+enum SortOrderEnum {
+    ASC
+    DESC
+}
+
+enum contentfulPostContentRichTextNodeFieldsEnum {
+    childContentfulRichText___children
+    childContentfulRichText___children___children
+    childContentfulRichText___children___children___children
+    childContentfulRichText___children___children___id
+    childContentfulRichText___children___id
+    childContentfulRichText___children___internal___content
+    childContentfulRichText___children___internal___contentDigest
+    childContentfulRichText___children___internal___description
+    childContentfulRichText___children___internal___fieldOwners
+    childContentfulRichText___children___internal___ignoreType
+    childContentfulRichText___children___internal___mediaType
+    childContentfulRichText___children___internal___owner
+    childContentfulRichText___children___internal___type
+    childContentfulRichText___children___parent___children
+    childContentfulRichText___children___parent___id
+    childContentfulRichText___html
+    childContentfulRichText___id
+    childContentfulRichText___internal___content
+    childContentfulRichText___internal___contentDigest
+    childContentfulRichText___internal___description
+    childContentfulRichText___internal___fieldOwners
+    childContentfulRichText___internal___ignoreType
+    childContentfulRichText___internal___mediaType
+    childContentfulRichText___internal___owner
+    childContentfulRichText___internal___type
+    childContentfulRichText___parent___children
+    childContentfulRichText___parent___children___children
+    childContentfulRichText___parent___children___id
+    childContentfulRichText___parent___id
+    childContentfulRichText___parent___internal___content
+    childContentfulRichText___parent___internal___contentDigest
+    childContentfulRichText___parent___internal___description
+    childContentfulRichText___parent___internal___fieldOwners
+    childContentfulRichText___parent___internal___ignoreType
+    childContentfulRichText___parent___internal___mediaType
+    childContentfulRichText___parent___internal___owner
+    childContentfulRichText___parent___internal___type
+    childContentfulRichText___parent___parent___children
+    childContentfulRichText___parent___parent___id
+    childContentfulRichText___timeToRead
+    children
+    children___children
+    children___children___children
+    children___children___children___children
+    children___children___children___id
+    children___children___id
+    children___children___internal___content
+    children___children___internal___contentDigest
+    children___children___internal___description
+    children___children___internal___fieldOwners
+    children___children___internal___ignoreType
+    children___children___internal___mediaType
+    children___children___internal___owner
+    children___children___internal___type
+    children___children___parent___children
+    children___children___parent___id
+    children___id
+    children___internal___content
+    children___internal___contentDigest
+    children___internal___description
+    children___internal___fieldOwners
+    children___internal___ignoreType
+    children___internal___mediaType
+    children___internal___owner
+    children___internal___type
+    children___parent___children
+    children___parent___children___children
+    children___parent___children___id
+    children___parent___id
+    children___parent___internal___content
+    children___parent___internal___contentDigest
+    children___parent___internal___description
+    children___parent___internal___fieldOwners
+    children___parent___internal___ignoreType
+    children___parent___internal___mediaType
+    children___parent___internal___owner
+    children___parent___internal___type
+    children___parent___parent___children
+    children___parent___parent___id
+    content
+    id
+    internal___content
+    internal___contentDigest
+    internal___description
+    internal___fieldOwners
+    internal___ignoreType
+    internal___mediaType
+    internal___owner
+    internal___type
+    json
+    nodeType
+    parent___children
+    parent___children___children
+    parent___children___children___children
+    parent___children___children___id
+    parent___children___id
+    parent___children___internal___content
+    parent___children___internal___contentDigest
+    parent___children___internal___description
+    parent___children___internal___fieldOwners
+    parent___children___internal___ignoreType
+    parent___children___internal___mediaType
+    parent___children___internal___owner
+    parent___children___internal___type
+    parent___children___parent___children
+    parent___children___parent___id
+    parent___id
+    parent___internal___content
+    parent___internal___contentDigest
+    parent___internal___description
+    parent___internal___fieldOwners
+    parent___internal___ignoreType
+    parent___internal___mediaType
+    parent___internal___owner
+    parent___internal___type
+    parent___parent___children
+    parent___parent___children___children
+    parent___parent___children___id
+    parent___parent___id
+    parent___parent___internal___content
+    parent___parent___internal___contentDigest
+    parent___parent___internal___description
+    parent___parent___internal___fieldOwners
+    parent___parent___internal___ignoreType
+    parent___parent___internal___mediaType
+    parent___parent___internal___owner
+    parent___parent___internal___type
+    parent___parent___parent___children
+    parent___parent___parent___id
+}
+
+input BooleanQueryOperatorInput {
+    eq: Boolean
+    in: [Boolean]
+    ne: Boolean
+    nin: [Boolean]
+}
+
+input ContentfulAssetFileDetailsFilterInput {
+    image: ContentfulAssetFileDetailsImageFilterInput
+    size: IntQueryOperatorInput
+}
+
+input ContentfulAssetFileDetailsImageFilterInput {
+    height: IntQueryOperatorInput
+    width: IntQueryOperatorInput
+}
+
+input ContentfulAssetFileFilterInput {
+    contentType: StringQueryOperatorInput
+    details: ContentfulAssetFileDetailsFilterInput
+    fileName: StringQueryOperatorInput
+    url: StringQueryOperatorInput
+}
+
+input ContentfulAssetFilterInput {
+    children: NodeFilterListInput
+    contentful_id: StringQueryOperatorInput
+    description: StringQueryOperatorInput
+    file: ContentfulAssetFileFilterInput
+    fixed: ContentfulFixedFilterInput
+    fluid: ContentfulFluidFilterInput
+    id: StringQueryOperatorInput
+    internal: InternalFilterInput
+    node_locale: StringQueryOperatorInput
+    parent: NodeFilterInput
+    resize: ContentfulResizeFilterInput
+    resolutions: ContentfulResolutionsFilterInput
+    sizes: ContentfulSizesFilterInput
+    title: StringQueryOperatorInput
+}
+
+input ContentfulAssetFilterListInput {
+    elemMatch: ContentfulAssetFilterInput
+}
+
+input ContentfulAssetSortInput {
+    fields: [ContentfulAssetFieldsEnum]
+    order: [SortOrderEnum] = [ASC]
+}
+
+input ContentfulContentTypeFilterInput {
+    children: NodeFilterListInput
+    description: StringQueryOperatorInput
+    displayField: StringQueryOperatorInput
+    id: StringQueryOperatorInput
+    internal: InternalFilterInput
+    name: StringQueryOperatorInput
+    parent: NodeFilterInput
+}
+
+input ContentfulContentTypeSortInput {
+    fields: [ContentfulContentTypeFieldsEnum]
+    order: [SortOrderEnum] = [ASC]
+}
+
+input ContentfulFixedFilterInput {
+    aspectRatio: FloatQueryOperatorInput
+    base64: StringQueryOperatorInput
+    height: FloatQueryOperatorInput
+    src: StringQueryOperatorInput
+    srcSet: StringQueryOperatorInput
+    srcSetWebp: StringQueryOperatorInput
+    srcWebp: StringQueryOperatorInput
+    tracedSVG: StringQueryOperatorInput
+    width: FloatQueryOperatorInput
+}
+
+input ContentfulFluidFilterInput {
+    aspectRatio: FloatQueryOperatorInput
+    base64: StringQueryOperatorInput
+    sizes: StringQueryOperatorInput
+    src: StringQueryOperatorInput
+    srcSet: StringQueryOperatorInput
+    srcSetWebp: StringQueryOperatorInput
+    srcWebp: StringQueryOperatorInput
+    tracedSVG: StringQueryOperatorInput
+}
+
+input ContentfulPostFilterInput {
+    author: StringQueryOperatorInput
+    childContentfulPostContentRichTextNode: contentfulPostContentRichTextNodeFilterInput
+    children: NodeFilterListInput
+    content: contentfulPostContentRichTextNodeFilterInput
+    contentful_id: StringQueryOperatorInput
+    createdAt: DateQueryOperatorInput
+    id: StringQueryOperatorInput
+    image: ContentfulAssetFilterListInput
+    internal: InternalFilterInput
+    node_locale: StringQueryOperatorInput
+    parent: NodeFilterInput
+    pole: StringQueryOperatorInput
+    slug: StringQueryOperatorInput
+    spaceId: StringQueryOperatorInput
+    sys: ContentfulPostSysFilterInput
+    title: StringQueryOperatorInput
+    updatedAt: DateQueryOperatorInput
+}
+
+input ContentfulPostSortInput {
+    fields: [ContentfulPostFieldsEnum]
+    order: [SortOrderEnum] = [ASC]
+}
+
+input ContentfulPostSysContentTypeFilterInput {
+    sys: ContentfulPostSysContentTypeSysFilterInput
+}
+
+input ContentfulPostSysContentTypeSysFilterInput {
+    contentful_id: StringQueryOperatorInput
+    id: StringQueryOperatorInput
+    linkType: StringQueryOperatorInput
+    type: StringQueryOperatorInput
+}
+
+input ContentfulPostSysFilterInput {
+    contentType: ContentfulPostSysContentTypeFilterInput
+}
+
+input ContentfulResizeFilterInput {
+    aspectRatio: FloatQueryOperatorInput
+    base64: StringQueryOperatorInput
+    height: IntQueryOperatorInput
+    src: StringQueryOperatorInput
+    tracedSVG: StringQueryOperatorInput
+    width: IntQueryOperatorInput
+}
+
+input ContentfulResolutionsFilterInput {
+    aspectRatio: FloatQueryOperatorInput
+    base64: StringQueryOperatorInput
+    height: FloatQueryOperatorInput
+    src: StringQueryOperatorInput
+    srcSet: StringQueryOperatorInput
+    srcSetWebp: StringQueryOperatorInput
+    srcWebp: StringQueryOperatorInput
+    tracedSVG: StringQueryOperatorInput
+    width: FloatQueryOperatorInput
+}
+
+input ContentfulRichTextFilterInput {
+    children: NodeFilterListInput
+    html: StringQueryOperatorInput
+    id: StringQueryOperatorInput
+    internal: InternalFilterInput
+    parent: NodeFilterInput
+    timeToRead: IntQueryOperatorInput
+}
+
+input ContentfulRichTextSortInput {
+    fields: [ContentfulRichTextFieldsEnum]
+    order: [SortOrderEnum] = [ASC]
+}
+
+input ContentfulSizesFilterInput {
+    aspectRatio: FloatQueryOperatorInput
+    base64: StringQueryOperatorInput
+    sizes: StringQueryOperatorInput
+    src: StringQueryOperatorInput
+    srcSet: StringQueryOperatorInput
+    srcSetWebp: StringQueryOperatorInput
+    srcWebp: StringQueryOperatorInput
+    tracedSVG: StringQueryOperatorInput
+}
+
+input DateQueryOperatorInput {
+    eq: Date
+    gt: Date
+    gte: Date
+    in: [Date]
+    lt: Date
+    lte: Date
+    ne: Date
+    nin: [Date]
+}
+
+input DirectoryFilterInput {
+    absolutePath: StringQueryOperatorInput
+    accessTime: DateQueryOperatorInput
+    atime: DateQueryOperatorInput
+    atimeMs: FloatQueryOperatorInput
+    base: StringQueryOperatorInput
+    birthTime: DateQueryOperatorInput
+    birthtime: DateQueryOperatorInput
+    birthtimeMs: FloatQueryOperatorInput
+    changeTime: DateQueryOperatorInput
+    children: NodeFilterListInput
+    ctime: DateQueryOperatorInput
+    ctimeMs: FloatQueryOperatorInput
+    dev: IntQueryOperatorInput
+    dir: StringQueryOperatorInput
+    ext: StringQueryOperatorInput
+    extension: StringQueryOperatorInput
+    gid: IntQueryOperatorInput
+    id: StringQueryOperatorInput
+    ino: FloatQueryOperatorInput
+    internal: InternalFilterInput
+    mode: IntQueryOperatorInput
+    modifiedTime: DateQueryOperatorInput
+    mtime: DateQueryOperatorInput
+    mtimeMs: FloatQueryOperatorInput
+    name: StringQueryOperatorInput
+    nlink: IntQueryOperatorInput
+    parent: NodeFilterInput
+    prettySize: StringQueryOperatorInput
+    rdev: IntQueryOperatorInput
+    relativeDirectory: StringQueryOperatorInput
+    relativePath: StringQueryOperatorInput
+    root: StringQueryOperatorInput
+    size: IntQueryOperatorInput
+    sourceInstanceName: StringQueryOperatorInput
+    uid: IntQueryOperatorInput
+}
+
+input DirectorySortInput {
+    fields: [DirectoryFieldsEnum]
+    order: [SortOrderEnum] = [ASC]
+}
+
+input FileFilterInput {
+    absolutePath: StringQueryOperatorInput
+    accessTime: DateQueryOperatorInput
+    atime: DateQueryOperatorInput
+    atimeMs: FloatQueryOperatorInput
+    base: StringQueryOperatorInput
+    birthTime: DateQueryOperatorInput
+    birthtime: DateQueryOperatorInput
+    birthtimeMs: FloatQueryOperatorInput
+    changeTime: DateQueryOperatorInput
+    children: NodeFilterListInput
+    ctime: DateQueryOperatorInput
+    ctimeMs: FloatQueryOperatorInput
+    dev: IntQueryOperatorInput
+    dir: StringQueryOperatorInput
+    ext: StringQueryOperatorInput
+    extension: StringQueryOperatorInput
+    gid: IntQueryOperatorInput
+    id: StringQueryOperatorInput
+    ino: FloatQueryOperatorInput
+    internal: InternalFilterInput
+    mode: IntQueryOperatorInput
+    modifiedTime: DateQueryOperatorInput
+    mtime: DateQueryOperatorInput
+    mtimeMs: FloatQueryOperatorInput
+    name: StringQueryOperatorInput
+    nlink: IntQueryOperatorInput
+    parent: NodeFilterInput
+    prettySize: StringQueryOperatorInput
+    rdev: IntQueryOperatorInput
+    relativeDirectory: StringQueryOperatorInput
+    relativePath: StringQueryOperatorInput
+    root: StringQueryOperatorInput
+    size: IntQueryOperatorInput
+    sourceInstanceName: StringQueryOperatorInput
+    uid: IntQueryOperatorInput
+}
+
+input FileSortInput {
+    fields: [FileFieldsEnum]
+    order: [SortOrderEnum] = [ASC]
+}
+
+input FloatQueryOperatorInput {
+    eq: Float
+    gt: Float
+    gte: Float
+    in: [Float]
+    lt: Float
+    lte: Float
+    ne: Float
+    nin: [Float]
+}
+
+input IntQueryOperatorInput {
+    eq: Int
+    gt: Int
+    gte: Int
+    in: [Int]
+    lt: Int
+    lte: Int
+    ne: Int
+    nin: [Int]
+}
+
+input InternalFilterInput {
+    content: StringQueryOperatorInput
+    contentDigest: StringQueryOperatorInput
+    description: StringQueryOperatorInput
+    fieldOwners: StringQueryOperatorInput
+    ignoreType: BooleanQueryOperatorInput
+    mediaType: StringQueryOperatorInput
+    owner: StringQueryOperatorInput
+    type: StringQueryOperatorInput
+}
+
+input JSONQueryOperatorInput {
+    eq: JSON
+    glob: JSON
+    in: [JSON]
+    ne: JSON
+    nin: [JSON]
+    regex: JSON
+}
+
+input NodeFilterInput {
+    children: NodeFilterListInput
+    id: StringQueryOperatorInput
+    internal: InternalFilterInput
+    parent: NodeFilterInput
+}
+
+input NodeFilterListInput {
+    elemMatch: NodeFilterInput
+}
+
+input SiteBuildMetadataFilterInput {
+    buildTime: DateQueryOperatorInput
+    children: NodeFilterListInput
+    id: StringQueryOperatorInput
+    internal: InternalFilterInput
+    parent: NodeFilterInput
+}
+
+input SiteBuildMetadataSortInput {
+    fields: [SiteBuildMetadataFieldsEnum]
+    order: [SortOrderEnum] = [ASC]
+}
+
+input SiteFilterInput {
+    buildTime: DateQueryOperatorInput
+    children: NodeFilterListInput
+    host: StringQueryOperatorInput
+    id: StringQueryOperatorInput
+    internal: InternalFilterInput
+    parent: NodeFilterInput
+    pathPrefix: StringQueryOperatorInput
+    polyfill: BooleanQueryOperatorInput
+    port: IntQueryOperatorInput
+    siteMetadata: SiteSiteMetadataFilterInput
+}
+
+input SitePageContextFilterInput {
+    slug: StringQueryOperatorInput
+}
+
+input SitePageFilterInput {
+    children: NodeFilterListInput
+    component: StringQueryOperatorInput
+    componentChunkName: StringQueryOperatorInput
+    componentPath: StringQueryOperatorInput
+    context: SitePageContextFilterInput
+    id: StringQueryOperatorInput
+    internal: InternalFilterInput
+    internalComponentName: StringQueryOperatorInput
+    isCreatedByStatefulCreatePages: BooleanQueryOperatorInput
+    matchPath: StringQueryOperatorInput
+    parent: NodeFilterInput
+    path: StringQueryOperatorInput
+    pluginCreator: SitePluginFilterInput
+    pluginCreatorId: StringQueryOperatorInput
+}
+
+input SitePageSortInput {
+    fields: [SitePageFieldsEnum]
+    order: [SortOrderEnum] = [ASC]
+}
+
+input SitePluginFilterInput {
+    browserAPIs: StringQueryOperatorInput
+    children: NodeFilterListInput
+    id: StringQueryOperatorInput
+    internal: InternalFilterInput
+    name: StringQueryOperatorInput
+    nodeAPIs: StringQueryOperatorInput
+    packageJson: SitePluginPackageJsonFilterInput
+    parent: NodeFilterInput
+    pluginFilepath: StringQueryOperatorInput
+    pluginOptions: SitePluginPluginOptionsFilterInput
+    resolve: StringQueryOperatorInput
+    ssrAPIs: StringQueryOperatorInput
+    version: StringQueryOperatorInput
+}
+
+input SitePluginPackageJsonDependenciesFilterInput {
+    name: StringQueryOperatorInput
+    version: StringQueryOperatorInput
+}
+
+input SitePluginPackageJsonDependenciesFilterListInput {
+    elemMatch: SitePluginPackageJsonDependenciesFilterInput
+}
+
+input SitePluginPackageJsonDevDependenciesFilterInput {
+    name: StringQueryOperatorInput
+    version: StringQueryOperatorInput
+}
+
+input SitePluginPackageJsonDevDependenciesFilterListInput {
+    elemMatch: SitePluginPackageJsonDevDependenciesFilterInput
+}
+
+input SitePluginPackageJsonFilterInput {
+    dependencies: SitePluginPackageJsonDependenciesFilterListInput
+    description: StringQueryOperatorInput
+    devDependencies: SitePluginPackageJsonDevDependenciesFilterListInput
+    keywords: StringQueryOperatorInput
+    license: StringQueryOperatorInput
+    main: StringQueryOperatorInput
+    name: StringQueryOperatorInput
+    peerDependencies: SitePluginPackageJsonPeerDependenciesFilterListInput
+    version: StringQueryOperatorInput
+}
+
+input SitePluginPackageJsonPeerDependenciesFilterInput {
+    name: StringQueryOperatorInput
+    version: StringQueryOperatorInput
+}
+
+input SitePluginPackageJsonPeerDependenciesFilterListInput {
+    elemMatch: SitePluginPackageJsonPeerDependenciesFilterInput
+}
+
+input SitePluginPluginOptionsFilterInput {
+    accessToken: StringQueryOperatorInput
+    allExtensions: BooleanQueryOperatorInput
+    background_color: StringQueryOperatorInput
+    display: StringQueryOperatorInput
+    documentPaths: StringQueryOperatorInput
+    fileName: StringQueryOperatorInput
+    host: StringQueryOperatorInput
+    icon: StringQueryOperatorInput
+    implementation: SitePluginPluginOptionsImplementationFilterInput
+    isTSX: BooleanQueryOperatorInput
+    name: StringQueryOperatorInput
+    path: StringQueryOperatorInput
+    pathCheck: BooleanQueryOperatorInput
+    short_name: StringQueryOperatorInput
+    spaceId: StringQueryOperatorInput
+    start_url: StringQueryOperatorInput
+    theme_color: StringQueryOperatorInput
+}
+
+input SitePluginPluginOptionsImplementationFilterInput {
+    info: StringQueryOperatorInput
+}
+
+input SitePluginSortInput {
+    fields: [SitePluginFieldsEnum]
+    order: [SortOrderEnum] = [ASC]
+}
+
+input SiteSiteMetadataFilterInput {
+    title: StringQueryOperatorInput
+}
+
+input SiteSortInput {
+    fields: [SiteFieldsEnum]
+    order: [SortOrderEnum] = [ASC]
+}
+
+input StringQueryOperatorInput {
+    eq: String
+    glob: String
+    in: [String]
+    ne: String
+    nin: [String]
+    regex: String
+}
+
+input contentfulPostContentRichTextNodeFilterInput {
+    childContentfulRichText: ContentfulRichTextFilterInput
+    children: NodeFilterListInput
+    content: StringQueryOperatorInput
+    id: StringQueryOperatorInput
+    internal: InternalFilterInput
+    json: JSONQueryOperatorInput
+    nodeType: StringQueryOperatorInput
+    parent: NodeFilterInput
+}
+
+input contentfulPostContentRichTextNodeSortInput {
+    fields: [contentfulPostContentRichTextNodeFieldsEnum]
+    order: [SortOrderEnum] = [ASC]
+}
+
+
+"A date string, such as 2007-12-03, compliant with the ISO 8601 standard for representation of dates and times using the Gregorian calendar."
+scalar Date
+
+"The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf)."
+scalar JSON
