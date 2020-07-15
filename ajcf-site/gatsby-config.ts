@@ -16,14 +16,6 @@ export const siteMetadata = {
   title: "Association des Jeunes Chinois de France",
 };
 export const plugins = [
-  /*{
-    resolve: `gatsby-plugin-graphql-codegen`,
-    options: {
-      codegen: true,
-      fileName: `gatsby-graphql.d.ts`,
-      documentPaths: ["./src/!**!/!*.{ts,tsx}", "./node_modules/gatsby-*!/!**!/!*.js", "./gatsby-node.ts"],
-    },
-  },*/
   {
     resolve: `gatsby-plugin-typescript`,
     options: {
