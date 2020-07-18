@@ -69,12 +69,11 @@ export const ContactForm = ({ handleSubmit, handleChange }: ContactFormProps) =>
       <h1>Nous contacter</h1>
       <form
         name="contact"
-        method="post"
-        action="/contact/"
+        method="POST"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         onSubmit={handleSubmit}
-        data-netlify-recaptcha="true"
+        // data-netlify-recaptcha="true"
       >
         <input type="hidden" name="form-name" value="contact" />
         <p hidden>
@@ -96,7 +95,7 @@ export const ContactForm = ({ handleSubmit, handleChange }: ContactFormProps) =>
             <textarea name="message" onChange={handleChange} />
           </div>
         </div>
-        <div data-netlify-recaptcha="true" />
+        {/*<div data-netlify-recaptcha="true" />*/}
         <div css={sendButtonStyle}>
           <button type="submit">Envoyer</button>
         </div>

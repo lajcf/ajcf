@@ -2,12 +2,12 @@ import React from "react";
 import Scrollspy from "react-scrollspy";
 import Tab, { TabProps } from "./Tab";
 import { SocialIcons } from "./SocialIcons";
-import { EspacePageTheme } from "../../../pages/talk";
 import { colors } from "../../../assets/css/variables/colors";
+import { EspacePageTheme } from "../../../assets/poles/pageThemes";
 
 const Sidebar = () => {
   const [tabs] = React.useState<TabProps[]>([
-    { content: "Accueil", sectionId: "welcome", href: "/#welcome", className: "main-link" },
+    { content: "Accueil", sectionId: "welcome", href: "/", className: "main-link" },
     { content: "Espaces", sectionId: "areas", href: "/#areas", className: "main-link" },
     { content: "Actualités", sectionId: "news", href: "/#news", className: "main-link" },
     { content: "À propos", sectionId: "about", href: "/#about", className: "main-link" },
