@@ -3,7 +3,7 @@ import Sidebar from "../../components/Shared/Sidebar/Sidebar";
 import { formStyle } from "../../components/ContactComponents/ContactForm";
 import Layout from "../../components/Shared/Components/Layout";
 
-export const confirmation = () => {
+const Confirmation = () => {
   return (
     <Layout>
       <Sidebar />
@@ -14,3 +14,5 @@ export const confirmation = () => {
     </Layout>
   );
 };
+
+export default Confirmation;
