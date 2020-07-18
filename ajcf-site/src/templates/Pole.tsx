@@ -14,8 +14,6 @@ interface PoleProps {
 }
 
 const Pole = ({ data }: PoleProps) => {
-  console.log("HAHAH");
-  console.log(JSON.stringify(data, null, 2));
   const theme = generateSidebarTheme(data.contentfulPole?.espace?.espaceId as EspaceId);
   const poles = uniqBy(
     data.allContentfulPole.edges.map((edge) => edge.node),
@@ -33,7 +31,10 @@ const Pole = ({ data }: PoleProps) => {
       />
       <div className="main with-padding">
         <PoleContent poleCover={data.contentfulPole?.cover?.fluid as ImageSharpFluid} poleProps={data.contentfulPole} />
-        <RecentArticles articles={uniqBy(data.allContentfulPost.edges, (article) => article.node.slug)} />
+        <RecentArticles
+          articles={uniqBy(data.allContentfulPost.edges, (article) => article.node.slug)}
+          pole={data.contentfulPole}
+        />
       </div>
     </Layout>
   );

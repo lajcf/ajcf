@@ -159,6 +159,7 @@ export type QuerySitePageArgs = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
+  context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
@@ -295,12 +296,6 @@ export type QueryContentfulPoleArgs = {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-  spaceId?: Maybe<StringQueryOperatorInput>;
-  contentful_id?: Maybe<StringQueryOperatorInput>;
-  createdAt?: Maybe<DateQueryOperatorInput>;
-  updatedAt?: Maybe<DateQueryOperatorInput>;
-  sys?: Maybe<ContentfulPoleSysFilterInput>;
-  node_locale?: Maybe<StringQueryOperatorInput>;
   poleId?: Maybe<StringQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
@@ -308,6 +303,12 @@ export type QueryContentfulPoleArgs = {
   cover?: Maybe<ContentfulAssetFilterInput>;
   post?: Maybe<ContentfulPostFilterListInput>;
   description?: Maybe<ContentfulPoleDescriptionRichTextNodeFilterInput>;
+  spaceId?: Maybe<StringQueryOperatorInput>;
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
+  sys?: Maybe<ContentfulPoleSysFilterInput>;
+  node_locale?: Maybe<StringQueryOperatorInput>;
   childContentfulPoleDescriptionRichTextNode?: Maybe<ContentfulPoleDescriptionRichTextNodeFilterInput>;
 };
 
@@ -343,8 +344,8 @@ export type QueryContentfulPostContentRichTextNodeArgs = {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-  content?: Maybe<StringQueryOperatorInput>;
   nodeType?: Maybe<StringQueryOperatorInput>;
+  content?: Maybe<StringQueryOperatorInput>;
   json?: Maybe<JsonQueryOperatorInput>;
   childContentfulRichText?: Maybe<ContentfulRichTextFilterInput>;
 };
@@ -1613,6 +1614,12 @@ export type DirectoryGroupConnection = {
   fieldValue?: Maybe<Scalars['String']>;
 };
 
+export type SitePageContextFilterInput = {
+  slug?: Maybe<StringQueryOperatorInput>;
+  poleId?: Maybe<StringQueryOperatorInput>;
+  espaceId?: Maybe<StringQueryOperatorInput>;
+};
+
 export type SitePluginFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -1702,9 +1709,17 @@ export type SitePage = Node & {
   children: Array<Node>;
   internal: Internal;
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
+  context?: Maybe<SitePageContext>;
   pluginCreator?: Maybe<SitePlugin>;
   pluginCreatorId?: Maybe<Scalars['String']>;
   componentPath?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContext = {
+  __typename?: 'SitePageContext';
+  slug?: Maybe<Scalars['String']>;
+  poleId?: Maybe<Scalars['String']>;
+  espaceId?: Maybe<Scalars['String']>;
 };
 
 export type SitePlugin = Node & {
@@ -1790,6 +1805,7 @@ export type SitePageFilterInput = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
+  context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
@@ -1893,6 +1909,9 @@ export enum SitePageFieldsEnum {
   internal___owner = 'internal___owner',
   internal___type = 'internal___type',
   isCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
+  context___slug = 'context___slug',
+  context___poleId = 'context___poleId',
+  context___espaceId = 'context___espaceId',
   pluginCreator___id = 'pluginCreator___id',
   pluginCreator___parent___id = 'pluginCreator___parent___id',
   pluginCreator___parent___parent___id = 'pluginCreator___parent___parent___id',
@@ -2854,12 +2873,6 @@ export type ContentfulPoleFilterInput = {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-  spaceId?: Maybe<StringQueryOperatorInput>;
-  contentful_id?: Maybe<StringQueryOperatorInput>;
-  createdAt?: Maybe<DateQueryOperatorInput>;
-  updatedAt?: Maybe<DateQueryOperatorInput>;
-  sys?: Maybe<ContentfulPoleSysFilterInput>;
-  node_locale?: Maybe<StringQueryOperatorInput>;
   poleId?: Maybe<StringQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
@@ -2867,23 +2880,13 @@ export type ContentfulPoleFilterInput = {
   cover?: Maybe<ContentfulAssetFilterInput>;
   post?: Maybe<ContentfulPostFilterListInput>;
   description?: Maybe<ContentfulPoleDescriptionRichTextNodeFilterInput>;
-  childContentfulPoleDescriptionRichTextNode?: Maybe<ContentfulPoleDescriptionRichTextNodeFilterInput>;
-};
-
-export type ContentfulPoleSysFilterInput = {
-  contentType?: Maybe<ContentfulPoleSysContentTypeFilterInput>;
-  revision?: Maybe<IntQueryOperatorInput>;
-};
-
-export type ContentfulPoleSysContentTypeFilterInput = {
-  sys?: Maybe<ContentfulPoleSysContentTypeSysFilterInput>;
-};
-
-export type ContentfulPoleSysContentTypeSysFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>;
-  linkType?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
+  spaceId?: Maybe<StringQueryOperatorInput>;
   contentful_id?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
+  sys?: Maybe<ContentfulPoleSysFilterInput>;
+  node_locale?: Maybe<StringQueryOperatorInput>;
+  childContentfulPoleDescriptionRichTextNode?: Maybe<ContentfulPoleDescriptionRichTextNodeFilterInput>;
 };
 
 export type ContentfulEspaceFilterInput = {
@@ -2952,8 +2955,8 @@ export type ContentfulPostContentRichTextNodeFilterInput = {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-  content?: Maybe<StringQueryOperatorInput>;
   nodeType?: Maybe<StringQueryOperatorInput>;
+  content?: Maybe<StringQueryOperatorInput>;
   json?: Maybe<JsonQueryOperatorInput>;
   childContentfulRichText?: Maybe<ContentfulRichTextFilterInput>;
 };
@@ -3023,6 +3026,22 @@ export type ContentfulPoleDescriptionRichTextNodeContentContentFilterInput = {
   nodeType?: Maybe<StringQueryOperatorInput>;
 };
 
+export type ContentfulPoleSysFilterInput = {
+  revision?: Maybe<IntQueryOperatorInput>;
+  contentType?: Maybe<ContentfulPoleSysContentTypeFilterInput>;
+};
+
+export type ContentfulPoleSysContentTypeFilterInput = {
+  sys?: Maybe<ContentfulPoleSysContentTypeSysFilterInput>;
+};
+
+export type ContentfulPoleSysContentTypeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  linkType?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+};
+
 export type ContentfulEspace = Node & {
   __typename?: 'ContentfulEspace';
   id: Scalars['ID'];
@@ -3063,12 +3082,6 @@ export type ContentfulPole = Node & {
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
-  spaceId?: Maybe<Scalars['String']>;
-  contentful_id?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-  sys?: Maybe<ContentfulPoleSys>;
-  node_locale?: Maybe<Scalars['String']>;
   poleId?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
@@ -3076,6 +3089,12 @@ export type ContentfulPole = Node & {
   cover?: Maybe<ContentfulAsset>;
   post?: Maybe<Array<Maybe<ContentfulPost>>>;
   description?: Maybe<ContentfulPoleDescriptionRichTextNode>;
+  spaceId?: Maybe<Scalars['String']>;
+  contentful_id?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  sys?: Maybe<ContentfulPoleSys>;
+  node_locale?: Maybe<Scalars['String']>;
   childContentfulPoleDescriptionRichTextNode?: Maybe<ContentfulPoleDescriptionRichTextNode>;
 };
 
@@ -3093,25 +3112,6 @@ export type ContentfulPoleUpdatedAtArgs = {
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
-};
-
-export type ContentfulPoleSys = {
-  __typename?: 'ContentfulPoleSys';
-  contentType?: Maybe<ContentfulPoleSysContentType>;
-  revision?: Maybe<Scalars['Int']>;
-};
-
-export type ContentfulPoleSysContentType = {
-  __typename?: 'ContentfulPoleSysContentType';
-  sys?: Maybe<ContentfulPoleSysContentTypeSys>;
-};
-
-export type ContentfulPoleSysContentTypeSys = {
-  __typename?: 'ContentfulPoleSysContentTypeSys';
-  type?: Maybe<Scalars['String']>;
-  linkType?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  contentful_id?: Maybe<Scalars['String']>;
 };
 
 export type ContentfulPost = Node & {
@@ -3157,9 +3157,9 @@ export type ContentfulPostContentRichTextNode = Node & {
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
-  content?: Maybe<Scalars['String']>;
   /** @deprecated This field is deprecated, please use 'json' instead. */
   nodeType?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']>;
   json?: Maybe<Scalars['JSON']>;
   childContentfulRichText?: Maybe<ContentfulRichText>;
 };
@@ -3217,6 +3217,25 @@ export type ContentfulPoleDescriptionRichTextNodeContentContent = {
   __typename?: 'contentfulPoleDescriptionRichTextNodeContentContent';
   value?: Maybe<Scalars['String']>;
   nodeType?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulPoleSys = {
+  __typename?: 'ContentfulPoleSys';
+  revision?: Maybe<Scalars['Int']>;
+  contentType?: Maybe<ContentfulPoleSysContentType>;
+};
+
+export type ContentfulPoleSysContentType = {
+  __typename?: 'ContentfulPoleSysContentType';
+  sys?: Maybe<ContentfulPoleSysContentTypeSys>;
+};
+
+export type ContentfulPoleSysContentTypeSys = {
+  __typename?: 'ContentfulPoleSysContentTypeSys';
+  type?: Maybe<Scalars['String']>;
+  linkType?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  contentful_id?: Maybe<Scalars['String']>;
 };
 
 export type ContentfulEspaceSys = {
@@ -3372,12 +3391,6 @@ export enum ContentfulEspaceFieldsEnum {
   pole___internal___mediaType = 'pole___internal___mediaType',
   pole___internal___owner = 'pole___internal___owner',
   pole___internal___type = 'pole___internal___type',
-  pole___spaceId = 'pole___spaceId',
-  pole___contentful_id = 'pole___contentful_id',
-  pole___createdAt = 'pole___createdAt',
-  pole___updatedAt = 'pole___updatedAt',
-  pole___sys___revision = 'pole___sys___revision',
-  pole___node_locale = 'pole___node_locale',
   pole___poleId = 'pole___poleId',
   pole___title = 'pole___title',
   pole___slug = 'pole___slug',
@@ -3401,15 +3414,15 @@ export enum ContentfulEspaceFieldsEnum {
   pole___espace___pole = 'pole___espace___pole',
   pole___espace___pole___id = 'pole___espace___pole___id',
   pole___espace___pole___children = 'pole___espace___pole___children',
+  pole___espace___pole___poleId = 'pole___espace___pole___poleId',
+  pole___espace___pole___title = 'pole___espace___pole___title',
+  pole___espace___pole___slug = 'pole___espace___pole___slug',
+  pole___espace___pole___post = 'pole___espace___pole___post',
   pole___espace___pole___spaceId = 'pole___espace___pole___spaceId',
   pole___espace___pole___contentful_id = 'pole___espace___pole___contentful_id',
   pole___espace___pole___createdAt = 'pole___espace___pole___createdAt',
   pole___espace___pole___updatedAt = 'pole___espace___pole___updatedAt',
   pole___espace___pole___node_locale = 'pole___espace___pole___node_locale',
-  pole___espace___pole___poleId = 'pole___espace___pole___poleId',
-  pole___espace___pole___title = 'pole___espace___pole___title',
-  pole___espace___pole___slug = 'pole___espace___pole___slug',
-  pole___espace___pole___post = 'pole___espace___pole___post',
   pole___espace___spaceId = 'pole___espace___spaceId',
   pole___espace___contentful_id = 'pole___espace___contentful_id',
   pole___espace___createdAt = 'pole___espace___createdAt',
@@ -3496,15 +3509,15 @@ export enum ContentfulEspaceFieldsEnum {
   pole___post___slug = 'pole___post___slug',
   pole___post___pole___id = 'pole___post___pole___id',
   pole___post___pole___children = 'pole___post___pole___children',
+  pole___post___pole___poleId = 'pole___post___pole___poleId',
+  pole___post___pole___title = 'pole___post___pole___title',
+  pole___post___pole___slug = 'pole___post___pole___slug',
+  pole___post___pole___post = 'pole___post___pole___post',
   pole___post___pole___spaceId = 'pole___post___pole___spaceId',
   pole___post___pole___contentful_id = 'pole___post___pole___contentful_id',
   pole___post___pole___createdAt = 'pole___post___pole___createdAt',
   pole___post___pole___updatedAt = 'pole___post___pole___updatedAt',
   pole___post___pole___node_locale = 'pole___post___pole___node_locale',
-  pole___post___pole___poleId = 'pole___post___pole___poleId',
-  pole___post___pole___title = 'pole___post___pole___title',
-  pole___post___pole___slug = 'pole___post___pole___slug',
-  pole___post___pole___post = 'pole___post___pole___post',
   pole___post___image = 'pole___post___image',
   pole___post___image___id = 'pole___post___image___id',
   pole___post___image___children = 'pole___post___image___children',
@@ -3514,8 +3527,8 @@ export enum ContentfulEspaceFieldsEnum {
   pole___post___image___node_locale = 'pole___post___image___node_locale',
   pole___post___content___id = 'pole___post___content___id',
   pole___post___content___children = 'pole___post___content___children',
-  pole___post___content___content = 'pole___post___content___content',
   pole___post___content___nodeType = 'pole___post___content___nodeType',
+  pole___post___content___content = 'pole___post___content___content',
   pole___post___content___json = 'pole___post___content___json',
   pole___post___spaceId = 'pole___post___spaceId',
   pole___post___contentful_id = 'pole___post___contentful_id',
@@ -3526,8 +3539,8 @@ export enum ContentfulEspaceFieldsEnum {
   pole___post___author = 'pole___post___author',
   pole___post___childContentfulPostContentRichTextNode___id = 'pole___post___childContentfulPostContentRichTextNode___id',
   pole___post___childContentfulPostContentRichTextNode___children = 'pole___post___childContentfulPostContentRichTextNode___children',
-  pole___post___childContentfulPostContentRichTextNode___content = 'pole___post___childContentfulPostContentRichTextNode___content',
   pole___post___childContentfulPostContentRichTextNode___nodeType = 'pole___post___childContentfulPostContentRichTextNode___nodeType',
+  pole___post___childContentfulPostContentRichTextNode___content = 'pole___post___childContentfulPostContentRichTextNode___content',
   pole___post___childContentfulPostContentRichTextNode___json = 'pole___post___childContentfulPostContentRichTextNode___json',
   pole___description___id = 'pole___description___id',
   pole___description___parent___id = 'pole___description___parent___id',
@@ -3553,6 +3566,12 @@ export enum ContentfulEspaceFieldsEnum {
   pole___description___childContentfulRichText___children = 'pole___description___childContentfulRichText___children',
   pole___description___childContentfulRichText___html = 'pole___description___childContentfulRichText___html',
   pole___description___childContentfulRichText___timeToRead = 'pole___description___childContentfulRichText___timeToRead',
+  pole___spaceId = 'pole___spaceId',
+  pole___contentful_id = 'pole___contentful_id',
+  pole___createdAt = 'pole___createdAt',
+  pole___updatedAt = 'pole___updatedAt',
+  pole___sys___revision = 'pole___sys___revision',
+  pole___node_locale = 'pole___node_locale',
   pole___childContentfulPoleDescriptionRichTextNode___id = 'pole___childContentfulPoleDescriptionRichTextNode___id',
   pole___childContentfulPoleDescriptionRichTextNode___parent___id = 'pole___childContentfulPoleDescriptionRichTextNode___parent___id',
   pole___childContentfulPoleDescriptionRichTextNode___parent___children = 'pole___childContentfulPoleDescriptionRichTextNode___parent___children',
@@ -3901,16 +3920,6 @@ export enum ContentfulPoleFieldsEnum {
   internal___mediaType = 'internal___mediaType',
   internal___owner = 'internal___owner',
   internal___type = 'internal___type',
-  spaceId = 'spaceId',
-  contentful_id = 'contentful_id',
-  createdAt = 'createdAt',
-  updatedAt = 'updatedAt',
-  sys___contentType___sys___type = 'sys___contentType___sys___type',
-  sys___contentType___sys___linkType = 'sys___contentType___sys___linkType',
-  sys___contentType___sys___id = 'sys___contentType___sys___id',
-  sys___contentType___sys___contentful_id = 'sys___contentType___sys___contentful_id',
-  sys___revision = 'sys___revision',
-  node_locale = 'node_locale',
   poleId = 'poleId',
   title = 'title',
   slug = 'slug',
@@ -3970,12 +3979,6 @@ export enum ContentfulPoleFieldsEnum {
   espace___pole___internal___mediaType = 'espace___pole___internal___mediaType',
   espace___pole___internal___owner = 'espace___pole___internal___owner',
   espace___pole___internal___type = 'espace___pole___internal___type',
-  espace___pole___spaceId = 'espace___pole___spaceId',
-  espace___pole___contentful_id = 'espace___pole___contentful_id',
-  espace___pole___createdAt = 'espace___pole___createdAt',
-  espace___pole___updatedAt = 'espace___pole___updatedAt',
-  espace___pole___sys___revision = 'espace___pole___sys___revision',
-  espace___pole___node_locale = 'espace___pole___node_locale',
   espace___pole___poleId = 'espace___pole___poleId',
   espace___pole___title = 'espace___pole___title',
   espace___pole___slug = 'espace___pole___slug',
@@ -4014,6 +4017,12 @@ export enum ContentfulPoleFieldsEnum {
   espace___pole___description___nodeType = 'espace___pole___description___nodeType',
   espace___pole___description___description = 'espace___pole___description___description',
   espace___pole___description___json = 'espace___pole___description___json',
+  espace___pole___spaceId = 'espace___pole___spaceId',
+  espace___pole___contentful_id = 'espace___pole___contentful_id',
+  espace___pole___createdAt = 'espace___pole___createdAt',
+  espace___pole___updatedAt = 'espace___pole___updatedAt',
+  espace___pole___sys___revision = 'espace___pole___sys___revision',
+  espace___pole___node_locale = 'espace___pole___node_locale',
   espace___pole___childContentfulPoleDescriptionRichTextNode___id = 'espace___pole___childContentfulPoleDescriptionRichTextNode___id',
   espace___pole___childContentfulPoleDescriptionRichTextNode___children = 'espace___pole___childContentfulPoleDescriptionRichTextNode___children',
   espace___pole___childContentfulPoleDescriptionRichTextNode___content = 'espace___pole___childContentfulPoleDescriptionRichTextNode___content',
@@ -4167,12 +4176,6 @@ export enum ContentfulPoleFieldsEnum {
   post___pole___internal___mediaType = 'post___pole___internal___mediaType',
   post___pole___internal___owner = 'post___pole___internal___owner',
   post___pole___internal___type = 'post___pole___internal___type',
-  post___pole___spaceId = 'post___pole___spaceId',
-  post___pole___contentful_id = 'post___pole___contentful_id',
-  post___pole___createdAt = 'post___pole___createdAt',
-  post___pole___updatedAt = 'post___pole___updatedAt',
-  post___pole___sys___revision = 'post___pole___sys___revision',
-  post___pole___node_locale = 'post___pole___node_locale',
   post___pole___poleId = 'post___pole___poleId',
   post___pole___title = 'post___pole___title',
   post___pole___slug = 'post___pole___slug',
@@ -4211,6 +4214,12 @@ export enum ContentfulPoleFieldsEnum {
   post___pole___description___nodeType = 'post___pole___description___nodeType',
   post___pole___description___description = 'post___pole___description___description',
   post___pole___description___json = 'post___pole___description___json',
+  post___pole___spaceId = 'post___pole___spaceId',
+  post___pole___contentful_id = 'post___pole___contentful_id',
+  post___pole___createdAt = 'post___pole___createdAt',
+  post___pole___updatedAt = 'post___pole___updatedAt',
+  post___pole___sys___revision = 'post___pole___sys___revision',
+  post___pole___node_locale = 'post___pole___node_locale',
   post___pole___childContentfulPoleDescriptionRichTextNode___id = 'post___pole___childContentfulPoleDescriptionRichTextNode___id',
   post___pole___childContentfulPoleDescriptionRichTextNode___children = 'post___pole___childContentfulPoleDescriptionRichTextNode___children',
   post___pole___childContentfulPoleDescriptionRichTextNode___content = 'post___pole___childContentfulPoleDescriptionRichTextNode___content',
@@ -4293,8 +4302,8 @@ export enum ContentfulPoleFieldsEnum {
   post___content___internal___mediaType = 'post___content___internal___mediaType',
   post___content___internal___owner = 'post___content___internal___owner',
   post___content___internal___type = 'post___content___internal___type',
-  post___content___content = 'post___content___content',
   post___content___nodeType = 'post___content___nodeType',
+  post___content___content = 'post___content___content',
   post___content___json = 'post___content___json',
   post___content___childContentfulRichText___id = 'post___content___childContentfulRichText___id',
   post___content___childContentfulRichText___children = 'post___content___childContentfulRichText___children',
@@ -4321,8 +4330,8 @@ export enum ContentfulPoleFieldsEnum {
   post___childContentfulPostContentRichTextNode___internal___mediaType = 'post___childContentfulPostContentRichTextNode___internal___mediaType',
   post___childContentfulPostContentRichTextNode___internal___owner = 'post___childContentfulPostContentRichTextNode___internal___owner',
   post___childContentfulPostContentRichTextNode___internal___type = 'post___childContentfulPostContentRichTextNode___internal___type',
-  post___childContentfulPostContentRichTextNode___content = 'post___childContentfulPostContentRichTextNode___content',
   post___childContentfulPostContentRichTextNode___nodeType = 'post___childContentfulPostContentRichTextNode___nodeType',
+  post___childContentfulPostContentRichTextNode___content = 'post___childContentfulPostContentRichTextNode___content',
   post___childContentfulPostContentRichTextNode___json = 'post___childContentfulPostContentRichTextNode___json',
   post___childContentfulPostContentRichTextNode___childContentfulRichText___id = 'post___childContentfulPostContentRichTextNode___childContentfulRichText___id',
   post___childContentfulPostContentRichTextNode___childContentfulRichText___children = 'post___childContentfulPostContentRichTextNode___childContentfulRichText___children',
@@ -4390,6 +4399,16 @@ export enum ContentfulPoleFieldsEnum {
   description___childContentfulRichText___internal___type = 'description___childContentfulRichText___internal___type',
   description___childContentfulRichText___html = 'description___childContentfulRichText___html',
   description___childContentfulRichText___timeToRead = 'description___childContentfulRichText___timeToRead',
+  spaceId = 'spaceId',
+  contentful_id = 'contentful_id',
+  createdAt = 'createdAt',
+  updatedAt = 'updatedAt',
+  sys___revision = 'sys___revision',
+  sys___contentType___sys___type = 'sys___contentType___sys___type',
+  sys___contentType___sys___linkType = 'sys___contentType___sys___linkType',
+  sys___contentType___sys___id = 'sys___contentType___sys___id',
+  sys___contentType___sys___contentful_id = 'sys___contentType___sys___contentful_id',
+  node_locale = 'node_locale',
   childContentfulPoleDescriptionRichTextNode___id = 'childContentfulPoleDescriptionRichTextNode___id',
   childContentfulPoleDescriptionRichTextNode___parent___id = 'childContentfulPoleDescriptionRichTextNode___parent___id',
   childContentfulPoleDescriptionRichTextNode___parent___parent___id = 'childContentfulPoleDescriptionRichTextNode___parent___parent___id',
@@ -4720,8 +4739,8 @@ export enum ContentfulPostContentRichTextNodeFieldsEnum {
   internal___mediaType = 'internal___mediaType',
   internal___owner = 'internal___owner',
   internal___type = 'internal___type',
-  content = 'content',
   nodeType = 'nodeType',
+  content = 'content',
   json = 'json',
   childContentfulRichText___id = 'childContentfulRichText___id',
   childContentfulRichText___parent___id = 'childContentfulRichText___parent___id',
@@ -4936,12 +4955,6 @@ export enum ContentfulPostFieldsEnum {
   pole___internal___mediaType = 'pole___internal___mediaType',
   pole___internal___owner = 'pole___internal___owner',
   pole___internal___type = 'pole___internal___type',
-  pole___spaceId = 'pole___spaceId',
-  pole___contentful_id = 'pole___contentful_id',
-  pole___createdAt = 'pole___createdAt',
-  pole___updatedAt = 'pole___updatedAt',
-  pole___sys___revision = 'pole___sys___revision',
-  pole___node_locale = 'pole___node_locale',
   pole___poleId = 'pole___poleId',
   pole___title = 'pole___title',
   pole___slug = 'pole___slug',
@@ -4965,15 +4978,15 @@ export enum ContentfulPostFieldsEnum {
   pole___espace___pole = 'pole___espace___pole',
   pole___espace___pole___id = 'pole___espace___pole___id',
   pole___espace___pole___children = 'pole___espace___pole___children',
+  pole___espace___pole___poleId = 'pole___espace___pole___poleId',
+  pole___espace___pole___title = 'pole___espace___pole___title',
+  pole___espace___pole___slug = 'pole___espace___pole___slug',
+  pole___espace___pole___post = 'pole___espace___pole___post',
   pole___espace___pole___spaceId = 'pole___espace___pole___spaceId',
   pole___espace___pole___contentful_id = 'pole___espace___pole___contentful_id',
   pole___espace___pole___createdAt = 'pole___espace___pole___createdAt',
   pole___espace___pole___updatedAt = 'pole___espace___pole___updatedAt',
   pole___espace___pole___node_locale = 'pole___espace___pole___node_locale',
-  pole___espace___pole___poleId = 'pole___espace___pole___poleId',
-  pole___espace___pole___title = 'pole___espace___pole___title',
-  pole___espace___pole___slug = 'pole___espace___pole___slug',
-  pole___espace___pole___post = 'pole___espace___pole___post',
   pole___espace___spaceId = 'pole___espace___spaceId',
   pole___espace___contentful_id = 'pole___espace___contentful_id',
   pole___espace___createdAt = 'pole___espace___createdAt',
@@ -5060,15 +5073,15 @@ export enum ContentfulPostFieldsEnum {
   pole___post___slug = 'pole___post___slug',
   pole___post___pole___id = 'pole___post___pole___id',
   pole___post___pole___children = 'pole___post___pole___children',
+  pole___post___pole___poleId = 'pole___post___pole___poleId',
+  pole___post___pole___title = 'pole___post___pole___title',
+  pole___post___pole___slug = 'pole___post___pole___slug',
+  pole___post___pole___post = 'pole___post___pole___post',
   pole___post___pole___spaceId = 'pole___post___pole___spaceId',
   pole___post___pole___contentful_id = 'pole___post___pole___contentful_id',
   pole___post___pole___createdAt = 'pole___post___pole___createdAt',
   pole___post___pole___updatedAt = 'pole___post___pole___updatedAt',
   pole___post___pole___node_locale = 'pole___post___pole___node_locale',
-  pole___post___pole___poleId = 'pole___post___pole___poleId',
-  pole___post___pole___title = 'pole___post___pole___title',
-  pole___post___pole___slug = 'pole___post___pole___slug',
-  pole___post___pole___post = 'pole___post___pole___post',
   pole___post___image = 'pole___post___image',
   pole___post___image___id = 'pole___post___image___id',
   pole___post___image___children = 'pole___post___image___children',
@@ -5078,8 +5091,8 @@ export enum ContentfulPostFieldsEnum {
   pole___post___image___node_locale = 'pole___post___image___node_locale',
   pole___post___content___id = 'pole___post___content___id',
   pole___post___content___children = 'pole___post___content___children',
-  pole___post___content___content = 'pole___post___content___content',
   pole___post___content___nodeType = 'pole___post___content___nodeType',
+  pole___post___content___content = 'pole___post___content___content',
   pole___post___content___json = 'pole___post___content___json',
   pole___post___spaceId = 'pole___post___spaceId',
   pole___post___contentful_id = 'pole___post___contentful_id',
@@ -5090,8 +5103,8 @@ export enum ContentfulPostFieldsEnum {
   pole___post___author = 'pole___post___author',
   pole___post___childContentfulPostContentRichTextNode___id = 'pole___post___childContentfulPostContentRichTextNode___id',
   pole___post___childContentfulPostContentRichTextNode___children = 'pole___post___childContentfulPostContentRichTextNode___children',
-  pole___post___childContentfulPostContentRichTextNode___content = 'pole___post___childContentfulPostContentRichTextNode___content',
   pole___post___childContentfulPostContentRichTextNode___nodeType = 'pole___post___childContentfulPostContentRichTextNode___nodeType',
+  pole___post___childContentfulPostContentRichTextNode___content = 'pole___post___childContentfulPostContentRichTextNode___content',
   pole___post___childContentfulPostContentRichTextNode___json = 'pole___post___childContentfulPostContentRichTextNode___json',
   pole___description___id = 'pole___description___id',
   pole___description___parent___id = 'pole___description___parent___id',
@@ -5117,6 +5130,12 @@ export enum ContentfulPostFieldsEnum {
   pole___description___childContentfulRichText___children = 'pole___description___childContentfulRichText___children',
   pole___description___childContentfulRichText___html = 'pole___description___childContentfulRichText___html',
   pole___description___childContentfulRichText___timeToRead = 'pole___description___childContentfulRichText___timeToRead',
+  pole___spaceId = 'pole___spaceId',
+  pole___contentful_id = 'pole___contentful_id',
+  pole___createdAt = 'pole___createdAt',
+  pole___updatedAt = 'pole___updatedAt',
+  pole___sys___revision = 'pole___sys___revision',
+  pole___node_locale = 'pole___node_locale',
   pole___childContentfulPoleDescriptionRichTextNode___id = 'pole___childContentfulPoleDescriptionRichTextNode___id',
   pole___childContentfulPoleDescriptionRichTextNode___parent___id = 'pole___childContentfulPoleDescriptionRichTextNode___parent___id',
   pole___childContentfulPoleDescriptionRichTextNode___parent___children = 'pole___childContentfulPoleDescriptionRichTextNode___parent___children',
@@ -5266,8 +5285,8 @@ export enum ContentfulPostFieldsEnum {
   content___internal___mediaType = 'content___internal___mediaType',
   content___internal___owner = 'content___internal___owner',
   content___internal___type = 'content___internal___type',
-  content___content = 'content___content',
   content___nodeType = 'content___nodeType',
+  content___content = 'content___content',
   content___json = 'content___json',
   content___childContentfulRichText___id = 'content___childContentfulRichText___id',
   content___childContentfulRichText___parent___id = 'content___childContentfulRichText___parent___id',
@@ -5334,8 +5353,8 @@ export enum ContentfulPostFieldsEnum {
   childContentfulPostContentRichTextNode___internal___mediaType = 'childContentfulPostContentRichTextNode___internal___mediaType',
   childContentfulPostContentRichTextNode___internal___owner = 'childContentfulPostContentRichTextNode___internal___owner',
   childContentfulPostContentRichTextNode___internal___type = 'childContentfulPostContentRichTextNode___internal___type',
-  childContentfulPostContentRichTextNode___content = 'childContentfulPostContentRichTextNode___content',
   childContentfulPostContentRichTextNode___nodeType = 'childContentfulPostContentRichTextNode___nodeType',
+  childContentfulPostContentRichTextNode___content = 'childContentfulPostContentRichTextNode___content',
   childContentfulPostContentRichTextNode___json = 'childContentfulPostContentRichTextNode___json',
   childContentfulPostContentRichTextNode___childContentfulRichText___id = 'childContentfulPostContentRichTextNode___childContentfulRichText___id',
   childContentfulPostContentRichTextNode___childContentfulRichText___parent___id = 'childContentfulPostContentRichTextNode___childContentfulRichText___parent___id',
@@ -6242,6 +6261,58 @@ export type HomePageQueryQuery = (
   ) }
 );
 
+export type NewsPageQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type NewsPageQueryQuery = (
+  { __typename?: 'Query' }
+  & { site?: Maybe<(
+    { __typename?: 'Site' }
+    & { siteMetadata?: Maybe<(
+      { __typename?: 'SiteSiteMetadata' }
+      & Pick<SiteSiteMetadata, 'title'>
+    )> }
+  )>, allContentfulPole: (
+    { __typename?: 'ContentfulPoleConnection' }
+    & { edges: Array<(
+      { __typename?: 'ContentfulPoleEdge' }
+      & { node: (
+        { __typename?: 'ContentfulPole' }
+        & ContentfulPoleFragmentFragment
+      ) }
+    )> }
+  ), allContentfulPost: (
+    { __typename?: 'ContentfulPostConnection' }
+    & { edges: Array<(
+      { __typename?: 'ContentfulPostEdge' }
+      & { node: (
+        { __typename?: 'ContentfulPost' }
+        & Pick<ContentfulPost, 'slug' | 'createdAt' | 'title' | 'author'>
+        & { pole?: Maybe<(
+          { __typename?: 'ContentfulPole' }
+          & Pick<ContentfulPole, 'poleId'>
+          & { espace?: Maybe<(
+            { __typename?: 'ContentfulEspace' }
+            & Pick<ContentfulEspace, 'espaceId'>
+          )> }
+        )>, content?: Maybe<(
+          { __typename?: 'contentfulPostContentRichTextNode' }
+          & { childContentfulRichText?: Maybe<(
+            { __typename?: 'ContentfulRichText' }
+            & Pick<ContentfulRichText, 'html'>
+          )> }
+        )>, image?: Maybe<Array<Maybe<(
+          { __typename?: 'ContentfulAsset' }
+          & { fluid?: Maybe<(
+            { __typename?: 'ContentfulFluid' }
+            & Pick<ContentfulFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
+          )> }
+        )>>> }
+      ) }
+    )> }
+  ) }
+);
+
 export type EspaceByIdQueryVariables = Exact<{
   espaceId: Scalars['String'];
 }>;
@@ -6271,8 +6342,8 @@ export type EspaceByIdQuery = (
 );
 
 export type PoleByIdQueryVariables = Exact<{
-  poleId: Scalars['String'];
-  espaceId: Scalars['String'];
+  poleId?: Maybe<Scalars['String']>;
+  espaceId?: Maybe<Scalars['String']>;
 }>;
 
 

@@ -71,8 +71,6 @@ export const createPages: GatsbyNode["createPages"] = async ({ graphql: graphqlQ
   const posts = result?.data?.allContentfulPost?.edges || [];
   const poles = result?.data?.allContentfulPole?.edges || [];
   const espaces = result?.data?.allContentfulEspace?.edges || [];
-  console.log("HOHOHO");
-  console.log(JSON.stringify(poles, null, 2));
   posts.forEach((post: { node: ContentfulPost }) => {
     createPage({
       path: `${post.node.pole?.espace?.espaceId}/${post.node.pole?.poleId}/${post.node.slug}`,

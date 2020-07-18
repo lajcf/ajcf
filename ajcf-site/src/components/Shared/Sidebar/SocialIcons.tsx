@@ -42,13 +42,13 @@ export const SocialIcons = ({ pageTheme }: SocialIconsProps) => {
     <div id="sidebar-social-icons" css={socialIconsStyle}>
       <ul>
         <li>
-          <a href="https://www.facebook.com/lajcf">
+          <a target="_blank" href="https://www.facebook.com/lajcf">
             <i className="ui icon facebook f circular social" />
           </a>
-          <a href="https://twitter.com/ajcf_fr">
+          <a target="_blank" href="https://twitter.com/ajcf_fr">
             <i className="ui icon twitter circular social" />
           </a>
-          <a href="https://www.instagram.com/ajcf_fr/">
+          <a target="_blank" href="https://www.instagram.com/ajcf_fr/">
             <i className="ui icon instagram circular social" />
           </a>
         </li>
