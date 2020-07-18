@@ -3,7 +3,7 @@ import Img from "gatsby-image";
 import { Link } from "gatsby";
 import { css } from "@emotion/core";
 import { sizes } from "../../assets/css/variables/sizes";
-import { ImageSharpFluid, ContentfulPoleFragmentFragment } from "../../generated/types";
+import { ContentfulPoleFragmentFragment, ImageSharpFluid } from "../../generated/types";
 import { EspacePageTheme } from "../../assets/poles/pageThemes";
 
 export type CoverPoleProps = {
@@ -25,11 +25,13 @@ export const EspacePoleCover = ({ pole, index, pageTheme, numberOfPoles }: Cover
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 505px;
-    width: auto;
-    > img {
-      max-height: 270px;
-      height: auto;
+    width: 50%;
+    overflow: hidden;
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain !important;
+      object-position: right !important;
     }
   `;
 
@@ -38,6 +40,7 @@ export const EspacePoleCover = ({ pole, index, pageTheme, numberOfPoles }: Cover
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
   `;
 
   const learnMoreButtonStyle = css`
@@ -55,7 +58,6 @@ export const EspacePoleCover = ({ pole, index, pageTheme, numberOfPoles }: Cover
       }
     }
   `;
-  console.log(pole.cover);
   return (
     <div style={coverPoleSectionStyle(index)}>
       <div css={descriptionPoleStyle}>
@@ -68,7 +70,9 @@ export const EspacePoleCover = ({ pole, index, pageTheme, numberOfPoles }: Cover
           <Link to={pole?.slug || ""}>En savoir plus</Link>
         </div>
       </div>
-      <Img css={coverPoleStyle} fluid={pole.cover?.fluid as ImageSharpFluid} alt="" />
+      <div css={coverPoleStyle}>
+        <Img imgStyle={{ objectFit: "contain" }} fluid={pole.cover?.fluid as ImageSharpFluid} alt="" />
+      </div>
     </div>
   );
 };
