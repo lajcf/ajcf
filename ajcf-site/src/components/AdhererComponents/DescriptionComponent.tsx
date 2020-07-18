@@ -1,12 +1,5 @@
 import React from "react";
 import { Link } from "gatsby";
-import { css } from "@emotion/core";
-
-export const advantagesListStyle = css`
-  li {
-    font-size: 1.3em;
-  }
-`;
 
 export const DescriptionComponent = () => {
   return (
@@ -19,12 +12,14 @@ export const DescriptionComponent = () => {
       </p>
       <p>Adhérer à l’AJCF, c’est manifester son soutien à notre association et aux idéaux que nous portons.</p>
       <p>De plus, l’adhésion à l’AJCF offre les avantages suivants, pour une durée d’un an renouvelable :</p>
-      <div css={advantagesListStyle}>
-        <ol>
-          <li> bénéficier de tarifs préférentiels pour nos activités payantes; </li>
-          <li> recevoir en avant-première le calendrier des événements du mois suivant;</li>
-          <li> participer et voter à l’Assemblée Générale de l’AJCF.</li>
-        </ol>
+      <div>
+        <p>
+          <ul>
+            <li> bénéficier de tarifs préférentiels pour nos activités payantes; </li>
+            <li> recevoir en avant-première le calendrier des événements du mois suivant;</li>
+            <li> participer et voter à l’Assemblée Générale de l’AJCF.</li>
+          </ul>
+        </p>
       </div>
       <p>
         Enfin, si tu le souhaites, l’adhésion permet de devenir un membre adhérent actif et de contribuer directement à
