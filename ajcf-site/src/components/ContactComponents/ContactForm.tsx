@@ -69,8 +69,7 @@ export const ContactForm = ({ handleSubmit, handleChange }: ContactFormProps) =>
       <h1>Nous contacter</h1>
       <form
         name="contact"
-        method="post"
-        action="/contact/"
+        method="POST"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         onSubmit={handleSubmit}
