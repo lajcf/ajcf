@@ -70,6 +70,7 @@ export const ContactForm = ({ handleSubmit, handleChange }: ContactFormProps) =>
       <form
         name="contact"
         method="POST"
+        action="/contact/confirmation"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         onSubmit={handleSubmit}
