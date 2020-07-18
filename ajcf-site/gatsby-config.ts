@@ -49,8 +49,8 @@ export const plugins = [
     resolve: `gatsby-source-contentful`,
     options: {
       spaceId: process.env.CONTENTFUL_SPACE_ID,
-      accessToken: process.env.CONTENTFUL_DRAFT_ACCESS_TOKEN,
-      host: "preview.contentful.com",
+      accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      host: process.env.CONTENTFUL_API_ENDPOINT,
     },
   },
   {
@@ -59,7 +59,7 @@ export const plugins = [
       renderOptions: {
         renderNode: {
           [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
-            return `<img src="${node.data.target.fields.file["en-US"].url}" />`;
+            return `<img src="${node.data.target.fields.file.fr.url}" />`;
           },
         },
       },

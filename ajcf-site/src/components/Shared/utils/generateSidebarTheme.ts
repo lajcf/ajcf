@@ -1,6 +1,5 @@
 import { EspaceId, PoleProps } from "../../../assets/poles/constants";
-import { learnTheme, meetTheme, enjoyTheme, talkTheme } from "../../../assets/poles/pageThemes";
-import { EspacePageTheme } from "../../../pages/talk";
+import { enjoyTheme, EspacePageTheme, learnTheme, meetTheme, talkTheme } from "../../../assets/poles/pageThemes";
 
 export type SidebarTheme = {
   sectionName: EspaceId;

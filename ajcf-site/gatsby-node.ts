@@ -2,7 +2,7 @@ import { GatsbyNode } from "gatsby";
 import graphql from "graphql-tag";
 import * as path from "path";
 import { print } from "graphql/language/printer";
-import { ContentfulPole, ContentfulPost, ContentfulEspace } from "./src/generated/types";
+import { ContentfulEspace, ContentfulPole, ContentfulPost } from "./src/generated/types";
 
 const schema = graphql`
   query allContentfulPosts {
@@ -71,6 +71,8 @@ export const createPages: GatsbyNode["createPages"] = async ({ graphql: graphqlQ
   const posts = result?.data?.allContentfulPost?.edges || [];
   const poles = result?.data?.allContentfulPole?.edges || [];
   const espaces = result?.data?.allContentfulEspace?.edges || [];
+  console.log("HOHOHO");
+  console.log(JSON.stringify(poles, null, 2));
   posts.forEach((post: { node: ContentfulPost }) => {
     createPage({
       path: `${post.node.pole?.espace?.espaceId}/${post.node.pole?.poleId}/${post.node.slug}`,
