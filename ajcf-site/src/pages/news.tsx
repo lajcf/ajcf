@@ -81,7 +81,7 @@ const News = ({ location }: NewsProps) => {
       }
     }
   `);
-  const relevantPosts = location?.state.pole
+  const relevantPosts = location?.state?.pole
     ? data.allContentfulPost.edges.filter((post) => post.node.pole?.poleId === location.state.pole?.poleId)
     : data.allContentfulPost.edges;
   const sidebar = generateSidebar(data.allContentfulPole.edges.map((edge) => edge.node) || [], location?.state.pole);
