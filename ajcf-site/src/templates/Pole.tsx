@@ -14,6 +14,8 @@ interface PoleProps {
 }
 
 const Pole = ({ data }: PoleProps) => {
+  console.log("HAHAH");
+  console.log(JSON.stringify(data, null, 2));
   const theme = generateSidebarTheme(data.contentfulPole?.espace?.espaceId as EspaceId);
   const poles = uniqBy(
     data.allContentfulPole.edges.map((edge) => edge.node),
