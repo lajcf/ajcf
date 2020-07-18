@@ -27,7 +27,7 @@ export const EspacePoleCover = ({ pole, index, pageTheme, numberOfPoles }: Cover
   `;
 
   const coverPoleStyle = css`
-    border-radius: 1em;
+    border-radius: 0 1em 1em 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -47,22 +47,6 @@ export const EspacePoleCover = ({ pole, index, pageTheme, numberOfPoles }: Cover
     flex-direction: column;
     justify-content: center;
     width: 100%;
-  `;
-
-  const learnMoreButtonStyle = css`
-    text-align: end;
-    a {
-      color: ${pageTheme.mainColorLight};
-      transition: background-color 0.1s ease-in-out;
-      padding: 0.75em 1.75em;
-      border-radius: 100px;
-      height: 40px !important;
-      box-shadow: 0 0 0.05em 0.1em ${pageTheme.mainColorLight};
-
-      &:hover {
-        background-color: ${pageTheme.secondaryColor};
-      }
-    }
   `;
   return (
     <Link to={pole?.slug || ""}>
