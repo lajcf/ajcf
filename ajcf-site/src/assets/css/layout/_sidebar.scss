@@ -103,7 +103,10 @@
         color: colors.$color-talk-light
       }
 
-      &:active {
+      .active {
+        background-image: linear-gradient(to right, colors.$color-talk-light, colors.$color-talk-light);
+        transition: max-width 0.2s ease;
+        max-width: 0;
         color: colors.$color-talk-light;
         &:after {
           max-width: 100%;
