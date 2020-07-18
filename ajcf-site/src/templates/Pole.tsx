@@ -1,11 +1,11 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { uniqBy } from "lodash";
-import { PoleByIdQuery, ImageSharpFluid } from "../generated/types";
+import { ImageSharpFluid, PoleByIdQuery } from "../generated/types";
 import Layout from "../components/Shared/Components/Layout";
 import { generateSidebarTheme } from "../components/Shared/utils/generateSidebarTheme";
 import { SecondarySidebar } from "../components/Shared/SecondarySidebar/SecondarySidebar";
-import { PoleId, EspaceId } from "../assets/poles/constants";
+import { EspaceId, PoleId } from "../assets/poles/constants";
 import { PoleContent } from "../components/PoleComponents/PoleContent";
 import { RecentArticles } from "../components/PoleComponents/RecentArticles";
 
@@ -40,7 +40,7 @@ const Pole = ({ data }: PoleProps) => {
 export default Pole;
 
 export const query = graphql`
-  query poleById($poleId: String!, $espaceId: String!) {
+  query poleById($poleId: String, $espaceId: String) {
     site {
       siteMetadata {
         title

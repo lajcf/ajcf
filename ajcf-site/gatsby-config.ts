@@ -59,7 +59,7 @@ export const plugins = [
       renderOptions: {
         renderNode: {
           [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
-            return `<img src="${node.data.target.fields.file["en-US"].url}" />`;
+            return `<img src="${node.data.target.fields.file.fr.url}" />`;
           },
         },
       },
