@@ -15,13 +15,8 @@ const LandingHeaderInner = () => {
         </Link>
       </li>
       <li>
-        <Link className="main-link" to="/join/">
+        <Link className="main-link" to="/adherer/">
           Adhérer
-        </Link>
-      </li>
-      <li>
-        <Link className="main-link" to="/donate/">
-          Faire un don
         </Link>
       </li>
     </ul>

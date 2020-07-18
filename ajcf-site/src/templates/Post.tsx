@@ -7,7 +7,7 @@ import { PostBySlugQuery } from "../generated/types";
 import Layout from "../components/Shared/Components/Layout";
 import { generateSidebarTheme } from "../components/Shared/utils/generateSidebarTheme";
 import { SecondarySidebar } from "../components/Shared/SecondarySidebar/SecondarySidebar";
-import { PoleId, EspaceId } from "../assets/poles/constants";
+import { EspaceId, PoleId } from "../assets/poles/constants";
 
 interface PostProps {
   data: PostBySlugQuery;
@@ -28,6 +28,7 @@ const Post: React.FC<PostProps> = ({ data }) => {
     data.allContentfulPole.edges.map((edge) => edge.node),
     (pole) => pole.poleId
   );
+  console.log(data.contentfulPost);
   return (
     <Layout>
       <SecondarySidebar
@@ -36,7 +37,7 @@ const Post: React.FC<PostProps> = ({ data }) => {
         poles={poles}
         pageFrenchTitle={data.contentfulPost?.pole?.espace?.frenchTitle || ""}
         pageChineseTitle={data.contentfulPost?.pole?.espace?.chineseTitle || ""}
-        activePoleId={data.contentfulPost?.pole as PoleId}
+        activePoleId={data.contentfulPost?.pole?.poleId as PoleId}
       />
       <div className="main with-padding">
         <Img
