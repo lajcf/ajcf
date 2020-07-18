@@ -1,4 +1,5 @@
 import React from "react";
+import { orderBy } from "lodash";
 import { css } from "@emotion/core";
 import { Link } from "gatsby";
 import ArticlePreview from "./ArticlePreview";
@@ -42,13 +43,15 @@ export const RecentArticles = ({ articles, pole }: RecentArticlesArgs) => {
     <div>
       <h2 css={titleStyle}>Articles récents</h2>
       <ul css={articlesListStyle}>
-        {articles.slice(0, 3).map((article) => {
-          return (
-            <li key={article.node.slug || undefined}>
-              <ArticlePreview article={article.node} />
-            </li>
-          );
-        })}
+        {orderBy(articles, (article) => article.node.date, "desc")
+          .slice(0, 3)
+          .map((article) => {
+            return (
+              <li key={article.node.slug || undefined}>
+                <ArticlePreview article={article.node} />
+              </li>
+            );
+          })}
       </ul>
       <div css={moreArticlesButtonStyle}>
         <Link to="/news" state={{ pole }}>

@@ -1,4 +1,5 @@
 import React from "react";
+import { orderBy } from "lodash";
 import { css } from "@emotion/core";
 import { ContentfulPostFragmentFragment } from "../../generated/types";
 import ArticlePreview from "../PoleComponents/ArticlePreview";
@@ -33,7 +34,7 @@ export const AllArticles = ({ articles, poleTitle }: AllArticlesProps) => {
       <div css={contentStyle}>
         <h2 css={titleStyle}>{title}</h2>
         <ul css={articlesListStyle}>
-          {articles.map((article) => {
+          {orderBy(articles, (article) => article.node.date, "desc").map((article) => {
             return (
               <li key={article.node.slug || undefined}>
                 <ArticlePreview article={article.node} />

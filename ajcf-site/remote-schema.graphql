@@ -297,6 +297,16 @@ type ContentfulPost implements Node {
         "Configures the locale Moment.js will use to format the date."
         locale: String
     ): Date
+    date(
+        "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+        difference: String,
+        "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+        formatString: String,
+        "Returns a string generated with Moment.js' `fromNow` function"
+        fromNow: Boolean,
+        "Configures the locale Moment.js will use to format the date."
+        locale: String
+    ): Date
     id: ID!
     image: [ContentfulAsset]
     internal: Internal!
@@ -876,7 +886,7 @@ type Query {
     contentfulEspace(children: NodeFilterListInput, chineseTitle: StringQueryOperatorInput, contentful_id: StringQueryOperatorInput, createdAt: DateQueryOperatorInput, espaceId: StringQueryOperatorInput, frenchTitle: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, node_locale: StringQueryOperatorInput, parent: NodeFilterInput, pole: ContentfulPoleFilterListInput, spaceId: StringQueryOperatorInput, sys: ContentfulEspaceSysFilterInput, updatedAt: DateQueryOperatorInput): ContentfulEspace
     contentfulPole(childContentfulPoleDescriptionRichTextNode: contentfulPoleDescriptionRichTextNodeFilterInput, children: NodeFilterListInput, contentful_id: StringQueryOperatorInput, cover: ContentfulAssetFilterInput, createdAt: DateQueryOperatorInput, description: contentfulPoleDescriptionRichTextNodeFilterInput, espace: ContentfulEspaceFilterInput, id: StringQueryOperatorInput, internal: InternalFilterInput, node_locale: StringQueryOperatorInput, parent: NodeFilterInput, poleId: StringQueryOperatorInput, post: ContentfulPostFilterListInput, slug: StringQueryOperatorInput, spaceId: StringQueryOperatorInput, sys: ContentfulPoleSysFilterInput, title: StringQueryOperatorInput, updatedAt: DateQueryOperatorInput): ContentfulPole
     contentfulPoleDescriptionRichTextNode(childContentfulRichText: ContentfulRichTextFilterInput, children: NodeFilterListInput, content: contentfulPoleDescriptionRichTextNodeContentFilterListInput, description: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, json: JSONQueryOperatorInput, nodeType: StringQueryOperatorInput, parent: NodeFilterInput): contentfulPoleDescriptionRichTextNode
-    contentfulPost(author: StringQueryOperatorInput, childContentfulPostContentRichTextNode: contentfulPostContentRichTextNodeFilterInput, children: NodeFilterListInput, content: contentfulPostContentRichTextNodeFilterInput, contentful_id: StringQueryOperatorInput, createdAt: DateQueryOperatorInput, id: StringQueryOperatorInput, image: ContentfulAssetFilterListInput, internal: InternalFilterInput, node_locale: StringQueryOperatorInput, parent: NodeFilterInput, pole: ContentfulPoleFilterInput, slug: StringQueryOperatorInput, spaceId: StringQueryOperatorInput, sys: ContentfulPostSysFilterInput, title: StringQueryOperatorInput, updatedAt: DateQueryOperatorInput): ContentfulPost
+    contentfulPost(author: StringQueryOperatorInput, childContentfulPostContentRichTextNode: contentfulPostContentRichTextNodeFilterInput, children: NodeFilterListInput, content: contentfulPostContentRichTextNodeFilterInput, contentful_id: StringQueryOperatorInput, createdAt: DateQueryOperatorInput, date: DateQueryOperatorInput, id: StringQueryOperatorInput, image: ContentfulAssetFilterListInput, internal: InternalFilterInput, node_locale: StringQueryOperatorInput, parent: NodeFilterInput, pole: ContentfulPoleFilterInput, slug: StringQueryOperatorInput, spaceId: StringQueryOperatorInput, sys: ContentfulPostSysFilterInput, title: StringQueryOperatorInput, updatedAt: DateQueryOperatorInput): ContentfulPost
     contentfulPostContentRichTextNode(childContentfulRichText: ContentfulRichTextFilterInput, children: NodeFilterListInput, content: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, json: JSONQueryOperatorInput, nodeType: StringQueryOperatorInput, parent: NodeFilterInput): contentfulPostContentRichTextNode
     contentfulRichText(children: NodeFilterListInput, html: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, timeToRead: IntQueryOperatorInput): ContentfulRichText
     directory(absolutePath: StringQueryOperatorInput, accessTime: DateQueryOperatorInput, atime: DateQueryOperatorInput, atimeMs: FloatQueryOperatorInput, base: StringQueryOperatorInput, birthTime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, changeTime: DateQueryOperatorInput, children: NodeFilterListInput, ctime: DateQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, dev: IntQueryOperatorInput, dir: StringQueryOperatorInput, ext: StringQueryOperatorInput, extension: StringQueryOperatorInput, gid: IntQueryOperatorInput, id: StringQueryOperatorInput, ino: FloatQueryOperatorInput, internal: InternalFilterInput, mode: IntQueryOperatorInput, modifiedTime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, name: StringQueryOperatorInput, nlink: IntQueryOperatorInput, parent: NodeFilterInput, prettySize: StringQueryOperatorInput, rdev: IntQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, root: StringQueryOperatorInput, size: IntQueryOperatorInput, sourceInstanceName: StringQueryOperatorInput, uid: IntQueryOperatorInput): Directory
@@ -1724,6 +1734,7 @@ enum ContentfulEspaceFieldsEnum {
     pole___post___content___nodeType
     pole___post___contentful_id
     pole___post___createdAt
+    pole___post___date
     pole___post___id
     pole___post___image
     pole___post___image___children
@@ -2143,6 +2154,7 @@ enum ContentfulPoleFieldsEnum {
     espace___pole___post___children
     espace___pole___post___contentful_id
     espace___pole___post___createdAt
+    espace___pole___post___date
     espace___pole___post___id
     espace___pole___post___image
     espace___pole___post___node_locale
@@ -2268,6 +2280,7 @@ enum ContentfulPoleFieldsEnum {
     post___content___parent___id
     post___contentful_id
     post___createdAt
+    post___date
     post___id
     post___image
     post___image___children
@@ -2406,6 +2419,7 @@ enum ContentfulPoleFieldsEnum {
     post___pole___post___children
     post___pole___post___contentful_id
     post___pole___post___createdAt
+    post___pole___post___date
     post___pole___post___id
     post___pole___post___image
     post___pole___post___node_locale
@@ -2591,6 +2605,7 @@ enum ContentfulPostFieldsEnum {
     content___parent___parent___id
     contentful_id
     createdAt
+    date
     id
     image
     image___children
@@ -2929,6 +2944,7 @@ enum ContentfulPostFieldsEnum {
     pole___post___content___nodeType
     pole___post___contentful_id
     pole___post___createdAt
+    pole___post___date
     pole___post___id
     pole___post___image
     pole___post___image___children
@@ -4540,6 +4556,7 @@ input ContentfulPostFilterInput {
     content: contentfulPostContentRichTextNodeFilterInput
     contentful_id: StringQueryOperatorInput
     createdAt: DateQueryOperatorInput
+    date: DateQueryOperatorInput
     id: StringQueryOperatorInput
     image: ContentfulAssetFilterListInput
     internal: InternalFilterInput

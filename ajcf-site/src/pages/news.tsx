@@ -52,30 +52,7 @@ const News = ({ location }: NewsProps) => {
       allContentfulPost {
         edges {
           node {
-            slug
-            createdAt
-            title
-            author
-            pole {
-              poleId
-              espace {
-                espaceId
-              }
-            }
-            content {
-              childContentfulRichText {
-                html
-              }
-            }
-            image {
-              fluid(maxWidth: 3000, quality: 100) {
-                base64
-                aspectRatio
-                src
-                srcSet
-                sizes
-              }
-            }
+            ...ContentfulPostFragment
           }
         }
       }

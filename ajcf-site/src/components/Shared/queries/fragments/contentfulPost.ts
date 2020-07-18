@@ -6,6 +6,7 @@ export const contentfulPostFragment = graphql`
     author
     slug
     createdAt
+    date
     pole {
       poleId
       espace {

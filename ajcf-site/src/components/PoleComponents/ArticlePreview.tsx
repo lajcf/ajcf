@@ -34,7 +34,7 @@ export default ({ article }: ArticlePreviewArgs) => {
       <Link to={`/${article.pole?.espace?.espaceId}/${article.pole?.poleId}/${article.slug}`}>
         <Img alt="" fluid={article.image?.length && article.image?.length > 0 && article.image[0]?.fluid} />
         <h3 css={previewTitleStyle}>{article.title}</h3>
-        <p>{moment.utc(article.createdAt).format("LL")}</p>
+        <p>{moment.utc(article.date).format("LL")}</p>
         <div
           dangerouslySetInnerHTML={{
             __html: extractArticleExcerpt(article.content?.childContentfulRichText?.html),
