@@ -88,7 +88,7 @@ const News = ({ location }: NewsProps) => {
   return (
     <Layout>
       {sidebar}
-      <AllArticles articles={relevantPosts || []} />
+      <AllArticles articles={relevantPosts || []} poleTitle={location?.state?.pole?.title} />
     </Layout>
   );
 };

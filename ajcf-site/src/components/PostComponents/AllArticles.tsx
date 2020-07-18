@@ -5,6 +5,7 @@ import ArticlePreview from "../PoleComponents/ArticlePreview";
 
 export interface AllArticlesProps {
   articles: { node: ContentfulPostFragmentFragment }[];
+  poleTitle?: string | null;
 }
 
 const contentStyle = css`
@@ -25,11 +26,12 @@ const articlesListStyle = css`
   grid-gap: 5vmin;
 `;
 
-export const AllArticles = ({ articles }: AllArticlesProps) => {
+export const AllArticles = ({ articles, poleTitle }: AllArticlesProps) => {
+  const title = poleTitle ? `Tous les articles - ${poleTitle}` : `Tous les articles`;
   return (
     <div className="main">
       <div css={contentStyle}>
-        <h2 css={titleStyle}>Tous les articles</h2>
+        <h2 css={titleStyle}>{title}</h2>
         <ul css={articlesListStyle}>
           {articles.map((article) => {
             return (
