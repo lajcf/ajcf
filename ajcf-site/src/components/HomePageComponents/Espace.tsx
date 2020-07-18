@@ -39,6 +39,7 @@ const espaceLinkStyle = css`
 `;
 
 const determineEspaceDivStyle = (backgroundColor: string) => css`
+  box-shadow: 0px 4px 22px -10px rgba(0, 0, 0, 0.75);
   position: relative;
   width: 225px;
   height: 225px;

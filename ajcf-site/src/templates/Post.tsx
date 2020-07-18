@@ -28,7 +28,6 @@ const Post: React.FC<PostProps> = ({ data }) => {
     data.allContentfulPole.edges.map((edge) => edge.node),
     (pole) => pole.poleId
   );
-  console.log(data.contentfulPost);
   return (
     <Layout>
       <SecondarySidebar

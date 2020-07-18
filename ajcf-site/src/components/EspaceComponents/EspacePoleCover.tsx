@@ -5,6 +5,7 @@ import { css } from "@emotion/core";
 import { sizes } from "../../assets/css/variables/sizes";
 import { ContentfulPoleFragmentFragment, ImageSharpFluid } from "../../generated/types";
 import { EspacePageTheme } from "../../assets/poles/pageThemes";
+import { colors } from "../../assets/css/variables/colors";
 
 export type CoverPoleProps = {
   pole: ContentfulPoleFragmentFragment;
@@ -13,15 +14,20 @@ export type CoverPoleProps = {
 };
 
 export const EspacePoleCover = ({ pole, index, pageTheme, numberOfPoles }: CoverPoleProps & { index: number }) => {
-  const coverPoleSectionStyle = (poleIndex: number): React.CSSProperties => ({
-    display: "flex",
-    flexDirection: "row",
-    height: `calc((100vh - ${sizes.headerHeight}) / ${numberOfPoles})`,
+  const coverPoleSectionStyle = (poleIndex: number) => css`
+    display: flex;
+    flexDirection: row;
+    height: calc((100vh - ${sizes.headerHeight}) / ${numberOfPoles});
     // textAlign: "end",
-    backgroundColor: poleIndex % 2 === 0 ? pageTheme.secondaryColorLighter : pageTheme.secondaryColorLightest,
-  });
+    backgroundColor: ${poleIndex} % 2 === 0 ? pageTheme.secondaryColorLighter : pageTheme.secondaryColorLightest;
+    border-radius: 1em;
+    box-shadow: 0px 4px 22px -11px rgba(0, 0, 0, 0.75);
+    margin: 2em 3em;
+    color: ${colors.ajcfDark}
+  `;
 
   const coverPoleStyle = css`
+    border-radius: 0 1em 1em 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,37 +48,21 @@ export const EspacePoleCover = ({ pole, index, pageTheme, numberOfPoles }: Cover
     justify-content: center;
     width: 100%;
   `;
-
-  const learnMoreButtonStyle = css`
-    text-align: end;
-    a {
-      color: ${pageTheme.mainColorLight};
-      transition: background-color 0.1s ease-in-out;
-      padding: 0.75em 1.75em;
-      border-radius: 100px;
-      height: 40px !important;
-      box-shadow: 0 0 0.05em 0.1em ${pageTheme.mainColorLight};
-
-      &:hover {
-        background-color: ${pageTheme.secondaryColor};
-      }
-    }
-  `;
   return (
-    <div style={coverPoleSectionStyle(index)}>
-      <div css={descriptionPoleStyle}>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: pole.description?.childContentfulRichText?.html || "",
-          }}
-        />
-        <div css={learnMoreButtonStyle}>
-          <Link to={pole?.slug || ""}>En savoir plus</Link>
+    <Link to={pole?.slug || ""}>
+      <div css={coverPoleSectionStyle(index)}>
+        <div css={descriptionPoleStyle}>
+          <h1>{pole.title}</h1>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: pole.description?.childContentfulRichText?.html || "",
+            }}
+          />
+        </div>
+        <div css={coverPoleStyle}>
+          <Img imgStyle={{ objectFit: "contain" }} fluid={pole.cover?.fluid as ImageSharpFluid} alt="" />
         </div>
       </div>
-      <div css={coverPoleStyle}>
-        <Img imgStyle={{ objectFit: "contain" }} fluid={pole.cover?.fluid as ImageSharpFluid} alt="" />
-      </div>
-    </div>
+    </Link>
   );
 };
