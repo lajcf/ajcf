@@ -1,5 +1,5 @@
 export const sizes = {
-  headerHeight: "12vh",
+  headerHeight: "8.5em",
   sidebarWidth: "15em",
   sidebarTitleFontSize: "1.3em",
   secondarySidebarWidth: "15em",

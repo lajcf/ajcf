@@ -2,10 +2,11 @@
 @use '../variables/z-indices';
 
 #header {
+    align-items: center;
+    justify-content: center;
     > .main-title {
         font-weight: bold;
         color: colors.$ajcf-white;
-        padding-top: 1em;
         > h3.french-name {
             color: colors.$ajcf-white;
             letter-spacing: 0.1em;
