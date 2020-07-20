@@ -11,7 +11,7 @@
     "dotenv": "^8.2.0",
     "jest": "^25.4.0",
     "kind-of": "^6.0.3",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "memoize-one": "^5.1.1",
     "minimist": "^1.2.5",
     "moment": "^2.24.0",
