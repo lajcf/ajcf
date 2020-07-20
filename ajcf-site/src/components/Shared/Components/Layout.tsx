@@ -25,6 +25,33 @@ const Layout = ({ children }: { children: ReactNode }) => {
       margin-bottom: 2em;
     }
   `;
+  const mainStyleMj = css`
+    font-family: Ubuntu, Helvetica;
+    color: white;
+    padding: 0px 25px;
+    background-color: rgb(246, 98, 92);
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    border-radius: 3px;
+  `;
+  const tableStyleMj = css`
+    display: table;
+    height: 45px;
+  `;
+  const tableCellStyleMj = css`
+    display: table-cell;
+    vertical-align: middle;
+  `;
+  const buttonStyleMj = css`
+    font-family: Ubuntu, Helvetica;
+    display: inline-block;
+    text-align: center;
+    font-size: 13px;
+    vertical-align: middle;
+    color: rgb(253, 253, 246);
+  `;
+
   return (
     <StaticQuery
       query={graphql`
@@ -47,6 +74,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
             ]}
           >
             <html lang="fr" />
+            <script type="text/javascript" src="https://app.mailjet.com/statics/js/iframeResizer.min.js" />
           </Helmet>
           <div className="full-height">
             <Header />

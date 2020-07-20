@@ -19,6 +19,11 @@ const LandingHeaderInner = () => {
           Adhérer
         </Link>
       </li>
+      <li>
+        <Link className="main-link" to="/newsletter/">
+          Newsletter
+        </Link>
+      </li>
     </ul>
   );
 };
