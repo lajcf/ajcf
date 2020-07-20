@@ -47,6 +47,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
             ]}
           >
             <html lang="fr" />
+            <meta name="viewport" content="width=1024" />
           </Helmet>
           <div className="full-height">
             <Header />
