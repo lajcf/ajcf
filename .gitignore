@@ -2,6 +2,8 @@
 node_modules
 /**/.cache
 /ajcf-site/public
+/ajcf-new-site/public
+/ajcf-new-site/static
 /**/*.json
 /**/*.pdf
 /**/.env
