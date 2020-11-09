@@ -1,21 +1,17 @@
 import React from "react";
+import "./Header.css";
 import { Logo } from "./Logo";
-import { HeaderNavigation } from "./HeaderNavigation";
-import { HeaderNavigationContainer } from "./HeaderNavigationContainer";
+import { Navigation } from "./Navigation";
 import { SearchBar } from "./SearchBar";
-
-const headerNavigationContainerStyle: React.CSSProperties = {
-  display: "flex",
-};
+import { UserButtons } from "./UserButtons";
 
 export const Header = () => {
   return (
-    <>
+    <div className="header-container">
       <Logo />
-      <HeaderNavigationContainer style={headerNavigationContainerStyle}>
-        <SearchBar />
-        <HeaderNavigation />
-      </HeaderNavigationContainer>
-    </>
+      <SearchBar />
+      <Navigation />
+      <UserButtons />
+    </div>
   );
 };
