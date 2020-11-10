@@ -1,5 +1,5 @@
 import React from "react";
 
-export const Logo = () => {
-  return <div style={{ gridArea: "logo" }}>Logo</div>;
+export const Logo = ({ className }: any) => {
+  return <div className={className}>Logo</div>;
 };

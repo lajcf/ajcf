@@ -1,8 +1,8 @@
 import React from "react";
 
-export const Navigation = () => {
+export const Navigation = ({ className }: any) => {
   return (
-    <nav style={{ gridArea: "nav" }}>
+    <nav className={className}>
       <ul>
         <li>À propos de nous</li>
         <li>Projets AJCF</li>

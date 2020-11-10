@@ -1,0 +1,32 @@
+.header {
+  display: grid;
+  grid-template-columns: minmax(50px, 100px) 1fr minmax(100px, 200px);
+  grid-template-areas:
+    "logo . searchbar"
+    "logo nav user-buttons";
+
+  &__logo {
+    grid-area: logo;
+    place-self: center;
+  }
+
+  &__searchbar {
+    grid-area: searchbar;
+    justify-self: center;
+  }
+
+  &__nav {
+    grid-area: nav;
+
+    ul {
+      list-style-type: none;
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
+
+  &__user-buttons {
+    grid-area: user-buttons;
+    justify-self: center;
+  }
+}

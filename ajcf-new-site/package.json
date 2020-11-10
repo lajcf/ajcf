@@ -21,7 +21,9 @@
     "antd": "^4.8.0",
     "gatsby": "^2.25.3",
     "gatsby-plugin-manifest": "^2.5.2",
+    "gatsby-plugin-sass": "^2.4.2",
     "gatsby-plugin-typescript": "^2.5.0",
+    "node-sass": "4.14.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "typescript": "^4.0.5"

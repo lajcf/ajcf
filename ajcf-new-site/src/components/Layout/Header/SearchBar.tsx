@@ -1,5 +1,5 @@
 import React from "react";
 
-export const SearchBar = () => {
-  return <div style={{ gridArea: "searchbar" }}>Search bar</div>;
+export const SearchBar = ({ className }: any) => {
+  return <div className={className}>Search bar</div>;
 };
