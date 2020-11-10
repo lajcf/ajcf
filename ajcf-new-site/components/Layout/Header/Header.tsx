@@ -1,5 +1,4 @@
 import React from "react";
-import "./Header.scss";
 import { Logo } from "./Logo";
 import { Navigation } from "./Navigation";
 import { SearchBar } from "./SearchBar";

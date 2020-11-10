@@ -1,5 +1,4 @@
 import React from "react";
-import "./Footer.scss";
 import { Logo } from "./Logo";
 import { DonationPlea } from "./DonationPlea";
 import { HorizontalSeparator } from "./HorizontalSeparator";

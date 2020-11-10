@@ -1,4 +1,3 @@
-import "../../assets/theme/index.css";
 import React, { ReactNode } from "react";
 import { Footer } from "./Footer/Footer";
 import { Header } from "./Header/Header";

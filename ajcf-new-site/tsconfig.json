@@ -1,34 +1,29 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/", // path to output directory
-    "sourceMap": true, // allow sourcemap support
-    "strictNullChecks": true, // enable strict null checks as a best practice
-    "module": "commonjs", // specify module code generation
-    "jsx": "react", // use typescript to transpile jsx to js
-    "target": "es2019", // specify ECMAScript target version
-    "allowJs": true, // allow a partial TypeScript and JavaScript codebase
-    "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
-    "checkJs": false,
-    "removeComments": true,
-    "esModuleInterop": true,
-    "noImplicitAny": true,
-    "noUnusedParameters": true,
-    "noUnusedLocals": true,
-    "incremental": true,
-    "strict": true,
-    "resolveJsonModule": true,
+    "target": "es5",
     "lib": [
       "dom",
+      "dom.iterable",
       "esnext"
-    ]
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve"
   },
   "include": [
-    "./src/**/*"
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
   ],
   "exclude": [
     "node_modules"
   ]
 }
-
-
