@@ -5,17 +5,17 @@
     "logo . searchbar"
     "logo nav user-buttons";
 
-  &__logo {
+  .logo {
     grid-area: logo;
     place-self: center;
   }
 
-  &__searchbar {
+  .searchbar {
     grid-area: searchbar;
     justify-self: center;
   }
 
-  &__nav {
+  .nav {
     grid-area: nav;
 
     ul {
@@ -25,7 +25,7 @@
     }
   }
 
-  &__userbuttons {
+  .userButtons {
     grid-area: user-buttons;
     justify-self: center;
   }

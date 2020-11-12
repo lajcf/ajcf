@@ -1,5 +1,6 @@
 import React from "react";
+import styles from "../Header/Header.module.scss";
 
-export const Logo = ({ className }: any) => {
-  return <div className={className}>Logo</div>;
+export const Logo = () => {
+  return <div className={styles.logo}>Logo</div>;
 };

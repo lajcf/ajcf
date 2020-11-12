@@ -1,6 +1,7 @@
 .footer {
   display: grid;
   grid-template-columns: 2rem 2fr 1rem 1fr 1fr 2rem;
+  grid-template-rows: auto;
   grid-template-areas:
     ". logo . donation-plea donation-plea ."
     ". separator-01 separator-01 separator-01 separator-01 ."
@@ -8,44 +9,44 @@
     ". separator-02 separator-02 separator-02 separator-02 ."
     ". copyright-ajcf . legal-links . .";
 
-  &__logo {
+  .logo {
     grid-area: logo;
     max-width: 200px;
     max-height: 200px;
   }
 
-  &__donation-plea {
+  .donationPlea {
     grid-area: donation-plea;
   }
 
-  &__separator {
-    width: 100%;
-    &-01 {
-      grid-area: separator-01;
-    }
-    &-02 {
-      grid-area: separator-02;
-    }
-  }
-
-  &__newsletter-plea {
+  .newsletterPlea {
     grid-area: newsletter-plea;
   }
 
-  &__internal-links {
+  .internalLinks {
     grid-area: internal-links;
   }
 
-  &__social-media-links {
+  .socialMediaLinks {
     grid-area: social-media-links;
   }
 
-  &__copyright-ajcf {
+  .copyrightAJCF {
     grid-area: copyright-ajcf;
     justify-self: right;
   }
 
-  &__legal-links {
+  .legalLinks {
     grid-area: legal-links;
+  }
+
+  .separator {
+    width: 100%;
+    &01 {
+      grid-area: separator-01;
+    }
+    &02 {
+      grid-area: separator-02;
+    }
   }
 }

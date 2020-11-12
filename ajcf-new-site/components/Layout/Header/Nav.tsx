@@ -1,8 +1,9 @@
 import React from "react";
+import styles from "../Header/Header.module.scss";
 
-export const Navigation = ({ className }: any) => {
+export const Nav = () => {
   return (
-    <nav className={className}>
+    <nav className={styles.nav}>
       <ul>
         <li>À propos de nous</li>
         <li>Projets AJCF</li>

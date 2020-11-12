@@ -1,5 +1,6 @@
 import React from "react";
+import styles from "../Footer.module.scss";
 
-export const NewsletterPlea = ({ className }: any) => {
-  return <div className={className}>NewsletterPlea</div>;
+export const NewsletterPlea = () => {
+  return <div className={styles.newsletterPlea}>NewsletterPlea</div>;
 };

@@ -1,5 +1,6 @@
 import React from "react";
+import styles from "../Footer.module.scss";
 
-export const InternalLinks = ({ className }: any) => {
-  return <div className={className}>InternalLinks</div>;
+export const InternalLinks = () => {
+  return <div className={styles.internalLinks}>InternalLinks</div>;
 };

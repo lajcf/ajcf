@@ -1,5 +1,6 @@
 import React from "react";
+import styles from "../Footer.module.scss";
 
-export const LegalLinks = ({ className }: any) => {
-  return <div className={className}>LegalLinks</div>;
+export const LegalLinks = () => {
+  return <div className={styles.legalLinks}>LegalLinks</div>;
 };

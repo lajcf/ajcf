@@ -1,5 +1,6 @@
 import React from "react";
+import styles from "../Header/Header.module.scss";
 
-export const SearchBar = ({ className }: any) => {
-  return <div className={className}>Search bar</div>;
+export const SearchBar = () => {
+  return <div className={styles.searchbar}>Search bar</div>;
 };
