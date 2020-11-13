@@ -1,0 +1,47 @@
+.espaces {
+  background-color: #ffffff;
+  min-height: 50vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr;
+  grid-template-areas:
+    "title"
+    "text"
+    "espacesDescriptions";
+  place-items: center;
+
+  .title {
+    grid-area: title;
+  }
+  .text {
+    grid-area: text;
+  }
+  .espacesDescriptions {
+    grid-area: espacesDescriptions;
+    place-self: stretch;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "talk learn"
+      "meet enjoy";
+    .espaceDescription {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+    .talk {
+      grid-area: talk;
+    }
+    .learn {
+      grid-area: learn;
+    }
+    .meet {
+      grid-area: meet;
+    }
+    .enjoy {
+      grid-area: enjoy;
+    }
+  }
+}
