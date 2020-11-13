@@ -1,4 +1,5 @@
 .header {
+  background-color: #f4f6fb;
   display: grid;
   grid-template-columns: minmax(50px, 100px) 1fr minmax(100px, 200px);
   grid-template-areas:
@@ -8,6 +9,7 @@
   .logo {
     grid-area: logo;
     place-self: center;
+    color: #486db6;
   }
 
   .searchbar {

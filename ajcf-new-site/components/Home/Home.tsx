@@ -1,6 +1,13 @@
 import React from "react";
 import styles from "./Home.module.scss";
+import { Banner } from "./HomeComponents/BannerComponents/Banner";
 
 export const Home = () => {
-  return <div className={styles.home}>This is home</div>;
+  return (
+    <main className={styles.flexContainer}>
+      <div className={styles.home}>
+        <Banner />
+      </div>
+    </main>
+  );
 };

@@ -1,0 +1,25 @@
+.banner {
+  background-color: #f4f6fb;
+  min-height: 50vh;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-areas:
+    "image title title"
+    "image text text"
+    "image . buttons";
+
+  .image {
+    grid-area: image;
+    place-self: center;
+  }
+  .title {
+    grid-area: title;
+    place-self: center;
+  }
+  .text {
+    grid-area: text;
+  }
+  .buttons {
+    grid-area: buttons;
+  }
+}
