@@ -4,6 +4,7 @@ import { Banner } from "./HomeComponents/BannerComponents/Banner";
 import { Espaces } from "./HomeComponents/EspacesComponents/Espaces";
 import { Carousel } from "./HomeComponents/CarouselComponents/Carousel";
 import { Stats } from "./HomeComponents/StatsComponents/Stats";
+import { Partners } from "./HomeComponents/PartnersComponents/Partners";
 
 export const Home = () => {
   return (
@@ -13,6 +14,7 @@ export const Home = () => {
         <Espaces />
         <Carousel />
         <Stats />
+        <Partners />
       </div>
     </main>
   );
