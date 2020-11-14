@@ -1,0 +1,60 @@
+.interventions {
+  background-color: #f4f6fb;
+  padding: 2rem;
+  display: grid;
+  grid-template-areas:
+    "title"
+    "text"
+    "cards"
+    "button";
+  place-items: center;
+
+  .title {
+    grid-area: title;
+    color: #6a88c3;
+    padding: 1rem;
+  }
+  .text {
+    grid-area: text;
+    text-align: center;
+    padding: 2rem;
+  }
+  .cards {
+    grid-area: cards;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-areas:
+      "education sos"
+      "respect prefectures";
+    grid-gap: 1rem;
+    * {
+      color: #3c64b1;
+    }
+    .card {
+      background-color: #e5ebf5;
+      height: 8rem;
+      width: 16rem;
+      display: grid;
+      place-items: center;
+    }
+    .education {
+      grid-area: education;
+    }
+    .sos {
+      grid-area: sos;
+    }
+    .respect {
+      grid-area: respect;
+    }
+    .prefectures {
+      grid-area: prefectures;
+    }
+  }
+
+  .button {
+    grid-area: button;
+    padding: 2rem;
+  }
+}
