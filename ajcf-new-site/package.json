@@ -8,8 +8,11 @@
   },
   "dependencies": {
     "@types/antd": "^1.0.0",
+    "@types/imagemin-mozjpeg": "^8.0.0",
     "antd": "^4.8.2",
+    "imagemin-mozjpeg": "^9.0.0",
     "next": "10.0.1",
+    "next-optimized-images": "^2.6.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "sass": "^1.29.0"
