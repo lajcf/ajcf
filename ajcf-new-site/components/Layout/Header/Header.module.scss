@@ -11,6 +11,10 @@
     grid-area: logo;
     place-self: center;
     color: #486db6;
+    > img {
+      height: 7rem;
+      margin: 1rem
+    }
   }
 
   .searchbar {
