@@ -1,13 +1,14 @@
 .carousel {
   background-color: #f4f6fb;
   min-height: 50vh;
+  padding: 2rem;
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 3fr 2rem 2fr;
   grid-template-areas:
-    "image categoryName"
-    "image title"
-    "image text"
-    "image readButton";
+    "image . categoryName"
+    "image . title"
+    "image . text"
+    "image . readButton";
 
   .image {
     grid-area: image;

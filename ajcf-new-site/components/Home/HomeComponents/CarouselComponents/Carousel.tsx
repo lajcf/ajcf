@@ -8,12 +8,12 @@ import { ReadButton } from "./readButton";
 
 export const Carousel = () => {
   return (
-    <div className={styles.carousel}>
+    <section className={styles.carousel}>
       <Image />
       <CategoryName />
       <Title />
       <Text />
       <ReadButton />
-    </div>
+    </section>
   );
 };

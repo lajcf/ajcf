@@ -3,6 +3,7 @@ import styles from "./Home.module.scss";
 import { Banner } from "./HomeComponents/BannerComponents/Banner";
 import { Espaces } from "./HomeComponents/EspacesComponents/Espaces";
 import { Carousel } from "./HomeComponents/CarouselComponents/Carousel";
+import { Stats } from "./HomeComponents/StatsComponents/Stats";
 
 export const Home = () => {
   return (
@@ -11,6 +12,7 @@ export const Home = () => {
         <Banner />
         <Espaces />
         <Carousel />
+        <Stats />
       </div>
     </main>
   );
