@@ -1,0 +1,12 @@
+overwrite: true
+schema: "${GRAPHCMS_URL}"
+documents: "lib/**/*.graphql"
+generates:
+  types/types.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typed-document-node"
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"
