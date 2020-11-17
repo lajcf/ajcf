@@ -1,12 +1,13 @@
 import React from "react";
+import { Button } from "antd";
 import styles from "./Interventions.module.scss";
 
 const buttonContent = `En savoir plus`;
 
-export const Button = () => {
+export const LearnMore = () => {
   return (
     <div className={styles.button}>
-      <button>{buttonContent}</button>
+      <Button>{buttonContent}</Button>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import styles from "./Interventions.module.scss";
 import { Title } from "./Title";
 import { Text } from "./Text";
 import { Cards } from "./Cards";
-import { Button } from "./Button";
+import { LearnMore } from "./LearnMore";
 
 export const Interventions = () => {
   return (
@@ -11,7 +11,7 @@ export const Interventions = () => {
       <Title />
       <Text />
       <Cards />
-      <Button />
+      <LearnMore />
     </section>
   );
 };

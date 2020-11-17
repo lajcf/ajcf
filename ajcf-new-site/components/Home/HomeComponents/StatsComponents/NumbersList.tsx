@@ -1,21 +1,26 @@
 import React from "react";
 import styles from "./Stats.module.scss";
 
-const numbers = [
+type StatNumbers = {
+  className: string;
+  content: string;
+};
+
+const numbers: StatNumbers[] = [
   {
-    className: `${styles.existence}`,
+    className: styles.existence,
     content: `10 ans\nd'existence`,
   },
   {
-    className: `${styles.activeMembers}`,
+    className: styles.activeMembers,
     content: `50\nmembres actifs`,
   },
   {
-    className: `${styles.members}`,
+    className: styles.members,
     content: `300\nadhérents`,
   },
   {
-    className: `${styles.followers}`,
+    className: styles.followers,
     content: `6k\nfollowers`,
   },
 ];

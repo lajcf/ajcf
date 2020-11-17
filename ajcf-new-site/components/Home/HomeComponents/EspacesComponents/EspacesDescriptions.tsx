@@ -1,33 +1,42 @@
 import React from "react";
+import { CoffeeOutlined, CommentOutlined, RadarChartOutlined, TeamOutlined } from "@ant-design/icons";
 import styles from "./Espaces.module.scss";
-import { CommentOutlined, RadarChartOutlined, TeamOutlined, CoffeeOutlined } from "@ant-design/icons";
+import { EspaceDescription } from "./EspaceDescription";
 
-const espacesContent = [
+export type EspaceContent = {
+  name: string;
+  logo: React.ForwardRefExoticComponent<any>;
+  className: string;
+  text: string;
+  linkText: string;
+};
+
+const espacesContent: EspaceContent[] = [
   {
     name: "Espace TALK",
     logo: CommentOutlined,
-    className: `${styles.talk}`,
+    className: styles.talk,
     text: "At eripuit signiferumque sea, vel ad mucius molestie, cu labitur iuvaret vulputate sed.",
     linkText: "Découvrir",
   },
   {
     name: "Espace LEARN",
     logo: RadarChartOutlined,
-    className: `${styles.learn}`,
+    className: styles.learn,
     text: "At eripuit signiferumque sea, vel ad mucius molestie, cu labitur iuvaret vulputate sed.",
     linkText: "Découvrir",
   },
   {
     name: "Espace MEET",
     logo: TeamOutlined,
-    className: `${styles.meet}`,
+    className: styles.meet,
     text: "At eripuit signiferumque sea, vel ad mucius molestie, cu labitur iuvaret vulputate sed.",
     linkText: "Découvrir",
   },
   {
     name: "Espace ENJOY",
     logo: CoffeeOutlined,
-    className: `${styles.enjoy}`,
+    className: styles.enjoy,
     text: "At eripuit signiferumque sea, vel ad mucius molestie, cu labitur iuvaret vulputate sed.",
     linkText: "Découvrir",
   },
@@ -36,15 +45,8 @@ const espacesContent = [
 export const EspacesDescriptions = () => {
   return (
     <div className={styles.espacesDescriptions}>
-      {espacesContent.map((espace: any) => (
-        <div key={espace.name} className={`${styles.espaceDescription} ${espace.className}`}>
-          {React.createElement(espace.logo, {
-            style: { fontSize: "2rem" },
-          })}
-          <h3>{espace.name}</h3>
-          <p style={{ textAlign: "center" }}>{espace.text}</p>
-          <a>{espace.linkText}</a>
-        </div>
+      {espacesContent.map((espace) => (
+        <EspaceDescription key={espace.name} espace={espace} />
       ))}
     </div>
   );

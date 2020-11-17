@@ -1,10 +1,11 @@
 import React from "react";
+import { Button } from "antd";
 import styles from "./Stats.module.scss";
 
 export const JoinButton = () => {
   return (
     <div className={styles.joinButton}>
-      <button>Nous rejoindre</button>
+      <Button>Nous rejoindre</Button>
     </div>
   );
 };

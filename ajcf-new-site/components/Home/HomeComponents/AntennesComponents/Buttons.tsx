@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./Antennes.module.scss";
 import { Button } from "antd";
+import styles from "./Antennes.module.scss";
 
 export const Buttons = () => {
   return (
