@@ -6,6 +6,7 @@ import { Carousel } from "./HomeComponents/CarouselComponents/Carousel";
 import { Stats } from "./HomeComponents/StatsComponents/Stats";
 import { Partners } from "./HomeComponents/PartnersComponents/Partners";
 import { Interventions } from "./HomeComponents/InterventionsComponents/Interventions";
+import { Antennes } from "./HomeComponents/AntennesComponents/Antennes";
 
 export const Home = () => {
   return (
@@ -17,6 +18,7 @@ export const Home = () => {
         <Stats />
         <Partners />
         <Interventions />
+        <Antennes />
       </div>
     </main>
   );
