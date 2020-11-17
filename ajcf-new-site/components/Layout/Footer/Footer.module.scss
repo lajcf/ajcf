@@ -12,12 +12,23 @@
 
   .logo {
     grid-area: logo;
-    max-width: 200px;
-    max-height: 200px;
+    img {
+      height: 7rem;
+    }
   }
 
   .donationPlea {
     grid-area: donation-plea;
+    display: grid;
+    grid-template-areas: "donationText donationButton";
+    place-items: center;
+    .donationText {
+      grid-area: donationText;
+      color: #5376ba;
+    }
+    .donationButton {
+      grid-area: donationButton;
+    }
   }
 
   .newsletterPlea {
