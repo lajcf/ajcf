@@ -1,7 +1,6 @@
 import React from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { graphqlRequest } from "../../../lib/graphql/graphqlClient";
-import { PostQueryDocument, PostsMetadataQueryDocument } from "../../../types/types";
+import { graphqlClient } from "../../../lib/graphql/graphqlClient";
 import { Layout } from "../../../components/Layout/Layout";
 
 export default function Post() {
@@ -9,9 +8,7 @@ export default function Post() {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await graphqlRequest(PostsMetadataQueryDocument);
-  console.log("HAHAHA");
-  console.log(posts);
+  const posts = await graphqlClient.postsMetadataQuery();
   return {
     paths: posts.posts.map((post) => ({ params: { id: post.id } })) || [],
     fallback: false,
@@ -19,8 +16,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps<any, { id: string }> = async ({ params }) => {
-  const postData = await graphqlRequest(PostQueryDocument, { id: params?.id || "" });
-  console.log(postData);
+  const postData = await graphqlClient.postQuery({ id: params?.id || "" });
   return {
     props: {
       postData,

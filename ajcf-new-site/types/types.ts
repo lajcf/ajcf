@@ -1,4 +1,7 @@
 import { TypedDocumentNode as DocumentNode } from "@graphql-typed-document-node/core";
+import { GraphQLClient } from "graphql-request";
+import { print } from "graphql";
+import gql from "graphql-tag";
 
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -1672,3 +1675,38 @@ export type PostsMetadataQueryQuery = (
 
 export const PostQueryDocument: DocumentNode<PostQueryQuery, PostQueryQueryVariables> = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"postQuery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}},"directives":[]}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"post"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}},{"kind":"Argument","name":{"kind":"Name","value":"stage"},"value":{"kind":"EnumValue","value":"DRAFT"}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"date"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"content"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"html"},"arguments":[],"directives":[]}]}}]}}]}}]};
 export const PostsMetadataQueryDocument: DocumentNode<PostsMetadataQueryQuery, PostsMetadataQueryQueryVariables> = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"postsMetadataQuery"},"variableDefinitions":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"posts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locales"},"value":{"kind":"ListValue","values":[{"kind":"EnumValue","value":"en"}]}},{"kind":"Argument","name":{"kind":"Name","value":"stage"},"value":{"kind":"EnumValue","value":"DRAFT"}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]}]}}]}}]};
+
+export const PostQueryDocument = gql`
+    query postQuery($id: ID!) {
+  post(where: {id: $id}, stage: DRAFT) {
+    title
+    date
+    content {
+      html
+    }
+  }
+}
+    `;
+export const PostsMetadataQueryDocument = gql`
+    query postsMetadataQuery {
+  posts(locales: [en], stage: DRAFT) {
+    id
+  }
+}
+    `;
+
+export type SdkFunctionWrapper = <T>(action: () => Promise<T>) => Promise<T>;
+
+
+const defaultWrapper: SdkFunctionWrapper = sdkFunction => sdkFunction();
+export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
+  return {
+    postQuery(variables: PostQueryQueryVariables): Promise<PostQueryQuery> {
+      return withWrapper(() => client.request<PostQueryQuery>(print(PostQueryDocument), variables));
+    },
+    postsMetadataQuery(variables?: PostsMetadataQueryQueryVariables): Promise<PostsMetadataQueryQuery> {
+      return withWrapper(() => client.request<PostsMetadataQueryQuery>(print(PostsMetadataQueryDocument), variables));
+    }
+  };
+}
+export type Sdk = ReturnType<typeof getSdk>;
