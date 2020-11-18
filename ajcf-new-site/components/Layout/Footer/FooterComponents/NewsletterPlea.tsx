@@ -9,9 +9,9 @@ export const NewsletterPlea = () => {
   return (
     <div className={styles.newsletterPlea}>
       <h3>Inscrivez-vous à notre Newsletter !</h3>
-      <div>
+      <div style={{ width: "100%" }}>
         <Input.Group compact>
-          <Input placeholder="Email address" bordered={false} style={{ width: "50%" }} />
+          <Input placeholder="Email address" bordered={false} style={{ width: "60%" }} />
           <Button type="primary">
             <RightOutlined />
           </Button>

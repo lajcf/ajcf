@@ -6,7 +6,7 @@ export const DonationPlea = () => {
   return (
     <div className={styles.donationPlea}>
       <h3 className={styles.donationText}>Envie de nous soutenir?</h3>
-      <Button type="primary" className={styles.donationButton}>
+      <Button type="primary" size="large" shape="round" block className={styles.donationButton}>
         Faire un don
       </Button>
     </div>
