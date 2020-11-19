@@ -1,0 +1,27 @@
+{
+  "types": {
+    "fix": {},
+    "feat": {},
+    "perf": {},
+    "enh": {},
+    "refactor": {},
+    "style": {},
+    "revert": {},
+    "ci": {},
+    "eng": {},
+    "docs": {},
+    "chore": {},
+    "tests": {},
+    "review": {},
+    "pp": {}
+  },
+  "commonScopes": {
+    "home": {},
+    "site": {},
+    "back": {},
+    "mail": {},
+    "member": {},
+    "events": {},
+    "devops": {}
+  }
+}
