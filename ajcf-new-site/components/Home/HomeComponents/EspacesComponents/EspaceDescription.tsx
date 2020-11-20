@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Espaces.module.scss";
 import { EspaceContent } from "./EspacesDescriptions";
 
-const logoStyle = { fontSize: "2rem" };
+const logoStyle = { fontSize: "20px", color: "#3C64B1" };
 const textStyle: React.CSSProperties = { textAlign: "center" };
 
 export const EspaceDescription = ({ espace }: { espace: EspaceContent }) => {

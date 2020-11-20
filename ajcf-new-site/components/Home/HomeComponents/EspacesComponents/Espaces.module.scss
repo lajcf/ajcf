@@ -12,9 +12,13 @@
 
   .title {
     grid-area: title;
+    font-weight: bold;
+    font-size: 1.5rem;
   }
   .text {
     grid-area: text;
+    text-align: center;
+    color: 737b7d;
   }
   .espacesDescriptions {
     grid-area: espacesDescriptions;
