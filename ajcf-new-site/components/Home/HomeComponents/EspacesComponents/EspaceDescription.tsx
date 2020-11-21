@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./Espaces.module.scss";
 import { EspaceContent } from "./EspacesDescriptions";
 
-const logoStyle = { fontSize: "20px", color: "#3C64B1" };
-const textStyle: React.CSSProperties = { textAlign: "center" };
+const logoStyle = { fontSize: "24px", color: "#3C64B1", padding: "1rem" };
+const textStyle: React.CSSProperties = { textAlign: "center", padding: "1rem" };
 
 export const EspaceDescription = ({ espace }: { espace: EspaceContent }) => {
   const Logo = espace.logo;

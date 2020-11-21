@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "../Footer.module.scss";
 
-const termContent = "Termes & Conditions";
-const privacyContent = "Privacy Policy";
+const termContent = "Mentions légales";
+const privacyContent = "Politique de confidentialité";
 
 export const LegalLinks = () => {
   return (

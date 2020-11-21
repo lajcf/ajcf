@@ -12,10 +12,10 @@ export const InternalLinks = () => {
           <small>Espaces</small>
         </li>
         <li>
-          <small>Interventions</small>
+          <small>Antennes</small>
         </li>
         <li>
-          <small>Collaborations</small>
+          <small>Education</small>
         </li>
       </ul>
       <ul className={styles.aide}>
@@ -23,10 +23,13 @@ export const InternalLinks = () => {
           <h3>Aide</h3>
         </li>
         <li>
-          <small>FAQs</small>
+          <small>FAQ</small>
         </li>
         <li>
-          <small>Contactez-nous</small>
+          <small>Recrutement</small>
+        </li>
+        <li>
+          <small>Contact</small>
         </li>
       </ul>
     </div>

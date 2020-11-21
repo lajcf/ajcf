@@ -9,7 +9,7 @@ type StatNumbers = {
 const numbers: StatNumbers[] = [
   {
     className: styles.existence,
-    content: `10 ans\nd'existence`,
+    content: `> 10 ans\nd'existence`,
   },
   {
     className: styles.activeMembers,
@@ -21,7 +21,7 @@ const numbers: StatNumbers[] = [
   },
   {
     className: styles.followers,
-    content: `6k\nfollowers`,
+    content: `11k\nfollowers`,
   },
 ];
 

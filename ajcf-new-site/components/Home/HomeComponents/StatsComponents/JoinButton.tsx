@@ -5,7 +5,7 @@ import styles from "./Stats.module.scss";
 export const JoinButton = () => {
   return (
     <div className={styles.joinButton}>
-      <Button>Nous rejoindre</Button>
+      <Button type="primary">Nous rejoindre</Button>
     </div>
   );
 };
