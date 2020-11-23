@@ -2,14 +2,14 @@
   background-color: #f3f6fa;
   padding: 1rem;
   display: grid;
-  grid-template-columns: 2rem 2fr 1rem 1fr 1fr 2rem;
+  grid-template-columns: 2fr 1rem 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-    ". logo . donationPlea donationPlea ."
-    ". separator01 separator01 separator01 separator01 ."
-    ". newsletterPlea . internalLinks socialMediaLinks ."
-    ". separator02 separator02 separator02 separator02 ."
-    ". copyrightAJCF . legalLinks legalLinks .";
+    "logo . donationPlea donationPlea"
+    "separator01 separator01 separator01 separator01 "
+    "newsletterPlea . internalLinks socialMediaLinks "
+    "separator02 separator02 separator02 separator02 "
+    "copyrightAJCF . legalLinks legalLinks ";
 
   .logo {
     grid-area: logo;

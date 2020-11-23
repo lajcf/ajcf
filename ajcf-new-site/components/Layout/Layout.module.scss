@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  header,
+  footer {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  section {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
