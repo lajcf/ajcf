@@ -7,7 +7,7 @@ import { EspacesDescriptions } from "./EspacesDescriptions";
 export const Espaces = () => {
   return (
     <section className={styles.espaces}>
-      <Title />
+      <Title className={styles.title} />
       <Text />
       <EspacesDescriptions />
     </section>

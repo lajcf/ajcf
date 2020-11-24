@@ -1,6 +1,6 @@
 .espaces {
   background-color: #ffffff;
-  min-height: 50vh;
+  padding: 2rem;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto 1fr;
@@ -12,9 +12,13 @@
 
   .title {
     grid-area: title;
+    font-weight: bold;
+    font-size: 1.5rem;
   }
   .text {
     grid-area: text;
+    text-align: center;
+    color: 737b7d;
   }
   .espacesDescriptions {
     grid-area: espacesDescriptions;

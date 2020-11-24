@@ -1,17 +1,19 @@
 import React from "react";
-import styles from "./Interventions.module.scss";
+import styles from "./Education.module.scss";
+import { CategoryName } from "./CategoryName";
 import { Title } from "./Title";
 import { Text } from "./Text";
 import { Cards } from "./Cards";
-import { Button } from "./Button";
+import { LearnMore } from "./LearnMore";
 
-export const Interventions = () => {
+export const Education = () => {
   return (
     <section className={styles.interventions}>
+      <CategoryName />
       <Title />
       <Text />
       <Cards />
-      <Button />
+      <LearnMore />
     </section>
   );
 };

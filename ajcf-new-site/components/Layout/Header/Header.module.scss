@@ -1,19 +1,19 @@
 .header {
   background-color: #f4f6fb;
-  padding-bottom: 0.5rem;
+  padding: 1rem;
   display: grid;
-  grid-template-columns: minmax(50px, 100px) 1fr minmax(100px, 200px);
+  grid-template-columns: auto 1fr auto;
   grid-template-areas:
-    "logo . searchbar"
-    "logo nav user-buttons";
+    " logo . searchbar "
+    " logo nav user-buttons ";
 
   .logo {
     grid-area: logo;
     place-self: center;
     color: #486db6;
-    > img {
+    .logoImg {
       height: 7rem;
-      margin: 1rem
+      margin: 1rem;
     }
   }
 
@@ -26,7 +26,9 @@
     grid-area: nav;
 
     ul {
-      list-style-type: none;
+      list-style: none;
+      margin: 0;
+      padding: 0;
       display: flex;
       justify-content: space-evenly;
     }

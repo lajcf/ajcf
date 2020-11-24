@@ -7,7 +7,7 @@
   grid-template-areas:
     "image title title"
     "image text text"
-    "image . buttons";
+    "image buttons buttons";
 
   .image {
     grid-area: image;
@@ -16,11 +16,19 @@
   .title {
     grid-area: title;
     place-self: center;
+    font-weight: bold;
+    font-size: 2rem;
   }
   .text {
     grid-area: text;
   }
   .buttons {
     grid-area: buttons;
+    justify-self: end;
+    display: flex;
+    justify-content: space-between;
+    .histoire {
+      margin-right: 1rem;
+    }
   }
 }

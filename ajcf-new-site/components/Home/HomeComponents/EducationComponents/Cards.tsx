@@ -1,10 +1,10 @@
 import React from "react";
-import styles from "./Interventions.module.scss";
+import styles from "./Education.module.scss";
 
 const interventions = [
   {
     className: `${styles.education}`,
-    title: `Sensibiliser les écoles`,
+    title: `Interventions scolaires`,
     text: `Ministère de l'Éducation`,
   },
   {
@@ -19,8 +19,8 @@ const interventions = [
   },
   {
     className: `${styles.prefectures}`,
-    title: `Aide aux victimes`,
-    text: `Préfectures 93, 94, 95`,
+    title: `Nom de projet`,
+    text: `Nom du partenaire`,
   },
 ];
 
@@ -29,8 +29,10 @@ export const Cards = () => {
     <ul className={styles.cards}>
       {interventions.map((intervention) => (
         <li key={intervention.className} className={`${intervention.className} ${styles.card}`}>
-          <h3>{intervention.title}</h3>
-          <p>{intervention.text}</p>
+          <div className={styles.card__Content}>
+            <h3>{intervention.title}</h3>
+            <p>{intervention.text}</p>
+          </div>
         </li>
       ))}
     </ul>

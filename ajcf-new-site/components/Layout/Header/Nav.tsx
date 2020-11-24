@@ -6,7 +6,7 @@ export const Nav = () => {
   return (
     <nav className={styles.nav}>
       <ul>
-        <Link href="/a-propos/who-are-we">
+        <Link href="/a-propos/qui-sommes-nous">
           <a>À propos de nous</a>
         </Link>
         <Link href="/projets-ajcf">

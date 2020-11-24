@@ -3,16 +3,21 @@
   padding: 2rem;
   display: grid;
   grid-template-areas:
+    "categoryName"
     "title"
     "text"
     "cards"
     "button";
   place-items: center;
 
-  .title {
-    grid-area: title;
+  .categoryName {
+    grid-area: categoryName;
     color: #6a88c3;
     padding: 1rem;
+  }
+  .title {
+    grid-area: title;
+    font-weight: bold;
   }
   .text {
     grid-area: text;
@@ -28,6 +33,7 @@
     grid-template-areas:
       "education sos"
       "respect prefectures";
+    place-items: center;
     grid-gap: 1rem;
     * {
       color: #3c64b1;
@@ -38,6 +44,10 @@
       width: 16rem;
       display: grid;
       place-items: center;
+      &__Content {
+        display: grid;
+        place-items: center;
+      }
     }
     .education {
       grid-area: education;

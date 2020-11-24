@@ -1,0 +1,37 @@
+.summary {
+  padding: 2rem 0;
+  display: grid;
+  .images {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.5fr 0.5fr 1fr;
+    grid-template-rows: 260px 224px;
+    grid-template-areas:
+      "image01 image01 image01 image02 image02"
+      "image03 image04 image05 image05 image06";
+    gap: 1rem;
+    figure {
+      background-color: #fbfcfd;
+      margin: 0;
+      display: grid;
+      place-items: center;
+    }
+    .image01 {
+      grid-area: image01;
+    }
+    .image02 {
+      grid-area: image02;
+    }
+    .image03 {
+      grid-area: image03;
+    }
+    .image04 {
+      grid-area: image04;
+    }
+    .image05 {
+      grid-area: image05;
+    }
+    .image06 {
+      grid-area: image06;
+    }
+  }
+}
