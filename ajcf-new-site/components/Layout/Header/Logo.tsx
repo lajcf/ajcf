@@ -4,7 +4,9 @@ import styles from "./Header.module.scss";
 export const Logo = () => {
   return (
     <div className={styles.logo}>
-      <img src={require("../../../public/ajcf-logo.jpg")} />
+      <a>
+        <img className={styles.logoImg} src={require("../../../public/ajcf-logo.jpg")} />
+      </a>
     </div>
   );
 };
