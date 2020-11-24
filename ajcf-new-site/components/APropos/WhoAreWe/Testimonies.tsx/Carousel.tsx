@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "./Testimonies.module.scss";
 
-export type card = {
+export type QuoteCard = {
   text: string;
   author: string;
   authorRole: string;
 };
 
-const cards: card[] = [
+const cards: QuoteCard[] = [
   {
     text: `Est tation latine aliquip id, mea ad tale illud definitiones. Periculis omittantur necessitatibus eum ad, pro eripuit minimum comprehensam ne, usu cu stet.`,
     author: `Sacha Lin`,
