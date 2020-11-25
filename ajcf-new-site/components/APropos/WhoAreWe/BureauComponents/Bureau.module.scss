@@ -1,0 +1,56 @@
+.bureau {
+  padding: 2rem 0;
+  display: grid;
+  grid-template-areas:
+    "categoryName"
+    "bureauMembers";
+  .categoryName {
+    grid-area: categoryName;
+  }
+  .bureauMembers {
+    grid-area: bureauMembers;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "laetitia daniel flora"
+      "huanyu antoine .";
+    place-items: center;
+    .bureauMember {
+      display: grid;
+      place-items: center;
+      .picBubble {
+        background-color: #f3f6fa;
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        margin-bottom: 1rem;
+      }
+      .name {
+        color: #3c64b1;
+      }
+      .role {
+        color: #3c64b1;
+      }
+      .occupation {
+        font-style: italic;
+      }
+    }
+    .laetitia {
+      grid-area: laetitia;
+    }
+    .daniel {
+      grid-area: daniel;
+    }
+    .flora {
+      grid-area: flora;
+    }
+    .huanyu {
+      grid-area: huanyu;
+    }
+    .antoine {
+      grid-area: antoine;
+    }
+  }
+}

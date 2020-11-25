@@ -4,7 +4,8 @@ import { Banner } from "../../components/APropos/WhoAreWe/BannerComponents/Banne
 import { Summary } from "../../components/APropos/WhoAreWe/SummaryComponents/Summary";
 import { OurStory } from "../../components/APropos/WhoAreWe/OurStoryComponents/OurStory";
 import { OurObjectives } from "../../components/APropos/WhoAreWe/OurObjectivesComponents/OurObjectives";
-import { Testimonies } from "../../components/APropos/WhoAreWe/Testimonies.tsx/Testimonies";
+import { Testimonies } from "../../components/APropos/WhoAreWe/TestimoniesComponents/Testimonies.tsx/Testimonies";
+import { Bureau } from "../../components/APropos/WhoAreWe/BureauComponents/Bureau";
 
 export default () => {
   return (
@@ -14,6 +15,7 @@ export default () => {
       <OurStory />
       <OurObjectives />
       <Testimonies />
+      <Bureau />
     </Layout>
   );
 };
