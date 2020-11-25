@@ -6,6 +6,7 @@ import { OurStory } from "../../components/APropos/WhoAreWe/OurStoryComponents/O
 import { OurObjectives } from "../../components/APropos/WhoAreWe/OurObjectivesComponents/OurObjectives";
 import { Testimonies } from "../../components/APropos/WhoAreWe/TestimoniesComponents/Testimonies.tsx/Testimonies";
 import { Bureau } from "../../components/APropos/WhoAreWe/BureauComponents/Bureau";
+import { ContactUs } from "../../components/APropos/WhoAreWe/ContactUsComponents/ContactUs";
 
 export default () => {
   return (
@@ -16,6 +17,7 @@ export default () => {
       <OurObjectives />
       <Testimonies />
       <Bureau />
+      <ContactUs />
     </Layout>
   );
 };
