@@ -11,9 +11,6 @@
     grid-area: bureauMembers;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas:
-      "laetitia daniel flora"
-      "huanyu antoine .";
     place-items: center;
     .bureauMember {
       display: grid;
@@ -36,21 +33,6 @@
       .occupation {
         font-style: italic;
       }
-    }
-    .laetitia {
-      grid-area: laetitia;
-    }
-    .daniel {
-      grid-area: daniel;
-    }
-    .flora {
-      grid-area: flora;
-    }
-    .huanyu {
-      grid-area: huanyu;
-    }
-    .antoine {
-      grid-area: antoine;
     }
   }
 }
