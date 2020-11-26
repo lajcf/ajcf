@@ -1,0 +1,8 @@
+.summary {
+  padding: 2rem 0;
+  display: grid;
+  .inPageLinks {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
