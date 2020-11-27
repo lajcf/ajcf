@@ -1,0 +1,9 @@
+.partners {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "quickAccess summary"
+    "quickAccess institutions"
+    "quickAccess associationsAndCollectives"
+    "quickAccess enterprises";
+}
