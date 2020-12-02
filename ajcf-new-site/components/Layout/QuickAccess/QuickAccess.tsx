@@ -1,0 +1,54 @@
+import React, { ReactNode } from "react";
+import styles from "./QuickAccess.module.scss";
+import Link from "next/link";
+import { Menu } from "antd";
+import { Page, Subpage } from "./QuickAccessContainer";
+
+export type Pathname = {
+  page: Page;
+  subPage: Subpage;
+};
+
+const QuickAccessLayout = ({
+  children,
+  defaultSelectedKeys,
+}: {
+  children: ReactNode;
+  defaultSelectedKeys: string[];
+}) => {
+  return (
+    <aside className={styles.quickAccess}>
+      <h2 className={styles.categoryName}>ACCES RAPIDE</h2>
+      <Menu className={styles.menu} defaultSelectedKeys={defaultSelectedKeys}>
+        {children}
+      </Menu>
+    </aside>
+  );
+};
+
+export const QuickAccess = ({ page, subPage }: Pathname) => {
+  return (
+    <>
+      {(() => {
+        switch (page) {
+          case "a-propos":
+            return (
+              <QuickAccessLayout defaultSelectedKeys={[subPage]}>
+                <Menu.Item key="qui-sommes-nous">
+                  <Link href="./qui-sommes-nous">Qui sommes-nous ?</Link>
+                </Menu.Item>
+                <Menu.Item key="partenaires">
+                  <Link href="./partenaires">Partenaires</Link>
+                </Menu.Item>
+                <Menu.Item key="presse">
+                  <Link href="./presse">Presse</Link>
+                </Menu.Item>
+              </QuickAccessLayout>
+            );
+          default:
+            return null;
+        }
+      })()}
+    </>
+  );
+};

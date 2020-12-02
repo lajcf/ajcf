@@ -5,13 +5,11 @@ import { Enterprises } from "../../components/APropos/Partners/EnterprisesCompon
 import { Institutions } from "../../components/APropos/Partners/InstitutionsComponents/Institutions";
 import { Summary } from "../../components/APropos/Partners/SummaryComponents/Summary";
 import { Layout } from "../../components/Layout/Layout";
-import { QuickAccess } from "../../components/APropos/QuickAccess/QuickAccess";
 
 export default () => {
   return (
     <Layout>
       <main className={styles.partners}>
-        <QuickAccess defaultSelectedKeys={["Partners"]} />
         <Summary />
         <Institutions />
         <AssociationsAndCollectives />

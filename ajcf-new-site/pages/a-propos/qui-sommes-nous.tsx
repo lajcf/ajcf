@@ -8,14 +8,12 @@ import { OurObjectives } from "../../components/APropos/WhoAreWe/OurObjectivesCo
 import { Testimonies } from "../../components/APropos/WhoAreWe/TestimoniesComponents/Testimonies.tsx/Testimonies";
 import { Bureau } from "../../components/APropos/WhoAreWe/BureauComponents/Bureau";
 import { ContactUs } from "../../components/APropos/WhoAreWe/ContactUsComponents/ContactUs";
-import { QuickAccess } from "../../components/APropos/QuickAccess/QuickAccess";
 
 export default () => {
   return (
     <Layout>
       <main className={styles.whoAreWe}>
         <Banner />
-        <QuickAccess defaultSelectedKeys={["WhoAreWe"]} />
         <Summary />
         <OurStory />
         <OurObjectives />
