@@ -2,11 +2,32 @@ import React, { ReactNode } from "react";
 import styles from "./QuickAccess.module.scss";
 import Link from "next/link";
 import { Menu } from "antd";
-import { Page, Subpage } from "./QuickAccessContainer";
+import { Page, SubPage } from "./QuickAccessContainer";
 
 export type Pathname = {
   page: Page;
-  subPage: Subpage;
+  subPage: SubPage;
+};
+
+export const QuickAccess = ({ page, subPage }: Pathname) => {
+  switch (page) {
+    case "a-propos":
+      return (
+        <QuickAccessLayout defaultSelectedKeys={[subPage]}>
+          <Menu.Item key="qui-sommes-nous">
+            <Link href="./qui-sommes-nous">Qui sommes-nous ?</Link>
+          </Menu.Item>
+          <Menu.Item key="partenaires">
+            <Link href="./partenaires">Partenaires</Link>
+          </Menu.Item>
+          <Menu.Item key="presse">
+            <Link href="./presse">Presse</Link>
+          </Menu.Item>
+        </QuickAccessLayout>
+      );
+    default:
+      return null;
+  }
 };
 
 const QuickAccessLayout = ({
@@ -23,32 +44,5 @@ const QuickAccessLayout = ({
         {children}
       </Menu>
     </aside>
-  );
-};
-
-export const QuickAccess = ({ page, subPage }: Pathname) => {
-  return (
-    <>
-      {(() => {
-        switch (page) {
-          case "a-propos":
-            return (
-              <QuickAccessLayout defaultSelectedKeys={[subPage]}>
-                <Menu.Item key="qui-sommes-nous">
-                  <Link href="./qui-sommes-nous">Qui sommes-nous ?</Link>
-                </Menu.Item>
-                <Menu.Item key="partenaires">
-                  <Link href="./partenaires">Partenaires</Link>
-                </Menu.Item>
-                <Menu.Item key="presse">
-                  <Link href="./presse">Presse</Link>
-                </Menu.Item>
-              </QuickAccessLayout>
-            );
-          default:
-            return null;
-        }
-      })()}
-    </>
   );
 };
