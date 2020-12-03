@@ -8,12 +8,14 @@ import { OurObjectives } from "../../components/APropos/WhoAreWe/OurObjectivesCo
 import { Testimonies } from "../../components/APropos/WhoAreWe/TestimoniesComponents/Testimonies.tsx/Testimonies";
 import { Bureau } from "../../components/APropos/WhoAreWe/BureauComponents/Bureau";
 import { ContactUs } from "../../components/APropos/WhoAreWe/ContactUsComponents/ContactUs";
+import { QuickAccessContainer } from "../../components/Layout/QuickAccess/QuickAccessContainer";
 
 export default () => {
   return (
     <Layout>
       <main className={styles.whoAreWe}>
         <Banner />
+        <QuickAccessContainer />
         <Summary />
         <OurStory />
         <OurObjectives />

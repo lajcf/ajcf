@@ -5,11 +5,13 @@ import { Enterprises } from "../../components/APropos/Partners/EnterprisesCompon
 import { Institutions } from "../../components/APropos/Partners/InstitutionsComponents/Institutions";
 import { Summary } from "../../components/APropos/Partners/SummaryComponents/Summary";
 import { Layout } from "../../components/Layout/Layout";
+import { QuickAccessContainer } from "../../components/Layout/QuickAccess/QuickAccessContainer";
 
 export default () => {
   return (
     <Layout>
       <main className={styles.partners}>
+        <QuickAccessContainer />
         <Summary />
         <Institutions />
         <AssociationsAndCollectives />
