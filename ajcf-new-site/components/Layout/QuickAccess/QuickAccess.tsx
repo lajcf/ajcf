@@ -13,7 +13,7 @@ export const QuickAccess = ({ page, subPage }: Pathname) => {
   switch (page) {
     case "a-propos":
       return (
-        <QuickAccessLayout defaultSelectedKeys={[subPage]}>
+        <QuickAccessLayout defaultSelectedKeys={typeof subPage === "string" ? [subPage] : [""]}>
           <Menu.Item key="qui-sommes-nous">
             <Link href="./qui-sommes-nous">Qui sommes-nous ?</Link>
           </Menu.Item>
@@ -35,7 +35,7 @@ const QuickAccessLayout = ({
   defaultSelectedKeys,
 }: {
   children: ReactNode;
-  defaultSelectedKeys: string[];
+  defaultSelectedKeys: string[] | undefined;
 }) => {
   return (
     <aside className={styles.quickAccess}>
