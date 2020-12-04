@@ -1,0 +1,33 @@
+.espaces {
+  background-color: #f3f6fa;
+  display: grid;
+  .categoryName {
+    color: #6a89c3;
+  }
+  .espacesCards {
+    padding: 1rem;
+    display: grid;
+    grid-auto-flow: column;
+    place-items: center;
+    .espaceCard {
+      border: 2px #6a89c3 solid;
+      border-radius: 15%;
+      text-align: center;
+      width: 8rem;
+      height: 8rem;
+      display: grid;
+      place-items: center;
+      .logo {
+        font-size: 1.5rem;
+        color: #6a89c3;
+      }
+      .text {
+        color: #6a89c3;
+      }
+    }
+  }
+  .learnMoreButton {
+    place-self: center;
+    margin: 1rem 0;
+  }
+}
