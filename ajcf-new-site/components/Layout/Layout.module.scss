@@ -7,7 +7,9 @@
     padding-right: 2rem;
   }
   section {
-    padding-left: 4rem;
-    padding-right: 4rem;
+    padding: 2rem 4rem;
+  }
+  quickAccessContainer {
+    grid-area: quickAccessContainer;
   }
 }
