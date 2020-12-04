@@ -25,7 +25,7 @@ const recentFiles: PressFiles[] = [
 
 export const MostRecent = () => {
   return (
-    <section className={styles.subcategory}>
+    <section className={`${styles.subcategory} ${styles.mostRecent}`}>
       <h2 className={styles.subcategoryName}>Les plus récents</h2>
       <FilesDisplay files={recentFiles} />
     </section>
