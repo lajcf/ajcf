@@ -9,7 +9,7 @@ import { Antennes } from "./HomeComponents/AntennesComponents/Antennes";
 
 export const Home = () => {
   return (
-    <>
+    <main>
       <Banner />
       <Espaces />
       <Carousel />
@@ -17,6 +17,6 @@ export const Home = () => {
       <Partners />
       <Education />
       <Antennes />
-    </>
+    </main>
   );
 };
