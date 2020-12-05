@@ -2,24 +2,22 @@ import React from "react";
 import { useRouter } from "next/router";
 import { QuickAccess } from "./QuickAccess";
 
-export type Page = "a-propos" | undefined;
+export type Page = "a-propos";
 
-export type SubPage = "qui-sommes-nous" | "partenaires" | "presse" | undefined;
+export type SubPage = "qui-sommes-nous" | "partenaires" | "presse";
 
-const parsePathname = () => {
-  const { pathname } = useRouter();
+const parsePathname = (pathname: string) => {
   const dividedPathname = pathname.split("/");
-  const page = dividedPathname[1] as Page;
-  const subPage = dividedPathname[2] as SubPage;
-  console.log(page);
-  console.log(subPage);
+  const page = dividedPathname[1] as Page | undefined;
+  const subPage = dividedPathname[2] as SubPage | undefined;
   return {
-    page: page,
-    subPage: subPage,
+    page,
+    subPage,
   };
 };
 
 export const QuickAccessContainer = () => {
-  const { page, subPage } = parsePathname();
+  const { pathname } = useRouter();
+  const { page, subPage } = parsePathname(pathname);
   return <QuickAccess page={page} subPage={subPage} />;
 };
