@@ -1,19 +1,19 @@
 import React, { ReactNode } from "react";
-import styles from "./QuickAccess.module.scss";
 import Link from "next/link";
 import { Menu } from "antd";
+import styles from "./QuickAccess.module.scss";
 import { Page, SubPage } from "./QuickAccessContainer";
 
-export type Pathname = {
-  page: Page;
-  subPage: SubPage;
+export type QuickAccessProps = {
+  page?: Page;
+  subPage?: SubPage;
 };
 
-export const QuickAccess = ({ page, subPage }: Pathname) => {
+export const QuickAccess = ({ page, subPage }: QuickAccessProps) => {
   switch (page) {
     case "a-propos":
       return (
-        <QuickAccessLayout defaultSelectedKeys={typeof subPage === "string" ? [subPage] : [""]}>
+        <QuickAccessLayout defaultSelectedKeys={subPage && [subPage]}>
           <Menu.Item key="qui-sommes-nous">
             <Link href="./qui-sommes-nous">Qui sommes-nous ?</Link>
           </Menu.Item>
@@ -35,7 +35,7 @@ const QuickAccessLayout = ({
   defaultSelectedKeys,
 }: {
   children: ReactNode;
-  defaultSelectedKeys: string[] | undefined;
+  defaultSelectedKeys?: SubPage[];
 }) => {
   return (
     <aside className={styles.quickAccess}>
