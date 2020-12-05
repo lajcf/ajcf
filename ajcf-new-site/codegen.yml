@@ -6,7 +6,6 @@ generates:
     plugins:
       - "typescript"
       - "typescript-operations"
-      - "typed-document-node"
       - "typescript-graphql-request"
   ./graphql.schema.json:
     plugins:
