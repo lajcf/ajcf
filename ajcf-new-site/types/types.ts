@@ -1694,10 +1694,10 @@ export type PostsMetadataQueryQuery = (
   )> }
 );
 
-export type PressFilesQueryVariables = Exact<{ [key: string]: never; }>;
+export type PressFilesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PressFilesQuery = (
+export type PressFilesQueryQuery = (
   { __typename?: 'Query' }
   & { assets: Array<(
     { __typename?: 'Asset' }
@@ -1724,9 +1724,9 @@ export const PostsMetadataQueryDocument = gql`
   }
 }
     `;
-export const PressFilesDocument = gql`
-    query pressFiles {
-  assets(where: {category: press}, stage: DRAFT) {
+export const PressFilesQueryDocument = gql`
+    query pressFilesQuery {
+  assets {
     fileName
     url
   }
@@ -1745,8 +1745,8 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     postsMetadataQuery(variables?: PostsMetadataQueryQueryVariables): Promise<PostsMetadataQueryQuery> {
       return withWrapper(() => client.request<PostsMetadataQueryQuery>(print(PostsMetadataQueryDocument), variables));
     },
-    pressFiles(variables?: PressFilesQueryVariables): Promise<PressFilesQuery> {
-      return withWrapper(() => client.request<PressFilesQuery>(print(PressFilesDocument), variables));
+    pressFilesQuery(variables?: PressFilesQueryQueryVariables): Promise<PressFilesQueryQuery> {
+      return withWrapper(() => client.request<PressFilesQueryQuery>(print(PressFilesQueryDocument), variables));
     }
   };
 }

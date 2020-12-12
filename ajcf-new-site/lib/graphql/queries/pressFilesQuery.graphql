@@ -1,0 +1,6 @@
+query pressFilesQuery {
+  assets {
+    fileName
+    url
+  }
+}
