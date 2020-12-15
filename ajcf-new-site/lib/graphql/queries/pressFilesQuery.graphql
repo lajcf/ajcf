@@ -1,6 +1,8 @@
 query pressFilesQuery {
-  assets {
+  assets(stage: DRAFT, where: { labels_contains_some: press }, orderBy: updatedAt_DESC) {
     fileName
     url
+    updatedAt
+		labels
   }
 }

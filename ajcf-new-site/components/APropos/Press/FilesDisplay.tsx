@@ -1,5 +1,8 @@
 import React from "react";
+import { Asset, Label } from "../../../types/types";
 import styles from "./Press.module.scss";
+import Link from "next/link";
+import { DownloadOutlined } from "@ant-design/icons";
 
 export type PressFiles = {
   category?: string;
@@ -8,20 +11,41 @@ export type PressFiles = {
   id: number;
 };
 
-const fileTitleContent = (file: PressFiles) => {
-  if (file.category) {
-    return `${file.date.toUpperCase()} - ${file.category.toUpperCase()}`;
+export const getLabel = (labels: Label[]) => {
+  const label = labels.find((label) => label === "pressReview" || label === "dispatches");
+  switch (label) {
+    case "pressReview":
+      return "Revue de presse";
+    case "dispatches":
+      return "Communiqués";
+    default:
+      return undefined;
   }
-  return file.date.toUpperCase();
 };
 
-export const FilesDisplay = ({ files }: { files: PressFiles[] }) => {
+const fileTitleContent = (file: Asset) => {
+  const date = file.updatedAt.match(/^\d+-\d+/);
+  const label = getLabel(file.labels);
+  if (label) {
+    return `${date[0]} - ${label.toUpperCase()}`;
+  }
+  return date[0];
+};
+
+export const FilesDisplay = ({ files }: { files: Asset[] }) => {
   return (
     <div className={styles.files}>
-      {files.map((file: PressFiles) => (
-        <div key={file.id} className={styles.file}>
+      {files.map((file) => (
+        <div key={file.fileName} className={styles.file}>
           <h3 className={styles.title}>{fileTitleContent(file)}</h3>
-          <p>{file.desc}</p>
+          <p>
+            {file.fileName}{" "}
+            <Link href={file.url}>
+              <a target="_blank">
+                <DownloadOutlined />
+              </a>
+            </Link>
+          </p>
         </div>
       ))}
     </div>

@@ -1,22 +1,22 @@
 import React from "react";
-import { Dispatches } from "../../components/APropos/Press/DispatchesComponents/Dispatches";
-import { MostRecent } from "../../components/APropos/Press/MostRecentComponents/MostRecent";
 import styles from "../../components/APropos/Press/Press.module.scss";
-import { PressReview } from "../../components/APropos/Press/PressReviewComponents/PressReview";
-import { Summary } from "../../components/APropos/Press/SummaryComponents/Summary";
 import { Layout } from "../../components/Layout/Layout";
+import { Summary } from "../../components/APropos/Press/SummaryComponents/Summary";
+import { MostRecent } from "../../components/APropos/Press/MostRecentComponents/MostRecent";
+import { PressReview } from "../../components/APropos/Press/PressReviewComponents/PressReview";
+import { Dispatches } from "../../components/APropos/Press/DispatchesComponents/Dispatches";
 import { graphqlClient } from "../../lib/graphql/graphqlClient";
 import { GetStaticProps } from "next";
+import { PressFilesQueryQuery } from "../../types/types";
 
-export default function Press(props) {
-  console.log(props);
+export default function Press({ pressFiles }: { pressFiles: PressFilesQueryQuery }) {
   return (
     <Layout>
       <main className={styles.press}>
         <Summary />
-        <MostRecent />
-        <PressReview />
-        <Dispatches />
+        <MostRecent pressFiles={pressFiles} />
+        {/* <PressReview />
+        <Dispatches /> */}
       </main>
     </Layout>
   );
