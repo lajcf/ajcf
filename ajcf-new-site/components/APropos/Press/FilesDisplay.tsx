@@ -24,7 +24,7 @@ export const getLabel = (labels: Label[]) => {
 };
 
 const fileTitleContent = (file: Asset) => {
-  const date = file.updatedAt.match(/^\d+-\d+/);
+  const date = file.updatedAt.match(/^\d+-\d+-\d+/);
   const label = getLabel(file.labels);
   if (label) {
     return `${date[0]} - ${label.toUpperCase()}`;

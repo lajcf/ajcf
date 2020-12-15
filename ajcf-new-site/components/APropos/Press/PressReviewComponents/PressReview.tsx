@@ -1,16 +1,15 @@
 import React from "react";
 import styles from "../Press.module.scss";
-import { PressFiles, FilesDisplay } from "../FilesDisplay";
+import { FilesDisplay } from "../FilesDisplay";
+import { PressFilesQueryQuery } from "../../../../types/types";
 
-const pressReviewFiles: PressFiles[] = [
-  {
-    date: "Juillet 2019",
-    desc: "Retombées et impact médiatique de la campagne #JeNeSuisPasUnVirus",
-    id: 1,
-  },
-];
+const getpressReviewFiles = (pressFiles: PressFilesQueryQuery) => {
+  return pressFiles.assets.filter((asset) => asset.labels.some((label) => label === "pressReview"));
+};
 
-export const PressReview = () => {
+export const PressReview = ({ pressFiles }: { pressFiles: PressFilesQueryQuery }) => {
+  const pressReviewFiles = getpressReviewFiles(pressFiles);
+  console.log(pressReviewFiles);
   return (
     <section className={styles.subcategory}>
       <h2 className={styles.subcategoryName}>Revue de presse</h2>

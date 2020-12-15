@@ -15,8 +15,8 @@ export default function Press({ pressFiles }: { pressFiles: PressFilesQueryQuery
       <main className={styles.press}>
         <Summary />
         <MostRecent pressFiles={pressFiles} />
-        {/* <PressReview />
-        <Dispatches /> */}
+        <PressReview pressFiles={pressFiles} />
+        <Dispatches pressFiles={pressFiles} />
       </main>
     </Layout>
   );

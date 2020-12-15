@@ -1,16 +1,14 @@
 import React from "react";
+import { PressFilesQueryQuery } from "../../../../types/types";
 import { FilesDisplay, PressFiles } from "../FilesDisplay";
 import styles from "../Press.module.scss";
 
-const dispatchesFiles: PressFiles[] = [
-  {
-    date: "Septembre 2020",
-    desc: "Soutien à George Floyd: la communauté asiatique se mobilise pour #BlackLivesMatter",
-    id: 1,
-  },
-];
+const getDispatchesFiles = (pressFiles: PressFilesQueryQuery) => {
+  return pressFiles.assets.filter((asset) => asset.labels.some((label) => label === "dispatches"));
+};
 
-export const Dispatches = () => {
+export const Dispatches = ({ pressFiles }: { pressFiles: PressFilesQueryQuery }) => {
+  const dispatchesFiles = getDispatchesFiles(pressFiles);
   return (
     <section className={styles.subcategory}>
       <h2 className={styles.subcategoryName}>Communiqués</h2>
