@@ -1,15 +1,14 @@
 import React from "react";
 import styles from "../Press.module.scss";
 import { FilesDisplay } from "../FilesDisplay";
-import { PressFilesQueryQuery } from "../../../../types/types";
+import { Label, PressFilesQueryQuery } from "../../../../types/types";
 
-const getpressReviewFiles = (pressFiles: PressFilesQueryQuery) => {
-  return pressFiles.assets.filter((asset) => asset.labels.some((label) => label === "pressReview"));
+const selectPressReviewFiles = (pressFiles: PressFilesQueryQuery) => {
+  return pressFiles.assets.filter((asset) => asset.labels.includes("pressReview" as Label)) 
 };
 
 export const PressReview = ({ pressFiles }: { pressFiles: PressFilesQueryQuery }) => {
-  const pressReviewFiles = getpressReviewFiles(pressFiles);
-  console.log(pressReviewFiles);
+  const pressReviewFiles = selectPressReviewFiles(pressFiles);
   return (
     <section className={styles.subcategory}>
       <h2 className={styles.subcategoryName}>Revue de presse</h2>

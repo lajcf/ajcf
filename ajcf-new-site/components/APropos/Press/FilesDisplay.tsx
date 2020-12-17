@@ -11,7 +11,7 @@ export type PressFiles = {
   id: number;
 };
 
-export const getLabel = (labels: Label[]) => {
+export const selectLabel = (labels: Label[]) => {
   const label = labels.find((label) => label === "pressReview" || label === "dispatches");
   switch (label) {
     case "pressReview":
@@ -19,13 +19,13 @@ export const getLabel = (labels: Label[]) => {
     case "dispatches":
       return "Communiqués";
     default:
-      return undefined;
+      return;
   }
 };
 
 const fileTitleContent = (file: Asset) => {
   const date = file.updatedAt.match(/^\d+-\d+-\d+/);
-  const label = getLabel(file.labels);
+  const label = selectLabel(file.labels);
   if (label) {
     return `${date[0]} - ${label.toUpperCase()}`;
   }
