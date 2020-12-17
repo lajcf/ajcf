@@ -1,20 +1,13 @@
 import React from "react";
 import styles from "../Press.module.scss";
-import { PressFiles, FilesDisplay } from "../FilesDisplay";
+import { FilesDisplay } from "../FilesDisplay";
+import { PressFileFragment } from "../../../../types/types";
 
-const pressReviewFiles: PressFiles[] = [
-  {
-    date: "Juillet 2019",
-    desc: "Retombées et impact médiatique de la campagne #JeNeSuisPasUnVirus",
-    id: 1,
-  },
-];
-
-export const PressReview = () => {
+export const PressReview = ({ pressFiles }: { pressFiles: PressFileFragment[] }) => {
   return (
     <section className={styles.subcategory}>
       <h2 className={styles.subcategoryName}>Revue de presse</h2>
-      <FilesDisplay files={pressReviewFiles} />
+      <FilesDisplay files={pressFiles} />
     </section>
   );
 };

@@ -1,0 +1,9 @@
+query postQuery($id: ID!) {
+  post(where: {id: $id}, stage: DRAFT) {
+    title
+    date
+    content {
+      html
+    }
+  }
+}
