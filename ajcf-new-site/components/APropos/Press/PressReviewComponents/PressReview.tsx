@@ -4,7 +4,7 @@ import { FilesDisplay } from "../FilesDisplay";
 import { Label, PressFilesQueryQuery } from "../../../../types/types";
 
 const selectPressReviewFiles = (pressFiles: PressFilesQueryQuery) => {
-  return pressFiles.assets.filter((asset) => asset.labels.includes("pressReview" as Label)) 
+  return pressFiles.assets.filter((asset) => asset.labels.includes(Label.PressReview));
 };
 
 export const PressReview = ({ pressFiles }: { pressFiles: PressFilesQueryQuery }) => {

@@ -1,8 +1,14 @@
+fragment pressFile on Asset {
+  fileName
+  url
+  updatedAt
+  labels
+}
+
+
 query pressFilesQuery {
   assets(stage: DRAFT, where: { labels_contains_some: press }, orderBy: updatedAt_DESC) {
-    fileName
-    url
-    updatedAt
-		labels
+    ...pressFile
+
   }
 }

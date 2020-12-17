@@ -1,38 +1,30 @@
 import React from "react";
-import { Asset, Label } from "../../../types/types";
-import styles from "./Press.module.scss";
 import Link from "next/link";
 import { DownloadOutlined } from "@ant-design/icons";
+import { Label, PressFileFragment } from "../../../types/types";
+import styles from "./Press.module.scss";
 
-export type PressFiles = {
-  category?: string;
-  date: string;
-  desc: string;
-  id: number;
-};
-
-export const selectLabel = (labels: Label[]) => {
-  const label = labels.find((label) => label === "pressReview" || label === "dispatches");
-  switch (label) {
-    case "pressReview":
+export const formatLabel = (labels: Label[]) => {
+  const labelChosen = labels.find((label) => label === Label.PressReview || label === Label.PressRelease);
+  switch (labelChosen) {
+    case Label.PressReview:
       return "Revue de presse";
-    case "dispatches":
+    case Label.PressRelease:
       return "Communiqués";
     default:
-      return;
   }
 };
 
-const fileTitleContent = (file: Asset) => {
+const fileTitleContent = (file: PressFileFragment) => {
   const date = file.updatedAt.match(/^\d+-\d+-\d+/);
-  const label = selectLabel(file.labels);
+  const label = formatLabel(file.labels);
   if (label) {
     return `${date[0]} - ${label.toUpperCase()}`;
   }
   return date[0];
 };
 
-export const FilesDisplay = ({ files }: { files: Asset[] }) => {
+export const FilesDisplay = ({ files }: { files: PressFileFragment[] }) => {
   return (
     <div className={styles.files}>
       {files.map((file) => (

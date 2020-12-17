@@ -707,9 +707,9 @@ export type ImageTransformationInput = {
 
 
 export enum Label {
-  Dispatches = 'dispatches',
   Press = 'press',
-  PressReview = 'pressReview'
+  PressRelease = 'press_release',
+  PressReview = 'press_review'
 }
 
 /** Locale system enumeration */
@@ -1702,6 +1702,11 @@ export type PostsMetadataQueryQuery = (
   )> }
 );
 
+export type PressFileFragment = (
+  { __typename?: 'Asset' }
+  & Pick<Asset, 'fileName' | 'url' | 'updatedAt' | 'labels'>
+);
+
 export type PressFilesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1709,11 +1714,18 @@ export type PressFilesQueryQuery = (
   { __typename?: 'Query' }
   & { assets: Array<(
     { __typename?: 'Asset' }
-    & Pick<Asset, 'fileName' | 'url' | 'updatedAt' | 'labels'>
+    & PressFileFragment
   )> }
 );
 
-
+export const PressFileFragmentDoc = gql`
+    fragment pressFile on Asset {
+  fileName
+  url
+  updatedAt
+  labels
+}
+    `;
 export const PostQueryDocument = gql`
     query postQuery($id: ID!) {
   post(where: {id: $id}, stage: DRAFT) {
@@ -1739,13 +1751,10 @@ export const PressFilesQueryDocument = gql`
     where: {labels_contains_some: press}
     orderBy: updatedAt_DESC
   ) {
-    fileName
-    url
-    updatedAt
-    labels
+    ...pressFile
   }
 }
-    `;
+    ${PressFileFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: () => Promise<T>) => Promise<T>;
 

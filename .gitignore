@@ -9,4 +9,3 @@ node_modules
 /**/.env
 /**/types.d.ts
 /dist/
-/ajcf-new-site/graphql.config.json
