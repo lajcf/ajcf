@@ -3,6 +3,7 @@ import Link from "next/link";
 import { DownloadOutlined } from "@ant-design/icons";
 import { Label, PressFileFragment } from "../../../types/types";
 import styles from "./Press.module.scss";
+import dayjs from "dayjs";
 
 export const formatLabel = (labels: Label[]) => {
   const labelChosen = labels.find((label) => label === Label.PressReview || label === Label.PressRelease);
@@ -15,13 +16,13 @@ export const formatLabel = (labels: Label[]) => {
   }
 };
 
-const fileTitleContent = (file: PressFileFragment) => {
-  const date = file.updatedAt.match(/^\d+-\d+-\d+/);
+const fileTitleContent = (file: PressFileFragment): string => {
+  const date = dayjs(file.updatedAt).format("MMMM-YYYY");
   const label = formatLabel(file.labels);
   if (label) {
-    return `${date[0]} - ${label.toUpperCase()}`;
+    return `${date} - ${label.toUpperCase()}`;
   }
-  return date[0];
+  return date;
 };
 
 export const FilesDisplay = ({ files }: { files: PressFileFragment[] }) => {

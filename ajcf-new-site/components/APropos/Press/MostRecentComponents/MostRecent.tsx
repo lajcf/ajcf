@@ -1,13 +1,14 @@
 import React from "react";
+import { orderBy } from "lodash";
 import styles from "../Press.module.scss";
 import { FilesDisplay } from "../FilesDisplay";
-import { PressFilesQueryQuery } from "../../../../types/types";
+import { PressFileFragment } from "../../../../types/types";
 
-export const selectMostRecentPressFiles = (pressFiles: PressFilesQueryQuery) => {
-  return pressFiles.assets.slice(0, 3);
+export const selectMostRecentPressFiles = (pressFiles: PressFileFragment[]) => {
+  return orderBy(pressFiles, "updatedAt", "desc").slice(0, 3);
 };
 
-export const MostRecentPressFiles = ({ pressFiles }: { pressFiles: PressFilesQueryQuery }) => {
+export const MostRecentPressFiles = ({ pressFiles }: { pressFiles: PressFileFragment[] }) => {
   const recentFiles = selectMostRecentPressFiles(pressFiles);
   return (
     <section className={`${styles.subcategory} ${styles.mostRecent}`}>

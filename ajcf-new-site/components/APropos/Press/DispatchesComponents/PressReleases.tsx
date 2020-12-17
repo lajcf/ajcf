@@ -1,18 +1,13 @@
 import React from "react";
-import { Label, PressFilesQueryQuery } from "../../../../types/types";
+import { PressFileFragment } from "../../../../types/types";
 import { FilesDisplay } from "../FilesDisplay";
 import styles from "../Press.module.scss";
 
-const selectDispatchesFiles = (pressFiles: PressFilesQueryQuery) => {
-  return pressFiles.assets.filter((asset) => asset.labels.includes("dispatches" as Label));
-};
-
-export const PressReleases = ({ pressFiles }: { pressFiles: PressFilesQueryQuery }) => {
-  const dispatchesFiles = selectDispatchesFiles(pressFiles);
+export const PressReleases = ({ pressFiles }: { pressFiles: PressFileFragment[] }) => {
   return (
     <section className={styles.subcategory}>
       <h2 className={styles.subcategoryName}>Communiqués</h2>
-      <FilesDisplay files={dispatchesFiles} />
+      <FilesDisplay files={pressFiles} />
     </section>
   );
 };
