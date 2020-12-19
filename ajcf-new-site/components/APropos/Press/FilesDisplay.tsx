@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
+import dayjs from "dayjs";
 import { DownloadOutlined } from "@ant-design/icons";
 import { Label, PressFileFragment } from "../../../types/types";
 import styles from "./Press.module.scss";
-import dayjs from "dayjs";
 
 export const formatLabel = (labels: Label[]) => {
   const labelChosen = labels.find((label) => label === Label.PressReview || label === Label.PressRelease);

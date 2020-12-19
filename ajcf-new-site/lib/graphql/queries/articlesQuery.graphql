@@ -1,0 +1,13 @@
+query ArticlesQuery {
+  articles(stage: DRAFT) {
+    title
+    author
+    cover {
+      id
+      url
+    }
+    content {
+      text
+    }
+  }
+}

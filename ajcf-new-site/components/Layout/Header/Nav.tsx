@@ -12,8 +12,8 @@ export const Nav = () => {
         <Link href="/projets-ajcf">
           <a>Projets AJCF</a>
         </Link>
-        <Link href="actualites/blog">
-          <a>Actualités</a>
+        <Link href="/blog/blog-list">
+          <a>Blog</a>
         </Link>
         <Link href="contact">
           <a>Contact</a>
