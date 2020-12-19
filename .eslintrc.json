@@ -81,7 +81,7 @@
     "consistent-return": "off",
     "no-param-reassign": "error",
     "prefer-const": "error",
-
+    "object-shorthand": "error",
     "no-nested-ternary": "error",
     "no-else-return": "error",
     "no-eval": "error",
