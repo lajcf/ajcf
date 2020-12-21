@@ -1,0 +1,29 @@
+.blogList {
+  background-color: lightcyan;
+  .articlesPreviews {
+    margin: 0 8rem;
+    background-color: white;
+    .preview {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      grid-template-rows: auto auto 1fr;
+      grid-template-areas:
+        "previewCover previewTitle"
+        "previewCover previewAuthor"
+        "previewCover previewContentSummary";
+      .previewCover {
+        grid-area: previewCover;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .previewTitle {
+        grid-area: previewTitle;
+      }
+      .previewAuthor {
+        grid-area: previewAuthor;
+      }
+    }
+  }
+}
