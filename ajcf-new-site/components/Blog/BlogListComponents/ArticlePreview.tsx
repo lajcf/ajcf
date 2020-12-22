@@ -31,6 +31,7 @@ export const ArticlePreview = ({ article }: { article: Article }) => {
         {article.author} ({dayjs(article.createdAt).fromNow()})
       </p>
       <small className={styles.previewContentSummary}>{contentSummary}</small>
+      <hr className={styles.separator} />
     </div>
   );
 };
