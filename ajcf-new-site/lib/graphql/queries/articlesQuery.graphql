@@ -1,7 +1,8 @@
 query ArticlesQuery {
-  articles(stage: DRAFT) {
+  articles(stage: DRAFT, orderBy: createdAt_DESC) {
     title
     author
+    createdAt
     cover {
       id
       url

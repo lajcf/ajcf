@@ -1,9 +1,9 @@
 .blogList {
-  background-color: lightcyan;
   .articlesPreviews {
     margin: 0 8rem;
     background-color: white;
     .preview {
+      height: 8rem;
       display: grid;
       grid-template-columns: 1fr 3fr;
       grid-template-rows: auto auto 1fr;
@@ -13,9 +13,13 @@
         "previewCover previewContentSummary";
       .previewCover {
         grid-area: previewCover;
+        margin-right: 1rem;
+        display: grid;
+        place-items: center;
         img {
           width: 100%;
           height: 100%;
+          object-fit: contain;
         }
       }
       .previewTitle {

@@ -2,8 +2,13 @@ import React from "react";
 import Link from "next/link";
 import dayjs from "dayjs";
 import { DownloadOutlined } from "@ant-design/icons";
+import { capitalize } from "lodash";
 import { Label, PressFileFragment } from "../../../types/types";
 import styles from "./Press.module.scss";
+
+require("dayjs/locale/fr");
+
+dayjs.locale("fr");
 
 export const formatLabel = (labels: Label[]) => {
   const labelChosen = labels.find((label) => label === Label.PressReview || label === Label.PressRelease);
@@ -17,7 +22,7 @@ export const formatLabel = (labels: Label[]) => {
 };
 
 const fileTitleContent = (file: PressFileFragment): string => {
-  const date = dayjs(file.updatedAt).format("MMMM-YYYY");
+  const date = capitalize(dayjs(file.updatedAt).format("MMMM-YYYY"));
   const label = formatLabel(file.labels);
   if (label) {
     return `${date} - ${label.toUpperCase()}`;
