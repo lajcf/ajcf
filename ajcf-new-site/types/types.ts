@@ -487,8 +487,8 @@ export type Asset = Node & {
   size?: Maybe<Scalars['Float']>;
   /** The mime type of the file */
   mimeType?: Maybe<Scalars['String']>;
-  labels: Array<Label>;
   coverArticle: Array<Article>;
+  assetLabel: Array<AssetLabel>;
   /** List of Asset versions */
   history: Array<Version>;
   /** Get the url for the asset with provided transformations applied. */
@@ -581,8 +581,8 @@ export type AssetCreateInput = {
   width?: Maybe<Scalars['Float']>;
   size?: Maybe<Scalars['Float']>;
   mimeType?: Maybe<Scalars['String']>;
-  labels?: Maybe<Array<Label>>;
   coverArticle?: Maybe<ArticleCreateManyInlineInput>;
+  assetLabel?: Maybe<Array<AssetLabel>>;
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: Maybe<AssetCreateLocalizationsInput>;
 };
@@ -631,6 +631,12 @@ export type AssetEdge = {
   /** A cursor for use in pagination. */
   cursor: Scalars['String'];
 };
+
+export enum AssetLabel {
+  Press = 'press',
+  PressRelease = 'press_release',
+  PressReview = 'press_review'
+}
 
 /** Identifies documents */
 export type AssetManyWhereInput = {
@@ -706,19 +712,19 @@ export type AssetManyWhereInput = {
   publishedAt_gt?: Maybe<Scalars['DateTime']>;
   /** All values greater than or equal the given value. */
   publishedAt_gte?: Maybe<Scalars['DateTime']>;
-  /** Matches if the field array contains *all* items provided to the filter and order does match */
-  labels?: Maybe<Array<Label>>;
-  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  labels_not?: Maybe<Array<Label>>;
-  /** Matches if the field array contains *all* items provided to the filter */
-  labels_contains_all?: Maybe<Array<Label>>;
-  /** Matches if the field array contains at least one item provided to the filter */
-  labels_contains_some?: Maybe<Array<Label>>;
-  /** Matches if the field array does not contain any of the items provided to the filter */
-  labels_contains_none?: Maybe<Array<Label>>;
   coverArticle_every?: Maybe<ArticleWhereInput>;
   coverArticle_some?: Maybe<ArticleWhereInput>;
   coverArticle_none?: Maybe<ArticleWhereInput>;
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  assetLabel?: Maybe<Array<AssetLabel>>;
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  assetLabel_not?: Maybe<Array<AssetLabel>>;
+  /** Matches if the field array contains *all* items provided to the filter */
+  assetLabel_contains_all?: Maybe<Array<AssetLabel>>;
+  /** Matches if the field array contains at least one item provided to the filter */
+  assetLabel_contains_some?: Maybe<Array<AssetLabel>>;
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  assetLabel_contains_none?: Maybe<Array<AssetLabel>>;
 };
 
 export enum AssetOrderByInput {
@@ -742,8 +748,8 @@ export enum AssetOrderByInput {
   SizeDesc = 'size_DESC',
   MimeTypeAsc = 'mimeType_ASC',
   MimeTypeDesc = 'mimeType_DESC',
-  LabelsAsc = 'labels_ASC',
-  LabelsDesc = 'labels_DESC'
+  AssetLabelAsc = 'assetLabel_ASC',
+  AssetLabelDesc = 'assetLabel_DESC'
 }
 
 /** Transformations for Assets */
@@ -761,8 +767,8 @@ export type AssetUpdateInput = {
   width?: Maybe<Scalars['Float']>;
   size?: Maybe<Scalars['Float']>;
   mimeType?: Maybe<Scalars['String']>;
-  labels?: Maybe<Array<Label>>;
   coverArticle?: Maybe<ArticleUpdateManyInlineInput>;
+  assetLabel?: Maybe<Array<AssetLabel>>;
   /** Manage document localizations */
   localizations?: Maybe<AssetUpdateLocalizationsInput>;
 };
@@ -814,7 +820,7 @@ export type AssetUpdateManyInput = {
   width?: Maybe<Scalars['Float']>;
   size?: Maybe<Scalars['Float']>;
   mimeType?: Maybe<Scalars['String']>;
-  labels?: Maybe<Array<Label>>;
+  assetLabel?: Maybe<Array<AssetLabel>>;
   /** Optional updates to localizations */
   localizations?: Maybe<AssetUpdateManyLocalizationsInput>;
 };
@@ -1062,19 +1068,19 @@ export type AssetWhereInput = {
   mimeType_ends_with?: Maybe<Scalars['String']>;
   /** All values not ending with the given string */
   mimeType_not_ends_with?: Maybe<Scalars['String']>;
-  /** Matches if the field array contains *all* items provided to the filter and order does match */
-  labels?: Maybe<Array<Label>>;
-  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  labels_not?: Maybe<Array<Label>>;
-  /** Matches if the field array contains *all* items provided to the filter */
-  labels_contains_all?: Maybe<Array<Label>>;
-  /** Matches if the field array contains at least one item provided to the filter */
-  labels_contains_some?: Maybe<Array<Label>>;
-  /** Matches if the field array does not contain any of the items provided to the filter */
-  labels_contains_none?: Maybe<Array<Label>>;
   coverArticle_every?: Maybe<ArticleWhereInput>;
   coverArticle_some?: Maybe<ArticleWhereInput>;
   coverArticle_none?: Maybe<ArticleWhereInput>;
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  assetLabel?: Maybe<Array<AssetLabel>>;
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  assetLabel_not?: Maybe<Array<AssetLabel>>;
+  /** Matches if the field array contains *all* items provided to the filter */
+  assetLabel_contains_all?: Maybe<Array<AssetLabel>>;
+  /** Matches if the field array contains at least one item provided to the filter */
+  assetLabel_contains_some?: Maybe<Array<AssetLabel>>;
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  assetLabel_contains_none?: Maybe<Array<AssetLabel>>;
 };
 
 /** References Asset record uniquely */
@@ -1209,9 +1215,6 @@ export type ImageTransformationInput = {
 
 export enum Label {
   NewsAjcf = 'news_ajcf',
-  Press = 'press',
-  PressRelease = 'press_release',
-  PressReview = 'press_review',
   RecosAjcf = 'recos_ajcf',
   StoriesAjcf = 'stories_ajcf'
 }
@@ -2414,7 +2417,7 @@ export type PostsMetadataQueryQuery = (
 
 export type PressFileFragment = (
   { __typename?: 'Asset' }
-  & Pick<Asset, 'fileName' | 'url' | 'updatedAt' | 'labels'>
+  & Pick<Asset, 'fileName' | 'url' | 'updatedAt' | 'assetLabel'>
 );
 
 export type PressFilesQueryQueryVariables = Exact<{ [key: string]: never; }>;
@@ -2433,7 +2436,7 @@ export const PressFileFragmentDoc = gql`
   fileName
   url
   updatedAt
-  labels
+  assetLabel
 }
     `;
 export const ArticlesQueryDocument = gql`
@@ -2474,7 +2477,7 @@ export const PressFilesQueryDocument = gql`
     query pressFilesQuery {
   assets(
     stage: DRAFT
-    where: {labels_contains_some: press}
+    where: {assetLabel_contains_some: press}
     orderBy: updatedAt_DESC
   ) {
     ...pressFile
