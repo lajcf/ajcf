@@ -2376,7 +2376,7 @@ export type ArticlesQueryQuery = (
   { __typename?: 'Query' }
   & { articles: Array<(
     { __typename?: 'Article' }
-    & Pick<Article, 'title' | 'author' | 'createdAt' | 'blogLabels'>
+    & Pick<Article, 'id' | 'title' | 'author' | 'createdAt' | 'blogLabels'>
     & { cover?: Maybe<(
       { __typename?: 'Asset' }
       & Pick<Asset, 'id' | 'url'>
@@ -2442,6 +2442,7 @@ export const PressFileFragmentDoc = gql`
 export const ArticlesQueryDocument = gql`
     query ArticlesQuery {
   articles(stage: DRAFT, orderBy: createdAt_DESC) {
+    id
     title
     author
     createdAt

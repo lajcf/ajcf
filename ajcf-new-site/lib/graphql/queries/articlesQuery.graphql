@@ -1,5 +1,6 @@
 query ArticlesQuery {
   articles(stage: DRAFT, orderBy: createdAt_DESC) {
+    id
     title
     author
     createdAt
