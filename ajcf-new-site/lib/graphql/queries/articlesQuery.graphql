@@ -3,6 +3,7 @@ query ArticlesQuery {
     title
     author
     createdAt
+    blogLabels
     cover {
       id
       url

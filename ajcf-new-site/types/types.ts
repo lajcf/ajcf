@@ -48,7 +48,7 @@ export type Article = Node & {
   title: Scalars['String'];
   author: Array<Scalars['String']>;
   content: RichText;
-  labels: Array<Label>;
+  blogLabels: Array<Label>;
   /** Cover image for the article */
   cover?: Maybe<Asset>;
   /** List of Article versions */
@@ -100,7 +100,7 @@ export type ArticleCreateInput = {
   title: Scalars['String'];
   author?: Maybe<Array<Scalars['String']>>;
   content: Scalars['RichTextAST'];
-  labels?: Maybe<Array<Label>>;
+  blogLabels?: Maybe<Array<Label>>;
   cover?: Maybe<AssetCreateOneInlineInput>;
 };
 
@@ -231,15 +231,15 @@ export type ArticleManyWhereInput = {
   /** Matches if the field array does not contain any of the items provided to the filter */
   author_contains_none?: Maybe<Array<Scalars['String']>>;
   /** Matches if the field array contains *all* items provided to the filter and order does match */
-  labels?: Maybe<Array<Label>>;
+  blogLabels?: Maybe<Array<Label>>;
   /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  labels_not?: Maybe<Array<Label>>;
+  blogLabels_not?: Maybe<Array<Label>>;
   /** Matches if the field array contains *all* items provided to the filter */
-  labels_contains_all?: Maybe<Array<Label>>;
+  blogLabels_contains_all?: Maybe<Array<Label>>;
   /** Matches if the field array contains at least one item provided to the filter */
-  labels_contains_some?: Maybe<Array<Label>>;
+  blogLabels_contains_some?: Maybe<Array<Label>>;
   /** Matches if the field array does not contain any of the items provided to the filter */
-  labels_contains_none?: Maybe<Array<Label>>;
+  blogLabels_contains_none?: Maybe<Array<Label>>;
   cover?: Maybe<AssetWhereInput>;
 };
 
@@ -256,15 +256,15 @@ export enum ArticleOrderByInput {
   TitleDesc = 'title_DESC',
   AuthorAsc = 'author_ASC',
   AuthorDesc = 'author_DESC',
-  LabelsAsc = 'labels_ASC',
-  LabelsDesc = 'labels_DESC'
+  BlogLabelsAsc = 'blogLabels_ASC',
+  BlogLabelsDesc = 'blogLabels_DESC'
 }
 
 export type ArticleUpdateInput = {
   title?: Maybe<Scalars['String']>;
   author?: Maybe<Array<Scalars['String']>>;
   content?: Maybe<Scalars['RichTextAST']>;
-  labels?: Maybe<Array<Label>>;
+  blogLabels?: Maybe<Array<Label>>;
   cover?: Maybe<AssetUpdateOneInlineInput>;
 };
 
@@ -289,7 +289,7 @@ export type ArticleUpdateManyInput = {
   title?: Maybe<Scalars['String']>;
   author?: Maybe<Array<Scalars['String']>>;
   content?: Maybe<Scalars['RichTextAST']>;
-  labels?: Maybe<Array<Label>>;
+  blogLabels?: Maybe<Array<Label>>;
 };
 
 export type ArticleUpdateManyWithNestedWhereInput = {
@@ -439,15 +439,15 @@ export type ArticleWhereInput = {
   /** Matches if the field array does not contain any of the items provided to the filter */
   author_contains_none?: Maybe<Array<Scalars['String']>>;
   /** Matches if the field array contains *all* items provided to the filter and order does match */
-  labels?: Maybe<Array<Label>>;
+  blogLabels?: Maybe<Array<Label>>;
   /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  labels_not?: Maybe<Array<Label>>;
+  blogLabels_not?: Maybe<Array<Label>>;
   /** Matches if the field array contains *all* items provided to the filter */
-  labels_contains_all?: Maybe<Array<Label>>;
+  blogLabels_contains_all?: Maybe<Array<Label>>;
   /** Matches if the field array contains at least one item provided to the filter */
-  labels_contains_some?: Maybe<Array<Label>>;
+  blogLabels_contains_some?: Maybe<Array<Label>>;
   /** Matches if the field array does not contain any of the items provided to the filter */
-  labels_contains_none?: Maybe<Array<Label>>;
+  blogLabels_contains_none?: Maybe<Array<Label>>;
   cover?: Maybe<AssetWhereInput>;
 };
 
@@ -2376,7 +2376,7 @@ export type ArticlesQueryQuery = (
   { __typename?: 'Query' }
   & { articles: Array<(
     { __typename?: 'Article' }
-    & Pick<Article, 'title' | 'author' | 'createdAt'>
+    & Pick<Article, 'title' | 'author' | 'createdAt' | 'blogLabels'>
     & { cover?: Maybe<(
       { __typename?: 'Asset' }
       & Pick<Asset, 'id' | 'url'>
@@ -2445,6 +2445,7 @@ export const ArticlesQueryDocument = gql`
     title
     author
     createdAt
+    blogLabels
     cover {
       id
       url
