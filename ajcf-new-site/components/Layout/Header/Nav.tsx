@@ -12,7 +12,7 @@ export const Nav = () => {
         <Link href="/projets-ajcf">
           <a>Projets AJCF</a>
         </Link>
-        <Link href="/blog/blog-list">
+        <Link href="/blog">
           <a>Blog</a>
         </Link>
         <Link href="contact">

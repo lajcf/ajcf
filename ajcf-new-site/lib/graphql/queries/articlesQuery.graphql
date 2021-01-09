@@ -1,16 +1,20 @@
-query ArticlesQuery {
-  articles(stage: DRAFT, orderBy: createdAt_DESC) {
+fragment articles on Article {
+  id
+  title
+  author
+  createdAt
+  blogLabels
+  cover {
     id
-    title
-    author
-    createdAt
-    blogLabels
-    cover {
-      id
-      url
-    }
-    content {
-      text
-    }
+    url
+  }
+  content {
+    text
+  }
+}
+
+query articlesQuery {
+  articles(stage: DRAFT, orderBy: createdAt_DESC) {
+    ...articles
   }
 }

@@ -48,7 +48,7 @@ export type Article = Node & {
   title: Scalars['String'];
   author: Array<Scalars['String']>;
   content: RichText;
-  blogLabels: Array<Label>;
+  blogLabels: Array<BlogLabel>;
   /** Cover image for the article */
   cover?: Maybe<Asset>;
   /** List of Article versions */
@@ -100,7 +100,7 @@ export type ArticleCreateInput = {
   title: Scalars['String'];
   author?: Maybe<Array<Scalars['String']>>;
   content: Scalars['RichTextAST'];
-  blogLabels?: Maybe<Array<Label>>;
+  blogLabels?: Maybe<Array<BlogLabel>>;
   cover?: Maybe<AssetCreateOneInlineInput>;
 };
 
@@ -231,15 +231,15 @@ export type ArticleManyWhereInput = {
   /** Matches if the field array does not contain any of the items provided to the filter */
   author_contains_none?: Maybe<Array<Scalars['String']>>;
   /** Matches if the field array contains *all* items provided to the filter and order does match */
-  blogLabels?: Maybe<Array<Label>>;
+  blogLabels?: Maybe<Array<BlogLabel>>;
   /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  blogLabels_not?: Maybe<Array<Label>>;
+  blogLabels_not?: Maybe<Array<BlogLabel>>;
   /** Matches if the field array contains *all* items provided to the filter */
-  blogLabels_contains_all?: Maybe<Array<Label>>;
+  blogLabels_contains_all?: Maybe<Array<BlogLabel>>;
   /** Matches if the field array contains at least one item provided to the filter */
-  blogLabels_contains_some?: Maybe<Array<Label>>;
+  blogLabels_contains_some?: Maybe<Array<BlogLabel>>;
   /** Matches if the field array does not contain any of the items provided to the filter */
-  blogLabels_contains_none?: Maybe<Array<Label>>;
+  blogLabels_contains_none?: Maybe<Array<BlogLabel>>;
   cover?: Maybe<AssetWhereInput>;
 };
 
@@ -264,7 +264,7 @@ export type ArticleUpdateInput = {
   title?: Maybe<Scalars['String']>;
   author?: Maybe<Array<Scalars['String']>>;
   content?: Maybe<Scalars['RichTextAST']>;
-  blogLabels?: Maybe<Array<Label>>;
+  blogLabels?: Maybe<Array<BlogLabel>>;
   cover?: Maybe<AssetUpdateOneInlineInput>;
 };
 
@@ -289,7 +289,7 @@ export type ArticleUpdateManyInput = {
   title?: Maybe<Scalars['String']>;
   author?: Maybe<Array<Scalars['String']>>;
   content?: Maybe<Scalars['RichTextAST']>;
-  blogLabels?: Maybe<Array<Label>>;
+  blogLabels?: Maybe<Array<BlogLabel>>;
 };
 
 export type ArticleUpdateManyWithNestedWhereInput = {
@@ -439,15 +439,15 @@ export type ArticleWhereInput = {
   /** Matches if the field array does not contain any of the items provided to the filter */
   author_contains_none?: Maybe<Array<Scalars['String']>>;
   /** Matches if the field array contains *all* items provided to the filter and order does match */
-  blogLabels?: Maybe<Array<Label>>;
+  blogLabels?: Maybe<Array<BlogLabel>>;
   /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  blogLabels_not?: Maybe<Array<Label>>;
+  blogLabels_not?: Maybe<Array<BlogLabel>>;
   /** Matches if the field array contains *all* items provided to the filter */
-  blogLabels_contains_all?: Maybe<Array<Label>>;
+  blogLabels_contains_all?: Maybe<Array<BlogLabel>>;
   /** Matches if the field array contains at least one item provided to the filter */
-  blogLabels_contains_some?: Maybe<Array<Label>>;
+  blogLabels_contains_some?: Maybe<Array<BlogLabel>>;
   /** Matches if the field array does not contain any of the items provided to the filter */
-  blogLabels_contains_none?: Maybe<Array<Label>>;
+  blogLabels_contains_none?: Maybe<Array<BlogLabel>>;
   cover?: Maybe<AssetWhereInput>;
 };
 
@@ -1094,6 +1094,12 @@ export type BatchPayload = {
   count: Scalars['Long'];
 };
 
+export enum BlogLabel {
+  NewsAjcf = 'news_ajcf',
+  RecosAjcf = 'recos_ajcf',
+  StoriesAjcf = 'stories_ajcf'
+}
+
 /** Representing a color value comprising of HEX, RGBA and css color values */
 export type Color = {
   __typename?: 'Color';
@@ -1213,12 +1219,6 @@ export type ImageTransformationInput = {
 };
 
 
-export enum Label {
-  NewsAjcf = 'news_ajcf',
-  RecosAjcf = 'recos_ajcf',
-  StoriesAjcf = 'stories_ajcf'
-}
-
 /** Locale system enumeration */
 export enum Locale {
   /** System locale */
@@ -1331,46 +1331,6 @@ export type Mutation = {
    * @deprecated Please use the new paginated many mutation (unpublishManyAssetsConnection)
    */
   unpublishManyAssets: BatchPayload;
-  /** Create one post */
-  createPost?: Maybe<Post>;
-  /** Update one post */
-  updatePost?: Maybe<Post>;
-  /** Delete one post from _all_ existing stages. Returns deleted document. */
-  deletePost?: Maybe<Post>;
-  /** Upsert one post */
-  upsertPost?: Maybe<Post>;
-  /** Publish one post */
-  publishPost?: Maybe<Post>;
-  /** Unpublish one post from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
-  unpublishPost?: Maybe<Post>;
-  /** Update many Post documents */
-  updateManyPostsConnection: PostConnection;
-  /** Delete many Post documents, return deleted documents */
-  deleteManyPostsConnection: PostConnection;
-  /** Publish many Post documents */
-  publishManyPostsConnection: PostConnection;
-  /** Find many Post documents that match criteria in specified stage and unpublish from target stages */
-  unpublishManyPostsConnection: PostConnection;
-  /**
-   * Update many posts
-   * @deprecated Please use the new paginated many mutation (updateManyPostsConnection)
-   */
-  updateManyPosts: BatchPayload;
-  /**
-   * Delete many Post documents
-   * @deprecated Please use the new paginated many mutation (deleteManyPostsConnection)
-   */
-  deleteManyPosts: BatchPayload;
-  /**
-   * Publish many Post documents
-   * @deprecated Please use the new paginated many mutation (publishManyPostsConnection)
-   */
-  publishManyPosts: BatchPayload;
-  /**
-   * Unpublish many Post documents
-   * @deprecated Please use the new paginated many mutation (unpublishManyPostsConnection)
-   */
-  unpublishManyPosts: BatchPayload;
 };
 
 
@@ -1592,108 +1552,6 @@ export type MutationUnpublishManyAssetsArgs = {
   unpublishBase?: Maybe<Scalars['Boolean']>;
 };
 
-
-export type MutationCreatePostArgs = {
-  data: PostCreateInput;
-};
-
-
-export type MutationUpdatePostArgs = {
-  where: PostWhereUniqueInput;
-  data: PostUpdateInput;
-};
-
-
-export type MutationDeletePostArgs = {
-  where: PostWhereUniqueInput;
-};
-
-
-export type MutationUpsertPostArgs = {
-  where: PostWhereUniqueInput;
-  upsert: PostUpsertInput;
-};
-
-
-export type MutationPublishPostArgs = {
-  where: PostWhereUniqueInput;
-  to?: Array<Stage>;
-};
-
-
-export type MutationUnpublishPostArgs = {
-  where: PostWhereUniqueInput;
-  from?: Array<Stage>;
-};
-
-
-export type MutationUpdateManyPostsConnectionArgs = {
-  where?: Maybe<PostManyWhereInput>;
-  data: PostUpdateManyInput;
-  skip?: Maybe<Scalars['Int']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['ID']>;
-  after?: Maybe<Scalars['ID']>;
-};
-
-
-export type MutationDeleteManyPostsConnectionArgs = {
-  where?: Maybe<PostManyWhereInput>;
-  skip?: Maybe<Scalars['Int']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['ID']>;
-  after?: Maybe<Scalars['ID']>;
-};
-
-
-export type MutationPublishManyPostsConnectionArgs = {
-  where?: Maybe<PostManyWhereInput>;
-  from?: Maybe<Stage>;
-  to?: Array<Stage>;
-  skip?: Maybe<Scalars['Int']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['ID']>;
-  after?: Maybe<Scalars['ID']>;
-};
-
-
-export type MutationUnpublishManyPostsConnectionArgs = {
-  where?: Maybe<PostManyWhereInput>;
-  stage?: Maybe<Stage>;
-  from?: Array<Stage>;
-  skip?: Maybe<Scalars['Int']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['ID']>;
-  after?: Maybe<Scalars['ID']>;
-};
-
-
-export type MutationUpdateManyPostsArgs = {
-  where?: Maybe<PostManyWhereInput>;
-  data: PostUpdateManyInput;
-};
-
-
-export type MutationDeleteManyPostsArgs = {
-  where?: Maybe<PostManyWhereInput>;
-};
-
-
-export type MutationPublishManyPostsArgs = {
-  where?: Maybe<PostManyWhereInput>;
-  to?: Array<Stage>;
-};
-
-
-export type MutationUnpublishManyPostsArgs = {
-  where?: Maybe<PostManyWhereInput>;
-  from?: Array<Stage>;
-};
-
 /** An object with an ID */
 export type Node = {
   /** The id of the object. */
@@ -1715,348 +1573,6 @@ export type PageInfo = {
   endCursor?: Maybe<Scalars['String']>;
   /** Number of items in the current page. */
   pageSize?: Maybe<Scalars['Int']>;
-};
-
-export type Post = Node & {
-  __typename?: 'Post';
-  /** System stage field */
-  stage: Stage;
-  /** Get the document in other stages */
-  documentInStages: Array<Post>;
-  /** The unique identifier */
-  id: Scalars['ID'];
-  /** The time the document was created */
-  createdAt: Scalars['DateTime'];
-  /** The time the document was updated */
-  updatedAt: Scalars['DateTime'];
-  /** The time the document was published. Null on documents in draft stage. */
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  title: Scalars['String'];
-  date: Scalars['Date'];
-  content: RichText;
-  /** List of Post versions */
-  history: Array<Version>;
-};
-
-
-export type PostDocumentInStagesArgs = {
-  stages?: Array<Stage>;
-  includeCurrent?: Scalars['Boolean'];
-  inheritLocale?: Scalars['Boolean'];
-};
-
-
-export type PostHistoryArgs = {
-  limit?: Scalars['Int'];
-  skip?: Scalars['Int'];
-  stageOverride?: Maybe<Stage>;
-};
-
-/** A connection to a list of items. */
-export type PostConnection = {
-  __typename?: 'PostConnection';
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-  /** A list of edges. */
-  edges: Array<PostEdge>;
-  aggregate: Aggregate;
-};
-
-export type PostCreateInput = {
-  createdAt?: Maybe<Scalars['DateTime']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-  title: Scalars['String'];
-  date: Scalars['Date'];
-  content: Scalars['RichTextAST'];
-};
-
-/** An edge in a connection. */
-export type PostEdge = {
-  __typename?: 'PostEdge';
-  /** The item at the end of the edge. */
-  node: Post;
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-};
-
-/** Identifies documents */
-export type PostManyWhereInput = {
-  /** Contains search across all appropriate fields. */
-  _search?: Maybe<Scalars['String']>;
-  /** Logical AND on all given filters. */
-  AND?: Maybe<Array<PostWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: Maybe<Array<PostWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: Maybe<Array<PostWhereInput>>;
-  id?: Maybe<Scalars['ID']>;
-  /** All values that are not equal to given value. */
-  id_not?: Maybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: Maybe<Array<Scalars['ID']>>;
-  /** All values that are not contained in given list. */
-  id_not_in?: Maybe<Array<Scalars['ID']>>;
-  /** All values containing the given string. */
-  id_contains?: Maybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: Maybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: Maybe<Scalars['ID']>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: Maybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: Maybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: Maybe<Scalars['ID']>;
-  createdAt?: Maybe<Scalars['DateTime']>;
-  /** All values that are not equal to given value. */
-  createdAt_not?: Maybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  createdAt_in?: Maybe<Array<Scalars['DateTime']>>;
-  /** All values that are not contained in given list. */
-  createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-  /** All values less than the given value. */
-  createdAt_lt?: Maybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  createdAt_lte?: Maybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  createdAt_gt?: Maybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  createdAt_gte?: Maybe<Scalars['DateTime']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-  /** All values that are not equal to given value. */
-  updatedAt_not?: Maybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  updatedAt_in?: Maybe<Array<Scalars['DateTime']>>;
-  /** All values that are not contained in given list. */
-  updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-  /** All values less than the given value. */
-  updatedAt_lt?: Maybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  updatedAt_lte?: Maybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  updatedAt_gt?: Maybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  updatedAt_gte?: Maybe<Scalars['DateTime']>;
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  /** All values that are not equal to given value. */
-  publishedAt_not?: Maybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  publishedAt_in?: Maybe<Array<Scalars['DateTime']>>;
-  /** All values that are not contained in given list. */
-  publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-  /** All values less than the given value. */
-  publishedAt_lt?: Maybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  publishedAt_lte?: Maybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  publishedAt_gt?: Maybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  publishedAt_gte?: Maybe<Scalars['DateTime']>;
-  title?: Maybe<Scalars['String']>;
-  /** All values that are not equal to given value. */
-  title_not?: Maybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  title_in?: Maybe<Array<Scalars['String']>>;
-  /** All values that are not contained in given list. */
-  title_not_in?: Maybe<Array<Scalars['String']>>;
-  /** All values containing the given string. */
-  title_contains?: Maybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  title_not_contains?: Maybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  title_starts_with?: Maybe<Scalars['String']>;
-  /** All values not starting with the given string. */
-  title_not_starts_with?: Maybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  title_ends_with?: Maybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  title_not_ends_with?: Maybe<Scalars['String']>;
-  date?: Maybe<Scalars['Date']>;
-  /** All values that are not equal to given value. */
-  date_not?: Maybe<Scalars['Date']>;
-  /** All values that are contained in given list. */
-  date_in?: Maybe<Array<Scalars['Date']>>;
-  /** All values that are not contained in given list. */
-  date_not_in?: Maybe<Array<Scalars['Date']>>;
-  /** All values less than the given value. */
-  date_lt?: Maybe<Scalars['Date']>;
-  /** All values less than or equal the given value. */
-  date_lte?: Maybe<Scalars['Date']>;
-  /** All values greater than the given value. */
-  date_gt?: Maybe<Scalars['Date']>;
-  /** All values greater than or equal the given value. */
-  date_gte?: Maybe<Scalars['Date']>;
-};
-
-export enum PostOrderByInput {
-  IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC',
-  CreatedAtAsc = 'createdAt_ASC',
-  CreatedAtDesc = 'createdAt_DESC',
-  UpdatedAtAsc = 'updatedAt_ASC',
-  UpdatedAtDesc = 'updatedAt_DESC',
-  PublishedAtAsc = 'publishedAt_ASC',
-  PublishedAtDesc = 'publishedAt_DESC',
-  TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC',
-  DateAsc = 'date_ASC',
-  DateDesc = 'date_DESC'
-}
-
-export type PostUpdateInput = {
-  title?: Maybe<Scalars['String']>;
-  date?: Maybe<Scalars['Date']>;
-  content?: Maybe<Scalars['RichTextAST']>;
-};
-
-export type PostUpdateManyInput = {
-  title?: Maybe<Scalars['String']>;
-  date?: Maybe<Scalars['Date']>;
-  content?: Maybe<Scalars['RichTextAST']>;
-};
-
-export type PostUpdateManyWithNestedWhereInput = {
-  /** Document search */
-  where: PostWhereInput;
-  /** Update many input */
-  data: PostUpdateManyInput;
-};
-
-export type PostUpdateWithNestedWhereUniqueInput = {
-  /** Unique document search */
-  where: PostWhereUniqueInput;
-  /** Document to update */
-  data: PostUpdateInput;
-};
-
-export type PostUpsertInput = {
-  /** Create document if it didn't exist */
-  create: PostCreateInput;
-  /** Update document if it exists */
-  update: PostUpdateInput;
-};
-
-export type PostUpsertWithNestedWhereUniqueInput = {
-  /** Unique document search */
-  where: PostWhereUniqueInput;
-  /** Upsert data */
-  data: PostUpsertInput;
-};
-
-/** Identifies documents */
-export type PostWhereInput = {
-  /** Contains search across all appropriate fields. */
-  _search?: Maybe<Scalars['String']>;
-  /** Logical AND on all given filters. */
-  AND?: Maybe<Array<PostWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: Maybe<Array<PostWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: Maybe<Array<PostWhereInput>>;
-  id?: Maybe<Scalars['ID']>;
-  /** All values that are not equal to given value. */
-  id_not?: Maybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: Maybe<Array<Scalars['ID']>>;
-  /** All values that are not contained in given list. */
-  id_not_in?: Maybe<Array<Scalars['ID']>>;
-  /** All values containing the given string. */
-  id_contains?: Maybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: Maybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: Maybe<Scalars['ID']>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: Maybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: Maybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: Maybe<Scalars['ID']>;
-  createdAt?: Maybe<Scalars['DateTime']>;
-  /** All values that are not equal to given value. */
-  createdAt_not?: Maybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  createdAt_in?: Maybe<Array<Scalars['DateTime']>>;
-  /** All values that are not contained in given list. */
-  createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-  /** All values less than the given value. */
-  createdAt_lt?: Maybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  createdAt_lte?: Maybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  createdAt_gt?: Maybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  createdAt_gte?: Maybe<Scalars['DateTime']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-  /** All values that are not equal to given value. */
-  updatedAt_not?: Maybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  updatedAt_in?: Maybe<Array<Scalars['DateTime']>>;
-  /** All values that are not contained in given list. */
-  updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-  /** All values less than the given value. */
-  updatedAt_lt?: Maybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  updatedAt_lte?: Maybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  updatedAt_gt?: Maybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  updatedAt_gte?: Maybe<Scalars['DateTime']>;
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  /** All values that are not equal to given value. */
-  publishedAt_not?: Maybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  publishedAt_in?: Maybe<Array<Scalars['DateTime']>>;
-  /** All values that are not contained in given list. */
-  publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-  /** All values less than the given value. */
-  publishedAt_lt?: Maybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  publishedAt_lte?: Maybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  publishedAt_gt?: Maybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  publishedAt_gte?: Maybe<Scalars['DateTime']>;
-  title?: Maybe<Scalars['String']>;
-  /** All values that are not equal to given value. */
-  title_not?: Maybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  title_in?: Maybe<Array<Scalars['String']>>;
-  /** All values that are not contained in given list. */
-  title_not_in?: Maybe<Array<Scalars['String']>>;
-  /** All values containing the given string. */
-  title_contains?: Maybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  title_not_contains?: Maybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  title_starts_with?: Maybe<Scalars['String']>;
-  /** All values not starting with the given string. */
-  title_not_starts_with?: Maybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  title_ends_with?: Maybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  title_not_ends_with?: Maybe<Scalars['String']>;
-  date?: Maybe<Scalars['Date']>;
-  /** All values that are not equal to given value. */
-  date_not?: Maybe<Scalars['Date']>;
-  /** All values that are contained in given list. */
-  date_in?: Maybe<Array<Scalars['Date']>>;
-  /** All values that are not contained in given list. */
-  date_not_in?: Maybe<Array<Scalars['Date']>>;
-  /** All values less than the given value. */
-  date_lt?: Maybe<Scalars['Date']>;
-  /** All values less than or equal the given value. */
-  date_lte?: Maybe<Scalars['Date']>;
-  /** All values greater than the given value. */
-  date_gt?: Maybe<Scalars['Date']>;
-  /** All values greater than or equal the given value. */
-  date_gte?: Maybe<Scalars['Date']>;
-};
-
-/** References Post record uniquely */
-export type PostWhereUniqueInput = {
-  id?: Maybe<Scalars['ID']>;
 };
 
 export type PublishLocaleInput = {
@@ -2086,14 +1602,6 @@ export type Query = {
   assetsConnection: AssetConnection;
   /** Retrieve document version */
   assetVersion?: Maybe<DocumentVersion>;
-  /** Retrieve multiple posts */
-  posts: Array<Post>;
-  /** Retrieve a single post */
-  post?: Maybe<Post>;
-  /** Retrieve multiple posts using the Relay connection interface */
-  postsConnection: PostConnection;
-  /** Retrieve document version */
-  postVersion?: Maybe<DocumentVersion>;
 };
 
 
@@ -2176,44 +1684,6 @@ export type QueryAssetsConnectionArgs = {
 
 
 export type QueryAssetVersionArgs = {
-  where: VersionWhereInput;
-};
-
-
-export type QueryPostsArgs = {
-  where?: Maybe<PostWhereInput>;
-  orderBy?: Maybe<PostOrderByInput>;
-  skip?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  stage?: Stage;
-  locales?: Array<Locale>;
-};
-
-
-export type QueryPostArgs = {
-  where: PostWhereUniqueInput;
-  stage?: Stage;
-  locales?: Array<Locale>;
-};
-
-
-export type QueryPostsConnectionArgs = {
-  where?: Maybe<PostWhereInput>;
-  orderBy?: Maybe<PostOrderByInput>;
-  skip?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  stage?: Stage;
-  locales?: Array<Locale>;
-};
-
-
-export type QueryPostVersionArgs = {
   where: VersionWhereInput;
 };
 
@@ -2369,6 +1839,125 @@ export enum _SystemDateTimeFieldVariation {
   Combined = 'combined'
 }
 
+/**
+ * The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the `__TypeKind` enum.
+ * 
+ * Depending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name, description and optional `specifiedByUrl`, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types.
+ */
+export type __Type = {
+  __typename?: '__Type';
+  kind: __TypeKind;
+  name?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  specifiedByUrl?: Maybe<Scalars['String']>;
+  fields?: Maybe<Array<__Field>>;
+  interfaces?: Maybe<Array<__Type>>;
+  possibleTypes?: Maybe<Array<__Type>>;
+  enumValues?: Maybe<Array<__EnumValue>>;
+  inputFields?: Maybe<Array<__InputValue>>;
+  ofType?: Maybe<__Type>;
+};
+
+
+/**
+ * The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the `__TypeKind` enum.
+ * 
+ * Depending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name, description and optional `specifiedByUrl`, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types.
+ */
+export type __TypeFieldsArgs = {
+  includeDeprecated?: Maybe<Scalars['Boolean']>;
+};
+
+
+/**
+ * The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the `__TypeKind` enum.
+ * 
+ * Depending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name, description and optional `specifiedByUrl`, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types.
+ */
+export type __TypeEnumValuesArgs = {
+  includeDeprecated?: Maybe<Scalars['Boolean']>;
+};
+
+
+/**
+ * The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the `__TypeKind` enum.
+ * 
+ * Depending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name, description and optional `specifiedByUrl`, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types.
+ */
+export type __TypeInputFieldsArgs = {
+  includeDeprecated?: Maybe<Scalars['Boolean']>;
+};
+
+/** An enum describing what kind of type a given `__Type` is. */
+export enum __TypeKind {
+  /** Indicates this type is a scalar. */
+  Scalar = 'SCALAR',
+  /** Indicates this type is an object. `fields` and `interfaces` are valid fields. */
+  Object = 'OBJECT',
+  /** Indicates this type is an interface. `fields`, `interfaces`, and `possibleTypes` are valid fields. */
+  Interface = 'INTERFACE',
+  /** Indicates this type is a union. `possibleTypes` is a valid field. */
+  Union = 'UNION',
+  /** Indicates this type is an enum. `enumValues` is a valid field. */
+  Enum = 'ENUM',
+  /** Indicates this type is an input object. `inputFields` is a valid field. */
+  InputObject = 'INPUT_OBJECT',
+  /** Indicates this type is a list. `ofType` is a valid field. */
+  List = 'LIST',
+  /** Indicates this type is a non-null. `ofType` is a valid field. */
+  NonNull = 'NON_NULL'
+}
+
+/** Object and Interface types are described by a list of Fields, each of which has a name, potentially a list of arguments, and a return type. */
+export type __Field = {
+  __typename?: '__Field';
+  name: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  args: Array<__InputValue>;
+  type: __Type;
+  isDeprecated: Scalars['Boolean'];
+  deprecationReason?: Maybe<Scalars['String']>;
+};
+
+
+/** Object and Interface types are described by a list of Fields, each of which has a name, potentially a list of arguments, and a return type. */
+export type __FieldArgsArgs = {
+  includeDeprecated?: Maybe<Scalars['Boolean']>;
+};
+
+/** Arguments provided to Fields or Directives and the input fields of an InputObject are represented as Input Values which describe their type and optionally a default value. */
+export type __InputValue = {
+  __typename?: '__InputValue';
+  name: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  type: __Type;
+  /** A GraphQL-formatted string representing the default value for this input value. */
+  defaultValue?: Maybe<Scalars['String']>;
+  isDeprecated: Scalars['Boolean'];
+  deprecationReason?: Maybe<Scalars['String']>;
+};
+
+/** One possible value for a given Enum. Enum values are unique values, not a placeholder for a string or numeric value. However an Enum value is returned in a JSON response as a string. */
+export type __EnumValue = {
+  __typename?: '__EnumValue';
+  name: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  isDeprecated: Scalars['Boolean'];
+  deprecationReason?: Maybe<Scalars['String']>;
+};
+
+export type ArticlesFragment = (
+  { __typename?: 'Article' }
+  & Pick<Article, 'id' | 'title' | 'author' | 'createdAt' | 'blogLabels'>
+  & { cover?: Maybe<(
+    { __typename?: 'Asset' }
+    & Pick<Asset, 'id' | 'url'>
+  )>, content: (
+    { __typename?: 'RichText' }
+    & Pick<RichText, 'text'>
+  ) }
+);
+
 export type ArticlesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2376,42 +1965,26 @@ export type ArticlesQueryQuery = (
   { __typename?: 'Query' }
   & { articles: Array<(
     { __typename?: 'Article' }
-    & Pick<Article, 'id' | 'title' | 'author' | 'createdAt' | 'blogLabels'>
-    & { cover?: Maybe<(
-      { __typename?: 'Asset' }
-      & Pick<Asset, 'id' | 'url'>
-    )>, content: (
-      { __typename?: 'RichText' }
-      & Pick<RichText, 'text'>
-    ) }
+    & ArticlesFragment
   )> }
 );
 
-export type PostQueryQueryVariables = Exact<{
-  id: Scalars['ID'];
-}>;
-
-
-export type PostQueryQuery = (
-  { __typename?: 'Query' }
-  & { post?: Maybe<(
-    { __typename?: 'Post' }
-    & Pick<Post, 'title' | 'date'>
-    & { content: (
-      { __typename?: 'RichText' }
-      & Pick<RichText, 'html'>
-    ) }
-  )> }
+export type BlogLabelFragment = (
+  { __typename?: '__Type' }
+  & { enumValues?: Maybe<Array<(
+    { __typename?: '__EnumValue' }
+    & Pick<__EnumValue, 'name'>
+  )>> }
 );
 
-export type PostsMetadataQueryQueryVariables = Exact<{ [key: string]: never; }>;
+export type BlogLabelsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PostsMetadataQueryQuery = (
+export type BlogLabelsQueryQuery = (
   { __typename?: 'Query' }
-  & { posts: Array<(
-    { __typename?: 'Post' }
-    & Pick<Post, 'id'>
+  & { __type?: Maybe<(
+    { __typename?: '__Type' }
+    & BlogLabelFragment
   )> }
 );
 
@@ -2431,6 +2004,29 @@ export type PressFilesQueryQuery = (
   )> }
 );
 
+export const ArticlesFragmentDoc = gql`
+    fragment articles on Article {
+  id
+  title
+  author
+  createdAt
+  blogLabels
+  cover {
+    id
+    url
+  }
+  content {
+    text
+  }
+}
+    `;
+export const BlogLabelFragmentDoc = gql`
+    fragment blogLabel on __Type {
+  enumValues {
+    name
+  }
+}
+    `;
 export const PressFileFragmentDoc = gql`
     fragment pressFile on Asset {
   fileName
@@ -2440,41 +2036,19 @@ export const PressFileFragmentDoc = gql`
 }
     `;
 export const ArticlesQueryDocument = gql`
-    query ArticlesQuery {
+    query articlesQuery {
   articles(stage: DRAFT, orderBy: createdAt_DESC) {
-    id
-    title
-    author
-    createdAt
-    blogLabels
-    cover {
-      id
-      url
-    }
-    content {
-      text
-    }
+    ...articles
   }
 }
-    `;
-export const PostQueryDocument = gql`
-    query postQuery($id: ID!) {
-  post(where: {id: $id}, stage: DRAFT) {
-    title
-    date
-    content {
-      html
-    }
+    ${ArticlesFragmentDoc}`;
+export const BlogLabelsQueryDocument = gql`
+    query blogLabelsQuery {
+  __type(name: "BlogLabel") {
+    ...blogLabel
   }
 }
-    `;
-export const PostsMetadataQueryDocument = gql`
-    query postsMetadataQuery {
-  posts(locales: [en], stage: DRAFT) {
-    id
-  }
-}
-    `;
+    ${BlogLabelFragmentDoc}`;
 export const PressFilesQueryDocument = gql`
     query pressFilesQuery {
   assets(
@@ -2493,14 +2067,11 @@ export type SdkFunctionWrapper = <T>(action: () => Promise<T>) => Promise<T>;
 const defaultWrapper: SdkFunctionWrapper = sdkFunction => sdkFunction();
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
-    ArticlesQuery(variables?: ArticlesQueryQueryVariables): Promise<ArticlesQueryQuery> {
+    articlesQuery(variables?: ArticlesQueryQueryVariables): Promise<ArticlesQueryQuery> {
       return withWrapper(() => client.request<ArticlesQueryQuery>(print(ArticlesQueryDocument), variables));
     },
-    postQuery(variables: PostQueryQueryVariables): Promise<PostQueryQuery> {
-      return withWrapper(() => client.request<PostQueryQuery>(print(PostQueryDocument), variables));
-    },
-    postsMetadataQuery(variables?: PostsMetadataQueryQueryVariables): Promise<PostsMetadataQueryQuery> {
-      return withWrapper(() => client.request<PostsMetadataQueryQuery>(print(PostsMetadataQueryDocument), variables));
+    blogLabelsQuery(variables?: BlogLabelsQueryQueryVariables): Promise<BlogLabelsQueryQuery> {
+      return withWrapper(() => client.request<BlogLabelsQueryQuery>(print(BlogLabelsQueryDocument), variables));
     },
     pressFilesQuery(variables?: PressFilesQueryQueryVariables): Promise<PressFilesQueryQuery> {
       return withWrapper(() => client.request<PressFilesQueryQuery>(print(PressFilesQueryDocument), variables));

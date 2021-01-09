@@ -18,7 +18,6 @@ const filterContentSummary = (content: string) => {
 
 export const ArticlePreview = ({ article }: { article: Article }) => {
   const contentSummary = filterContentSummary(article.content.text);
-  console.log(article);
   return (
     <div className={styles.preview}>
       {article.cover?.url && (

@@ -1,0 +1,10 @@
+fragment blogLabel on __Type {
+  enumValues {
+    name
+  }
+}
+query blogLabelsQuery {
+  __type(name: "BlogLabel") {
+    ...blogLabel
+  }
+}

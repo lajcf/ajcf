@@ -1,4 +1,9 @@
 .blogList {
+  .blogLabelsList {
+    li {
+      display: inline;
+    }
+  }
   .articlesPreviews {
     margin: 0 8rem;
     background-color: white;

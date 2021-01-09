@@ -1,5 +1,0 @@
-query postsMetadataQuery {
-  posts(locales: [en], stage: DRAFT) {
-    id
-  }
-}
