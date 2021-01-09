@@ -1,23 +1,16 @@
 import React from "react";
 import { truncate } from "lodash";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
 import { ArticleFragment } from "../../../types/types";
 import styles from "./BlogContainer.module.scss";
+import { dayjs } from "../../../lib/utils/dayjs";
 
-require("dayjs/locale/fr");
-
-dayjs.locale("fr");
-
-dayjs.extend(relativeTime);
-
-const filterContentSummary = (content: string) => {
+const formatContentSummary = (content: string) => {
   const truncatedContentSummary = truncate(content, { length: 140 });
   return truncatedContentSummary.replace("\\n", ". ");
 };
 
 export const ArticlePreview = ({ article }: { article: ArticleFragment }) => {
-  const contentSummary = filterContentSummary(article.content.text);
+  const contentSummary = formatContentSummary(article.content.text);
   return (
     <div className={styles.preview}>
       {article.cover?.url && (
