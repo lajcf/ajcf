@@ -1,24 +1,25 @@
 import React from "react";
 import Link from "next/link";
 import { DownloadOutlined } from "@ant-design/icons";
-import { Label, PressFileFragment } from "../../../types/types";
+import { capitalize } from "lodash";
+import { AssetLabel, PressFileFragment } from "../../../types/types";
 import styles from "./Press.module.scss";
-import dayjs from "dayjs";
+import { dayjs } from "../../../lib/utils/dayjs";
 
-export const formatLabel = (labels: Label[]) => {
-  const labelChosen = labels.find((label) => label === Label.PressReview || label === Label.PressRelease);
+export const formatLabel = (labels: AssetLabel[]) => {
+  const labelChosen = labels.find((label) => label === AssetLabel.PressReview || label === AssetLabel.PressRelease);
   switch (labelChosen) {
-    case Label.PressReview:
+    case AssetLabel.PressReview:
       return "Revue de presse";
-    case Label.PressRelease:
+    case AssetLabel.PressRelease:
       return "Communiqués";
     default:
   }
 };
 
 const fileTitleContent = (file: PressFileFragment): string => {
-  const date = dayjs(file.updatedAt).format("MMMM-YYYY");
-  const label = formatLabel(file.labels);
+  const date = capitalize(dayjs(file.updatedAt).format("MMMM-YYYY"));
+  const label = formatLabel(file.assetLabel);
   if (label) {
     return `${date} - ${label.toUpperCase()}`;
   }

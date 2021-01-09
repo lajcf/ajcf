@@ -1,0 +1,20 @@
+fragment article on Article {
+  id
+  title
+  author
+  createdAt
+  blogLabels
+  cover {
+    id
+    url
+  }
+  content {
+    text
+  }
+}
+
+query articlesQuery {
+  articles(stage: DRAFT, orderBy: createdAt_DESC) {
+    ...article
+  }
+}

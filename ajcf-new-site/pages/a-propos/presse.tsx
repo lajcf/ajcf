@@ -7,10 +7,10 @@ import { MostRecentPressFiles } from "../../components/APropos/Press/MostRecentC
 import { PressReview } from "../../components/APropos/Press/PressReviewComponents/PressReview";
 import { PressReleases } from "../../components/APropos/Press/DispatchesComponents/PressReleases";
 import { graphqlClient } from "../../lib/graphql/graphqlClient";
-import { Label, PressFileFragment } from "../../types/types";
+import { AssetLabel, PressFileFragment } from "../../types/types";
 
-const selectPressFiles = (pressFiles: PressFileFragment[], label: Label): PressFileFragment[] => {
-  return pressFiles.filter((pressFile) => pressFile.labels.includes(label));
+const selectPressFiles = (pressFiles: PressFileFragment[], label: AssetLabel): PressFileFragment[] => {
+  return pressFiles.filter((pressFile) => pressFile.assetLabel.includes(label));
 };
 
 export default ({ pressFiles }: { pressFiles: PressFileFragment[] }) => {
@@ -19,8 +19,8 @@ export default ({ pressFiles }: { pressFiles: PressFileFragment[] }) => {
       <main className={styles.press}>
         <Summary />
         <MostRecentPressFiles pressFiles={pressFiles} />
-        <PressReview pressFiles={selectPressFiles(pressFiles, Label.PressReview)} />
-        <PressReleases pressFiles={selectPressFiles(pressFiles, Label.PressRelease)} />
+        <PressReview pressFiles={selectPressFiles(pressFiles, AssetLabel.PressReview)} />
+        <PressReleases pressFiles={selectPressFiles(pressFiles, AssetLabel.PressRelease)} />
       </main>
     </Layout>
   );
