@@ -1,4 +1,4 @@
-fragment articles on Article {
+fragment article on Article {
   id
   title
   author
@@ -15,6 +15,6 @@ fragment articles on Article {
 
 query articlesQuery {
   articles(stage: DRAFT, orderBy: createdAt_DESC) {
-    ...articles
+    ...article
   }
 }

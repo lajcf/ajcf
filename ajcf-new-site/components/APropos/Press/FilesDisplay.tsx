@@ -1,14 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import dayjs from "dayjs";
 import { DownloadOutlined } from "@ant-design/icons";
 import { capitalize } from "lodash";
 import { AssetLabel, PressFileFragment } from "../../../types/types";
 import styles from "./Press.module.scss";
-
-require("dayjs/locale/fr");
-
-dayjs.locale("fr");
+import { dayjs } from "../../../lib/utils/dayjs";
 
 export const formatLabel = (labels: AssetLabel[]) => {
   const labelChosen = labels.find((label) => label === AssetLabel.PressReview || label === AssetLabel.PressRelease);
