@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "antd";
 import styles from "./BlogContainer.module.scss";
 import { BlogLabel } from "../../../types/types";
 
@@ -10,15 +11,15 @@ export const SelectBlogLabels = ({
   return (
     <ul className={styles.blogLabelsList}>
       <li key="Tous les articles">
-        <button type="button" onClick={() => setSelectedBlogLabel(undefined)}>
+        <Button type="primary" onClick={() => setSelectedBlogLabel(undefined)}>
           Tous les articles
-        </button>
+        </Button>
       </li>
       {Object.values(BlogLabel).map((blogLabel) => (
         <li key={blogLabel}>
-          <button type="button" onClick={() => setSelectedBlogLabel(blogLabel as BlogLabel)}>
+          <Button type="primary" onClick={() => setSelectedBlogLabel(blogLabel as BlogLabel)}>
             #{blogLabel}
-          </button>
+          </Button>
         </li>
       ))}
     </ul>

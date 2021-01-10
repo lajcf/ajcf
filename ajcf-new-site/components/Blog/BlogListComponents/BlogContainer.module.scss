@@ -1,4 +1,6 @@
 .blogContainer {
+  display: grid;
+  place-items: center;
   .blogLabelsList {
     li {
       display: inline;
@@ -7,6 +9,7 @@
   .articlesPreviews {
     margin: 0 8rem;
     background-color: white;
+    display: grid;
     .preview {
       margin: 2rem 0;
       display: grid;
@@ -40,6 +43,9 @@
       width: 100%;
       color: #fafbfd;
       margin-top: 2rem;
+    }
+    .loadMoreButton {
+      place-self: center;
     }
   }
 }
