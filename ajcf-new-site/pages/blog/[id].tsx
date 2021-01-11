@@ -4,7 +4,10 @@ import { ArticleContainer } from "../../components/Blog/BlogListComponents/Artic
 import { graphqlClient } from "../../lib/graphql/graphqlClient";
 import { ArticlePageFragment } from "../../types/types";
 
-export default function Article({ article }: { article: ArticlePageFragment }) {
+export type ArticleProps = { article?: ArticlePageFragment | null };
+
+export default function Article({ article }: ArticleProps) {
+  if (!article) throw new Error("article not found");
   return <ArticleContainer article={article} />;
 }
 
@@ -16,7 +19,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<any, { id: string }> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<ArticleProps, { id: string }> = async ({ params }) => {
   const articlePageResult = await graphqlClient.articlePageQuery({ id: params?.id || "" });
   return {
     props: {

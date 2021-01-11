@@ -3,7 +3,6 @@ import { ArticlePageFragment } from "../../../types/types";
 import { Layout } from "../../Layout/Layout";
 
 export const ArticleContainer = ({ article }: { article: ArticlePageFragment }) => {
-  console.log(article.content);
   return (
     <Layout>
       <main>

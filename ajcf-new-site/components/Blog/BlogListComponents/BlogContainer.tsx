@@ -20,8 +20,8 @@ const limitDisplayedArticles = (filteredArticles: ArticleFragment[], displayBuff
 export const BlogContainer = ({ articles }: { articles: ArticleFragment[] }) => {
   const [selectedBlogLabel, setSelectedBlogLabel] = useState<BlogLabel>();
   const filteredArticles = filterArticles(articles, selectedBlogLabel);
-  const [displayBuffer, setDisplayBuffer] = useState(1);
-  const displayedArticles = limitDisplayedArticles(filteredArticles, displayBuffer);
+  const [numberOfArticlesToDisplay, setNumberOfArticlesToDisplay] = useState(1);
+  const displayedArticles = limitDisplayedArticles(filteredArticles, numberOfArticlesToDisplay);
   return (
     <Layout>
       <main className={styles.blogContainer}>
@@ -31,7 +31,11 @@ export const BlogContainer = ({ articles }: { articles: ArticleFragment[] }) => 
           {displayedArticles.map((article) => (
             <ArticlePreview key={article.id} article={article} />
           ))}
-          <Button type="primary" className={styles.loadMoreButton} onClick={() => setDisplayBuffer(displayBuffer + 1)}>
+          <Button
+            type="primary"
+            className={styles.loadMoreButton}
+            onClick={() => setNumberOfArticlesToDisplay(numberOfArticlesToDisplay + 1)}
+          >
             Voir plus d'articles
           </Button>
         </section>
