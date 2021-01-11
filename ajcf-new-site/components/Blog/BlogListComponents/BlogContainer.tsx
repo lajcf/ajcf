@@ -19,8 +19,8 @@ const limitDisplayedArticles = (filteredArticles: ArticleFragment[], displayBuff
 
 export const BlogContainer = ({ articles }: { articles: ArticleFragment[] }) => {
   const [selectedBlogLabel, setSelectedBlogLabel] = useState<BlogLabel>();
-  const filteredArticles = filterArticles(articles, selectedBlogLabel);
   const [numberOfArticlesToDisplay, setNumberOfArticlesToDisplay] = useState(1);
+  const filteredArticles = filterArticles(articles, selectedBlogLabel);
   const displayedArticles = limitDisplayedArticles(filteredArticles, numberOfArticlesToDisplay);
   return (
     <Layout>
