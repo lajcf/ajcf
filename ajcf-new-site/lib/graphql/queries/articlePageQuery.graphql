@@ -1,0 +1,19 @@
+fragment articlePage on Article {
+  title
+  author
+  createdAt
+  blogLabels
+  cover {
+    id
+    url
+  }
+  content {
+    text
+  }
+}
+
+query articlePageQuery($id: ID!) {
+  article(where: { id: $id }, stage: DRAFT) {
+    ...articlePage
+  }
+}

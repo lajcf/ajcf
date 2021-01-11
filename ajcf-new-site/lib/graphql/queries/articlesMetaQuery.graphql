@@ -1,0 +1,5 @@
+query articlesMetaQuery {
+  articles(stage: DRAFT) {
+    id
+  }
+}

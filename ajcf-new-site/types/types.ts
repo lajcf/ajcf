@@ -1839,6 +1839,42 @@ export enum _SystemDateTimeFieldVariation {
   Combined = 'combined'
 }
 
+export type ArticlePageFragment = (
+  { __typename?: 'Article' }
+  & Pick<Article, 'title' | 'author' | 'createdAt' | 'blogLabels'>
+  & { cover?: Maybe<(
+    { __typename?: 'Asset' }
+    & Pick<Asset, 'id' | 'url'>
+  )>, content: (
+    { __typename?: 'RichText' }
+    & Pick<RichText, 'text'>
+  ) }
+);
+
+export type ArticlePageQueryQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type ArticlePageQueryQuery = (
+  { __typename?: 'Query' }
+  & { article?: Maybe<(
+    { __typename?: 'Article' }
+    & ArticlePageFragment
+  )> }
+);
+
+export type ArticlesMetaQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ArticlesMetaQueryQuery = (
+  { __typename?: 'Query' }
+  & { articles: Array<(
+    { __typename?: 'Article' }
+    & Pick<Article, 'id'>
+  )> }
+);
+
 export type ArticleFragment = (
   { __typename?: 'Article' }
   & Pick<Article, 'id' | 'title' | 'author' | 'createdAt' | 'blogLabels'>
@@ -1878,6 +1914,21 @@ export type PressFilesQueryQuery = (
   )> }
 );
 
+export const ArticlePageFragmentDoc = gql`
+    fragment articlePage on Article {
+  title
+  author
+  createdAt
+  blogLabels
+  cover {
+    id
+    url
+  }
+  content {
+    text
+  }
+}
+    `;
 export const ArticleFragmentDoc = gql`
     fragment article on Article {
   id
@@ -1900,6 +1951,20 @@ export const PressFileFragmentDoc = gql`
   url
   updatedAt
   assetLabel
+}
+    `;
+export const ArticlePageQueryDocument = gql`
+    query articlePageQuery($id: ID!) {
+  article(where: {id: $id}, stage: DRAFT) {
+    ...articlePage
+  }
+}
+    ${ArticlePageFragmentDoc}`;
+export const ArticlesMetaQueryDocument = gql`
+    query articlesMetaQuery {
+  articles(stage: DRAFT) {
+    id
+  }
 }
     `;
 export const ArticlesQueryDocument = gql`
@@ -1927,6 +1992,12 @@ export type SdkFunctionWrapper = <T>(action: () => Promise<T>) => Promise<T>;
 const defaultWrapper: SdkFunctionWrapper = sdkFunction => sdkFunction();
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    articlePageQuery(variables: ArticlePageQueryQueryVariables): Promise<ArticlePageQueryQuery> {
+      return withWrapper(() => client.request<ArticlePageQueryQuery>(print(ArticlePageQueryDocument), variables));
+    },
+    articlesMetaQuery(variables?: ArticlesMetaQueryQueryVariables): Promise<ArticlesMetaQueryQuery> {
+      return withWrapper(() => client.request<ArticlesMetaQueryQuery>(print(ArticlesMetaQueryDocument), variables));
+    },
     articlesQuery(variables?: ArticlesQueryQueryVariables): Promise<ArticlesQueryQuery> {
       return withWrapper(() => client.request<ArticlesQueryQuery>(print(ArticlesQueryDocument), variables));
     },
