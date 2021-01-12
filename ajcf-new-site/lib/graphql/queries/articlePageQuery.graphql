@@ -8,7 +8,7 @@ fragment articlePage on Article {
     url
   }
   content {
-    text
+    html
   }
 }
 

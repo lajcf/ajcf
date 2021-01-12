@@ -1,8 +1,10 @@
 import React from "react";
+import parse from "html-react-parser";
 import { ArticlePageFragment } from "../../../types/types";
 import { Layout } from "../../Layout/Layout";
 
 export const ArticleContainer = ({ article }: { article: ArticlePageFragment }) => {
+  console.log(article.content);
   return (
     <Layout>
       <main>
@@ -15,7 +17,7 @@ export const ArticleContainer = ({ article }: { article: ArticlePageFragment }) 
           <h1>{article.title}</h1>
           <h3>{article.author}</h3>
           <h4>{article.createdAt}</h4>
-          <text>{article.content.text}</text>
+          <div>{parse(article.content.html)}</div>
         </section>
       </main>
     </Layout>
