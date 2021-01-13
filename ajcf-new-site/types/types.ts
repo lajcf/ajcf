@@ -1805,7 +1805,7 @@ export type ArticlesMetaQueryQuery = { __typename?: "Query" } & {
   articles: Array<{ __typename?: "Article" } & Pick<Article, "id">>;
 };
 
-export type ArticleFragment = { __typename?: "Article" } & Pick<
+export type ArticlePreviewFragment = { __typename?: "Article" } & Pick<
   Article,
   "id" | "title" | "author" | "createdAt" | "blogLabels"
 > & {
@@ -1813,10 +1813,10 @@ export type ArticleFragment = { __typename?: "Article" } & Pick<
     content: { __typename?: "RichText" } & Pick<RichText, "text">;
   };
 
-export type ArticlesQueryQueryVariables = Exact<{ [key: string]: never }>;
+export type ArticlesPreviewQueryQueryVariables = Exact<{ [key: string]: never }>;
 
-export type ArticlesQueryQuery = { __typename?: "Query" } & {
-  articles: Array<{ __typename?: "Article" } & ArticleFragment>;
+export type ArticlesPreviewQueryQuery = { __typename?: "Query" } & {
+  articles: Array<{ __typename?: "Article" } & ArticlePreviewFragment>;
 };
 
 export type PressFileFragment = { __typename?: "Asset" } & Pick<Asset, "fileName" | "url" | "updatedAt" | "assetLabel">;
@@ -1843,8 +1843,8 @@ export const ArticlePageFragmentDoc = gql`
     }
   }
 `;
-export const ArticleFragmentDoc = gql`
-  fragment article on Article {
+export const ArticlePreviewFragmentDoc = gql`
+  fragment articlePreview on Article {
     id
     title
     author
@@ -1882,13 +1882,13 @@ export const ArticlesMetaQueryDocument = gql`
     }
   }
 `;
-export const ArticlesQueryDocument = gql`
-  query articlesQuery {
+export const ArticlesPreviewQueryDocument = gql`
+  query articlesPreviewQuery {
     articles(stage: DRAFT, orderBy: createdAt_DESC) {
-      ...article
+      ...articlePreview
     }
   }
-  ${ArticleFragmentDoc}
+  ${ArticlePreviewFragmentDoc}
 `;
 export const PressFilesQueryDocument = gql`
   query pressFilesQuery {
@@ -1910,8 +1910,10 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     articlesMetaQuery(variables?: ArticlesMetaQueryQueryVariables): Promise<ArticlesMetaQueryQuery> {
       return withWrapper(() => client.request<ArticlesMetaQueryQuery>(print(ArticlesMetaQueryDocument), variables));
     },
-    articlesQuery(variables?: ArticlesQueryQueryVariables): Promise<ArticlesQueryQuery> {
-      return withWrapper(() => client.request<ArticlesQueryQuery>(print(ArticlesQueryDocument), variables));
+    articlesPreviewQuery(variables?: ArticlesPreviewQueryQueryVariables): Promise<ArticlesPreviewQueryQuery> {
+      return withWrapper(() =>
+        client.request<ArticlesPreviewQueryQuery>(print(ArticlesPreviewQueryDocument), variables)
+      );
     },
     pressFilesQuery(variables?: PressFilesQueryQueryVariables): Promise<PressFilesQueryQuery> {
       return withWrapper(() => client.request<PressFilesQueryQuery>(print(PressFilesQueryDocument), variables));
