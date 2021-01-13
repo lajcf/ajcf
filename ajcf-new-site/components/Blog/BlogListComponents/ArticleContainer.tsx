@@ -4,11 +4,11 @@ import { Layout } from "../../Layout/Layout";
 import styles from "./ArticleContainer.module.scss";
 import { dayjs } from "../../../lib/utils/dayjs";
 import { ArticleRecommendations } from "./ArticleRecommendations";
-import { ArticleFragment, ArticlePageFragment } from "../../../types/types";
+import { ArticlePreviewFragment, ArticlePageFragment } from "../../../types/types";
 
 export type ArticleContainerProps = {
   article: ArticlePageFragment;
-  articles: ArticleFragment[];
+  articles: ArticlePreviewFragment[];
 };
 
 export const ArticleContainer = ({ article, articles }: ArticleContainerProps) => {
