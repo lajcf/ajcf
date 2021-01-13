@@ -1,6 +1,6 @@
-import React, { ReactComponentElement, ReactNode } from "react";
-import styles from "./Espaces.module.scss";
+import React from "react";
 import { CoffeeOutlined, CommentOutlined, RadarChartOutlined, TeamOutlined } from "@ant-design/icons";
+import styles from "./ProjetsAJCFContainer.module.scss";
 
 export type EspaceCard = {
   name: string;

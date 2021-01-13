@@ -1,6 +1,6 @@
 import { Button } from "antd";
 import React from "react";
-import styles from "./Espaces.module.scss";
+import styles from "./ProjetsAJCFContainer.module.scss";
 import { EspacesCards } from "./EspacesCards";
 
 export const Espaces = () => {
