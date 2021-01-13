@@ -2,13 +2,16 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
 import { ArticleContainer } from "../../components/Blog/BlogListComponents/ArticleContainer";
 import { graphqlClient } from "../../lib/graphql/graphqlClient";
-import { ArticlePageFragment } from "../../types/types";
+import { ArticleFragment, ArticlePageFragment } from "../../types/types";
 
-export type ArticleProps = { article?: ArticlePageFragment | null };
+type ArticleProps = {
+  article?: ArticlePageFragment | null;
+  articles: ArticleFragment[];
+};
 
-export default function Article({ article }: ArticleProps) {
+export default function Article({ article, articles }: ArticleProps) {
   if (!article) throw new Error("article not found");
-  return <ArticleContainer article={article} />;
+  return <ArticleContainer article={article} articles={articles} />;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -21,9 +24,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<ArticleProps, { id: string }> = async ({ params }) => {
   const articlePageResult = await graphqlClient.articlePageQuery({ id: params?.id || "" });
+  const articlesResult = await graphqlClient.articlesQuery();
   return {
     props: {
       article: articlePageResult.article,
+      articles: articlesResult.articles,
     },
   };
 };

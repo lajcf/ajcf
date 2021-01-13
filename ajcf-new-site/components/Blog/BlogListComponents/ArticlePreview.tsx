@@ -1,17 +1,12 @@
 import React from "react";
-import { truncate } from "lodash";
 import Link from "next/link";
 import { ArticleFragment } from "../../../types/types";
 import styles from "./BlogContainer.module.scss";
 import { dayjs } from "../../../lib/utils/dayjs";
-
-const formatContentSummary = (content: string) => {
-  const truncatedContentSummary = truncate(content, { length: 140 });
-  return truncatedContentSummary.replace("\\n", ". ");
-};
+import { formatContentSummary } from "./formatContentSummary";
 
 export const ArticlePreview = ({ article }: { article: ArticleFragment }) => {
-  const contentSummary = formatContentSummary(article.content.text);
+  const contentSummary = formatContentSummary(article.content.text, 140);
   return (
     <Link href={`/blog/${article.id}`}>
       <a>

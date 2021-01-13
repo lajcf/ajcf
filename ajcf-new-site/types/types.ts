@@ -1785,7 +1785,7 @@ export enum _SystemDateTimeFieldVariation {
 
 export type ArticlePageFragment = { __typename?: "Article" } & Pick<
   Article,
-  "title" | "author" | "createdAt" | "blogLabels"
+  "id" | "title" | "author" | "createdAt" | "blogLabels"
 > & {
     cover?: Maybe<{ __typename?: "Asset" } & Pick<Asset, "id" | "url">>;
     content: { __typename?: "RichText" } & Pick<RichText, "html">;
@@ -1829,6 +1829,7 @@ export type PressFilesQueryQuery = { __typename?: "Query" } & {
 
 export const ArticlePageFragmentDoc = gql`
   fragment articlePage on Article {
+    id
     title
     author
     createdAt

@@ -1,4 +1,5 @@
 fragment articlePage on Article {
+  id
   title
   author
   createdAt
