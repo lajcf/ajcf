@@ -13,8 +13,8 @@ const filterArticles = (articles: ArticlePreviewFragment[], selectedBlogLabel?: 
   return articles.filter((article) => article.blogLabels.includes(selectedBlogLabel));
 };
 
-const limitDisplayedArticles = (filteredArticles: ArticlePreviewFragment[], displayBuffer: number) => {
-  return filteredArticles.slice(0, displayBuffer);
+const limitDisplayedArticles = (filteredArticles: ArticlePreviewFragment[], numberOfArticlesToDisplay: number) => {
+  return filteredArticles.slice(0, numberOfArticlesToDisplay);
 };
 
 export const BlogContainer = ({ articles }: { articles: ArticlePreviewFragment[] }) => {
