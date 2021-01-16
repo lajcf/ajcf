@@ -1,3 +1,7 @@
+.learnMoreButton {
+  display: block;
+  margin: 1rem auto;
+}
 .espaces {
   background-color: #f3f6fa;
   display: grid;
@@ -25,9 +29,5 @@
         color: #6a89c3;
       }
     }
-  }
-  .learnMoreButton {
-    place-self: center;
-    margin: 1rem 0;
   }
 }

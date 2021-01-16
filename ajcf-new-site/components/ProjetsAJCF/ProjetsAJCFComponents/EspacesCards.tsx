@@ -7,11 +7,6 @@ export type EspaceCard = {
   logo: React.ForwardRefExoticComponent<any>;
 };
 
-export type EspaceCardProps = {
-  key: string;
-  espace: EspaceCard;
-};
-
 const espaces: EspaceCard[] = [
   {
     name: "Espace Talk",
@@ -31,10 +26,10 @@ const espaces: EspaceCard[] = [
   },
 ];
 
-export const EspaceCard = ({ key, espace }: EspaceCardProps) => {
+const EspaceCard = ({ espace }: { espace: EspaceCard }) => {
   const Logo = espace.logo;
   return (
-    <div key={key} className={styles.espaceCard}>
+    <div key={espace.name} className={styles.espaceCard}>
       <Logo className={styles.logo} />
       <h3 className={styles.text}>{espace.name}</h3>
     </div>
