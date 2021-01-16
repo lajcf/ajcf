@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./ProjetsAJCFContainer.module.scss";
 import { EspacesCards } from "./EspacesCards";
 
-export const Espaces = () => {
+export const EspacesSummary = () => {
   return (
     <section className={styles.espaces}>
       <h3 className={styles.categoryName}>{`Nos Espaces`.toUpperCase()}</h3>

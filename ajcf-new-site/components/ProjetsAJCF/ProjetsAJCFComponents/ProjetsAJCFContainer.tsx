@@ -1,13 +1,13 @@
 import React from "react";
 import { Layout } from "../../Layout/Layout";
-import { Espaces } from "./Espaces";
-import { Summary } from "./Summary";
+import { EspacesSummary } from "./EspacesSummary";
+import { GeneralSummary } from "./GeneralSummary";
 
 export const ProjetsAJCFContainer = () => {
   return (
     <Layout>
-      <Summary />
-      <Espaces />
+      <GeneralSummary />
+      <EspacesSummary />
     </Layout>
   );
 };

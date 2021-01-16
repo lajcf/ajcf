@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Summary = () => {
+export const GeneralSummary = () => {
   return (
     <section>
       <h1>Projets AJCF</h1>
