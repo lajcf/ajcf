@@ -3,25 +3,22 @@ import Link from "next/link";
 import styles from "./ArticleContainer.module.scss";
 import { ArticleContainerProps } from "./ArticleContainer";
 import { ArticleRecommendationPreview } from "./ArticleRecommendationPreview";
-import { ArticlePageFragment, ArticlePreviewFragment } from "../../../types/types";
+import { BlogLabel } from "../../../types/types";
 
-const blogLabelsInCommon = (filteredArticle: ArticlePreviewFragment, article: ArticlePageFragment) => {
-  return filteredArticle.blogLabels.some((filteredArticleBlogLabel) =>
-    article.blogLabels.includes(filteredArticleBlogLabel)
-  );
+const isBlogLabelsMatch = (sourceBlogLabels: BlogLabel[], targetBlogLabels: BlogLabel[]) => {
+  return sourceBlogLabels.some((sourceBlogLabel) => targetBlogLabels.includes(sourceBlogLabel));
 };
 
 const selectArticleRecommendations = ({ article, articles }: ArticleContainerProps) => {
   const selectedArticles = articles.filter((filteredArticle) => {
     if (filteredArticle.id === article.id) return false;
-    return blogLabelsInCommon(filteredArticle, article);
+    return isBlogLabelsMatch(filteredArticle.blogLabels, article.blogLabels);
   });
   return selectedArticles;
 };
 
 export const ArticleRecommendations = ({ article, articles }: ArticleContainerProps) => {
   const articleRecommendations = selectArticleRecommendations({ article, articles });
-  // if (articleRecommendations.length <= 0) return <div />; // TODO: Check if there is a better way to return nothing
   if (articleRecommendations.length <= 0) return null;
   return (
     <section className={styles.articleRecommendations}>
