@@ -34,3 +34,6 @@ yarn-error.log*
 .vercel
 graphql.config.json
 .graphqlconfig
+
+# eslint
+.eslintcache
