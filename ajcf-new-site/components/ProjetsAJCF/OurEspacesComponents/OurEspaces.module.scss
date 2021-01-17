@@ -1,0 +1,31 @@
+.espaceSection {
+  display: grid;
+  grid-template-columns: 3fr 5fr;
+  gap: 1rem;
+  grid-template-areas:
+    "logoFrame categoryName"
+    "logoFrame title"
+    "logoFrame text"
+    ". activitiesList";
+  .logoFrame {
+    grid-area: logoFrame;
+    border: 3px solid #3c64b1;
+    display: grid;
+    place-content: center;
+    .espaceLogo {
+      font-size: 2rem;
+    }
+  }
+  .categoryName {
+    grid-area: categoryName;
+  }
+  .title {
+    grid-area: title;
+  }
+  .text {
+    grid-area: text;
+  }
+  .activitiesList {
+    grid-area: activitiesList;
+  }
+}
