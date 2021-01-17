@@ -3,16 +3,12 @@ import Link from "next/link";
 import styles from "./ArticleContainer.module.scss";
 import { ArticleContainerProps } from "./ArticleContainer";
 import { ArticleRecommendationPreview } from "./ArticleRecommendationPreview";
-import { BlogLabel } from "../../../types/types";
-
-const isBlogLabelsMatch = (sourceBlogLabels: BlogLabel[], targetBlogLabels: BlogLabel[]) => {
-  return sourceBlogLabels.some((sourceBlogLabel) => targetBlogLabels.includes(sourceBlogLabel));
-};
+import { arraysHaveMatch } from "../../../lib/helperFunctions/arraysHaveMatch";
 
 const selectArticleRecommendations = ({ article, articles }: ArticleContainerProps) => {
   const selectedArticles = articles.filter((filteredArticle) => {
     if (filteredArticle.id === article.id) return false;
-    return isBlogLabelsMatch(filteredArticle.blogLabels, article.blogLabels);
+    return arraysHaveMatch(filteredArticle.blogLabels, article.blogLabels);
   });
   return selectedArticles;
 };
