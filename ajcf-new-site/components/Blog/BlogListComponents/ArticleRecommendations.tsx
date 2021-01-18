@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "./ArticleContainer.module.scss";
 import { ArticleContainerProps } from "./ArticleContainer";
 import { ArticleRecommendationPreview } from "./ArticleRecommendationPreview";
-import { arraysShareElements } from "../../../lib/helperFunctions/arraysShareElements";
+import { arraysShareElements } from "../../../lib/utils/arraysShareElements";
 
 const selectArticleRecommendations = ({ article, articles }: ArticleContainerProps) => {
   const selectedArticles = articles.filter((filteredArticle) => {
