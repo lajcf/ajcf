@@ -1,5 +1,5 @@
 import React from "react";
-import { ActivitiesContentProps } from "./EspaceTalk";
+import { ActivitiesContentProps } from "./EspaceContent";
 import styles from "./OurEspaces.module.scss";
 
 export const ActivitiesLogos = ({ activitiesContent }: { activitiesContent: ActivitiesContentProps[] }) => {
@@ -8,7 +8,7 @@ export const ActivitiesLogos = ({ activitiesContent }: { activitiesContent: Acti
       {activitiesContent.map((activityContent) => (
         <div key={activityContent.name} className={styles.activityContent}>
           <div className={styles.activityLogoFrame}>{activityContent.logo}</div>
-          <h3>{activityContent.name}</h3>
+          <h3 className={styles.activityName}>{activityContent.name}</h3>
         </div>
       ))}
     </div>

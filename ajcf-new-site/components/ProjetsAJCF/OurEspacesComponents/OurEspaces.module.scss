@@ -16,7 +16,7 @@
     height: 16rem;
     border-radius: 10%;
     background-color: #f3f6fa;
-    .espaceLogo {
+    span {
       font-size: 2rem;
     }
   }
@@ -54,6 +54,9 @@
               color: white;
               font-size: 2rem;
             }
+          }
+          .activityName {
+            text-align: center;
           }
         }
       }

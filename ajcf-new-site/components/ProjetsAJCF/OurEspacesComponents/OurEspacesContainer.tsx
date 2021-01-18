@@ -1,4 +1,5 @@
 import React from "react";
+import { EspaceLearn } from "./EspaceLearn";
 import { EspaceTalk } from "./EspaceTalk";
 
 export const OurEspacesContainer = () => {
@@ -13,6 +14,7 @@ export const OurEspacesContainer = () => {
         </p>
       </section>
       <EspaceTalk />
+      <EspaceLearn />
     </main>
   );
 };
