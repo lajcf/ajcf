@@ -3,12 +3,12 @@ import Link from "next/link";
 import styles from "./ArticleContainer.module.scss";
 import { ArticleContainerProps } from "./ArticleContainer";
 import { ArticleRecommendationPreview } from "./ArticleRecommendationPreview";
-import { arraysHaveMatch } from "../../../lib/helperFunctions/arraysHaveMatch";
+import { arraysShareElements } from "../../../lib/helperFunctions/arraysShareElements";
 
 const selectArticleRecommendations = ({ article, articles }: ArticleContainerProps) => {
   const selectedArticles = articles.filter((filteredArticle) => {
     if (filteredArticle.id === article.id) return false;
-    return arraysHaveMatch(filteredArticle.blogLabels, article.blogLabels);
+    return arraysShareElements(filteredArticle.blogLabels, article.blogLabels);
   });
   return selectedArticles;
 };
