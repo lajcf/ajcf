@@ -1,6 +1,6 @@
 .espaceSection {
   display: grid;
-  grid-template-columns: 3fr 5fr;
+  grid-template-columns: auto 4fr;
   gap: 1rem;
   grid-template-areas:
     "logoFrame categoryName"
@@ -12,20 +12,51 @@
     border: 3px solid #3c64b1;
     display: grid;
     place-content: center;
+    width: 16rem;
+    height: 16rem;
+    border-radius: 10%;
+    background-color: #f3f6fa;
     .espaceLogo {
       font-size: 2rem;
     }
   }
-  .categoryName {
-    grid-area: categoryName;
-  }
-  .title {
-    grid-area: title;
-  }
-  .text {
-    grid-area: text;
-  }
-  .activitiesList {
-    grid-area: activitiesList;
+  .sectionContent {
+    background-color: #f3f6fa;
+    padding: 2rem 6rem;
+    .categoryName {
+      grid-area: categoryName;
+    }
+    .title {
+      grid-area: title;
+    }
+    .text {
+      grid-area: text;
+    }
+    .activitiesList {
+      grid-area: activitiesList;
+      .activitiesContent {
+        display: grid;
+        grid-auto-columns: 16rem;
+        grid-auto-flow: column;
+        place-items: center;
+        .activityContent {
+          display: grid;
+          place-items: center;
+          .activityLogoFrame {
+            border: 1px solid #3c64b1;
+            background-color: #3c64b1;
+            border-radius: 50%;
+            width: 6rem;
+            height: 6rem;
+            display: grid;
+            place-content: center;
+            span {
+              color: white;
+              font-size: 2rem;
+            }
+          }
+        }
+      }
+    }
   }
 }

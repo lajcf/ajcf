@@ -1,6 +1,27 @@
 import React from "react";
-import { CommentOutlined } from "@ant-design/icons";
+import { CommentOutlined, ReadOutlined, HistoryOutlined, InsuranceOutlined } from "@ant-design/icons";
+import { ActivitiesLogos } from "./ActivitiesLogos";
 import styles from "./OurEspaces.module.scss";
+
+export type ActivitiesContentProps = {
+  name: string;
+  logo: JSX.Element;
+};
+
+const activitiesContent: ActivitiesContentProps[] = [
+  {
+    name: "Culture",
+    logo: <ReadOutlined />,
+  },
+  {
+    name: "Mémoire",
+    logo: <HistoryOutlined />,
+  },
+  {
+    name: "Défense des droits",
+    logo: <InsuranceOutlined />,
+  },
+];
 
 export const EspaceTalk = () => {
   return (
@@ -9,15 +30,18 @@ export const EspaceTalk = () => {
         <CommentOutlined className={styles.espaceLogo} />
         <h3>Espace Talk</h3>
       </div>
-      <div className={`capsHeading ${styles.categoryName}`}>Espace Talk</div>
-      <h2 className={styles.title}>Comprendre et défendre l'identité franco-chinoise</h2>
-      <p className={`texte1 ${styles.text}`}>
-        L’espace Talk comprendEt has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam no suscipit
-        quaerendum. At nam minimum ponderum. Est audiam animal molestiae te. Et has minim elitr intellegat. Mea aeterno
-        eleifend antiopam ad, nam no suscipit quaerendum. At nam minimum ponderum
-      </p>
-      <div className={styles.activitiesList}>
-        <h3>Les activités</h3>
+      <div className={styles.sectionContent}>
+        <div className={`capsHeading ${styles.categoryName}`}>Espace Talk</div>
+        <h2 className={styles.title}>Comprendre et défendre l'identité franco-chinoise</h2>
+        <p className={`texte1 ${styles.text}`}>
+          L’espace Talk comprendEt has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam no suscipit
+          quaerendum. At nam minimum ponderum. Est audiam animal molestiae te. Et has minim elitr intellegat. Mea
+          aeterno eleifend antiopam ad, nam no suscipit quaerendum. At nam minimum ponderum
+        </p>
+        <div className={styles.activitiesList}>
+          <h3>Les activités</h3>
+          <ActivitiesLogos activitiesContent={activitiesContent} />
+        </div>
       </div>
     </section>
   );
