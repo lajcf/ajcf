@@ -1,4 +1,4 @@
-fragment article on Article {
+fragment articlePreview on Article {
   id
   title
   author
@@ -13,8 +13,8 @@ fragment article on Article {
   }
 }
 
-query articlesQuery {
+query articlesPreviewQuery {
   articles(stage: DRAFT, orderBy: createdAt_DESC) {
-    ...article
+    ...articlePreview
   }
 }

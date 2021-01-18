@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import { Button } from "antd";
-import { ArticleFragment, BlogLabel } from "../../../types/types";
+import { ArticlePreviewFragment, BlogLabel } from "../../../types/types";
 import styles from "./BlogContainer.module.scss";
 import { Layout } from "../../Layout/Layout";
 import { ArticlePreview } from "./ArticlePreview";
 import { SelectBlogLabels } from "./SelectBlogLabels";
 
-const filterArticles = (articles: ArticleFragment[], selectedBlogLabel?: BlogLabel) => {
+const filterArticles = (articles: ArticlePreviewFragment[], selectedBlogLabel?: BlogLabel) => {
   if (!selectedBlogLabel) {
     return articles;
   }
   return articles.filter((article) => article.blogLabels.includes(selectedBlogLabel));
 };
 
-const limitDisplayedArticles = (filteredArticles: ArticleFragment[], displayBuffer: number) => {
-  return filteredArticles.slice(0, displayBuffer);
+const limitDisplayedArticles = (filteredArticles: ArticlePreviewFragment[], numberOfArticlesToDisplay: number) => {
+  return filteredArticles.slice(0, numberOfArticlesToDisplay);
 };
 
-export const BlogContainer = ({ articles }: { articles: ArticleFragment[] }) => {
+export const BlogContainer = ({ articles }: { articles: ArticlePreviewFragment[] }) => {
   const [selectedBlogLabel, setSelectedBlogLabel] = useState<BlogLabel>();
   const [numberOfArticlesToDisplay, setNumberOfArticlesToDisplay] = useState(1);
   const filteredArticles = filterArticles(articles, selectedBlogLabel);
