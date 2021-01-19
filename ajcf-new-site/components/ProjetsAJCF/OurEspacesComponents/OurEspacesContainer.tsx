@@ -1,4 +1,5 @@
 import React from "react";
+import { EspaceEnjoy } from "./EspaceEnjoy";
 import { EspaceLearn } from "./EspaceLearn";
 import { EspaceMeet } from "./EspaceMeet";
 import { EspaceTalk } from "./EspaceTalk";
@@ -17,6 +18,7 @@ export const OurEspacesContainer = () => {
       <EspaceTalk />
       <EspaceLearn />
       <EspaceMeet />
+      <EspaceEnjoy />
     </main>
   );
 };
