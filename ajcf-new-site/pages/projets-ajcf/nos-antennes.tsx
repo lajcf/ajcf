@@ -1,10 +1,6 @@
 import React from "react";
-import { Layout } from "../../components/Layout/Layout";
+import { OurAntennasContainer } from "../../components/ProjetsAJCF/OurAntennasComponents/OurAntennasContainer";
 
 export default () => {
-  return (
-    <Layout>
-      <div>Nos antennes</div>
-    </Layout>
-  );
+  return <OurAntennasContainer />;
 };
