@@ -1,6 +1,9 @@
 import React from "react";
 import { Layout } from "../../Layout/Layout";
 import { OurInterventions } from "./OurInterventions";
+import { OurPartners } from "./OurPartners";
+import styles from "./EducationAJCF.module.scss";
+import { TwitterFeed } from "./TwitterFeed";
 
 export const EducationAJCFContainer = () => {
   return (
@@ -19,6 +22,15 @@ export const EducationAJCFContainer = () => {
           </p>
         </section>
         <OurInterventions />
+        <OurPartners />
+        <section className={styles.joinUsSection}>
+          <h2>Nous rejoindre</h2>
+          <p className="texte1">
+            Intéressé(e) par nos événements et le monde du débat et des idées ? Contactez l’équipe en charge de ce
+            projet en contactant contact @lajcf.fr
+          </p>
+        </section>
+        <TwitterFeed />
       </main>
     </Layout>
   );
