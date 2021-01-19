@@ -1,10 +1,6 @@
 import React from "react";
-import { Layout } from "../../components/Layout/Layout";
+import { EducationAJCFContainer } from "../../components/ProjetsAJCF/EducationAJCFComponents/EducationAJCFContainer";
 
 export default () => {
-  return (
-    <Layout>
-      <div>Nos interventions</div>
-    </Layout>
-  );
+  return <EducationAJCFContainer />;
 };
