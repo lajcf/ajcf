@@ -1,10 +1,6 @@
 import React from "react";
-import { Layout } from "../../components/Layout/Layout";
+import { RecruitmentContainer } from "../../components/ProjetsAJCF/RecruitmentComponents/RecruitmentContainer";
 
 export default () => {
-  return (
-    <Layout>
-      <div>Appel à projets</div>
-    </Layout>
-  );
+  return <RecruitmentContainer />;
 };
