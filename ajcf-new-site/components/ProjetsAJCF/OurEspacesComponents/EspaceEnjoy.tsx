@@ -2,7 +2,7 @@ import React from "react";
 import { CoffeeOutlined, FireOutlined, RocketOutlined } from "@ant-design/icons";
 import { ActivitiesContentProps, EspaceContent, EspaceContentProps } from "./EspaceContent";
 
-const activitiesContent: ActivitiesContentProps[] = [
+const activitiesContent: ActivitiesContentProps["activitiesContent"] = [
   {
     name: "Chinese Food",
     logo: <FireOutlined />,
@@ -13,7 +13,7 @@ const activitiesContent: ActivitiesContentProps[] = [
   },
 ];
 
-const espaceEnjoyContent: EspaceContentProps = {
+const espaceEnjoyContent: EspaceContentProps["espaceContent"] = {
   categoryName: "Espace Enjoy",
   title: "Cuisiner et se dépasser",
   text:

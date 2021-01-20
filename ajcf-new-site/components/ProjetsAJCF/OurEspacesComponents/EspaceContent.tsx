@@ -3,19 +3,23 @@ import { ActivitiesLogos } from "./ActivitiesLogos";
 import styles from "./OurEspaces.module.scss";
 
 export type ActivitiesContentProps = {
-  name: string;
-  logo: JSX.Element;
+  activitiesContent: {
+    name: string;
+    logo: JSX.Element;
+  }[];
 };
 
 export type EspaceContentProps = {
-  categoryName: string;
-  title: string;
-  text: string;
-  logo: JSX.Element;
-  activities: ActivitiesContentProps[];
+  espaceContent: {
+    categoryName: string;
+    title: string;
+    text: string;
+    logo: JSX.Element;
+    activities: ActivitiesContentProps["activitiesContent"];
+  };
 };
 
-export const EspaceContent = ({ espaceContent }: { espaceContent: EspaceContentProps }) => {
+export const EspaceContent = ({ espaceContent }: EspaceContentProps) => {
   return (
     <section className={styles.espaceSection}>
       <div className={styles.logoFrame}>

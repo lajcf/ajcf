@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "./Recruitment.module.scss";
 
-type offersContentProps = {
+type OffersContentProps = {
   id: number;
   category: string;
   description: string;
 };
 
-const offersContent: offersContentProps[] = [
+const offersContent: OffersContentProps[] = [
   {
     id: 1,
     category: "Stage/Service Civique 2021",

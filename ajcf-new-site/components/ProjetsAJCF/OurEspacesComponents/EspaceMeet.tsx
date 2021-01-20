@@ -2,7 +2,7 @@ import React from "react";
 import { TeamOutlined, IdcardOutlined, FullscreenExitOutlined } from "@ant-design/icons";
 import { ActivitiesContentProps, EspaceContent, EspaceContentProps } from "./EspaceContent";
 
-const activitiesContent: ActivitiesContentProps[] = [
+const activitiesContent: ActivitiesContentProps["activitiesContent"] = [
   {
     name: "AJCF Club Pro",
     logo: <IdcardOutlined />,
@@ -13,7 +13,7 @@ const activitiesContent: ActivitiesContentProps[] = [
   },
 ];
 
-const espaceMeetContent: EspaceContentProps = {
+const espaceMeetContent: EspaceContentProps["espaceContent"] = {
   categoryName: "Espace Meet",
   title: "Connaître et intégrer notre réseau franco-chinois",
   text:

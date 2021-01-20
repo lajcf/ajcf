@@ -2,7 +2,7 @@ import React from "react";
 import { CommentOutlined, ReadOutlined, HistoryOutlined, InsuranceOutlined } from "@ant-design/icons";
 import { ActivitiesContentProps, EspaceContent, EspaceContentProps } from "./EspaceContent";
 
-const activitiesContent: ActivitiesContentProps[] = [
+const activitiesContent: ActivitiesContentProps["activitiesContent"] = [
   {
     name: "Culture",
     logo: <ReadOutlined />,
@@ -17,7 +17,7 @@ const activitiesContent: ActivitiesContentProps[] = [
   },
 ];
 
-const espaceTalkContent: EspaceContentProps = {
+const espaceTalkContent: EspaceContentProps["espaceContent"] = {
   categoryName: "Espace Talk",
   title: "Comprendre et défendre l'identité franco-chinoise",
   text:

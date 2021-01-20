@@ -2,7 +2,7 @@ import React from "react";
 import { DingtalkOutlined, TranslationOutlined, RadarChartOutlined } from "@ant-design/icons";
 import { ActivitiesContentProps, EspaceContentProps, EspaceContent } from "./EspaceContent";
 
-const activitiesContent: ActivitiesContentProps[] = [
+const activitiesContent: ActivitiesContentProps["activitiesContent"] = [
   {
     name: "Développement Personnel",
     logo: <DingtalkOutlined />,
@@ -13,7 +13,7 @@ const activitiesContent: ActivitiesContentProps[] = [
   },
 ];
 
-const espaceLearnContent: EspaceContentProps = {
+const espaceLearnContent: EspaceContentProps["espaceContent"] = {
   categoryName: "Espace Learn",
   title: "Se développer et explorer de nouveaux horizons",
   text:

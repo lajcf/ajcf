@@ -36,5 +36,4 @@ graphql.config.json
 .graphqlconfig
 
 # eslint
-.eslintcache
-../.eslintcache
+**/.eslintcache
