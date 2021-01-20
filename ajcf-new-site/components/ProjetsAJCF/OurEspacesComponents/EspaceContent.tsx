@@ -2,7 +2,7 @@ import React from "react";
 import { ActivitiesLogos } from "./ActivitiesLogos";
 import styles from "./OurEspaces.module.scss";
 
-export type ActivitiesContentProps = {
+export type ActivitiesLogosProps = {
   activitiesContent: {
     name: string;
     logo: JSX.Element;
@@ -15,7 +15,7 @@ export type EspaceContentProps = {
     title: string;
     text: string;
     logo: JSX.Element;
-    activities: ActivitiesContentProps["activitiesContent"];
+    activities: ActivitiesLogosProps["activitiesContent"];
   };
 };
 

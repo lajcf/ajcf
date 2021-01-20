@@ -1,8 +1,6 @@
 import React from "react";
-import { EspaceEnjoy } from "./EspaceEnjoy";
-import { EspaceLearn } from "./EspaceLearn";
-import { EspaceMeet } from "./EspaceMeet";
-import { EspaceTalk } from "./EspaceTalk";
+import { EspaceContent } from "./EspaceContent";
+import { ourEspacesContent } from "./ourEspacesConfig";
 
 export const OurEspacesContainer = () => {
   return (
@@ -15,10 +13,9 @@ export const OurEspacesContainer = () => {
           no suscipit quaerendum. At nam minimum ponderum
         </p>
       </section>
-      <EspaceTalk />
-      <EspaceLearn />
-      <EspaceMeet />
-      <EspaceEnjoy />
+      {ourEspacesContent.map((espace) => (
+        <EspaceContent key={espace.categoryName} espaceContent={espace} />
+      ))}
     </main>
   );
 };
