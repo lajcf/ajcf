@@ -1,8 +1,12 @@
 import React from "react";
-import { ActivitiesLogosProps } from "./EspaceContent";
 import styles from "./OurEspaces.module.scss";
+import { ActivityContent } from "./ourEspacesConfig";
 
-export const ActivitiesLogos = ({ activitiesContent }: ActivitiesLogosProps) => {
+export type ActivitiesProps = {
+  activitiesContent: ActivityContent[];
+};
+
+export const Activities = ({ activitiesContent }: ActivitiesProps) => {
   return (
     <div className={styles.activitiesContent}>
       {activitiesContent.map((activityContent) => (

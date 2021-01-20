@@ -1,25 +1,13 @@
 import React from "react";
-import { ActivitiesLogos } from "./ActivitiesLogos";
+import { Activities } from "./Activities";
 import styles from "./OurEspaces.module.scss";
+import { EspaceContent } from "./ourEspacesConfig";
 
-export type ActivitiesLogosProps = {
-  activitiesContent: {
-    name: string;
-    logo: JSX.Element;
-  }[];
+type EspaceContentProps = {
+  espaceContent: EspaceContent;
 };
 
-export type EspaceContentProps = {
-  espaceContent: {
-    categoryName: string;
-    title: string;
-    text: string;
-    logo: JSX.Element;
-    activities: ActivitiesLogosProps["activitiesContent"];
-  };
-};
-
-export const EspaceContent = ({ espaceContent }: EspaceContentProps) => {
+export const Espace = ({ espaceContent }: EspaceContentProps) => {
   return (
     <section className={styles.espaceSection}>
       <div className={styles.logoFrame}>
@@ -32,7 +20,7 @@ export const EspaceContent = ({ espaceContent }: EspaceContentProps) => {
         <p className={`texte1 ${styles.text}`}>{espaceContent.text}</p>
         <div className={styles.activitiesList}>
           <h3>Les activités</h3>
-          <ActivitiesLogos activitiesContent={espaceContent.activities} />
+          <Activities activitiesContent={espaceContent.activities} />
         </div>
       </div>
     </section>

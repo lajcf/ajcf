@@ -15,24 +15,20 @@ import {
   RocketOutlined,
 } from "@ant-design/icons";
 
-export type ActivitiesLogosProps = {
-  activitiesContent: {
-    name: string;
-    logo: JSX.Element;
-  }[];
+export type ActivityContent = {
+  name: string;
+  logo: JSX.Element;
 };
 
-export type EspaceContentProps = {
-  espaceContent: {
-    categoryName: string;
-    title: string;
-    text: string;
-    logo: JSX.Element;
-    activities: ActivitiesLogosProps["activitiesContent"];
-  };
+export type EspaceContent = {
+  categoryName: string;
+  title: string;
+  text: string;
+  logo: JSX.Element;
+  activities: ActivityContent[];
 };
 
-export const ourEspacesContent: EspaceContentProps["espaceContent"][] = [
+export const ourEspacesContent: EspaceContent[] = [
   {
     categoryName: "Espace Talk",
     title: "Comprendre et défendre l'identité franco-chinoise",
