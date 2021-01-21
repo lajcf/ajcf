@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "next/link";
-import { ArticleFragment } from "../../../types/types";
+import { ArticlePreviewFragment } from "../../../types/types";
 import styles from "./BlogContainer.module.scss";
 import { dayjs } from "../../../lib/utils/dayjs";
 import { formatContentSummary } from "./formatContentSummary";
 
-export const ArticlePreview = ({ article }: { article: ArticleFragment }) => {
+export const ArticlePreview = ({ article }: { article: ArticlePreviewFragment }) => {
   const contentSummary = formatContentSummary(article.content.text, 140);
   return (
     <Link href={`/blog/${article.id}`}>

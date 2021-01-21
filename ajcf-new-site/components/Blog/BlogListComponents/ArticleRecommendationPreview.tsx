@@ -1,9 +1,9 @@
 import React from "react";
-import { ArticleFragment } from "../../../types/types";
+import { ArticlePreviewFragment } from "../../../types/types";
 import styles from "./ArticleContainer.module.scss";
 import { formatContentSummary } from "./formatContentSummary";
 
-export const ArticleRecommendationPreview = ({ article }: { article: ArticleFragment }) => {
+export const ArticleRecommendationPreview = ({ article }: { article: ArticlePreviewFragment }) => {
   const contentSummary = formatContentSummary(article.content.text, 80);
   return (
     <div className={styles.articleRecommendationPreview}>
