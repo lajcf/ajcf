@@ -39,10 +39,8 @@ const QuickAccessLayout = ({
 }) => {
   return (
     <aside className={styles.quickAccess}>
-      <h2 className={styles.categoryName}>ACCES RAPIDE</h2>
-      <Menu className={styles.menu} defaultSelectedKeys={defaultSelectedKeys}>
-        {children}
-      </Menu>
+      <h2>ACCES RAPIDE</h2>
+      <Menu defaultSelectedKeys={defaultSelectedKeys}>{children}</Menu>
     </aside>
   );
 };

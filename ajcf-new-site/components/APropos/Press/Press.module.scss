@@ -1,12 +1,23 @@
 .layout {
   main {
     display: grid;
-    grid-auto-columns: 100%;
-    .subcategory {
-      padding: 2rem 0;
+    grid-auto-columns: auto 1fr;
+    grid-template-areas:
+      "quickAccess summarySection"
+      "quickAccess mostRecentPressFilesSection"
+      "quickAccess pressReviewSection"
+      "quickAccess pressReleasesSection";
+    .summarySection {
+      grid-area: summarySection;
     }
-    .mostRecent {
-      background-color: #f3f6fa;
+    .mostRecentPressFilesSection {
+      grid-area: mostRecentPressFilesSection;
+    }
+    .pressReviewSection {
+      grid-area: pressReviewSection;
+    }
+    .pressReleasesSection {
+      grid-area: pressReleasesSection;
     }
   }
   .files {
