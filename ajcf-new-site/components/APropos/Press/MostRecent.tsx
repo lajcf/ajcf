@@ -1,8 +1,8 @@
 import React from "react";
 import { orderBy } from "lodash";
-import styles from "../Press.module.scss";
-import { FilesDisplay } from "../FilesDisplay";
-import { PressFileFragment } from "../../../../types/types";
+import styles from "./Press.module.scss";
+import { FilesDisplay } from "./FilesDisplay";
+import { PressFileFragment } from "../../../types/types";
 
 export const selectMostRecentPressFiles = (pressFiles: PressFileFragment[]) => {
   return orderBy(pressFiles, "updatedAt", "desc").slice(0, 3);

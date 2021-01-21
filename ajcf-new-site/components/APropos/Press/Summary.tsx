@@ -1,12 +1,11 @@
 import React from "react";
-import styles from "./Summary.module.scss";
 import Link from "next/link";
 
 export const Summary = () => {
   return (
-    <section className={styles.summary}>
+    <section>
       <h1>Presse</h1>
-      <div className={styles.inPageLinks}>
+      <div>
         <Link href="#revue-de-presse">Revue de presse</Link>
         <Link href="#communiques">Communiqués</Link>
       </div>

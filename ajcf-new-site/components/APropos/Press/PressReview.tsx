@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "../Press.module.scss";
-import { FilesDisplay } from "../FilesDisplay";
-import { PressFileFragment } from "../../../../types/types";
+import styles from "./Press.module.scss";
+import { FilesDisplay } from "./FilesDisplay";
+import { PressFileFragment } from "../../../types/types";
 
 export const PressReview = ({ pressFiles }: { pressFiles: PressFileFragment[] }) => {
   return (
