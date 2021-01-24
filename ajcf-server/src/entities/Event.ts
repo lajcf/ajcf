@@ -12,6 +12,7 @@ export class Event extends AjcfBaseEntity {
 
   @Column("float", {
     name: "funding",
+    nullable: false,
   })
   funding: number;
 

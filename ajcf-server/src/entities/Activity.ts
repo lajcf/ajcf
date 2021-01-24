@@ -3,11 +3,13 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   PrimaryColumn,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
 import { ActivityHeader } from "../constants";
+import { Member } from "./Member";
 
 @Entity("Activity")
 export class Activity extends BaseEntity {
@@ -38,4 +40,7 @@ export class Activity extends BaseEntity {
     name: "member_id",
   })
   memberId: string;
+
+  @ManyToOne(() => Member, (member) => member.activities)
+  member: Member;
 }

@@ -1,5 +1,6 @@
-import { Column, Entity } from "typeorm";
+import { Column, Entity, OneToMany } from "typeorm";
 import { AjcfBaseEntity } from "./AjcfBaseEntity";
+import { Activity } from "./Activity";
 
 @Entity("Member")
 export class Member extends AjcfBaseEntity {
@@ -63,4 +64,7 @@ export class Member extends AjcfBaseEntity {
     default: false,
   })
   welcomeMailSent: boolean;
+
+  @OneToMany(() => Activity, (activity) => activity.member)
+  activities: Activity[];
 }
