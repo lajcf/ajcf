@@ -54,9 +54,29 @@ export const fetchHelloAssoMembers = async (): Promise<HelloAssoAction[]> => {
   });
 };
 
+/*
+export const reconciliateHelloAssoAndDb = (helloAssoMembers: HelloAssoAction[], membersFromDb: Member[]) => {
+  return helloAssoMembers.map((helloAssoMember) => ({
+    id: parseInt(helloAssoMember.id, 10).toString(),
+    firstName: helloAssoMember.first_name,
+    lastName: helloAssoMember.last_name,
+    birthDate: getDateInfo(member, CustomInfoEnum.birthDate),
+    email: member.email,
+    phone: getStringInfo(member, CustomInfoEnum.phone),
+    jobStudy: getStringInfo(member, CustomInfoEnum.jobStudy),
+    motivation: getStringInfo(member, CustomInfoEnum.motivation),
+    firstSubscriptionDate: moment.utc(member.date).toDate(),
+    lastSubscriptionDate: moment.utc(member.date).toDate(),
+    activeMember: false,
+  }));
+};
+*/
+
 export const upsertHelloAssoMembers = async () => {
   const helloAssoMembers = await fetchHelloAssoMembers();
-  console.log(`Members: ${JSON.stringify(helloAssoMembers, null, 2)}`);
+  // const membersFromDb = await fetchAllMembersFromDb();
+  console.log(`Members subscription: ${JSON.stringify(helloAssoMembers, null, 2)}`);
+  // const membersToUpsert = reconciliateHelloAssoAndDb(helloAssoMembers, membersFromDb);
   const insertedMembersToDb = await getRepository(Member).save(helloAssoMembers.map(formatMembers));
   console.log(`Upserted ${insertedMembersToDb.length} members into DB`);
   return true;

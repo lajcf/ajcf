@@ -1,19 +1,19 @@
-import { Column, Entity } from "typeorm";
+import { Column, Entity, PrimaryColumn } from "typeorm";
 import { AjcfBaseEntity } from "./AjcfBaseEntity";
 
 @Entity("Member")
 export class Member extends AjcfBaseEntity {
-  @Column("varchar", {
+  @PrimaryColumn("varchar", {
     name: "email",
   })
   email: string;
 
-  @Column("varchar", {
+  @PrimaryColumn("varchar", {
     name: "first_name",
   })
   firstName: string;
 
-  @Column("varchar", {
+  @PrimaryColumn("varchar", {
     name: "last_name",
   })
   lastName: string;

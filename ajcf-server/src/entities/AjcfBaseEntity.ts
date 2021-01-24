@@ -1,12 +1,6 @@
-import { CreateDateColumn, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { CreateDateColumn, UpdateDateColumn } from "typeorm";
 
 export abstract class AjcfBaseEntity {
-  @PrimaryColumn({
-    name: "id",
-    type: "bigint",
-  })
-  id: string;
-
   @CreateDateColumn({
     name: "created_at",
     type: "timestamp",
