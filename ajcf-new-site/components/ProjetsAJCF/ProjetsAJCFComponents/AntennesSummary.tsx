@@ -4,7 +4,7 @@ import styles from "./ProjetsAJCFContainer.module.scss";
 
 export const AntennesSummary = () => {
   return (
-    <section>
+    <section className={styles.antennesSection}>
       <div className="capsHeading">Nos Antennes</div>
       <h2>Se connecter à nos communautés</h2>
       <p className="texte1">

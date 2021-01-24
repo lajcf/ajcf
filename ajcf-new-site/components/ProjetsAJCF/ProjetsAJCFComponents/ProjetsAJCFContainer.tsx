@@ -5,10 +5,11 @@ import { GeneralSummary } from "./GeneralSummary";
 import { AntennesSummary } from "./AntennesSummary";
 import { EducationAJCFSummary } from "./EducationAJCFSummary";
 import { Recruitment } from "./Recruitment";
+import styles from "./ProjetsAJCFContainer.module.scss";
 
 export const ProjetsAJCFContainer = () => {
   return (
-    <Layout>
+    <Layout className={styles.layout}>
       <GeneralSummary />
       <EspacesSummary />
       <AntennesSummary />

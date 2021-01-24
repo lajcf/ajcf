@@ -1,8 +1,9 @@
 import React from "react";
+import styles from "./ProjetsAJCFContainer.module.scss";
 
 export const GeneralSummary = () => {
   return (
-    <section>
+    <section className={styles.generalSummarySection}>
       <h1>Projets AJCF</h1>
       <h2>S'engager au sein de l'AJCF</h2>
       <p className="texte1">
