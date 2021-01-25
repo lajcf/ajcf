@@ -1,0 +1,15 @@
+@import "../../../styles/variables.scss";
+
+.adhesionAdvantagesSection {
+  background-color: $accent-color;
+  .bulletPointsList {
+    margin: 0 2rem;
+    .bulletPoint {
+      display: flex;
+      gap: 1rem;
+      .checkIcon {
+        font-size: 2rem;
+      }
+    }
+  }
+}
