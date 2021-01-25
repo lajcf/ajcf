@@ -1,5 +1,6 @@
 import moment from "moment";
 import { getRepository } from "typeorm";
+import { capitalize } from "lodash";
 import { fetchCampaigns } from "../../helloAsso/fetchCampaigns";
 import { fetchActions } from "../../helloAsso/fetchActions";
 import { HelloAssoAction } from "../../helloAsso/resources";
@@ -54,23 +55,29 @@ export const fetchHelloAssoMembers = async (): Promise<HelloAssoAction[]> => {
   });
 };
 
-/*
-export const reconciliateHelloAssoAndDb = (helloAssoMembers: HelloAssoAction[], membersFromDb: Member[]) => {
-  return helloAssoMembers.map((helloAssoMember) => ({
-    id: parseInt(helloAssoMember.id, 10).toString(),
-    firstName: helloAssoMember.first_name,
-    lastName: helloAssoMember.last_name,
-    birthDate: getDateInfo(member, CustomInfoEnum.birthDate),
-    email: member.email,
-    phone: getStringInfo(member, CustomInfoEnum.phone),
-    jobStudy: getStringInfo(member, CustomInfoEnum.jobStudy),
-    motivation: getStringInfo(member, CustomInfoEnum.motivation),
-    firstSubscriptionDate: moment.utc(member.date).toDate(),
-    lastSubscriptionDate: moment.utc(member.date).toDate(),
-    activeMember: false,
-  }));
+export const reconciliateHelloAssoAndDb = (helloAssoMembers: HelloAssoAction[]) => {
+  return helloAssoMembers.map(async (helloAssoMember) => {
+    const memberFromDb = await getRepository(Member).findOne({
+      where: {
+        email: helloAssoMember.email,
+        firstName: helloAssoMember.first_name,
+        lastName: helloAssoMember.last_name,
+      },
+    });
+    return {
+      email: helloAssoMember.email.toLowerCase(),
+      firstName: capitalize(helloAssoMember.first_name),
+      lastName: capitalize(helloAssoMember.last_name),
+      birthDate: getDateInfo(helloAssoMember, CustomInfoEnum.birthDate),
+      phone: getStringInfo(helloAssoMember, CustomInfoEnum.phone),
+      jobStudy: getStringInfo(helloAssoMember, CustomInfoEnum.jobStudy),
+      motivation: getStringInfo(helloAssoMember, CustomInfoEnum.motivation),
+      firstSubscriptionDate: memberFromDb?.firstSubscriptionDate || moment.utc(helloAssoMember.date).toDate(),
+      lastSubscriptionDate: moment.utc(helloAssoMember.date).toDate(),
+      activeMember: false,
+    };
+  });
 };
-*/
 
 export const upsertHelloAssoMembers = async () => {
   const helloAssoMembers = await fetchHelloAssoMembers();
