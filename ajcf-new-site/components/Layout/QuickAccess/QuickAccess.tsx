@@ -1,8 +1,8 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import Link from "next/link";
 import { Menu } from "antd";
 import { Page, SubPage } from "./QuickAccessContainer";
-import styles from "./QuickAccess.module.scss";
+import { QuickAccessLayout } from "./QuickAccessLayout";
 
 export type QuickAccessProps = {
   page?: Page;
@@ -45,19 +45,4 @@ export const QuickAccess = ({ page, subPage }: QuickAccessProps) => {
     default:
       return null;
   }
-};
-
-const QuickAccessLayout = ({
-  children,
-  defaultSelectedKeys,
-}: {
-  children: ReactNode;
-  defaultSelectedKeys?: SubPage[];
-}) => {
-  return (
-    <aside className={styles.quickAccess}>
-      <h2>ACCES RAPIDE</h2>
-      <Menu defaultSelectedKeys={defaultSelectedKeys}>{children}</Menu>
-    </aside>
-  );
 };
