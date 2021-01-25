@@ -1,6 +1,6 @@
 import React from "react";
 import { Espace } from "./Espace";
-import { ourEspacesContent } from "./ourEspacesConfig";
+import { OUR_ESPACES } from "./ourEspacesConfig";
 import { Layout } from "../../Layout/Layout";
 import styles from "./OurEspaces.module.scss";
 
@@ -15,7 +15,7 @@ export const OurEspacesContainer = () => {
           no suscipit quaerendum. At nam minimum ponderum
         </p>
       </section>
-      {ourEspacesContent.map((espace) => (
+      {OUR_ESPACES.map((espace) => (
         <Espace key={espace.categoryName} espaceContent={espace} />
       ))}
     </Layout>
