@@ -4,7 +4,7 @@ import styles from "./ProjetsAJCFContainer.module.scss";
 
 export const EducationAJCFSummary = () => {
   return (
-    <section>
+    <section className={styles.educationAJCFSection}>
       <div className="capsHeading">Education AJCF</div>
       <h2>Sensibiliser au racisme et discriminations</h2>
       <p className="texte1">

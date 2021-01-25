@@ -1,8 +1,8 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import Link from "next/link";
 import { Menu } from "antd";
-import styles from "./QuickAccess.module.scss";
 import { Page, SubPage } from "./QuickAccessContainer";
+import { QuickAccessLayout } from "./QuickAccessLayout";
 
 export type QuickAccessProps = {
   page?: Page;
@@ -25,24 +25,24 @@ export const QuickAccess = ({ page, subPage }: QuickAccessProps) => {
           </Menu.Item>
         </QuickAccessLayout>
       );
+    case "projets-ajcf":
+      return (
+        <QuickAccessLayout defaultSelectedKeys={subPage && [subPage]}>
+          <Menu.Item key="nos-espaces">
+            <Link href="/projets-ajcf/nos-espaces">Nos espaces</Link>
+          </Menu.Item>
+          <Menu.Item key="nos-antennes">
+            <Link href="/projets-ajcf/nos-antennes">Nos antennes</Link>
+          </Menu.Item>
+          <Menu.Item key="education-ajcf">
+            <Link href="/projets-ajcf/education-ajcf">Education AJCF</Link>
+          </Menu.Item>
+          <Menu.Item key="recrutement">
+            <Link href="/projets-ajcf/recrutement">Recrutement</Link>
+          </Menu.Item>
+        </QuickAccessLayout>
+      );
     default:
       return null;
   }
-};
-
-const QuickAccessLayout = ({
-  children,
-  defaultSelectedKeys,
-}: {
-  children: ReactNode;
-  defaultSelectedKeys?: SubPage[];
-}) => {
-  return (
-    <aside className={styles.quickAccess}>
-      <h2 className={styles.categoryName}>ACCES RAPIDE</h2>
-      <Menu className={styles.menu} defaultSelectedKeys={defaultSelectedKeys}>
-        {children}
-      </Menu>
-    </aside>
-  );
 };

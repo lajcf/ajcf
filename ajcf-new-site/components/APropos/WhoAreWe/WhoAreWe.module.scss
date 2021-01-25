@@ -1,12 +1,13 @@
-.whoAreWe {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-areas:
-    "banner banner"
-    "quickAccess summary"
-    "ourStory ourStory"
-    "ourObjectives ourObjectives"
-    "testimonies testimonies"
-    "bureau bureau"
-    "contactUs contactUs";
+.layout {
+  main {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "quickAccess summary"
+      "ourStory ourStory"
+      "ourObjectives ourObjectives"
+      "testimonies testimonies"
+      "bureau bureau"
+      "contactUs contactUs";
+  }
 }

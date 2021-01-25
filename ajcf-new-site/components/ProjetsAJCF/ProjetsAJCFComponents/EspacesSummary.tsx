@@ -5,7 +5,7 @@ import { EspacesCards } from "./EspacesCards";
 
 export const EspacesSummary = () => {
   return (
-    <section className={styles.espaces}>
+    <section className={styles.espacesSection}>
       <h3 className={`capsHeading ${styles.categoryName}`}>Nos Espaces</h3>
       <h2>Fédérer la jeunesse</h2>
       <p className="texte1">
