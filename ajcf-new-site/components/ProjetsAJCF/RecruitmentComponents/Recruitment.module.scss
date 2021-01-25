@@ -1,14 +1,27 @@
-.ourOffersSection {
-  .offersContentList {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-}
-.recruitmentCallSection {
-  background-color: #8aa2d0;
-  * {
-    text-align: center;
-    color: white;
+.layout {
+  main {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "quickAccess summarySection";
+    section {
+      grid-column: span 2;
+    }
+    .summarySection {
+      grid-area: summarySection;
+    }
+    .ourOffersSection {
+      .offersContentList {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+    }
+    .recruitmentCallSection {
+      background-color: #8aa2d0;
+      * {
+        text-align: center;
+        color: white;
+      }
+    }
   }
 }
