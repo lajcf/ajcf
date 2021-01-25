@@ -3,21 +3,12 @@
     display: grid;
     grid-auto-columns: auto 1fr;
     grid-template-areas:
-      "quickAccess summarySection"
-      "quickAccess mostRecentPressFilesSection"
-      "quickAccess pressReviewSection"
-      "quickAccess pressReleasesSection";
+      "quickAccess summarySection";
     .summarySection {
       grid-area: summarySection;
     }
-    .mostRecentPressFilesSection {
-      grid-area: mostRecentPressFilesSection;
-    }
-    .pressReviewSection {
-      grid-area: pressReviewSection;
-    }
-    .pressReleasesSection {
-      grid-area: pressReleasesSection;
+    .pressFilesSection {
+      grid-column: span 2;
     }
   }
   .files {
