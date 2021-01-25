@@ -28,7 +28,7 @@ export type EspaceContent = {
   activities: ActivityContent[];
 };
 
-export const ourEspacesContent: EspaceContent[] = [
+export const OUR_ESPACES: EspaceContent[] = [
   {
     categoryName: "Espace Talk",
     title: "Comprendre et défendre l'identité franco-chinoise",

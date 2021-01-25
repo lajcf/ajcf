@@ -2,9 +2,16 @@ import React from "react";
 import { useRouter } from "next/router";
 import { QuickAccess } from "./QuickAccess";
 
-export type Page = "a-propos";
+export type Page = "a-propos" | "projets-ajcf";
 
-export type SubPage = "qui-sommes-nous" | "partenaires" | "presse";
+export type SubPage =
+  | "qui-sommes-nous"
+  | "partenaires"
+  | "presse"
+  | "nos-espaces"
+  | "nos-antennes"
+  | "education-ajcf"
+  | "recrutement";
 
 const parsePathname = (pathname: string) => {
   const dividedPathname = pathname.split("/");

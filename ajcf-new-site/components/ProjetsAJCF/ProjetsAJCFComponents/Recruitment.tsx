@@ -4,7 +4,7 @@ import styles from "./ProjetsAJCFContainer.module.scss";
 
 export const Recruitment = () => {
   return (
-    <section className={styles.recruitment}>
+    <section className={styles.recruitmentSection}>
       <div className={styles.imagePlaceholder}>
         <div>Placeholder</div>
       </div>

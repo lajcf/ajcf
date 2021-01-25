@@ -1,15 +1,21 @@
-.press {
-  .subcategory {
-    padding: 2rem 0;
+.layout {
+  main {
+    display: grid;
+    grid-auto-columns: auto 1fr;
+    grid-template-areas:
+      "quickAccess summarySection";
+    .summarySection {
+      grid-area: summarySection;
+    }
+    .pressFilesSection {
+      grid-column: span 2;
+    }
   }
-  .mostRecent {
-    background-color: #f3f6fa;
-  }
-}
-.files {
-  .file {
-    .title {
-      color: #3c64b1;
+  .files {
+    .file {
+      .title {
+        color: #3c64b1;
+      }
     }
   }
 }
