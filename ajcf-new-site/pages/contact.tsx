@@ -1,10 +1,6 @@
 import React from "react";
-import { Layout } from "../components/Layout/Layout";
+import { ContactContainer } from "../components/Administrative/ContactComponents/ContactContainer";
 
 export default () => {
-  return (
-    <Layout>
-      <div>Contact</div>
-    </Layout>
-  );
+  return <ContactContainer />;
 };
