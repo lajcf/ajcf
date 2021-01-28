@@ -11,7 +11,7 @@ export const ContactForm = () => {
     <section className={styles.contactFormSection}>
       <h4>Envie de nous contacter ?</h4>
       <Form name="contact" onFinish={onFinish} method="POST" data-netlify="true">
-        <input type="hidden" name="contact-form" value="contact" />
+        <input type="hidden" name="contact" value="contact" />
         <Form.Item name="lastName">
           <Input placeholder="Nom*" />
         </Form.Item>
