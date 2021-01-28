@@ -2,34 +2,53 @@ import React from "react";
 import { Form, Input, Button } from "antd";
 import styles from "./Contact.module.scss";
 
-// const onFinish = (values: any) => {
-//   console.log("Success:", values);
-// };
+const NetlifyForm = ({ formName }: { formName: string }) => {
+  return (
+    <form name={formName} data-netlify="true" hidden>
+      <input type="text" name="lastName" />
+      <input type="text" name="firstName" />
+      <input type="email" name="mailAddress" />
+      <input type="text" name="messageObject" />
+      <input type="message" name="messageContent" />
+    </form>
+  );
+};
+
+const encode = (data: any) => {
+  return Object.keys(data)
+    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join("&");
+};
 
 export const ContactForm = () => {
+  const formName = "contactForm";
+
+  const handleSubmit = (values: any) => {
+    if (values[`bot-field`] === undefined) {
+      // eslint-disable-next-line no-param-reassign
+      delete values[`bot-field`];
+    }
+
+    fetch(`/`, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": formName,
+        ...values,
+      }),
+    });
+    // .then(() => showSuccess())
+    // .catch((error) => showError(error));
+  };
+
   return (
     <section className={styles.contactFormSection}>
       <h4>Envie de nous contacter ?</h4>
-      <Form name="contact" method="POST" data-netlify="true">
-        <Input type="hidden" name="form-name" value="contact" />
-        <p>
-          <label htmlFor="name">Name</label>
-          <Input type="text" id="name" name="name" />
-        </p>
-        <p>
-          <label htmlFor="email">Email</label>
-          <Input type="text" id="email" name="email" />
-        </p>
-        <p>
-          <label htmlFor="message">Message</label>
-          <Input.TextArea id="message" name="message" />
-        </p>
-        <p>
-          <Button htmlType="submit">Send</Button>
-        </p>
-      </Form>
-      {/* <Form name="contact" onFinish={onFinish} method="POST" data-netlify="true">
-        <input type="hidden" name="contact" value="contact" />
+      <NetlifyForm formName={formName} />
+      <Form name="antForm" method="post" onFinish={handleSubmit}>
+        <Form.Item label="Don't fill this out" className="hidden" style={{ display: `none` }} name="bot-field">
+          <Input type="hidden" />
+        </Form.Item>
         <Form.Item name="lastName">
           <Input placeholder="Nom*" />
         </Form.Item>
@@ -54,7 +73,7 @@ export const ContactForm = () => {
         <Button className={styles.formSubmitButton} type="primary">
           Envoyer
         </Button>
-      </div> */}
+      </div>
     </section>
   );
 };
