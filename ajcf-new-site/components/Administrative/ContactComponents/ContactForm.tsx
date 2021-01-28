@@ -2,11 +2,16 @@ import React from "react";
 import { Form, Input, Button } from "antd";
 import styles from "./Contact.module.scss";
 
+const onFinish = (values: any) => {
+  console.log("Success:", values);
+};
+
 export const ContactForm = () => {
   return (
     <section className={styles.contactFormSection}>
       <h4>Envie de nous contacter ?</h4>
-      <Form>
+      <Form name="contact" onFinish={onFinish} method="POST" data-netlify="true">
+        <input type="hidden" name="contact-form" value="contact" />
         <Form.Item name="lastName">
           <Input placeholder="Nom*" />
         </Form.Item>
@@ -22,6 +27,9 @@ export const ContactForm = () => {
         <Form.Item name="messageContent">
           <Input.TextArea placeholder="Message*" />
         </Form.Item>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
       </Form>
       <div className={styles.formBottom}>
         <small className={styles.asteriskDescription}>* Champs obligatoires</small>
