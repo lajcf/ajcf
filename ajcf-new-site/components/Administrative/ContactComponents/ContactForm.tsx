@@ -1,16 +1,33 @@
 import React from "react";
-import { Form, Input, Button } from "antd";
+// import { Form, Input, Button } from "antd";
 import styles from "./Contact.module.scss";
 
-const onFinish = (values: any) => {
-  console.log("Success:", values);
-};
+// const onFinish = (values: any) => {
+//   console.log("Success:", values);
+// };
 
 export const ContactForm = () => {
   return (
     <section className={styles.contactFormSection}>
       <h4>Envie de nous contacter ?</h4>
-      <Form name="contact" onFinish={onFinish} method="POST" data-netlify="true">
+      <form name="contact" method="POST" data-netlify="true">
+        <p>
+          <label htmlFor="name">Name</label>
+          <input type="text" id="name" name="name" />
+        </p>
+        <p>
+          <label htmlFor="email">Email</label>
+          <input type="text" id="email" name="email" />
+        </p>
+        <p>
+          <label htmlFor="message">Message</label>
+          <textarea id="message" name="message" />
+        </p>
+        <p>
+          <button type="submit">Send</button>
+        </p>
+      </form>
+      {/* <Form name="contact" onFinish={onFinish} method="POST" data-netlify="true">
         <input type="hidden" name="contact" value="contact" />
         <Form.Item name="lastName">
           <Input placeholder="Nom*" />
@@ -36,7 +53,7 @@ export const ContactForm = () => {
         <Button className={styles.formSubmitButton} type="primary">
           Envoyer
         </Button>
-      </div>
+      </div> */}
     </section>
   );
 };
