@@ -1,15 +1,45 @@
 .contactFormSection {
   border: 1px solid gray;
   margin: 2rem;
-  .formBottom {
+  .antForm {
     display: grid;
-    grid-template-columns: auto 1fr auto;
-    grid-template-areas: "asteriskDescription . formSubmitButton";
-    .asteriskDescription {
-      grid-area: asteriskDescription;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "lastName firstName"
+      "mailAddress mailAddress"
+      "messageObject messageObject"
+      "messageContent messageContent"
+      "formBottom formBottom";
+    gap: 1rem;
+    .lastName {
+      grid-area: lastName;
     }
-    .formSubmitButton {
-      grid-area: formSubmitButton;
+    .firstName {
+      grid-area: firstName;
+    }
+    .mailAddress {
+      grid-area: mailAddress;
+    }
+    .messageObject {
+      grid-area: messageObject;
+    }
+    .messageContent {
+      grid-area: messageContent;
+      textArea {
+        min-height: 200px;
+      }
+    }
+    .formBottom {
+      grid-area: formBottom;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      grid-template-areas: "asteriskDescription . formSubmitButton";
+      .asteriskDescription {
+        grid-area: asteriskDescription;
+      }
+      .formSubmitButton {
+        grid-area: formSubmitButton;
+      }
     }
   }
 }

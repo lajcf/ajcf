@@ -1,27 +1,16 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
 import styles from "./Contact.module.scss";
-
-const NetlifyForm = ({ formName }: { formName: string }) => {
-  return (
-    <form name={formName} data-netlify="true" hidden>
-      <input type="text" name="lastName" />
-      <input type="text" name="firstName" />
-      <input type="email" name="mailAddress" />
-      <input type="text" name="messageObject" />
-      <input type="message" name="messageContent" />
-    </form>
-  );
-};
-
-const encode = (data: any) => {
-  return Object.keys(data)
-    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-    .join("&");
-};
+import { NetlifyForm } from "./NetlifyForm";
 
 export const ContactForm = () => {
   const formName = "contactForm";
+
+  const encode = (data: any) => {
+    return Object.keys(data)
+      .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+      .join("&");
+  };
 
   const handleSubmit = (values: any) => {
     if (values[`bot-field`] === undefined) {
@@ -45,35 +34,32 @@ export const ContactForm = () => {
     <section className={styles.contactFormSection}>
       <h4>Envie de nous contacter ?</h4>
       <NetlifyForm formName={formName} />
-      <Form name="antForm" method="post" onFinish={handleSubmit}>
+      <Form name="antForm" method="post" onFinish={handleSubmit} className={styles.antForm}>
         <Form.Item label="Don't fill this out" className="hidden" style={{ display: `none` }} name="bot-field">
           <Input type="hidden" />
         </Form.Item>
-        <Form.Item name="lastName">
+        <Form.Item name="lastName" className={styles.lastName}>
           <Input placeholder="Nom*" />
         </Form.Item>
-        <Form.Item name="firstName">
+        <Form.Item name="firstName" className={styles.firstName}>
           <Input placeholder="Prénom*" />
         </Form.Item>
-        <Form.Item name="mailAddress">
+        <Form.Item name="mailAddress" className={styles.mailAddress}>
           <Input placeholder="Adresse e-mail*" />
         </Form.Item>
-        <Form.Item name="messageObject">
+        <Form.Item name="messageObject" className={styles.messageObject}>
           <Input placeholder="Objet du message*" />
         </Form.Item>
-        <Form.Item name="messageContent">
+        <Form.Item name="messageContent" className={styles.messageContent}>
           <Input.TextArea placeholder="Message*" />
         </Form.Item>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
+        <div className={styles.formBottom}>
+          <small className={styles.asteriskDescription}>* Champs obligatoires</small>
+          <Button className={styles.formSubmitButton} type="primary" htmlType="submit">
+            Envoyer
+          </Button>
+        </div>
       </Form>
-      <div className={styles.formBottom}>
-        <small className={styles.asteriskDescription}>* Champs obligatoires</small>
-        <Button className={styles.formSubmitButton} type="primary">
-          Envoyer
-        </Button>
-      </div>
     </section>
   );
 };
