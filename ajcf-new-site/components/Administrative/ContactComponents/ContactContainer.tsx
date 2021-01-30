@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout } from "../../Layout/Layout";
-import { ContactForm } from "./ContactForm";
+import { ContactFormContainer } from "./ContactFormContainer";
 
 export const ContactContainer = () => {
   return (
@@ -13,7 +13,7 @@ export const ContactContainer = () => {
           l’adresse contact@lajcf.fr
         </p>
       </section>
-      <ContactForm />
+      <ContactFormContainer />
     </Layout>
   );
 };
