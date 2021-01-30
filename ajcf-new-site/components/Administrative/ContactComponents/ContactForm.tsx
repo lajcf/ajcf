@@ -3,43 +3,57 @@ import { Alert, Form, Input, Button } from "antd";
 import styles from "./Contact.module.scss";
 import { NetlifyForm } from "./NetlifyForm";
 
+export type ContactMessage = {
+  botField?: string;
+  lastName: string;
+  firstName: string;
+  mailAddress: string;
+  messageObject: string;
+  messageContent: string;
+};
+
+const ShowSuccess = (values: ContactMessage) => {
+  console.log("Submit Success");
+  console.log(values);
+  return <Alert message="Envoi réussi!" type="success" />; // FIXME Doesn't seem to work, what's wrong?
+};
+
+const encode = (data: any) => {
+  return Object.keys(data)
+    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join("&");
+};
+
+const handleSubmit = (values: ContactMessage, formName: string) => {
+  if (values.botField === undefined) {
+    // eslint-disable-next-line no-param-reassign
+    delete values.botField;
+  }
+
+  fetch(`/`, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: encode({
+      "form-name": formName,
+      ...values,
+    }),
+  }).then(() => ShowSuccess(values));
+  // .catch((error) => showError(error));
+};
+
 export const ContactForm = () => {
   const formName = "contactForm";
-
-  const ShowSuccess = () => {
-    console.log("Submit Success");
-    return <Alert message="Envoi réussi!" type="success" />; // FIXME Doesn't seem to work, what's wrong?
-  };
-
-  const encode = (data: any) => {
-    return Object.keys(data)
-      .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-      .join("&");
-  };
-
-  const handleSubmit = (values: any) => {
-    // TODO Should I keep a type of any here?
-    if (values[`bot-field`] === undefined) {
-      // eslint-disable-next-line no-param-reassign
-      delete values[`bot-field`];
-    }
-
-    fetch(`/`, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({
-        "form-name": formName,
-        ...values,
-      }),
-    }).then(() => ShowSuccess());
-    // .catch((error) => showError(error));
-  };
 
   return (
     <section className={styles.contactFormSection}>
       <h4>Envie de nous contacter ?</h4>
       <NetlifyForm formName={formName} />
-      <Form name="antForm" method="post" onFinish={handleSubmit} className={styles.antForm}>
+      <Form
+        name="antForm"
+        method="post"
+        onFinish={(values) => handleSubmit(values, formName)}
+        className={styles.antForm}
+      >
         <Form.Item label="Don't fill this out" className="hidden" style={{ display: `none` }} name="bot-field">
           <Input type="hidden" />
         </Form.Item>
