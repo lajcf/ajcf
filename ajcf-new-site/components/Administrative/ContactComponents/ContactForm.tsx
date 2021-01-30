@@ -54,7 +54,7 @@ export const ContactForm = () => {
         onFinish={(values) => handleSubmit(values, formName)}
         className={styles.antForm}
       >
-        <Form.Item label="Don't fill this out" className="hidden" style={{ display: `none` }} name="bot-field">
+        <Form.Item label="Don't fill this out" className="hidden" style={{ display: `none` }} name="botField">
           <Input type="hidden" />
         </Form.Item>
         <Form.Item name="lastName" className={styles.lastName}>
