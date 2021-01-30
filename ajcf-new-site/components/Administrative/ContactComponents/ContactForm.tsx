@@ -1,5 +1,6 @@
 import React from "react";
 import { Alert, Form, Input, Button } from "antd";
+import { omit } from "lodash";
 import styles from "./Contact.module.scss";
 import { NetlifyForm } from "./NetlifyForm";
 
@@ -12,7 +13,7 @@ export type ContactMessage = {
   messageContent: string;
 };
 
-const ShowSuccess = (values: ContactMessage) => {
+const showSuccess = (values: ContactMessage) => {
   console.log("Submit Success");
   console.log(values);
   return <Alert message="Envoi réussi!" type="success" />; // FIXME Doesn't seem to work, what's wrong?
@@ -25,19 +26,15 @@ const encode = (data: any) => {
 };
 
 const handleSubmit = (values: ContactMessage, formName: string) => {
-  if (values.botField === undefined) {
-    // eslint-disable-next-line no-param-reassign
-    delete values.botField;
-  }
-
+  const messageWithCleanBotField = values.botField === undefined ? omit(values, ["botField"]) : values;
   fetch(`/`, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: encode({
       "form-name": formName,
-      ...values,
+      ...messageWithCleanBotField,
     }),
-  }).then(() => ShowSuccess(values));
+  }).then(() => showSuccess(values));
   // .catch((error) => showError(error));
 };
 
@@ -53,6 +50,7 @@ export const ContactForm = () => {
         method="post"
         onFinish={(values) => handleSubmit(values, formName)}
         className={styles.antForm}
+        action="/"
       >
         <Form.Item label="Don't fill this out" className="hidden" style={{ display: `none` }} name="botField">
           <Input type="hidden" />
