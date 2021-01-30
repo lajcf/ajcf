@@ -1,10 +1,15 @@
 import React from "react";
-import { Form, Input, Button } from "antd";
+import { Alert, Form, Input, Button } from "antd";
 import styles from "./Contact.module.scss";
 import { NetlifyForm } from "./NetlifyForm";
 
 export const ContactForm = () => {
   const formName = "contactForm";
+
+  const ShowSuccess = () => {
+    console.log("Submit Success");
+    return <Alert message="Envoi réussi!" type="success" />; // FIXME Doesn't seem to work, what's wrong?
+  };
 
   const encode = (data: any) => {
     return Object.keys(data)
@@ -13,6 +18,7 @@ export const ContactForm = () => {
   };
 
   const handleSubmit = (values: any) => {
+    // TODO Should I keep a type of any here?
     if (values[`bot-field`] === undefined) {
       // eslint-disable-next-line no-param-reassign
       delete values[`bot-field`];
@@ -25,8 +31,7 @@ export const ContactForm = () => {
         "form-name": formName,
         ...values,
       }),
-    });
-    // .then(() => showSuccess())
+    }).then(() => ShowSuccess());
     // .catch((error) => showError(error));
   };
 
