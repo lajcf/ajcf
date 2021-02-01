@@ -10,7 +10,7 @@
       "messageObject messageObject"
       "messageContent messageContent"
       "formBottom formBottom";
-    gap: 1rem;
+    column-gap: 1rem;
     .lastName {
       grid-area: lastName;
     }

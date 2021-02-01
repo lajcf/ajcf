@@ -1,17 +1,16 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
 import styles from "./Contact.module.scss";
-import { handleSubmit } from "./ContactFormContainer";
+import { ContactMessage } from "./ContactFormContainer";
 
-export const ContactForm = ({ formName }: { formName: string }) => {
+type ContactFormProps = {
+  handleSubmit: (values: ContactMessage) => void;
+  isLoading: boolean;
+};
+
+export const ContactForm = ({ handleSubmit, isLoading }: ContactFormProps) => {
   return (
-    <Form
-      name="antForm"
-      method="post"
-      onFinish={(values) => handleSubmit(values, formName)}
-      className={styles.antForm}
-      action="/"
-    >
+    <Form name="antForm" method="post" onFinish={handleSubmit} className={styles.antForm} action="/">
       <Form.Item label="Don't fill this out" className="hidden" style={{ display: `none` }} name="botField">
         <Input type="hidden" />
       </Form.Item>
@@ -32,7 +31,7 @@ export const ContactForm = ({ formName }: { formName: string }) => {
       </Form.Item>
       <div className={styles.formBottom}>
         <small className={styles.asteriskDescription}>* Champs obligatoires</small>
-        <Button className={styles.formSubmitButton} type="primary" htmlType="submit">
+        <Button className={styles.formSubmitButton} type="primary" htmlType="submit" loading={isLoading}>
           Envoyer
         </Button>
       </div>
