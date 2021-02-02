@@ -42,6 +42,22 @@ export const QuickAccess = ({ page, subPage }: QuickAccessProps) => {
           </Menu.Item>
         </QuickAccessLayout>
       );
+    case "adherer":
+    case "faire-un-don":
+    case "contact":
+      return (
+        <QuickAccessLayout defaultSelectedKeys={[page]}>
+          <Menu.Item key="adherer">
+            <Link href="/adherer">Adhérer</Link>
+          </Menu.Item>
+          <Menu.Item key="faire-un-don">
+            <Link href="/faire-un-don">Faire un don</Link>
+          </Menu.Item>
+          <Menu.Item key="contact">
+            <Link href="/contact">Contact</Link>
+          </Menu.Item>
+        </QuickAccessLayout>
+      );
     default:
       return null;
   }

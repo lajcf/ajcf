@@ -36,7 +36,7 @@ export const ContactForm = ({ handleSubmit, isLoading }: ContactFormProps) => {
         <Input placeholder="Adresse e-mail*" />
       </Form.Item>
       <Form.Item name="messageObject" className={styles.messageObject}>
-        <Input placeholder="Objet du message*" />
+        <Input placeholder="Objet du message" />
       </Form.Item>
       <Form.Item
         name="messageContent"
