@@ -1,11 +1,12 @@
 import React from "react";
+import styles from "./Donate.module.scss";
 import { Layout } from "../../Layout/Layout";
 import { DonationIncentives } from "./DonationIncentives";
 import { HelloAssoDonation } from "./HelloAssoDonation";
 
 export const DonateContainer = () => {
   return (
-    <Layout>
+    <Layout className={styles.layout}>
       <section>
         <h1>Faire un don pour nous soutenir</h1>
         <p className="texte1">

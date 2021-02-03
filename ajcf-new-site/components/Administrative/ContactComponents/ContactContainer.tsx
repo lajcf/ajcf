@@ -1,10 +1,11 @@
 import React from "react";
+import styles from "./Contact.module.scss";
 import { Layout } from "../../Layout/Layout";
 import { ContactFormContainer } from "./ContactFormContainer";
 
 export const ContactContainer = () => {
   return (
-    <Layout>
+    <Layout className={styles.layout}>
       <section>
         <h1>Contactez nous ! </h1>
         <p className="texte1">

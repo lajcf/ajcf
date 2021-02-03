@@ -6,7 +6,7 @@ import { HelloAssoAdhesion } from "./HelloAssoAdhesion";
 
 export const AdhesionContainer = () => {
   return (
-    <Layout>
+    <Layout className={styles.layout}>
       <section className={styles.summarySection}>
         <h1>Adhérer pour rejoindre notre communauté</h1>
         <p className="texte1">
