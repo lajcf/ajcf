@@ -1,0 +1,24 @@
+@import "../../../styles/variables.scss";
+
+.layout {
+  main {
+    display: grid;
+    grid-template-areas: "quickAccess";
+    section {
+      grid-column-start: 2;
+    }
+    .adhesionAdvantagesSection {
+      background-color: $accent-color;
+      .bulletPointsList {
+        margin: 0 2rem;
+        .bulletPoint {
+          display: flex;
+          gap: 1rem;
+          .checkIcon {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+}
