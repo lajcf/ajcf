@@ -6,7 +6,7 @@ import { ContactFormContainer } from "./ContactFormContainer";
 export const ContactContainer = () => {
   return (
     <Layout className={styles.layout}>
-      <section>
+      <section className={styles.summarySection}>
         <h1>Contactez nous ! </h1>
         <p className="texte1">
           Des projets à nous soumettre, des questions sur notre association ? Contactez-nous via ce formulaire, et notre
