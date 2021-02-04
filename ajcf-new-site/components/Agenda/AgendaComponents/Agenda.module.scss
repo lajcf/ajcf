@@ -1,0 +1,34 @@
+@import "../../../styles/variables.scss";
+
+.eventsList {
+  display: grid;
+  gap: 1rem;
+  .eventPreview {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    .coverColumn {
+      background-color: $accent-color;
+      display: grid;
+      .imgContainer {
+        height: 300px;
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+      h3 {
+        color: $blue-wf;
+        place-self: center;
+      }
+    }
+    .textColumn {
+      display: grid;
+      button {
+        place-self: end;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
