@@ -2446,6 +2446,24 @@ export type ArticlesPreviewQueryQuery = { __typename?: "Query" } & {
   articles: Array<{ __typename?: "Article" } & ArticlePreviewFragment>;
 };
 
+export type EventPageFragment = { __typename?: "Event" } & Pick<Event, "id" | "title" | "date" | "eventLabels"> & {
+    content: { __typename?: "RichText" } & Pick<RichText, "html">;
+  };
+
+export type EventPageQueryQueryVariables = Exact<{
+  id: Scalars["ID"];
+}>;
+
+export type EventPageQueryQuery = { __typename?: "Query" } & {
+  event?: Maybe<{ __typename?: "Event" } & EventPageFragment>;
+};
+
+export type EventsMetaQueryQueryVariables = Exact<{ [key: string]: never }>;
+
+export type EventsMetaQueryQuery = { __typename?: "Query" } & {
+  events: Array<{ __typename?: "Event" } & Pick<Event, "id">>;
+};
+
 export type EventPreviewFragment = { __typename?: "Event" } & Pick<Event, "id" | "title" | "date" | "eventLabels"> & {
     content: { __typename?: "RichText" } & Pick<RichText, "text">;
     cover?: Maybe<{ __typename?: "Asset" } & Pick<Asset, "id" | "url">>;
@@ -2497,6 +2515,17 @@ export const ArticlePreviewFragmentDoc = gql`
     }
   }
 `;
+export const EventPageFragmentDoc = gql`
+  fragment eventPage on Event {
+    id
+    title
+    content {
+      html
+    }
+    date
+    eventLabels
+  }
+`;
 export const EventPreviewFragmentDoc = gql`
   fragment eventPreview on Event {
     id
@@ -2543,6 +2572,21 @@ export const ArticlesPreviewQueryDocument = gql`
   }
   ${ArticlePreviewFragmentDoc}
 `;
+export const EventPageQueryDocument = gql`
+  query eventPageQuery($id: ID!) {
+    event(where: { id: $id }, stage: DRAFT) {
+      ...eventPage
+    }
+  }
+  ${EventPageFragmentDoc}
+`;
+export const EventsMetaQueryDocument = gql`
+  query eventsMetaQuery {
+    events(stage: DRAFT) {
+      id
+    }
+  }
+`;
 export const EventsPreviewQueryDocument = gql`
   query eventsPreviewQuery {
     events(stage: DRAFT, orderBy: date_DESC) {
@@ -2575,6 +2619,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
       return withWrapper(() =>
         client.request<ArticlesPreviewQueryQuery>(print(ArticlesPreviewQueryDocument), variables)
       );
+    },
+    eventPageQuery(variables: EventPageQueryQueryVariables): Promise<EventPageQueryQuery> {
+      return withWrapper(() => client.request<EventPageQueryQuery>(print(EventPageQueryDocument), variables));
+    },
+    eventsMetaQuery(variables?: EventsMetaQueryQueryVariables): Promise<EventsMetaQueryQuery> {
+      return withWrapper(() => client.request<EventsMetaQueryQuery>(print(EventsMetaQueryDocument), variables));
     },
     eventsPreviewQuery(variables?: EventsPreviewQueryQueryVariables): Promise<EventsPreviewQueryQuery> {
       return withWrapper(() => client.request<EventsPreviewQueryQuery>(print(EventsPreviewQueryDocument), variables));

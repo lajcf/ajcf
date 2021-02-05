@@ -1,0 +1,15 @@
+fragment eventPage on Event {
+  id
+  title
+  content {
+    html
+  }
+  date
+  eventLabels
+}
+
+query eventPageQuery($id: ID!) {
+  event(where: { id: $id }, stage: DRAFT) {
+    ...eventPage
+  }
+}

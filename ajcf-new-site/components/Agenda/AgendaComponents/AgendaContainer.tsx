@@ -8,7 +8,6 @@ type AgendaContainerProps = {
 };
 
 export const AgendaContainer = ({ events }: AgendaContainerProps) => {
-  console.log(events);
   return (
     <Layout>
       <section>

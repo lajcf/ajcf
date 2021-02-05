@@ -1,4 +1,5 @@
 import { Button } from "antd";
+import Link from "next/link";
 import React from "react";
 import { dayjs } from "../../../lib/utils/dayjs";
 import { formatContentSummary } from "../../../lib/utils/formatContentSummary";
@@ -10,6 +11,7 @@ type EventPreviewProps = {
 };
 
 export const EventPreview = ({ event }: EventPreviewProps) => {
+  const eventLink = `/agenda/${event.id}`;
   return (
     <li className={styles.eventPreview}>
       <div className={styles.coverColumn}>
@@ -18,9 +20,15 @@ export const EventPreview = ({ event }: EventPreviewProps) => {
       </div>
       <div className={styles.textColumn}>
         <div className="capsHeading">{event.eventLabels[0]}</div>
-        <h2>{event.title}</h2>
+        <Link href={eventLink}>
+          <a>
+            <h2>{event.title}</h2>
+          </a>
+        </Link>
         <p className="texte2">{formatContentSummary(event.content.text, 280)}</p>
-        <Button>En savoir plus</Button>
+        <Link href={eventLink}>
+          <Button>En savoir plus</Button>
+        </Link>
       </div>
     </li>
   ); // TODO Make decision regarding eventLabel(s). Is there just one or do we allow several labels?
