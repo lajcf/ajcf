@@ -1107,8 +1107,11 @@ export type BatchPayload = {
 
 export enum BlogLabel {
   NewsAjcf = "news_ajcf",
+  NewsAjcf = "NewsAJCF",
   RecosAjcf = "recos_ajcf",
+  RecosAjcf = "RecosAJCF",
   StoriesAjcf = "stories_ajcf",
+  StoriesAjcf = "StoriesAJCF",
 }
 
 /** Representing a color value comprising of HEX, RGBA and css color values */
@@ -1219,7 +1222,7 @@ export type Event = Node & {
   content: RichText;
   date: Scalars["DateTime"];
   cover?: Maybe<Asset>;
-  eventLabels: Array<Scalars["String"]>;
+  eventLabels: Array<EventLabel>;
   /** List of Event versions */
   history: Array<Version>;
 };
@@ -1267,7 +1270,7 @@ export type EventCreateInput = {
   content: Scalars["RichTextAST"];
   date: Scalars["DateTime"];
   cover?: Maybe<AssetCreateOneInlineInput>;
-  eventLabels?: Maybe<Array<Scalars["String"]>>;
+  eventLabels?: Maybe<Array<EventLabel>>;
 };
 
 export type EventCreateManyInlineInput = {
@@ -1294,7 +1297,8 @@ export type EventEdge = {
 };
 
 export enum EventLabel {
-  ConferencesAjcf = "conferences_ajcf",
+  ConferencesAjcf = "ConferencesAJCF",
+  ReunionPublique = "ReunionPublique",
 }
 
 /** Identifies documents */
@@ -1407,15 +1411,15 @@ export type EventManyWhereInput = {
   date_gte?: Maybe<Scalars["DateTime"]>;
   cover?: Maybe<AssetWhereInput>;
   /** Matches if the field array contains *all* items provided to the filter and order does match */
-  eventLabels?: Maybe<Array<Scalars["String"]>>;
+  eventLabels?: Maybe<Array<EventLabel>>;
   /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  eventLabels_not?: Maybe<Array<Scalars["String"]>>;
+  eventLabels_not?: Maybe<Array<EventLabel>>;
   /** Matches if the field array contains *all* items provided to the filter */
-  eventLabels_contains_all?: Maybe<Array<Scalars["String"]>>;
+  eventLabels_contains_all?: Maybe<Array<EventLabel>>;
   /** Matches if the field array contains at least one item provided to the filter */
-  eventLabels_contains_some?: Maybe<Array<Scalars["String"]>>;
+  eventLabels_contains_some?: Maybe<Array<EventLabel>>;
   /** Matches if the field array does not contain any of the items provided to the filter */
-  eventLabels_contains_none?: Maybe<Array<Scalars["String"]>>;
+  eventLabels_contains_none?: Maybe<Array<EventLabel>>;
 };
 
 export enum EventOrderByInput {
@@ -1440,7 +1444,7 @@ export type EventUpdateInput = {
   content?: Maybe<Scalars["RichTextAST"]>;
   date?: Maybe<Scalars["DateTime"]>;
   cover?: Maybe<AssetUpdateOneInlineInput>;
-  eventLabels?: Maybe<Array<Scalars["String"]>>;
+  eventLabels?: Maybe<Array<EventLabel>>;
 };
 
 export type EventUpdateManyInlineInput = {
@@ -1464,7 +1468,7 @@ export type EventUpdateManyInput = {
   title?: Maybe<Scalars["String"]>;
   content?: Maybe<Scalars["RichTextAST"]>;
   date?: Maybe<Scalars["DateTime"]>;
-  eventLabels?: Maybe<Array<Scalars["String"]>>;
+  eventLabels?: Maybe<Array<EventLabel>>;
 };
 
 export type EventUpdateManyWithNestedWhereInput = {
@@ -1620,15 +1624,15 @@ export type EventWhereInput = {
   date_gte?: Maybe<Scalars["DateTime"]>;
   cover?: Maybe<AssetWhereInput>;
   /** Matches if the field array contains *all* items provided to the filter and order does match */
-  eventLabels?: Maybe<Array<Scalars["String"]>>;
+  eventLabels?: Maybe<Array<EventLabel>>;
   /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  eventLabels_not?: Maybe<Array<Scalars["String"]>>;
+  eventLabels_not?: Maybe<Array<EventLabel>>;
   /** Matches if the field array contains *all* items provided to the filter */
-  eventLabels_contains_all?: Maybe<Array<Scalars["String"]>>;
+  eventLabels_contains_all?: Maybe<Array<EventLabel>>;
   /** Matches if the field array contains at least one item provided to the filter */
-  eventLabels_contains_some?: Maybe<Array<Scalars["String"]>>;
+  eventLabels_contains_some?: Maybe<Array<EventLabel>>;
   /** Matches if the field array does not contain any of the items provided to the filter */
-  eventLabels_contains_none?: Maybe<Array<Scalars["String"]>>;
+  eventLabels_contains_none?: Maybe<Array<EventLabel>>;
 };
 
 /** References Event record uniquely */

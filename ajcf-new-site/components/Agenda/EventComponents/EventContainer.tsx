@@ -12,7 +12,7 @@ export const EventContainer = ({ event }: EventContainerProps) => {
     <Layout>
       <section>
         <h1>{event.title}</h1>
-        <div className="capsHeading">{event.eventLabels[0]}</div>
+        <h3>#{event.eventLabels[0]}</h3>
         <div>{parse(event.content.html)}</div>
       </section>
     </Layout>

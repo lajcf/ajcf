@@ -1,9 +1,9 @@
-import React, { useState } from "react";
 import { Button } from "antd";
+import React, { useState } from "react";
 import { ArticlePreviewFragment, BlogLabel } from "../../../types/types";
-import styles from "./BlogContainer.module.scss";
 import { Layout } from "../../Layout/Layout";
 import { ArticlePreview } from "./ArticlePreview";
+import styles from "./BlogContainer.module.scss";
 import { SelectBlogLabels } from "./SelectBlogLabels";
 
 const filterArticles = (articles: ArticlePreviewFragment[], selectedBlogLabel?: BlogLabel) => {
@@ -19,7 +19,7 @@ const limitDisplayedArticles = (filteredArticles: ArticlePreviewFragment[], numb
 
 export const BlogContainer = ({ articles }: { articles: ArticlePreviewFragment[] }) => {
   const [selectedBlogLabel, setSelectedBlogLabel] = useState<BlogLabel>();
-  const [numberOfArticlesToDisplay, setNumberOfArticlesToDisplay] = useState(1);
+  const [numberOfArticlesToDisplay, setNumberOfArticlesToDisplay] = useState(3);
   const filteredArticles = filterArticles(articles, selectedBlogLabel);
   const displayedArticles = limitDisplayedArticles(filteredArticles, numberOfArticlesToDisplay);
   return (
@@ -34,7 +34,7 @@ export const BlogContainer = ({ articles }: { articles: ArticlePreviewFragment[]
           <Button
             type="primary"
             className={styles.loadMoreButton}
-            onClick={() => setNumberOfArticlesToDisplay(numberOfArticlesToDisplay + 1)}
+            onClick={() => setNumberOfArticlesToDisplay(numberOfArticlesToDisplay + 3)}
           >
             Voir plus d'articles
           </Button>

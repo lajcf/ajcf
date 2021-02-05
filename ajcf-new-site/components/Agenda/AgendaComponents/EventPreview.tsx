@@ -19,7 +19,7 @@ export const EventPreview = ({ event }: EventPreviewProps) => {
         <h3>{`${dayjs(event.date).format("DD MMM YYYY - HH:mm")}`}</h3>
       </div>
       <div className={styles.textColumn}>
-        <div className="capsHeading">{event.eventLabels[0]}</div>
+        <h3>#{event.eventLabels[0]}</h3>
         <Link href={eventLink}>
           <a>
             <h2>{event.title}</h2>
