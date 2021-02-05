@@ -1217,9 +1217,9 @@ export type Event = Node & {
   publishedAt?: Maybe<Scalars["DateTime"]>;
   title: Scalars["String"];
   content: RichText;
-  eventLabels: Array<EventLabel>;
   date: Scalars["DateTime"];
   cover?: Maybe<Asset>;
+  eventLabels: Array<Scalars["String"]>;
   /** List of Event versions */
   history: Array<Version>;
 };
@@ -1265,9 +1265,9 @@ export type EventCreateInput = {
   updatedAt?: Maybe<Scalars["DateTime"]>;
   title: Scalars["String"];
   content: Scalars["RichTextAST"];
-  eventLabels?: Maybe<Array<EventLabel>>;
   date: Scalars["DateTime"];
   cover?: Maybe<AssetCreateOneInlineInput>;
+  eventLabels?: Maybe<Array<Scalars["String"]>>;
 };
 
 export type EventCreateManyInlineInput = {
@@ -1390,16 +1390,6 @@ export type EventManyWhereInput = {
   title_ends_with?: Maybe<Scalars["String"]>;
   /** All values not ending with the given string */
   title_not_ends_with?: Maybe<Scalars["String"]>;
-  /** Matches if the field array contains *all* items provided to the filter and order does match */
-  eventLabels?: Maybe<Array<EventLabel>>;
-  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  eventLabels_not?: Maybe<Array<EventLabel>>;
-  /** Matches if the field array contains *all* items provided to the filter */
-  eventLabels_contains_all?: Maybe<Array<EventLabel>>;
-  /** Matches if the field array contains at least one item provided to the filter */
-  eventLabels_contains_some?: Maybe<Array<EventLabel>>;
-  /** Matches if the field array does not contain any of the items provided to the filter */
-  eventLabels_contains_none?: Maybe<Array<EventLabel>>;
   date?: Maybe<Scalars["DateTime"]>;
   /** All values that are not equal to given value. */
   date_not?: Maybe<Scalars["DateTime"]>;
@@ -1416,6 +1406,16 @@ export type EventManyWhereInput = {
   /** All values greater than or equal the given value. */
   date_gte?: Maybe<Scalars["DateTime"]>;
   cover?: Maybe<AssetWhereInput>;
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  eventLabels?: Maybe<Array<Scalars["String"]>>;
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  eventLabels_not?: Maybe<Array<Scalars["String"]>>;
+  /** Matches if the field array contains *all* items provided to the filter */
+  eventLabels_contains_all?: Maybe<Array<Scalars["String"]>>;
+  /** Matches if the field array contains at least one item provided to the filter */
+  eventLabels_contains_some?: Maybe<Array<Scalars["String"]>>;
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  eventLabels_contains_none?: Maybe<Array<Scalars["String"]>>;
 };
 
 export enum EventOrderByInput {
@@ -1429,18 +1429,18 @@ export enum EventOrderByInput {
   PublishedAtDesc = "publishedAt_DESC",
   TitleAsc = "title_ASC",
   TitleDesc = "title_DESC",
-  EventLabelsAsc = "eventLabels_ASC",
-  EventLabelsDesc = "eventLabels_DESC",
   DateAsc = "date_ASC",
   DateDesc = "date_DESC",
+  EventLabelsAsc = "eventLabels_ASC",
+  EventLabelsDesc = "eventLabels_DESC",
 }
 
 export type EventUpdateInput = {
   title?: Maybe<Scalars["String"]>;
   content?: Maybe<Scalars["RichTextAST"]>;
-  eventLabels?: Maybe<Array<EventLabel>>;
   date?: Maybe<Scalars["DateTime"]>;
   cover?: Maybe<AssetUpdateOneInlineInput>;
+  eventLabels?: Maybe<Array<Scalars["String"]>>;
 };
 
 export type EventUpdateManyInlineInput = {
@@ -1463,8 +1463,8 @@ export type EventUpdateManyInlineInput = {
 export type EventUpdateManyInput = {
   title?: Maybe<Scalars["String"]>;
   content?: Maybe<Scalars["RichTextAST"]>;
-  eventLabels?: Maybe<Array<EventLabel>>;
   date?: Maybe<Scalars["DateTime"]>;
+  eventLabels?: Maybe<Array<Scalars["String"]>>;
 };
 
 export type EventUpdateManyWithNestedWhereInput = {
@@ -1603,16 +1603,6 @@ export type EventWhereInput = {
   title_ends_with?: Maybe<Scalars["String"]>;
   /** All values not ending with the given string */
   title_not_ends_with?: Maybe<Scalars["String"]>;
-  /** Matches if the field array contains *all* items provided to the filter and order does match */
-  eventLabels?: Maybe<Array<EventLabel>>;
-  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
-  eventLabels_not?: Maybe<Array<EventLabel>>;
-  /** Matches if the field array contains *all* items provided to the filter */
-  eventLabels_contains_all?: Maybe<Array<EventLabel>>;
-  /** Matches if the field array contains at least one item provided to the filter */
-  eventLabels_contains_some?: Maybe<Array<EventLabel>>;
-  /** Matches if the field array does not contain any of the items provided to the filter */
-  eventLabels_contains_none?: Maybe<Array<EventLabel>>;
   date?: Maybe<Scalars["DateTime"]>;
   /** All values that are not equal to given value. */
   date_not?: Maybe<Scalars["DateTime"]>;
@@ -1629,6 +1619,16 @@ export type EventWhereInput = {
   /** All values greater than or equal the given value. */
   date_gte?: Maybe<Scalars["DateTime"]>;
   cover?: Maybe<AssetWhereInput>;
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  eventLabels?: Maybe<Array<Scalars["String"]>>;
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  eventLabels_not?: Maybe<Array<Scalars["String"]>>;
+  /** Matches if the field array contains *all* items provided to the filter */
+  eventLabels_contains_all?: Maybe<Array<Scalars["String"]>>;
+  /** Matches if the field array contains at least one item provided to the filter */
+  eventLabels_contains_some?: Maybe<Array<Scalars["String"]>>;
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  eventLabels_contains_none?: Maybe<Array<Scalars["String"]>>;
 };
 
 /** References Event record uniquely */
@@ -2446,7 +2446,7 @@ export type ArticlesPreviewQueryQuery = { __typename?: "Query" } & {
   articles: Array<{ __typename?: "Article" } & ArticlePreviewFragment>;
 };
 
-export type EventPreviewFragment = { __typename?: "Event" } & Pick<Event, "id" | "title" | "date"> & {
+export type EventPreviewFragment = { __typename?: "Event" } & Pick<Event, "id" | "title" | "date" | "eventLabels"> & {
     content: { __typename?: "RichText" } & Pick<RichText, "text">;
     cover?: Maybe<{ __typename?: "Asset" } & Pick<Asset, "id" | "url">>;
   };
@@ -2509,6 +2509,7 @@ export const EventPreviewFragmentDoc = gql`
       id
       url
     }
+    eventLabels
   }
 `;
 export const PressFileFragmentDoc = gql`

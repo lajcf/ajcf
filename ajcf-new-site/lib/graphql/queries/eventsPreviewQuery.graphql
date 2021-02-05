@@ -9,6 +9,7 @@ fragment eventPreview on Event {
     id
     url
   }
+  eventLabels
 }
 
 query eventsPreviewQuery {

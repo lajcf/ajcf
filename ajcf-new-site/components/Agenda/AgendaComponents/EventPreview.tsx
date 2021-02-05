@@ -17,10 +17,11 @@ export const EventPreview = ({ event }: EventPreviewProps) => {
         <h3>{`${dayjs(event.date).format("DD MMM YYYY - HH:mm")}`}</h3>
       </div>
       <div className={styles.textColumn}>
+        <div className="capsHeading">{event.eventLabels[0]}</div>
         <h2>{event.title}</h2>
         <p className="texte2">{formatContentSummary(event.content.text, 280)}</p>
         <Button>En savoir plus</Button>
       </div>
     </li>
-  );
+  ); // TODO Make decision regarding eventLabel(s). Is there just one or do we allow several labels?
 };

@@ -25,6 +25,7 @@
     }
     .textColumn {
       display: grid;
+      grid-template-rows: auto auto 1fr;
       button {
         place-self: end;
         margin-bottom: 1rem;
