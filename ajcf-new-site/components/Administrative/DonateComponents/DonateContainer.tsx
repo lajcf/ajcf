@@ -7,7 +7,7 @@ import { HelloAssoDonation } from "./HelloAssoDonation";
 export const DonateContainer = () => {
   return (
     <Layout className={styles.layout}>
-      <section>
+      <section className={styles.summarySection}>
         <h1>Faire un don pour nous soutenir</h1>
         <p className="texte1">
           Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam no suscipit quaerendum. At nam minimum
