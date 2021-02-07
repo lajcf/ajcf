@@ -1,24 +1,23 @@
 import React from "react";
+import Head from "next/head";
 import styles from "../Footer.module.scss";
-import { Input, Button } from "antd";
-import { RightOutlined } from "@ant-design/icons";
-
-const enterMail = <RightOutlined />;
-
-const inputContent = `Entrez votre adresse e-mail`;
 
 export const NewsletterPlea = () => {
   return (
     <div className={styles.newsletterPlea}>
-      <h3>Inscrivez-vous à notre Newsletter !</h3>
-      <div style={{ width: "100%" }}>
-        <Input.Group compact>
-          <Input placeholder={inputContent} bordered={false} style={{ width: "60%" }} />
-          <Button type="primary">
-            <RightOutlined />
-          </Button>
-        </Input.Group>
-      </div>
+      <Head>
+        <script type="text/javascript" src="https://app.mailjet.com/statics/js/iframeResizer.min.js" />
+      </Head>
+      <iframe
+        title="newsletterIframe"
+        className="mj-w-res-iframe"
+        frameBorder="0"
+        scrolling="no"
+        marginHeight={0}
+        marginWidth={0}
+        src="https://app.mailjet.com/widget/iframe/4yAg/Hsf"
+        width="100%"
+      />
     </div>
   );
 };

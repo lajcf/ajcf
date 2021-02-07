@@ -3,9 +3,12 @@
 .layout {
   main {
     display: grid;
-    grid-template-areas: "quickAccess";
+    grid-template-areas: "quickAccess summarySection";
     section {
-      grid-column-start: 2;
+      grid-column: span 2;
+    }
+    .summarySection {
+      grid-area: summarySection;
     }
     .adhesionAdvantagesSection {
       background-color: $accent-color;
