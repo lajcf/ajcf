@@ -12,6 +12,7 @@ type EventPreviewProps = {
 
 export const EventPreview = ({ event }: EventPreviewProps) => {
   const eventLink = `/agenda/${event.id}`;
+  const additionalEventLabels = event.eventLabels.slice(1);
   return (
     <li className={styles.eventPreview}>
       <div className={styles.coverColumn}>
@@ -26,10 +27,17 @@ export const EventPreview = ({ event }: EventPreviewProps) => {
           </a>
         </Link>
         <p className="texte2">{formatContentSummary(event.content.text, 280)}</p>
+        {additionalEventLabels && (
+          <ul className={styles.additionalEventLabelsList}>
+            {additionalEventLabels?.map((label) => (
+              <li key={label}>#{label}</li>
+            ))}
+          </ul>
+        )}
         <Link href={eventLink}>
           <Button>En savoir plus</Button>
         </Link>
       </div>
     </li>
-  ); // TODO Make decision regarding eventLabel(s). Is there just one or do we allow several labels?
+  );
 };

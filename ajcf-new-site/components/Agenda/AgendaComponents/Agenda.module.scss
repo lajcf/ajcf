@@ -1,5 +1,12 @@
 @import "../../../styles/variables.scss";
 
+.labelsList {
+  margin: 1rem 0;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: start;
+  gap: 1rem;
+}
 .eventsList {
   display: grid;
   gap: 1rem;
@@ -29,6 +36,12 @@
       button {
         place-self: end;
         margin-bottom: 1rem;
+      }
+      .additionalEventLabelsList {
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: start;
+        gap: 0.5rem;
       }
     }
   }

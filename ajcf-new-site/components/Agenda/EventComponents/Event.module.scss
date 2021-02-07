@@ -1,0 +1,12 @@
+.eventContentSection {
+  .eventLabelsList {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+    gap: 1rem;
+    padding: 1rem 0;
+    li {
+      font-size: 16px;
+    }
+  }
+}

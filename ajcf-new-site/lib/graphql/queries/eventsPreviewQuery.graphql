@@ -13,7 +13,7 @@ fragment eventPreview on Event {
 }
 
 query eventsPreviewQuery {
-  events(stage: DRAFT, orderBy: date_DESC) {
+  events(stage: DRAFT, where: { date_gte: "now" }, orderBy: date_ASC) {
     ...eventPreview
   }
 }

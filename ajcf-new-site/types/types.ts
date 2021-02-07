@@ -1298,6 +1298,8 @@ export type EventEdge = {
 
 export enum EventLabel {
   ConferencesAjcf = "ConferencesAJCF",
+  CultureLocale = "CultureLocale",
+  Gastronomie = "Gastronomie",
   ReunionPublique = "ReunionPublique",
 }
 
@@ -2593,7 +2595,7 @@ export const EventsMetaQueryDocument = gql`
 `;
 export const EventsPreviewQueryDocument = gql`
   query eventsPreviewQuery {
-    events(stage: DRAFT, orderBy: date_DESC) {
+    events(stage: DRAFT, where: { date_gte: "now" }, orderBy: date_ASC) {
       ...eventPreview
     }
   }
