@@ -10,3 +10,42 @@
     }
   }
 }
+.followingEventsSection {
+  h2 {
+    text-align: center;
+  }
+  .followingEventsList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    .followingEventPreview {
+      .followingEventCover {
+        height: 200px;
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+      .followingEventInfos {
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        place-items: center;
+        * {
+          text-align: center;
+        }
+      }
+      .followingEventContent {
+        display: grid;
+        p {
+          margin-bottom: 1rem;
+        }
+        button {
+          place-self: end;
+          margin-bottom: 0.5rem;
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+}

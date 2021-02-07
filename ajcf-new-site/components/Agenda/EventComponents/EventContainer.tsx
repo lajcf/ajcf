@@ -1,14 +1,16 @@
 import parse from "html-react-parser";
 import React from "react";
-import { EventPageFragment } from "../../../types/types";
+import { EventPageFragment, EventPreviewFragment } from "../../../types/types";
 import { Layout } from "../../Layout/Layout";
 import styles from "./Event.module.scss";
+import { FollowingEvents } from "./FollowingEvents";
 
 type EventContainerProps = {
   event: EventPageFragment;
+  events: EventPreviewFragment[];
 };
 
-export const EventContainer = ({ event }: EventContainerProps) => {
+export const EventContainer = ({ event, events }: EventContainerProps) => {
   return (
     <Layout>
       <section className={styles.eventContentSection}>
@@ -22,6 +24,7 @@ export const EventContainer = ({ event }: EventContainerProps) => {
         )}
         <div>{parse(event.content.html)}</div>
       </section>
+      <FollowingEvents event={event} events={events} />
     </Layout>
   );
 };
