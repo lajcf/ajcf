@@ -1,4 +1,5 @@
 import { Button } from "antd";
+import Link from "next/link";
 import React from "react";
 import { dayjs } from "../../../lib/utils/dayjs";
 import { formatContentSummary } from "../../../lib/utils/formatContentSummary";
@@ -9,16 +10,23 @@ type FollowingEventProps = {
   event: EventPreviewFragment;
 };
 export const FollowingEventPreview = ({ event }: FollowingEventProps) => {
+  const eventLink = `/agenda/${event.id}`;
   return (
     <li className={styles.followingEventPreview}>
       <div className={styles.followingEventCover}>{event.cover?.url && <img src={event.cover.url} />}</div>
       <div className={styles.followingEventInfos}>
         <h5>{dayjs(event.date).format("DD MMM YYYY HH:mm")}</h5>
-        <h4>{event.title}</h4>
+        <Link href={eventLink}>
+          <a>
+            <h4>{event.title}</h4>
+          </a>
+        </Link>
       </div>
       <div className={styles.followingEventContent}>
         <p>{formatContentSummary(event.content.text, 80)}</p>
-        <Button>En savoir plus</Button>
+        <Link href={eventLink}>
+          <Button>En savoir plus</Button>
+        </Link>
       </div>
     </li>
   );

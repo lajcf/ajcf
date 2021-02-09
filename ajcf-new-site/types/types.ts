@@ -1106,11 +1106,8 @@ export type BatchPayload = {
 };
 
 export enum BlogLabel {
-  NewsAjcf = "news_ajcf",
   NewsAjcf = "NewsAJCF",
-  RecosAjcf = "recos_ajcf",
   RecosAjcf = "RecosAJCF",
-  StoriesAjcf = "stories_ajcf",
   StoriesAjcf = "StoriesAJCF",
 }
 
