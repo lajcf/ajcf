@@ -23,7 +23,6 @@ export const EventsList = ({ events }: EventsListProps) => {
     <section>
       <h2>Les prochains événements de l’AJCF</h2>
       <SelectEventLabels setSelectedEventLabel={setSelectedEventLabel} />
-      {console.log(selectedEventLabel)};
       <ul className={styles.eventsList}>
         {filteredEvents.map((event) => (
           <EventPreview key={event.id} event={event} />
