@@ -1,7 +1,8 @@
 import React, { ReactNode } from "react";
-import styles from "./Layout.module.scss";
-import { Header } from "./Header/Header";
+import { BreadcrumbsContainer } from "./Breadcrumbs/BreadcrumbsContainer";
 import { Footer } from "./Footer/Footer";
+import { Header } from "./Header/Header";
+import styles from "./Layout.module.scss";
 import { QuickAccessContainer } from "./QuickAccess/QuickAccessContainer";
 
 export type LayoutProps = {
@@ -14,6 +15,7 @@ export const Layout = ({ className = undefined, children }: LayoutProps) => {
     <div className={`${styles.container} ${className}`}>
       <Header />
       <main>
+        <BreadcrumbsContainer />
         <QuickAccessContainer />
         {children}
       </main>
