@@ -3,7 +3,9 @@
 .layout {
   main {
     display: grid;
-    grid-template-areas: "quickAccess summarySection";
+    grid-template-areas:
+      "quickAccess breadcrumbs"
+      "quickAccess summarySection";
     section {
       grid-column: span 2;
     }

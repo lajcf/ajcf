@@ -3,6 +3,7 @@
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-areas:
+      "quickAccess breadcrumbs"
       "quickAccess generalSummarySection"
       "espacesSection espacesSection"
       "antennesSection antennesSection"
