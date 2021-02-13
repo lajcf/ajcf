@@ -3,7 +3,7 @@ import React from "react";
 import { EventPageFragment, EventPreviewFragment } from "../../../types/types";
 import { Layout } from "../../Layout/Layout";
 import styles from "./Event.module.scss";
-import { FollowingEvents } from "./FollowingEvents";
+import { NextEvents } from "./NextEvents";
 
 type EventContainerProps = {
   event: EventPageFragment;
@@ -24,7 +24,7 @@ export const EventContainer = ({ event, events }: EventContainerProps) => {
         )}
         <div>{parse(event.content.html)}</div>
       </section>
-      <FollowingEvents event={event} events={events} />
+      <NextEvents event={event} events={events} />
     </Layout>
   );
 };

@@ -1,5 +1,6 @@
 import { Button } from "antd";
 import React, { useState } from "react";
+import NUMBER_OF_ARTICLES_TO_DISPLAY_AT_A_TIME from "../../../lib/constants";
 import { ArticlePreviewFragment, BlogLabel } from "../../../types/types";
 import { Layout } from "../../Layout/Layout";
 import { ArticlePreview } from "./ArticlePreview";
@@ -19,7 +20,7 @@ const limitDisplayedArticles = (filteredArticles: ArticlePreviewFragment[], numb
 
 export const BlogContainer = ({ articles }: { articles: ArticlePreviewFragment[] }) => {
   const [selectedBlogLabel, setSelectedBlogLabel] = useState<BlogLabel>();
-  const [numberOfArticlesToDisplay, setNumberOfArticlesToDisplay] = useState(3);
+  const [numberOfArticlesToDisplay, setNumberOfArticlesToDisplay] = useState(NUMBER_OF_ARTICLES_TO_DISPLAY_AT_A_TIME);
   const filteredArticles = filterArticles(articles, selectedBlogLabel);
   const displayedArticles = limitDisplayedArticles(filteredArticles, numberOfArticlesToDisplay);
   return (
@@ -34,7 +35,9 @@ export const BlogContainer = ({ articles }: { articles: ArticlePreviewFragment[]
           <Button
             type="primary"
             className={styles.loadMoreButton}
-            onClick={() => setNumberOfArticlesToDisplay(numberOfArticlesToDisplay + 3)}
+            onClick={() =>
+              setNumberOfArticlesToDisplay(numberOfArticlesToDisplay + NUMBER_OF_ARTICLES_TO_DISPLAY_AT_A_TIME)
+            }
           >
             Voir plus d'articles
           </Button>

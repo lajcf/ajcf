@@ -29,7 +29,7 @@ export const EventPreview = ({ event }: EventPreviewProps) => {
         <p className="texte2">{formatContentSummary(event.content.text, 280)}</p>
         {additionalEventLabels && (
           <ul className={styles.additionalEventLabelsList}>
-            {additionalEventLabels?.map((label) => (
+            {additionalEventLabels.map((label) => (
               <li key={label}>#{label}</li>
             ))}
           </ul>

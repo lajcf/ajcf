@@ -10,16 +10,16 @@
     }
   }
 }
-.followingEventsSection {
+.nextEventsSection {
   h2 {
     text-align: center;
   }
-  .followingEventsList {
+  .nextEventsList {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    .followingEventPreview {
-      .followingEventCover {
+    .nextEventPreview {
+      .nextEventCover {
         height: 200px;
         img {
           height: 100%;
@@ -27,7 +27,7 @@
           object-fit: contain;
         }
       }
-      .followingEventInfos {
+      .nextEventInfos {
         display: grid;
         grid-template-columns: 2fr 3fr;
         place-items: center;
@@ -35,7 +35,7 @@
           text-align: center;
         }
       }
-      .followingEventContent {
+      .nextEventContent {
         display: grid;
         p {
           margin-bottom: 1rem;
