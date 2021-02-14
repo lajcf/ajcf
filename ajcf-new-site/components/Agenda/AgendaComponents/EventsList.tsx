@@ -4,7 +4,7 @@ import styles from "./Agenda.module.scss";
 import { EventPreview } from "./EventPreview";
 import { SelectEventLabels } from "./SelectEventLabels";
 
-type filterEventsProps = {
+type FilterEventsProps = {
   selectedEventLabel: EventLabel | undefined;
   events: EventPreviewFragment[];
 };
@@ -12,7 +12,7 @@ type EventsListProps = {
   events: EventPreviewFragment[];
 };
 
-const filterEvents = ({ selectedEventLabel, events }: filterEventsProps) => {
+const filterEvents = ({ selectedEventLabel, events }: FilterEventsProps) => {
   if (!selectedEventLabel) {
     return events;
   }
