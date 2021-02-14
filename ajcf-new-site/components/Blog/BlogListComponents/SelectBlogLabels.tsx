@@ -1,7 +1,7 @@
-import React from "react";
 import { Button } from "antd";
-import styles from "./BlogContainer.module.scss";
+import React from "react";
 import { BlogLabel } from "../../../types/types";
+import styles from "./BlogContainer.module.scss";
 
 export const SelectBlogLabels = ({
   setSelectedBlogLabel,
@@ -10,7 +10,7 @@ export const SelectBlogLabels = ({
 }) => {
   return (
     <ul className={styles.blogLabelsList}>
-      <li key="Tous les articles">
+      <li key="allArticles">
         <Button type="primary" onClick={() => setSelectedBlogLabel(undefined)}>
           Tous les articles
         </Button>
