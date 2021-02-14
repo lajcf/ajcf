@@ -1,9 +1,9 @@
 name: ajcf-server
 
-on:
-  pull_request:
-    paths:
-      - "ajcf-server/**/*.ts"
+on: pull_request
+  # pull_request:
+  #   paths:
+  #     - "ajcf-server/**/*.ts"
 
 jobs:
   build:
