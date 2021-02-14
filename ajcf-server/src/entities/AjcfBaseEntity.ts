@@ -1,6 +1,6 @@
 import { CreateDateColumn, PrimaryColumn, UpdateDateColumn } from "typeorm";
 
-export abstract class HelloAssoBaseEntity {
+export abstract class AjcfBaseEntity {
   @PrimaryColumn({
     name: "id",
     type: "bigint",

@@ -1,0 +1,5 @@
+query eventsMetaQuery {
+  events(stage: DRAFT) {
+    id
+  }
+}

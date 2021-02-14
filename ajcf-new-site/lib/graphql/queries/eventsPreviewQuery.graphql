@@ -1,0 +1,19 @@
+fragment eventPreview on Event {
+  id
+  title
+  content {
+    text
+  }
+  date
+  cover {
+    id
+    url
+  }
+  eventLabels
+}
+
+query eventsPreviewQuery {
+  events(stage: DRAFT, where: { date_gte: "now" }, orderBy: date_ASC) {
+    ...eventPreview
+  }
+}

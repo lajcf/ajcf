@@ -1,5 +1,5 @@
-import React from "react";
 import Link from "next/link";
+import React from "react";
 import styles from "./Header.module.scss";
 
 export const Nav = () => {
@@ -14,6 +14,9 @@ export const Nav = () => {
         </Link>
         <Link href="/blog">
           <a>Blog</a>
+        </Link>
+        <Link href="/agenda">
+          <a>Agenda</a>
         </Link>
         <Link href="/contact">
           <a>Contact</a>
