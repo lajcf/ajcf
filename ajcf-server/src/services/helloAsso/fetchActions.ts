@@ -15,6 +15,7 @@ export const fetchActions = async (args: GetActionsInterface): Promise<HelloAsso
   const encodedAuth = Buffer.from(`${process.env.HELLOASSO_USERNAME}:${process.env.HELLOASSO_PASSWORD}`).toString(
     "base64"
   );
+
   const url = GET_ACTIONS_URL(args.campaignId, args.actionType);
   try {
     const result = await axios.get<HelloAssoActionsQueryResponse>(url, {
