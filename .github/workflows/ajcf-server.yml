@@ -23,7 +23,7 @@ jobs:
       - name: Instal packages
         run: cd ajcf-server && yarn install
       - name: Test
-        run: yarn test
+        run: cd ajcf-server && yarn test
 
   deploy:
     name: Deploy ajcf-server
