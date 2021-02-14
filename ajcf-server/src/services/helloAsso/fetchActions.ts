@@ -1,6 +1,6 @@
 import axios from "axios";
-import { GET_ACTIONS_URL, HelloAssoAction, HelloAssoActionType } from "./resources";
 import { orderBy } from "lodash";
+import { GET_ACTIONS_URL, HelloAssoAction, HelloAssoActionType } from "./resources";
 
 interface GetActionsInterface {
   campaignId: string;
@@ -16,6 +16,7 @@ export const fetchActions = async (args: GetActionsInterface): Promise<HelloAsso
     "base64"
   );
   const url = GET_ACTIONS_URL(args.campaignId, args.actionType);
+
   try {
     const result = await axios.get<HelloAssoActionsQueryResponse>(url, {
       headers: {
