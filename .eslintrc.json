@@ -94,15 +94,7 @@
       "error",
       {
         "selector": "default",
-        "format": [
-          "camelCase"
-        ],
-        "leadingUnderscore": "allow",
-        "trailingUnderscore": "allow"
-      },
-      {
-        "selector": "enum",
-        "format": ["PascalCase", "camelCase"],
+        "format": null,
         "leadingUnderscore": "allow",
         "trailingUnderscore": "allow"
       },
