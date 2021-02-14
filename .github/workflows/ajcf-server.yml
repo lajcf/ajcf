@@ -15,7 +15,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ajcf-server/node_modules
-          key: ajcf-server
+          key: ajcf-server-${{ hashFiles('ajcf-server/yarn.lock') }}
       - name: Install node & yarn
         uses: actions/setup-node@v2
         with:
@@ -33,7 +33,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ajcf-server/node_modules
-          key: ajcf-server
+          key: ajcf-server-${{ hashFiles('ajcf-server/yarn.lock') }}
       - name: Test
         run: cd ajcf-server && yarn test
 
@@ -48,7 +48,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ajcf-server/node_modules
-          key: ajcf-server
+          key: ajcf-server-${{ hashFiles('ajcf-server/yarn.lock') }}
       - name: Deploy
         run: cd ajcf-server && yarn sls deploy -s prod
 
