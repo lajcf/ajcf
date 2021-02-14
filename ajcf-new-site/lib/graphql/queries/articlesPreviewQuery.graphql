@@ -13,8 +13,8 @@ fragment articlePreview on Article {
   }
 }
 
-query articlesPreviewQuery {
-  articles(stage: DRAFT, orderBy: createdAt_DESC) {
+query articlesPreviewQuery($stage: Stage!) {
+  articles(stage: $stage, orderBy: createdAt_DESC) {
     ...articlePreview
   }
 }

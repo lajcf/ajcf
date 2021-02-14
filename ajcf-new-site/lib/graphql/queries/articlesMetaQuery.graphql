@@ -1,5 +1,5 @@
-query articlesMetaQuery {
-  articles(stage: DRAFT) {
+query articlesMetaQuery($stage: Stage!) {
+  articles(stage: $stage) {
     id
   }
 }

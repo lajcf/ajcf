@@ -2423,13 +2423,16 @@ export type ArticlePageFragment = { __typename?: "Article" } & Pick<
 
 export type ArticlePageQueryQueryVariables = Exact<{
   id: Scalars["ID"];
+  stage: Stage;
 }>;
 
 export type ArticlePageQueryQuery = { __typename?: "Query" } & {
   article?: Maybe<{ __typename?: "Article" } & ArticlePageFragment>;
 };
 
-export type ArticlesMetaQueryQueryVariables = Exact<{ [key: string]: never }>;
+export type ArticlesMetaQueryQueryVariables = Exact<{
+  stage: Stage;
+}>;
 
 export type ArticlesMetaQueryQuery = { __typename?: "Query" } & {
   articles: Array<{ __typename?: "Article" } & Pick<Article, "id">>;
@@ -2443,7 +2446,9 @@ export type ArticlePreviewFragment = { __typename?: "Article" } & Pick<
     content: { __typename?: "RichText" } & Pick<RichText, "text">;
   };
 
-export type ArticlesPreviewQueryQueryVariables = Exact<{ [key: string]: never }>;
+export type ArticlesPreviewQueryQueryVariables = Exact<{
+  stage: Stage;
+}>;
 
 export type ArticlesPreviewQueryQuery = { __typename?: "Query" } & {
   articles: Array<{ __typename?: "Article" } & ArticlePreviewFragment>;
@@ -2480,7 +2485,9 @@ export type EventsPreviewQueryQuery = { __typename?: "Query" } & {
 
 export type PressFileFragment = { __typename?: "Asset" } & Pick<Asset, "fileName" | "url" | "updatedAt" | "assetLabel">;
 
-export type PressFilesQueryQueryVariables = Exact<{ [key: string]: never }>;
+export type PressFilesQueryQueryVariables = Exact<{
+  stage: Stage;
+}>;
 
 export type PressFilesQueryQuery = { __typename?: "Query" } & {
   assets: Array<{ __typename?: "Asset" } & PressFileFragment>;
@@ -2553,23 +2560,23 @@ export const PressFileFragmentDoc = gql`
   }
 `;
 export const ArticlePageQueryDocument = gql`
-  query articlePageQuery($id: ID!) {
-    article(where: { id: $id }, stage: DRAFT) {
+  query articlePageQuery($id: ID!, $stage: Stage!) {
+    article(where: { id: $id }, stage: $stage) {
       ...articlePage
     }
   }
   ${ArticlePageFragmentDoc}
 `;
 export const ArticlesMetaQueryDocument = gql`
-  query articlesMetaQuery {
-    articles(stage: DRAFT) {
+  query articlesMetaQuery($stage: Stage!) {
+    articles(stage: $stage) {
       id
     }
   }
 `;
 export const ArticlesPreviewQueryDocument = gql`
-  query articlesPreviewQuery {
-    articles(stage: DRAFT, orderBy: createdAt_DESC) {
+  query articlesPreviewQuery($stage: Stage!) {
+    articles(stage: $stage, orderBy: createdAt_DESC) {
       ...articlePreview
     }
   }
@@ -2599,8 +2606,8 @@ export const EventsPreviewQueryDocument = gql`
   ${EventPreviewFragmentDoc}
 `;
 export const PressFilesQueryDocument = gql`
-  query pressFilesQuery {
-    assets(stage: DRAFT, where: { assetLabel_contains_some: press }, orderBy: updatedAt_DESC) {
+  query pressFilesQuery($stage: Stage!) {
+    assets(stage: $stage, where: { assetLabel_contains_some: press }, orderBy: updatedAt_DESC) {
       ...pressFile
     }
   }
@@ -2615,10 +2622,10 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     articlePageQuery(variables: ArticlePageQueryQueryVariables): Promise<ArticlePageQueryQuery> {
       return withWrapper(() => client.request<ArticlePageQueryQuery>(print(ArticlePageQueryDocument), variables));
     },
-    articlesMetaQuery(variables?: ArticlesMetaQueryQueryVariables): Promise<ArticlesMetaQueryQuery> {
+    articlesMetaQuery(variables: ArticlesMetaQueryQueryVariables): Promise<ArticlesMetaQueryQuery> {
       return withWrapper(() => client.request<ArticlesMetaQueryQuery>(print(ArticlesMetaQueryDocument), variables));
     },
-    articlesPreviewQuery(variables?: ArticlesPreviewQueryQueryVariables): Promise<ArticlesPreviewQueryQuery> {
+    articlesPreviewQuery(variables: ArticlesPreviewQueryQueryVariables): Promise<ArticlesPreviewQueryQuery> {
       return withWrapper(() =>
         client.request<ArticlesPreviewQueryQuery>(print(ArticlesPreviewQueryDocument), variables)
       );
@@ -2632,7 +2639,7 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     eventsPreviewQuery(variables?: EventsPreviewQueryQueryVariables): Promise<EventsPreviewQueryQuery> {
       return withWrapper(() => client.request<EventsPreviewQueryQuery>(print(EventsPreviewQueryDocument), variables));
     },
-    pressFilesQuery(variables?: PressFilesQueryQueryVariables): Promise<PressFilesQueryQuery> {
+    pressFilesQuery(variables: PressFilesQueryQueryVariables): Promise<PressFilesQueryQuery> {
       return withWrapper(() => client.request<PressFilesQueryQuery>(print(PressFilesQueryDocument), variables));
     },
   };

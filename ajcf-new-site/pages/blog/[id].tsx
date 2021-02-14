@@ -3,6 +3,7 @@ import React from "react";
 import { ArticleContainer } from "../../components/Blog/BlogListComponents/ArticleContainer";
 import { graphqlClient } from "../../lib/graphql/graphqlClient";
 import { ArticlePreviewFragment, ArticlePageFragment } from "../../types/types";
+import { mapEnvToStage } from "../../lib/utils/mapEnvToStage";
 
 type ArticleProps = {
   article?: ArticlePageFragment | null;
@@ -15,7 +16,7 @@ export default function Article({ article, articles }: ArticleProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const articlesMetaResult = await graphqlClient.articlesMetaQuery();
+  const articlesMetaResult = await graphqlClient.articlesMetaQuery({ stage: mapEnvToStage(process.env.ENV) });
   return {
     paths: articlesMetaResult.articles.map((article) => ({ params: { id: article.id } })) || [],
     fallback: false,
@@ -23,8 +24,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps<ArticleProps, { id: string }> = async ({ params }) => {
-  const articlePageResult = await graphqlClient.articlePageQuery({ id: params?.id || "" });
-  const articlesResult = await graphqlClient.articlesPreviewQuery();
+  const articlePageResult = await graphqlClient.articlePageQuery({
+    id: params?.id || "",
+    stage: mapEnvToStage(process.env.ENV),
+  });
+  const articlesResult = await graphqlClient.articlesPreviewQuery({ stage: mapEnvToStage(process.env.ENV) });
   return {
     props: {
       article: articlePageResult.article,

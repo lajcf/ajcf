@@ -13,8 +13,8 @@ fragment articlePage on Article {
   }
 }
 
-query articlePageQuery($id: ID!) {
-  article(where: { id: $id }, stage: DRAFT) {
+query articlePageQuery($id: ID!, $stage: Stage!) {
+  article(where: { id: $id }, stage: $stage) {
     ...articlePage
   }
 }

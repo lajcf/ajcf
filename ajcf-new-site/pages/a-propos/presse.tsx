@@ -7,6 +7,7 @@ import { Summary } from "../../components/APropos/Press/Summary";
 import { graphqlClient } from "../../lib/graphql/graphqlClient";
 import { AssetLabel, PressFileFragment } from "../../types/types";
 import { PressFiles } from "../../components/APropos/Press/PressFiles";
+import { mapEnvToStage } from "../../lib/utils/mapEnvToStage";
 
 const selectPressFiles = (pressFiles: PressFileFragment[], label: AssetLabel): PressFileFragment[] => {
   return pressFiles.filter((pressFile) => pressFile.assetLabel.includes(label));
@@ -28,7 +29,7 @@ export default ({ pressFiles }: { pressFiles: PressFileFragment[] }) => {
 };
 
 export const getStaticProps: GetStaticProps<any> = async () => {
-  const pressFilesResult = await graphqlClient.pressFilesQuery();
+  const pressFilesResult = await graphqlClient.pressFilesQuery({ stage: mapEnvToStage(process.env.ENV) });
   return {
     props: {
       pressFiles: pressFilesResult.assets,
