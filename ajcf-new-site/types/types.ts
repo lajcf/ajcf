@@ -57,19 +57,19 @@ export type Article = Node & {
 };
 
 /** Articles for the blog section */
-export type ArticledocumentInStagesArgs = {
+export type ArticleDocumentInStagesArgs = {
   stages?: Array<Stage>;
   includeCurrent?: Scalars["Boolean"];
   inheritLocale?: Scalars["Boolean"];
 };
 
 /** Articles for the blog section */
-export type ArticlecoverArgs = {
+export type ArticleCoverArgs = {
   locales?: Maybe<Array<Locale>>;
 };
 
 /** Articles for the blog section */
-export type ArticlehistoryArgs = {
+export type ArticleHistoryArgs = {
   limit?: Scalars["Int"];
   skip?: Scalars["Int"];
   stageOverride?: Maybe<Stage>;
@@ -242,20 +242,20 @@ export type ArticleManyWhereInput = {
 };
 
 export enum ArticleOrderByInput {
-  id_ASC = "id_ASC",
-  id_DESC = "id_DESC",
-  createdAt_ASC = "createdAt_ASC",
-  createdAt_DESC = "createdAt_DESC",
-  updatedAt_ASC = "updatedAt_ASC",
-  updatedAt_DESC = "updatedAt_DESC",
-  publishedAt_ASC = "publishedAt_ASC",
-  publishedAt_DESC = "publishedAt_DESC",
-  title_ASC = "title_ASC",
-  title_DESC = "title_DESC",
-  author_ASC = "author_ASC",
-  author_DESC = "author_DESC",
-  blogLabels_ASC = "blogLabels_ASC",
-  blogLabels_DESC = "blogLabels_DESC",
+  IdAsc = "id_ASC",
+  IdDesc = "id_DESC",
+  CreatedAtAsc = "createdAt_ASC",
+  CreatedAtDesc = "createdAt_DESC",
+  UpdatedAtAsc = "updatedAt_ASC",
+  UpdatedAtDesc = "updatedAt_DESC",
+  PublishedAtAsc = "publishedAt_ASC",
+  PublishedAtDesc = "publishedAt_DESC",
+  TitleAsc = "title_ASC",
+  TitleDesc = "title_DESC",
+  AuthorAsc = "author_ASC",
+  AuthorDesc = "author_DESC",
+  BlogLabelsAsc = "blogLabels_ASC",
+  BlogLabelsDesc = "blogLabels_DESC",
 }
 
 export type ArticleUpdateInput = {
@@ -495,35 +495,35 @@ export type Asset = Node & {
 };
 
 /** Asset system model */
-export type AssetlocalizationsArgs = {
+export type AssetLocalizationsArgs = {
   locales?: Array<Locale>;
   includeCurrent?: Scalars["Boolean"];
 };
 
 /** Asset system model */
-export type AssetdocumentInStagesArgs = {
+export type AssetDocumentInStagesArgs = {
   stages?: Array<Stage>;
   includeCurrent?: Scalars["Boolean"];
   inheritLocale?: Scalars["Boolean"];
 };
 
 /** Asset system model */
-export type AssetcreatedAtArgs = {
+export type AssetCreatedAtArgs = {
   variation?: SystemDateTimeFieldVariation;
 };
 
 /** Asset system model */
-export type AssetupdatedAtArgs = {
+export type AssetUpdatedAtArgs = {
   variation?: SystemDateTimeFieldVariation;
 };
 
 /** Asset system model */
-export type AssetpublishedAtArgs = {
+export type AssetPublishedAtArgs = {
   variation?: SystemDateTimeFieldVariation;
 };
 
 /** Asset system model */
-export type AssetcoverArticleArgs = {
+export type AssetCoverArticleArgs = {
   where?: Maybe<ArticleWhereInput>;
   orderBy?: Maybe<ArticleOrderByInput>;
   skip?: Maybe<Scalars["Int"]>;
@@ -535,7 +535,7 @@ export type AssetcoverArticleArgs = {
 };
 
 /** Asset system model */
-export type AssetcoverEventArgs = {
+export type AssetCoverEventArgs = {
   where?: Maybe<EventWhereInput>;
   orderBy?: Maybe<EventOrderByInput>;
   skip?: Maybe<Scalars["Int"]>;
@@ -547,14 +547,14 @@ export type AssetcoverEventArgs = {
 };
 
 /** Asset system model */
-export type AssethistoryArgs = {
+export type AssetHistoryArgs = {
   limit?: Scalars["Int"];
   skip?: Scalars["Int"];
   stageOverride?: Maybe<Stage>;
 };
 
 /** Asset system model */
-export type AsseturlArgs = {
+export type AssetUrlArgs = {
   transformation?: Maybe<AssetTransformationInput>;
 };
 
@@ -637,9 +637,9 @@ export type AssetEdge = {
 };
 
 export enum AssetLabel {
-  press = "press",
-  press_release = "press_release",
-  press_review = "press_review",
+  Press = "press",
+  PressRelease = "press_release",
+  PressReview = "press_review",
 }
 
 /** Identifies documents */
@@ -735,28 +735,28 @@ export type AssetManyWhereInput = {
 };
 
 export enum AssetOrderByInput {
-  id_ASC = "id_ASC",
-  id_DESC = "id_DESC",
-  createdAt_ASC = "createdAt_ASC",
-  createdAt_DESC = "createdAt_DESC",
-  updatedAt_ASC = "updatedAt_ASC",
-  updatedAt_DESC = "updatedAt_DESC",
-  publishedAt_ASC = "publishedAt_ASC",
-  publishedAt_DESC = "publishedAt_DESC",
-  handle_ASC = "handle_ASC",
-  handle_DESC = "handle_DESC",
-  fileName_ASC = "fileName_ASC",
-  fileName_DESC = "fileName_DESC",
-  height_ASC = "height_ASC",
-  height_DESC = "height_DESC",
-  width_ASC = "width_ASC",
-  width_DESC = "width_DESC",
-  size_ASC = "size_ASC",
-  size_DESC = "size_DESC",
-  mimeType_ASC = "mimeType_ASC",
-  mimeType_DESC = "mimeType_DESC",
-  assetLabel_ASC = "assetLabel_ASC",
-  assetLabel_DESC = "assetLabel_DESC",
+  IdAsc = "id_ASC",
+  IdDesc = "id_DESC",
+  CreatedAtAsc = "createdAt_ASC",
+  CreatedAtDesc = "createdAt_DESC",
+  UpdatedAtAsc = "updatedAt_ASC",
+  UpdatedAtDesc = "updatedAt_DESC",
+  PublishedAtAsc = "publishedAt_ASC",
+  PublishedAtDesc = "publishedAt_DESC",
+  HandleAsc = "handle_ASC",
+  HandleDesc = "handle_DESC",
+  FileNameAsc = "fileName_ASC",
+  FileNameDesc = "fileName_DESC",
+  HeightAsc = "height_ASC",
+  HeightDesc = "height_DESC",
+  WidthAsc = "width_ASC",
+  WidthDesc = "width_DESC",
+  SizeAsc = "size_ASC",
+  SizeDesc = "size_DESC",
+  MimeTypeAsc = "mimeType_ASC",
+  MimeTypeDesc = "mimeType_DESC",
+  AssetLabelAsc = "assetLabel_ASC",
+  AssetLabelDesc = "assetLabel_DESC",
 }
 
 /** Transformations for Assets */
@@ -1106,23 +1106,23 @@ export type BatchPayload = {
 };
 
 export enum BlogLabel {
-  NewsAJCF = "NewsAJCF",
-  RecosAJCF = "RecosAJCF",
-  StoriesAJCF = "StoriesAJCF",
+  NewsAjcf = "NewsAJCF",
+  RecosAjcf = "RecosAJCF",
+  StoriesAjcf = "StoriesAJCF",
 }
 
 /** Representing a color value comprising of HEX, RGBA and css color values */
 export type Color = {
   __typename?: "Color";
   hex: Scalars["Hex"];
-  rgba: RGBA;
+  rgba: Rgba;
   css: Scalars["String"];
 };
 
 /** Accepts either HEX or RGBA color value. At least one of hex or rgba value should be passed. If both are passed RGBA is used. */
 export type ColorInput = {
   hex?: Maybe<Scalars["Hex"]>;
-  rgba?: Maybe<RGBAInput>;
+  rgba?: Maybe<RgbaInput>;
 };
 
 export type ConnectPositionInput = {
@@ -1137,22 +1137,22 @@ export type ConnectPositionInput = {
 };
 
 export enum DocumentFileTypes {
-  jpg = "jpg",
-  odp = "odp",
-  ods = "ods",
-  odt = "odt",
-  png = "png",
-  svg = "svg",
-  txt = "txt",
-  webp = "webp",
-  docx = "docx",
-  pdf = "pdf",
-  html = "html",
-  doc = "doc",
-  xlsx = "xlsx",
-  xls = "xls",
-  pptx = "pptx",
-  ppt = "ppt",
+  Jpg = "jpg",
+  Odp = "odp",
+  Ods = "ods",
+  Odt = "odt",
+  Png = "png",
+  Svg = "svg",
+  Txt = "txt",
+  Webp = "webp",
+  Docx = "docx",
+  Pdf = "pdf",
+  Html = "html",
+  Doc = "doc",
+  Xlsx = "xlsx",
+  Xls = "xls",
+  Pptx = "pptx",
+  Ppt = "ppt",
 }
 
 export type DocumentOutputInput = {
@@ -1225,19 +1225,19 @@ export type Event = Node & {
 };
 
 /** Event as listed in the agenda page */
-export type EventdocumentInStagesArgs = {
+export type EventDocumentInStagesArgs = {
   stages?: Array<Stage>;
   includeCurrent?: Scalars["Boolean"];
   inheritLocale?: Scalars["Boolean"];
 };
 
 /** Event as listed in the agenda page */
-export type EventcoverArgs = {
+export type EventCoverArgs = {
   locales?: Maybe<Array<Locale>>;
 };
 
 /** Event as listed in the agenda page */
-export type EventhistoryArgs = {
+export type EventHistoryArgs = {
   limit?: Scalars["Int"];
   skip?: Scalars["Int"];
   stageOverride?: Maybe<Stage>;
@@ -1294,7 +1294,7 @@ export type EventEdge = {
 };
 
 export enum EventLabel {
-  ConferencesAJCF = "ConferencesAJCF",
+  ConferencesAjcf = "ConferencesAJCF",
   CultureLocale = "CultureLocale",
   Gastronomie = "Gastronomie",
   ReunionPublique = "ReunionPublique",
@@ -1422,20 +1422,20 @@ export type EventManyWhereInput = {
 };
 
 export enum EventOrderByInput {
-  id_ASC = "id_ASC",
-  id_DESC = "id_DESC",
-  createdAt_ASC = "createdAt_ASC",
-  createdAt_DESC = "createdAt_DESC",
-  updatedAt_ASC = "updatedAt_ASC",
-  updatedAt_DESC = "updatedAt_DESC",
-  publishedAt_ASC = "publishedAt_ASC",
-  publishedAt_DESC = "publishedAt_DESC",
-  title_ASC = "title_ASC",
-  title_DESC = "title_DESC",
-  date_ASC = "date_ASC",
-  date_DESC = "date_DESC",
-  eventLabels_ASC = "eventLabels_ASC",
-  eventLabels_DESC = "eventLabels_DESC",
+  IdAsc = "id_ASC",
+  IdDesc = "id_DESC",
+  CreatedAtAsc = "createdAt_ASC",
+  CreatedAtDesc = "createdAt_DESC",
+  UpdatedAtAsc = "updatedAt_ASC",
+  UpdatedAtDesc = "updatedAt_DESC",
+  PublishedAtAsc = "publishedAt_ASC",
+  PublishedAtDesc = "publishedAt_DESC",
+  TitleAsc = "title_ASC",
+  TitleDesc = "title_DESC",
+  DateAsc = "date_ASC",
+  DateDesc = "date_DESC",
+  EventLabelsAsc = "eventLabels_ASC",
+  EventLabelsDesc = "eventLabels_DESC",
 }
 
 export type EventUpdateInput = {
@@ -1641,13 +1641,13 @@ export type EventWhereUniqueInput = {
 
 export enum ImageFit {
   /** Resizes the image to fit within the specified parameters without distorting, cropping, or changing the aspect ratio. */
-  clip = "clip",
+  Clip = "clip",
   /** Resizes the image to fit the specified parameters exactly by removing any parts of the image that don't fit within the boundaries. */
-  crop = "crop",
+  Crop = "crop",
   /** Resizes the image to fit the specified parameters exactly by scaling the image to the desired size. The aspect ratio of the image is not respected and the image can be distorted using this method. */
-  scale = "scale",
+  Scale = "scale",
   /** Resizes the image to fit within the parameters, but as opposed to 'fit:clip' will not scale the image if the image is smaller than the output size. */
-  max = "max",
+  Max = "max",
 }
 
 export type ImageResizeInput = {
@@ -1668,7 +1668,7 @@ export type ImageTransformationInput = {
 /** Locale system enumeration */
 export enum Locale {
   /** System locale */
-  en = "en",
+  En = "en",
 }
 
 /** Representing a geolocation point with latitude and longitude */
@@ -1680,7 +1680,7 @@ export type Location = {
 };
 
 /** Representing a geolocation point with latitude and longitude */
-export type LocationdistanceArgs = {
+export type LocationDistanceArgs = {
   from: LocationInput;
 };
 
@@ -1817,35 +1817,35 @@ export type Mutation = {
   unpublishManyEvents: BatchPayload;
 };
 
-export type MutationcreateArticleArgs = {
+export type MutationCreateArticleArgs = {
   data: ArticleCreateInput;
 };
 
-export type MutationupdateArticleArgs = {
+export type MutationUpdateArticleArgs = {
   where: ArticleWhereUniqueInput;
   data: ArticleUpdateInput;
 };
 
-export type MutationdeleteArticleArgs = {
+export type MutationDeleteArticleArgs = {
   where: ArticleWhereUniqueInput;
 };
 
-export type MutationupsertArticleArgs = {
+export type MutationUpsertArticleArgs = {
   where: ArticleWhereUniqueInput;
   upsert: ArticleUpsertInput;
 };
 
-export type MutationpublishArticleArgs = {
+export type MutationPublishArticleArgs = {
   where: ArticleWhereUniqueInput;
   to?: Array<Stage>;
 };
 
-export type MutationunpublishArticleArgs = {
+export type MutationUnpublishArticleArgs = {
   where: ArticleWhereUniqueInput;
   from?: Array<Stage>;
 };
 
-export type MutationupdateManyArticlesConnectionArgs = {
+export type MutationUpdateManyArticlesConnectionArgs = {
   where?: Maybe<ArticleManyWhereInput>;
   data: ArticleUpdateManyInput;
   skip?: Maybe<Scalars["Int"]>;
@@ -1855,7 +1855,7 @@ export type MutationupdateManyArticlesConnectionArgs = {
   after?: Maybe<Scalars["ID"]>;
 };
 
-export type MutationdeleteManyArticlesConnectionArgs = {
+export type MutationDeleteManyArticlesConnectionArgs = {
   where?: Maybe<ArticleManyWhereInput>;
   skip?: Maybe<Scalars["Int"]>;
   first?: Maybe<Scalars["Int"]>;
@@ -1864,7 +1864,7 @@ export type MutationdeleteManyArticlesConnectionArgs = {
   after?: Maybe<Scalars["ID"]>;
 };
 
-export type MutationpublishManyArticlesConnectionArgs = {
+export type MutationPublishManyArticlesConnectionArgs = {
   where?: Maybe<ArticleManyWhereInput>;
   from?: Maybe<Stage>;
   to?: Array<Stage>;
@@ -1875,7 +1875,7 @@ export type MutationpublishManyArticlesConnectionArgs = {
   after?: Maybe<Scalars["ID"]>;
 };
 
-export type MutationunpublishManyArticlesConnectionArgs = {
+export type MutationUnpublishManyArticlesConnectionArgs = {
   where?: Maybe<ArticleManyWhereInput>;
   stage?: Maybe<Stage>;
   from?: Array<Stage>;
@@ -1886,44 +1886,44 @@ export type MutationunpublishManyArticlesConnectionArgs = {
   after?: Maybe<Scalars["ID"]>;
 };
 
-export type MutationupdateManyArticlesArgs = {
+export type MutationUpdateManyArticlesArgs = {
   where?: Maybe<ArticleManyWhereInput>;
   data: ArticleUpdateManyInput;
 };
 
-export type MutationdeleteManyArticlesArgs = {
+export type MutationDeleteManyArticlesArgs = {
   where?: Maybe<ArticleManyWhereInput>;
 };
 
-export type MutationpublishManyArticlesArgs = {
+export type MutationPublishManyArticlesArgs = {
   where?: Maybe<ArticleManyWhereInput>;
   to?: Array<Stage>;
 };
 
-export type MutationunpublishManyArticlesArgs = {
+export type MutationUnpublishManyArticlesArgs = {
   where?: Maybe<ArticleManyWhereInput>;
   from?: Array<Stage>;
 };
 
-export type MutationcreateAssetArgs = {
+export type MutationCreateAssetArgs = {
   data: AssetCreateInput;
 };
 
-export type MutationupdateAssetArgs = {
+export type MutationUpdateAssetArgs = {
   where: AssetWhereUniqueInput;
   data: AssetUpdateInput;
 };
 
-export type MutationdeleteAssetArgs = {
+export type MutationDeleteAssetArgs = {
   where: AssetWhereUniqueInput;
 };
 
-export type MutationupsertAssetArgs = {
+export type MutationUpsertAssetArgs = {
   where: AssetWhereUniqueInput;
   upsert: AssetUpsertInput;
 };
 
-export type MutationpublishAssetArgs = {
+export type MutationPublishAssetArgs = {
   where: AssetWhereUniqueInput;
   locales?: Maybe<Array<Locale>>;
   publishBase?: Maybe<Scalars["Boolean"]>;
@@ -1931,14 +1931,14 @@ export type MutationpublishAssetArgs = {
   to?: Array<Stage>;
 };
 
-export type MutationunpublishAssetArgs = {
+export type MutationUnpublishAssetArgs = {
   where: AssetWhereUniqueInput;
   from?: Array<Stage>;
   locales?: Maybe<Array<Locale>>;
   unpublishBase?: Maybe<Scalars["Boolean"]>;
 };
 
-export type MutationupdateManyAssetsConnectionArgs = {
+export type MutationUpdateManyAssetsConnectionArgs = {
   where?: Maybe<AssetManyWhereInput>;
   data: AssetUpdateManyInput;
   skip?: Maybe<Scalars["Int"]>;
@@ -1948,7 +1948,7 @@ export type MutationupdateManyAssetsConnectionArgs = {
   after?: Maybe<Scalars["ID"]>;
 };
 
-export type MutationdeleteManyAssetsConnectionArgs = {
+export type MutationDeleteManyAssetsConnectionArgs = {
   where?: Maybe<AssetManyWhereInput>;
   skip?: Maybe<Scalars["Int"]>;
   first?: Maybe<Scalars["Int"]>;
@@ -1957,7 +1957,7 @@ export type MutationdeleteManyAssetsConnectionArgs = {
   after?: Maybe<Scalars["ID"]>;
 };
 
-export type MutationpublishManyAssetsConnectionArgs = {
+export type MutationPublishManyAssetsConnectionArgs = {
   where?: Maybe<AssetManyWhereInput>;
   from?: Maybe<Stage>;
   to?: Array<Stage>;
@@ -1971,7 +1971,7 @@ export type MutationpublishManyAssetsConnectionArgs = {
   withDefaultLocale?: Maybe<Scalars["Boolean"]>;
 };
 
-export type MutationunpublishManyAssetsConnectionArgs = {
+export type MutationUnpublishManyAssetsConnectionArgs = {
   where?: Maybe<AssetManyWhereInput>;
   stage?: Maybe<Stage>;
   from?: Array<Stage>;
@@ -1984,16 +1984,16 @@ export type MutationunpublishManyAssetsConnectionArgs = {
   unpublishBase?: Maybe<Scalars["Boolean"]>;
 };
 
-export type MutationupdateManyAssetsArgs = {
+export type MutationUpdateManyAssetsArgs = {
   where?: Maybe<AssetManyWhereInput>;
   data: AssetUpdateManyInput;
 };
 
-export type MutationdeleteManyAssetsArgs = {
+export type MutationDeleteManyAssetsArgs = {
   where?: Maybe<AssetManyWhereInput>;
 };
 
-export type MutationpublishManyAssetsArgs = {
+export type MutationPublishManyAssetsArgs = {
   where?: Maybe<AssetManyWhereInput>;
   to?: Array<Stage>;
   locales?: Maybe<Array<Locale>>;
@@ -2001,42 +2001,42 @@ export type MutationpublishManyAssetsArgs = {
   withDefaultLocale?: Maybe<Scalars["Boolean"]>;
 };
 
-export type MutationunpublishManyAssetsArgs = {
+export type MutationUnpublishManyAssetsArgs = {
   where?: Maybe<AssetManyWhereInput>;
   from?: Array<Stage>;
   locales?: Maybe<Array<Locale>>;
   unpublishBase?: Maybe<Scalars["Boolean"]>;
 };
 
-export type MutationcreateEventArgs = {
+export type MutationCreateEventArgs = {
   data: EventCreateInput;
 };
 
-export type MutationupdateEventArgs = {
+export type MutationUpdateEventArgs = {
   where: EventWhereUniqueInput;
   data: EventUpdateInput;
 };
 
-export type MutationdeleteEventArgs = {
+export type MutationDeleteEventArgs = {
   where: EventWhereUniqueInput;
 };
 
-export type MutationupsertEventArgs = {
+export type MutationUpsertEventArgs = {
   where: EventWhereUniqueInput;
   upsert: EventUpsertInput;
 };
 
-export type MutationpublishEventArgs = {
+export type MutationPublishEventArgs = {
   where: EventWhereUniqueInput;
   to?: Array<Stage>;
 };
 
-export type MutationunpublishEventArgs = {
+export type MutationUnpublishEventArgs = {
   where: EventWhereUniqueInput;
   from?: Array<Stage>;
 };
 
-export type MutationupdateManyEventsConnectionArgs = {
+export type MutationUpdateManyEventsConnectionArgs = {
   where?: Maybe<EventManyWhereInput>;
   data: EventUpdateManyInput;
   skip?: Maybe<Scalars["Int"]>;
@@ -2046,7 +2046,7 @@ export type MutationupdateManyEventsConnectionArgs = {
   after?: Maybe<Scalars["ID"]>;
 };
 
-export type MutationdeleteManyEventsConnectionArgs = {
+export type MutationDeleteManyEventsConnectionArgs = {
   where?: Maybe<EventManyWhereInput>;
   skip?: Maybe<Scalars["Int"]>;
   first?: Maybe<Scalars["Int"]>;
@@ -2055,7 +2055,7 @@ export type MutationdeleteManyEventsConnectionArgs = {
   after?: Maybe<Scalars["ID"]>;
 };
 
-export type MutationpublishManyEventsConnectionArgs = {
+export type MutationPublishManyEventsConnectionArgs = {
   where?: Maybe<EventManyWhereInput>;
   from?: Maybe<Stage>;
   to?: Array<Stage>;
@@ -2066,7 +2066,7 @@ export type MutationpublishManyEventsConnectionArgs = {
   after?: Maybe<Scalars["ID"]>;
 };
 
-export type MutationunpublishManyEventsConnectionArgs = {
+export type MutationUnpublishManyEventsConnectionArgs = {
   where?: Maybe<EventManyWhereInput>;
   stage?: Maybe<Stage>;
   from?: Array<Stage>;
@@ -2077,21 +2077,21 @@ export type MutationunpublishManyEventsConnectionArgs = {
   after?: Maybe<Scalars["ID"]>;
 };
 
-export type MutationupdateManyEventsArgs = {
+export type MutationUpdateManyEventsArgs = {
   where?: Maybe<EventManyWhereInput>;
   data: EventUpdateManyInput;
 };
 
-export type MutationdeleteManyEventsArgs = {
+export type MutationDeleteManyEventsArgs = {
   where?: Maybe<EventManyWhereInput>;
 };
 
-export type MutationpublishManyEventsArgs = {
+export type MutationPublishManyEventsArgs = {
   where?: Maybe<EventManyWhereInput>;
   to?: Array<Stage>;
 };
 
-export type MutationunpublishManyEventsArgs = {
+export type MutationUnpublishManyEventsArgs = {
   where?: Maybe<EventManyWhereInput>;
   from?: Array<Stage>;
 };
@@ -2156,13 +2156,13 @@ export type Query = {
   eventVersion?: Maybe<DocumentVersion>;
 };
 
-export type QuerynodeArgs = {
+export type QueryNodeArgs = {
   id: Scalars["ID"];
   stage?: Stage;
   locales?: Array<Locale>;
 };
 
-export type QueryarticlesArgs = {
+export type QueryArticlesArgs = {
   where?: Maybe<ArticleWhereInput>;
   orderBy?: Maybe<ArticleOrderByInput>;
   skip?: Maybe<Scalars["Int"]>;
@@ -2174,13 +2174,13 @@ export type QueryarticlesArgs = {
   locales?: Array<Locale>;
 };
 
-export type QueryarticleArgs = {
+export type QueryArticleArgs = {
   where: ArticleWhereUniqueInput;
   stage?: Stage;
   locales?: Array<Locale>;
 };
 
-export type QueryarticlesConnectionArgs = {
+export type QueryArticlesConnectionArgs = {
   where?: Maybe<ArticleWhereInput>;
   orderBy?: Maybe<ArticleOrderByInput>;
   skip?: Maybe<Scalars["Int"]>;
@@ -2192,11 +2192,11 @@ export type QueryarticlesConnectionArgs = {
   locales?: Array<Locale>;
 };
 
-export type QueryarticleVersionArgs = {
+export type QueryArticleVersionArgs = {
   where: VersionWhereInput;
 };
 
-export type QueryassetsArgs = {
+export type QueryAssetsArgs = {
   where?: Maybe<AssetWhereInput>;
   orderBy?: Maybe<AssetOrderByInput>;
   skip?: Maybe<Scalars["Int"]>;
@@ -2208,13 +2208,13 @@ export type QueryassetsArgs = {
   locales?: Array<Locale>;
 };
 
-export type QueryassetArgs = {
+export type QueryAssetArgs = {
   where: AssetWhereUniqueInput;
   stage?: Stage;
   locales?: Array<Locale>;
 };
 
-export type QueryassetsConnectionArgs = {
+export type QueryAssetsConnectionArgs = {
   where?: Maybe<AssetWhereInput>;
   orderBy?: Maybe<AssetOrderByInput>;
   skip?: Maybe<Scalars["Int"]>;
@@ -2226,11 +2226,11 @@ export type QueryassetsConnectionArgs = {
   locales?: Array<Locale>;
 };
 
-export type QueryassetVersionArgs = {
+export type QueryAssetVersionArgs = {
   where: VersionWhereInput;
 };
 
-export type QueryeventsArgs = {
+export type QueryEventsArgs = {
   where?: Maybe<EventWhereInput>;
   orderBy?: Maybe<EventOrderByInput>;
   skip?: Maybe<Scalars["Int"]>;
@@ -2242,13 +2242,13 @@ export type QueryeventsArgs = {
   locales?: Array<Locale>;
 };
 
-export type QueryeventArgs = {
+export type QueryEventArgs = {
   where: EventWhereUniqueInput;
   stage?: Stage;
   locales?: Array<Locale>;
 };
 
-export type QueryeventsConnectionArgs = {
+export type QueryEventsConnectionArgs = {
   where?: Maybe<EventWhereInput>;
   orderBy?: Maybe<EventOrderByInput>;
   skip?: Maybe<Scalars["Int"]>;
@@ -2260,12 +2260,12 @@ export type QueryeventsConnectionArgs = {
   locales?: Array<Locale>;
 };
 
-export type QueryeventVersionArgs = {
+export type QueryEventVersionArgs = {
   where: VersionWhereInput;
 };
 
 /** Representing a RGBA color value: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb()_and_rgba() */
-export type RGBA = {
+export type Rgba = {
   __typename?: "RGBA";
   r: Scalars["RGBAHue"];
   g: Scalars["RGBAHue"];
@@ -2274,7 +2274,7 @@ export type RGBA = {
 };
 
 /** Input type representing a RGBA color value: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb()_and_rgba() */
-export type RGBAInput = {
+export type RgbaInput = {
   r: Scalars["RGBAHue"];
   g: Scalars["RGBAHue"];
   b: Scalars["RGBAHue"];
@@ -2297,15 +2297,15 @@ export type RichText = {
 /** Stage system enumeration */
 export enum Stage {
   /** The Published stage is where you can publish your content to. */
-  PUBLISHED = "PUBLISHED",
+  Published = "PUBLISHED",
   /** The Draft is the default stage for all your content. */
-  DRAFT = "DRAFT",
+  Draft = "DRAFT",
 }
 
 export enum SystemDateTimeFieldVariation {
-  BASE = "BASE",
-  LOCALIZATION = "LOCALIZATION",
-  COMBINED = "COMBINED",
+  Base = "BASE",
+  Localization = "LOCALIZATION",
+  Combined = "COMBINED",
 }
 
 export type UnpublishLocaleInput = {
@@ -2317,10 +2317,10 @@ export type UnpublishLocaleInput = {
 
 /** System User Kind */
 export enum UserKind {
-  MEMBER = "MEMBER",
-  PAT = "PAT",
-  PUBLIC = "PUBLIC",
-  WEBHOOK = "WEBHOOK",
+  Member = "MEMBER",
+  Pat = "PAT",
+  Public = "PUBLIC",
+  Webhook = "WEBHOOK",
 }
 
 export type Version = {
@@ -2338,82 +2338,82 @@ export type VersionWhereInput = {
 };
 
 export enum _FilterKind {
-  search = "search",
-  AND = "AND",
-  OR = "OR",
-  NOT = "NOT",
-  eq = "eq",
-  eq_not = "eq_not",
-  in = "in",
-  not_in = "not_in",
-  lt = "lt",
-  lte = "lte",
-  gt = "gt",
-  gte = "gte",
-  contains = "contains",
-  not_contains = "not_contains",
-  starts_with = "starts_with",
-  not_starts_with = "not_starts_with",
-  ends_with = "ends_with",
-  not_ends_with = "not_ends_with",
-  contains_all = "contains_all",
-  contains_some = "contains_some",
-  contains_none = "contains_none",
-  relational_single = "relational_single",
-  relational_every = "relational_every",
-  relational_some = "relational_some",
-  relational_none = "relational_none",
+  Search = "search",
+  And = "AND",
+  Or = "OR",
+  Not = "NOT",
+  Eq = "eq",
+  EqNot = "eq_not",
+  In = "in",
+  NotIn = "not_in",
+  Lt = "lt",
+  Lte = "lte",
+  Gt = "gt",
+  Gte = "gte",
+  Contains = "contains",
+  NotContains = "not_contains",
+  StartsWith = "starts_with",
+  NotStartsWith = "not_starts_with",
+  EndsWith = "ends_with",
+  NotEndsWith = "not_ends_with",
+  ContainsAll = "contains_all",
+  ContainsSome = "contains_some",
+  ContainsNone = "contains_none",
+  RelationalSingle = "relational_single",
+  RelationalEvery = "relational_every",
+  RelationalSome = "relational_some",
+  RelationalNone = "relational_none",
 }
 
 export enum _MutationInputFieldKind {
-  scalar = "scalar",
-  richText = "richText",
-  enum = "enum",
-  relation = "relation",
-  union = "union",
-  virtual = "virtual",
+  Scalar = "scalar",
+  RichText = "richText",
+  Enum = "enum",
+  Relation = "relation",
+  Union = "union",
+  Virtual = "virtual",
 }
 
 export enum _MutationKind {
-  create = "create",
-  publish = "publish",
-  unpublish = "unpublish",
-  update = "update",
-  upsert = "upsert",
-  delete = "delete",
-  updateMany = "updateMany",
-  publishMany = "publishMany",
-  unpublishMany = "unpublishMany",
-  deleteMany = "deleteMany",
+  Create = "create",
+  Publish = "publish",
+  Unpublish = "unpublish",
+  Update = "update",
+  Upsert = "upsert",
+  Delete = "delete",
+  UpdateMany = "updateMany",
+  PublishMany = "publishMany",
+  UnpublishMany = "unpublishMany",
+  DeleteMany = "deleteMany",
 }
 
 export enum _OrderDirection {
-  asc = "asc",
-  desc = "desc",
+  Asc = "asc",
+  Desc = "desc",
 }
 
 export enum _RelationInputCardinality {
-  one = "one",
-  many = "many",
+  One = "one",
+  Many = "many",
 }
 
 export enum _RelationInputKind {
-  create = "create",
-  update = "update",
+  Create = "create",
+  Update = "update",
 }
 
 export enum _RelationKind {
-  regular = "regular",
-  union = "union",
+  Regular = "regular",
+  Union = "union",
 }
 
 export enum _SystemDateTimeFieldVariation {
-  base = "base",
-  localization = "localization",
-  combined = "combined",
+  Base = "base",
+  Localization = "localization",
+  Combined = "combined",
 }
 
-export type articlePageFragment = { __typename?: "Article" } & Pick<
+export type ArticlePageFragment = { __typename?: "Article" } & Pick<
   Article,
   "id" | "title" | "author" | "createdAt" | "blogLabels"
 > & {
@@ -2421,24 +2421,24 @@ export type articlePageFragment = { __typename?: "Article" } & Pick<
     content: { __typename?: "RichText" } & Pick<RichText, "html">;
   };
 
-export type articlePageQueryQueryVariables = Exact<{
+export type ArticlePageQueryQueryVariables = Exact<{
   id: Scalars["ID"];
   stage: Stage;
 }>;
 
-export type articlePageQueryQuery = { __typename?: "Query" } & {
-  article?: Maybe<{ __typename?: "Article" } & articlePageFragment>;
+export type ArticlePageQueryQuery = { __typename?: "Query" } & {
+  article?: Maybe<{ __typename?: "Article" } & ArticlePageFragment>;
 };
 
-export type articlesMetaQueryQueryVariables = Exact<{
+export type ArticlesMetaQueryQueryVariables = Exact<{
   stage: Stage;
 }>;
 
-export type articlesMetaQueryQuery = { __typename?: "Query" } & {
+export type ArticlesMetaQueryQuery = { __typename?: "Query" } & {
   articles: Array<{ __typename?: "Article" } & Pick<Article, "id">>;
 };
 
-export type articlePreviewFragment = { __typename?: "Article" } & Pick<
+export type ArticlePreviewFragment = { __typename?: "Article" } & Pick<
   Article,
   "id" | "title" | "author" | "createdAt" | "blogLabels"
 > & {
@@ -2446,25 +2446,54 @@ export type articlePreviewFragment = { __typename?: "Article" } & Pick<
     content: { __typename?: "RichText" } & Pick<RichText, "text">;
   };
 
-export type articlesPreviewQueryQueryVariables = Exact<{
+export type ArticlesPreviewQueryQueryVariables = Exact<{
   stage: Stage;
 }>;
 
-export type articlesPreviewQueryQuery = { __typename?: "Query" } & {
-  articles: Array<{ __typename?: "Article" } & articlePreviewFragment>;
+export type ArticlesPreviewQueryQuery = { __typename?: "Query" } & {
+  articles: Array<{ __typename?: "Article" } & ArticlePreviewFragment>;
 };
 
-export type pressFileFragment = { __typename?: "Asset" } & Pick<Asset, "fileName" | "url" | "updatedAt" | "assetLabel">;
+export type EventPageFragment = { __typename?: "Event" } & Pick<Event, "id" | "title" | "date" | "eventLabels"> & {
+    content: { __typename?: "RichText" } & Pick<RichText, "html">;
+  };
 
-export type pressFilesQueryQueryVariables = Exact<{
+export type EventPageQueryQueryVariables = Exact<{
+  id: Scalars["ID"];
+}>;
+
+export type EventPageQueryQuery = { __typename?: "Query" } & {
+  event?: Maybe<{ __typename?: "Event" } & EventPageFragment>;
+};
+
+export type EventsMetaQueryQueryVariables = Exact<{ [key: string]: never }>;
+
+export type EventsMetaQueryQuery = { __typename?: "Query" } & {
+  events: Array<{ __typename?: "Event" } & Pick<Event, "id">>;
+};
+
+export type EventPreviewFragment = { __typename?: "Event" } & Pick<Event, "id" | "title" | "date" | "eventLabels"> & {
+    content: { __typename?: "RichText" } & Pick<RichText, "text">;
+    cover?: Maybe<{ __typename?: "Asset" } & Pick<Asset, "id" | "url">>;
+  };
+
+export type EventsPreviewQueryQueryVariables = Exact<{ [key: string]: never }>;
+
+export type EventsPreviewQueryQuery = { __typename?: "Query" } & {
+  events: Array<{ __typename?: "Event" } & EventPreviewFragment>;
+};
+
+export type PressFileFragment = { __typename?: "Asset" } & Pick<Asset, "fileName" | "url" | "updatedAt" | "assetLabel">;
+
+export type PressFilesQueryQueryVariables = Exact<{
   stage: Stage;
 }>;
 
-export type pressFilesQueryQuery = { __typename?: "Query" } & {
-  assets: Array<{ __typename?: "Asset" } & pressFileFragment>;
+export type PressFilesQueryQuery = { __typename?: "Query" } & {
+  assets: Array<{ __typename?: "Asset" } & PressFileFragment>;
 };
 
-export const articlePageFragmentDoc = gql`
+export const ArticlePageFragmentDoc = gql`
   fragment articlePage on Article {
     id
     title
@@ -2480,7 +2509,7 @@ export const articlePageFragmentDoc = gql`
     }
   }
 `;
-export const articlePreviewFragmentDoc = gql`
+export const ArticlePreviewFragmentDoc = gql`
   fragment articlePreview on Article {
     id
     title
@@ -2496,7 +2525,33 @@ export const articlePreviewFragmentDoc = gql`
     }
   }
 `;
-export const pressFileFragmentDoc = gql`
+export const EventPageFragmentDoc = gql`
+  fragment eventPage on Event {
+    id
+    title
+    content {
+      html
+    }
+    date
+    eventLabels
+  }
+`;
+export const EventPreviewFragmentDoc = gql`
+  fragment eventPreview on Event {
+    id
+    title
+    content {
+      text
+    }
+    date
+    cover {
+      id
+      url
+    }
+    eventLabels
+  }
+`;
+export const PressFileFragmentDoc = gql`
   fragment pressFile on Asset {
     fileName
     url
@@ -2504,36 +2559,59 @@ export const pressFileFragmentDoc = gql`
     assetLabel
   }
 `;
-export const articlePageQueryDocument = gql`
+export const ArticlePageQueryDocument = gql`
   query articlePageQuery($id: ID!, $stage: Stage!) {
     article(where: { id: $id }, stage: $stage) {
       ...articlePage
     }
   }
-  ${articlePageFragmentDoc}
+  ${ArticlePageFragmentDoc}
 `;
-export const articlesMetaQueryDocument = gql`
+export const ArticlesMetaQueryDocument = gql`
   query articlesMetaQuery($stage: Stage!) {
     articles(stage: $stage) {
       id
     }
   }
 `;
-export const articlesPreviewQueryDocument = gql`
+export const ArticlesPreviewQueryDocument = gql`
   query articlesPreviewQuery($stage: Stage!) {
     articles(stage: $stage, orderBy: createdAt_DESC) {
       ...articlePreview
     }
   }
-  ${articlePreviewFragmentDoc}
+  ${ArticlePreviewFragmentDoc}
 `;
-export const pressFilesQueryDocument = gql`
+export const EventPageQueryDocument = gql`
+  query eventPageQuery($id: ID!) {
+    event(where: { id: $id }, stage: DRAFT) {
+      ...eventPage
+    }
+  }
+  ${EventPageFragmentDoc}
+`;
+export const EventsMetaQueryDocument = gql`
+  query eventsMetaQuery {
+    events(stage: DRAFT) {
+      id
+    }
+  }
+`;
+export const EventsPreviewQueryDocument = gql`
+  query eventsPreviewQuery {
+    events(stage: DRAFT, where: { date_gte: "now" }, orderBy: date_ASC) {
+      ...eventPreview
+    }
+  }
+  ${EventPreviewFragmentDoc}
+`;
+export const PressFilesQueryDocument = gql`
   query pressFilesQuery($stage: Stage!) {
     assets(stage: $stage, where: { assetLabel_contains_some: press }, orderBy: updatedAt_DESC) {
       ...pressFile
     }
   }
-  ${pressFileFragmentDoc}
+  ${PressFileFragmentDoc}
 `;
 
 export type SdkFunctionWrapper = <T>(action: () => Promise<T>) => Promise<T>;
@@ -2541,19 +2619,28 @@ export type SdkFunctionWrapper = <T>(action: () => Promise<T>) => Promise<T>;
 const defaultWrapper: SdkFunctionWrapper = (sdkFunction) => sdkFunction();
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
-    articlePageQuery(variables: articlePageQueryQueryVariables): Promise<articlePageQueryQuery> {
-      return withWrapper(() => client.request<articlePageQueryQuery>(print(articlePageQueryDocument), variables));
+    articlePageQuery(variables: ArticlePageQueryQueryVariables): Promise<ArticlePageQueryQuery> {
+      return withWrapper(() => client.request<ArticlePageQueryQuery>(print(ArticlePageQueryDocument), variables));
     },
-    articlesMetaQuery(variables: articlesMetaQueryQueryVariables): Promise<articlesMetaQueryQuery> {
-      return withWrapper(() => client.request<articlesMetaQueryQuery>(print(articlesMetaQueryDocument), variables));
+    articlesMetaQuery(variables: ArticlesMetaQueryQueryVariables): Promise<ArticlesMetaQueryQuery> {
+      return withWrapper(() => client.request<ArticlesMetaQueryQuery>(print(ArticlesMetaQueryDocument), variables));
     },
-    articlesPreviewQuery(variables: articlesPreviewQueryQueryVariables): Promise<articlesPreviewQueryQuery> {
+    articlesPreviewQuery(variables: ArticlesPreviewQueryQueryVariables): Promise<ArticlesPreviewQueryQuery> {
       return withWrapper(() =>
-        client.request<articlesPreviewQueryQuery>(print(articlesPreviewQueryDocument), variables)
+        client.request<ArticlesPreviewQueryQuery>(print(ArticlesPreviewQueryDocument), variables)
       );
     },
-    pressFilesQuery(variables: pressFilesQueryQueryVariables): Promise<pressFilesQueryQuery> {
-      return withWrapper(() => client.request<pressFilesQueryQuery>(print(pressFilesQueryDocument), variables));
+    eventPageQuery(variables: EventPageQueryQueryVariables): Promise<EventPageQueryQuery> {
+      return withWrapper(() => client.request<EventPageQueryQuery>(print(EventPageQueryDocument), variables));
+    },
+    eventsMetaQuery(variables?: EventsMetaQueryQueryVariables): Promise<EventsMetaQueryQuery> {
+      return withWrapper(() => client.request<EventsMetaQueryQuery>(print(EventsMetaQueryDocument), variables));
+    },
+    eventsPreviewQuery(variables?: EventsPreviewQueryQueryVariables): Promise<EventsPreviewQueryQuery> {
+      return withWrapper(() => client.request<EventsPreviewQueryQuery>(print(EventsPreviewQueryDocument), variables));
+    },
+    pressFilesQuery(variables: PressFilesQueryQueryVariables): Promise<PressFilesQueryQuery> {
+      return withWrapper(() => client.request<PressFilesQueryQuery>(print(PressFilesQueryDocument), variables));
     },
   };
 }
