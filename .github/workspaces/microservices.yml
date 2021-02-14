@@ -1,0 +1,42 @@
+name: microservices
+
+on:
+  pull_request:
+    paths:
+      - "ajcf-server/**/*.ts"
+
+jobs:
+  build:
+    name: Build back
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: ajcf-server/node_modules
+          key: back
+      - name: Install node & yarn
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+      - name: Instal packages
+        run: cd ajcf-server && yarn install
+      - name: Test
+        run: yarn test
+
+  deploy:
+    name: Deploy back
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: ajcf-server/node_modules
+          key: back
+      - name: Deploy
+        run: yarn sls deploy -s prod
+
