@@ -8,7 +8,7 @@ import { Testimonies } from "../../components/APropos/WhoAreWe/TestimoniesCompon
 import styles from "../../components/APropos/WhoAreWe/WhoAreWe.module.scss";
 import { Layout } from "../../components/Layout/Layout";
 
-export default function quiSommesNous() {
+export default function QuiSommesNous() {
   return (
     <Layout className={styles.layout}>
       <Summary />
