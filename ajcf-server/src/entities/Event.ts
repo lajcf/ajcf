@@ -1,10 +1,10 @@
 import { Column, Entity, OneToMany } from "typeorm";
-import { HelloAssoBaseEntity } from "./AjcfBaseEntity";
+import { AjcfBaseEntity } from "./AjcfBaseEntity";
 import { Ticket } from "./Ticket";
 
 // TODO: ajouter id du pole
 @Entity("Event")
-export class Event extends HelloAssoBaseEntity {
+export class Event extends AjcfBaseEntity {
   @Column("varchar", {
     name: "name",
   })

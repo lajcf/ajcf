@@ -1,10 +1,10 @@
 import { Column, Entity, ManyToOne } from "typeorm";
-import { HelloAssoBaseEntity } from "./AjcfBaseEntity";
+import { AjcfBaseEntity } from "./AjcfBaseEntity";
 import { Event } from "./Event";
 import { Attendee } from "./Attendee";
 
 @Entity("Ticket")
-export class Ticket extends HelloAssoBaseEntity {
+export class Ticket extends AjcfBaseEntity {
   @ManyToOne(() => Attendee, (attendee) => attendee.tickets)
   attendee: Attendee;
 

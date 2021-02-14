@@ -1,7 +1,7 @@
 import React from "react";
+import { formatContentSummary } from "../../../lib/utils/formatContentSummary";
 import { ArticlePreviewFragment } from "../../../types/types";
 import styles from "./ArticleContainer.module.scss";
-import { formatContentSummary } from "./formatContentSummary";
 
 export const ArticleRecommendationPreview = ({ article }: { article: ArticlePreviewFragment }) => {
   const contentSummary = formatContentSummary(article.content.text, 80);

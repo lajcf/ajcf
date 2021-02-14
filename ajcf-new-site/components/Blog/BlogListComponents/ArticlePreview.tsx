@@ -1,9 +1,9 @@
-import React from "react";
 import Link from "next/link";
+import React from "react";
+import { dayjs } from "../../../lib/utils/dayjs";
+import { formatContentSummary } from "../../../lib/utils/formatContentSummary";
 import { ArticlePreviewFragment } from "../../../types/types";
 import styles from "./BlogContainer.module.scss";
-import { dayjs } from "../../../lib/utils/dayjs";
-import { formatContentSummary } from "./formatContentSummary";
 
 export const ArticlePreview = ({ article }: { article: ArticlePreviewFragment }) => {
   const contentSummary = formatContentSummary(article.content.text, 140);

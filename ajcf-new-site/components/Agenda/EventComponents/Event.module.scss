@@ -1,0 +1,51 @@
+.eventContentSection {
+  .eventLabelsList {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+    gap: 1rem;
+    padding: 1rem 0;
+    li {
+      font-size: 16px;
+    }
+  }
+}
+.nextEventsSection {
+  h2 {
+    text-align: center;
+  }
+  .nextEventsList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    .nextEventPreview {
+      .nextEventCover {
+        height: 200px;
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+      .nextEventInfos {
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        place-items: center;
+        * {
+          text-align: center;
+        }
+      }
+      .nextEventContent {
+        display: grid;
+        p {
+          margin-bottom: 1rem;
+        }
+        button {
+          place-self: end;
+          margin-bottom: 0.5rem;
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+}
