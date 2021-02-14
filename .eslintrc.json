@@ -76,7 +76,6 @@
     "import/named": "off",
     "import/no-named-as-default": "off",
     //"import/no-unused-modules":  [1, {"unusedExports": true}],
-
     "class-methods-use-this": "off",
     "consistent-return": "off",
     "no-param-reassign": "error",
@@ -91,6 +90,17 @@
     "@typescript-eslint/camelcase": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/ban-ts-ignore": "off",
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "variable",
+        "format": ["camelCase", "UPPER_CASE"]
+      },
+      {
+        "selector": "typeLike",
+        "format": ["PascalCase"]
+      }
+    ],
     "@typescript-eslint/prefer-optional-chain": "error",
     "@typescript-eslint/no-unused-vars": ["error", { "ignoreRestSiblings": true }],
     "@typescript-eslint/no-floating-promises": "off",

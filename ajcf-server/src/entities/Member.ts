@@ -1,8 +1,8 @@
 import { Column, Entity } from "typeorm";
-import { HelloAssoBaseEntity } from "./AjcfBaseEntity";
+import { AjcfBaseEntity } from "./AjcfBaseEntity";
 
 @Entity("Member")
-export class Member extends HelloAssoBaseEntity {
+export class Member extends AjcfBaseEntity {
   @Column("varchar", {
     name: "email",
   })
