@@ -41,7 +41,7 @@ jobs:
     name: Deploy ajcf-server
     runs-on: ubuntu-latest
     needs: test
-    if: github.ref == 'refs/heads/master'
+    if: github.event.pull_request.merged == true
     steps:
       - uses: actions/checkout@v2
       - name: Cache node modules
