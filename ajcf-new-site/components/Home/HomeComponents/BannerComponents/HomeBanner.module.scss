@@ -1,5 +1,7 @@
+@import "../../../../styles/variables.scss";
+
 .banner {
-  background-color: #f4f6fb;
+  background-color: $primary-color;
   min-height: 50vh;
   padding: 1rem;
   display: grid;

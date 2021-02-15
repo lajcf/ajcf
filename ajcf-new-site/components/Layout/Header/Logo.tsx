@@ -1,5 +1,5 @@
-import React from "react";
 import Link from "next/link";
+import React from "react";
 import styles from "./Header.module.scss";
 
 export const Logo = () => {
@@ -7,7 +7,7 @@ export const Logo = () => {
     <div className={styles.logo}>
       <Link href="/">
         <a>
-          <img className={styles.logoImg} src={require("../../../public/ajcf-logo.jpg")} />
+          <img className={styles.logoImg} src={require("../../../public/ajcf-logo.png")} />
         </a>
       </Link>
     </div>

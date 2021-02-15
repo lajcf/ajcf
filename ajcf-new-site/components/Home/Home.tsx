@@ -1,22 +1,21 @@
 import React from "react";
-import { Banner } from "./HomeComponents/BannerComponents/Banner";
-import { Espaces } from "./HomeComponents/EspacesComponents/Espaces";
-import { Carousel } from "./HomeComponents/CarouselComponents/Carousel";
-import { Stats } from "./HomeComponents/StatsComponents/Stats";
-import { Partners } from "./HomeComponents/PartnersComponents/Partners";
-import { Education } from "./HomeComponents/EducationComponents/Education";
+import { Layout } from "../Layout/Layout";
 import { Antennes } from "./HomeComponents/AntennesComponents/Antennes";
+import { Carousel } from "./HomeComponents/CarouselComponents/Carousel";
+import { Education } from "./HomeComponents/EducationComponents/Education";
+import { Espaces } from "./HomeComponents/EspacesComponents/Espaces";
+import { Partners } from "./HomeComponents/PartnersComponents/Partners";
+import { Stats } from "./HomeComponents/StatsComponents/Stats";
 
 export const Home = () => {
   return (
-    <main>
-      <Banner />
+    <Layout>
       <Espaces />
       <Carousel />
       <Stats />
       <Partners />
       <Education />
       <Antennes />
-    </main>
+    </Layout>
   );
 };
