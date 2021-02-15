@@ -1,4 +1,3 @@
-import { Button } from "antd";
 import React from "react";
 import styles from "./HomeBanner.module.scss";
 
@@ -11,10 +10,10 @@ export const HomeBanner = () => {
       <h1 className={styles.title}>{titleContent}</h1>
       <p className={styles.text}>{textContent}</p>
       <div className={styles.buttons}>
-        <Button className={styles.histoire}>Notre Histoire</Button>
-        <Button type="primary" className={styles.projets}>
+        <button type="button">Notre Histoire</button>
+        <button type="button" className={`secondary-button ${styles.projets}`}>
           Nos projets
-        </Button>
+        </button>
       </div>
       <figure className={styles.image}>Image</figure>
     </section>
