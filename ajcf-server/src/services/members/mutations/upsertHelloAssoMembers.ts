@@ -1,6 +1,6 @@
 import moment from "moment";
 import { getRepository } from "typeorm";
-import { capitalize } from "lodash";
+import { capitalize, orderBy, uniqBy } from "lodash";
 import { fetchCampaigns } from "../../helloAsso/fetchCampaigns";
 import { fetchActions } from "../../helloAsso/fetchActions";
 import { HelloAssoAction } from "../../helloAsso/resources";
@@ -13,7 +13,7 @@ export enum CustomInfoEnum {
   motivation = "Pourquoi veux-tu rejoindre l'AJCF ?",
 }
 
-export const getDateInfo = (member: HelloAssoAction, infoType: CustomInfoEnum): Date | null => {
+export const extractDateInfo = (member: HelloAssoAction, infoType: CustomInfoEnum): Date | null => {
   const date = member.custom_infos.find((e) => e.label === infoType);
   if (date) {
     const parsedDateInFrench = moment.utc(date.value, "DD/MM/YYYY");
@@ -23,25 +23,9 @@ export const getDateInfo = (member: HelloAssoAction, infoType: CustomInfoEnum): 
   return null;
 };
 
-export const getStringInfo = (member: HelloAssoAction, infoType: CustomInfoEnum): string | null => {
+export const extractStringInfo = (member: HelloAssoAction, infoType: CustomInfoEnum): string | null => {
   const info = member.custom_infos.find((e) => e.label === infoType);
   return info ? info.value : null;
-};
-
-export const formatMembers = (member: HelloAssoAction) => {
-  return {
-    id: parseInt(member.id, 10).toString(),
-    firstName: member.first_name,
-    lastName: member.last_name,
-    birthDate: getDateInfo(member, CustomInfoEnum.birthDate),
-    email: member.email,
-    phone: getStringInfo(member, CustomInfoEnum.phone),
-    jobStudy: getStringInfo(member, CustomInfoEnum.jobStudy),
-    motivation: getStringInfo(member, CustomInfoEnum.motivation),
-    firstSubscriptionDate: moment.utc(member.date).toDate(),
-    lastSubscriptionDate: moment.utc(member.date).toDate(),
-    activeMember: false,
-  };
 };
 
 export const fetchHelloAssoMembers = async (): Promise<HelloAssoAction[]> => {
@@ -55,24 +39,25 @@ export const fetchHelloAssoMembers = async (): Promise<HelloAssoAction[]> => {
   });
 };
 
-export const reconciliateHelloAssoAndDb = (helloAssoMembers: HelloAssoAction[]) => {
-  return helloAssoMembers.map(async (helloAssoMember) => {
-    const memberFromDb = await getRepository(Member).findOne({
-      where: {
-        email: helloAssoMember.email,
-        firstName: helloAssoMember.first_name,
-        lastName: helloAssoMember.last_name,
-      },
-    });
+const keepLastSubscriptions = (helloAssoMembers: HelloAssoAction[]) => {
+  const orderedHelloAssoMembers = orderBy(helloAssoMembers, (member) => moment.utc(member.date).toDate(), "desc");
+  return uniqBy(orderedHelloAssoMembers, (member) => `${member.email.toLowerCase()}-${capitalize(member.first_name)}`);
+};
+
+export const formatHelloAssoMembersForDb = (helloAssoMembers: HelloAssoAction[]): Partial<Member>[] => {
+  const uniqueHelloAssoMembers = keepLastSubscriptions(helloAssoMembers);
+  return uniqueHelloAssoMembers.map((helloAssoMember) => {
     return {
+      createdAt: new Date(),
+      updatedAt: moment.utc(helloAssoMember.date).toDate(),
       email: helloAssoMember.email.toLowerCase(),
       firstName: capitalize(helloAssoMember.first_name),
       lastName: capitalize(helloAssoMember.last_name),
-      birthDate: getDateInfo(helloAssoMember, CustomInfoEnum.birthDate),
-      phone: getStringInfo(helloAssoMember, CustomInfoEnum.phone),
-      jobStudy: getStringInfo(helloAssoMember, CustomInfoEnum.jobStudy),
-      motivation: getStringInfo(helloAssoMember, CustomInfoEnum.motivation),
-      firstSubscriptionDate: memberFromDb?.firstSubscriptionDate || moment.utc(helloAssoMember.date).toDate(),
+      birthDate: extractDateInfo(helloAssoMember, CustomInfoEnum.birthDate),
+      phone: extractStringInfo(helloAssoMember, CustomInfoEnum.phone),
+      jobStudy: extractStringInfo(helloAssoMember, CustomInfoEnum.jobStudy),
+      motivation: extractStringInfo(helloAssoMember, CustomInfoEnum.motivation),
+      firstSubscriptionDate: moment.utc(helloAssoMember.date).toDate(),
       lastSubscriptionDate: moment.utc(helloAssoMember.date).toDate(),
       activeMember: false,
     };
@@ -81,10 +66,18 @@ export const reconciliateHelloAssoAndDb = (helloAssoMembers: HelloAssoAction[]) 
 
 export const upsertHelloAssoMembers = async () => {
   const helloAssoMembers = await fetchHelloAssoMembers();
-  // const membersFromDb = await fetchAllMembersFromDb();
   console.log(`Members subscription: ${JSON.stringify(helloAssoMembers, null, 2)}`);
-  // const membersToUpsert = reconciliateHelloAssoAndDb(helloAssoMembers, membersFromDb);
-  const insertedMembersToDb = await getRepository(Member).save(helloAssoMembers.map(formatMembers));
-  console.log(`Upserted ${insertedMembersToDb.length} members into DB`);
+  const membersToUpsert = formatHelloAssoMembersForDb(helloAssoMembers);
+  const upsertResult = await getRepository(Member)
+    .createQueryBuilder()
+    .insert()
+    .into(Member)
+    .values(membersToUpsert)
+    .orUpdate({
+      conflict_target: ["email", "first_name"],
+      overwrite: ["updated_at", "birth_date", "phone", "job_study", "last_subscription_date"],
+    })
+    .execute();
+  console.log(`Upserted ${JSON.stringify(upsertResult, null, 2)} members into DB`);
   return true;
 };

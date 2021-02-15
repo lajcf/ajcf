@@ -1,19 +1,26 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, Unique } from "typeorm";
 import { AjcfBaseEntity } from "./AjcfBaseEntity";
 
 @Entity("Member")
+@Unique("unicity_on_email_first_name", ["email", "firstName"])
 export class Member extends AjcfBaseEntity {
-  @PrimaryColumn("varchar", {
+  @PrimaryGeneratedColumn({
+    type: "bigint",
+    name: "id",
+  })
+  id: string;
+
+  @Column("varchar", {
     name: "email",
   })
   email: string;
 
-  @PrimaryColumn("varchar", {
+  @Column("varchar", {
     name: "first_name",
   })
   firstName: string;
 
-  @PrimaryColumn("varchar", {
+  @Column("varchar", {
     name: "last_name",
   })
   lastName: string;
