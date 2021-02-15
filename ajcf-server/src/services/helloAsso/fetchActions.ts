@@ -1,6 +1,6 @@
 import axios from "axios";
-import { GET_ACTIONS_URL, HelloAssoAction, HelloAssoActionType } from "./resources";
 import { orderBy } from "lodash";
+import { GET_ACTIONS_URL, HelloAssoAction, HelloAssoActionType } from "./resources";
 
 interface GetActionsInterface {
   campaignId: string;

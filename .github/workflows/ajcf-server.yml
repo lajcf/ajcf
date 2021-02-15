@@ -1,0 +1,58 @@
+name: ajcf-server
+
+on:
+  pull_request:
+    paths:
+      - "ajcf-server/**/*.ts"
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build ajcf-server
+    runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: ajcf-server/node_modules
+          key: ajcf-server-${{ hashFiles('ajcf-server/yarn.lock') }}
+      - name: Install node & yarn
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+      - name: Instal packages
+        run: cd ajcf-server && yarn install
+
+  test:
+    name: Test ajcf-server
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref != 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: ajcf-server/node_modules
+          key: ajcf-server-${{ hashFiles('ajcf-server/yarn.lock') }}
+      - name: Test
+        run: cd ajcf-server && yarn test
+
+  deploy:
+    name: Deploy ajcf-server
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: ajcf-server/node_modules
+          key: ajcf-server-${{ hashFiles('ajcf-server/yarn.lock') }}
+      - name: Deploy
+        run: cd ajcf-server && yarn sls deploy -s prod
+
