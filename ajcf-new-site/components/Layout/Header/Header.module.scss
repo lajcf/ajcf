@@ -12,10 +12,8 @@
   .logo {
     grid-area: logo;
     place-self: center;
-    .logoImg {
-      height: 7rem;
-      margin: 1rem;
-    }
+    max-height: 260px;
+    max-width: 110px;
   }
 
   .searchbar {
@@ -40,24 +38,9 @@
   .userButtons {
     grid-area: user-buttons;
     place-self: center;
-    button {
-      font-size: 16px;
-      font-weight: 700;
-      border: none;
-      padding: 12px 18px;
-      cursor: pointer;
-    }
-    button:hover {
-      opacity: 80%;
-    }
     .donateButton {
       background: none;
       color: $secondary-color;
-    }
-    .adhesionButton {
-      background-color: $secondary-color;
-      border-radius: 30px;
-      color: white;
     }
   }
 }

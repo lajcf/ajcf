@@ -10,12 +10,14 @@ export const HomeBanner = () => {
       <h1 className={styles.title}>{titleContent}</h1>
       <p className={styles.text}>{textContent}</p>
       <div className={styles.buttons}>
-        <button type="button">Notre Histoire</button>
-        <button type="button" className={`secondary-button ${styles.projets}`}>
-          Nos projets
+        <button type="button" className="secondary-button">
+          Notre Histoire
         </button>
+        <button type="button">Nos projets</button>
       </div>
-      <figure className={styles.image}>Image</figure>
+      <div className={styles.image}>
+        <img src={require("../../../../public/banners/accueil-banner.png")} />
+      </div>
     </section>
   );
 };

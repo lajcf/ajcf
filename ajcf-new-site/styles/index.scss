@@ -20,6 +20,8 @@
 h1 {
   font-size: 48px;
   font-weight: bold;
+  line-height: 60px;
+  letter-spacing: -1.2px;
 }
 
 h2 {
@@ -50,7 +52,13 @@ h6 {
 p {
   margin: 0;
   font-size: 20px;
+  line-height: 30px;
+  letter-spacing: -0.3px;
   color: $text-color;
+}
+
+section {
+  padding: 1rem;
 }
 
 ul {
@@ -59,9 +67,16 @@ ul {
   margin: 0;
 }
 
+img {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+}
+
 button {
   border: none;
   font-size: 16px;
+  letter-spacing: 0.3px;
   font-weight: 700;
   color: white;
   background: $secondary-color;

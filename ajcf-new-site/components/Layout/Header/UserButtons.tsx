@@ -14,9 +14,7 @@ export const UserButtons = () => {
       </Link>
       <Link href="/adherer">
         <a>
-          <button type="button" className={styles.adhesionButton}>
-            Adhérer
-          </button>
+          <button type="button">Adhérer</button>
         </a>
       </Link>
     </div>
