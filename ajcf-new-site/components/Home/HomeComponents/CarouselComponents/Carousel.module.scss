@@ -1,13 +1,23 @@
 @import "../../../../styles/variables.scss";
 
-.carousel {
+.carouselContainer {
   background-color: $primary-color;
   padding: 2rem;
-  display: grid;
-  .image {
-    place-self: stretch;
-    background-color: #f0f3f9;
-    display: grid;
-    place-content: center;
+  .carousel {
+    .carouselItem {
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: 3fr 2fr;
+      .image {
+        margin: 2rem;
+        place-self: center;
+        img {
+          max-height: 500px;
+        }
+      }
+      .text {
+        align-self: center;
+      }
+    }
   }
 }

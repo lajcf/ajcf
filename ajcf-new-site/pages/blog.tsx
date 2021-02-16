@@ -1,9 +1,9 @@
 import { GetStaticProps } from "next";
 import React from "react";
-import { graphqlClient } from "../lib/graphql/graphqlClient";
 import { BlogContainer } from "../components/Blog/BlogListComponents/BlogContainer";
-import { ArticlePreviewFragment } from "../types/types";
+import { graphqlClient } from "../lib/graphql/graphqlClient";
 import { mapEnvToStage } from "../lib/utils/mapEnvToStage";
+import { ArticlePreviewFragment } from "../types/types";
 
 type BlogProps = { articles: ArticlePreviewFragment[] };
 
