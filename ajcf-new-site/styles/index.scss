@@ -32,6 +32,8 @@ h2 {
 h3 {
   font-size: 24px;
   font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -0.4px;
 }
 
 h4 {
@@ -55,6 +57,18 @@ p {
   line-height: 30px;
   letter-spacing: -0.3px;
   color: $text-color;
+}
+
+a {
+  color: $secondary-color;
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: 0.3px;
+  font-weight: bold;
+}
+a:hover {
+  color: $secondary-color;
+  opacity: 80%;
 }
 
 section {
