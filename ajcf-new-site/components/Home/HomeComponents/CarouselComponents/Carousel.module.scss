@@ -1,33 +1,13 @@
+@import "../../../../styles/variables.scss";
+
 .carousel {
-  background-color: #f4f6fb;
-  min-height: 50vh;
+  background-color: $primary-color;
   padding: 2rem;
   display: grid;
-  grid-template-columns: 3fr 2rem 2fr;
-  grid-template-areas:
-    "image . categoryName"
-    "image . title"
-    "image . text"
-    "image . readButton";
-
   .image {
-    grid-area: image;
     place-self: stretch;
     background-color: #f0f3f9;
     display: grid;
     place-content: center;
-  }
-  .categoryName {
-    grid-area: categoryName;
-    color: #476db5;
-  }
-  .title {
-    grid-area: title;
-  }
-  .text {
-    grid-area: text;
-  }
-  .readButton {
-    grid-area: readButton;
   }
 }

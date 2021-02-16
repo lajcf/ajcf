@@ -18,3 +18,9 @@ query articlesPreviewQuery($stage: Stage!) {
     ...articlePreview
   }
 }
+
+query articlesPreviewPartialQuery($stage: Stage!, $numberOfArticles: Int) {
+  articles(stage: $stage, orderBy: createdAt_DESC, first: $numberOfArticles) {
+    ...articlePreview
+  }
+}
