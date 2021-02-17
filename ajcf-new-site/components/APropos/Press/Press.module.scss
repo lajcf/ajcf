@@ -3,12 +3,13 @@
     display: grid;
     grid-auto-columns: auto 1fr;
     grid-template-areas:
+      "quickAccess breadcrumbs"
       "quickAccess summarySection";
     .summarySection {
       grid-area: summarySection;
     }
     .pressFilesSection {
-      grid-column: span 2;
+      grid-column-start: 2;
     }
   }
   .files {
