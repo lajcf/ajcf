@@ -5,9 +5,12 @@ import styles from "./Breadcrumbs.module.scss";
 
 type BreadcrumbsProps = {
   breadcrumbsPathArray: string[];
-  pageLink: (index: number, breadcrumbsPathArray: string[]) => string;
 };
-export const Breadcrumbs = ({ breadcrumbsPathArray, pageLink }: BreadcrumbsProps) => {
+const pageLink = (index: number, breadcrumbsPathArray: string[]) => {
+  const pageSlug = breadcrumbsPathArray.slice(0, index + 1);
+  return `/${pageSlug.join("/")}`;
+};
+export const Breadcrumbs = ({ breadcrumbsPathArray }: BreadcrumbsProps) => {
   return (
     <section className={styles.breadcrumbs}>
       <Breadcrumb>
