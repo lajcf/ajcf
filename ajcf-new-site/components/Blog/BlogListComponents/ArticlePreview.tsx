@@ -8,24 +8,40 @@ import styles from "./BlogContainer.module.scss";
 export const ArticlePreview = ({ article }: { article: ArticlePreviewFragment }) => {
   const contentSummary = formatContentSummary(article.content.text, 140);
   return (
-    <Link href={`/blog/${article.id}`}>
-      <a>
-        <div className={styles.preview}>
-          {article.cover && (
-            <div className={styles.previewCover}>
-              <img src={article.cover.url} />
-            </div>
-          )}
-          <div className={styles.previewText}>
-            <h3>{article.blogCategory}</h3>
-            <h2 className={styles.previewTitle}>{article.title}</h2>
-            <p className={styles.previewAuthor}>
-              {article.author} ({dayjs(article.createdAt).fromNow()})
-            </p>
-            <small className={styles.previewContentSummary}>{contentSummary}</small>
+    <>
+      <div className={styles.preview}>
+        {article.cover && (
+          <div className={styles.previewCover}>
+            <Link href={`/blog/${article.id}`}>
+              <a>
+                <img src={article.cover.url} />
+              </a>
+            </Link>
           </div>
+        )}
+        <div className={styles.previewText}>
+          <h3>{article.blogCategory}</h3>
+          <Link href={`/blog/${article.id}`}>
+            <a>
+              <h2 className={styles.previewTitle}>{article.title}</h2>
+            </a>
+          </Link>
+          <p className={styles.previewAuthor}>
+            <em>
+              {article.author} ({dayjs(article.createdAt).fromNow()})
+            </em>
+          </p>
+          <p className={styles.previewContentSummary}>{contentSummary}</p>
+          {article.blogLabels && (
+            <ul className={styles.labelsList}>
+              {article.blogLabels.map((label) => (
+                <li key={label}>#{label}</li>
+              ))}
+            </ul>
+          )}
         </div>
-      </a>
-    </Link>
+      </div>
+      <hr className="separator" />
+    </>
   );
 };

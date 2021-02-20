@@ -2614,6 +2614,20 @@ export type ArticlesPreviewQueryQuery = (
   )> }
 );
 
+export type ArticlesPreviewPartialQueryQueryVariables = Exact<{
+  stage: Stage;
+  numberOfArticles?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type ArticlesPreviewPartialQueryQuery = (
+  { __typename?: 'Query' }
+  & { articles: Array<(
+    { __typename?: 'Article' }
+    & ArticlePreviewFragment
+  )> }
+);
+
 export type EventPageFragment = (
   { __typename?: 'Event' }
   & Pick<Event, 'id' | 'title' | 'date' | 'eventLabels'>
@@ -2772,6 +2786,13 @@ export const ArticlesMetaQueryDocument = gql`
 export const ArticlesPreviewQueryDocument = gql`
     query articlesPreviewQuery($stage: Stage!) {
   articles(stage: $stage, orderBy: createdAt_DESC) {
+    ...articlePreview
+  }
+}
+    ${ArticlePreviewFragmentDoc}`;
+export const ArticlesPreviewPartialQueryDocument = gql`
+    query articlesPreviewPartialQuery($stage: Stage!, $numberOfArticles: Int) {
+  articles(stage: $stage, orderBy: createdAt_DESC, first: $numberOfArticles) {
     ...articlePreview
   }
 }
