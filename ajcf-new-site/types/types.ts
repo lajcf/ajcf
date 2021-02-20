@@ -2824,6 +2824,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     articlesPreviewQuery(variables: ArticlesPreviewQueryQueryVariables): Promise<ArticlesPreviewQueryQuery> {
       return withWrapper(() => client.request<ArticlesPreviewQueryQuery>(print(ArticlesPreviewQueryDocument), variables));
     },
+    articlesPreviewPartialQuery(variables: ArticlesPreviewPartialQueryQueryVariables): Promise<ArticlesPreviewPartialQueryQuery> {
+      return withWrapper(() => client.request<ArticlesPreviewPartialQueryQuery>(print(ArticlesPreviewPartialQueryDocument), variables));
+    },
     eventPageQuery(variables: EventPageQueryQueryVariables): Promise<EventPageQueryQuery> {
       return withWrapper(() => client.request<EventPageQueryQuery>(print(EventPageQueryDocument), variables));
     },

@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import { BreadcrumbsContainer } from "./Breadcrumbs/BreadcrumbsContainer";
 import { Footer } from "./Footer/Footer";
 import { Header } from "./Header/Header";
+import { BannerContainer } from "./Banner/BannerContainer";
 import styles from "./Layout.module.scss";
 import { QuickAccessContainer } from "./QuickAccess/QuickAccessContainer";
 
@@ -14,6 +15,7 @@ export const Layout = ({ className = undefined, children }: LayoutProps) => {
   return (
     <div className={`${styles.container} ${className}`}>
       <Header />
+      <BannerContainer />
       <main>
         <BreadcrumbsContainer />
         <QuickAccessContainer />

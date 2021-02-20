@@ -1,22 +1,22 @@
 import React from "react";
-import { Banner } from "./HomeComponents/BannerComponents/Banner";
-import { Espaces } from "./HomeComponents/EspacesComponents/Espaces";
-import { Carousel } from "./HomeComponents/CarouselComponents/Carousel";
-import { Stats } from "./HomeComponents/StatsComponents/Stats";
-import { Partners } from "./HomeComponents/PartnersComponents/Partners";
-import { Education } from "./HomeComponents/EducationComponents/Education";
+import { ArticlePreviewFragment } from "../../types/types";
+import { Layout } from "../Layout/Layout";
 import { Antennes } from "./HomeComponents/AntennesComponents/Antennes";
+import { CarouselContainer } from "./HomeComponents/CarouselComponents/CarouselContainer";
+import { Education } from "./HomeComponents/EducationComponents/Education";
+import { Espaces } from "./HomeComponents/EspacesComponents/Espaces";
+import { Partners } from "./HomeComponents/PartnersComponents/Partners";
+import { Stats } from "./HomeComponents/StatsComponents/Stats";
 
-export const Home = () => {
+export const Home = ({ articles }: { articles: ArticlePreviewFragment[] }) => {
   return (
-    <main>
-      <Banner />
+    <Layout>
       <Espaces />
-      <Carousel />
+      <CarouselContainer articles={articles} />
       <Stats />
       <Partners />
       <Education />
       <Antennes />
-    </main>
+    </Layout>
   );
 };
