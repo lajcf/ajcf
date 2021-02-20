@@ -1,6 +1,6 @@
 import { Button } from "antd";
 import React, { useState } from "react";
-import NUMBER_OF_ARTICLES_TO_DISPLAY_AT_A_TIME from "../../../lib/constants";
+import { NUMBER_OF_ARTICLES_TO_DISPLAY_AT_A_TIME } from "../../../lib/constants";
 import { ArticlePreviewFragment, BlogLabel } from "../../../types/types";
 import { Layout } from "../../Layout/Layout";
 import { ArticlePreview } from "./ArticlePreview";
