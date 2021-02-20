@@ -2591,7 +2591,7 @@ export type ArticlesMetaQueryQuery = (
 
 export type ArticlePreviewFragment = (
   { __typename?: 'Article' }
-  & Pick<Article, 'id' | 'title' | 'author' | 'createdAt' | 'blogLabels'>
+  & Pick<Article, 'id' | 'title' | 'author' | 'createdAt' | 'blogCategory' | 'blogLabels'>
   & { cover?: Maybe<(
     { __typename?: 'Asset' }
     & Pick<Asset, 'id' | 'url'>
@@ -2710,6 +2710,7 @@ export const ArticlePreviewFragmentDoc = gql`
   title
   author
   createdAt
+  blogCategory
   blogLabels
   cover {
     id

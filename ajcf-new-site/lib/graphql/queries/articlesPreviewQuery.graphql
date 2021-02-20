@@ -3,6 +3,7 @@ fragment articlePreview on Article {
   title
   author
   createdAt
+  blogCategory
   blogLabels
   cover {
     id
