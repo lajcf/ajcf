@@ -1,14 +1,14 @@
 .blogContainer {
   display: grid;
   place-items: center;
-  .blogLabelsList {
-    li {
-      display: inline;
-    }
-  }
   .articlesPreviews {
     margin: 0 6rem;
     display: grid;
+    .blogCategoriesAndLabelsList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
     .preview {
       margin: 2rem 0;
       display: grid;

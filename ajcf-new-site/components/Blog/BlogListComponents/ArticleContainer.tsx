@@ -15,6 +15,11 @@ export const ArticleContainer = ({ article, articles }: ArticleContainerProps) =
   return (
     <Layout>
       <main>
+        {article.cover && ( // TODO Should I find a way to put that into the layout?
+          <div className={styles.bannerContainer}>
+            <img src={article.cover.url} />
+          </div>
+        )}
         <section className={styles.article}>
           <ul className={styles.blogLabels}>
             {article.blogLabels.map((blogLabel) => (

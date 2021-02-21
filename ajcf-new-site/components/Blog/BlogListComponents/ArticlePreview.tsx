@@ -35,7 +35,9 @@ export const ArticlePreview = ({ article }: { article: ArticlePreviewFragment })
           {article.blogLabels && (
             <ul className={styles.labelsList}>
               {article.blogLabels.map((label) => (
-                <li key={label}>#{label}</li>
+                <li key={label} className="link">
+                  #{label}
+                </li>
               ))}
             </ul>
           )}

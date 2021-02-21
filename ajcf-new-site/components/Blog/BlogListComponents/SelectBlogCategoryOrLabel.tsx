@@ -1,4 +1,3 @@
-import { Button } from "antd";
 import React from "react";
 import { BlogCategory, BlogLabel } from "../../../types/types";
 import styles from "./BlogContainer.module.scss";
@@ -9,26 +8,26 @@ export const SelectBlogCategoryOrLabel = ({
   setSelectedBlogCategoryOrLabel: (categoryOrLabel?: BlogCategory | BlogLabel) => void;
 }) => {
   return (
-    <ul className={styles.blogLabelsList}>
+    <ul className={styles.blogCategoriesAndLabelsList}>
       <li key="allArticles">
-        <Button type="primary" onClick={() => setSelectedBlogCategoryOrLabel(undefined)}>
+        <button type="button" onClick={() => setSelectedBlogCategoryOrLabel(undefined)}>
           Tous les articles
-        </Button>
+        </button>
       </li>
       {Object.values(BlogCategory).map((blogCategory) => (
         <li key={blogCategory}>
-          <Button type="primary" onClick={() => setSelectedBlogCategoryOrLabel(blogCategory as BlogCategory)}>
+          <button type="button" onClick={() => setSelectedBlogCategoryOrLabel(blogCategory as BlogCategory)}>
             {blogCategory}
-          </Button>
+          </button>
         </li>
       ))}
-      {/* {Object.values(BlogLabel).map((blogLabel) => (
-        <li key={blogLabel}>
-          <Button type="primary" onClick={() => setSelectedBlogLabel(blogLabel as BlogLabel)}>
+      {Object.values(BlogLabel).map((blogLabel) => (
+        <li key={blogLabel} className={styles.labelButton}>
+          <button type="button" onClick={() => setSelectedBlogCategoryOrLabel(blogLabel as BlogLabel)}>
             #{blogLabel}
-          </Button>
+          </button>
         </li>
-      ))} */}
+      ))}
     </ul>
   );
 };
