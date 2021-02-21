@@ -20,6 +20,8 @@
         place-items: center;
       }
       .previewText {
+        display: grid;
+        row-gap: 1rem;
         .labelsList {
           li {
             display: inline;

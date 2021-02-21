@@ -38,7 +38,7 @@ export const AntennaUpcomingEvents = () => {
       <ul className={styles.antennaEventsList}>
         {antennaEvents.map((event) => (
           <li key={event.id} className={styles.antennaEvent}>
-            <img className={styles.antennaEventCover} src={require("../../../public/ajcf-logo.jpg")} />
+            <img className={styles.antennaEventCover} src={require("../../../public/ajcf-logo.png")} />
             <div className={styles.antennaEventBody}>
               <div className={styles.antennaEventDate}>{`${dayjs(event.date).format("DD MMM YYYY HH")}h`}</div>
               <div className={styles.antennaEventVerticalSeparator} />
