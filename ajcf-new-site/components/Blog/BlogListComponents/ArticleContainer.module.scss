@@ -1,7 +1,20 @@
-.article {
+.bannerContainer {
+  img {
+    max-height: 800px;
+    object-fit: cover;
+  }
+}
+.articleSection {
   .blogLabels {
     li {
       display: inline;
+    }
+  }
+  .content {
+    margin: 4rem 6rem;
+    img {
+      max-height: 800px;
+      margin: 4rem auto;
     }
   }
 }

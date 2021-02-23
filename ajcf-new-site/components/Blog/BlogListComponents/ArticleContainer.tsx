@@ -14,31 +14,29 @@ export type ArticleContainerProps = {
 export const ArticleContainer = ({ article, articles }: ArticleContainerProps) => {
   return (
     <Layout>
-      <main>
-        {article.cover && (
-          <div className={styles.bannerContainer}>
-            <img src={article.cover.url} />
-          </div>
-        )}
-        <section className={styles.article}>
-          <ul className={styles.blogLabels}>
-            {article.blogLabels.map((blogLabel) => (
-              <li key={blogLabel}>#{blogLabel}</li>
-            ))}
-          </ul>
-          <h1>{article.title}</h1>
-          <h3>{article.author}</h3>
-          <h4>
-            {article.optionalDate
-              ? dayjs(article.optionalDate).format("DD MMM YYYY")
-              : dayjs(article.createdAt).format("DD MMM YYYY")}
-          </h4>
-          <hr />
-          <div>{parse(article.content.html)}</div>
-          <hr />
-        </section>
-        <ArticleRecommendations article={article} articles={articles} />
-      </main>
+      {article.cover && (
+        <div className={styles.bannerContainer}>
+          <img src={article.cover.url} />
+        </div>
+      )}
+      <section className={styles.articleSection}>
+        <ul className={styles.blogLabels}>
+          {article.blogLabels.map((blogLabel) => (
+            <li key={blogLabel}>#{blogLabel}</li>
+          ))}
+        </ul>
+        <h1>{article.title}</h1>
+        <h3>{article.author}</h3>
+        <h4>
+          {article.optionalDate
+            ? dayjs(article.optionalDate).format("DD MMM YYYY")
+            : dayjs(article.createdAt).format("DD MMM YYYY")}
+        </h4>
+        <hr />
+        <div className={styles.content}>{parse(article.content.html)}</div>
+        <hr />
+      </section>
+      <ArticleRecommendations article={article} articles={articles} />
     </Layout>
   );
 };
