@@ -4,6 +4,7 @@ fragment articlePage on Article {
   author
   createdAt
   blogLabels
+  optionalDate
   cover {
     id
     url
@@ -11,6 +12,7 @@ fragment articlePage on Article {
   content {
     html
   }
+  alternativeContent
 }
 
 query articlePageQuery($id: ID!, $stage: Stage!) {

@@ -15,7 +15,7 @@ export const ArticleContainer = ({ article, articles }: ArticleContainerProps) =
   return (
     <Layout>
       <main>
-        {article.cover && ( // TODO Should I find a way to put that into the layout?
+        {article.cover && (
           <div className={styles.bannerContainer}>
             <img src={article.cover.url} />
           </div>
@@ -28,7 +28,11 @@ export const ArticleContainer = ({ article, articles }: ArticleContainerProps) =
           </ul>
           <h1>{article.title}</h1>
           <h3>{article.author}</h3>
-          <h4>{dayjs(article.createdAt).format("DD MMM YYYY")}</h4>
+          <h4>
+            {article.optionalDate
+              ? dayjs(article.optionalDate).format("DD MMM YYYY")
+              : dayjs(article.createdAt).format("DD MMM YYYY")}
+          </h4>
           <hr />
           <div>{parse(article.content.html)}</div>
           <hr />

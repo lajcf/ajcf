@@ -5,6 +5,7 @@ fragment articlePreview on Article {
   createdAt
   blogCategory
   blogLabels
+  optionalDate
   cover {
     id
     url
@@ -12,6 +13,7 @@ fragment articlePreview on Article {
   content {
     text
   }
+  alternativeContent
 }
 
 query articlesPreviewQuery($stage: Stage!) {
