@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BlogCategory, BlogLabel } from "../../../types/types";
 import styles from "./BlogContainer.module.scss";
 
@@ -7,27 +7,39 @@ export const SelectBlogCategoryOrLabel = ({
 }: {
   setSelectedBlogCategoryOrLabel: (categoryOrLabel?: BlogCategory | BlogLabel) => void;
 }) => {
+  const [showLabels, setShowLabels] = useState<boolean>(false); // TODO Is it the right scope?
   return (
-    <ul className={styles.blogCategoriesAndLabelsList}>
-      <li key="allArticles">
-        <button type="button" onClick={() => setSelectedBlogCategoryOrLabel(undefined)}>
-          Tous les articles
-        </button>
-      </li>
-      {Object.values(BlogCategory).map((blogCategory) => (
-        <li key={blogCategory}>
-          <button type="button" onClick={() => setSelectedBlogCategoryOrLabel(blogCategory as BlogCategory)}>
-            {blogCategory}
-          </button>
+    <div className={styles.selectBlogCategoryOrLabel}>
+      <ul className={styles.blogCategoriesList}>
+        <li key="allArticles">
+          <a onClick={() => setSelectedBlogCategoryOrLabel(undefined)}>Tous les articles</a>
         </li>
-      ))}
-      {Object.values(BlogLabel).map((blogLabel) => (
-        <li key={blogLabel} className={styles.labelButton}>
-          <button type="button" onClick={() => setSelectedBlogCategoryOrLabel(blogLabel as BlogLabel)}>
-            #{blogLabel}
+        {Object.values(BlogCategory).map((blogCategory) => (
+          <li key={blogCategory}>
+            <a onClick={() => setSelectedBlogCategoryOrLabel(blogCategory as BlogCategory)}>{blogCategory}</a>
+          </li>
+        ))}
+      </ul>
+      {showLabels && (
+        <ul className={styles.blogLabelsList}>
+          {Object.values(BlogLabel).map((blogLabel) => (
+            <li key={blogLabel} className={styles.labelButton}>
+              <a onClick={() => setSelectedBlogCategoryOrLabel(blogLabel as BlogLabel)}>#{blogLabel}</a>
+            </li>
+          ))}
+        </ul>
+      )}
+      <div className={styles.showLabelsButtonRow}>
+        {showLabels ? (
+          <button type="button" onClick={() => setShowLabels(false)}>
+            Moins de catégories
           </button>
-        </li>
-      ))}
-    </ul>
+        ) : (
+          <button type="button" onClick={() => setShowLabels(true)}>
+            Voir plus de catégories
+          </button>
+        )}
+      </div>
+    </div>
   );
 };

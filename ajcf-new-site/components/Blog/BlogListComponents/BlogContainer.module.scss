@@ -1,13 +1,33 @@
+@import "../../../styles/variables.scss";
+
 .blogContainer {
   display: grid;
   place-items: center;
   .articlesPreviews {
     margin: 0 6rem;
     display: grid;
-    .blogCategoriesAndLabelsList {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+    .selectBlogCategoryOrLabel {
+      background-color: $secondary-color;
+      padding: 1rem;
+      a {
+        color: white;
+        font-size: 18px;
+      }
+      .blogCategoriesList {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+      .blogLabelsList {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .showLabelsButtonRow {
+        margin-top: 1rem;
+        text-align: center;
+      }
     }
     .preview {
       margin: 2rem 0;
