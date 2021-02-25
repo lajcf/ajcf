@@ -1,5 +1,6 @@
 import React from "react";
 import parse from "html-react-parser";
+import ReactMarkdown from "react-markdown";
 import { Layout } from "../../Layout/Layout";
 import styles from "./ArticleContainer.module.scss";
 import { dayjs } from "../../../lib/utils/dayjs";
@@ -33,6 +34,7 @@ export const ArticleContainer = ({ article, articles }: ArticleContainerProps) =
             : dayjs(article.createdAt).format("DD MMM YYYY")}
         </h4>
         <hr />
+        <ReactMarkdown className={styles.content}>{article.alternativeContent}</ReactMarkdown>
         <div className={styles.content}>{parse(article.content.html)}</div>
         <hr />
       </section>

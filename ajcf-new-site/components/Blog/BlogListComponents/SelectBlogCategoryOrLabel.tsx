@@ -1,13 +1,26 @@
 import React, { useState } from "react";
-import { BlogCategory, BlogLabel } from "../../../types/types";
+import { ArticlePreviewFragment, BlogCategory, BlogLabel } from "../../../types/types";
 import styles from "./BlogContainer.module.scss";
+
+const filterOutUnusedLabels = (labels: BlogLabel[], articles: ArticlePreviewFragment[]) => {
+  const articleIncludesLabel = (article: ArticlePreviewFragment, label: BlogLabel) => {
+    return article.blogLabels.includes(label);
+  };
+  const labelHasSomeArticles = (label: BlogLabel) => {
+    return articles.some((article) => articleIncludesLabel(article, label));
+  };
+  return labels.filter((label) => labelHasSomeArticles(label));
+};
 
 export const SelectBlogCategoryOrLabel = ({
   setSelectedBlogCategoryOrLabel,
+  articles,
 }: {
   setSelectedBlogCategoryOrLabel: (categoryOrLabel?: BlogCategory | BlogLabel) => void;
+  articles: ArticlePreviewFragment[];
 }) => {
   const [showLabels, setShowLabels] = useState<boolean>(false); // TODO Is it the right scope?
+  const usedLabels = filterOutUnusedLabels(Object.values(BlogLabel), articles);
   return (
     <div className={styles.selectBlogCategoryOrLabel}>
       <ul className={styles.blogCategoriesList}>
@@ -22,7 +35,7 @@ export const SelectBlogCategoryOrLabel = ({
       </ul>
       {showLabels && (
         <ul className={styles.blogLabelsList}>
-          {Object.values(BlogLabel).map((blogLabel) => (
+          {usedLabels.map((blogLabel) => (
             <li key={blogLabel} className={styles.labelButton}>
               <a onClick={() => setSelectedBlogCategoryOrLabel(blogLabel as BlogLabel)}>#{blogLabel}</a>
             </li>

@@ -27,7 +27,10 @@ export const BlogContainer = ({ articles }: { articles: ArticlePreviewFragment[]
       <main className={styles.blogContainer}>
         <h1>Blog</h1>
         <section className={styles.articlesPreviews}>
-          <SelectBlogCategoryOrLabel setSelectedBlogCategoryOrLabel={setSelectedBlogCategoryOrLabel} />
+          <SelectBlogCategoryOrLabel
+            setSelectedBlogCategoryOrLabel={setSelectedBlogCategoryOrLabel}
+            articles={articles}
+          />
           {displayedArticles.map((article) => (
             <ArticlePreview key={article.id} article={article} />
           ))}
