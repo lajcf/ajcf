@@ -24,27 +24,25 @@ export const BlogContainer = ({ articles }: { articles: ArticlePreviewFragment[]
   const displayedArticles = limitDisplayedArticles(filteredArticles, numberOfArticlesToDisplay);
   return (
     <Layout>
-      <main className={styles.blogContainer}>
-        <h1>Blog</h1>
-        <section className={styles.articlesPreviews}>
-          <SelectBlogCategoryOrLabel
-            setSelectedBlogCategoryOrLabel={setSelectedBlogCategoryOrLabel}
-            articles={articles}
-          />
-          {displayedArticles.map((article) => (
-            <ArticlePreview key={article.id} article={article} />
-          ))}
-          <Button
-            type="primary"
-            className={styles.loadMoreButton}
-            onClick={() =>
-              setNumberOfArticlesToDisplay(numberOfArticlesToDisplay + NUMBER_OF_ARTICLES_TO_DISPLAY_AT_A_TIME)
-            }
-          >
-            Voir plus d'articles
-          </Button>
-        </section>
-      </main>
+      <SelectBlogCategoryOrLabel
+        selectedBlogCategoryOrLabel={selectedBlogCategoryOrLabel}
+        setSelectedBlogCategoryOrLabel={setSelectedBlogCategoryOrLabel}
+        articles={articles}
+      />
+      <section className={styles.articlesPreviewsSection}>
+        {displayedArticles.map((article) => (
+          <ArticlePreview key={article.id} article={article} />
+        ))}
+        <Button
+          type="primary"
+          className={styles.loadMoreButton}
+          onClick={() =>
+            setNumberOfArticlesToDisplay(numberOfArticlesToDisplay + NUMBER_OF_ARTICLES_TO_DISPLAY_AT_A_TIME)
+          }
+        >
+          Voir plus d'articles
+        </Button>
+      </section>
     </Layout>
   );
 };

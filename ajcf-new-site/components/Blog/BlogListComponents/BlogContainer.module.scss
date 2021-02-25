@@ -1,57 +1,57 @@
 @import "../../../styles/variables.scss";
 
-.blogContainer {
-  display: grid;
-  place-items: center;
-  .articlesPreviews {
-    margin: 0 6rem;
+.selectBlogCategoryOrLabel {
+  background-color: $secondary-color;
+  padding: 1rem;
+  a {
+    color: white;
+    font-size: 18px;
+  }
+  .blogCategoriesList {
     display: grid;
-    .selectBlogCategoryOrLabel {
-      background-color: $secondary-color;
-      padding: 1rem;
-      a {
-        color: white;
-        font-size: 18px;
-      }
-      .blogCategoriesList {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-      }
-      .blogLabelsList {
-        margin-top: 1rem;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-      .showLabelsButtonRow {
-        margin-top: 1rem;
-        text-align: center;
-      }
-    }
-    .preview {
-      margin: 2rem 0;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  .blogLabelsList {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .active {
+    font-weight: bold;
+  }
+  .showLabelsButton {
+    border: 1px solid white;
+    background: none;
+  }
+}
+.articlesPreviewsSection {
+  margin: 0 6rem;
+  display: grid;
+  .preview {
+    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    grid-auto-flow: column;
+    .previewCover {
+      margin-right: 1rem;
       display: grid;
-      grid-template-columns: 2fr 3fr;
-      grid-auto-flow: column;
-      .previewCover {
-        margin-right: 1rem;
-        display: grid;
-        place-items: center;
-      }
-      .previewText {
-        display: grid;
-        row-gap: 1rem;
-        .labelsList {
-          li {
-            display: inline;
-            margin-right: 0.5rem;
-          }
+      place-items: center;
+    }
+    .previewText {
+      display: grid;
+      row-gap: 1rem;
+      .labelsList {
+        li {
+          display: inline;
+          margin-right: 0.5rem;
         }
       }
     }
-    .loadMoreButton {
-      place-self: center;
-    }
+  }
+  .loadMoreButton {
+    place-self: center;
   }
 }

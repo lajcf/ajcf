@@ -12,6 +12,7 @@ export const BannerContainer = () => {
       return (
         <div className={styles.bannerContainer}>
           <img src={require("../../../public/banners/blog-banner.png")} />
+          <h1 className={styles.bannerTitle}>Blog</h1>
         </div>
       );
     default:
