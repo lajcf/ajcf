@@ -52,12 +52,11 @@ export type Article = Node & {
   title: Scalars['String'];
   author: Array<Scalars['String']>;
   optionalDate?: Maybe<Scalars['Date']>;
-  content?: Maybe<RichText>;
+  content: Scalars['String'];
   blogCategory: BlogCategory;
   blogLabels: Array<BlogLabel>;
   /** Cover image for the article */
   cover?: Maybe<Asset>;
-  alternativeContent?: Maybe<Scalars['String']>;
   /** List of Article versions */
   history: Array<Version>;
 };
@@ -107,11 +106,10 @@ export type ArticleCreateInput = {
   title: Scalars['String'];
   author?: Maybe<Array<Scalars['String']>>;
   optionalDate?: Maybe<Scalars['Date']>;
-  content?: Maybe<Scalars['RichTextAST']>;
+  content: Scalars['String'];
   blogCategory: BlogCategory;
   blogLabels?: Maybe<Array<BlogLabel>>;
   cover?: Maybe<AssetCreateOneInlineInput>;
-  alternativeContent?: Maybe<Scalars['String']>;
 };
 
 export type ArticleCreateManyInlineInput = {
@@ -255,6 +253,25 @@ export type ArticleManyWhereInput = {
   optionalDate_gt?: Maybe<Scalars['Date']>;
   /** All values greater than or equal the given value. */
   optionalDate_gte?: Maybe<Scalars['Date']>;
+  content?: Maybe<Scalars['String']>;
+  /** All values that are not equal to given value. */
+  content_not?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  content_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not contained in given list. */
+  content_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values containing the given string. */
+  content_contains?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  content_not_contains?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  content_starts_with?: Maybe<Scalars['String']>;
+  /** All values not starting with the given string. */
+  content_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  content_ends_with?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  content_not_ends_with?: Maybe<Scalars['String']>;
   blogCategory?: Maybe<BlogCategory>;
   /** All values that are not equal to given value. */
   blogCategory_not?: Maybe<BlogCategory>;
@@ -273,25 +290,6 @@ export type ArticleManyWhereInput = {
   /** Matches if the field array does not contain any of the items provided to the filter */
   blogLabels_contains_none?: Maybe<Array<BlogLabel>>;
   cover?: Maybe<AssetWhereInput>;
-  alternativeContent?: Maybe<Scalars['String']>;
-  /** All values that are not equal to given value. */
-  alternativeContent_not?: Maybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  alternativeContent_in?: Maybe<Array<Scalars['String']>>;
-  /** All values that are not contained in given list. */
-  alternativeContent_not_in?: Maybe<Array<Scalars['String']>>;
-  /** All values containing the given string. */
-  alternativeContent_contains?: Maybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  alternativeContent_not_contains?: Maybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  alternativeContent_starts_with?: Maybe<Scalars['String']>;
-  /** All values not starting with the given string. */
-  alternativeContent_not_starts_with?: Maybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  alternativeContent_ends_with?: Maybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  alternativeContent_not_ends_with?: Maybe<Scalars['String']>;
 };
 
 export enum ArticleOrderByInput {
@@ -309,23 +307,22 @@ export enum ArticleOrderByInput {
   AuthorDesc = 'author_DESC',
   OptionalDateAsc = 'optionalDate_ASC',
   OptionalDateDesc = 'optionalDate_DESC',
+  ContentAsc = 'content_ASC',
+  ContentDesc = 'content_DESC',
   BlogCategoryAsc = 'blogCategory_ASC',
   BlogCategoryDesc = 'blogCategory_DESC',
   BlogLabelsAsc = 'blogLabels_ASC',
-  BlogLabelsDesc = 'blogLabels_DESC',
-  AlternativeContentAsc = 'alternativeContent_ASC',
-  AlternativeContentDesc = 'alternativeContent_DESC'
+  BlogLabelsDesc = 'blogLabels_DESC'
 }
 
 export type ArticleUpdateInput = {
   title?: Maybe<Scalars['String']>;
   author?: Maybe<Array<Scalars['String']>>;
   optionalDate?: Maybe<Scalars['Date']>;
-  content?: Maybe<Scalars['RichTextAST']>;
+  content?: Maybe<Scalars['String']>;
   blogCategory?: Maybe<BlogCategory>;
   blogLabels?: Maybe<Array<BlogLabel>>;
   cover?: Maybe<AssetUpdateOneInlineInput>;
-  alternativeContent?: Maybe<Scalars['String']>;
 };
 
 export type ArticleUpdateManyInlineInput = {
@@ -349,10 +346,9 @@ export type ArticleUpdateManyInput = {
   title?: Maybe<Scalars['String']>;
   author?: Maybe<Array<Scalars['String']>>;
   optionalDate?: Maybe<Scalars['Date']>;
-  content?: Maybe<Scalars['RichTextAST']>;
+  content?: Maybe<Scalars['String']>;
   blogCategory?: Maybe<BlogCategory>;
   blogLabels?: Maybe<Array<BlogLabel>>;
-  alternativeContent?: Maybe<Scalars['String']>;
 };
 
 export type ArticleUpdateManyWithNestedWhereInput = {
@@ -516,6 +512,25 @@ export type ArticleWhereInput = {
   optionalDate_gt?: Maybe<Scalars['Date']>;
   /** All values greater than or equal the given value. */
   optionalDate_gte?: Maybe<Scalars['Date']>;
+  content?: Maybe<Scalars['String']>;
+  /** All values that are not equal to given value. */
+  content_not?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  content_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not contained in given list. */
+  content_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values containing the given string. */
+  content_contains?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  content_not_contains?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  content_starts_with?: Maybe<Scalars['String']>;
+  /** All values not starting with the given string. */
+  content_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  content_ends_with?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  content_not_ends_with?: Maybe<Scalars['String']>;
   blogCategory?: Maybe<BlogCategory>;
   /** All values that are not equal to given value. */
   blogCategory_not?: Maybe<BlogCategory>;
@@ -534,25 +549,6 @@ export type ArticleWhereInput = {
   /** Matches if the field array does not contain any of the items provided to the filter */
   blogLabels_contains_none?: Maybe<Array<BlogLabel>>;
   cover?: Maybe<AssetWhereInput>;
-  alternativeContent?: Maybe<Scalars['String']>;
-  /** All values that are not equal to given value. */
-  alternativeContent_not?: Maybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  alternativeContent_in?: Maybe<Array<Scalars['String']>>;
-  /** All values that are not contained in given list. */
-  alternativeContent_not_in?: Maybe<Array<Scalars['String']>>;
-  /** All values containing the given string. */
-  alternativeContent_contains?: Maybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  alternativeContent_not_contains?: Maybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  alternativeContent_starts_with?: Maybe<Scalars['String']>;
-  /** All values not starting with the given string. */
-  alternativeContent_not_starts_with?: Maybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  alternativeContent_ends_with?: Maybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  alternativeContent_not_ends_with?: Maybe<Scalars['String']>;
 };
 
 /** References Article record uniquely */
@@ -1838,7 +1834,8 @@ export type ImageTransformationInput = {
 /** Locale system enumeration */
 export enum Locale {
   /** System locale */
-  En = 'en'
+  En = 'en',
+  Fr = 'fr'
 }
 
 /** Representing a geolocation point with latitude and longitude */
@@ -2646,13 +2643,10 @@ export enum _SystemDateTimeFieldVariation {
 
 export type ArticlePageFragment = (
   { __typename?: 'Article' }
-  & Pick<Article, 'id' | 'title' | 'author' | 'createdAt' | 'blogLabels' | 'optionalDate' | 'alternativeContent'>
+  & Pick<Article, 'id' | 'title' | 'author' | 'createdAt' | 'blogLabels' | 'optionalDate' | 'content'>
   & { cover?: Maybe<(
     { __typename?: 'Asset' }
     & Pick<Asset, 'id' | 'url'>
-  )>, content?: Maybe<(
-    { __typename?: 'RichText' }
-    & Pick<RichText, 'html'>
   )> }
 );
 
@@ -2685,13 +2679,10 @@ export type ArticlesMetaQueryQuery = (
 
 export type ArticlePreviewFragment = (
   { __typename?: 'Article' }
-  & Pick<Article, 'id' | 'title' | 'author' | 'createdAt' | 'blogCategory' | 'blogLabels' | 'optionalDate' | 'alternativeContent'>
+  & Pick<Article, 'id' | 'title' | 'author' | 'createdAt' | 'blogCategory' | 'blogLabels' | 'optionalDate' | 'content'>
   & { cover?: Maybe<(
     { __typename?: 'Asset' }
     & Pick<Asset, 'id' | 'url'>
-  )>, content?: Maybe<(
-    { __typename?: 'RichText' }
-    & Pick<RichText, 'text'>
   )> }
 );
 
@@ -2808,10 +2799,7 @@ export const ArticlePageFragmentDoc = gql`
     id
     url
   }
-  content {
-    html
-  }
-  alternativeContent
+  content
 }
     `;
 export const ArticlePreviewFragmentDoc = gql`
@@ -2827,10 +2815,7 @@ export const ArticlePreviewFragmentDoc = gql`
     id
     url
   }
-  content {
-    text
-  }
-  alternativeContent
+  content
 }
     `;
 export const EventPageFragmentDoc = gql`

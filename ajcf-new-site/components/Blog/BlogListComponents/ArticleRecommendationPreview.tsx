@@ -4,7 +4,7 @@ import { ArticlePreviewFragment } from "../../../types/types";
 import styles from "./ArticleContainer.module.scss";
 
 export const ArticleRecommendationPreview = ({ article }: { article: ArticlePreviewFragment }) => {
-  const contentSummary = formatContentSummary(article.content.text, 80);
+  const contentSummary = formatContentSummary(article.content, 80);
   return (
     <div className={styles.articleRecommendationPreview}>
       {article.cover?.url && (

@@ -9,10 +9,7 @@ fragment articlePage on Article {
     id
     url
   }
-  content {
-    html
-  }
-  alternativeContent
+  content
 }
 
 query articlePageQuery($id: ID!, $stage: Stage!) {

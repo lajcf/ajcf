@@ -14,8 +14,6 @@
     margin: 4rem 6rem;
     p {
       margin: 2rem 0;
-      display: flex;
-      flex-direction: column;
     }
     img {
       max-height: 800px;
@@ -23,7 +21,8 @@
       margin-bottom: 0.5rem;
     }
     img + em {
-      text-align: center;
+      display: table;
+      margin: 0 auto;
       margin-bottom: 2rem;
     }
   }

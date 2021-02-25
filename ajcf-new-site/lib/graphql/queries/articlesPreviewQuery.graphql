@@ -10,10 +10,7 @@ fragment articlePreview on Article {
     id
     url
   }
-  content {
-    text
-  }
-  alternativeContent
+  content
 }
 
 query articlesPreviewQuery($stage: Stage!) {
