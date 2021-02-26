@@ -33,7 +33,9 @@ export const ArticleContainer = ({ article, articles }: ArticleContainerProps) =
             : dayjs(article.createdAt).format("DD MMM YYYY")}
         </h4>
         <hr />
-        <ReactMarkdown className={styles.content}>{article.content}</ReactMarkdown>
+        <div className={styles.contentContainer}>
+          <ReactMarkdown className={styles.content}>{article.content}</ReactMarkdown>
+        </div>
         <hr />
       </section>
       <ArticleRecommendations article={article} articles={articles} />
