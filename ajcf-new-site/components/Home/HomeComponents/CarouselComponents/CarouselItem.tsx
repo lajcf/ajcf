@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import removeMarkdown from "remove-markdown";
 import { formatContentSummary } from "../../../../lib/utils/formatContentSummary";
 import { ArticlePreviewFragment } from "../../../../types/types";
 import styles from "./Carousel.module.scss";
@@ -11,7 +12,7 @@ export const CarouselItem = ({ article }: { article: ArticlePreviewFragment }) =
       <div className={styles.text}>
         <h3 className="capsHeading">À la Une du Blog</h3>
         <h2>{article.title}</h2>
-        <p>{formatContentSummary(article.content.text, 220)}</p>
+        <p>{formatContentSummary(removeMarkdown(article.content), 220)}</p>
         <div>
           <Link href={`/blog/${article.id}`}>
             <button type="button">Lire l'article</button>

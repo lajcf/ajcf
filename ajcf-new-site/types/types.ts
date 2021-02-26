@@ -51,7 +51,9 @@ export type Article = Node & {
   publishedAt?: Maybe<Scalars['DateTime']>;
   title: Scalars['String'];
   author: Array<Scalars['String']>;
-  content: RichText;
+  optionalDate?: Maybe<Scalars['Date']>;
+  content: Scalars['String'];
+  blogCategory: BlogCategory;
   blogLabels: Array<BlogLabel>;
   /** Cover image for the article */
   cover?: Maybe<Asset>;
@@ -103,7 +105,9 @@ export type ArticleCreateInput = {
   updatedAt?: Maybe<Scalars['DateTime']>;
   title: Scalars['String'];
   author?: Maybe<Array<Scalars['String']>>;
-  content: Scalars['RichTextAST'];
+  optionalDate?: Maybe<Scalars['Date']>;
+  content: Scalars['String'];
+  blogCategory: BlogCategory;
   blogLabels?: Maybe<Array<BlogLabel>>;
   cover?: Maybe<AssetCreateOneInlineInput>;
 };
@@ -234,6 +238,47 @@ export type ArticleManyWhereInput = {
   author_contains_some?: Maybe<Array<Scalars['String']>>;
   /** Matches if the field array does not contain any of the items provided to the filter */
   author_contains_none?: Maybe<Array<Scalars['String']>>;
+  optionalDate?: Maybe<Scalars['Date']>;
+  /** All values that are not equal to given value. */
+  optionalDate_not?: Maybe<Scalars['Date']>;
+  /** All values that are contained in given list. */
+  optionalDate_in?: Maybe<Array<Scalars['Date']>>;
+  /** All values that are not contained in given list. */
+  optionalDate_not_in?: Maybe<Array<Scalars['Date']>>;
+  /** All values less than the given value. */
+  optionalDate_lt?: Maybe<Scalars['Date']>;
+  /** All values less than or equal the given value. */
+  optionalDate_lte?: Maybe<Scalars['Date']>;
+  /** All values greater than the given value. */
+  optionalDate_gt?: Maybe<Scalars['Date']>;
+  /** All values greater than or equal the given value. */
+  optionalDate_gte?: Maybe<Scalars['Date']>;
+  content?: Maybe<Scalars['String']>;
+  /** All values that are not equal to given value. */
+  content_not?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  content_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not contained in given list. */
+  content_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values containing the given string. */
+  content_contains?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  content_not_contains?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  content_starts_with?: Maybe<Scalars['String']>;
+  /** All values not starting with the given string. */
+  content_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  content_ends_with?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  content_not_ends_with?: Maybe<Scalars['String']>;
+  blogCategory?: Maybe<BlogCategory>;
+  /** All values that are not equal to given value. */
+  blogCategory_not?: Maybe<BlogCategory>;
+  /** All values that are contained in given list. */
+  blogCategory_in?: Maybe<Array<BlogCategory>>;
+  /** All values that are not contained in given list. */
+  blogCategory_not_in?: Maybe<Array<BlogCategory>>;
   /** Matches if the field array contains *all* items provided to the filter and order does match */
   blogLabels?: Maybe<Array<BlogLabel>>;
   /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
@@ -260,6 +305,12 @@ export enum ArticleOrderByInput {
   TitleDesc = 'title_DESC',
   AuthorAsc = 'author_ASC',
   AuthorDesc = 'author_DESC',
+  OptionalDateAsc = 'optionalDate_ASC',
+  OptionalDateDesc = 'optionalDate_DESC',
+  ContentAsc = 'content_ASC',
+  ContentDesc = 'content_DESC',
+  BlogCategoryAsc = 'blogCategory_ASC',
+  BlogCategoryDesc = 'blogCategory_DESC',
   BlogLabelsAsc = 'blogLabels_ASC',
   BlogLabelsDesc = 'blogLabels_DESC'
 }
@@ -267,7 +318,9 @@ export enum ArticleOrderByInput {
 export type ArticleUpdateInput = {
   title?: Maybe<Scalars['String']>;
   author?: Maybe<Array<Scalars['String']>>;
-  content?: Maybe<Scalars['RichTextAST']>;
+  optionalDate?: Maybe<Scalars['Date']>;
+  content?: Maybe<Scalars['String']>;
+  blogCategory?: Maybe<BlogCategory>;
   blogLabels?: Maybe<Array<BlogLabel>>;
   cover?: Maybe<AssetUpdateOneInlineInput>;
 };
@@ -292,7 +345,9 @@ export type ArticleUpdateManyInlineInput = {
 export type ArticleUpdateManyInput = {
   title?: Maybe<Scalars['String']>;
   author?: Maybe<Array<Scalars['String']>>;
-  content?: Maybe<Scalars['RichTextAST']>;
+  optionalDate?: Maybe<Scalars['Date']>;
+  content?: Maybe<Scalars['String']>;
+  blogCategory?: Maybe<BlogCategory>;
   blogLabels?: Maybe<Array<BlogLabel>>;
 };
 
@@ -442,6 +497,47 @@ export type ArticleWhereInput = {
   author_contains_some?: Maybe<Array<Scalars['String']>>;
   /** Matches if the field array does not contain any of the items provided to the filter */
   author_contains_none?: Maybe<Array<Scalars['String']>>;
+  optionalDate?: Maybe<Scalars['Date']>;
+  /** All values that are not equal to given value. */
+  optionalDate_not?: Maybe<Scalars['Date']>;
+  /** All values that are contained in given list. */
+  optionalDate_in?: Maybe<Array<Scalars['Date']>>;
+  /** All values that are not contained in given list. */
+  optionalDate_not_in?: Maybe<Array<Scalars['Date']>>;
+  /** All values less than the given value. */
+  optionalDate_lt?: Maybe<Scalars['Date']>;
+  /** All values less than or equal the given value. */
+  optionalDate_lte?: Maybe<Scalars['Date']>;
+  /** All values greater than the given value. */
+  optionalDate_gt?: Maybe<Scalars['Date']>;
+  /** All values greater than or equal the given value. */
+  optionalDate_gte?: Maybe<Scalars['Date']>;
+  content?: Maybe<Scalars['String']>;
+  /** All values that are not equal to given value. */
+  content_not?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  content_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not contained in given list. */
+  content_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values containing the given string. */
+  content_contains?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  content_not_contains?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  content_starts_with?: Maybe<Scalars['String']>;
+  /** All values not starting with the given string. */
+  content_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  content_ends_with?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  content_not_ends_with?: Maybe<Scalars['String']>;
+  blogCategory?: Maybe<BlogCategory>;
+  /** All values that are not equal to given value. */
+  blogCategory_not?: Maybe<BlogCategory>;
+  /** All values that are contained in given list. */
+  blogCategory_in?: Maybe<Array<BlogCategory>>;
+  /** All values that are not contained in given list. */
+  blogCategory_not_in?: Maybe<Array<BlogCategory>>;
   /** Matches if the field array contains *all* items provided to the filter and order does match */
   blogLabels?: Maybe<Array<BlogLabel>>;
   /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
@@ -652,9 +748,25 @@ export type AssetEdge = {
 };
 
 export enum AssetLabel {
-  Press = 'press',
-  PressRelease = 'press_release',
-  PressReview = 'press_review'
+  Culture = 'Culture',
+  Decouverte = 'Decouverte',
+  Droits = 'Droits',
+  Food = 'Food',
+  Histoire = 'Histoire',
+  Identity = 'Identity',
+  Langues = 'Langues',
+  Motivation = 'Motivation',
+  News = 'News',
+  Partenariats = 'Partenariats',
+  Portraits = 'Portraits',
+  Press = 'Press',
+  PressRelease = 'PressRelease',
+  PressReview = 'PressReview',
+  Professionnel = 'Professionnel',
+  Racisme = 'Racisme',
+  Recos = 'Recos',
+  Sorties = 'Sorties',
+  Sports = 'Sports'
 }
 
 /** Identifies documents */
@@ -1120,10 +1232,26 @@ export type BatchPayload = {
   count: Scalars['Long'];
 };
 
+export enum BlogCategory {
+  Decouverte = 'Decouverte',
+  News = 'News',
+  Portraits = 'Portraits',
+  Recos = 'Recos'
+}
+
 export enum BlogLabel {
-  NewsAjcf = 'NewsAJCF',
-  RecosAjcf = 'RecosAJCF',
-  StoriesAjcf = 'StoriesAJCF'
+  Culture = 'Culture',
+  Droits = 'Droits',
+  Food = 'Food',
+  Histoire = 'Histoire',
+  Identity = 'Identity',
+  Langues = 'Langues',
+  Motivation = 'Motivation',
+  Partenariats = 'Partenariats',
+  Professionnel = 'Professionnel',
+  Racisme = 'Racisme',
+  Sorties = 'Sorties',
+  Sports = 'Sports'
 }
 
 /** Representing a color value comprising of HEX, RGBA and css color values */
@@ -1263,6 +1391,14 @@ export type EventHistoryArgs = {
   stageOverride?: Maybe<Stage>;
 };
 
+export enum EventCategory {
+  CafeDebat = 'CafeDebat',
+  Conference = 'Conference',
+  RencontresAjcf = 'RencontresAJCF',
+  TableRonde = 'TableRonde',
+  VisioConference = 'VisioConference'
+}
+
 export type EventConnectInput = {
   /** Document to connect */
   where: EventWhereUniqueInput;
@@ -1314,10 +1450,18 @@ export type EventEdge = {
 };
 
 export enum EventLabel {
-  ConferencesAjcf = 'ConferencesAJCF',
-  CultureLocale = 'CultureLocale',
-  Gastronomie = 'Gastronomie',
-  ReunionPublique = 'ReunionPublique'
+  Culture = 'Culture',
+  Droits = 'Droits',
+  Food = 'Food',
+  Histoire = 'Histoire',
+  Identity = 'Identity',
+  Langues = 'Langues',
+  Motivation = 'Motivation',
+  Partenariats = 'Partenariats',
+  Professionnel = 'Professionnel',
+  Racisme = 'Racisme',
+  Sorties = 'Sorties',
+  Sports = 'Sports'
 }
 
 /** Identifies documents */
@@ -1690,7 +1834,8 @@ export type ImageTransformationInput = {
 /** Locale system enumeration */
 export enum Locale {
   /** System locale */
-  En = 'en'
+  En = 'en',
+  Fr = 'fr'
 }
 
 /** Representing a geolocation point with latitude and longitude */
@@ -2450,6 +2595,7 @@ export enum _FilterKind {
 export enum _MutationInputFieldKind {
   Scalar = 'scalar',
   RichText = 'richText',
+  RichTextWithEmbeds = 'richTextWithEmbeds',
   Enum = 'enum',
   Relation = 'relation',
   Union = 'union',
@@ -2497,14 +2643,11 @@ export enum _SystemDateTimeFieldVariation {
 
 export type ArticlePageFragment = (
   { __typename?: 'Article' }
-  & Pick<Article, 'id' | 'title' | 'author' | 'createdAt' | 'blogLabels'>
+  & Pick<Article, 'id' | 'title' | 'author' | 'createdAt' | 'blogLabels' | 'optionalDate' | 'content'>
   & { cover?: Maybe<(
     { __typename?: 'Asset' }
     & Pick<Asset, 'id' | 'url'>
-  )>, content: (
-    { __typename?: 'RichText' }
-    & Pick<RichText, 'html'>
-  ) }
+  )> }
 );
 
 export type ArticlePageQueryQueryVariables = Exact<{
@@ -2536,14 +2679,11 @@ export type ArticlesMetaQueryQuery = (
 
 export type ArticlePreviewFragment = (
   { __typename?: 'Article' }
-  & Pick<Article, 'id' | 'title' | 'author' | 'createdAt' | 'blogLabels'>
+  & Pick<Article, 'id' | 'title' | 'author' | 'createdAt' | 'blogCategory' | 'blogLabels' | 'optionalDate' | 'content'>
   & { cover?: Maybe<(
     { __typename?: 'Asset' }
     & Pick<Asset, 'id' | 'url'>
-  )>, content: (
-    { __typename?: 'RichText' }
-    & Pick<RichText, 'text'>
-  ) }
+  )> }
 );
 
 export type ArticlesPreviewQueryQueryVariables = Exact<{
@@ -2654,13 +2794,12 @@ export const ArticlePageFragmentDoc = gql`
   author
   createdAt
   blogLabels
+  optionalDate
   cover {
     id
     url
   }
-  content {
-    html
-  }
+  content
 }
     `;
 export const ArticlePreviewFragmentDoc = gql`
@@ -2669,14 +2808,14 @@ export const ArticlePreviewFragmentDoc = gql`
   title
   author
   createdAt
+  blogCategory
   blogLabels
+  optionalDate
   cover {
     id
     url
   }
-  content {
-    text
-  }
+  content
 }
     `;
 export const EventPageFragmentDoc = gql`
@@ -2766,7 +2905,7 @@ export const PressFilesQueryDocument = gql`
     query pressFilesQuery($stage: Stage!) {
   assets(
     stage: $stage
-    where: {assetLabel_contains_some: press}
+    where: {assetLabel_contains_some: Press}
     orderBy: updatedAt_DESC
   ) {
     ...pressFile

@@ -1,51 +1,57 @@
-.blogContainer {
-  display: grid;
-  place-items: center;
-  .blogLabelsList {
-    li {
-      display: inline;
-    }
+@import "../../../styles/variables.scss";
+
+.selectBlogCategoryOrLabel {
+  background-color: $secondary-color;
+  padding: 1rem;
+  a {
+    color: white;
+    font-size: 18px;
   }
-  .articlesPreviews {
-    margin: 0 8rem;
-    background-color: white;
+  .blogCategoriesList {
     display: grid;
-    .preview {
-      margin: 2rem 0;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  .blogLabelsList {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .active {
+    font-weight: bold;
+  }
+  .showLabelsButton {
+    border: 1px solid white;
+    background: none;
+  }
+}
+.articlesPreviewsSection {
+  margin: 0 6rem;
+  display: grid;
+  .preview {
+    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    grid-auto-flow: column;
+    .previewCover {
+      margin-right: 1rem;
       display: grid;
-      grid-template-columns: 1fr 3fr;
-      grid-template-rows: auto auto 1fr auto;
-      grid-template-areas:
-        "previewCover previewTitle"
-        "previewCover previewAuthor"
-        "previewCover previewContentSummary"
-        "separator separator";
-      .previewCover {
-        grid-area: previewCover;
-        margin-right: 1rem;
-        display: grid;
-        place-items: center;
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
+      place-items: center;
+    }
+    .previewText {
+      display: grid;
+      row-gap: 1rem;
+      .labelsList {
+        li {
+          display: inline;
+          margin-right: 0.5rem;
         }
       }
-      .previewTitle {
-        grid-area: previewTitle;
-      }
-      .previewAuthor {
-        grid-area: previewAuthor;
-      }
     }
-    .separator {
-      grid-area: separator;
-      width: 100%;
-      color: #fafbfd;
-      margin-top: 2rem;
-    }
-    .loadMoreButton {
-      place-self: center;
-    }
+  }
+  .loadMoreButton {
+    place-self: center;
   }
 }

@@ -1,0 +1,17 @@
+@import "../../../styles/variables.scss";
+.bannerContainer {
+  background-color: $primary-color;
+  height: 500px;
+  position: relative;
+  text-align: center;
+  img {
+    max-height: 500px;
+  }
+  .bannerTitle {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

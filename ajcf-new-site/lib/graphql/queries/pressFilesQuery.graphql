@@ -6,7 +6,7 @@ fragment pressFile on Asset {
 }
 
 query pressFilesQuery($stage: Stage!) {
-  assets(stage: $stage, where: { assetLabel_contains_some: press }, orderBy: updatedAt_DESC) {
+  assets(stage: $stage, where: { assetLabel_contains_some: Press }, orderBy: updatedAt_DESC) {
     ...pressFile
   }
 }

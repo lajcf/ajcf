@@ -3,14 +3,14 @@ fragment articlePreview on Article {
   title
   author
   createdAt
+  blogCategory
   blogLabels
+  optionalDate
   cover {
     id
     url
   }
-  content {
-    text
-  }
+  content
 }
 
 query articlesPreviewQuery($stage: Stage!) {

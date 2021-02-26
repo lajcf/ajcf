@@ -59,14 +59,14 @@ p {
   color: $text-color;
 }
 
-a {
+.link {
   color: $secondary-color;
   font-size: 16px;
   line-height: 18px;
   letter-spacing: 0.3px;
   font-weight: bold;
 }
-a:hover {
+.link:hover {
   color: $secondary-color;
   opacity: 80%;
 }
@@ -110,4 +110,9 @@ button:hover {
 }
 .secondary-button:hover {
   background: $secondary-color-20;
+}
+
+.separator {
+  width: 80%;
+  margin: 1rem auto;
 }

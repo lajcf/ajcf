@@ -1,29 +1,52 @@
 import Link from "next/link";
 import React from "react";
+import removeMarkdown from "remove-markdown";
 import { dayjs } from "../../../lib/utils/dayjs";
 import { formatContentSummary } from "../../../lib/utils/formatContentSummary";
 import { ArticlePreviewFragment } from "../../../types/types";
 import styles from "./BlogContainer.module.scss";
 
 export const ArticlePreview = ({ article }: { article: ArticlePreviewFragment }) => {
-  const contentSummary = formatContentSummary(article.content.text, 140);
+  const contentSummary = formatContentSummary(removeMarkdown(article.content), 140);
+  console.log(contentSummary);
   return (
-    <Link href={`/blog/${article.id}`}>
-      <a>
-        <div className={styles.preview}>
-          {article.cover?.url && (
-            <div className={styles.previewCover}>
-              <img src={article.cover.url} />
-            </div>
-          )}
-          <h2 className={styles.previewTitle}>{article.title}</h2>
+    <>
+      <div className={styles.preview}>
+        {article.cover && (
+          <div className={styles.previewCover}>
+            <Link href={`/blog/${article.id}`}>
+              <a>
+                <img src={article.cover.url} />
+              </a>
+            </Link>
+          </div>
+        )}
+        <div className={styles.previewText}>
+          <h3>{article.blogCategory}</h3>
+          <Link href={`/blog/${article.id}`}>
+            <a>
+              <h2 className={styles.previewTitle}>{article.title}</h2>
+            </a>
+          </Link>
           <p className={styles.previewAuthor}>
-            {article.author} ({dayjs(article.createdAt).fromNow()})
+            <em>
+              {article.author} (
+              {article.optionalDate ? dayjs(article.optionalDate).fromNow() : dayjs(article.createdAt).fromNow()})
+            </em>
           </p>
-          <small className={styles.previewContentSummary}>{contentSummary}</small>
-          <hr className={styles.separator} />
+          <p className={styles.previewContentSummary}>{contentSummary}</p>
+          {article.blogLabels && (
+            <ul className={styles.labelsList}>
+              {article.blogLabels.map((label) => (
+                <li key={label} className="link">
+                  #{label}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
-      </a>
-    </Link>
+      </div>
+      <hr className="separator" />
+    </>
   );
 };
