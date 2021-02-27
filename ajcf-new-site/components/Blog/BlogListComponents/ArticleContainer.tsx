@@ -5,6 +5,7 @@ import styles from "./ArticleContainer.module.scss";
 import { dayjs } from "../../../lib/utils/dayjs";
 import { ArticleRecommendations } from "./ArticleRecommendations";
 import { ArticlePreviewFragment, ArticlePageFragment } from "../../../types/types";
+import { BlogLabelsList } from "../BlogLabelsList";
 
 export type ArticleContainerProps = {
   article: ArticlePageFragment;
@@ -20,11 +21,7 @@ export const ArticleContainer = ({ article, articles }: ArticleContainerProps) =
         </div>
       )}
       <section className={styles.articleSection}>
-        <ul className={styles.blogLabels}>
-          {article.blogLabels.map((blogLabel) => (
-            <li key={blogLabel}>#{blogLabel}</li>
-          ))}
-        </ul>
+        <BlogLabelsList blogLabels={article.blogLabels} />
         <h1>{article.title}</h1>
         <h3>{article.author}</h3>
         <h4>
