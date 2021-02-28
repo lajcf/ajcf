@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ArticlePreviewFragment, BlogCategory, BlogLabel } from "../../../types/types";
 import styles from "./BlogContainer.module.scss";
 
-type SelectBlogCategoryOrLabelProps = {
+type SelectorForBlogCategoryOrLabelProps = {
   selectedBlogCategoryOrLabel?: BlogCategory | BlogLabel;
   setSelectedBlogCategoryOrLabel: (categoryOrLabel?: BlogCategory | BlogLabel) => void;
   articles: ArticlePreviewFragment[];
@@ -18,15 +18,15 @@ const filterOutUnusedLabels = (labels: BlogLabel[], articles: ArticlePreviewFrag
   return labels.filter((label) => labelHasSomeArticles(label));
 };
 
-export const SelectBlogCategoryOrLabel = ({
+export const SelectorForBlogCategoryOrLabel = ({
   selectedBlogCategoryOrLabel,
   setSelectedBlogCategoryOrLabel,
   articles,
-}: SelectBlogCategoryOrLabelProps) => {
+}: SelectorForBlogCategoryOrLabelProps) => {
   const [showLabels, setShowLabels] = useState<boolean>(false); // TODO Is it the right scope?
   const usedLabels = filterOutUnusedLabels(Object.values(BlogLabel), articles);
   return (
-    <div className={styles.selectBlogCategoryOrLabel}>
+    <div className={styles.selectorForBlogCategoryOrLabel}>
       <ul className={styles.blogCategoriesList}>
         <li key="allArticles">
           <a

@@ -7,7 +7,7 @@ import { Layout } from "../../Layout/Layout";
 import { ArticlePreview } from "./ArticlePreview";
 import styles from "./BlogContainer.module.scss";
 import { filterArticles } from "./filterArticles";
-import { SelectBlogCategoryOrLabel } from "./SelectBlogCategoryOrLabel";
+import { SelectorForBlogCategoryOrLabel } from "./SelectorBlogCategoryOrLabel";
 
 const limitDisplayedArticles = (filteredArticles: ArticlePreviewFragment[], numberOfArticlesToDisplay: number) => {
   return filteredArticles.slice(0, numberOfArticlesToDisplay);
@@ -24,7 +24,7 @@ export const BlogContainer = ({ articles }: { articles: ArticlePreviewFragment[]
   const displayedArticles = limitDisplayedArticles(filteredArticles, numberOfArticlesToDisplay);
   return (
     <Layout>
-      <SelectBlogCategoryOrLabel
+      <SelectorForBlogCategoryOrLabel
         selectedBlogCategoryOrLabel={selectedBlogCategoryOrLabel}
         setSelectedBlogCategoryOrLabel={setSelectedBlogCategoryOrLabel}
         articles={articles}
