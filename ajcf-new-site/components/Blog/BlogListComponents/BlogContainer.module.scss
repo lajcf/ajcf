@@ -1,6 +1,6 @@
 @import "../../../styles/variables.scss";
 
-.selectBlogCategoryOrLabel {
+.selectorForBlogCategoryOrLabel {
   background-color: $secondary-color;
   padding: 1rem;
   a {
@@ -13,18 +13,17 @@
     align-items: center;
     gap: 2rem;
   }
-  .blogLabelsList {
-    margin-top: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
   .active {
     font-weight: bold;
   }
   .showLabelsButton {
     border: 1px solid white;
     background: none;
+  }
+  .blogLabelsList {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 }
 .articlesPreviewsSection {

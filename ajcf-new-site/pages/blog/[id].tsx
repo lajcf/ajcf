@@ -10,7 +10,7 @@ type ArticleProps = {
   articles: ArticlePreviewFragment[];
 };
 
-export default function Article({ article, articles }: ArticleProps) {
+export default function ArticlePage({ article, articles }: ArticleProps) {
   if (!article) throw new Error("article not found");
   return <ArticleContainer article={article} articles={articles} />;
 }

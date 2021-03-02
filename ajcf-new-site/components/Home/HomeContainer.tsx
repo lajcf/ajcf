@@ -8,7 +8,7 @@ import { Espaces } from "./HomeComponents/EspacesComponents/Espaces";
 import { Partners } from "./HomeComponents/PartnersComponents/Partners";
 import { Stats } from "./HomeComponents/StatsComponents/Stats";
 
-export const Home = ({ articles }: { articles: ArticlePreviewFragment[] }) => {
+export const HomeContainer = ({ articles }: { articles: ArticlePreviewFragment[] }) => {
   return (
     <Layout>
       <Espaces />

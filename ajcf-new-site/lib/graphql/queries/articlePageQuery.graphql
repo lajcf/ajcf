@@ -4,7 +4,7 @@ fragment articlePage on Article {
   author
   createdAt
   blogLabels
-  optionalDate
+  optionalPublishedDate
   cover {
     id
     url

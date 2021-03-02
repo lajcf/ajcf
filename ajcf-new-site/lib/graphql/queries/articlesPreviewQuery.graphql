@@ -5,7 +5,7 @@ fragment articlePreview on Article {
   createdAt
   blogCategory
   blogLabels
-  optionalDate
+  optionalPublishedDate
   cover {
     id
     url

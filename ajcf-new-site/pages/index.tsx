@@ -1,13 +1,13 @@
 import { GetStaticProps } from "next";
 import React from "react";
-import { Home } from "../components/Home/Home";
+import { HomeContainer } from "../components/Home/HomeContainer";
 import { graphqlClient } from "../lib/graphql/graphqlClient";
 import { mapEnvToStage } from "../lib/utils/mapEnvToStage";
 import { ArticlePreviewFragment } from "../types/types";
 
 type IndexProps = { articles: ArticlePreviewFragment[] };
 export default function Index({ articles }: IndexProps) {
-  return <Home articles={articles} />;
+  return <HomeContainer articles={articles} />;
 }
 
 export const getStaticProps: GetStaticProps<IndexProps> = async () => {

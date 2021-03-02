@@ -4,11 +4,11 @@ import removeMarkdown from "remove-markdown";
 import { dayjs } from "../../../lib/utils/dayjs";
 import { formatContentSummary } from "../../../lib/utils/formatContentSummary";
 import { ArticlePreviewFragment } from "../../../types/types";
+import { BlogLabelsList } from "../BlogLabelsList";
 import styles from "./BlogContainer.module.scss";
 
 export const ArticlePreview = ({ article }: { article: ArticlePreviewFragment }) => {
   const contentSummary = formatContentSummary(removeMarkdown(article.content), 140);
-  console.log(contentSummary);
   return (
     <>
       <div className={styles.preview}>
@@ -31,19 +31,14 @@ export const ArticlePreview = ({ article }: { article: ArticlePreviewFragment })
           <p className={styles.previewAuthor}>
             <em>
               {article.author} (
-              {article.optionalDate ? dayjs(article.optionalDate).fromNow() : dayjs(article.createdAt).fromNow()})
+              {article.optionalPublishedDate
+                ? dayjs(article.optionalPublishedDate).fromNow()
+                : dayjs(article.createdAt).fromNow()}
+              )
             </em>
           </p>
           <p className={styles.previewContentSummary}>{contentSummary}</p>
-          {article.blogLabels && (
-            <ul className={styles.labelsList}>
-              {article.blogLabels.map((label) => (
-                <li key={label} className="link">
-                  #{label}
-                </li>
-              ))}
-            </ul>
-          )}
+          <BlogLabelsList blogLabels={article.blogLabels} />
         </div>
       </div>
       <hr className="separator" />
