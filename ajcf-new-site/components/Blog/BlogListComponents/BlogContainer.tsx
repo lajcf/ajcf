@@ -14,7 +14,7 @@ const limitDisplayedArticles = (filteredArticles: ArticlePreviewFragment[], numb
 };
 
 const orderArticles = (articles: ArticlePreviewFragment[]) => {
-  return lodash.sortBy(articles, ["optionalDate", "createdAt"]);
+  return lodash.sortBy(articles, ["optionalPublishedDate", "createdAt"]);
 };
 export const BlogContainer = ({ articles }: { articles: ArticlePreviewFragment[] }) => {
   const [selectedBlogCategoryOrLabel, setSelectedBlogCategoryOrLabel] = useState<BlogCategory | BlogLabel>();

@@ -31,7 +31,10 @@ export const ArticlePreview = ({ article }: { article: ArticlePreviewFragment })
           <p className={styles.previewAuthor}>
             <em>
               {article.author} (
-              {article.optionalDate ? dayjs(article.optionalDate).fromNow() : dayjs(article.createdAt).fromNow()})
+              {article.optionalPublishedDate
+                ? dayjs(article.optionalPublishedDate).fromNow()
+                : dayjs(article.createdAt).fromNow()}
+              )
             </em>
           </p>
           <p className={styles.previewContentSummary}>{contentSummary}</p>

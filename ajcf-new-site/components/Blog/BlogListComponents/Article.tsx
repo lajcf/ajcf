@@ -18,8 +18,8 @@ export const Article = ({ article }: { article: ArticlePageFragment }) => {
         <h1>{article.title}</h1>
         <h3>{article.author}</h3>
         <h4>
-          {article.optionalDate
-            ? dayjs(article.optionalDate).format("DD MMM YYYY")
+          {article.optionalPublishedDate
+            ? dayjs(article.optionalPublishedDate).format("DD MMM YYYY")
             : dayjs(article.createdAt).format("DD MMM YYYY")}
         </h4>
         <hr />

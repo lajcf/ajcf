@@ -51,7 +51,7 @@ export type Article = Node & {
   publishedAt?: Maybe<Scalars['DateTime']>;
   title: Scalars['String'];
   author: Array<Scalars['String']>;
-  optionalDate?: Maybe<Scalars['Date']>;
+  optionalPublishedDate?: Maybe<Scalars['Date']>;
   content: Scalars['String'];
   blogCategory: BlogCategory;
   blogLabels: Array<BlogLabel>;
@@ -105,7 +105,7 @@ export type ArticleCreateInput = {
   updatedAt?: Maybe<Scalars['DateTime']>;
   title: Scalars['String'];
   author?: Maybe<Array<Scalars['String']>>;
-  optionalDate?: Maybe<Scalars['Date']>;
+  optionalPublishedDate?: Maybe<Scalars['Date']>;
   content: Scalars['String'];
   blogCategory: BlogCategory;
   blogLabels?: Maybe<Array<BlogLabel>>;
@@ -238,21 +238,21 @@ export type ArticleManyWhereInput = {
   author_contains_some?: Maybe<Array<Scalars['String']>>;
   /** Matches if the field array does not contain any of the items provided to the filter */
   author_contains_none?: Maybe<Array<Scalars['String']>>;
-  optionalDate?: Maybe<Scalars['Date']>;
+  optionalPublishedDate?: Maybe<Scalars['Date']>;
   /** All values that are not equal to given value. */
-  optionalDate_not?: Maybe<Scalars['Date']>;
+  optionalPublishedDate_not?: Maybe<Scalars['Date']>;
   /** All values that are contained in given list. */
-  optionalDate_in?: Maybe<Array<Scalars['Date']>>;
+  optionalPublishedDate_in?: Maybe<Array<Scalars['Date']>>;
   /** All values that are not contained in given list. */
-  optionalDate_not_in?: Maybe<Array<Scalars['Date']>>;
+  optionalPublishedDate_not_in?: Maybe<Array<Scalars['Date']>>;
   /** All values less than the given value. */
-  optionalDate_lt?: Maybe<Scalars['Date']>;
+  optionalPublishedDate_lt?: Maybe<Scalars['Date']>;
   /** All values less than or equal the given value. */
-  optionalDate_lte?: Maybe<Scalars['Date']>;
+  optionalPublishedDate_lte?: Maybe<Scalars['Date']>;
   /** All values greater than the given value. */
-  optionalDate_gt?: Maybe<Scalars['Date']>;
+  optionalPublishedDate_gt?: Maybe<Scalars['Date']>;
   /** All values greater than or equal the given value. */
-  optionalDate_gte?: Maybe<Scalars['Date']>;
+  optionalPublishedDate_gte?: Maybe<Scalars['Date']>;
   content?: Maybe<Scalars['String']>;
   /** All values that are not equal to given value. */
   content_not?: Maybe<Scalars['String']>;
@@ -305,8 +305,8 @@ export enum ArticleOrderByInput {
   TitleDesc = 'title_DESC',
   AuthorAsc = 'author_ASC',
   AuthorDesc = 'author_DESC',
-  OptionalDateAsc = 'optionalDate_ASC',
-  OptionalDateDesc = 'optionalDate_DESC',
+  OptionalPublishedDateAsc = 'optionalPublishedDate_ASC',
+  OptionalPublishedDateDesc = 'optionalPublishedDate_DESC',
   ContentAsc = 'content_ASC',
   ContentDesc = 'content_DESC',
   BlogCategoryAsc = 'blogCategory_ASC',
@@ -318,7 +318,7 @@ export enum ArticleOrderByInput {
 export type ArticleUpdateInput = {
   title?: Maybe<Scalars['String']>;
   author?: Maybe<Array<Scalars['String']>>;
-  optionalDate?: Maybe<Scalars['Date']>;
+  optionalPublishedDate?: Maybe<Scalars['Date']>;
   content?: Maybe<Scalars['String']>;
   blogCategory?: Maybe<BlogCategory>;
   blogLabels?: Maybe<Array<BlogLabel>>;
@@ -345,7 +345,7 @@ export type ArticleUpdateManyInlineInput = {
 export type ArticleUpdateManyInput = {
   title?: Maybe<Scalars['String']>;
   author?: Maybe<Array<Scalars['String']>>;
-  optionalDate?: Maybe<Scalars['Date']>;
+  optionalPublishedDate?: Maybe<Scalars['Date']>;
   content?: Maybe<Scalars['String']>;
   blogCategory?: Maybe<BlogCategory>;
   blogLabels?: Maybe<Array<BlogLabel>>;
@@ -497,21 +497,21 @@ export type ArticleWhereInput = {
   author_contains_some?: Maybe<Array<Scalars['String']>>;
   /** Matches if the field array does not contain any of the items provided to the filter */
   author_contains_none?: Maybe<Array<Scalars['String']>>;
-  optionalDate?: Maybe<Scalars['Date']>;
+  optionalPublishedDate?: Maybe<Scalars['Date']>;
   /** All values that are not equal to given value. */
-  optionalDate_not?: Maybe<Scalars['Date']>;
+  optionalPublishedDate_not?: Maybe<Scalars['Date']>;
   /** All values that are contained in given list. */
-  optionalDate_in?: Maybe<Array<Scalars['Date']>>;
+  optionalPublishedDate_in?: Maybe<Array<Scalars['Date']>>;
   /** All values that are not contained in given list. */
-  optionalDate_not_in?: Maybe<Array<Scalars['Date']>>;
+  optionalPublishedDate_not_in?: Maybe<Array<Scalars['Date']>>;
   /** All values less than the given value. */
-  optionalDate_lt?: Maybe<Scalars['Date']>;
+  optionalPublishedDate_lt?: Maybe<Scalars['Date']>;
   /** All values less than or equal the given value. */
-  optionalDate_lte?: Maybe<Scalars['Date']>;
+  optionalPublishedDate_lte?: Maybe<Scalars['Date']>;
   /** All values greater than the given value. */
-  optionalDate_gt?: Maybe<Scalars['Date']>;
+  optionalPublishedDate_gt?: Maybe<Scalars['Date']>;
   /** All values greater than or equal the given value. */
-  optionalDate_gte?: Maybe<Scalars['Date']>;
+  optionalPublishedDate_gte?: Maybe<Scalars['Date']>;
   content?: Maybe<Scalars['String']>;
   /** All values that are not equal to given value. */
   content_not?: Maybe<Scalars['String']>;
@@ -2643,7 +2643,7 @@ export enum _SystemDateTimeFieldVariation {
 
 export type ArticlePageFragment = (
   { __typename?: 'Article' }
-  & Pick<Article, 'id' | 'title' | 'author' | 'createdAt' | 'blogLabels' | 'optionalDate' | 'content'>
+  & Pick<Article, 'id' | 'title' | 'author' | 'createdAt' | 'blogLabels' | 'optionalPublishedDate' | 'content'>
   & { cover?: Maybe<(
     { __typename?: 'Asset' }
     & Pick<Asset, 'id' | 'url'>
@@ -2679,7 +2679,7 @@ export type ArticlesMetaQueryQuery = (
 
 export type ArticlePreviewFragment = (
   { __typename?: 'Article' }
-  & Pick<Article, 'id' | 'title' | 'author' | 'createdAt' | 'blogCategory' | 'blogLabels' | 'optionalDate' | 'content'>
+  & Pick<Article, 'id' | 'title' | 'author' | 'createdAt' | 'blogCategory' | 'blogLabels' | 'optionalPublishedDate' | 'content'>
   & { cover?: Maybe<(
     { __typename?: 'Asset' }
     & Pick<Asset, 'id' | 'url'>
@@ -2794,7 +2794,7 @@ export const ArticlePageFragmentDoc = gql`
   author
   createdAt
   blogLabels
-  optionalDate
+  optionalPublishedDate
   cover {
     id
     url
@@ -2810,7 +2810,7 @@ export const ArticlePreviewFragmentDoc = gql`
   createdAt
   blogCategory
   blogLabels
-  optionalDate
+  optionalPublishedDate
   cover {
     id
     url
