@@ -3,9 +3,9 @@ import React from "react";
 import removeMarkdown from "remove-markdown";
 import { formatContentSummary } from "../../../../lib/utils/formatContentSummary";
 import { ArticlePreviewFragment } from "../../../../types/types";
-import styles from "./Carousel.module.scss";
+import styles from "./HomeCarousel.module.scss";
 
-export const CarouselItem = ({ article }: { article: ArticlePreviewFragment }) => {
+export const HomeCarouselItem = ({ article }: { article: ArticlePreviewFragment }) => {
   return (
     <div className={styles.carouselItem}>
       <div className={styles.image}>{article.cover && <img src={article.cover.url} />}</div>

@@ -1,7 +1,7 @@
 import { AimOutlined, NotificationOutlined, RocketOutlined, SmileOutlined } from "@ant-design/icons";
 import React from "react";
-import { EspaceDescription } from "./EspaceDescription";
-import styles from "./Espaces.module.scss";
+import { EspaceDescription } from "./HomeEspaceDescription";
+import styles from "./HomeEspaces.module.scss";
 
 export type EspaceContent = {
   name: string;
@@ -42,7 +42,7 @@ const espacesContent: EspaceContent[] = [
   },
 ];
 
-export const EspacesDescriptions = () => {
+export const HomeEspacesDescriptions = () => {
   return (
     <div className={styles.espacesDescriptions}>
       {espacesContent.map((espace) => (

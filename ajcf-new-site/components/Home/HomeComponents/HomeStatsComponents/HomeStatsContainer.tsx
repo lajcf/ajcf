@@ -4,7 +4,7 @@ import { Title } from "./Title";
 import { NumbersList } from "./NumbersList";
 import { JoinButton } from "./JoinButton";
 
-export const Stats = () => {
+export const HomeStatsContainer = () => {
   return (
     <section className={styles.stats}>
       <Title />

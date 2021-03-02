@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
-import styles from "./Espaces.module.scss";
-import { EspaceContent } from "./EspacesDescriptions";
+import styles from "./HomeEspaces.module.scss";
+import { EspaceContent } from "./HomeEspacesDescriptions";
 
 export const EspaceDescription = ({ espace }: { espace: EspaceContent }) => {
   const Logo = espace.logo;
