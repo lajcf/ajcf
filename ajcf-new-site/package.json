@@ -23,6 +23,8 @@
     "next-optimized-images": "^2.6.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-markdown": "^5.0.3",
+    "remove-markdown": "^0.3.0",
     "sass": "^1.29.0"
   },
   "devDependencies": {
@@ -34,6 +36,7 @@
     "@graphql-codegen/typescript-react-apollo": "2.1.1",
     "@types/node": "^14.14.7",
     "@types/react": "^16.9.56",
+    "@types/remove-markdown": "^0.1.1",
     "typescript": "^4.0.5"
   }
 }

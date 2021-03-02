@@ -1,7 +1,32 @@
-.article {
+.bannerContainer {
+  img {
+    max-height: 500px;
+    object-fit: cover;
+  }
+}
+.articleSection {
   .blogLabels {
     li {
       display: inline;
+    }
+  }
+  .contentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .content {
+    max-width: 680px;
+    margin: 4rem 6rem;
+    img {
+      max-height: 800px;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    img + em {
+      display: table;
+      margin: 0 auto;
+      margin-bottom: 2rem;
     }
   }
 }

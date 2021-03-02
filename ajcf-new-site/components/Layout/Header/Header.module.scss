@@ -1,6 +1,8 @@
+@import "../../../styles/variables.scss";
+
 .header {
-  background-color: #f4f6fb;
-  padding: 1rem;
+  background-color: $primary-color;
+  padding: 2rem 2rem 4rem 3rem;
   display: grid;
   grid-template-columns: auto 1fr auto;
   grid-template-areas:
@@ -9,12 +11,7 @@
 
   .logo {
     grid-area: logo;
-    place-self: center;
-    color: #486db6;
-    .logoImg {
-      height: 7rem;
-      margin: 1rem;
-    }
+    max-width: 60px;
   }
 
   .searchbar {
@@ -24,18 +21,24 @@
 
   .nav {
     grid-area: nav;
-
+    align-self: center;
     ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
+      display: grid;
+      grid-auto-flow: column;
       justify-content: space-evenly;
+      a {
+        color: $title-color;
+        font-size: 18px;
+      }
     }
   }
 
   .userButtons {
     grid-area: user-buttons;
-    justify-self: center;
+    place-self: center;
+    .donateButton {
+      background: none;
+      color: $secondary-color;
+    }
   }
 }

@@ -1,11 +1,23 @@
+import { GetStaticProps } from "next";
 import React from "react";
-import { Layout } from "../components/Layout/Layout";
-import { Home } from "../components/Home/Home";
+import { HomeContainer } from "../components/Home/HomeContainer";
+import { graphqlClient } from "../lib/graphql/graphqlClient";
+import { mapEnvToStage } from "../lib/utils/mapEnvToStage";
+import { ArticlePreviewFragment } from "../types/types";
 
-export default function Index() {
-  return (
-    <Layout>
-      <Home />
-    </Layout>
-  );
+type IndexProps = { articles: ArticlePreviewFragment[] };
+export default function Index({ articles }: IndexProps) {
+  return <HomeContainer articles={articles} />;
 }
+
+export const getStaticProps: GetStaticProps<IndexProps> = async () => {
+  const articlesResult = await graphqlClient.articlesPreviewPartialQuery({
+    stage: mapEnvToStage(process.env.ENV),
+    numberOfArticles: 3,
+  });
+  return {
+    props: {
+      articles: articlesResult.articles,
+    },
+  };
+};

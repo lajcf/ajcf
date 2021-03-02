@@ -1,33 +1,37 @@
-.carousel {
-  background-color: #f4f6fb;
-  min-height: 50vh;
+@import "../../../../styles/variables.scss";
+
+.carouselSection {
+  background-color: $primary-color;
   padding: 2rem;
   display: grid;
-  grid-template-columns: 3fr 2rem 2fr;
-  grid-template-areas:
-    "image . categoryName"
-    "image . title"
-    "image . text"
-    "image . readButton";
-
-  .image {
-    grid-area: image;
-    place-self: stretch;
-    background-color: #f0f3f9;
-    display: grid;
-    place-content: center;
+  grid-auto-flow: column;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  .leftArrow {
+    place-self: center;
+    color: $secondary-color;
+    font-size: 32px;
   }
-  .categoryName {
-    grid-area: categoryName;
-    color: #476db5;
+  .rightArrow {
+    place-self: center;
+    color: $secondary-color;
+    font-size: 32px;
   }
-  .title {
-    grid-area: title;
-  }
-  .text {
-    grid-area: text;
-  }
-  .readButton {
-    grid-area: readButton;
+  .carousel {
+    .carouselItem {
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: 3fr 2fr;
+      column-gap: 1rem;
+      .image {
+        margin: 2rem;
+        place-self: center;
+        img {
+          max-height: 500px;
+        }
+      }
+      .text {
+        align-self: center;
+      }
+    }
   }
 }

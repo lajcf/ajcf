@@ -3,18 +3,24 @@ fragment articlePreview on Article {
   title
   author
   createdAt
+  blogCategory
   blogLabels
+  optionalPublishedDate
   cover {
     id
     url
   }
-  content {
-    text
-  }
+  content
 }
 
 query articlesPreviewQuery($stage: Stage!) {
   articles(stage: $stage, orderBy: createdAt_DESC) {
+    ...articlePreview
+  }
+}
+
+query articlesPreviewPartialQuery($stage: Stage!, $numberOfArticles: Int) {
+  articles(stage: $stage, orderBy: createdAt_DESC, first: $numberOfArticles) {
     ...articlePreview
   }
 }

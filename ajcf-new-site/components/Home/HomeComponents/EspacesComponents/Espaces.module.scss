@@ -1,51 +1,28 @@
-.espaces {
-  background-color: #ffffff;
-  padding: 2rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto 1fr;
-  grid-template-areas:
-    "title"
-    "text"
-    "espacesDescriptions";
-  place-items: center;
+@import "../../../../styles/variables.scss";
 
-  .title {
-    grid-area: title;
-    font-weight: bold;
-    font-size: 1.5rem;
-  }
-  .text {
-    grid-area: text;
+.espaces {
+  background-color: $background-color;
+  * {
     text-align: center;
-    color: 737b7d;
   }
+
   .espacesDescriptions {
-    grid-area: espacesDescriptions;
     place-self: stretch;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas:
-      "talk learn"
-      "meet enjoy";
     .espaceDescription {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 2rem;
-    }
-    .talk {
-      grid-area: talk;
-    }
-    .learn {
-      grid-area: learn;
-    }
-    .meet {
-      grid-area: meet;
-    }
-    .enjoy {
-      grid-area: enjoy;
+      .logoStyle {
+        color: $secondary-color;
+        font-size: 100px;
+        margin: 2rem;
+      }
+      .link {
+        margin-top: 2rem;
+      }
     }
   }
 }

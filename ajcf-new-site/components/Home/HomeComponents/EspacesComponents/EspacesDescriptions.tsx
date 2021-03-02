@@ -1,43 +1,43 @@
+import { AimOutlined, NotificationOutlined, RocketOutlined, SmileOutlined } from "@ant-design/icons";
 import React from "react";
-import { CoffeeOutlined, CommentOutlined, RadarChartOutlined, TeamOutlined } from "@ant-design/icons";
-import styles from "./Espaces.module.scss";
 import { EspaceDescription } from "./EspaceDescription";
+import styles from "./Espaces.module.scss";
 
 export type EspaceContent = {
   name: string;
   logo: React.ForwardRefExoticComponent<any>;
-  className: string;
   text: string;
+  link: string;
   linkText: string;
 };
 
 const espacesContent: EspaceContent[] = [
   {
     name: "Espace TALK",
-    logo: CommentOutlined,
-    className: styles.talk,
+    logo: NotificationOutlined,
     text: "Comprendre et défendre l'identité franco-chinoise.",
+    link: "/projets-ajcf/nos-espaces",
     linkText: "Découvrir",
   },
   {
     name: "Espace LEARN",
-    logo: RadarChartOutlined,
-    className: styles.learn,
+    logo: RocketOutlined,
     text: "Se développer et explorer de nouveaux horizons.",
+    link: "/projets-ajcf/nos-espaces",
     linkText: "Découvrir",
   },
   {
     name: "Espace MEET",
-    logo: TeamOutlined,
-    className: styles.meet,
+    logo: AimOutlined,
     text: "Connaître et intégrer le réseau des jeunes franco-chinois.",
+    link: "/projets-ajcf/nos-espaces",
     linkText: "Découvrir",
   },
   {
     name: "Espace ENJOY",
-    logo: CoffeeOutlined,
-    className: styles.enjoy,
+    logo: SmileOutlined,
     text: "Partager sa culture franco-chinoise avec d'autres.",
+    link: "/projets-ajcf/nos-espaces",
     linkText: "Découvrir",
   },
 ];
