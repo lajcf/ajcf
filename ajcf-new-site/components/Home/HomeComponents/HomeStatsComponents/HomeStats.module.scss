@@ -16,9 +16,16 @@
       place-items: center;
     }
     .number {
-      font-size: 56px;
-      color: $primary-color;
       place-self: center;
+      width: 100%;
+      .circularProgressbar {
+        .CircularProgressbar-path {
+          stroke: $primary-color;
+        }
+        .CircularProgressbar-text {
+          fill: $primary-color;
+        }
+      }
     }
     .text {
       text-align: center;

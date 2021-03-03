@@ -116,3 +116,9 @@ button:hover {
   width: 80%;
   margin: 1rem auto;
 }
+.CircularProgressbar-path {
+  stroke: yellow;
+}
+.CircularProgressbar-text {
+  fill: $primary-color;
+}
