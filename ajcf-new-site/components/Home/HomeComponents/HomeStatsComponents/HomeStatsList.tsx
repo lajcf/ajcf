@@ -1,5 +1,6 @@
 import React from "react";
 import CountUp from "react-countup";
+import VisibilitySensor from "react-visibility-sensor";
 import styles from "./HomeStats.module.scss";
 
 type StatNumbers = {
@@ -30,22 +31,20 @@ const numbers: StatNumbers[] = [
 
 export const HomeStatsList = () => {
   return (
-    <ul className={styles.statsList}>
-      {numbers.map((number) => (
-        <li key={number.text}>
-          <div className={styles.number}>
-            <CountUp start={0} end={number.number} delay={0}>
-              {({ countUpRef }) => (
-                <div>
-                  <span ref={countUpRef} />
-                </div>
-              )}
-            </CountUp>
-            {number.suffix}
-          </div>
-          <h3 className={styles.text}>{number.text}</h3>
-        </li>
-      ))}
-    </ul>
+    <VisibilitySensor>
+      {({ isVisible }) => (
+        <ul className={styles.statsList}>
+          {numbers.map((number) => (
+            <li key={number.text}>
+              <div className={styles.number}>
+                {isVisible ? <CountUp end={number.number} /> : `${number.number}`}
+                {number.suffix}
+              </div>
+              <h3 className={styles.text}>{number.text}</h3>
+            </li>
+          ))}
+        </ul>
+      )}
+    </VisibilitySensor>
   );
 };
