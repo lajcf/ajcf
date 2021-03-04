@@ -11,12 +11,13 @@
 
   .partnersLogos {
     margin: 1rem 6rem;
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1rem;
     img {
-      max-width: 200px;
-      max-height: 200px;
+      max-width: 80px;
+      max-height: 80px;
     }
   }
 }

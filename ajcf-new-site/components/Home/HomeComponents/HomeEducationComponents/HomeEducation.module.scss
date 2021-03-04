@@ -1,0 +1,10 @@
+.educationSection {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  .presentationSection {
+    * {
+      text-align: center;
+    }
+  }
+}
