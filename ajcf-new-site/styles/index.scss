@@ -34,6 +34,7 @@ h3 {
   font-weight: 600;
   line-height: 32px;
   letter-spacing: -0.4px;
+  margin-bottom: 0;
 }
 
 h4 {
@@ -59,16 +60,19 @@ p {
   color: $text-color;
 }
 
-.link {
+a {
   color: $secondary-color;
+}
+a:hover {
+  color: $secondary-color;
+  opacity: 80%;
+}
+
+.link {
   font-size: 16px;
   line-height: 18px;
   letter-spacing: 0.3px;
   font-weight: bold;
-}
-.link:hover {
-  color: $secondary-color;
-  opacity: 80%;
 }
 
 section {
