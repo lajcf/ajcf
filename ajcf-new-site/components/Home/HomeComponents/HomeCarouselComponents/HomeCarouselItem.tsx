@@ -10,7 +10,7 @@ export const HomeCarouselItem = ({ article }: { article: ArticlePreviewFragment 
     <div className={styles.carouselItem}>
       <div className={styles.image}>{article.cover && <img src={article.cover.url} />}</div>
       <div className={styles.text}>
-        <h3 className="capsHeading">À la Une du Blog</h3>
+        <h3 className="capsHeading">À la Une</h3>
         <h2>{article.title}</h2>
         <p>{formatContentSummary(removeMarkdown(article.content), 220)}</p>
         <div>

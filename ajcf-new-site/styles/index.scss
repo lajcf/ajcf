@@ -75,10 +75,6 @@ a:hover {
   font-weight: bold;
 }
 
-section {
-  padding: 1rem;
-}
-
 ul {
   list-style: none;
   padding: 0;
@@ -125,4 +121,8 @@ button:hover {
 }
 .CircularProgressbar-text {
   fill: $primary-color;
+}
+
+.textSection {
+  max-width: 1200px;
 }
