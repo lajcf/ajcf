@@ -5,7 +5,7 @@ import { Antennes } from "./HomeComponents/AntennesComponents/Antennes";
 import { HomeCarouselContainer } from "./HomeComponents/HomeCarouselComponents/HomeCarouselContainer";
 import { Education } from "./HomeComponents/EducationComponents/Education";
 import { HomeEspacesContainer } from "./HomeComponents/HomeEspacesComponents/HomeEspacesContainer";
-import { Partners } from "./HomeComponents/PartnersComponents/Partners";
+import { HomePartnersContainer } from "./HomeComponents/HomePartnersComponents/HomePartnersContainer";
 import { HomeStatsContainer } from "./HomeComponents/HomeStatsComponents/HomeStatsContainer";
 
 export const HomeContainer = ({ articles }: { articles: ArticlePreviewFragment[] }) => {
@@ -14,7 +14,7 @@ export const HomeContainer = ({ articles }: { articles: ArticlePreviewFragment[]
       <HomeEspacesContainer />
       <HomeCarouselContainer articles={articles} />
       <HomeStatsContainer />
-      <Partners />
+      <HomePartnersContainer />
       <Education />
       <Antennes />
     </Layout>
