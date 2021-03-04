@@ -1,7 +1,7 @@
 import React from "react";
 import { ArticlePreviewFragment } from "../../types/types";
 import { Layout } from "../Layout/Layout";
-import { Antennes } from "./HomeComponents/AntennesComponents/Antennes";
+import { HomeAntennesContainer } from "./HomeComponents/HomeAntennesComponents/HomeAntennesContainer";
 import { HomeCarouselContainer } from "./HomeComponents/HomeCarouselComponents/HomeCarouselContainer";
 import { HomeEducationContainer } from "./HomeComponents/HomeEducationComponents/HomeEducationContainer";
 import { HomeEspacesContainer } from "./HomeComponents/HomeEspacesComponents/HomeEspacesContainer";
@@ -16,7 +16,7 @@ export const HomeContainer = ({ articles }: { articles: ArticlePreviewFragment[]
       <HomeStatsContainer />
       <HomePartnersContainer />
       <HomeEducationContainer />
-      <Antennes />
+      <HomeAntennesContainer />
     </Layout>
   );
 };
