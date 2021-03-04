@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./HomeEspaces.module.scss";
 import { EspaceContent } from "./HomeEspacesDescriptions";
 
-export const EspaceDescription = ({ espace }: { espace: EspaceContent }) => {
+export const HomeEspaceDescription = ({ espace }: { espace: EspaceContent }) => {
   const Logo = espace.logo;
 
   return (
@@ -12,7 +12,7 @@ export const EspaceDescription = ({ espace }: { espace: EspaceContent }) => {
       <h3>{espace.name}</h3>
       <p>{espace.text}</p>
       <Link href={espace.link}>
-        <a className={styles.link}>{espace.linkText}</a>
+        <a className={`link ${styles.link}`}>{espace.linkText}</a>
       </Link>
     </div>
   );

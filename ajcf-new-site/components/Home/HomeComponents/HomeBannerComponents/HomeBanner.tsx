@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./HomeBanner.module.scss";
 
-const titleContent = "L'AJCF, explorer sa culture franco-chinoise ensemble";
+const titleContent = "Venez explorer la double culture franco-chinoise avec l’AJCF.";
 const textContent =
-  "Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam no suscipit quaerendum. At nam minimum ponderum. Est audiam animal molestiae te.";
+  "Contribuons à bâtir un monde multiculturel, en apprenant à connaître et à partager la double culture franco-chinoise.";
 export const HomeBanner = () => {
   return (
     <section className={styles.banner}>

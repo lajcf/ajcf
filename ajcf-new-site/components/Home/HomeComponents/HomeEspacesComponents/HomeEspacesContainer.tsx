@@ -3,8 +3,7 @@ import styles from "./HomeEspaces.module.scss";
 import { HomeEspacesDescriptions } from "./HomeEspacesDescriptions";
 
 const titleContent = "S'exprimer à travers nos 4 espaces";
-const textContent =
-  "Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam no suscipit quaerendum. At nam minimum ponderum. Est audiam animal molestiae te.";
+const textContent = `L’AJCF, c’est 4 valeurs à travers 4 espaces "Talk Learn Meet Enjoy" en 1 slogan "Tout Le Monde Ensemble"`;
 export const HomeEspacesContainer = () => {
   return (
     <section className={styles.espaces}>
