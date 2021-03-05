@@ -26,6 +26,7 @@ h1 {
 
 h2 {
   font-size: 36px;
+  line-height: 46px;
   font-weight: bold;
 }
 
@@ -34,7 +35,6 @@ h3 {
   font-weight: 600;
   line-height: 32px;
   letter-spacing: -0.4px;
-  margin-bottom: 0;
 }
 
 h4 {
@@ -58,6 +58,22 @@ p {
   line-height: 30px;
   letter-spacing: -0.3px;
   color: $text-color;
+}
+
+section {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    max-width: 1200px;
+  }
 }
 
 a {
@@ -127,6 +143,8 @@ button:hover {
   fill: $primary-color;
 }
 
-.textSection {
-  max-width: 1200px;
+.chineseHeading {
+  font-size: 60px;
+  font-weight: 400;
+  color: $secondary-color;
 }

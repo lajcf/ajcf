@@ -1,19 +1,19 @@
 import React from "react";
 import styles from "./Footer.module.scss";
-import { Logo } from "./FooterComponents/Logo";
-import { DonationPlea } from "./FooterComponents/DonationPlea";
-import { NewsletterPlea } from "./FooterComponents/NewsletterPlea";
-import { InternalLinks } from "./FooterComponents/InternalLinks";
-import { SocialMediaLinks } from "./FooterComponents/SocialMediaLinks";
-import { CopyrightAJCF } from "./FooterComponents/CopyrightAJCF";
-import { LegalLinks } from "./FooterComponents/LegalLinks";
+import { FooterLogo } from "./FooterLogo";
+import { FooterDonationPlea } from "./FooterDonationPlea";
+import { NewsletterPlea } from "./NewsletterPlea";
+import { InternalLinks } from "./InternalLinks";
+import { SocialMediaLinks } from "./SocialMediaLinks";
+import { CopyrightAJCF } from "./CopyrightAJCF";
+import { LegalLinks } from "./LegalLinks";
 
-export const Footer = () => {
+export const FooterContainer = () => {
   return (
     <footer className={styles.footer}>
       <section className={styles.firstRow}>
-        <Logo />
-        <DonationPlea />
+        <FooterLogo />
+        <FooterDonationPlea />
       </section>
       <hr className="separator" />
       <section className={styles.secondRow}>

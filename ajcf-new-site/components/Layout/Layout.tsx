@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { BreadcrumbsContainer } from "./Breadcrumbs/BreadcrumbsContainer";
-import { Footer } from "./Footer/Footer";
+import { FooterContainer } from "./FooterComponents/FooterContainer";
 import { Header } from "./Header/Header";
 import { BannerContainer } from "./Banner/BannerContainer";
 import styles from "./Layout.module.scss";
@@ -21,7 +21,7 @@ export const Layout = ({ className = undefined, children }: LayoutProps) => {
         <QuickAccessContainer />
         {children}
       </main>
-      <Footer />
+      <FooterContainer />
     </div>
   );
 };

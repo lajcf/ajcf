@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import styles from "../Footer.module.scss";
+import styles from "./Footer.module.scss";
 
-export const DonationPlea = () => {
+export const FooterDonationPlea = () => {
   return (
     <div className={styles.donationPlea}>
       <h3>Envie de nous soutenir?</h3>

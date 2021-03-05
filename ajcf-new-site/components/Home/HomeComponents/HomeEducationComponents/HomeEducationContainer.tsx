@@ -6,13 +6,14 @@ const textContent = `La Covid-19 a exacerbé une réalité qui existait déjà :
 `;
 export const HomeEducationContainer = () => {
   return (
-    <section className={styles.educationSection}>
+    <div className={styles.educationSection}>
       <div className={styles.presentationSection}>
+        <h1 className="chineseScript chineseHeading">教育</h1>
         <h2 className="capsHeading">Education AJCF</h2>
         <h1>Sensibiliser aux discriminations et racisme anti-asiatique</h1>
         <p>{textContent}</p>
       </div>
       <HomeEducationCards />
-    </section>
+    </div>
   );
 };

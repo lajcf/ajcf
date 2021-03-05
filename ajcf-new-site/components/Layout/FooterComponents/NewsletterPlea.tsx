@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import styles from "../Footer.module.scss";
+import styles from "./Footer.module.scss";
 
 export const NewsletterPlea = () => {
   return (

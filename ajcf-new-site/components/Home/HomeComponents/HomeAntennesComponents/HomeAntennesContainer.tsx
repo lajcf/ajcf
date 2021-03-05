@@ -5,7 +5,8 @@ const textContent = `Avec notre première antenne AJCF à Lyon lancée en septem
 export const HomeAntennesContainer = () => {
   return (
     <section className={styles.homeAntennesSection}>
-      <h3 className="capsHeading">Les antennes AJCF</h3>
+      <h1 className="chineseScript chineseHeading">部门</h1>
+      <div className="capsHeading">Les antennes AJCF</div>
       <h2>Créer des espaces de discussions partout en France</h2>
       <p>{textContent}</p>
       <div className={styles.buttons}>
