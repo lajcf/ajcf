@@ -11,15 +11,21 @@ import { LegalLinks } from "./FooterComponents/LegalLinks";
 export const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <Logo />
-      <DonationPlea />
-      <hr className={`${styles.separator} ${styles.separator01}`} />
-      <NewsletterPlea />
-      <InternalLinks />
-      <SocialMediaLinks />
-      <hr className={`${styles.separator} ${styles.separator02}`} />
-      <CopyrightAJCF />
-      <LegalLinks />
+      <section className={styles.firstRow}>
+        <Logo />
+        <DonationPlea />
+      </section>
+      <hr className="separator" />
+      <section className={styles.secondRow}>
+        <NewsletterPlea />
+        <InternalLinks />
+        <SocialMediaLinks />
+      </section>
+      <hr className="separator" />
+      <section className={styles.thirdRow}>
+        <CopyrightAJCF />
+        <LegalLinks />
+      </section>
     </footer>
   );
 };

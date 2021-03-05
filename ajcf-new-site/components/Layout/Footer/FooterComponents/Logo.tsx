@@ -3,8 +3,8 @@ import styles from "../Footer.module.scss";
 
 export const Logo = () => {
   return (
-    <figure className={styles.logo}>
+    <div className={styles.logo}>
       <img src={require("../../../../public/ajcf-logo.png")} />
-    </figure>
+    </div>
   );
 };

@@ -1,11 +1,11 @@
 import React from "react";
-import styles from "../Footer.module.scss";
 import { FacebookFilled, TwitterSquareFilled, InstagramFilled, LinkedinFilled, YoutubeFilled } from "@ant-design/icons";
+import styles from "../Footer.module.scss";
 
 export const SocialMediaLinks = () => {
   return (
     <div className={styles.socialMediaLinks}>
-      <h4 className={styles.followUs}>Nous suivre</h4>
+      <h3>Nous suivre</h3>
       <ul className={styles.socialMediaList}>
         <li>
           <FacebookFilled />

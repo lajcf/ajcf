@@ -1,117 +1,58 @@
+@import "../../../styles/variables.scss";
+
 .footer {
-  background-color: #f3f6fa;
-  padding: 1rem;
-  display: grid;
-  grid-template-columns: 2fr 1rem 1fr 1fr;
-  grid-template-rows: auto;
-  grid-template-areas:
-    "logo . donationPlea donationPlea"
-    "separator01 separator01 separator01 separator01 "
-    "newsletterPlea . internalLinks socialMediaLinks "
-    "separator02 separator02 separator02 separator02 "
-    "copyrightAJCF . legalLinks legalLinks ";
+  background-color: $primary-color;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
 
-  .logo {
-    grid-area: logo;
-    display: grid;
-    place-items: center start;
-    margin: 0;
-    img {
-      height: 7rem;
-    }
-  }
-
-  .donationPlea {
-    grid-area: donationPlea;
-    display: grid;
-    grid-template-areas: "donationText donationButton";
-    place-items: center start;
-    .donationText {
-      grid-area: donationText;
-      color: #5376ba;
-    }
-    .donationButton {
-      grid-area: donationButton;
-    }
-  }
-
-  .newsletterPlea {
-    grid-area: newsletterPlea;
-  }
-
-  .internalLinks {
-    grid-area: internalLinks;
+  .firstRow {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: "projetsAJCF aide";
-    gap: 1rem;
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      h3 {
-        color: #5376ba;
-      }
-      small {
-        color: #b9babc;
-      }
+    .logo {
+      max-width: 94px;
+      place-self: start;
     }
-    .projetsAJCF {
-      grid-area: projetsAJCF;
-    }
-    .aide {
-      grid-area: aide;
+    .donationPlea {
+      display: grid;
+      grid-auto-flow: column;
+      place-items: center;
     }
   }
-
-  .socialMediaLinks {
-    grid-area: socialMediaLinks;
+  .secondRow {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    grid-template-areas:
-      "followUs"
-      "socialMediaList";
-    .followUs {
-      grid-area: followUs;
+    grid-template-columns: 3fr 2fr 1fr;
+
+    .internalLinks {
+      display: flex;
+      gap: 2rem;
     }
     .socialMediaList {
-      grid-area: socialMediaList;
-      list-style: none;
-      margin: 0;
-      margin-right: 2rem;
-      padding: 0;
+      margin-top: 1rem;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       li {
         * {
-          font-size: 1.5rem;
-          color: #3c64b1;
+          color: $secondary-color;
+          height: 20px;
+          width: 20px;
         }
       }
     }
   }
-
-  .copyrightAJCF {
-    grid-area: copyrightAJCF;
-    justify-self: right;
-  }
-
-  .legalLinks {
-    grid-area: legalLinks;
-    display: flex;
-    .term {
-      margin-right: 2rem;
+  .thirdRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .copyrightAJCF {
+      justify-self: end;
+      margin-right: 4rem;
     }
-  }
-
-  .separator {
-    width: 100%;
-    &01 {
-      grid-area: separator01;
-    }
-    &02 {
-      grid-area: separator02;
+    .legalLinks {
+      display: grid;
+      grid-auto-flow: column;
+      justify-content: start;
+      column-gap: 2rem;
     }
   }
 }
