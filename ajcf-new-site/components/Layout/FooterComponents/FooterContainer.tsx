@@ -15,13 +15,13 @@ export const FooterContainer = () => {
         <FooterLogo />
         <FooterDonationPlea />
       </section>
-      <hr className="separator" />
+      <div className="separator" />
       <section className={styles.secondRow}>
         <NewsletterPlea />
         <InternalLinks />
         <SocialMediaLinks />
       </section>
-      <hr className="separator" />
+      <div className="separator" />
       <section className={styles.thirdRow}>
         <CopyrightAJCF />
         <LegalLinks />

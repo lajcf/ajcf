@@ -134,6 +134,8 @@ button:hover {
 
 .separator {
   width: 80%;
+  background-color: $text-color;
+  height: 1px;
   margin: 1rem auto;
 }
 .CircularProgressbar-path {
