@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./Summary.module.scss";
 
 const titleContent = `Qui sommes-nous?`;
 const subTitleContent = `Il était une fois l'AJCF`;

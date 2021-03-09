@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout } from "../../Layout/Layout";
+import { Layout } from "../../../Layout/Layout";
 import { AntennaAJCFLyon } from "./AntennaAJCFLyon";
 import { AntennaNewsComponent } from "./AntennaNewsComponent";
 import { AntennaUpcomingEvents } from "./AntennaUpcomingEvents";
@@ -11,10 +11,10 @@ export const OurAntennasContainer = () => {
       <section className={styles.summarySection}>
         <h1>Nos Antennes</h1>
         <h2>Créer des espaces de discussions partout en France</h2>
-        <p className="texte1">
-          Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam no suscipit quaerendum. At nam minimum
-          ponderum. Est audiam animal molestiae te. Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam
-          no suscipit quaerendum. At nam minimum ponderum
+        <p>
+          L’AJCF se développe également en dehors de Paris et de l’Ile-De-France, à travers ses antennes. Lyon, une
+          ville jeune, dynamique et solidaire, mais deuxième foyer des communautés d’origine chinoise en France, a
+          naturellement été choisie pour ouvrir la première antenne de l’AJCF.
         </p>
       </section>
       <AntennaAJCFLyon />

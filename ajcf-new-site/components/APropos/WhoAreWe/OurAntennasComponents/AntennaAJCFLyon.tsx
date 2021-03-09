@@ -39,10 +39,10 @@ export const AntennaAJCFLyon = () => {
   return (
     <section className={styles.lyonAntennaSection}>
       <h2>Antenne AJCF Lyon</h2>
-      <p className="texte1">
-        Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam no suscipit quaerendum. At nam minimum
-        ponderum. Est audiam animal molestiae te. Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam
-        no suscipit quaerendum. At nam minimum ponderum
+      <p>
+        L’antenne de Lyon a pour objectif de développer les activités de l’AJCF dans la région lyonnaise, d’y recruter
+        de nouveaux membres, et d’adapter les actions selon les besoins locaux. Nous aimerions également nous faire
+        connaître auprès des jeunes Chinois de Lyon et des acteurs lyonnais, mais aussi de toutes personnes intéressées.
       </p>
       <div>
         <h3>L’équipe AJCF Lyon</h3>

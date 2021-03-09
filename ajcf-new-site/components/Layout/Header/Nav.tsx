@@ -17,11 +17,6 @@ export const Nav = () => {
           </Link>
         </li>
         <li>
-          <Link href="/projets-ajcf">
-            <a>Projets AJCF</a>
-          </Link>
-        </li>
-        <li>
           <Link href="/blog">
             <a>Blog</a>
           </Link>

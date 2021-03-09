@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout } from "../../Layout/Layout";
+import { Layout } from "../../../Layout/Layout";
 import { OurOffers } from "./OurOffers";
 import styles from "./Recruitment.module.scss";
 

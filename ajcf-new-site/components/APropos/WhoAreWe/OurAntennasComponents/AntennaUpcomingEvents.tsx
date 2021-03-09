@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./OurAntennas.module.scss";
-import { dayjs } from "../../../lib/utils/dayjs";
+import { dayjs } from "../../../../lib/utils/dayjs";
 
 type AntennaEventProps = {
   id: number;
@@ -38,7 +38,7 @@ export const AntennaUpcomingEvents = () => {
       <ul className={styles.antennaEventsList}>
         {antennaEvents.map((event) => (
           <li key={event.id} className={styles.antennaEvent}>
-            <img className={styles.antennaEventCover} src={require("../../../public/ajcf-logo.png")} />
+            <img className={styles.antennaEventCover} src={require("../../../../public/ajcf-logo.png")} />
             <div className={styles.antennaEventBody}>
               <div className={styles.antennaEventDate}>{`${dayjs(event.date).format("DD MMM YYYY HH")}h`}</div>
               <div className={styles.antennaEventVerticalSeparator} />

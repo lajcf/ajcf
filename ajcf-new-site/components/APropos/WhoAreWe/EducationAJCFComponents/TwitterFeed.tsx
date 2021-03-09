@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./EducationAJCF.module.scss";
-import { dayjs } from "../../../lib/utils/dayjs";
+import { dayjs } from "../../../../lib/utils/dayjs";
 
 const educationTweets = [
   {

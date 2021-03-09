@@ -15,13 +15,30 @@ export const QuickAccess = ({ page, subPage }: QuickAccessProps) => {
       return (
         <QuickAccessLayout defaultSelectedKeys={subPage && [subPage]}>
           <Menu.Item key="qui-sommes-nous">
-            <Link href="./qui-sommes-nous">Qui sommes-nous ?</Link>
+            <Link href="/a-propos/qui-sommes-nous">Qui sommes-nous?</Link>
+          </Menu.Item>
+          <Menu.ItemGroup key="projets" title="Projets">
+            <Menu.Item key="nos-espaces">
+              <Link href="/a-propos/projets-ajcf/nos-espaces">Nos espaces</Link>
+            </Menu.Item>
+            <Menu.Item key="nos-antennes">
+              <Link href="/a-propos/projets-ajcf/nos-antennes">Nos antennes</Link>
+            </Menu.Item>
+            <Menu.Item key="education-ajcf">
+              <Link href="/a-propos/projets-ajcf/education-ajcf">Education AJCF</Link>
+            </Menu.Item>
+            <Menu.Item key="recrutement">
+              <Link href="/a-propos/projets-ajcf/recrutement">Recrutement</Link>
+            </Menu.Item>
+          </Menu.ItemGroup>
+          <Menu.Item key="notre-histoire">
+            <Link href="/a-propos/notre-histoire">Notre Histoire</Link>
           </Menu.Item>
           <Menu.Item key="partenaires">
-            <Link href="./partenaires">Partenaires</Link>
+            <Link href="/a-propos/partenaires">Partenaires</Link>
           </Menu.Item>
           <Menu.Item key="presse">
-            <Link href="./presse">Presse</Link>
+            <Link href="/a-propos/presse">Presse</Link>
           </Menu.Item>
         </QuickAccessLayout>
       );
