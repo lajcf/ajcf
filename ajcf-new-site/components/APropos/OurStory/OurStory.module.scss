@@ -70,3 +70,25 @@
     }
   }
 }
+
+.testimoniesSection {
+  background-color: $primary-color;
+  padding-top: 2rem;
+
+  .testimonyCard {
+    background-color: white;
+    padding: 1rem;
+    margin: 1rem;
+    * {
+      text-align: center;
+      font-size: 16px;
+    }
+    blockquote {
+      margin-bottom: 2rem;
+      color: $text-color;
+    }
+    li {
+      color: $light-text;
+    }
+  }
+}

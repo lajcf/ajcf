@@ -5,7 +5,7 @@ import { OurStoryContactUsContainer } from "./ContactUsComponents/OurStoryContac
 import { OurObjectivesContainer } from "./OurObjectivesComponents/OurObjectivesContainer";
 import { StoryOfAJCFContainer } from "./StoryOfAJCFContainerComponents/StoryOfAJCFContainer";
 import { OurStorySummaryContainer } from "./OurStorySummaryComponents/OurStorySummaryContainer";
-import { TestimoniesContainer } from "./TestimoniesComponents/Testimonies.tsx/TestimoniesContainer";
+import { TestimoniesContainer } from "./TestimoniesComponents/TestimoniesContainer";
 import styles from "./OurStory.module.scss";
 
 export const OurStoryContainer = () => {
