@@ -1,0 +1,17 @@
+.homeAntennesSection {
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  * {
+    text-align: center;
+  }
+
+  .buttons {
+    margin-top: 2rem;
+    display: grid;
+    grid-auto-flow: column;
+    place-items: center;
+    gap: 2rem;
+  }
+}

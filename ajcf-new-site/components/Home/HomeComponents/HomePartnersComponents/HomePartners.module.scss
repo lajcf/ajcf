@@ -1,0 +1,23 @@
+.partners {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .title,
+  .text {
+    text-align: center;
+  }
+
+  .partnersLogos {
+    margin: 1rem 6rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    img {
+      max-width: 80px;
+      max-height: 80px;
+    }
+  }
+}

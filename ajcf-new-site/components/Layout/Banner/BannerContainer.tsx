@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React from "react";
-import { HomeBanner } from "../../Home/HomeComponents/BannerComponents/HomeBanner";
+import { HomeBanner } from "../../Home/HomeComponents/HomeBannerComponents/HomeBanner";
 import styles from "./BannerContainer.module.scss";
 
 export const BannerContainer = () => {

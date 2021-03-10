@@ -1,0 +1,46 @@
+@import "../../../../styles/variables.scss";
+
+.educationSection {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  .presentationSection {
+    margin-bottom: 4rem;
+    align-self: center;
+    * {
+      text-align: center;
+    }
+  }
+  .card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .cardImage {
+      grid-area: cardImage;
+      img {
+        object-fit: cover;
+      }
+    }
+    .emptyZone {
+      grid-area: emptyZone;
+      height: 50px;
+    }
+    .cardText {
+      grid-area: cardText;
+      background-color: $primary-color;
+      padding: 2rem;
+    }
+    .cardButton {
+      margin-top: 2rem;
+    }
+  }
+  .cardOdd {
+    grid-template-areas:
+      "cardImage emptyZone"
+      "cardImage cardText";
+  }
+  .cardEven {
+    grid-template-areas:
+      "cardText cardImage"
+      "emptyZone cardImage";
+  }
+}

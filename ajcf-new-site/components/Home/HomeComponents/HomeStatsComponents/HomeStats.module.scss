@@ -1,0 +1,34 @@
+@import "../../../../styles/variables.scss";
+
+.statsSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .statsList {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: stretch;
+    column-gap: 2rem;
+    li {
+      display: grid;
+      grid-template-rows: 3fr 1fr;
+      place-items: center;
+    }
+    .number {
+      place-self: center;
+      width: 100%;
+      .circularProgressbar {
+        .CircularProgressbar-path {
+          stroke: $primary-color;
+        }
+        .CircularProgressbar-text {
+          fill: $primary-color;
+        }
+      }
+    }
+    .text {
+      text-align: center;
+    }
+  }
+}

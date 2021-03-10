@@ -1,0 +1,58 @@
+@import "../../../styles/variables.scss";
+
+.footer {
+  background-color: $primary-color;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  .firstRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .logo {
+      max-width: 60px;
+      place-self: start;
+    }
+    .donationPlea {
+      display: grid;
+      grid-auto-flow: column;
+      place-items: center;
+    }
+  }
+  .secondRow {
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr;
+
+    .internalLinks {
+      display: flex;
+      gap: 2rem;
+    }
+    .socialMediaList {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      li {
+        * {
+          color: $secondary-color;
+          height: 20px;
+          width: 20px;
+        }
+      }
+    }
+  }
+  .thirdRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .copyrightAJCF {
+      justify-self: end;
+      margin-right: 4rem;
+    }
+    .legalLinks {
+      display: grid;
+      grid-auto-flow: column;
+      justify-content: start;
+      column-gap: 2rem;
+    }
+  }
+}

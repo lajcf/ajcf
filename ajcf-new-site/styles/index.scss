@@ -26,6 +26,7 @@ h1 {
 
 h2 {
   font-size: 36px;
+  line-height: 46px;
   font-weight: bold;
 }
 
@@ -59,20 +60,35 @@ p {
   color: $text-color;
 }
 
-.link {
-  color: $secondary-color;
-  font-size: 16px;
-  line-height: 18px;
-  letter-spacing: 0.3px;
-  font-weight: bold;
+section {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    max-width: 1200px;
+  }
 }
-.link:hover {
+
+a {
+  color: $secondary-color;
+}
+a:hover {
   color: $secondary-color;
   opacity: 80%;
 }
 
-section {
-  padding: 1rem;
+.link {
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: 0.3px;
+  font-weight: bold;
 }
 
 ul {
@@ -112,7 +128,25 @@ button:hover {
   background: $secondary-color-20;
 }
 
+.big-button {
+  padding: 14px 50px;
+}
+
 .separator {
   width: 80%;
+  background-color: $text-color;
+  height: 1px;
   margin: 1rem auto;
+}
+.CircularProgressbar-path {
+  stroke: yellow;
+}
+.CircularProgressbar-text {
+  fill: $primary-color;
+}
+
+.chineseHeading {
+  font-size: 60px;
+  font-weight: 400;
+  color: $secondary-color;
 }
