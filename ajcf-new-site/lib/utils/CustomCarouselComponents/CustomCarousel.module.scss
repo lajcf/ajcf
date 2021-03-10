@@ -1,0 +1,18 @@
+@import "/styles/variables.scss";
+
+.customCarouselContainer {
+  padding: 2rem;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  .leftArrow {
+    place-self: center;
+    color: $secondary-color;
+    font-size: 32px;
+  }
+  .rightArrow {
+    place-self: center;
+    color: $secondary-color;
+    font-size: 32px;
+  }
+}
