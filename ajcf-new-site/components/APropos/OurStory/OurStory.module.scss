@@ -92,3 +92,29 @@
     }
   }
 }
+
+.bureauListSection {
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2rem 1rem;
+
+    li {
+      width: 250px;
+      display: flex;
+      flex-direction: column;
+      .bureauMemberPictureContainer {
+        height: 200px;
+        img {
+          width: 200px;
+          border-radius: 50%;
+        }
+      }
+      * {
+        text-align: center;
+      }
+    }
+  }
+}
