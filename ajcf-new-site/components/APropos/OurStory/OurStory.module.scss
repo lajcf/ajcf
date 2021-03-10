@@ -52,3 +52,21 @@
     }
   }
 }
+
+.ourObjectivesSection {
+  padding: 1rem 10rem;
+
+  .checkIcon {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  ul {
+    li {
+      display: grid;
+      grid-auto-flow: column;
+      align-items: center;
+      column-gap: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+}
