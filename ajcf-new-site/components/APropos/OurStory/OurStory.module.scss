@@ -1,3 +1,5 @@
+@import "/styles/variables.scss";
+
 .layout {
   main {
     display: grid;
@@ -11,6 +13,42 @@
     }
     .summarySection {
       grid-area: summarySection;
+    }
+  }
+}
+
+.storyOfAJCFSection {
+  background-color: $primary-color;
+
+  p {
+    margin-bottom: 2rem;
+  }
+
+  .oddParagraphSection {
+    grid-template-areas:
+      "image title"
+      "image paragraphsContainer";
+  }
+  .evenParagraphSection {
+    grid-template-areas:
+      "title image"
+      "paragraphsContainer image";
+  }
+
+  .paragraphSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+
+    h2 {
+      grid-area: title;
+    }
+    img {
+      grid-area: image;
+      place-self: center;
+    }
+    .paragraphsContainer {
+      grid-area: paragraphsContainer;
     }
   }
 }

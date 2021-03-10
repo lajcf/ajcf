@@ -6,9 +6,7 @@ const pleaContent = `Intéréssé(e) pour nous rejoindre ? Vous aussi,\nvous vou
 export const OurStoryContactUsContainer = () => {
   return (
     <section className={styles.contactUsSection}>
-      <h2>
-        <pre>{pleaContent}</pre>
-      </h2>
+      <h3>{pleaContent}</h3>
       <button type="button">Contactez-nous !</button>
     </section>
   );
