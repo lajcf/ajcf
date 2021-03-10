@@ -1,6 +1,6 @@
 import React from "react";
 import { CheckCircleOutlined } from "@ant-design/icons";
-import styles from "./OurObjectives.module.scss";
+import styles from "../OurStory.module.scss";
 
 const checklist = [
   {
@@ -25,15 +25,24 @@ const checklist = [
   },
 ];
 
-export const Checklist = () => {
+const Checklist = () => {
   return (
-    <div className={styles.checklist}>
+    <div>
       {checklist.map((checkItem) => (
-        <div key={checkItem.id} className={styles.checkItem}>
-          <CheckCircleOutlined className={styles.checkIcon} />
-          <p className={styles.checkText}>{checkItem.content}</p>
+        <div key={checkItem.id}>
+          <CheckCircleOutlined />
+          <p>{checkItem.content}</p>
         </div>
       ))}
     </div>
+  );
+};
+
+export const OurObjectivesContainer = () => {
+  return (
+    <section className={styles.ourObjectivesSection}>
+      <h2>Nos objectifs</h2>
+      <Checklist />
+    </section>
   );
 };

@@ -1,0 +1,16 @@
+.layout {
+  main {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "quickAccess breadcrumbs"
+      "quickAccess summarySection";
+
+    section {
+      grid-column: span 2;
+    }
+    .summarySection {
+      grid-area: summarySection;
+    }
+  }
+}

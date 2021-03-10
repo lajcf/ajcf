@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./Bureau.module.scss";
 
 export type BureauMember = {
   name: string;
@@ -37,13 +36,13 @@ const bureauMembers: BureauMember[] = [
 
 export const BureauMembers = () => {
   return (
-    <div className={styles.bureauMembers}>
+    <div>
       {bureauMembers.map((bureauMember) => (
-        <div key={bureauMember.name} className={styles.bureauMember}>
-          <div className={styles.picBubble}>Picture</div>
-          <h4 className={styles.name}>{bureauMember.name}</h4>
-          <h5 className={styles.role}>({bureauMember.role})</h5>
-          <p className={styles.occupation}>{bureauMember.occupation}</p>
+        <div key={bureauMember.name}>
+          <div>Picture</div>
+          <h4>{bureauMember.name}</h4>
+          <h5>({bureauMember.role})</h5>
+          <p>{bureauMember.occupation}</p>
         </div>
       ))}
     </div>

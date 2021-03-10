@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./Testimonies.module.scss";
 
 export type QuoteCard = {
   text: string;
@@ -20,11 +19,11 @@ const cards: QuoteCard[] = [
   },
 ];
 
-export const Carousel = () => {
+export const TestimoniesCarousel = () => {
   return (
-    <div className={styles.carousel}>
+    <div>
       {cards.map((card) => (
-        <div key={card.author} className={styles.card}>
+        <div key={card.author}>
           <p>{card.text}</p>
           <h5>{card.author}</h5>
           <h6>{card.authorRole}</h6>
