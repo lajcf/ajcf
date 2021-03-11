@@ -12,7 +12,7 @@ export const QuickAccessLayout = ({
 }) => {
   return (
     <aside className={styles.quickAccess}>
-      <h3>ACCES RAPIDE</h3>
+      <div className={`capsHeading ${styles.quickAccessHeader}`}>Accès rapide</div>
       <Menu defaultSelectedKeys={defaultSelectedKeys}>{children}</Menu>
     </aside>
   );
