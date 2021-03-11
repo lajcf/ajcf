@@ -36,7 +36,7 @@ const StatNumber = ({ isVisible, number }: { isVisible: boolean; number: StatNum
     <div className={styles.number}>
       <CircularProgressbar
         value={isVisible ? 100 : 0}
-        text={`${isVisible ? number.AJCFNumbers : 0}${number.suffix ? number.suffix : ""}`}
+       text={`${isVisible ? number.AJCFNumbers : 0}${number.suffix ? number.suffix : ""}`}
         styles={buildStyles({
           textColor: statColor,
           pathColor: statColor,
