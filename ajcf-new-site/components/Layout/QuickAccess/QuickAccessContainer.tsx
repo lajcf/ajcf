@@ -19,7 +19,7 @@ export type SubPage =
 const parsePathname = (pathname: string) => {
   const dividedPathname = pathname.split("/");
   const page = dividedPathname[1] as Page | undefined;
-  const subPage = dividedPathname[2] as SubPage | undefined;
+  const subPage = dividedPathname[dividedPathname.length - 1] as SubPage | undefined;
   return {
     page,
     subPage,

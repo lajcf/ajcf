@@ -1,0 +1,127 @@
+@import "/styles/variables.scss";
+
+.layout {
+  main {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "quickAccess breadcrumbs"
+      "quickAccess summarySection";
+
+    section {
+      grid-column: span 2;
+    }
+    .summarySection {
+      grid-area: summarySection;
+    }
+  }
+}
+
+.storyOfAJCFSection {
+  background-color: $primary-color;
+
+  p {
+    margin-bottom: 2rem;
+  }
+
+  .oddParagraphSection {
+    grid-template-areas:
+      "image title"
+      "image paragraphsContainer";
+  }
+  .evenParagraphSection {
+    grid-template-areas:
+      "title image"
+      "paragraphsContainer image";
+  }
+
+  .paragraphSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+
+    h2 {
+      grid-area: title;
+    }
+    img {
+      grid-area: image;
+      place-self: center;
+    }
+    .paragraphsContainer {
+      grid-area: paragraphsContainer;
+    }
+  }
+}
+
+.ourObjectivesSection {
+  padding: 1rem 10rem;
+
+  .checkIcon {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  ul {
+    li {
+      display: grid;
+      grid-auto-flow: column;
+      align-items: center;
+      column-gap: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.testimoniesSection {
+  background-color: $primary-color;
+  padding-top: 2rem;
+
+  .testimonyCard {
+    background-color: white;
+    padding: 1rem;
+    margin: 1rem;
+    * {
+      text-align: center;
+      font-size: 16px;
+    }
+    blockquote {
+      margin-bottom: 2rem;
+      color: $text-color;
+    }
+    li {
+      color: $light-text;
+    }
+  }
+}
+
+.bureauListSection {
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2rem 1rem;
+
+    li {
+      width: 250px;
+      display: flex;
+      flex-direction: column;
+      .bureauMemberPictureContainer {
+        height: 200px;
+        img {
+          width: 200px;
+          border-radius: 50%;
+        }
+      }
+      * {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.contactUsSection {
+  margin: 2rem 0;
+  * {
+    text-align: center;
+  }
+}
