@@ -5,26 +5,26 @@ import "react-circular-progressbar/dist/styles.css";
 import styles from "./HomeStats.module.scss";
 
 type StatNumber = {
-  AJCFNumbers: number;
+  ajcfNumbers: number;
   suffix?: string;
   text: string;
 };
 
 const numbers: StatNumber[] = [
   {
-    AJCFNumbers: 11,
+    ajcfNumbers: 11,
     text: "années d'existence",
   },
   {
-    AJCFNumbers: 56,
+    ajcfNumbers: 56,
     text: "membres actifs",
   },
   {
-    AJCFNumbers: 367,
+    ajcfNumbers: 367,
     text: "adhérents",
   },
   {
-    AJCFNumbers: 11,
+    ajcfNumbers: 11,
     suffix: "k",
     text: "followers",
   },
@@ -36,7 +36,7 @@ const StatNumber = ({ isVisible, number }: { isVisible: boolean; number: StatNum
     <div className={styles.number}>
       <CircularProgressbar
         value={isVisible ? 100 : 0}
-       text={`${isVisible ? number.AJCFNumbers : 0}${number.suffix ? number.suffix : ""}`}
+        text={`${isVisible ? number.ajcfNumbers : 0}${number.suffix ? number.suffix : ""}`}
         styles={buildStyles({
           textColor: statColor,
           pathColor: statColor,
