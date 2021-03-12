@@ -1,3 +1,11 @@
+@import "/styles/variables.scss";
+
+$logo-frame-size: 12rem;
+$logo-frame-margin: 5rem;
+$activity-gap: 4rem;
+$activity-logo-width: 6rem;
+$activity-width: $activity-logo-width + ($activity-gap / 2);
+
 .layout {
   main {
     display: grid;
@@ -5,72 +13,92 @@
     grid-template-areas:
       "quickAccess breadcrumbs"
       "quickAccess summarySection";
+    ul,
+    section {
+      grid-column: span 2;
+    }
     .summarySection {
       grid-area: summarySection;
     }
-    .espaceSection {
-      grid-column: span 2;
+  }
+}
+
+.espacesList {
+  li:nth-child(odd) {
+    .emptySection {
+      background-color: white;
+    }
+    .logoFrame {
+      background-color: $primary-color;
+    }
+    .contentContainer {
+      background-color: $primary-color;
+    }
+  }
+}
+
+.espaceSection {
+  padding: 0;
+  position: relative;
+  gap: 1rem;
+
+  .emptySection {
+    height: calc(#{$logo-frame-size} / 3);
+    width: 100%;
+    background-color: $primary-color;
+  }
+  .logoFrame {
+    position: absolute;
+    left: 0;
+    background-color: white;
+    margin-left: $logo-frame-margin;
+    display: grid;
+    place-content: center;
+    row-gap: 1rem;
+    width: $logo-frame-size;
+    height: $logo-frame-size;
+    border-radius: 50%;
+    span {
+      font-size: 3rem;
+    }
+  }
+  .contentContainer {
+    width: 100%;
+  }
+  .sectionContent {
+    margin-left: calc(#{$logo-frame-margin} + #{$logo-frame-size});
+    padding: 2rem;
+  }
+}
+
+.activitiesList {
+  margin-top: 2rem;
+  h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .activitiesContent {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: $activity-gap;
+    .activityContent {
       display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 1rem;
-      grid-template-areas:
-        "logoFrame categoryName"
-        "logoFrame title"
-        "logoFrame text"
-        ". activitiesList";
-      .logoFrame {
-        grid-area: logoFrame;
-        border: 3px solid #3c64b1;
+      justify-items: center;
+      width: $activity-width;
+      .activityLogoFrame {
+        background-color: $secondary-color;
+        border-radius: 50%;
+        width: $activity-logo-width;
+        height: $activity-logo-width;
         display: grid;
         place-content: center;
-        width: 16rem;
-        height: 16rem;
-        border-radius: 10%;
-        background-color: #f3f6fa;
         span {
+          color: white;
           font-size: 2rem;
         }
       }
-      .sectionContent {
-        background-color: #f3f6fa;
-        padding: 2rem 6rem;
-        .categoryName {
-          grid-area: categoryName;
-        }
-        .title {
-          grid-area: title;
-        }
-        .text {
-          grid-area: text;
-        }
-        .activitiesList {
-          grid-area: activitiesList;
-          .activitiesContent {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, 12rem);
-            justify-items: center;
-            .activityContent {
-              display: grid;
-              justify-items: center;
-              .activityLogoFrame {
-                border: 1px solid #3c64b1;
-                background-color: #3c64b1;
-                border-radius: 50%;
-                width: 6rem;
-                height: 6rem;
-                display: grid;
-                place-content: center;
-                span {
-                  color: white;
-                  font-size: 2rem;
-                }
-              }
-              .activityName {
-                text-align: center;
-              }
-            }
-          }
-        }
+      .activityName {
+        text-align: center;
       }
     }
   }

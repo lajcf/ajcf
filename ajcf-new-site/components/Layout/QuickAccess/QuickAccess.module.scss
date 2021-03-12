@@ -1,4 +1,10 @@
+@import "/styles/variables.scss";
+
 .quickAccess {
   grid-area: quickAccess;
-  margin-left: 3rem;
+  padding: 2rem;
+
+  .quickAccessHeader {
+    font-size: 14px;
+  }
 }

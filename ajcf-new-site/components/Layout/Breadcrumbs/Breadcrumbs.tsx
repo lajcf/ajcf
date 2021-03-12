@@ -12,7 +12,7 @@ const pageLink = (index: number, breadcrumbsPathArray: string[]) => {
 };
 export const Breadcrumbs = ({ breadcrumbsPathArray }: BreadcrumbsProps) => {
   return (
-    <section className={styles.breadcrumbs}>
+    <aside className={styles.breadcrumbs}>
       <Breadcrumb>
         <Breadcrumb.Item key="accueil">
           <Link href="/">
@@ -27,6 +27,6 @@ export const Breadcrumbs = ({ breadcrumbsPathArray }: BreadcrumbsProps) => {
           </Breadcrumb.Item>
         ))}
       </Breadcrumb>
-    </section>
+    </aside>
   );
 };
