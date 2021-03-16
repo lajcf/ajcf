@@ -1,3 +1,7 @@
+@import "/styles/variables.scss";
+
+$bubble-picture-size: 8rem;
+
 .layout {
   main {
     display: grid;
@@ -12,26 +16,34 @@
       grid-area: summarySection;
     }
     .lyonAntennaSection {
-      background-color: #3c64b1;
+      background-color: $primary-color;
+      align-items: stretch;
+      padding: 2rem 6rem;
       * {
-        color: white;
+        color: $text-color;
+      }
+      h2,
+      h3 {
+        color: $secondary-color;
+      }
+      .teamSection {
+        margin: 2rem 0;
       }
       .teamList {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: grid;
-        grid-auto-flow: column;
-        place-items: center;
+        display: flex;
+        justify-content: start;
+        column-gap: 4rem;
         li {
           display: grid;
           .memberImageFrame {
             place-self: center;
-            width: 8rem;
-            height: 8rem;
-            background-color: #f3f6fa;
-            border-radius: 50%;
+            width: $bubble-picture-size;
+            height: $bubble-picture-size;
             margin-bottom: 1rem;
+            img {
+              border-radius: 50%;
+              object-fit: cover;
+            }
           }
           * {
             text-align: center;
