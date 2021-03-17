@@ -1,10 +1,16 @@
-import { Column, Entity, OneToMany } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 import { AjcfBaseEntity } from "./AjcfBaseEntity";
 import { Ticket } from "./Ticket";
 
 // TODO: ajouter id du pole
 @Entity("Event")
 export class Event extends AjcfBaseEntity {
+  @PrimaryColumn({
+    name: "id",
+    type: "bigint",
+  })
+  id: string;
+
   @Column("varchar", {
     name: "name",
   })
