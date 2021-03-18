@@ -5,7 +5,7 @@ import { graphqlClient } from "../lib/graphql/graphqlClient";
 import { mapEnvToStage } from "../lib/utils/mapEnvToStage";
 import { ArticlePreviewFragment } from "../types/types";
 
-type IndexProps = { articles: ArticlePreviewFragment[] };
+export type IndexProps = { articles: ArticlePreviewFragment[] };
 export default function Index({ articles }: IndexProps) {
   return <HomeContainer articles={articles} />;
 }

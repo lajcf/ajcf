@@ -3,7 +3,7 @@ import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { Carousel } from "antd";
 import styles from "./CustomCarousel.module.scss";
 
-export const CustomCarousel = ({ children, autoplay = false }: { children: ReactNode; autoplay: boolean }) => {
+export const CustomCarousel = ({ children, autoplay = false }: { children: ReactNode; autoplay?: boolean }) => {
   const slider: React.MutableRefObject<any> = useRef();
   return (
     <div className={styles.customCarouselContainer}>
