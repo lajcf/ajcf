@@ -1,12 +1,18 @@
 import React from "react";
-import { ArticlePreviewFragment } from "../../../../types/types";
+import { ArticlePreviewFragment, EventPreviewFragment } from "../../../../types/types";
 import { Layout } from "../../../Layout/Layout";
 import { AntennaAJCFLyon } from "./AntennaAJCFLyon";
 import { AntennaNewsComponent } from "./AntennaNewsComponent";
 import { AntennaUpcomingEvents } from "./AntennaUpcomingEvents";
 import styles from "./OurAntennas.module.scss";
 
-export const OurAntennasContainer = ({ articles }: { articles: ArticlePreviewFragment[] }) => {
+export const OurAntennasContainer = ({
+  articles,
+  events,
+}: {
+  articles: ArticlePreviewFragment[];
+  events: EventPreviewFragment[];
+}) => {
   return (
     <Layout className={styles.layout}>
       <section className={styles.summarySection}>
@@ -20,7 +26,7 @@ export const OurAntennasContainer = ({ articles }: { articles: ArticlePreviewFra
       </section>
       <AntennaAJCFLyon />
       <AntennaNewsComponent articles={articles} />
-      <AntennaUpcomingEvents />
+      <AntennaUpcomingEvents events={events} />
       <section className={styles.antennaJoinUsSection}>
         <h2>Nous rejoindre</h2>
         <p>
