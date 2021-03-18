@@ -23,7 +23,7 @@ const bureauMembers = [
   {
     name: `Huanyu REN`,
     role: `Secrétaire`,
-    occupation: `Auto-entrepeneur`,
+    occupation: `Auto-entrepreneur`,
     picture: require("../../../../public/Images/About us/aboutus_huanyu.jpg"),
   },
   {

@@ -1365,6 +1365,7 @@ export type Event = Node & {
   date: Scalars['DateTime'];
   cover?: Maybe<Asset>;
   eventLabels: Array<EventLabel>;
+  eventCategory: EventCategory;
   /** List of Event versions */
   history: Array<Version>;
 };
@@ -1424,6 +1425,7 @@ export type EventCreateInput = {
   date: Scalars['DateTime'];
   cover?: Maybe<AssetCreateOneInlineInput>;
   eventLabels?: Maybe<Array<EventLabel>>;
+  eventCategory: EventCategory;
 };
 
 export type EventCreateManyInlineInput = {
@@ -1583,6 +1585,13 @@ export type EventManyWhereInput = {
   eventLabels_contains_some?: Maybe<Array<EventLabel>>;
   /** Matches if the field array does not contain any of the items provided to the filter */
   eventLabels_contains_none?: Maybe<Array<EventLabel>>;
+  eventCategory?: Maybe<EventCategory>;
+  /** All values that are not equal to given value. */
+  eventCategory_not?: Maybe<EventCategory>;
+  /** All values that are contained in given list. */
+  eventCategory_in?: Maybe<Array<EventCategory>>;
+  /** All values that are not contained in given list. */
+  eventCategory_not_in?: Maybe<Array<EventCategory>>;
 };
 
 export enum EventOrderByInput {
@@ -1599,7 +1608,9 @@ export enum EventOrderByInput {
   DateAsc = 'date_ASC',
   DateDesc = 'date_DESC',
   EventLabelsAsc = 'eventLabels_ASC',
-  EventLabelsDesc = 'eventLabels_DESC'
+  EventLabelsDesc = 'eventLabels_DESC',
+  EventCategoryAsc = 'eventCategory_ASC',
+  EventCategoryDesc = 'eventCategory_DESC'
 }
 
 export type EventUpdateInput = {
@@ -1608,6 +1619,7 @@ export type EventUpdateInput = {
   date?: Maybe<Scalars['DateTime']>;
   cover?: Maybe<AssetUpdateOneInlineInput>;
   eventLabels?: Maybe<Array<EventLabel>>;
+  eventCategory?: Maybe<EventCategory>;
 };
 
 export type EventUpdateManyInlineInput = {
@@ -1632,6 +1644,7 @@ export type EventUpdateManyInput = {
   content?: Maybe<Scalars['RichTextAST']>;
   date?: Maybe<Scalars['DateTime']>;
   eventLabels?: Maybe<Array<EventLabel>>;
+  eventCategory?: Maybe<EventCategory>;
 };
 
 export type EventUpdateManyWithNestedWhereInput = {
@@ -1796,6 +1809,13 @@ export type EventWhereInput = {
   eventLabels_contains_some?: Maybe<Array<EventLabel>>;
   /** Matches if the field array does not contain any of the items provided to the filter */
   eventLabels_contains_none?: Maybe<Array<EventLabel>>;
+  eventCategory?: Maybe<EventCategory>;
+  /** All values that are not equal to given value. */
+  eventCategory_not?: Maybe<EventCategory>;
+  /** All values that are contained in given list. */
+  eventCategory_in?: Maybe<Array<EventCategory>>;
+  /** All values that are not contained in given list. */
+  eventCategory_not_in?: Maybe<Array<EventCategory>>;
 };
 
 /** References Event record uniquely */
@@ -2748,7 +2768,7 @@ export type EventsMetaQueryQuery = (
 
 export type EventPreviewFragment = (
   { __typename?: 'Event' }
-  & Pick<Event, 'id' | 'title' | 'date' | 'eventLabels'>
+  & Pick<Event, 'id' | 'title' | 'date' | 'eventLabels' | 'eventCategory'>
   & { content: (
     { __typename?: 'RichText' }
     & Pick<RichText, 'text'>
@@ -2762,6 +2782,20 @@ export type EventsPreviewQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type EventsPreviewQueryQuery = (
+  { __typename?: 'Query' }
+  & { events: Array<(
+    { __typename?: 'Event' }
+    & EventPreviewFragment
+  )> }
+);
+
+export type EventsPreviewPartialQueryQueryVariables = Exact<{
+  stage: Stage;
+  numberOfEvents?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type EventsPreviewPartialQueryQuery = (
   { __typename?: 'Query' }
   & { events: Array<(
     { __typename?: 'Event' }
@@ -2842,6 +2876,7 @@ export const EventPreviewFragmentDoc = gql`
     url
   }
   eventLabels
+  eventCategory
 }
     `;
 export const PressFileFragmentDoc = gql`
@@ -2901,6 +2936,18 @@ export const EventsPreviewQueryDocument = gql`
   }
 }
     ${EventPreviewFragmentDoc}`;
+export const EventsPreviewPartialQueryDocument = gql`
+    query eventsPreviewPartialQuery($stage: Stage!, $numberOfEvents: Int) {
+  events(
+    stage: $stage
+    where: {date_gte: "now"}
+    orderBy: date_ASC
+    first: $numberOfEvents
+  ) {
+    ...eventPreview
+  }
+}
+    ${EventPreviewFragmentDoc}`;
 export const PressFilesQueryDocument = gql`
     query pressFilesQuery($stage: Stage!) {
   assets(
@@ -2939,6 +2986,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     eventsPreviewQuery(variables?: EventsPreviewQueryQueryVariables): Promise<EventsPreviewQueryQuery> {
       return withWrapper(() => client.request<EventsPreviewQueryQuery>(print(EventsPreviewQueryDocument), variables));
+    },
+    eventsPreviewPartialQuery(variables: EventsPreviewPartialQueryQueryVariables): Promise<EventsPreviewPartialQueryQuery> {
+      return withWrapper(() => client.request<EventsPreviewPartialQueryQuery>(print(EventsPreviewPartialQueryDocument), variables));
     },
     pressFilesQuery(variables: PressFilesQueryQueryVariables): Promise<PressFilesQueryQuery> {
       return withWrapper(() => client.request<PressFilesQueryQuery>(print(PressFilesQueryDocument), variables));

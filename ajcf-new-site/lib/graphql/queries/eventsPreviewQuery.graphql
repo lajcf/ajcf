@@ -10,10 +10,16 @@ fragment eventPreview on Event {
     url
   }
   eventLabels
+  eventCategory
 }
 
 query eventsPreviewQuery {
   events(stage: DRAFT, where: { date_gte: "now" }, orderBy: date_ASC) {
+    ...eventPreview
+  }
+}
+query eventsPreviewPartialQuery($stage: Stage!, $numberOfEvents: Int) {
+  events(stage: $stage, where: { date_gte: "now" }, orderBy: date_ASC, first: $numberOfEvents) {
     ...eventPreview
   }
 }

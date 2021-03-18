@@ -3,7 +3,6 @@
 @import "./variables.scss";
 
 .capsHeading {
-  font-size: 40px;
   font-weight: bold;
   color: $secondary-color;
   text-transform: uppercase;
@@ -101,6 +100,7 @@ img {
   object-fit: contain;
   height: 100%;
   width: 100%;
+  max-height: 600px;
 }
 
 button {

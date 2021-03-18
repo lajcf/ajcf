@@ -1,11 +1,18 @@
 import React from "react";
+import { ArticlePreviewFragment, EventPreviewFragment } from "../../../../types/types";
 import { Layout } from "../../../Layout/Layout";
 import { AntennaAJCFLyon } from "./AntennaAJCFLyon";
 import { AntennaNewsComponent } from "./AntennaNewsComponent";
 import { AntennaUpcomingEvents } from "./AntennaUpcomingEvents";
 import styles from "./OurAntennas.module.scss";
 
-export const OurAntennasContainer = () => {
+export const OurAntennasContainer = ({
+  articles,
+  events,
+}: {
+  articles: ArticlePreviewFragment[];
+  events: EventPreviewFragment[];
+}) => {
   return (
     <Layout className={styles.layout}>
       <section className={styles.summarySection}>
@@ -18,11 +25,11 @@ export const OurAntennasContainer = () => {
         </p>
       </section>
       <AntennaAJCFLyon />
-      <AntennaNewsComponent />
-      <AntennaUpcomingEvents />
+      <AntennaNewsComponent articles={articles} />
+      <AntennaUpcomingEvents events={events} />
       <section className={styles.antennaJoinUsSection}>
         <h2>Nous rejoindre</h2>
-        <p className="texte1">
+        <p>
           Intéressé(e) par nos événements et le monde du débat et des idées ? Contactez l’équipe en charge de ce projet
           en contactant contact@lajcf.fr
         </p>

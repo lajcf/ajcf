@@ -11,48 +11,40 @@ type AntennaTeamProps = {
 const lyonTeam = [
   {
     id: 1,
-    name: "Ilana debris",
+    name: "Ilana Debris",
     role: "Coordinatrice",
-    description: "Fonction",
+    description: "Étudiante",
+    picture: require("../../../../public/Images/Antennes/antennes_ilana.jpg"),
   },
   {
     id: 2,
-    name: "Ilana debris",
+    name: "Claire Song",
     role: "Coordinatrice",
-    description: "Fonction",
-  },
-  {
-    id: 3,
-    name: "Ilana debris",
-    role: "Coordinatrice",
-    description: "Fonction",
-  },
-  {
-    id: 4,
-    name: "Ilana debris",
-    role: "Coordinatrice",
-    description: "Fonction",
+    description: "Project-manager",
+    picture: require("../../../../public/Images/Antennes/antennes_claire.jpg"),
   },
 ];
 
 export const AntennaAJCFLyon = () => {
   return (
     <section className={styles.lyonAntennaSection}>
-      <h2>Antenne AJCF Lyon</h2>
+      <h2 className="capsHeading">Antenne AJCF Lyon</h2>
       <p>
         L’antenne de Lyon a pour objectif de développer les activités de l’AJCF dans la région lyonnaise, d’y recruter
         de nouveaux membres, et d’adapter les actions selon les besoins locaux. Nous aimerions également nous faire
         connaître auprès des jeunes Chinois de Lyon et des acteurs lyonnais, mais aussi de toutes personnes intéressées.
       </p>
-      <div>
+      <div className={styles.teamSection}>
         <h3>L’équipe AJCF Lyon</h3>
         <ul className={styles.teamList}>
           {lyonTeam.map((member) => (
             <li key={member.id}>
-              <div className={styles.memberImageFrame} />
-              <h3>{member.name}</h3>
-              <h4>{member.role}</h4>
-              <p className="texte1">{member.description}</p>
+              <div className={styles.memberImageFrame}>
+                <img src={member.picture} />
+              </div>
+              <h4>{member.name}</h4>
+              <h5>{member.role}</h5>
+              <h6>{member.description}</h6>
             </li>
           ))}
         </ul>
