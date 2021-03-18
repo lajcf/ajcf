@@ -11,7 +11,7 @@ const AntennaNewsItem = ({ article }: { article: ArticlePreviewFragment }) => {
     <div className={styles.antennaNewsItem}>
       <div>{article.cover && <img src={article.cover.url} />}</div>
       <div>
-        <div className="capsHeading">Actualité</div>
+        <h4 className="capsHeading">Actualité</h4>
         <h3>{article.title}</h3>
         <p>{formatContentSummary(removeMarkdown(article.content), 220)}</p>
         <Link href={`/blog/${article.id}`}>
