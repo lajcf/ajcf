@@ -1,74 +1,91 @@
 import React, { useState } from "react";
-import { ArticlePreviewFragment, BlogCategory, BlogLabel } from "../../../types/types";
+import { BlogCategory, BlogLabel } from "../../../types/types";
 import styles from "./BlogContainer.module.scss";
 
 type SelectorForBlogCategoryOrLabelProps = {
-  selectedBlogCategoryOrLabel?: BlogCategory | BlogLabel;
-  setSelectedBlogCategoryOrLabel: (categoryOrLabel?: BlogCategory | BlogLabel) => void;
-  articles: ArticlePreviewFragment[];
+  selectedCategory?: BlogCategory;
+  handleSelectCategory: (category: BlogCategory) => void;
+  selectedLabel?: BlogLabel;
+  handleSelectLabel: (label: BlogLabel) => void;
+  labelsToShow: BlogLabel[];
+  resetFilters: () => void;
 };
 
-const filterOutUnusedLabels = (labels: BlogLabel[], articles: ArticlePreviewFragment[]) => {
-  const articleIncludesLabel = (article: ArticlePreviewFragment, label: BlogLabel) => {
-    return article.blogLabels.includes(label);
-  };
-  const labelHasSomeArticles = (label: BlogLabel) => {
-    return articles.some((article) => articleIncludesLabel(article, label));
-  };
-  return labels.filter((label) => labelHasSomeArticles(label));
-};
+const CategorySelector = ({
+  blogCategory,
+  selectedCategory,
+  handleSelectCategory,
+}: {
+  blogCategory: BlogCategory;
+  selectedCategory?: BlogCategory;
+  handleSelectCategory: (category: BlogCategory) => void;
+}) => (
+  <li key={blogCategory}>
+    <a
+      className={selectedCategory === blogCategory ? styles.active : undefined}
+      onClick={() => handleSelectCategory(blogCategory)}
+    >
+      {blogCategory}
+    </a>
+  </li>
+);
 
-export const SelectorForBlogCategoryOrLabel = ({
-  selectedBlogCategoryOrLabel,
-  setSelectedBlogCategoryOrLabel,
-  articles,
+const LabelSelector = ({
+  blogLabel,
+  selectedLabel,
+  handleSelectLabel,
+}: {
+  blogLabel: BlogLabel;
+  selectedLabel?: BlogLabel;
+  handleSelectLabel: (label: BlogLabel) => void;
+}) => (
+  <li key={blogLabel} className={styles.labelButton}>
+    <a className={selectedLabel === blogLabel ? styles.active : undefined} onClick={() => handleSelectLabel(blogLabel)}>
+      #{blogLabel}
+    </a>
+  </li>
+);
+
+export const CategoryLabelSelector = ({
+  selectedCategory,
+  selectedLabel,
+  handleSelectCategory,
+  handleSelectLabel,
+  labelsToShow,
+  resetFilters,
 }: SelectorForBlogCategoryOrLabelProps) => {
-  const [showLabels, setShowLabels] = useState<boolean>(false); // TODO Is it the right scope?
-  const usedLabels = filterOutUnusedLabels(Object.values(BlogLabel), articles);
+  const [showLabels, setShowLabels] = useState(false);
   return (
     <div className={styles.selectorForBlogCategoryOrLabel}>
       <ul className={styles.blogCategoriesList}>
         <li key="allArticles">
-          <a
-            className={!selectedBlogCategoryOrLabel ? styles.active : undefined}
-            onClick={() => setSelectedBlogCategoryOrLabel(undefined)}
-          >
+          <a className={selectedLabel || selectedCategory ? undefined : styles.active} onClick={() => resetFilters()}>
             Tous les articles
           </a>
         </li>
         {Object.values(BlogCategory).map((blogCategory) => (
-          <li key={blogCategory}>
-            <a
-              className={selectedBlogCategoryOrLabel === blogCategory ? styles.active : undefined}
-              onClick={() => setSelectedBlogCategoryOrLabel(blogCategory as BlogCategory)}
-            >
-              {blogCategory}
-            </a>
-          </li>
+          <CategorySelector
+            key={blogCategory}
+            blogCategory={blogCategory}
+            handleSelectCategory={handleSelectCategory}
+            selectedCategory={selectedCategory}
+          />
         ))}
         <li key="showLabelsButton">
-          {showLabels ? (
-            <button type="button" className={styles.showLabelsButton} onClick={() => setShowLabels(false)}>
-              Moins de catégories
-            </button>
-          ) : (
-            <button type="button" className={styles.showLabelsButton} onClick={() => setShowLabels(true)}>
-              Voir plus de catégories
-            </button>
-          )}
+          <button type="button" className={styles.showLabelsButton} onClick={() => setShowLabels(!showLabels)}>
+            {showLabels ? "Moins de catégories" : "Voir plus de catégories"}
+          </button>
         </li>
       </ul>
       {showLabels && (
         <ul className={styles.blogLabelsList}>
-          {usedLabels.map((blogLabel) => (
-            <li key={blogLabel} className={styles.labelButton}>
-              <a
-                className={selectedBlogCategoryOrLabel === blogLabel ? styles.active : undefined}
-                onClick={() => setSelectedBlogCategoryOrLabel(blogLabel as BlogLabel)}
-              >
-                #{blogLabel}
-              </a>
-            </li>
+          {labelsToShow.map((blogLabel) => (
+            <LabelSelector
+              key={blogLabel}
+              blogLabel={blogLabel}
+              selectedLabel={selectedLabel}
+              handleSelectLabel={handleSelectLabel}
+            />
           ))}
         </ul>
       )}
