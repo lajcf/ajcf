@@ -23,3 +23,16 @@
     }
   }
 }
+
+.jobOffersList {
+  width: 100%;
+  align-self: flex-start;
+  li {
+    display: flex;
+    flex-direction: column;
+    margin-right: 2rem;
+    a {
+      align-self: flex-end;
+    }
+  }
+}

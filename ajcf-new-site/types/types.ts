@@ -590,6 +590,7 @@ export type Asset = Node & {
   coverArticle: Array<Article>;
   assetLabel: Array<AssetLabel>;
   coverEvent: Array<Event>;
+  pdfFileJobOffer: Array<JobOffer>;
   /** List of Asset versions */
   history: Array<Version>;
   /** Get the url for the asset with provided transformations applied. */
@@ -657,6 +658,19 @@ export type AssetCoverEventArgs = {
 
 
 /** Asset system model */
+export type AssetPdfFileJobOfferArgs = {
+  where?: Maybe<JobOfferWhereInput>;
+  orderBy?: Maybe<JobOfferOrderByInput>;
+  skip?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  locales?: Maybe<Array<Locale>>;
+};
+
+
+/** Asset system model */
 export type AssetHistoryArgs = {
   limit?: Scalars['Int'];
   skip?: Scalars['Int'];
@@ -698,6 +712,7 @@ export type AssetCreateInput = {
   coverArticle?: Maybe<ArticleCreateManyInlineInput>;
   assetLabel?: Maybe<Array<AssetLabel>>;
   coverEvent?: Maybe<EventCreateManyInlineInput>;
+  pdfFileJobOffer?: Maybe<JobOfferCreateManyInlineInput>;
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: Maybe<AssetCreateLocalizationsInput>;
 };
@@ -859,6 +874,9 @@ export type AssetManyWhereInput = {
   coverEvent_every?: Maybe<EventWhereInput>;
   coverEvent_some?: Maybe<EventWhereInput>;
   coverEvent_none?: Maybe<EventWhereInput>;
+  pdfFileJobOffer_every?: Maybe<JobOfferWhereInput>;
+  pdfFileJobOffer_some?: Maybe<JobOfferWhereInput>;
+  pdfFileJobOffer_none?: Maybe<JobOfferWhereInput>;
 };
 
 export enum AssetOrderByInput {
@@ -904,6 +922,7 @@ export type AssetUpdateInput = {
   coverArticle?: Maybe<ArticleUpdateManyInlineInput>;
   assetLabel?: Maybe<Array<AssetLabel>>;
   coverEvent?: Maybe<EventUpdateManyInlineInput>;
+  pdfFileJobOffer?: Maybe<JobOfferUpdateManyInlineInput>;
   /** Manage document localizations */
   localizations?: Maybe<AssetUpdateLocalizationsInput>;
 };
@@ -1219,6 +1238,9 @@ export type AssetWhereInput = {
   coverEvent_every?: Maybe<EventWhereInput>;
   coverEvent_some?: Maybe<EventWhereInput>;
   coverEvent_none?: Maybe<EventWhereInput>;
+  pdfFileJobOffer_every?: Maybe<JobOfferWhereInput>;
+  pdfFileJobOffer_some?: Maybe<JobOfferWhereInput>;
+  pdfFileJobOffer_none?: Maybe<JobOfferWhereInput>;
 };
 
 /** References Asset record uniquely */
@@ -1850,6 +1872,415 @@ export type ImageTransformationInput = {
   resize?: Maybe<ImageResizeInput>;
 };
 
+export type JobOffer = Node & {
+  __typename?: 'JobOffer';
+  /** System stage field */
+  stage: Stage;
+  /** Get the document in other stages */
+  documentInStages: Array<JobOffer>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  title: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  pdfFile?: Maybe<Asset>;
+  /** List of JobOffer versions */
+  history: Array<Version>;
+};
+
+
+export type JobOfferDocumentInStagesArgs = {
+  stages?: Array<Stage>;
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+};
+
+
+export type JobOfferPdfFileArgs = {
+  locales?: Maybe<Array<Locale>>;
+};
+
+
+export type JobOfferHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: Maybe<Stage>;
+};
+
+export type JobOfferConnectInput = {
+  /** Document to connect */
+  where: JobOfferWhereUniqueInput;
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: Maybe<ConnectPositionInput>;
+};
+
+/** A connection to a list of items. */
+export type JobOfferConnection = {
+  __typename?: 'JobOfferConnection';
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  /** A list of edges. */
+  edges: Array<JobOfferEdge>;
+  aggregate: Aggregate;
+};
+
+export type JobOfferCreateInput = {
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  title: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  pdfFile?: Maybe<AssetCreateOneInlineInput>;
+};
+
+export type JobOfferCreateManyInlineInput = {
+  /** Create and connect multiple existing JobOffer documents */
+  create?: Maybe<Array<JobOfferCreateInput>>;
+  /** Connect multiple existing JobOffer documents */
+  connect?: Maybe<Array<JobOfferWhereUniqueInput>>;
+};
+
+export type JobOfferCreateOneInlineInput = {
+  /** Create and connect one JobOffer document */
+  create?: Maybe<JobOfferCreateInput>;
+  /** Connect one existing JobOffer document */
+  connect?: Maybe<JobOfferWhereUniqueInput>;
+};
+
+/** An edge in a connection. */
+export type JobOfferEdge = {
+  __typename?: 'JobOfferEdge';
+  /** The item at the end of the edge. */
+  node: JobOffer;
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+};
+
+/** Identifies documents */
+export type JobOfferManyWhereInput = {
+  /** Contains search across all appropriate fields. */
+  _search?: Maybe<Scalars['String']>;
+  /** Logical AND on all given filters. */
+  AND?: Maybe<Array<JobOfferWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: Maybe<Array<JobOfferWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: Maybe<Array<JobOfferWhereInput>>;
+  id?: Maybe<Scalars['ID']>;
+  /** All values that are not equal to given value. */
+  id_not?: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not contained in given list. */
+  id_not_in?: Maybe<Array<Scalars['ID']>>;
+  /** All values containing the given string. */
+  id_contains?: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: Maybe<Scalars['ID']>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: Maybe<Scalars['ID']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: Maybe<Scalars['DateTime']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: Maybe<Scalars['DateTime']>;
+  title?: Maybe<Scalars['String']>;
+  /** All values that are not equal to given value. */
+  title_not?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  title_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not contained in given list. */
+  title_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values containing the given string. */
+  title_contains?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  title_not_contains?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  title_starts_with?: Maybe<Scalars['String']>;
+  /** All values not starting with the given string. */
+  title_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  title_ends_with?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  title_not_ends_with?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  /** All values that are not equal to given value. */
+  description_not?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  description_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not contained in given list. */
+  description_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values containing the given string. */
+  description_contains?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  description_not_contains?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  description_starts_with?: Maybe<Scalars['String']>;
+  /** All values not starting with the given string. */
+  description_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  description_ends_with?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  description_not_ends_with?: Maybe<Scalars['String']>;
+  pdfFile?: Maybe<AssetWhereInput>;
+};
+
+export enum JobOfferOrderByInput {
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC',
+  DescriptionAsc = 'description_ASC',
+  DescriptionDesc = 'description_DESC'
+}
+
+export type JobOfferUpdateInput = {
+  title?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  pdfFile?: Maybe<AssetUpdateOneInlineInput>;
+};
+
+export type JobOfferUpdateManyInlineInput = {
+  /** Create and connect multiple JobOffer documents */
+  create?: Maybe<Array<JobOfferCreateInput>>;
+  /** Connect multiple existing JobOffer documents */
+  connect?: Maybe<Array<JobOfferConnectInput>>;
+  /** Override currently-connected documents with multiple existing JobOffer documents */
+  set?: Maybe<Array<JobOfferWhereUniqueInput>>;
+  /** Update multiple JobOffer documents */
+  update?: Maybe<Array<JobOfferUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple JobOffer documents */
+  upsert?: Maybe<Array<JobOfferUpsertWithNestedWhereUniqueInput>>;
+  /** Disconnect multiple JobOffer documents */
+  disconnect?: Maybe<Array<JobOfferWhereUniqueInput>>;
+  /** Delete multiple JobOffer documents */
+  delete?: Maybe<Array<JobOfferWhereUniqueInput>>;
+};
+
+export type JobOfferUpdateManyInput = {
+  title?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+};
+
+export type JobOfferUpdateManyWithNestedWhereInput = {
+  /** Document search */
+  where: JobOfferWhereInput;
+  /** Update many input */
+  data: JobOfferUpdateManyInput;
+};
+
+export type JobOfferUpdateOneInlineInput = {
+  /** Create and connect one JobOffer document */
+  create?: Maybe<JobOfferCreateInput>;
+  /** Update single JobOffer document */
+  update?: Maybe<JobOfferUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single JobOffer document */
+  upsert?: Maybe<JobOfferUpsertWithNestedWhereUniqueInput>;
+  /** Connect existing JobOffer document */
+  connect?: Maybe<JobOfferWhereUniqueInput>;
+  /** Disconnect currently connected JobOffer document */
+  disconnect?: Maybe<Scalars['Boolean']>;
+  /** Delete currently connected JobOffer document */
+  delete?: Maybe<Scalars['Boolean']>;
+};
+
+export type JobOfferUpdateWithNestedWhereUniqueInput = {
+  /** Unique document search */
+  where: JobOfferWhereUniqueInput;
+  /** Document to update */
+  data: JobOfferUpdateInput;
+};
+
+export type JobOfferUpsertInput = {
+  /** Create document if it didn't exist */
+  create: JobOfferCreateInput;
+  /** Update document if it exists */
+  update: JobOfferUpdateInput;
+};
+
+export type JobOfferUpsertWithNestedWhereUniqueInput = {
+  /** Unique document search */
+  where: JobOfferWhereUniqueInput;
+  /** Upsert data */
+  data: JobOfferUpsertInput;
+};
+
+/** Identifies documents */
+export type JobOfferWhereInput = {
+  /** Contains search across all appropriate fields. */
+  _search?: Maybe<Scalars['String']>;
+  /** Logical AND on all given filters. */
+  AND?: Maybe<Array<JobOfferWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: Maybe<Array<JobOfferWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: Maybe<Array<JobOfferWhereInput>>;
+  id?: Maybe<Scalars['ID']>;
+  /** All values that are not equal to given value. */
+  id_not?: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not contained in given list. */
+  id_not_in?: Maybe<Array<Scalars['ID']>>;
+  /** All values containing the given string. */
+  id_contains?: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: Maybe<Scalars['ID']>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: Maybe<Scalars['ID']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: Maybe<Scalars['DateTime']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: Maybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: Maybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: Maybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: Maybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: Maybe<Scalars['DateTime']>;
+  title?: Maybe<Scalars['String']>;
+  /** All values that are not equal to given value. */
+  title_not?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  title_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not contained in given list. */
+  title_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values containing the given string. */
+  title_contains?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  title_not_contains?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  title_starts_with?: Maybe<Scalars['String']>;
+  /** All values not starting with the given string. */
+  title_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  title_ends_with?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  title_not_ends_with?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  /** All values that are not equal to given value. */
+  description_not?: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  description_in?: Maybe<Array<Scalars['String']>>;
+  /** All values that are not contained in given list. */
+  description_not_in?: Maybe<Array<Scalars['String']>>;
+  /** All values containing the given string. */
+  description_contains?: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  description_not_contains?: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  description_starts_with?: Maybe<Scalars['String']>;
+  /** All values not starting with the given string. */
+  description_not_starts_with?: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  description_ends_with?: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  description_not_ends_with?: Maybe<Scalars['String']>;
+  pdfFile?: Maybe<AssetWhereInput>;
+};
+
+/** References JobOffer record uniquely */
+export type JobOfferWhereUniqueInput = {
+  id?: Maybe<Scalars['ID']>;
+};
+
 
 /** Locale system enumeration */
 export enum Locale {
@@ -2004,6 +2435,46 @@ export type Mutation = {
    * @deprecated Please use the new paginated many mutation (unpublishManyEventsConnection)
    */
   unpublishManyEvents: BatchPayload;
+  /** Create one jobOffer */
+  createJobOffer?: Maybe<JobOffer>;
+  /** Update one jobOffer */
+  updateJobOffer?: Maybe<JobOffer>;
+  /** Delete one jobOffer from _all_ existing stages. Returns deleted document. */
+  deleteJobOffer?: Maybe<JobOffer>;
+  /** Upsert one jobOffer */
+  upsertJobOffer?: Maybe<JobOffer>;
+  /** Publish one jobOffer */
+  publishJobOffer?: Maybe<JobOffer>;
+  /** Unpublish one jobOffer from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishJobOffer?: Maybe<JobOffer>;
+  /** Update many JobOffer documents */
+  updateManyJobOffersConnection: JobOfferConnection;
+  /** Delete many JobOffer documents, return deleted documents */
+  deleteManyJobOffersConnection: JobOfferConnection;
+  /** Publish many JobOffer documents */
+  publishManyJobOffersConnection: JobOfferConnection;
+  /** Find many JobOffer documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyJobOffersConnection: JobOfferConnection;
+  /**
+   * Update many jobOffers
+   * @deprecated Please use the new paginated many mutation (updateManyJobOffersConnection)
+   */
+  updateManyJobOffers: BatchPayload;
+  /**
+   * Delete many JobOffer documents
+   * @deprecated Please use the new paginated many mutation (deleteManyJobOffersConnection)
+   */
+  deleteManyJobOffers: BatchPayload;
+  /**
+   * Publish many JobOffer documents
+   * @deprecated Please use the new paginated many mutation (publishManyJobOffersConnection)
+   */
+  publishManyJobOffers: BatchPayload;
+  /**
+   * Unpublish many JobOffer documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyJobOffersConnection)
+   */
+  unpublishManyJobOffers: BatchPayload;
 };
 
 
@@ -2327,6 +2798,108 @@ export type MutationUnpublishManyEventsArgs = {
   from?: Array<Stage>;
 };
 
+
+export type MutationCreateJobOfferArgs = {
+  data: JobOfferCreateInput;
+};
+
+
+export type MutationUpdateJobOfferArgs = {
+  where: JobOfferWhereUniqueInput;
+  data: JobOfferUpdateInput;
+};
+
+
+export type MutationDeleteJobOfferArgs = {
+  where: JobOfferWhereUniqueInput;
+};
+
+
+export type MutationUpsertJobOfferArgs = {
+  where: JobOfferWhereUniqueInput;
+  upsert: JobOfferUpsertInput;
+};
+
+
+export type MutationPublishJobOfferArgs = {
+  where: JobOfferWhereUniqueInput;
+  to?: Array<Stage>;
+};
+
+
+export type MutationUnpublishJobOfferArgs = {
+  where: JobOfferWhereUniqueInput;
+  from?: Array<Stage>;
+};
+
+
+export type MutationUpdateManyJobOffersConnectionArgs = {
+  where?: Maybe<JobOfferManyWhereInput>;
+  data: JobOfferUpdateManyInput;
+  skip?: Maybe<Scalars['Int']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['ID']>;
+  after?: Maybe<Scalars['ID']>;
+};
+
+
+export type MutationDeleteManyJobOffersConnectionArgs = {
+  where?: Maybe<JobOfferManyWhereInput>;
+  skip?: Maybe<Scalars['Int']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['ID']>;
+  after?: Maybe<Scalars['ID']>;
+};
+
+
+export type MutationPublishManyJobOffersConnectionArgs = {
+  where?: Maybe<JobOfferManyWhereInput>;
+  from?: Maybe<Stage>;
+  to?: Array<Stage>;
+  skip?: Maybe<Scalars['Int']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['ID']>;
+  after?: Maybe<Scalars['ID']>;
+};
+
+
+export type MutationUnpublishManyJobOffersConnectionArgs = {
+  where?: Maybe<JobOfferManyWhereInput>;
+  stage?: Maybe<Stage>;
+  from?: Array<Stage>;
+  skip?: Maybe<Scalars['Int']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['ID']>;
+  after?: Maybe<Scalars['ID']>;
+};
+
+
+export type MutationUpdateManyJobOffersArgs = {
+  where?: Maybe<JobOfferManyWhereInput>;
+  data: JobOfferUpdateManyInput;
+};
+
+
+export type MutationDeleteManyJobOffersArgs = {
+  where?: Maybe<JobOfferManyWhereInput>;
+};
+
+
+export type MutationPublishManyJobOffersArgs = {
+  where?: Maybe<JobOfferManyWhereInput>;
+  to?: Array<Stage>;
+};
+
+
+export type MutationUnpublishManyJobOffersArgs = {
+  where?: Maybe<JobOfferManyWhereInput>;
+  from?: Array<Stage>;
+};
+
 /** An object with an ID */
 export type Node = {
   /** The id of the object. */
@@ -2385,6 +2958,14 @@ export type Query = {
   eventsConnection: EventConnection;
   /** Retrieve document version */
   eventVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple jobOffers */
+  jobOffers: Array<JobOffer>;
+  /** Retrieve a single jobOffer */
+  jobOffer?: Maybe<JobOffer>;
+  /** Retrieve multiple jobOffers using the Relay connection interface */
+  jobOffersConnection: JobOfferConnection;
+  /** Retrieve document version */
+  jobOfferVersion?: Maybe<DocumentVersion>;
 };
 
 
@@ -2505,6 +3086,44 @@ export type QueryEventsConnectionArgs = {
 
 
 export type QueryEventVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryJobOffersArgs = {
+  where?: Maybe<JobOfferWhereInput>;
+  orderBy?: Maybe<JobOfferOrderByInput>;
+  skip?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  stage?: Stage;
+  locales?: Array<Locale>;
+};
+
+
+export type QueryJobOfferArgs = {
+  where: JobOfferWhereUniqueInput;
+  stage?: Stage;
+  locales?: Array<Locale>;
+};
+
+
+export type QueryJobOffersConnectionArgs = {
+  where?: Maybe<JobOfferWhereInput>;
+  orderBy?: Maybe<JobOfferOrderByInput>;
+  skip?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  stage?: Stage;
+  locales?: Array<Locale>;
+};
+
+
+export type QueryJobOfferVersionArgs = {
   where: VersionWhereInput;
 };
 
@@ -2803,6 +3422,28 @@ export type EventsPreviewPartialQueryQuery = (
   )> }
 );
 
+export type JobOffersFragment = (
+  { __typename?: 'JobOffer' }
+  & Pick<JobOffer, 'id' | 'title' | 'description'>
+  & { pdfFile?: Maybe<(
+    { __typename?: 'Asset' }
+    & Pick<Asset, 'url'>
+  )> }
+);
+
+export type JobOffersQueryQueryVariables = Exact<{
+  stage: Stage;
+}>;
+
+
+export type JobOffersQueryQuery = (
+  { __typename?: 'Query' }
+  & { jobOffers: Array<(
+    { __typename?: 'JobOffer' }
+    & JobOffersFragment
+  )> }
+);
+
 export type PressFileFragment = (
   { __typename?: 'Asset' }
   & Pick<Asset, 'fileName' | 'url' | 'updatedAt' | 'assetLabel'>
@@ -2879,6 +3520,16 @@ export const EventPreviewFragmentDoc = gql`
   eventCategory
 }
     `;
+export const JobOffersFragmentDoc = gql`
+    fragment jobOffers on JobOffer {
+  id
+  title
+  description
+  pdfFile {
+    url
+  }
+}
+    `;
 export const PressFileFragmentDoc = gql`
     fragment pressFile on Asset {
   fileName
@@ -2948,6 +3599,13 @@ export const EventsPreviewPartialQueryDocument = gql`
   }
 }
     ${EventPreviewFragmentDoc}`;
+export const JobOffersQueryDocument = gql`
+    query jobOffersQuery($stage: Stage!) {
+  jobOffers(stage: $stage, orderBy: createdAt_DESC) {
+    ...jobOffers
+  }
+}
+    ${JobOffersFragmentDoc}`;
 export const PressFilesQueryDocument = gql`
     query pressFilesQuery($stage: Stage!) {
   assets(
@@ -2989,6 +3647,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     eventsPreviewPartialQuery(variables: EventsPreviewPartialQueryQueryVariables): Promise<EventsPreviewPartialQueryQuery> {
       return withWrapper(() => client.request<EventsPreviewPartialQueryQuery>(print(EventsPreviewPartialQueryDocument), variables));
+    },
+    jobOffersQuery(variables: JobOffersQueryQueryVariables): Promise<JobOffersQueryQuery> {
+      return withWrapper(() => client.request<JobOffersQueryQuery>(print(JobOffersQueryDocument), variables));
     },
     pressFilesQuery(variables: PressFilesQueryQueryVariables): Promise<PressFilesQueryQuery> {
       return withWrapper(() => client.request<PressFilesQueryQuery>(print(PressFilesQueryDocument), variables));

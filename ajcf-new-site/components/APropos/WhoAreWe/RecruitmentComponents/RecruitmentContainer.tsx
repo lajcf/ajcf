@@ -1,8 +1,27 @@
 import React from "react";
+import { JobOffer } from "../../../../types/types";
 import { Layout } from "../../../Layout/Layout";
 import styles from "./Recruitment.module.scss";
 
-export const RecruitmentContainer = () => {
+const JobOffersList = ({ jobOffers }: { jobOffers: JobOffer[] }) => {
+  return (
+    <ul className={styles.jobOffersList}>
+      {jobOffers.map((jobOffer) => (
+        <li key={jobOffer.id}>
+          <h4 className="capsHeading">{jobOffer.title}</h4>
+          <p>{jobOffer.description}</p>
+          {jobOffer.pdfFile && (
+            <a href={jobOffer.pdfFile.url} target="_blank" rel="noopener noreferrer">
+              Voir l'offre
+            </a>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+export const RecruitmentContainer = ({ jobOffers }: { jobOffers: JobOffer[] }) => {
   return (
     <Layout className={styles.layout}>
       <section className={styles.summarySection}>
@@ -29,6 +48,10 @@ export const RecruitmentContainer = () => {
           </p>
           <p>Si tu es intéressé(e), écris-nous pour te présenter et nous expliquer tes motivations !</p>
         </div>
+      </section>
+      <section>
+        <h2>Nos offres du moment</h2>
+        <JobOffersList jobOffers={jobOffers} />
       </section>
       <section className={styles.recruitmentCallSection}>
         <h2>
