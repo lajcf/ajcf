@@ -1,18 +1,18 @@
 import React from "react";
 import {
-  CommentOutlined,
+  NotificationOutlined,
+  RocketOutlined,
+  AimOutlined,
+  SmileOutlined,
   ReadOutlined,
   HistoryOutlined,
   InsuranceOutlined,
   DingtalkOutlined,
   TranslationOutlined,
-  RadarChartOutlined,
-  TeamOutlined,
   IdcardOutlined,
   FullscreenExitOutlined,
-  CoffeeOutlined,
   FireOutlined,
-  RocketOutlined,
+  CompassOutlined,
 } from "@ant-design/icons";
 
 export type ActivityContent = {
@@ -36,7 +36,7 @@ export const OUR_ESPACES: EspaceContent[] = [
     title: "L’identité est riche et complexe, il faut en parler.",
     text:
       "Cet espace est dédié à la culture, à l’histoire et à l’identité franco-chinoises. que nous proposons de découvrir et de valoriser ensemble. Plusieurs axes sont abordés à travers les trois pôles : Culture, Education/Mémoire, Défense des droits.",
-    logo: <CommentOutlined />,
+    logo: <NotificationOutlined />,
     activities: [
       {
         name: "Culture",
@@ -58,7 +58,7 @@ export const OUR_ESPACES: EspaceContent[] = [
     title: "La découverte de soi et de l’autre se fait par l’apprentissage.",
     text:
       "Cet espace procure des occasions pour s’inspirer et progresser, grâce aux événements du pôle Développement personnel et du pôle Echanges linguistiques.",
-    logo: <RadarChartOutlined />,
+    logo: <RocketOutlined />,
     activities: [
       {
         name: "Développement Personnel",
@@ -76,7 +76,7 @@ export const OUR_ESPACES: EspaceContent[] = [
     title: "La connexion à un réseau franco-chinois est source de belles rencontres.",
     text:
       "Cet espace favorise notre interaction avec tous les partenaires et procure des moments d’échanges privilégiés avec nos membres. Ces occasions se présentent via l’AJCF Club Pro ou les Rencontres AJCF.",
-    logo: <TeamOutlined />,
+    logo: <AimOutlined />,
     activities: [
       {
         name: "AJCF Club Pro",
@@ -94,7 +94,7 @@ export const OUR_ESPACES: EspaceContent[] = [
     title: "Quel meilleur loisir dans la vie que d'en profiter ?",
     text:
       "Cet espace vous propose de partager le plaisir de manger autour de la table avec de nombreuses cuisines de Chinese Food Day ou encore de se dépenser via des activités physiques grâce au pôle Sports & Sorties.",
-    logo: <CoffeeOutlined />,
+    logo: <SmileOutlined />,
     activities: [
       {
         name: "Chinese Food",
@@ -102,7 +102,7 @@ export const OUR_ESPACES: EspaceContent[] = [
       },
       {
         name: "Sport & Sorties",
-        logo: <RocketOutlined />,
+        logo: <CompassOutlined />,
       },
     ],
   },

@@ -1,5 +1,5 @@
 import React from "react";
-import { Activities } from "./Activities";
+import { EspacesActivities } from "./EspacesActivities";
 import styles from "./OurEspaces.module.scss";
 import { EspaceContent } from "./ourEspacesConfig";
 
@@ -7,7 +7,7 @@ type EspaceContentProps = {
   espaceContent: EspaceContent;
 };
 
-export const Espace = ({ espaceContent }: EspaceContentProps) => {
+export const EspaceItem = ({ espaceContent }: EspaceContentProps) => {
   return (
     <section className={styles.espaceSection}>
       <div className={styles.emptySection} />
@@ -17,12 +17,12 @@ export const Espace = ({ espaceContent }: EspaceContentProps) => {
       </div>
       <div className={styles.contentContainer}>
         <div className={styles.sectionContent}>
-          <div className="capsHeading">{`Espace ${espaceContent.categoryName}`}</div>
+          <h3 className="capsHeading">{`Espace ${espaceContent.categoryName}`}</h3>
           <h2>{espaceContent.title}</h2>
           <p>{espaceContent.text}</p>
           <div className={styles.activitiesList}>
             <h3>Les activités</h3>
-            <Activities activitiesContent={espaceContent.activities} />
+            <EspacesActivities activitiesContent={espaceContent.activities} />
           </div>
         </div>
       </div>
