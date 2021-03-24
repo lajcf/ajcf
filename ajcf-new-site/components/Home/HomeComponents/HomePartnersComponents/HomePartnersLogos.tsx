@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./HomePartners.module.scss";
 
-const partnersLogos = [
+export const partnersLogos = [
   {
     id: 1,
     name: "Minitère-Éducation-Nationale",
