@@ -1,0 +1,14 @@
+fragment jobOffers on JobOffer {
+  id
+  title
+  description
+  pdfFile {
+    url
+  }
+}
+
+query jobOffersQuery($stage: Stage!) {
+  jobOffers(stage: $stage, orderBy: createdAt_DESC) {
+    ...jobOffers
+  }
+}

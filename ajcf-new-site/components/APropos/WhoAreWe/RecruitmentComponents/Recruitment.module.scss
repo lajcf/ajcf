@@ -1,3 +1,5 @@
+@import "/styles/variables.scss";
+
 .layout {
   main {
     display: grid;
@@ -6,24 +8,31 @@
       "quickAccess breadcrumbs"
       "quickAccess summarySection";
     section {
-      grid-column: span 2;
+      grid-column-start: 2;
     }
     .summarySection {
       grid-area: summarySection;
     }
-    .ourOffersSection {
-      .offersContentList {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-    }
     .recruitmentCallSection {
-      background-color: #8aa2d0;
+      grid-column: span 2;
+      background-color: $primary-color;
+      padding: 2rem 6rem;
       * {
         text-align: center;
-        color: white;
       }
+    }
+  }
+}
+
+.jobOffersList {
+  width: 100%;
+  align-self: flex-start;
+  li {
+    display: flex;
+    flex-direction: column;
+    margin-right: 2rem;
+    a {
+      align-self: flex-end;
     }
   }
 }
