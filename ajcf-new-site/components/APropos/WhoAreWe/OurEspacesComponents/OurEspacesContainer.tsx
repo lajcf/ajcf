@@ -1,5 +1,5 @@
 import React from "react";
-import { Espace } from "./Espace";
+import { EspaceItem } from "./EspaceItem";
 import { OUR_ESPACES } from "./ourEspacesConfig";
 import { Layout } from "../../../Layout/Layout";
 import styles from "./OurEspaces.module.scss";
@@ -20,7 +20,7 @@ export const OurEspacesContainer = () => {
       <ul className={styles.espacesList}>
         {OUR_ESPACES.map((espace) => (
           <li key={espace.categoryName}>
-            <Espace espaceContent={espace} />
+            <EspaceItem espaceContent={espace} />
           </li>
         ))}
       </ul>

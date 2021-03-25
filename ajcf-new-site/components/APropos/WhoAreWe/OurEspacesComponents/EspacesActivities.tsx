@@ -6,7 +6,7 @@ export type ActivitiesProps = {
   activitiesContent: ActivityContent[];
 };
 
-export const Activities = ({ activitiesContent }: ActivitiesProps) => {
+export const EspacesActivities = ({ activitiesContent }: ActivitiesProps) => {
   return (
     <div className={styles.activitiesContent}>
       {activitiesContent.map((activityContent) => (
