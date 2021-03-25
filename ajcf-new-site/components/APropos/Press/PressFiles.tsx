@@ -10,7 +10,7 @@ type PressFilesProps = {
 
 export const PressFiles = ({ pressFiles, title }: PressFilesProps) => {
   return (
-    <section className={styles.pressFilesSection}>
+    <section className={styles.pressFilesSection} id={title}>
       <h2>{title}</h2>
       <FilesDisplay files={pressFiles} />
     </section>

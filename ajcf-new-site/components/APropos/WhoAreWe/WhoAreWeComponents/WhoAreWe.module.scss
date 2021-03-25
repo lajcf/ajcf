@@ -1,0 +1,41 @@
+@import "/styles/variables.scss";
+
+$logo-size: 6rem;
+
+.layout {
+  main {
+    display: grid;
+    grid-template-areas:
+      "quickAccess breadcrumbs"
+      "quickAccess summarySection";
+
+    .summarySection {
+      grid-area: summarySection;
+    }
+    section {
+      grid-column: span 2;
+    }
+  }
+}
+
+.espacesSection {
+  background-color: $primary-color;
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 2rem;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      row-gap: 1rem;
+    }
+
+    svg {
+      font-size: $logo-size;
+    }
+  }
+}

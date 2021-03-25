@@ -1,12 +1,33 @@
+$logo-size: 6rem;
+
 .layout {
   main {
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-areas:
       "quickAccess breadcrumbs"
-      "quickAccess summary"
-      "quickAccess institutions"
-      "quickAccess associationsAndCollectives"
-      "quickAccess enterprises";
+      "quickAccess summarySection";
+
+    .summarySection {
+      grid-area: summarySection;
+    }
+    section {
+      grid-column-start: 2;
+    }
+  }
+}
+
+.partnersListSection {
+  margin: 2rem;
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+
+    img {
+      width: $logo-size;
+      height: $logo-size;
+    }
   }
 }
