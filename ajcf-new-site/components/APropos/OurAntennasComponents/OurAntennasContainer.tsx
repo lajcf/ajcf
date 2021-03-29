@@ -1,6 +1,6 @@
 import React from "react";
-import { ArticlePreviewFragment, EventPreviewFragment } from "../../../../types/types";
-import { Layout } from "../../../Layout/Layout";
+import { ArticlePreviewFragment, EventPreviewFragment } from "../../../types/types";
+import { Layout } from "../../Layout/Layout";
 import { AntennaAJCFLyon } from "./AntennaAJCFLyon";
 import { AntennaNewsComponent } from "./AntennaNewsComponent";
 import { AntennaUpcomingEvents } from "./AntennaUpcomingEvents";

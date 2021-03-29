@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout } from "../../../Layout/Layout";
+import { Layout } from "../../Layout/Layout";
 import { OUR_ESPACES } from "../OurEspacesComponents/ourEspacesConfig";
 import styles from "./WhoAreWe.module.scss";
 

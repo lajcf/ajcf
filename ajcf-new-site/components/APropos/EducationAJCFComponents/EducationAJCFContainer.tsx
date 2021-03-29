@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout } from "../../../Layout/Layout";
+import { Layout } from "../../Layout/Layout";
 import { EducationPartnersLogos } from "./EducationPartnersLogos";
 import styles from "./EducationAJCF.module.scss";
 
