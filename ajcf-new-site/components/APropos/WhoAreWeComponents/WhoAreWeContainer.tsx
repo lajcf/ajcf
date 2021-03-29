@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { Layout } from "../../Layout/Layout";
 import { OUR_ESPACES } from "../OurEspacesComponents/ourEspacesConfig";
@@ -7,10 +8,14 @@ const OurEspacesList = () => {
   return (
     <ul>
       {OUR_ESPACES.map((espace) => (
-        <li key={espace.categoryName}>
-          {espace.logo}
-          <h3>Espace {espace.categoryName}</h3>
-        </li>
+        <Link key={espace.categoryName} href={`/a-propos/nos-espaces/#${espace.categoryName}`}>
+          <a>
+            <li>
+              {espace.logo}
+              <h3>Espace {espace.categoryName}</h3>
+            </li>
+          </a>
+        </Link>
       ))}
     </ul>
   );
@@ -29,6 +34,11 @@ export const WhoAreWeContainer = () => {
       <section className={styles.espacesSection}>
         <h3 className="capsHeading">Nos espaces</h3>
         <OurEspacesList />
+        <Link href="/a-propos/nos-espaces">
+          <button className="centered" type="button">
+            En savoir plus
+          </button>
+        </Link>
       </section>
       <section className={styles.antennasSection}>
         <h3 className="capsHeading">Nos antennes</h3>
@@ -37,9 +47,11 @@ export const WhoAreWeContainer = () => {
           ville jeune, dynamique et solidaire, mais deuxième foyer des communautés d’origine chinoise en France, a
           naturellement été choisie pour ouvrir la première antenne de l’AJCF.
         </p>
-        <button className="centered" type="button">
-          En savoir plus
-        </button>
+        <Link href="/a-propos/nos-antennes">
+          <button className="centered" type="button">
+            En savoir plus
+          </button>
+        </Link>
       </section>
       <section className={styles.educationSection}>
         <h3 className="capsHeading">Éducation AJCF</h3>
@@ -48,9 +60,11 @@ export const WhoAreWeContainer = () => {
           l’immigration des Asiatiques, favoriser le dialogue multiculturel et intergénérationnel, et déconstruire les
           stéréotypes, afin de promouvoir le bien vivre-ensemble.
         </p>
-        <button className="centered" type="button">
-          En savoir plus
-        </button>
+        <Link href="/a-propos/education-ajcf">
+          <button className="centered" type="button">
+            En savoir plus
+          </button>
+        </Link>
       </section>
     </Layout>
   );
