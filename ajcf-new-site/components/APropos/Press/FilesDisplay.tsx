@@ -1,6 +1,4 @@
 import React from "react";
-import Link from "next/link";
-import { DownloadOutlined } from "@ant-design/icons";
 import { capitalize } from "lodash";
 import { AssetLabel, PressFileFragment } from "../../../types/types";
 import styles from "./Press.module.scss";
@@ -28,20 +26,18 @@ const fileTitleContent = (file: PressFileFragment): string => {
 
 export const FilesDisplay = ({ files }: { files: PressFileFragment[] }) => {
   return (
-    <div className={styles.files}>
+    <ul className={styles.files}>
       {files.map((file) => (
-        <div key={file.fileName} className={styles.file}>
-          <h3 className={styles.title}>{fileTitleContent(file)}</h3>
-          <p>
-            {file.fileName}{" "}
-            <Link href={file.url}>
-              <a target="_blank">
-                <DownloadOutlined />
-              </a>
-            </Link>
-          </p>
-        </div>
+        <li key={file.fileName}>
+          <h3>{fileTitleContent(file)}</h3>
+          <div className={styles.fileDescription}>
+            <p>{file.fileName}</p>
+            <a href={file.url} target="_blank" rel="noopener noreferrer">
+              Ouvrir le fichier
+            </a>
+          </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };

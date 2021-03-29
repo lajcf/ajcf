@@ -1,3 +1,5 @@
+@import "/styles/variables.scss";
+
 .layout {
   main {
     display: grid;
@@ -12,11 +14,20 @@
       grid-column-start: 2;
     }
   }
-  .files {
-    .file {
-      .title {
-        color: #3c64b1;
-      }
-    }
+}
+
+.inPageLinks {
+  display: flex;
+  column-gap: 2rem;
+}
+
+.files {
+  margin-right: 4rem;
+  h3 {
+    color: $secondary-color;
+  }
+  .fileDescription {
+    display: flex;
+    justify-content: space-between;
   }
 }

@@ -8,6 +8,9 @@ $logo-size: 6rem;
       "quickAccess breadcrumbs"
       "quickAccess summarySection";
 
+    .summarySection {
+      grid-area: summarySection;
+    }
     section {
       grid-column-start: 2;
     }
