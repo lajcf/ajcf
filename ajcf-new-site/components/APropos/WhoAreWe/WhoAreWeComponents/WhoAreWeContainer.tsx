@@ -6,10 +6,10 @@ import styles from "./WhoAreWe.module.scss";
 const OurEspacesList = () => {
   return (
     <ul>
-      {OUR_ESPACES.map((ESPACE) => (
-        <li key={ESPACE.categoryName}>
-          {ESPACE.logo}
-          <h3>Espace {ESPACE.categoryName}</h3>
+      {OUR_ESPACES.map((espace) => (
+        <li key={espace.categoryName}>
+          {espace.logo}
+          <h3>Espace {espace.categoryName}</h3>
         </li>
       ))}
     </ul>
