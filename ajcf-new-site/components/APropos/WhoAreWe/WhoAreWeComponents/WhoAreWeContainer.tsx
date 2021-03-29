@@ -32,9 +32,25 @@ export const WhoAreWeContainer = () => {
       </section>
       <section className={styles.antennasSection}>
         <h3 className="capsHeading">Nos antennes</h3>
+        <p>
+          L’AJCF se développe également en dehors de Paris et de l’Ile-De-France, à travers ses antennes. Lyon, une
+          ville jeune, dynamique et solidaire, mais deuxième foyer des communautés d’origine chinoise en France, a
+          naturellement été choisie pour ouvrir la première antenne de l’AJCF.
+        </p>
+        <button className="centered" type="button">
+          En savoir plus
+        </button>
       </section>
       <section className={styles.educationSection}>
         <h3 className="capsHeading">Éducation AJCF</h3>
+        <p>
+          Le pôle Education réalise des interventions en milieu scolaire pour sensibiliser la jeunesse à l’histoire de
+          l’immigration des Asiatiques, favoriser le dialogue multiculturel et intergénérationnel, et déconstruire les
+          stéréotypes, afin de promouvoir le bien vivre-ensemble.
+        </p>
+        <button className="centered" type="button">
+          En savoir plus
+        </button>
       </section>
     </Layout>
   );
