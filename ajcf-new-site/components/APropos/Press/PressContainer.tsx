@@ -9,11 +9,12 @@ const selectPressFiles = (pressFiles: PressFileFragment[], label: AssetLabel): P
   return pressFiles.filter((pressFile) => pressFile.assetLabel.includes(label));
 };
 
-export const selectMostRecentPressFiles = (pressFiles: PressFileFragment[]) => {
-  return orderBy(pressFiles, "updatedAt", "desc").slice(0, 3);
-};
-
 export const PressContainer = ({ pressFiles }: { pressFiles: PressFileFragment[] }) => {
+  const orderedPressFiles = orderBy(
+    pressFiles,
+    ({ optionalPublishedDate, createdAt }) => optionalPublishedDate || createdAt,
+    "desc"
+  );
   return (
     <Layout className={styles.layout}>
       <section className={styles.summarySection}>
@@ -31,9 +32,9 @@ export const PressContainer = ({ pressFiles }: { pressFiles: PressFileFragment[]
           </li>
         </ul>
       </section>
-      <PressFiles pressFiles={selectMostRecentPressFiles(pressFiles)} title="Les plus récents" />
-      <PressFiles pressFiles={selectPressFiles(pressFiles, AssetLabel.PressReview)} title="Revue de presse" />
-      <PressFiles pressFiles={selectPressFiles(pressFiles, AssetLabel.PressRelease)} title="Communiqués" />
+      <PressFiles pressFiles={orderedPressFiles.slice(0, 3)} title="Les plus récents" />
+      <PressFiles pressFiles={selectPressFiles(orderedPressFiles, AssetLabel.PressReview)} title="Revue de presse" />
+      <PressFiles pressFiles={selectPressFiles(orderedPressFiles, AssetLabel.PressRelease)} title="Communiqués" />
     </Layout>
   );
 };

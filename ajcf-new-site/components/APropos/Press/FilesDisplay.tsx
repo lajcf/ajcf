@@ -16,7 +16,7 @@ export const formatLabel = (labels: AssetLabel[]) => {
 };
 
 const fileTitleContent = (file: PressFileFragment): string => {
-  const date = capitalize(dayjs(file.updatedAt).format("MMMM-YYYY"));
+  const date = capitalize(dayjs(file.createdAt).format("MMMM-YYYY"));
   const label = formatLabel(file.assetLabel);
   if (label) {
     return `${date} - ${label.toUpperCase()}`;
