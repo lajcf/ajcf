@@ -1,4 +1,7 @@
+@import "/styles/variables.scss";
+
 .blogLabelsList {
+  color: $secondary-color;
   margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;

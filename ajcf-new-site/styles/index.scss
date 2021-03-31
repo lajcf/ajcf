@@ -2,6 +2,10 @@
 @import "fonts.css";
 @import "./variables.scss";
 
+* {
+  outline: none;
+}
+
 .capsHeading {
   font-weight: bold;
   color: $secondary-color;

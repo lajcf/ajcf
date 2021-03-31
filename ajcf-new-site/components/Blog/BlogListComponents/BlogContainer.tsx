@@ -1,4 +1,3 @@
-import { Button } from "antd";
 import { uniq, sortBy } from "lodash";
 import React, { useState } from "react";
 import { NUMBER_OF_ARTICLES_TO_DISPLAY_AT_A_TIME } from "../../../lib/constants";
@@ -71,15 +70,15 @@ export const BlogContainer = ({ articles }: { articles: ArticlePreviewFragment[]
         {displayedArticles.map((article) => (
           <ArticlePreview key={article.id} article={article} />
         ))}
-        <Button
-          type="primary"
+        <button
+          type="button"
           className={styles.loadMoreButton}
           onClick={() =>
             setNumberOfArticlesToDisplay(numberOfArticlesToDisplay + NUMBER_OF_ARTICLES_TO_DISPLAY_AT_A_TIME)
           }
         >
           Voir plus d'articles
-        </Button>
+        </button>
       </section>
     </Layout>
   );
