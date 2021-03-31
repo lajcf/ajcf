@@ -24,7 +24,18 @@ export const Article = ({ article }: { article: ArticlePageFragment }) => {
         </h4>
         <hr />
         <div className={styles.contentContainer}>
-          <ReactMarkdown className={styles.content}>{article.content}</ReactMarkdown>
+          <ReactMarkdown
+            className={styles.content}
+            renderers={{
+              link: ({ href, children }) => (
+                <a href={href} target="_blank" rel="noopener noreferrer">
+                  {children}
+                </a>
+              ),
+            }}
+          >
+            {article.content}
+          </ReactMarkdown>
         </div>
       </section>
     </>
