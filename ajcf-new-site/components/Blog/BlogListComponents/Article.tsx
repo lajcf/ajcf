@@ -14,15 +14,16 @@ export const Article = ({ article }: { article: ArticlePageFragment }) => {
         </div>
       )}
       <section className={styles.articleSection}>
-        <BlogLabelsList blogLabels={article.blogLabels} />
-        <h1>{article.title}</h1>
-        <h3>{article.author}</h3>
-        <h4>
-          {article.optionalPublishedDate
-            ? dayjs(article.optionalPublishedDate).format("DD MMM YYYY")
-            : dayjs(article.createdAt).format("DD MMM YYYY")}
-        </h4>
-        <hr />
+        <div className={styles.articleInfos}>
+          <BlogLabelsList blogLabels={article.blogLabels} />
+          <h1>{article.title}</h1>
+          <h3>{article.author}</h3>
+          <h4>
+            {article.optionalPublishedDate
+              ? dayjs(article.optionalPublishedDate).format("DD MMM YYYY")
+              : dayjs(article.createdAt).format("DD MMM YYYY")}
+          </h4>
+        </div>
         <div className={styles.contentContainer}>
           <ReactMarkdown
             className={styles.content}

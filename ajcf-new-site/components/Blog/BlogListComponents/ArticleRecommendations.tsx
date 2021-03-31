@@ -17,7 +17,7 @@ export const ArticleRecommendations = ({ article, articles }: ArticleContainerPr
   const articleRecommendations = selectArticleRecommendations({ article, articles });
   if (articleRecommendations.length <= 0) return null;
   return (
-    <section className={styles.articleRecommendations}>
+    <section>
       <h2>Lire d'autres articles similaires</h2>
       <ul className={styles.articleRecommendationsList}>
         {articleRecommendations.map((articleRecommendation) => (
