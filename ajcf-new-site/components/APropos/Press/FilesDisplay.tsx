@@ -16,12 +16,13 @@ export const formatLabel = (labels: AssetLabel[]) => {
 };
 
 const fileTitleContent = (file: PressFileFragment): string => {
-  const date = capitalize(dayjs(file.createdAt).format("MMMM-YYYY"));
+  const date = file.optionalPublishedDate || file.createdAt;
+  const formattedDate = capitalize(dayjs(date).format("MMMM-YYYY"));
   const label = formatLabel(file.assetLabel);
   if (label) {
-    return `${date} - ${label.toUpperCase()}`;
+    return `${formattedDate} - ${label.toUpperCase()}`;
   }
-  return date;
+  return formattedDate;
 };
 
 export const FilesDisplay = ({ files }: { files: PressFileFragment[] }) => {
