@@ -1,0 +1,28 @@
+@import "/styles/variables.scss";
+
+.selectorForBlogCategoryOrLabel {
+  background-color: $secondary-color;
+  padding: 1rem;
+  a {
+    color: white;
+    font-size: 18px;
+  }
+  .blogCategoriesList {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  .active {
+    font-weight: bold;
+  }
+  .showLabelsButton {
+    border: 1px solid white;
+    background: none;
+  }
+  .blogLabelsList {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+}
