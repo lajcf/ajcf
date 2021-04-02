@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Category, Label } from "../../../components/Blog/BlogListComponents/BlogContainer";
+import { Category, Label } from "./ItemsPreviewsListContainer";
 import styles from "./SelectorForCategoryOrLabel.module.scss";
 
 type SelectorForCategoryOrLabelProps = {

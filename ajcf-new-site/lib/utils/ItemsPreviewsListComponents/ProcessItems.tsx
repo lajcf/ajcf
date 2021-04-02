@@ -1,16 +1,6 @@
-import Item from "antd/lib/descriptions/Item";
 import { sortBy } from "lodash";
-import { Category, Label } from "../../../components/Blog/BlogListComponents/BlogContainer";
-import {
-  ArticlePreviewFragment,
-  BlogCategory,
-  BlogLabel,
-  EventCategory,
-  EventLabel,
-  EventPreviewFragment,
-} from "../../../types/types";
-
-type Item = ArticlePreviewFragment | EventPreviewFragment;
+import { BlogCategory, BlogLabel, EventCategory, EventLabel } from "../../../types/types";
+import { Category, Item, Label } from "./ItemsPreviewsListContainer";
 
 const filterItems = (items: Item[], selectedCategory?: Category, selectedLabel?: Label) => {
   if (selectedCategory) {
