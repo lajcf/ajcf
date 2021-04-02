@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { EventPreviewFragment } from "../../../../types/types";
+import { EventPreviewFragment } from "../../../types/types";
 import styles from "./OurAntennas.module.scss";
-import { dayjs } from "../../../../lib/utils/dayjs";
+import { dayjs } from "../../../lib/utils/dayjs";
 
 const EventItem = ({ event }: { event: EventPreviewFragment }) => {
   return (

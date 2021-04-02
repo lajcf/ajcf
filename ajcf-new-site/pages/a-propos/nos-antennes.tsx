@@ -1,9 +1,9 @@
 import { GetStaticProps } from "next";
 import React from "react";
-import { OurAntennasContainer } from "../../../components/APropos/WhoAreWe/OurAntennasComponents/OurAntennasContainer";
-import { graphqlClient } from "../../../lib/graphql/graphqlClient";
-import { mapEnvToStage } from "../../../lib/utils/mapEnvToStage";
-import { ArticlePreviewFragment, EventPreviewFragment } from "../../../types/types";
+import { OurAntennasContainer } from "../../components/APropos/OurAntennasComponents/OurAntennasContainer";
+import { graphqlClient } from "../../lib/graphql/graphqlClient";
+import { mapEnvToStage } from "../../lib/utils/mapEnvToStage";
+import { ArticlePreviewFragment, EventPreviewFragment } from "../../types/types";
 
 export default function OurAntennas({
   articles,

@@ -14,14 +14,14 @@ const lyonTeam = [
     name: "Ilana Debris",
     role: "Coordinatrice",
     description: "Étudiante",
-    picture: require("../../../../public/Images/Antennes/antennes_ilana.jpg"),
+    picture: require("../../../public/Images/Antennes/antennes_ilana.jpg"),
   },
   {
     id: 2,
     name: "Claire Song",
     role: "Coordinatrice",
     description: "Project-manager",
-    picture: require("../../../../public/Images/Antennes/antennes_claire.jpg"),
+    picture: require("../../../public/Images/Antennes/antennes_claire.jpg"),
   },
 ];
 

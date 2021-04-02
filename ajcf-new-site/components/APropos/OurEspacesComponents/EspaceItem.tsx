@@ -9,7 +9,7 @@ type EspaceContentProps = {
 
 export const EspaceItem = ({ espaceContent }: EspaceContentProps) => {
   return (
-    <section className={styles.espaceSection}>
+    <section id={espaceContent.categoryName} className={styles.espaceSection}>
       <div className={styles.emptySection} />
       <div className={styles.logoFrame}>
         {espaceContent.logo}

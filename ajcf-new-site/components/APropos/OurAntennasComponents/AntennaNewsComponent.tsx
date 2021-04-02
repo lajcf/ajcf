@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 import removeMarkdown from "remove-markdown";
-import { CustomCarousel } from "../../../../lib/utils/CustomCarouselComponents/CustomCarousel";
-import { formatContentSummary } from "../../../../lib/utils/formatContentSummary";
-import { ArticlePreviewFragment } from "../../../../types/types";
+import { CustomCarousel } from "../../../lib/utils/CustomCarouselComponents/CustomCarousel";
+import { formatContentSummary } from "../../../lib/utils/formatContentSummary";
+import { ArticlePreviewFragment } from "../../../types/types";
 import styles from "./OurAntennas.module.scss";
 
 const AntennaNewsItem = ({ article }: { article: ArticlePreviewFragment }) => {

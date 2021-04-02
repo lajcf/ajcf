@@ -21,39 +21,22 @@ export const QuickAccess = ({ page, subPage }: QuickAccessProps) => {
             <Link href="/a-propos/notre-histoire">Notre Histoire</Link>
           </Menu.Item>
           <Menu.Item key="nos-espaces">
-            <Link href="/a-propos/projets-ajcf/nos-espaces">Nos espaces</Link>
+            <Link href="/a-propos/nos-espaces">Nos espaces</Link>
           </Menu.Item>
           <Menu.Item key="nos-antennes">
-            <Link href="/a-propos/projets-ajcf/nos-antennes">Nos antennes</Link>
+            <Link href="/a-propos/nos-antennes">Nos antennes</Link>
           </Menu.Item>
           <Menu.Item key="education-ajcf">
-            <Link href="/a-propos/projets-ajcf/education-ajcf">Education AJCF</Link>
+            <Link href="/a-propos/education-ajcf">Education AJCF</Link>
           </Menu.Item>
           <Menu.Item key="recrutement">
-            <Link href="/a-propos/projets-ajcf/recrutement">Recrutement</Link>
+            <Link href="/a-propos/recrutement">Recrutement</Link>
           </Menu.Item>
           <Menu.Item key="partenaires">
             <Link href="/a-propos/partenaires">Partenaires</Link>
           </Menu.Item>
           <Menu.Item key="presse">
             <Link href="/a-propos/presse">Presse</Link>
-          </Menu.Item>
-        </QuickAccessLayout>
-      );
-    case "projets-ajcf":
-      return (
-        <QuickAccessLayout defaultSelectedKeys={subPage && [subPage]}>
-          <Menu.Item key="nos-espaces">
-            <Link href="/projets-ajcf/nos-espaces">Nos espaces</Link>
-          </Menu.Item>
-          <Menu.Item key="nos-antennes">
-            <Link href="/projets-ajcf/nos-antennes">Nos antennes</Link>
-          </Menu.Item>
-          <Menu.Item key="education-ajcf">
-            <Link href="/projets-ajcf/education-ajcf">Education AJCF</Link>
-          </Menu.Item>
-          <Menu.Item key="recrutement">
-            <Link href="/projets-ajcf/recrutement">Recrutement</Link>
           </Menu.Item>
         </QuickAccessLayout>
       );

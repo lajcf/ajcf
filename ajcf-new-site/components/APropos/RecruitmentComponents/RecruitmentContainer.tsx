@@ -1,6 +1,6 @@
 import React from "react";
-import { JobOffer } from "../../../../types/types";
-import { Layout } from "../../../Layout/Layout";
+import { JobOffer } from "../../../types/types";
+import { Layout } from "../../Layout/Layout";
 import styles from "./Recruitment.module.scss";
 
 const JobOffersList = ({ jobOffers }: { jobOffers: JobOffer[] }) => {

@@ -3,19 +3,19 @@ import React from "react";
 const educationPartners = [
   {
     id: 1,
-    logo: require("../../../../public/Logos Partenaires/Ministère-Éducation-Nationale.png"),
+    logo: require("../../../public/Logos Partenaires/Ministère-Éducation-Nationale.png"),
   },
   {
     id: 2,
-    logo: require("../../../../public/Logos Partenaires/DILCRAH.png"),
+    logo: require("../../../public/Logos Partenaires/DILCRAH.png"),
   },
   {
     id: 3,
-    logo: require("../../../../public/Logos Partenaires/Région-Île-de-France.png"),
+    logo: require("../../../public/Logos Partenaires/Région-Île-de-France.png"),
   },
   {
     id: 4,
-    logo: require("../../../../public/Logos Partenaires/Ville-de-Paris.png"),
+    logo: require("../../../public/Logos Partenaires/Ville-de-Paris.png"),
   },
 ];
 

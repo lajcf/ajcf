@@ -1,7 +1,7 @@
 import React from "react";
 import { EspaceItem } from "./EspaceItem";
 import { OUR_ESPACES } from "./ourEspacesConfig";
-import { Layout } from "../../../Layout/Layout";
+import { Layout } from "../../Layout/Layout";
 import styles from "./OurEspaces.module.scss";
 
 export const OurEspacesContainer = () => {

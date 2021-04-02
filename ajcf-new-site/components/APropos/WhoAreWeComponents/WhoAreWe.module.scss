@@ -14,6 +14,9 @@ $logo-size: 6rem;
     }
     section {
       grid-column: span 2;
+      button {
+        margin-top: 2rem;
+      }
     }
   }
 }
