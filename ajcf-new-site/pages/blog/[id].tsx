@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
-import { ArticleContainer } from "../../components/Blog/BlogListComponents/ArticleContainer";
+import { ArticleContainer } from "../../components/Blog/ArticleComponents/ArticleContainer";
 import { graphqlClient } from "../../lib/graphql/graphqlClient";
 import { ArticlePreviewFragment, ArticlePageFragment } from "../../types/types";
 import { mapEnvToStage } from "../../lib/utils/mapEnvToStage";

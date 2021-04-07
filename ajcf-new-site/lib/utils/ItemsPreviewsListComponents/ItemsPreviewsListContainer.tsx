@@ -63,9 +63,7 @@ export const ItemsPreviewsListContainer = ({
       />
       <ul className={styles.itemsList}>
         {itemsToShow.map((item) => (
-          <li key={item.id}>
-            <ItemPreview item={item} />
-          </li>
+          <ItemPreview key={item.id} item={item} />
         ))}
       </ul>
       <button

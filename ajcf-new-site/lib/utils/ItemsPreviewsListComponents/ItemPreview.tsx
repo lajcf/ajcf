@@ -20,6 +20,7 @@ export const ItemPreview = ({ item }: { item: Item }) => {
       ) : (
         <EventPreview event={item as EventPreviewFragment} />
       )}
+      <hr className="separator" />
     </>
   );
 };
