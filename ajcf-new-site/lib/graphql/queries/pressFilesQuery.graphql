@@ -1,12 +1,13 @@
 fragment pressFile on Asset {
   fileName
   url
-  updatedAt
+  createdAt
+  optionalPublishedDate
   assetLabel
 }
 
 query pressFilesQuery($stage: Stage!) {
-  assets(stage: $stage, where: { assetLabel_contains_some: Press }, orderBy: updatedAt_DESC) {
+  assets(stage: $stage, where: { assetLabel_contains_some: Press }, orderBy: createdAt_DESC) {
     ...pressFile
   }
 }
