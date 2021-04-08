@@ -4,7 +4,7 @@ import { dayjs } from "../../../lib/utils/dayjs";
 import { formatContentSummary } from "../../../lib/utils/formatContentSummary";
 import { LabelsList } from "../../../lib/utils/ItemsPreviewsListComponents/LabelsList";
 import { EventPreviewFragment } from "../../../types/types";
-import styles from "./Agenda.module.scss";
+import styles from "./EventPreview.module.scss";
 
 type EventPreviewProps = {
   event: EventPreviewFragment;
@@ -16,7 +16,9 @@ export const EventPreview = ({ event }: EventPreviewProps) => {
     <li className={styles.previewItem}>
       <div className={styles.previewCover}>
         <Link href={`/agenda/${event.id}`}>
-          <div>{event.cover?.url && <img src={event.cover.url} />}</div>
+          <a>
+            <div>{event.cover?.url && <img src={event.cover.url} />}</div>
+          </a>
         </Link>
         <h3>{`${dayjs(event.date).format("DD MMM YYYY - HH:mm")}`}</h3>
       </div>
