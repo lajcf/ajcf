@@ -3865,7 +3865,10 @@ export type EventPageFragment = (
   & { content: (
     { __typename?: 'RichText' }
     & Pick<RichText, 'html'>
-  ) }
+  ), cover?: Maybe<(
+    { __typename?: 'Asset' }
+    & Pick<Asset, 'id' | 'url'>
+  )> }
 );
 
 export type EventPageQueryQueryVariables = Exact<{
@@ -4009,6 +4012,10 @@ export const EventPageFragmentDoc = gql`
   }
   date
   eventLabels
+  cover {
+    id
+    url
+  }
 }
     `;
 export const EventPreviewFragmentDoc = gql`

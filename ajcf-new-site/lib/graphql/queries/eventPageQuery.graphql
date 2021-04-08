@@ -6,6 +6,10 @@ fragment eventPage on Event {
   }
   date
   eventLabels
+  cover {
+    id
+    url
+  }
 }
 
 query eventPageQuery($id: ID!) {
