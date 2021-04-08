@@ -1,13 +1,13 @@
 import React from "react";
+import { NUMBER_OF_EVENTS_TO_DISPLAY_AT_A_TIME } from "../../../lib/constants";
+import {
+  Item,
+  ItemsPreviewsListContainer,
+} from "../../../lib/utils/ItemsPreviewsListComponents/ItemsPreviewsListContainer";
 import { EventPreviewFragment } from "../../../types/types";
 import { Layout } from "../../Layout/Layout";
-import { EventsList } from "./EventsList";
 
-type AgendaContainerProps = {
-  events: EventPreviewFragment[];
-};
-
-export const AgendaContainer = ({ events }: AgendaContainerProps) => {
+export const AgendaContainer = ({ events }: { events: EventPreviewFragment[] }) => {
   return (
     <Layout>
       <section>
@@ -17,7 +17,10 @@ export const AgendaContainer = ({ events }: AgendaContainerProps) => {
           grâce à la newsletter mensuelle de l’AJCF
         </p>
       </section>
-      <EventsList events={events} />
+      <ItemsPreviewsListContainer
+        items={events as Item[]}
+        numberOfItemsToDisplayAtATime={NUMBER_OF_EVENTS_TO_DISPLAY_AT_A_TIME}
+      />
     </Layout>
   );
 };

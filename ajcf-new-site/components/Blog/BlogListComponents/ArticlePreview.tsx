@@ -4,7 +4,7 @@ import removeMarkdown from "remove-markdown";
 import { dayjs } from "../../../lib/utils/dayjs";
 import { formatContentSummary } from "../../../lib/utils/formatContentSummary";
 import { ArticlePreviewFragment } from "../../../types/types";
-import { BlogLabelsList } from "../BlogLabelsList";
+import { LabelsList } from "../../../lib/utils/ItemsPreviewsListComponents/LabelsList";
 import styles from "./ArticlePreview.module.scss";
 
 export const ArticlePreview = ({ article }: { article: ArticlePreviewFragment }) => {
@@ -37,7 +37,7 @@ export const ArticlePreview = ({ article }: { article: ArticlePreviewFragment })
           </em>
         </p>
         <p>{contentSummary}</p>
-        <BlogLabelsList blogLabels={article.blogLabels} />
+        <LabelsList labels={article.blogLabels} />
       </div>
     </li>
   );

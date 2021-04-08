@@ -1,7 +1,7 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import { ArticlePageFragment } from "../../../types/types";
-import { BlogLabelsList } from "../BlogLabelsList";
+import { LabelsList } from "../../../lib/utils/ItemsPreviewsListComponents/LabelsList";
 import styles from "./ArticleContainer.module.scss";
 import { dayjs } from "../../../lib/utils/dayjs";
 
@@ -15,7 +15,7 @@ export const Article = ({ article }: { article: ArticlePageFragment }) => {
       )}
       <section className={styles.articleSection}>
         <div className={styles.articleInfos}>
-          <BlogLabelsList blogLabels={article.blogLabels} />
+          <LabelsList labels={article.blogLabels} />
           <h1>{article.title}</h1>
           <h3>{article.author}</h3>
           <h4>

@@ -1,2 +1,4 @@
-export const NUMBER_OF_NEXT_EVENTS = 3;
+export const NUMBER_OF_EVENTS_TO_DISPLAY_AT_A_TIME = 3;
 export const NUMBER_OF_ARTICLES_TO_DISPLAY_AT_A_TIME = 3;
+
+export const NUMBER_OF_NEXT_EVENTS = 3;

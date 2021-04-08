@@ -10,7 +10,6 @@ import {
 } from "../../../types/types";
 import { processItems } from "./ProcessItems";
 import { SelectorForCategoryOrLabel } from "./SelectorBlogCategoryOrLabel";
-import styles from "../../../components/Blog/BlogLabelsList.module.scss";
 import { ItemPreview } from "./ItemPreview";
 
 export type Item = ArticlePreviewFragment | EventPreviewFragment;
@@ -51,7 +50,7 @@ export const ItemsPreviewsListContainer = ({
   };
 
   return (
-    <section className={styles.itemsPreviewsSection}>
+    <section>
       <SelectorForCategoryOrLabel
         selectedLabel={selectedLabel}
         selectedCategory={selectedCategory}
@@ -61,14 +60,13 @@ export const ItemsPreviewsListContainer = ({
         labelsToShow={selectUsedLabels()}
         resetFilters={resetFilters}
       />
-      <ul className={styles.itemsList}>
+      <ul>
         {itemsToShow.map((item) => (
           <ItemPreview key={item.id} item={item} />
         ))}
       </ul>
       <button
         type="button"
-        className={styles.loadMoreButton}
         onClick={() => setNumberOfItemsToDisplay(numberOfItemsToDisplay + numberOfItemsToDisplayAtATime)}
       >
         Voir plus
