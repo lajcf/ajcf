@@ -8,7 +8,7 @@ import { arraysShareElements } from "../../../lib/utils/arraysShareElements";
 const selectArticleRecommendations = ({ article, articles }: ArticleContainerProps) => {
   const selectedArticles = articles.filter((filteredArticle) => {
     if (filteredArticle.id === article.id) return false;
-    return arraysShareElements(filteredArticle.blogLabels, article.blogLabels);
+    return arraysShareElements(filteredArticle.labels, article.labels);
   });
   return selectedArticles;
 };

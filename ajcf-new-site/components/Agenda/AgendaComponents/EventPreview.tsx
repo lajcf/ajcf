@@ -24,14 +24,14 @@ export const EventPreview = ({ event }: EventPreviewProps) => {
         <h3>{`${dayjs(event.date).format("DD MMM YYYY - HH:mm")}`}</h3>
       </div>
       <div className={styles.previewText}>
-        <h3>{event.eventCategory}</h3>
+        <h3>{event.category}</h3>
         <Link href={`/agenda/${event.id}`}>
           <a>
             <h2>{event.title}</h2>
           </a>
         </Link>
         <p className="texte2">{contentSummary}</p>
-        <LabelsList labels={event.eventLabels} />
+        <LabelsList labels={event.labels} />
       </div>
     </li>
   );

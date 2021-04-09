@@ -3,12 +3,14 @@ fragment eventPage on Event {
   title
   content
   date
-  eventLabels
-  eventCategory
+  labels
+  category
   cover {
     id
     url
   }
+  __typename
+
 }
 
 query eventPageQuery($id: ID!) {

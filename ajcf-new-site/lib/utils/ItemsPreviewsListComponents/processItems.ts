@@ -1,21 +1,13 @@
 import { sortBy } from "lodash";
-import { BlogCategory, BlogLabel, EventCategory, EventLabel } from "../../../types/types";
 import { Category, Item, Label } from "./ItemsPreviewsListContainer";
 
 const filterItems = (items: Item[], selectedCategory?: Category, selectedLabel?: Label) => {
   if (selectedCategory) {
-    return items.filter((item) =>
-      "blogCategory" in item
-        ? item.blogCategory.includes(selectedCategory as BlogCategory)
-        : item.eventCategory.includes(selectedCategory as EventCategory)
-    );
+    return items.filter((item) => item.category === selectedCategory);
   }
   if (selectedLabel) {
-    return items.filter((item) =>
-      "blogLabels" in item
-        ? item.blogLabels.includes(selectedLabel as BlogLabel)
-        : item.eventLabels.includes(selectedLabel as EventLabel)
-    );
+    // @ts-ignore
+    return items.filter((item) => item.labels.includes(selectedLabel));
   }
   return items;
 };

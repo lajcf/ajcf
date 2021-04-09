@@ -7,8 +7,9 @@ fragment eventPreview on Event {
     id
     url
   }
-  eventLabels
-  eventCategory
+  labels
+  category
+  __typename
 }
 
 query eventsPreviewQuery {

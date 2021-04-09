@@ -21,7 +21,7 @@ export const ArticlePreview = ({ article }: { article: ArticlePreviewFragment })
         </div>
       )}
       <div className={styles.previewText}>
-        <h3>{article.blogCategory}</h3>
+        <h3>{article.category}</h3>
         <Link href={`/blog/${article.id}`}>
           <a>
             <h2>{article.title}</h2>
@@ -37,7 +37,7 @@ export const ArticlePreview = ({ article }: { article: ArticlePreviewFragment })
           </em>
         </p>
         <p>{contentSummary}</p>
-        <LabelsList labels={article.blogLabels} />
+        <LabelsList labels={article.labels} />
       </div>
     </li>
   );

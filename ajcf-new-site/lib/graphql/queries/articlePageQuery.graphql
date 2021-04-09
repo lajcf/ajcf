@@ -3,13 +3,15 @@ fragment articlePage on Article {
   title
   author
   createdAt
-  blogLabels
+  labels
   optionalPublishedDate
   cover {
     id
     url
   }
   content
+  __typename
+
 }
 
 query articlePageQuery($id: ID!, $stage: Stage!) {

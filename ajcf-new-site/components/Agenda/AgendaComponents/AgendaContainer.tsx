@@ -1,9 +1,6 @@
 import React from "react";
 import { NUMBER_OF_EVENTS_TO_DISPLAY_AT_A_TIME } from "../../../lib/constants";
-import {
-  Item,
-  ItemsPreviewsListContainer,
-} from "../../../lib/utils/ItemsPreviewsListComponents/ItemsPreviewsListContainer";
+import { ItemsPreviewsListContainer } from "../../../lib/utils/ItemsPreviewsListComponents/ItemsPreviewsListContainer";
 import { EventPreviewFragment } from "../../../types/types";
 import { Layout } from "../../Layout/Layout";
 
@@ -18,7 +15,7 @@ export const AgendaContainer = ({ events }: { events: EventPreviewFragment[] }) 
         </p>
       </section>
       <ItemsPreviewsListContainer
-        items={events as Item[]}
+        items={events}
         numberOfItemsToDisplayAtATime={NUMBER_OF_EVENTS_TO_DISPLAY_AT_A_TIME}
       />
     </Layout>

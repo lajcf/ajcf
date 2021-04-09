@@ -19,7 +19,7 @@ export const NextEventPreview = ({ event }: NextEventProps) => {
           <div className={styles.nextEventInfos}>
             <h5>{dayjs(event.date).format("DD MMM YYYY HH:mm")}</h5>
             <div>
-              <h5>{event.eventCategory}</h5>
+              <h5>{event.category}</h5>
               <h4>{event.title}</h4>
             </div>
           </div>

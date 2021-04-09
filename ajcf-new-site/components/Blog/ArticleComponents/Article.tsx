@@ -15,7 +15,7 @@ export const Article = ({ article }: { article: ArticlePageFragment }) => {
       )}
       <section className={styles.articleSection}>
         <div className={styles.articleInfos}>
-          <LabelsList labels={article.blogLabels} />
+          <LabelsList labels={article.labels} />
           <h1>{article.title}</h1>
           <h3>{article.author}</h3>
           <h4>

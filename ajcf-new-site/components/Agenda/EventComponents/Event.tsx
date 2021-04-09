@@ -14,8 +14,8 @@ export const Event = ({ event }: { event: EventPageFragment }) => {
         </div>
       )}
       <section className={styles.eventContentSection}>
-        <h2>{event.eventCategory}</h2>
-        <LabelsList labels={event.eventLabels} />
+        <h2>{event.category}</h2>
+        <LabelsList labels={event.labels} />
         <h1>{event.title}</h1>
         <h4>{dayjs(event.date).format("DD MMM YYYY")}</h4>
         <ReactMarkdown

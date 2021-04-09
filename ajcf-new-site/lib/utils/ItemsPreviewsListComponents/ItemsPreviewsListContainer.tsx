@@ -8,7 +8,7 @@ import {
   EventLabel,
   EventPreviewFragment,
 } from "../../../types/types";
-import { processItems } from "./ProcessItems";
+import { processItems } from "./processItems";
 import { SelectorForCategoryOrLabel } from "./SelectorBlogCategoryOrLabel";
 import { ItemPreview } from "./ItemPreview";
 
@@ -28,10 +28,10 @@ export const ItemsPreviewsListContainer = ({
 
   const itemsToShow = processItems(items, numberOfItemsToDisplay, selectedCategory, selectedLabel);
 
-  const selectUsedLabels = () => {
-    return uniq(
-      items.flatMap((item) => ("blogLabels" in item ? (item.blogLabels as Label[]) : (item.eventLabels as Label[])))
-    );
+  const selectUsedLabels = (): Label[] => {
+    // TODO: find a better implementation
+    // @ts-ignore
+    return uniq(items.flatMap((item) => item.labels));
   };
 
   const resetFilters = () => {
