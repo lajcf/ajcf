@@ -49,6 +49,10 @@ export const ItemsPreviewsListContainer = ({
     setSelectedLabel(label);
   };
 
+  const thereAreRemainingItems = () => {
+    return items.length > numberOfItemsToDisplay;
+  };
+
   return (
     <section>
       <SelectorForCategoryOrLabel
@@ -65,12 +69,15 @@ export const ItemsPreviewsListContainer = ({
           <ItemPreview key={item.id} item={item} />
         ))}
       </ul>
-      <button
-        type="button"
-        onClick={() => setNumberOfItemsToDisplay(numberOfItemsToDisplay + numberOfItemsToDisplayAtATime)}
-      >
-        Voir plus
-      </button>
+      {thereAreRemainingItems() && (
+        <button
+          type="button"
+          className="centered"
+          onClick={() => setNumberOfItemsToDisplay(numberOfItemsToDisplay + numberOfItemsToDisplayAtATime)}
+        >
+          Voir plus
+        </button>
+      )}
     </section>
   );
 };
