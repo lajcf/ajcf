@@ -1,0 +1,27 @@
+@import "../../../styles/variables.scss";
+
+.previewItem {
+  margin: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.previewCover {
+  flex: 0 1 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  img {
+    max-height: 400px;
+  }
+  h3 {
+    color: $secondary-color;
+  }
+}
+
+.previewText {
+  flex: 1 1 40ch;
+}

@@ -1,0 +1,9 @@
+@import "/styles/variables.scss";
+
+.labelsList {
+  color: $secondary-color;
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}

@@ -1,0 +1,18 @@
+.previewItem {
+  margin: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.previewCover {
+  flex: 0 1 500px;
+  img {
+    max-height: 400px;
+  }
+}
+
+.previewText {
+  flex: 1 1 40ch;
+}

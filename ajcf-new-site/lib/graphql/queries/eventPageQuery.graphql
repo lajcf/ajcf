@@ -1,11 +1,16 @@
 fragment eventPage on Event {
   id
   title
-  content {
-    html
-  }
+  content
   date
-  eventLabels
+  labels
+  category
+  cover {
+    id
+    url
+  }
+  __typename
+
 }
 
 query eventPageQuery($id: ID!) {

@@ -8,7 +8,7 @@ import { arraysShareElements } from "../../../lib/utils/arraysShareElements";
 const selectArticleRecommendations = ({ article, articles }: ArticleContainerProps) => {
   const selectedArticles = articles.filter((filteredArticle) => {
     if (filteredArticle.id === article.id) return false;
-    return arraysShareElements(filteredArticle.blogLabels, article.blogLabels);
+    return arraysShareElements(filteredArticle.labels, article.labels);
   });
   return selectedArticles;
 };
@@ -17,7 +17,7 @@ export const ArticleRecommendations = ({ article, articles }: ArticleContainerPr
   const articleRecommendations = selectArticleRecommendations({ article, articles });
   if (articleRecommendations.length <= 0) return null;
   return (
-    <section className={styles.articleRecommendations}>
+    <section>
       <h2>Lire d'autres articles similaires</h2>
       <ul className={styles.articleRecommendationsList}>
         {articleRecommendations.map((articleRecommendation) => (

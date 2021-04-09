@@ -1,42 +1,37 @@
-import { Button } from "antd";
 import Link from "next/link";
 import React from "react";
+import removeMarkdown from "remove-markdown";
 import { dayjs } from "../../../lib/utils/dayjs";
 import { formatContentSummary } from "../../../lib/utils/formatContentSummary";
+import { LabelsList } from "../../../lib/utils/ItemsPreviewsListComponents/LabelsList";
 import { EventPreviewFragment } from "../../../types/types";
-import styles from "./Agenda.module.scss";
+import styles from "./EventPreview.module.scss";
 
 type EventPreviewProps = {
   event: EventPreviewFragment;
 };
 
 export const EventPreview = ({ event }: EventPreviewProps) => {
-  const eventLink = `/agenda/${event.id}`;
-  const additionalEventLabels = event.eventLabels.slice(1);
+  const contentSummary = formatContentSummary(removeMarkdown(event.content), 280);
   return (
-    <li className={styles.eventPreview}>
-      <div className={styles.coverColumn}>
-        <div className={styles.imgContainer}>{event.cover?.url && <img src={event.cover.url} />}</div>
+    <li className={styles.previewItem}>
+      <div className={styles.previewCover}>
+        <Link href={`/agenda/${event.id}`}>
+          <a>
+            <div>{event.cover?.url && <img src={event.cover.url} />}</div>
+          </a>
+        </Link>
         <h3>{`${dayjs(event.date).format("DD MMM YYYY - HH:mm")}`}</h3>
       </div>
-      <div className={styles.textColumn}>
-        <h3>#{event.eventLabels[0]}</h3>
-        <Link href={eventLink}>
+      <div className={styles.previewText}>
+        <h3>{event.category}</h3>
+        <Link href={`/agenda/${event.id}`}>
           <a>
             <h2>{event.title}</h2>
           </a>
         </Link>
-        <p className="texte2">{formatContentSummary(event.content.text, 280)}</p>
-        {additionalEventLabels && (
-          <ul className={styles.additionalEventLabelsList}>
-            {additionalEventLabels.map((label) => (
-              <li key={label}>#{label}</li>
-            ))}
-          </ul>
-        )}
-        <Link href={eventLink}>
-          <Button>En savoir plus</Button>
-        </Link>
+        <p className="texte2">{contentSummary}</p>
+        <LabelsList labels={event.labels} />
       </div>
     </li>
   );

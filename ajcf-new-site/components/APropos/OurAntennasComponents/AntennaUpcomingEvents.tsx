@@ -13,7 +13,7 @@ const EventItem = ({ event }: { event: EventPreviewFragment }) => {
           <h5>{`${dayjs(event.date).format("DD MMM YYYY HH:mm")}`}</h5>
         </div>
         <div>
-          <h4 className="capsHeading">{event.eventCategory}</h4>
+          <h4 className="capsHeading">{event.category}</h4>
           <h3>{event.title}</h3>
         </div>
       </div>
