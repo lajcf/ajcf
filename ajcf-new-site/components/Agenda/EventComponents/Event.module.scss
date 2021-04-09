@@ -1,49 +1,79 @@
+@import "/styles/variables.scss";
+
+.bannerContainer {
+  img {
+    max-height: 500px;
+    object-fit: cover;
+  }
+}
+
 .eventContentSection {
-  .eventLabelsList {
-    display: grid;
-    grid-auto-flow: column;
-    justify-content: start;
-    gap: 1rem;
-    padding: 1rem 0;
-    li {
-      font-size: 16px;
+  h1 {
+    margin-top: 1rem;
+  }
+  h2 {
+    margin-bottom: 0;
+  }
+
+  .content {
+    max-width: 680px;
+    margin: 4rem auto;
+    img {
+      max-height: 800px;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    img + em {
+      display: table;
+      margin: 0 auto;
+      margin-bottom: 2rem;
     }
   }
 }
+
 .nextEventsSection {
   h2 {
     text-align: center;
   }
   .nextEventsList {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
-    .nextEventPreview {
-      .nextEventCover {
-        height: 200px;
-        img {
-          height: 100%;
-          width: 100%;
-          object-fit: contain;
-        }
+    justify-content: center;
+    li {
+      flex: 0 1 20rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      img {
+        max-height: 200px;
+        object-fit: cover;
       }
+
       .nextEventInfos {
-        display: grid;
-        grid-template-columns: 2fr 3fr;
-        place-items: center;
+        background-color: $primary-color;
         * {
           text-align: center;
         }
-      }
-      .nextEventContent {
-        display: grid;
-        p {
-          margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        h5 {
+          flex: 0 1 25%;
         }
+        div {
+          flex: 1 1 75%;
+        }
+      }
+
+      .nextEventContent {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
         button {
-          place-self: end;
-          margin-bottom: 0.5rem;
-          margin-right: 0.5rem;
+          align-self: flex-end;
         }
       }
     }

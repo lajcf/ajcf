@@ -1,11 +1,10 @@
 fragment eventPage on Event {
   id
   title
-  content {
-    html
-  }
+  content
   date
   eventLabels
+  eventCategory
   cover {
     id
     url

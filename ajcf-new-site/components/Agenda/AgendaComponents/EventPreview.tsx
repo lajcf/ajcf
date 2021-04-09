@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import removeMarkdown from "remove-markdown";
 import { dayjs } from "../../../lib/utils/dayjs";
 import { formatContentSummary } from "../../../lib/utils/formatContentSummary";
 import { LabelsList } from "../../../lib/utils/ItemsPreviewsListComponents/LabelsList";
@@ -11,7 +12,7 @@ type EventPreviewProps = {
 };
 
 export const EventPreview = ({ event }: EventPreviewProps) => {
-  const contentSummary = formatContentSummary(event.content.text, 280);
+  const contentSummary = formatContentSummary(removeMarkdown(event.content), 280);
   return (
     <li className={styles.previewItem}>
       <div className={styles.previewCover}>

@@ -1,9 +1,7 @@
 fragment eventPreview on Event {
   id
   title
-  content {
-    text
-  }
+  content
   date
   cover {
     id
