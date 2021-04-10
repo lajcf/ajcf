@@ -16,9 +16,10 @@ export const useActualItem = <T extends { id: string }>(query: DocumentNode, ori
     graphqlRequest,
     {
       initialData: originalItem,
-      revalidateOnFocus: false,
+      // revalidateOnFocus: false,
       shouldRetryOnError: false,
     }
   );
+  console.log(updatedItem);
   return { updatedItem, error };
 };
