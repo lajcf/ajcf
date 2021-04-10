@@ -1,11 +1,10 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
-import useSWR from "swr";
-import { print } from "graphql/language/printer";
 import { ArticleContainer } from "../../components/Blog/ArticleComponents/ArticleContainer";
-import { graphqlClient, graphqlRequest } from "../../lib/graphql/graphqlClient";
-import { ArticlePreviewFragment, ArticlePageFragment, ArticlePageQueryDocument } from "../../types/types";
+import { graphqlClient } from "../../lib/graphql/graphqlClient";
+import { ArticlePageFragment, ArticlePageQueryDocument, ArticlePreviewFragment } from "../../types/types";
 import { mapEnvToStage } from "../../lib/utils/mapEnvToStage";
+import { useActualItem } from "../../lib/graphql/useActualItem";
 
 type ArticleProps = {
   originalArticle: ArticlePageFragment;
@@ -13,21 +12,7 @@ type ArticleProps = {
 };
 
 export default function ArticlePage({ originalArticle, articles }: ArticleProps) {
-  const { data: updatedArticle } = useSWR<ArticlePageFragment | null>(
-    [
-      print(ArticlePageQueryDocument),
-      {
-        id: originalArticle.id,
-        stage: mapEnvToStage(),
-      },
-    ],
-    graphqlRequest,
-    {
-      initialData: originalArticle,
-      revalidateOnFocus: false,
-      shouldRetryOnError: false,
-    }
-  );
+  const { updatedItem: updatedArticle } = useActualItem(ArticlePageQueryDocument, originalArticle);
   if (!updatedArticle) throw new Error(`article not found with id ${originalArticle.id}`);
   return <ArticleContainer article={updatedArticle} articles={articles} />;
 }
