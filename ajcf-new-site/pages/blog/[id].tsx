@@ -1,9 +1,11 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
+import useSWR from "swr";
 import { ArticleContainer } from "../../components/Blog/ArticleComponents/ArticleContainer";
-import { graphqlClient } from "../../lib/graphql/graphqlClient";
-import { ArticlePreviewFragment, ArticlePageFragment } from "../../types/types";
+import { graphqlClient, graphqlRequest } from "../../lib/graphql/graphqlClient";
+import { ArticlePreviewFragment, ArticlePageFragment, ArticlePageQueryDocument } from "../../types/types";
 import { mapEnvToStage } from "../../lib/utils/mapEnvToStage";
+import { print } from "graphql/language/printer";
 
 type ArticleProps = {
   article?: ArticlePageFragment | null;
@@ -11,8 +13,11 @@ type ArticleProps = {
 };
 
 export default function ArticlePage({ article, articles }: ArticleProps) {
-  if (!article) throw new Error("article not found");
-  return <ArticleContainer article={article} articles={articles} />;
+  const { data } = useSWR<ArticlePageFragment | null>(print(ArticlePageQueryDocument), graphqlRequest, {
+    initialData: article,
+  });
+  if (!data) throw new Error("article not found");
+  return <ArticleContainer article={data} articles={articles} />;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
