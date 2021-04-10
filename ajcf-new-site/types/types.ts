@@ -3828,7 +3828,7 @@ export enum _SystemDateTimeFieldVariation {
 }
 
 export type ArticlePageFragment = (
-  { __typename: 'Article' }
+  { __typename?: 'Article' }
   & Pick<Article, 'id' | 'title' | 'author' | 'createdAt' | 'labels' | 'optionalPublishedDate' | 'content'>
   & { cover?: Maybe<(
     { __typename?: 'Asset' }
@@ -3864,7 +3864,7 @@ export type ArticlesMetaQueryQuery = (
 );
 
 export type ArticlePreviewFragment = (
-  { __typename: 'Article' }
+  { __typename?: 'Article' }
   & Pick<Article, 'id' | 'title' | 'author' | 'createdAt' | 'category' | 'labels' | 'optionalPublishedDate' | 'content'>
   & { cover?: Maybe<(
     { __typename?: 'Asset' }
@@ -3900,7 +3900,7 @@ export type ArticlesPreviewPartialQueryQuery = (
 );
 
 export type EventPageFragment = (
-  { __typename: 'Event' }
+  { __typename?: 'Event' }
   & Pick<Event, 'id' | 'title' | 'content' | 'date' | 'labels' | 'category'>
   & { cover?: Maybe<(
     { __typename?: 'Asset' }
@@ -4019,7 +4019,6 @@ export const ArticlePageFragmentDoc = gql`
     url
   }
   content
-  __typename
 }
     `;
 export const ArticlePreviewFragmentDoc = gql`
@@ -4036,7 +4035,6 @@ export const ArticlePreviewFragmentDoc = gql`
     url
   }
   content
-  __typename
 }
     `;
 export const EventPageFragmentDoc = gql`
@@ -4051,7 +4049,6 @@ export const EventPageFragmentDoc = gql`
     id
     url
   }
-  __typename
 }
     `;
 export const EventPreviewFragmentDoc = gql`

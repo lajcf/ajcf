@@ -9,8 +9,6 @@ fragment eventPage on Event {
     id
     url
   }
-  __typename
-
 }
 
 query eventPageQuery($id: ID!) {
