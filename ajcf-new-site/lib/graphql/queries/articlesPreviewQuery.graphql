@@ -11,7 +11,6 @@ fragment articlePreview on Article {
     url
   }
   content
-  __typename
 }
 
 query articlesPreviewQuery($stage: Stage!) {

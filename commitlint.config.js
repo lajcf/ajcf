@@ -31,11 +31,13 @@ const scopesEnum = Object.keys(ajcfConventionalCommit.commonScopes);
 module.exports = {
   extends: ["@commitlint/config-conventional"],
   rules: {
-    "type-enum": [2, "always", typesEnum],
-    "scope-case": [2, "always", ["camel-case"]],
-    "scope-enum": [2, "always", scopesEnum],
-    "subject-empty": [2, "never"],
-    "subject-case": [0, "always", ["lower-case"]],
     "header-max-length": [0, "always", 72],
+    "scope-case": [2, "always", ["camel-case"]],
+    "scope-empty": [0],
+    "scope-enum": [2, "always", scopesEnum],
+    "subject-case": [0, "always", ["lower-case"]],
+    "subject-empty": [0],
+    "type-empty": [0],
+    "type-enum": [2, "always", typesEnum],
   },
 };

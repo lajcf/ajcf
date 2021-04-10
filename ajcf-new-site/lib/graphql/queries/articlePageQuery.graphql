@@ -10,8 +10,6 @@ fragment articlePage on Article {
     url
   }
   content
-  __typename
-
 }
 
 query articlePageQuery($id: ID!, $stage: Stage!) {

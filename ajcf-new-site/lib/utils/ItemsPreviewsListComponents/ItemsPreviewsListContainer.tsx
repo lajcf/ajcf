@@ -1,36 +1,42 @@
 import { uniq } from "lodash";
 import React, { useState } from "react";
-import {
-  ArticlePreviewFragment,
-  BlogCategory,
-  BlogLabel,
-  EventCategory,
-  EventLabel,
-  EventPreviewFragment,
-} from "../../../types/types";
 import { processItems } from "./processItems";
 import { SelectorForCategoryOrLabel } from "./SelectorBlogCategoryOrLabel";
-import { ItemPreview } from "./ItemPreview";
 
-export type Item = ArticlePreviewFragment | EventPreviewFragment;
-export type Category = BlogCategory | EventCategory;
-export type Label = BlogLabel | EventLabel;
-export const ItemsPreviewsListContainer = ({
-  items,
-  numberOfItemsToDisplayAtATime,
-}: {
+export type ItemBase<Category extends string, Label extends string> = {
+  id: string;
+  category: Category;
+  labels: Label[];
+};
+
+type ItemsPreviewsListContainer<
+  Item extends ItemBase<Category, Label>,
+  Category extends string,
+  Label extends string
+> = {
   items: Item[];
   numberOfItemsToDisplayAtATime: number;
-}) => {
+  renderItem: (item: Item) => JSX.Element;
+  categoriesToShow: Category[];
+};
+
+export const ItemsPreviewsListContainer = <
+  Item extends ItemBase<Category, Label>,
+  Category extends string,
+  Label extends string
+>({
+  items,
+  numberOfItemsToDisplayAtATime,
+  renderItem,
+  categoriesToShow,
+}: ItemsPreviewsListContainer<Item, Category, Label>) => {
   const [selectedCategory, setSelectedCategory] = useState<Category>();
   const [selectedLabel, setSelectedLabel] = useState<Label>();
   const [numberOfItemsToDisplay, setNumberOfItemsToDisplay] = useState(numberOfItemsToDisplayAtATime);
 
   const itemsToShow = processItems(items, numberOfItemsToDisplay, selectedCategory, selectedLabel);
 
-  const selectUsedLabels = (): Label[] => {
-    // TODO: find a better implementation
-    // @ts-ignore
+  const selectUsedLabels = () => {
     return uniq(items.flatMap((item) => item.labels));
   };
 
@@ -60,15 +66,11 @@ export const ItemsPreviewsListContainer = ({
         selectedCategory={selectedCategory}
         handleSelectedLabel={handleSelectedLabel}
         handleSelectedCategory={handleSelectedCategory}
-        categoriesToShow={Object.values(BlogCategory)}
+        categoriesToShow={categoriesToShow}
         labelsToShow={selectUsedLabels()}
         resetFilters={resetFilters}
       />
-      <ul>
-        {itemsToShow.map((item) => (
-          <ItemPreview key={item.id} item={item} />
-        ))}
-      </ul>
+      <ul>{itemsToShow.map((item) => renderItem(item))}</ul>
       {thereAreRemainingItems() && (
         <button
           type="button"
