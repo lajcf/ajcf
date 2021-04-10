@@ -1,6 +1,5 @@
 import { uniq } from "lodash";
 import React, { useState } from "react";
-import { BlogCategory } from "../../../types/types";
 import { processItems } from "./processItems";
 import { SelectorForCategoryOrLabel } from "./SelectorBlogCategoryOrLabel";
 
@@ -18,6 +17,7 @@ type ItemsPreviewsListContainer<
   items: Item[];
   numberOfItemsToDisplayAtATime: number;
   renderItem: (item: Item) => JSX.Element;
+  categoriesToShow: Category[];
 };
 
 export const ItemsPreviewsListContainer = <
@@ -28,6 +28,7 @@ export const ItemsPreviewsListContainer = <
   items,
   numberOfItemsToDisplayAtATime,
   renderItem,
+  categoriesToShow,
 }: ItemsPreviewsListContainer<Item, Category, Label>) => {
   const [selectedCategory, setSelectedCategory] = useState<Category>();
   const [selectedLabel, setSelectedLabel] = useState<Label>();
@@ -65,7 +66,7 @@ export const ItemsPreviewsListContainer = <
         selectedCategory={selectedCategory}
         handleSelectedLabel={handleSelectedLabel}
         handleSelectedCategory={handleSelectedCategory}
-        categoriesToShow={Object.values(BlogCategory) as Category[]}
+        categoriesToShow={categoriesToShow}
         labelsToShow={selectUsedLabels()}
         resetFilters={resetFilters}
       />
