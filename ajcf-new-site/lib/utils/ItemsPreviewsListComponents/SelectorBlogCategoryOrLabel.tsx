@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Category, Label } from "./ItemsPreviewsListContainer";
 import styles from "./SelectorForCategoryOrLabel.module.scss";
 
-type SelectorForCategoryOrLabelProps = {
+type SelectorForCategoryOrLabelProps<Category, Label> = {
   selectedCategory?: Category;
   handleSelectedCategory: (category: Category) => void;
   selectedLabel?: Label;
@@ -12,7 +11,7 @@ type SelectorForCategoryOrLabelProps = {
   resetFilters: () => void;
 };
 
-const CategorySelector = ({
+const CategorySelector = <Category extends string>({
   category,
   selectedCategory,
   handleSelectedCategory,
@@ -31,7 +30,7 @@ const CategorySelector = ({
   </li>
 );
 
-const LabelSelector = ({
+const LabelSelector = <Label extends string>({
   label,
   selectedLabel,
   handleSelectedLabel,
@@ -47,7 +46,7 @@ const LabelSelector = ({
   </li>
 );
 
-export const SelectorForCategoryOrLabel = ({
+export const SelectorForCategoryOrLabel = <Category extends string, Label extends string>({
   selectedCategory,
   selectedLabel,
   handleSelectedCategory,
@@ -55,7 +54,7 @@ export const SelectorForCategoryOrLabel = ({
   categoriesToShow,
   labelsToShow,
   resetFilters,
-}: SelectorForCategoryOrLabelProps) => {
+}: SelectorForCategoryOrLabelProps<Category, Label>) => {
   const [showLabels, setShowLabels] = useState(false);
   return (
     <div className={styles.selectorForBlogCategoryOrLabel}>

@@ -1,18 +1,21 @@
 import { sortBy } from "lodash";
-import { Category, Item, Label } from "./ItemsPreviewsListContainer";
+import { ItemBase } from "./ItemsPreviewsListContainer";
 
-const filterItems = (items: Item[], selectedCategory?: Category, selectedLabel?: Label) => {
+const filterItems = <Item extends ItemBase<Category, Label>, Category extends string, Label extends string>(
+  items: Item[],
+  selectedCategory?: Category,
+  selectedLabel?: Label
+) => {
   if (selectedCategory) {
     return items.filter((item) => item.category === selectedCategory);
   }
   if (selectedLabel) {
-    // @ts-ignore
     return items.filter((item) => item.labels.includes(selectedLabel));
   }
   return items;
 };
 
-export const processItems = (
+export const processItems = <Item extends ItemBase<Category, Label>, Category extends string, Label extends string>(
   items: Item[],
   numberOfItemsToDisplay: number,
   selectedCategory?: Category,

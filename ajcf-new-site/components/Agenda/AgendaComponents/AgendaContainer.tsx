@@ -3,6 +3,7 @@ import { NUMBER_OF_EVENTS_TO_DISPLAY_AT_A_TIME } from "../../../lib/constants";
 import { ItemsPreviewsListContainer } from "../../../lib/utils/ItemsPreviewsListComponents/ItemsPreviewsListContainer";
 import { EventPreviewFragment } from "../../../types/types";
 import { Layout } from "../../Layout/Layout";
+import { EventPreview } from "./EventPreview";
 
 export const AgendaContainer = ({ events }: { events: EventPreviewFragment[] }) => {
   return (
@@ -17,6 +18,7 @@ export const AgendaContainer = ({ events }: { events: EventPreviewFragment[] }) 
       <ItemsPreviewsListContainer
         items={events}
         numberOfItemsToDisplayAtATime={NUMBER_OF_EVENTS_TO_DISPLAY_AT_A_TIME}
+        renderItem={(item) => <EventPreview key={item.id} event={item} />}
       />
     </Layout>
   );

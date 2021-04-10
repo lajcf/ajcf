@@ -9,7 +9,6 @@ fragment eventPreview on Event {
   }
   labels
   category
-  __typename
 }
 
 query eventsPreviewQuery {
