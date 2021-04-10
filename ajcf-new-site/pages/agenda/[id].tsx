@@ -16,13 +16,13 @@ type EventProps = {
 };
 
 export default function Event({ initialEvent, events }: EventProps) {
-  const { updatedItem: updatedEvent } = useActualItem<EventPageQueryQuery>(
+  const { actualItem: actualEvent } = useActualItem<EventPageQueryQuery>(
     EventPageQueryDocument,
     { event: initialEvent },
     initialEvent.id
   );
-  if (!updatedEvent?.event) throw new Error(`Event with id ${initialEvent.id} not found`);
-  return <EventContainer event={updatedEvent.event} events={events} />;
+  if (!actualEvent?.event) throw new Error(`Event with id ${initialEvent.id} not found`);
+  return <EventContainer event={actualEvent.event} events={events} />;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {

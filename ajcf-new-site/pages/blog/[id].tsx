@@ -17,13 +17,13 @@ type ArticleProps = {
 };
 
 export default function ArticlePage({ initialArticle, articles }: ArticleProps) {
-  const { updatedItem: updatedArticle } = useActualItem<ArticlePageQueryQuery>(
+  const { actualItem: actualArticle } = useActualItem<ArticlePageQueryQuery>(
     ArticlePageQueryDocument,
     { article: initialArticle },
     initialArticle.id
   );
-  if (!updatedArticle?.article) throw new Error(`article not found with id ${initialArticle.id}`);
-  return <ArticleContainer article={updatedArticle.article} articles={articles} />;
+  if (!actualArticle?.article) throw new Error(`article not found with id ${initialArticle.id}`);
+  return <ArticleContainer article={actualArticle.article} articles={articles} />;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
