@@ -12,7 +12,7 @@ export default function Blog({ articles }: BlogProps) {
 }
 
 export const getStaticProps: GetStaticProps<BlogProps> = async () => {
-  const articlesResult = await graphqlClient.articlesPreviewQuery({ stage: mapEnvToStage(process.env.ENV) });
+  const articlesResult = await graphqlClient.articlesPreviewQuery({ stage: mapEnvToStage() });
   return {
     props: {
       articles: articlesResult.articles,
