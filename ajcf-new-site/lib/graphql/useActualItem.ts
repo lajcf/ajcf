@@ -4,22 +4,25 @@ import { DocumentNode } from "graphql";
 import { mapEnvToStage } from "../utils/mapEnvToStage";
 import { graphqlRequest } from "./graphqlClient";
 
-export const useActualItem = <T extends { id: string }>(query: DocumentNode, originalItem: T) => {
-  const { data: updatedItem, error } = useSWR<T | null>(
-    [
-      print(query),
-      {
-        id: originalItem.id,
-        stage: mapEnvToStage(),
-      },
-    ],
-    graphqlRequest,
+/**
+ * Our own implementation of useSWR, which can be improved
+ * @param query graphql query generated in types.ts
+ * @param initialData: of the form {[key: string]: {id: string}}
+ * @param initialItemId: contained in initialData but must be passed since the key is not known by this function
+ */
+export const useActualItem = <T>(query: DocumentNode, initialData: T, initialItemId: string) => {
+  const variables = {
+    id: initialItemId,
+    stage: mapEnvToStage(),
+  };
+  const { data: updatedItem, error } = useSWR<T>(
+    JSON.stringify([print(query), variables]),
+    () => graphqlRequest(query, variables),
     {
-      initialData: originalItem,
-      // revalidateOnFocus: false,
+      initialData,
       shouldRetryOnError: false,
+      focusThrottleInterval: 2000, // revalidate interval >= 2s
     }
   );
-  console.log(updatedItem);
   return { updatedItem, error };
 };

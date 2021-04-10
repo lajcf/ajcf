@@ -2,7 +2,12 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
 import { ArticleContainer } from "../../components/Blog/ArticleComponents/ArticleContainer";
 import { graphqlClient } from "../../lib/graphql/graphqlClient";
-import { ArticlePageFragment, ArticlePageQueryDocument, ArticlePreviewFragment } from "../../types/types";
+import {
+  ArticlePageFragment,
+  ArticlePageQueryDocument,
+  ArticlePageQueryQuery,
+  ArticlePreviewFragment,
+} from "../../types/types";
 import { mapEnvToStage } from "../../lib/utils/mapEnvToStage";
 import { useActualItem } from "../../lib/graphql/useActualItem";
 
@@ -12,9 +17,13 @@ type ArticleProps = {
 };
 
 export default function ArticlePage({ originalArticle, articles }: ArticleProps) {
-  const { updatedItem: updatedArticle } = useActualItem(ArticlePageQueryDocument, originalArticle);
-  if (!updatedArticle) throw new Error(`article not found with id ${originalArticle.id}`);
-  return <ArticleContainer article={updatedArticle} articles={articles} />;
+  const { updatedItem: updatedArticle } = useActualItem<ArticlePageQueryQuery>(
+    ArticlePageQueryDocument,
+    { article: originalArticle },
+    originalArticle.id
+  );
+  if (!updatedArticle?.article) throw new Error(`article not found with id ${originalArticle.id}`);
+  return <ArticleContainer article={updatedArticle.article} articles={articles} />;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {

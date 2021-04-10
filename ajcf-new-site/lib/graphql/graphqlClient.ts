@@ -1,16 +1,15 @@
-import { GraphQLClient, request } from "graphql-request";
+import { GraphQLClient } from "graphql-request";
 import { DocumentNode } from "graphql";
 import { Variables } from "graphql-request/dist/types";
 import { getSdk } from "../../types/types";
 
-const graphcmsClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHCMS_URL as string, {
+const graphcmsClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHCMS_URL!, {
   headers: {
-    authorization: process.env.NEXT_PUBLIC_GRAPHCMS_TOKEN as string,
+    authorization: process.env.NEXT_PUBLIC_GRAPHCMS_TOKEN!,
   },
 });
 
-export const graphqlRequest = (query: DocumentNode, variables: Variables) =>
-  request(process.env.NEXT_PUBLIC_GRAPHCMS_URL!, query, variables);
+export const graphqlRequest = (query: DocumentNode, variables: Variables) => graphcmsClient.request(query, variables);
 
 export const graphqlClient = getSdk(graphcmsClient);
 
