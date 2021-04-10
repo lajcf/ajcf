@@ -12,17 +12,17 @@ import { mapEnvToStage } from "../../lib/utils/mapEnvToStage";
 import { useActualItem } from "../../lib/graphql/useActualItem";
 
 type ArticleProps = {
-  originalArticle: ArticlePageFragment;
+  initialArticle: ArticlePageFragment;
   articles: ArticlePreviewFragment[];
 };
 
-export default function ArticlePage({ originalArticle, articles }: ArticleProps) {
+export default function ArticlePage({ initialArticle, articles }: ArticleProps) {
   const { updatedItem: updatedArticle } = useActualItem<ArticlePageQueryQuery>(
     ArticlePageQueryDocument,
-    { article: originalArticle },
-    originalArticle.id
+    { article: initialArticle },
+    initialArticle.id
   );
-  if (!updatedArticle?.article) throw new Error(`article not found with id ${originalArticle.id}`);
+  if (!updatedArticle?.article) throw new Error(`article not found with id ${initialArticle.id}`);
   return <ArticleContainer article={updatedArticle.article} articles={articles} />;
 }
 
@@ -43,7 +43,7 @@ export const getStaticProps: GetStaticProps<ArticleProps, { id: string }> = asyn
   if (!articlePageResult.article) throw new Error("article not found");
   return {
     props: {
-      originalArticle: articlePageResult.article,
+      initialArticle: articlePageResult.article,
       articles: articlesResult.articles,
     },
   };

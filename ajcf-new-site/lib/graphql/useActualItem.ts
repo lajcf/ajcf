@@ -16,7 +16,7 @@ export const useActualItem = <T>(query: DocumentNode, initialData: T, initialIte
     stage: mapEnvToStage(),
   };
   const { data: updatedItem, error } = useSWR<T>(
-    JSON.stringify([print(query), variables]),
+    JSON.stringify([print(query), variables]), // WARNING: must stringify since {} !== {}, meaning swr will trigger an infinite loop if not stringified
     () => graphqlRequest(query, variables),
     {
       initialData,
