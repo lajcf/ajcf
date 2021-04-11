@@ -10,7 +10,7 @@ export default function Press({ pressFiles }: { pressFiles: PressFileFragment[] 
 }
 
 export const getStaticProps: GetStaticProps<any> = async () => {
-  const pressFilesResult = await graphqlClient.pressFilesQuery({ stage: mapEnvToStage(process.env.ENV) });
+  const pressFilesResult = await graphqlClient.pressFilesQuery({ stage: mapEnvToStage() });
   return {
     props: {
       pressFiles: pressFilesResult.assets,

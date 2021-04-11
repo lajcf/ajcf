@@ -12,7 +12,7 @@ export default function Index({ articles }: IndexProps) {
 
 export const getStaticProps: GetStaticProps<IndexProps> = async () => {
   const articlesResult = await graphqlClient.articlesPreviewPartialQuery({
-    stage: mapEnvToStage(process.env.ENV),
+    stage: mapEnvToStage(),
     numberOfArticles: 3,
   });
   return {

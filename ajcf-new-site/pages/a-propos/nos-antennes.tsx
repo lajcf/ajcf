@@ -19,11 +19,11 @@ export const getStaticProps: GetStaticProps<{
   events: EventPreviewFragment[];
 }> = async () => {
   const articlesResult = await graphqlClient.articlesPreviewPartialQuery({
-    stage: mapEnvToStage(process.env.ENV),
+    stage: mapEnvToStage(),
     numberOfArticles: 3,
   });
   const eventsResult = await graphqlClient.eventsPreviewPartialQuery({
-    stage: mapEnvToStage(process.env.ENV),
+    stage: mapEnvToStage(),
     numberOfEvents: 3,
   });
   return {

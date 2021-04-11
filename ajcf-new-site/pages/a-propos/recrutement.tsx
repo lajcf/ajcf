@@ -10,7 +10,7 @@ export default function Recruitment({ jobOffers }: { jobOffers: JobOffer[] }) {
 }
 
 export const getStaticProps: GetStaticProps<any> = async () => {
-  const jobOffersResult = await graphqlClient.jobOffersQuery({ stage: mapEnvToStage(process.env.ENV) });
+  const jobOffersResult = await graphqlClient.jobOffersQuery({ stage: mapEnvToStage() });
   return {
     props: {
       jobOffers: jobOffersResult.jobOffers,
