@@ -8,7 +8,7 @@ export const ContactContainer = () => {
     <Layout className={styles.layout}>
       <section className={styles.summarySection}>
         <h1>Contactez nous ! </h1>
-        <p className="texte1">
+        <p>
           Des projets à nous soumettre, des questions sur notre association ? Contactez-nous via ce formulaire, et notre
           équipe se fera un plaisir de vous répondre ! Vous pouvez également nous contacter directement par mail via
           l’adresse contact@lajcf.fr
