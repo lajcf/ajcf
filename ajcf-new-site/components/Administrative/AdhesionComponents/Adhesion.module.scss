@@ -8,17 +8,23 @@
       "quickAccess summarySection";
     section {
       grid-column: span 2;
+      margin: 2rem;
     }
     .summarySection {
       grid-area: summarySection;
     }
     .adhesionAdvantagesSection {
-      background-color: $accent-color;
-      .bulletPointsList {
-        margin: 0 2rem;
-        .bulletPoint {
+      background-color: $primary-color;
+      ul {
+        margin: 2rem;
+        li {
+          margin: 1rem;
           display: flex;
-          gap: 1rem;
+          align-items: center;
+          gap: 2rem;
+          p {
+            flex: 1 1;
+          }
           .checkIcon {
             font-size: 2rem;
           }
