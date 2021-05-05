@@ -57,8 +57,8 @@ export const SelectorForCategoryOrLabel = <Category extends string, Label extend
 }: SelectorForCategoryOrLabelProps<Category, Label>) => {
   const [showLabels, setShowLabels] = useState(false);
   return (
-    <div className={styles.selectorForBlogCategoryOrLabel}>
-      <ul className={styles.blogCategoriesList}>
+    <div className={styles.selectorForCategoryOrLabel}>
+      <ul className={styles.categoriesList}>
         <li key="allArticles">
           <a className={selectedLabel || selectedCategory ? undefined : styles.active} onClick={() => resetFilters()}>
             Tous les articles
@@ -72,14 +72,14 @@ export const SelectorForCategoryOrLabel = <Category extends string, Label extend
             selectedCategory={selectedCategory}
           />
         ))}
-        <li key="showLabelsButton">
+        <li key="showLabelsButton" className={styles.showLabelsButtonContainer}>
           <button type="button" className={styles.showLabelsButton} onClick={() => setShowLabels(!showLabels)}>
             {showLabels ? "Moins de catégories" : "Voir plus de catégories"}
           </button>
         </li>
       </ul>
       {showLabels && (
-        <ul className={styles.blogLabelsList}>
+        <ul className={styles.labelsList}>
           {labelsToShow.map((label) => (
             <LabelSelector
               key={label}

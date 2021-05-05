@@ -1,7 +1,7 @@
 import { uniq } from "lodash";
 import React, { useState } from "react";
 import { processItems } from "./processItems";
-import { SelectorForCategoryOrLabel } from "./SelectorBlogCategoryOrLabel";
+import { SelectorForCategoryOrLabel } from "./SelectorForCategoryOrLabel";
 
 export type ItemBase<Category extends string, Label extends string> = {
   id: string;

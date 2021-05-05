@@ -1,6 +1,6 @@
 @import "/styles/variables.scss";
 
-.selectorForBlogCategoryOrLabel {
+.selectorForCategoryOrLabel {
   background-color: $secondary-color;
   padding: 1rem;
   margin: 1rem;
@@ -8,11 +8,20 @@
     color: white;
     font-size: 18px;
   }
-  .blogCategoriesList {
-    display: grid;
-    grid-auto-flow: column;
+  .categoriesList {
+    display: flex;
     align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 2rem;
+
+    li {
+      flex: 1 1;
+    }
+    .showLabelsButtonContainer {
+      flex: 0 1;
+      margin-left: auto;
+    }
   }
   .active {
     font-weight: bold;
@@ -21,7 +30,7 @@
     border: 1px solid white;
     background: none;
   }
-  .blogLabelsList {
+  .labelsList {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
