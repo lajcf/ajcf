@@ -1,3 +1,5 @@
+@import "/styles/variables.scss";
+
 .layout {
   main {
     display: grid;
@@ -12,7 +14,7 @@
     }
     .contactFormSection {
       border: 1px solid gray;
-      margin: 2rem;
+      margin: 2rem 4rem;
       .antForm {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -51,6 +53,8 @@
           }
           .formSubmitButton {
             grid-area: formSubmitButton;
+            background-color: $secondary-color;
+            border: none;
           }
         }
       }
