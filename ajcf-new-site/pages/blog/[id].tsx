@@ -30,7 +30,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const articlesMetaResult = await graphqlClient.articlesMetaQuery({ stage: mapEnvToStage() });
   return {
     paths: articlesMetaResult.articles.map((article) => ({ params: { id: article.id } })) || [],
-    fallback: true,
+    fallback: true, // enable page generation at runtime
   };
 };
 
