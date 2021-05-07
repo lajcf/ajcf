@@ -17,6 +17,8 @@ type ArticleProps = {
 };
 
 export default function ArticlePage({ initialArticle, articles }: ArticleProps) {
+  console.log("HAHAHA");
+  console.log(initialArticle);
   const { actualItem: actualArticle } = useActualItem<ArticlePageQueryQuery>(
     ArticlePageQueryDocument,
     { article: initialArticle },
