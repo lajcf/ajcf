@@ -15,8 +15,6 @@ export const useActualItem = <T>(query: DocumentNode, initialData: T, initialIte
     id: initialItemId,
     stage: mapEnvToStage(),
   };
-  console.log("HIHIHI");
-  console.log(variables);
   const { data: actualItem, error } = useSWR<T>(
     JSON.stringify([print(query), variables]), // WARNING: must stringify since {} !== {}, meaning swr will trigger an infinite loop if not stringified
     () => graphqlRequest(query, variables),
@@ -26,8 +24,5 @@ export const useActualItem = <T>(query: DocumentNode, initialData: T, initialIte
       focusThrottleInterval: 2000, // revalidate interval >= 2s
     }
   );
-  console.log("HOHOHO");
-  console.log(actualItem);
-  console.log(error);
   return { actualItem, error };
 };
