@@ -10,7 +10,7 @@ import { graphqlRequest } from "./graphqlClient";
  * @param initialData: of the form {[key: string]: {id: string}}
  * @param initialItemId: contained in initialData but must be passed since the key is not known by this function
  */
-export const useActualItem = <T>(query: DocumentNode, initialData: T, initialItemId: string) => {
+export const useActualItem = <T>(query: DocumentNode, initialData: T, initialItemId?: string) => {
   const variables = {
     id: initialItemId,
     stage: mapEnvToStage(),

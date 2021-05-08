@@ -30,7 +30,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const articlesMetaResult = await graphqlClient.articlesMetaQuery({ stage: mapEnvToStage() });
   return {
     paths: articlesMetaResult.articles.map((article) => ({ params: { id: article.id } })) || [],
-    fallback: "blocking", // enable page generation at runtime
+    fallback: "blocking", // enable page generation at runtime without fallback page
   };
 };
 
@@ -46,6 +46,5 @@ export const getStaticProps: GetStaticProps<ArticleProps, { id: string }> = asyn
       initialArticle: articlePageResult.article,
       articles: articlesResult.articles,
     },
-    revalidate: 2, // revalidate at most every 2 sec
   };
 };
