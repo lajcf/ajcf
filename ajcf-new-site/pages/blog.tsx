@@ -17,5 +17,6 @@ export const getStaticProps: GetStaticProps<BlogProps> = async () => {
     props: {
       articles: articlesResult.articles,
     },
+    revalidate: 2, // revalidate at most every 2 sec
   };
 };

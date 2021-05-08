@@ -46,5 +46,6 @@ export const getStaticProps: GetStaticProps<ArticleProps, { id: string }> = asyn
       initialArticle: articlePageResult.article,
       articles: articlesResult.articles,
     },
+    revalidate: 2, // revalidate at most every 2 sec
   };
 };
