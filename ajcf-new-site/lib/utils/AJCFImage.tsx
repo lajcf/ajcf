@@ -7,5 +7,6 @@ export const AJCFImage = (props: ImageProps | { src: string }) => {
   if (typeof src === "string") {
     return <img {...props} src={src} />;
   }
-  return <Image {...props} placeholder="blur" />;
+  // @ts-ignore
+  return <Image {...props} src={src} placeholder="blur" />;
 };
