@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./HomeBanner.module.scss";
+import { AJCFImage } from "../../../../lib/utils/AJCFImage";
+import banner from "../../../../public/banners/accueil-banner.png";
 
 const titleContent = "Venez explorer la double culture franco-chinoise avec l’AJCF.";
 const textContent =
@@ -17,7 +19,7 @@ export const HomeBanner = () => {
           <button type="button">Nos projets</button>
         </div>
         <div className={styles.image}>
-          <img src={require("../../../../public/banners/accueil-banner.png")} />
+          <AJCFImage src={banner} />
         </div>
       </div>
     </section>

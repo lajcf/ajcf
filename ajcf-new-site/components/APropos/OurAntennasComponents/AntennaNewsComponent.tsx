@@ -5,11 +5,12 @@ import { CustomCarousel } from "../../../lib/utils/CustomCarouselComponents/Cust
 import { formatContentSummary } from "../../../lib/utils/formatContentSummary";
 import { ArticlePreviewFragment } from "../../../types/types";
 import styles from "./OurAntennas.module.scss";
+import { AJCFImage } from "../../../lib/utils/AJCFImage";
 
 const AntennaNewsItem = ({ article }: { article: ArticlePreviewFragment }) => {
   return (
     <div className={styles.antennaNewsItem}>
-      <div>{article.cover && <img src={article.cover.url} />}</div>
+      <div>{article.cover && <AJCFImage src={article.cover.url} />}</div>
       <div>
         <h4 className="capsHeading">Actualité</h4>
         <h3>{article.title}</h3>

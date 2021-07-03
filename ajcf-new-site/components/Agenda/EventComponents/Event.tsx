@@ -4,13 +4,14 @@ import ReactMarkdown from "react-markdown";
 import { LabelsList } from "../../../lib/utils/ItemsPreviewsListComponents/LabelsList";
 import { EventPageFragment } from "../../../types/types";
 import styles from "./Event.module.scss";
+import { AJCFImage } from "../../../lib/utils/AJCFImage";
 
 export const Event = ({ event }: { event: EventPageFragment }) => {
   return (
     <>
       {event.cover && (
         <div className={styles.bannerContainer}>
-          <img src={event.cover.url} />
+          <AJCFImage src={event.cover.url} />
         </div>
       )}
       <section className={styles.eventContentSection}>

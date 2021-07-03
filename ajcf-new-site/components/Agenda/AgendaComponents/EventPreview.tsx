@@ -6,6 +6,7 @@ import { formatContentSummary } from "../../../lib/utils/formatContentSummary";
 import { LabelsList } from "../../../lib/utils/ItemsPreviewsListComponents/LabelsList";
 import { EventPreviewFragment } from "../../../types/types";
 import styles from "./EventPreview.module.scss";
+import { AJCFImage } from "../../../lib/utils/AJCFImage";
 
 type EventPreviewProps = {
   event: EventPreviewFragment;
@@ -18,7 +19,7 @@ export const EventPreview = ({ event }: EventPreviewProps) => {
       <div className={styles.previewCover}>
         <Link href={`/agenda/${event.id}`}>
           <a>
-            <div>{event.cover?.url && <img src={event.cover.url} />}</div>
+            <div>{event.cover?.url && <AJCFImage src={event.cover.url} />}</div>
           </a>
         </Link>
         <h3>{`${dayjs(event.date).format("DD MMM YYYY - HH:mm")}`}</h3>

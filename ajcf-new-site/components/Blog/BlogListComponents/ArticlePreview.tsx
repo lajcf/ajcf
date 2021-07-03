@@ -6,6 +6,7 @@ import { formatContentSummary } from "../../../lib/utils/formatContentSummary";
 import { ArticlePreviewFragment } from "../../../types/types";
 import { LabelsList } from "../../../lib/utils/ItemsPreviewsListComponents/LabelsList";
 import styles from "./ArticlePreview.module.scss";
+import { AJCFImage } from "../../../lib/utils/AJCFImage";
 
 export const ArticlePreview = ({ article }: { article: ArticlePreviewFragment }) => {
   const contentSummary = formatContentSummary(removeMarkdown(article.content), 140);
@@ -15,7 +16,7 @@ export const ArticlePreview = ({ article }: { article: ArticlePreviewFragment })
         <div className={styles.previewCover}>
           <Link href={`/blog/${article.id}`}>
             <a>
-              <img src={article.cover.url} />
+              <AJCFImage src={article.cover.url} />
             </a>
           </Link>
         </div>

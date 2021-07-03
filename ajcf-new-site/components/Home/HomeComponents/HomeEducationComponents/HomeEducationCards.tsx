@@ -1,5 +1,8 @@
 import React from "react";
 import styles from "./HomeEducation.module.scss";
+import { AJCFImage } from "../../../../lib/utils/AJCFImage";
+import interventions from "../../../../public/Images/Accueil/accueil_interventions-scolaires.jpg";
+import parcours from "../../../../public/Images/Accueil/accueil_parcours-de-vie.jpg";
 
 const homeEducationCards = [
   {
@@ -16,7 +19,7 @@ const homeEducationCards = [
     link: "https://www.education.gouv.fr/",
     content:
       "Le pôle Education réalise des interventions en milieu scolaire pour sensibiliser la jeunesse à l’histoire de l’immigration des Asiatiques, favoriser le dialogue multiculturel et intergénérationnel, et déconstruire les stéréotypes, afin de promouvoir le bien vivre-ensemble.",
-    image: require("../../../../public/Images/Accueil/accueil_interventions-scolaires.jpg"),
+    image: interventions,
   },
   {
     id: 2,
@@ -31,7 +34,7 @@ const homeEducationCards = [
     ),
     link: "https://sos-racisme.org/",
     content: "Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam no suscipit quaerendum.",
-    image: require("../../../../public/Images/Accueil/accueil_parcours-de-vie.jpg"),
+    image: parcours,
   },
 ];
 
@@ -46,7 +49,7 @@ export const HomeEducationCards = () => {
         {homeEducationCards.map((card) => (
           <li key={card.id} className={`${styles.card} ${oddOrEvenCard(card.id)}`}>
             <div className={styles.cardImage}>
-              <img src={card.image} />
+              <AJCFImage src={card.image} />
             </div>
             <div className={styles.emptyZone} />
             <div className={styles.cardText}>

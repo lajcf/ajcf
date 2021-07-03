@@ -4,13 +4,14 @@ import { ArticlePageFragment } from "../../../types/types";
 import { LabelsList } from "../../../lib/utils/ItemsPreviewsListComponents/LabelsList";
 import styles from "./ArticleContainer.module.scss";
 import { dayjs } from "../../../lib/utils/dayjs";
+import { AJCFImage } from "../../../lib/utils/AJCFImage";
 
 export const Article = ({ article }: { article: ArticlePageFragment }) => {
   return (
     <>
       {article.cover && (
         <div className={styles.bannerContainer}>
-          <img src={article.cover.url} />
+          <AJCFImage src={article.cover.url} />
         </div>
       )}
       <section className={styles.articleSection}>

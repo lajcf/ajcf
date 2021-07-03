@@ -2,6 +2,7 @@ import React from "react";
 import { partnersLogos } from "../../Home/HomeComponents/HomePartnersComponents/HomePartnersLogos";
 import { Layout } from "../../Layout/Layout";
 import styles from "./Partners.module.scss";
+import { AJCFImage } from "../../../lib/utils/AJCFImage";
 
 export const PartnersContainer = () => {
   return (
@@ -17,7 +18,7 @@ export const PartnersContainer = () => {
         <ul>
           {partnersLogos.map((partner) => (
             <li key={partner.id}>
-              <img src={partner.file} />
+              <AJCFImage src={partner.file} />
             </li>
           ))}
         </ul>

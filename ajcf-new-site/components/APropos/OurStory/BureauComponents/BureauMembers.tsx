@@ -1,36 +1,42 @@
 import React from "react";
 import styles from "../OurStory.module.scss";
+import laetitia from "../../../../public/Images/About us/aboutus_laetitia.jpg";
+import daniel from "../../../../public/Images/About us/aboutus_daniel.jpg";
+import flora from "../../../../public/Images/About us/aboutus_flora.jpg";
+import huanyu from "../../../../public/Images/About us/aboutus_huanyu.jpg";
+import antoine from "../../../../public/Images/About us/aboutus_antoine.jpg";
+import { AJCFImage } from "../../../../lib/utils/AJCFImage";
 
 const bureauMembers = [
   {
     name: `Laetitia CHHIV`,
     role: `Présidente`,
     occupation: `Doctorante à l'EHESS`,
-    picture: require("../../../../public/Images/About us/aboutus_laetitia.jpg"),
+    picture: laetitia,
   },
   {
     name: `Daniel TRAN`,
     role: `Vice-Président`,
     occupation: `Consultant en Gestion de patrimoine`,
-    picture: require("../../../../public/Images/About us/aboutus_daniel.jpg"),
+    picture: daniel,
   },
   {
     name: `Flora MAÏNO`,
     role: `Vice-Présidente`,
     occupation: `Consultante en Communication digitale`,
-    picture: require("../../../../public/Images/About us/aboutus_flora.jpg"),
+    picture: flora,
   },
   {
     name: `Huanyu REN`,
     role: `Secrétaire`,
     occupation: `Auto-entrepreneur`,
-    picture: require("../../../../public/Images/About us/aboutus_huanyu.jpg"),
+    picture: huanyu,
   },
   {
     name: `Antoine LAM`,
     role: `Trésorier`,
     occupation: `Consultant en Contrôle de gestion`,
-    picture: require("../../../../public/Images/About us/aboutus_antoine.jpg"),
+    picture: antoine,
   },
 ];
 
@@ -40,7 +46,7 @@ export const BureauMembers = () => {
       {bureauMembers.map((bureauMember) => (
         <li key={bureauMember.name}>
           <div className={styles.bureauMemberPictureContainer}>
-            <img src={bureauMember.picture} />
+            <AJCFImage src={bureauMember.picture} />
           </div>
           <h4>{bureauMember.name}</h4>
           <h5>({bureauMember.role})</h5>

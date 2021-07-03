@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./HomePartners.module.scss";
+import { AJCFImage } from "../../../../lib/utils/AJCFImage";
 
 export const partnersLogos = [
   {
@@ -133,7 +134,7 @@ export const HomePartnersLogos = () => {
     <ul className={styles.partnersLogos}>
       {partnersLogos.map((partner) => (
         <li key={partner.name}>
-          <img src={partner.file} />
+          <AJCFImage src={partner.file} />
         </li>
       ))}
     </ul>

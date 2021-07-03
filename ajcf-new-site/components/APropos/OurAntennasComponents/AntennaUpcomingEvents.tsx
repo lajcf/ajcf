@@ -3,11 +3,12 @@ import Link from "next/link";
 import { EventPreviewFragment } from "../../../types/types";
 import styles from "./OurAntennas.module.scss";
 import { dayjs } from "../../../lib/utils/dayjs";
+import { AJCFImage } from "../../../lib/utils/AJCFImage";
 
 const EventItem = ({ event }: { event: EventPreviewFragment }) => {
   return (
     <li className={styles.eventItemContainer}>
-      <div>{event.cover && <img src={event.cover.url} />}</div>
+      <div>{event.cover && <AJCFImage src={event.cover.url} />}</div>
       <div className={styles.eventItemText}>
         <div>
           <h5>{`${dayjs(event.date).format("DD MMM YYYY HH:mm")}`}</h5>

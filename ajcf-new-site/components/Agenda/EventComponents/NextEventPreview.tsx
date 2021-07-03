@@ -5,6 +5,7 @@ import { dayjs } from "../../../lib/utils/dayjs";
 import { formatContentSummary } from "../../../lib/utils/formatContentSummary";
 import { EventPreviewFragment } from "../../../types/types";
 import styles from "./Event.module.scss";
+import { AJCFImage } from "../../../lib/utils/AJCFImage";
 
 type NextEventProps = {
   event: EventPreviewFragment;
@@ -15,7 +16,7 @@ export const NextEventPreview = ({ event }: NextEventProps) => {
     <li>
       <Link href={eventLink}>
         <a>
-          <div>{event.cover?.url && <img src={event.cover.url} />}</div>
+          <div>{event.cover?.url && <AJCFImage src={event.cover.url} />}</div>
           <div className={styles.nextEventInfos}>
             <h5>{dayjs(event.date).format("DD MMM YYYY HH:mm")}</h5>
             <div>

@@ -1,5 +1,8 @@
 import React from "react";
 import styles from "./OurAntennas.module.scss";
+import { AJCFImage } from "../../../lib/utils/AJCFImage";
+import ilana from "../../../public/Images/Antennes/antennes_ilana.jpg";
+import claire from "../../../public/Images/Antennes/antennes_claire.jpg";
 
 type AntennaTeamProps = {
   id: number;
@@ -14,14 +17,14 @@ const lyonTeam = [
     name: "Ilana Debris",
     role: "Coordinatrice",
     description: "Étudiante",
-    picture: require("../../../public/Images/Antennes/antennes_ilana.jpg"),
+    picture: ilana,
   },
   {
     id: 2,
     name: "Claire Song",
     role: "Coordinatrice",
     description: "Project-manager",
-    picture: require("../../../public/Images/Antennes/antennes_claire.jpg"),
+    picture: claire,
   },
 ];
 
@@ -40,7 +43,7 @@ export const AntennaAJCFLyon = () => {
           {lyonTeam.map((member) => (
             <li key={member.id}>
               <div className={styles.memberImageFrame}>
-                <img src={member.picture} />
+                <AJCFImage src={member.picture} />
               </div>
               <h4>{member.name}</h4>
               <h5>{member.role}</h5>

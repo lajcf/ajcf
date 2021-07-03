@@ -1,21 +1,26 @@
 import React from "react";
+import { AJCFImage } from "../../../lib/utils/AJCFImage";
+import ministereEducationNationale from "../../../public/Logos Partenaires/Ministère-Éducation-Nationale.png";
+import dilcrah from "../../../public/Logos Partenaires/DILCRAH.png";
+import idf from "../../../public/Logos Partenaires/Région-Île-de-France.png";
+import villeDeParis from "../../../public/Logos Partenaires/Ville-de-Paris.png";
 
 const educationPartners = [
   {
     id: 1,
-    logo: require("../../../public/Logos Partenaires/Ministère-Éducation-Nationale.png"),
+    logo: ministereEducationNationale,
   },
   {
     id: 2,
-    logo: require("../../../public/Logos Partenaires/DILCRAH.png"),
+    logo: dilcrah,
   },
   {
     id: 3,
-    logo: require("../../../public/Logos Partenaires/Région-Île-de-France.png"),
+    logo: idf,
   },
   {
     id: 4,
-    logo: require("../../../public/Logos Partenaires/Ville-de-Paris.png"),
+    logo: villeDeParis,
   },
 ];
 
@@ -24,7 +29,7 @@ export const EducationPartnersLogos = () => {
     <ul>
       {educationPartners.map((educationPartner) => (
         <li key={educationPartner.id}>
-          <img src={educationPartner.logo} />
+          <AJCFImage src={educationPartner.logo} />
         </li>
       ))}
     </ul>

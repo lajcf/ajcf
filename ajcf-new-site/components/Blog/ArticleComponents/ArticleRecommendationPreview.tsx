@@ -3,6 +3,7 @@ import removeMarkdown from "remove-markdown";
 import { formatContentSummary } from "../../../lib/utils/formatContentSummary";
 import { ArticlePreviewFragment } from "../../../types/types";
 import styles from "./ArticleContainer.module.scss";
+import { AJCFImage } from "../../../lib/utils/AJCFImage";
 
 export const ArticleRecommendationPreview = ({ article }: { article: ArticlePreviewFragment }) => {
   const contentSummary = formatContentSummary(removeMarkdown(article.content), 80);
@@ -10,7 +11,7 @@ export const ArticleRecommendationPreview = ({ article }: { article: ArticlePrev
     <>
       {article.cover?.url && (
         <div>
-          <img src={article.cover.url} />
+          <AJCFImage src={article.cover.url} />
         </div>
       )}
       <h3 className={styles.articleRecommendationTitle}>{article.title}</h3>
