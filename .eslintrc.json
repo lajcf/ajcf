@@ -15,7 +15,6 @@
   //},
   "extends": [
     "airbnb",
-    "next",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended"
