@@ -29,7 +29,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const eventsMetaResult = await graphqlClient.eventsMetaQuery();
   return {
     paths: eventsMetaResult.events.map((event) => ({ params: { id: event.id } })) || [],
-    fallback: false,
+    fallback: "blocking", // enable page generation at runtime without fallback page
   };
 };
 
