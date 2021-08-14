@@ -1,7 +1,6 @@
 import { Member } from "../../../../entities/Member";
 import { sendEmail } from "../../../mailjet/sendEmail";
-import { welcomeMail } from "./assets/welcomeMail";
-import { brochureAJCF } from "./assets/brochureAJCF";
+import { TEMPLATE_WELCOME } from "../../../../constants";
 
 export const sendWelcomeMail = async (member: Member) => {
   await sendEmail({
@@ -22,13 +21,6 @@ export const sendWelcomeMail = async (member: Member) => {
       Name: "Association des Jeunes Chinois de France",
     },
     Subject: "Bienvenue à l'AJCF !",
-    HTMLPart: welcomeMail(member.firstName),
-    Attachments: [
-      {
-        ContentType: "application/pdf",
-        Base64Content: brochureAJCF,
-        Filename: "Présentation de l'AJCF.pdf",
-      },
-    ],
+    TemplateID: TEMPLATE_WELCOME,
   });
 };
