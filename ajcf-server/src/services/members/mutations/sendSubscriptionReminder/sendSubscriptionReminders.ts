@@ -10,7 +10,9 @@ export const sendSubscriptionReminders = async () => {
   const shouldSendMailMembers = outdatedMembers.filter(keepMembersWhoNeedReminder(sendSubscriptionReminderActivities));
   await Promise.all(shouldSendMailMembers.map(sendSubscriptionReminder));
   console.log(
-    `Send reminders to members: ${shouldSendMailMembers.map((member) => `${member.firstName} ${member.lastName}`)}`
+    `Send reminders to ${shouldSendMailMembers.length} members: ${shouldSendMailMembers.map(
+      (member) => `${member.firstName} ${member.lastName}`
+    )}`
   );
   await createSendReminderActivities(shouldSendMailMembers);
 };
