@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop,immutable/no-let */
 import axios from "axios";
 import { orderBy } from "lodash";
 import { GET_ACTIONS_URL, HelloAssoAction, HelloAssoActionType } from "./resources";
@@ -16,14 +17,25 @@ export const fetchActions = async (args: GetActionsInterface): Promise<HelloAsso
     "base64"
   );
 
-  const url = GET_ACTIONS_URL(args.campaignId, args.actionType);
   try {
-    const result = await axios.get<HelloAssoActionsQueryResponse>(url, {
-      headers: {
-        Authorization: `Basic ${encodedAuth}`,
-      },
-    });
-    return orderBy(result.data.resources, (a) => a.date, "desc");
+    let actionsFetched: HelloAssoAction[] = [];
+    let currentActionsFetched: HelloAssoAction[] = [];
+    let pageIndex = 1;
+    while (pageIndex === 1 || currentActionsFetched.length !== 0) {
+      const result = await axios.get<HelloAssoActionsQueryResponse>(
+        GET_ACTIONS_URL(args.campaignId, pageIndex, args.actionType),
+        {
+          headers: {
+            Authorization: `Basic ${encodedAuth}`,
+          },
+        }
+      );
+      currentActionsFetched = result.data.resources;
+      actionsFetched = [...actionsFetched, ...currentActionsFetched];
+      pageIndex += 1;
+    }
+
+    return orderBy(actionsFetched, (a) => a.date, "desc");
   } catch (e) {
     console.log(e);
     throw e;
