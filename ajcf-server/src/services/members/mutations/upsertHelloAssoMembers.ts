@@ -1,10 +1,10 @@
-import moment from "moment";
 import { getRepository } from "typeorm";
 import { capitalize, orderBy, uniqBy } from "lodash";
 import { fetchCampaigns } from "../../helloAsso/fetchCampaigns";
 import { fetchActions } from "../../helloAsso/fetchActions";
 import { HelloAssoAction } from "../../helloAsso/resources";
 import { Member } from "../../../entities/Member";
+import dayjs from "../../../utils/dayjs";
 
 export enum CustomInfoEnum {
   birthDate = "Date de naissance",
@@ -16,9 +16,9 @@ export enum CustomInfoEnum {
 export const extractDateInfo = (member: HelloAssoAction, infoType: CustomInfoEnum): Date | null => {
   const date = member.custom_infos.find((e) => e.label === infoType);
   if (date) {
-    const parsedDateInFrench = moment.utc(date.value, "DD/MM/YYYY");
+    const parsedDateInFrench = dayjs.utc(date.value, "DD/MM/YYYY");
     if (parsedDateInFrench.isValid()) return parsedDateInFrench.toDate();
-    return moment.utc(date.value).toDate();
+    return dayjs.utc(date.value).toDate();
   }
   return null;
 };
@@ -40,7 +40,7 @@ export const fetchHelloAssoMembers = async (): Promise<HelloAssoAction[]> => {
 };
 
 const keepLastSubscriptions = (helloAssoMembers: HelloAssoAction[]) => {
-  const orderedHelloAssoMembers = orderBy(helloAssoMembers, (member) => moment.utc(member.date).toDate(), "desc");
+  const orderedHelloAssoMembers = orderBy(helloAssoMembers, (member) => dayjs.utc(member.date).toDate(), "desc");
   return uniqBy(orderedHelloAssoMembers, (member) => `${member.email.toLowerCase()}-${capitalize(member.first_name)}`);
 };
 
@@ -49,7 +49,7 @@ export const formatHelloAssoMembersForDb = (helloAssoMembers: HelloAssoAction[])
   return uniqueHelloAssoMembers.map((helloAssoMember) => {
     return {
       createdAt: new Date(),
-      updatedAt: moment.utc(helloAssoMember.date).toDate(),
+      updatedAt: dayjs.utc(helloAssoMember.date).toDate(),
       email: helloAssoMember.email.toLowerCase(),
       firstName: capitalize(helloAssoMember.first_name),
       lastName: capitalize(helloAssoMember.last_name),
@@ -57,8 +57,8 @@ export const formatHelloAssoMembersForDb = (helloAssoMembers: HelloAssoAction[])
       phone: extractStringInfo(helloAssoMember, CustomInfoEnum.phone),
       jobStudy: extractStringInfo(helloAssoMember, CustomInfoEnum.jobStudy),
       motivation: extractStringInfo(helloAssoMember, CustomInfoEnum.motivation),
-      firstSubscriptionDate: moment.utc(helloAssoMember.date).toDate(),
-      lastSubscriptionDate: moment.utc(helloAssoMember.date).toDate(),
+      firstSubscriptionDate: dayjs.utc(helloAssoMember.date).toDate(),
+      lastSubscriptionDate: dayjs.utc(helloAssoMember.date).toDate(),
       activeMember: false,
     };
   });

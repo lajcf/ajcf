@@ -67,6 +67,14 @@ const serverlessConfig: Serverless = {
         },
       ],
     },
+    sendSubscriptionReminders: {
+      handler: "src/handlers/sendSubscriptionReminders.handler",
+      events: [
+        {
+          schedule: "rate(1 day)",
+        },
+      ],
+    },
   },
 };
 

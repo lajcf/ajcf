@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import moment from "moment";
+import dayjs from "../../../../utils/dayjs";
 import { updateSingleEventTicketAttendeeEntities } from "../updateTicketAttendeeEntities";
 
 jest.mock("../../../helloAsso/fetchActions");
@@ -24,7 +24,7 @@ const event = {
 const helloAssoTickets = [
   {
     id: "2",
-    date: moment.utc("2020-06-11").format("YYYY-MM-DD"),
+    date: dayjs.utc("2020-06-11").format("YYYY-MM-DD"),
     first_name: "Nicolas",
     last_name: "Li",
     email: "premierhomme@gmail.com",
@@ -33,7 +33,7 @@ const helloAssoTickets = [
   },
   {
     id: "0",
-    date: moment.utc("2020-06-10").format("YYYY-MM-DD"),
+    date: dayjs.utc("2020-06-10").format("YYYY-MM-DD"),
     first_name: "Laetitia",
     last_name: "Chhiv",
     email: "dictatriceajcf@gmail.com",
@@ -42,7 +42,7 @@ const helloAssoTickets = [
   },
   {
     id: "1",
-    date: moment.utc("2020-06-08").format("YYYY-MM-DD"),
+    date: dayjs.utc("2020-06-08").format("YYYY-MM-DD"),
     first_name: "Nicolas",
     last_name: "Li",
     email: "premierhomme@gmail.com",
@@ -56,13 +56,13 @@ const attendees = [
     email: "premierhomme@gmail.com",
     firstName: "Nicolas",
     lastName: "Li",
-    lastParticipationDate: moment.utc("2020-06-11").toDate(),
+    lastParticipationDate: dayjs.utc("2020-06-11").toDate(),
   },
   {
     email: "dictatriceajcf@gmail.com",
     firstName: "Laetitia",
     lastName: "Chhiv",
-    lastParticipationDate: moment.utc("2020-06-10").toDate(),
+    lastParticipationDate: dayjs.utc("2020-06-10").toDate(),
   },
 ];
 
@@ -73,13 +73,13 @@ const tickets = [
       email: "premierhomme@gmail.com",
       firstName: "Nicolas",
       lastName: "Li",
-      lastParticipationDate: moment.utc("2020-06-11").toDate(),
+      lastParticipationDate: dayjs.utc("2020-06-11").toDate(),
     },
     event: {
       mailjetListId: "0",
       name: "test",
     },
-    date: moment.utc("2020-06-11").toDate(),
+    date: dayjs.utc("2020-06-11").toDate(),
     amount: 3,
     ticketType: "label_3",
   },
@@ -89,13 +89,13 @@ const tickets = [
       email: "dictatriceajcf@gmail.com",
       firstName: "Laetitia",
       lastName: "Chhiv",
-      lastParticipationDate: moment.utc("2020-06-10").toDate(),
+      lastParticipationDate: dayjs.utc("2020-06-10").toDate(),
     },
     event: {
       mailjetListId: "0",
       name: "test",
     },
-    date: moment.utc("2020-06-10").toDate(),
+    date: dayjs.utc("2020-06-10").toDate(),
     amount: 1,
     ticketType: "label_1",
   },
@@ -105,13 +105,13 @@ const tickets = [
       email: "premierhomme@gmail.com",
       firstName: "Nicolas",
       lastName: "Li",
-      lastParticipationDate: moment.utc("2020-06-11").toDate(),
+      lastParticipationDate: dayjs.utc("2020-06-11").toDate(),
     },
     event: {
       mailjetListId: "0",
       name: "test",
     },
-    date: moment.utc("2020-06-08").toDate(),
+    date: dayjs.utc("2020-06-08").toDate(),
     amount: 2,
     ticketType: "label_2",
   },

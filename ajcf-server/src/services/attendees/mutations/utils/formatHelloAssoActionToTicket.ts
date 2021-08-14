@@ -1,7 +1,7 @@
-import moment from "moment";
 import { Event } from "../../../../entities/Event";
 import { Attendee } from "../../../../entities/Attendee";
 import { HelloAssoAction } from "../../../helloAsso/resources";
+import dayjs from "../../../../utils/dayjs";
 
 export const formatHelloAssoTicketToTicket = (event: Event, attendees: Attendee[]) => (action: HelloAssoAction) => {
   const relatedAttendee = attendees.find((attendee) => attendee.email.toLowerCase() === action.email.toLowerCase());
@@ -17,7 +17,7 @@ export const formatHelloAssoTicketToTicket = (event: Event, attendees: Attendee[
     id: parseInt(action.id, 10).toString(),
     attendee: relatedAttendee,
     event,
-    date: moment.utc(action.date).toDate(),
+    date: dayjs.utc(action.date).toDate(),
     amount: action.amount,
     ticketType: action.option_label,
   };

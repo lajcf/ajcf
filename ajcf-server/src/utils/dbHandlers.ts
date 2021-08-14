@@ -3,6 +3,7 @@ import { Member } from "../entities/Member";
 import { Event } from "../entities/Event";
 import { Ticket } from "../entities/Ticket";
 import { Attendee } from "../entities/Attendee";
+import { Activity } from "../entities/Activity";
 
 export const openConnectionToDb = async () => {
   console.log("DB_CONNECTION :: Fetched credentials...");
@@ -15,7 +16,7 @@ export const openConnectionToDb = async () => {
       username: process.env.DB_USERNAME!,
       password: process.env.DB_PASSWORD!,
       database: process.env.ENV === "prod" ? process.env.DB_NAME_PROD! : process.env.DB_NAME_DEV!,
-      entities: [Member, Event, Ticket, Attendee],
+      entities: [Member, Event, Ticket, Attendee, Activity],
       migrations: ["../migrations/*.ts"],
       synchronize: false,
       logging: false,
