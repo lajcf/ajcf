@@ -5,6 +5,6 @@ import dayjs from "../../../../utils/dayjs";
 export const fetchOutdatedMembers = async () => {
   return getRepository(Member)
     .createQueryBuilder("member")
-    .where(`member.lastSubscriptionDate <= :now`, { now: dayjs().add(1, "year").format("YYYY-MM-DD") })
+    .where(`member.lastSubscriptionDate <= :now`, { now: dayjs().subtract(1, "year").format("YYYY-MM-DD") })
     .getMany();
 };
