@@ -1,9 +1,9 @@
 import { HelloAssoAction } from "../../../helloAsso/resources";
-import moment from "moment";
+import dayjs from "../../../../utils/dayjs";
 
 export const formatTicketToAttendee = (action: HelloAssoAction) => ({
   email: action.email.toLowerCase(),
   firstName: action.first_name,
   lastName: action.last_name,
-  lastParticipationDate: moment.utc(action.date).toDate(),
+  lastParticipationDate: dayjs.utc(action.date).toDate(),
 });
