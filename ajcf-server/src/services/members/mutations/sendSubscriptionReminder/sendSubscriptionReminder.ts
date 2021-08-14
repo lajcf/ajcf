@@ -1,7 +1,6 @@
 import { Member } from "../../../../entities/Member";
 import { sendEmail } from "../../../mailjet/sendEmail";
-import { welcomeMail } from "../sendWelcomeMails/assets/welcomeMail";
-import { brochureAJCF } from "../sendWelcomeMails/assets/brochureAJCF";
+import { TEMPLATE_SUBSCRIPTION_REMINDER } from "../../../../constants";
 
 export const sendSubscriptionReminder = async (member: Member) => {
   await sendEmail({
@@ -21,14 +20,7 @@ export const sendSubscriptionReminder = async (member: Member) => {
       Email: "bureau@lajcf.fr",
       Name: "Association des Jeunes Chinois de France",
     },
-    Subject: "Bienvenue à l'AJCF !",
-    HTMLPart: welcomeMail(member.firstName),
-    Attachments: [
-      {
-        ContentType: "application/pdf",
-        Base64Content: brochureAJCF,
-        Filename: "Présentation de l'AJCF.pdf",
-      },
-    ],
+    Subject: "Renouvellement d'adhésion",
+    TemplateID: TEMPLATE_SUBSCRIPTION_REMINDER,
   });
 };
