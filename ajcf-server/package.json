@@ -18,7 +18,7 @@
     "mysql": "^2.18.1",
     "node-mailjet": "^3.3.1",
     "p-limit": "^2.2.2",
-    "serverless": "^1.66.0",
+    "serverless": "^2.54.0",
     "serverless-plugin-aws-alerts": "^1.4.0",
     "serverless-webpack": "^5.3.1",
     "ts-jest": "^25.4.0",
@@ -59,6 +59,7 @@
     "@types/node": "^12.12.6",
     "@types/node-mailjet": "^3.3.3",
     "@types/p-limit": "^2.2.0",
+    "@types/serverless": "^1.78.34",
     "babel-loader": "^8.0.6"
   }
 }
