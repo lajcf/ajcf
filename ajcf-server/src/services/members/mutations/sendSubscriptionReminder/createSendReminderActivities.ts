@@ -6,7 +6,7 @@ export const createSendReminderActivities = async (shouldSendMailMembers: Member
   await getRepository(Activity).save(
     shouldSendMailMembers.map((member) =>
       getRepository(Activity).create({
-        member,
+        memberId: member.id,
         header: "subscription_reminder_sent",
       })
     )

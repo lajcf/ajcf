@@ -1,6 +1,5 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn, Unique } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, Unique } from "typeorm";
 import { AjcfBaseEntity } from "./AjcfBaseEntity";
-import { Activity } from "./Activity";
 
 @Entity("Member")
 @Unique("unicity_on_email_first_name", ["email", "firstName"])
@@ -71,7 +70,4 @@ export class Member extends AjcfBaseEntity {
     default: false,
   })
   welcomeMailSent: boolean;
-
-  @OneToMany(() => Activity, (activity) => activity.member)
-  activities: Activity[];
 }
