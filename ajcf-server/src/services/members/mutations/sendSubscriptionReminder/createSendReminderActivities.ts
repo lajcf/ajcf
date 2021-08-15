@@ -3,7 +3,7 @@ import { Activity } from "../../../../entities/Activity";
 import { Member } from "../../../../entities/Member";
 
 export const createSendReminderActivities = async (shouldSendMailMembers: Member[]) => {
-  await getRepository(Activity).save(
+  return getRepository(Activity).save(
     shouldSendMailMembers.map((member) =>
       getRepository(Activity).create({
         memberId: member.id,

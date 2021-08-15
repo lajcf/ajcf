@@ -23,4 +23,5 @@ export const sendSubscriptionReminder = async (member: Member) => {
     Subject: "Renouvellement d'adhésion",
     TemplateID: TEMPLATE_SUBSCRIPTION_REMINDER,
   });
+  return member;
 };
