@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { sendSubscriptionReminders } from "../sendSubscriptionReminders";
-import { createSendReminderActivities } from "../createSendReminderActivities";
 import { sendSubscriptionReminder } from "../sendSubscriptionReminder";
 import dayjs from "../../../../../utils/dayjs";
 
@@ -43,11 +42,13 @@ jest.mock("../createSendReminderActivities");
 
 const { fetchOutdatedMembers } = require("../fetchOutdatedMembers");
 const { fetchSendSubscriptionReminderActivities } = require("../fetchSendSubscriptionReminderActivities");
+const { createSendReminderActivities } = require("../createSendReminderActivities");
 
 describe("sendSubscriptionReminder.test", () => {
   test("The workflow should be respected", async () => {
     fetchOutdatedMembers.mockImplementation(() => outdatedMembers);
     fetchSendSubscriptionReminderActivities.mockImplementation(() => sendReminderActivities);
+    createSendReminderActivities.mockImplementation(() => [{}, {}]);
 
     await sendSubscriptionReminders();
     expect(fetchOutdatedMembers).toHaveBeenCalled();
