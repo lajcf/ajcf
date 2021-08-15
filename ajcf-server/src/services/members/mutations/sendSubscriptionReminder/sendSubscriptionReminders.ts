@@ -30,6 +30,6 @@ export const sendSubscriptionReminders = async () => {
   } catch (e) {
     console.log("An error happened while sending reminders, activities will be created to avoid spamming members.");
   }
-  await createSendReminderActivities(shouldSendMailMembers);
-  console.log("Activities created");
+  const activities = await createSendReminderActivities(shouldSendMailMembers);
+  console.log(`${activities.length} activities created`);
 };
