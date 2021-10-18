@@ -13,6 +13,7 @@ declare global {
       DB_NAME_DEV: string;
       MAILJET_API_KEY: string;
       MAILJET_API_SECRET: string;
+      SENDINBLUE_API_KEY: string;
       HELLOASSO_USERNAME: string;
       HELLOASSO_PASSWORD: string;
     }

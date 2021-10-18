@@ -1,6 +1,6 @@
 import { Member } from "../../../entities/Member";
 import { MAILJET_MEMBERS_ID, MAILJET_NEWSLETTER_ID } from "../../../constants";
-import { linkContactsToMailingList } from "../../mailjet/linkContactsToMailingList";
+import { linkContactsToMailingList } from "../../mailClient/linkContactsToMailingList";
 
 export const subscribeMembersToNewsletter = async (members: Member[]) => {
   await linkContactsToMailingList({

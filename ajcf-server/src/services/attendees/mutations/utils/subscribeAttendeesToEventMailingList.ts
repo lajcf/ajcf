@@ -1,6 +1,6 @@
 import { Attendee } from "../../../../entities/Attendee";
 import { Event } from "../../../../entities/Event";
-import { linkContactsToMailingList } from "../../../mailjet/linkContactsToMailingList";
+import { linkContactsToMailingList } from "../../../mailClient/linkContactsToMailingList";
 
 export interface LinkContactsToMailingListArgs {
   attendees: Attendee[];

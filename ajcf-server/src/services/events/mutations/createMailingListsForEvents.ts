@@ -1,6 +1,6 @@
 import { getRepository } from "typeorm";
 import { Event } from "../../../entities/Event";
-import { createMailingList } from "../../mailjet/createMailingList";
+import { createMailingList } from "../../mailClient/createMailingList";
 import { saveSingleEntity } from "../../../utils/saveUtils";
 
 export const createAndSaveMailingListId = async (event: Event) => {

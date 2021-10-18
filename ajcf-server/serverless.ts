@@ -31,6 +31,7 @@ const serverlessConfig: Serverless = {
       DB_PORT: "${env:DB_PORT}",
       DB_NAME_PROD: "${env:DB_NAME_PROD}",
       DB_NAME_DEV: "${env:DB_NAME_DEV}",
+      SENDINBLUE_API_KEY: "${env:SENDINBLUE_API_KEY}",
       MAILJET_API_KEY: "${env:MAILJET_API_KEY}",
       MAILJET_API_SECRET: "${env:MAILJET_API_SECRET}",
       HELLOASSO_USERNAME: "${env:HELLOASSO_USERNAME}",

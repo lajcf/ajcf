@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import { linkContactsToMailingList, MailingListAction } from "../src/services/mailjet/linkContactsToMailingList";
+import { linkContactsToMailingList, MailingListAction } from "../src/services/mailClient/linkContactsToMailingList";
 
 dotenv.config();
 
