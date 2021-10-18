@@ -1,6 +1,5 @@
 import { Member } from "../../../../entities/Member";
 import { sendEmail } from "../../../mailClient/sendEmail";
-import { TEMPLATE_WELCOME } from "../../../../constants";
 
 export const sendWelcomeMail = async (member: Member) => {
   await sendEmail({
@@ -10,6 +9,6 @@ export const sendWelcomeMail = async (member: Member) => {
     emailTo: [member.email],
     emailBcc: ["nicolas.li@hotmail.fr"],
     emailCc: [],
-    templateId: TEMPLATE_WELCOME,
+    templateId: parseInt(process.env.TEMPLATE_WELCOME_ID!, 10),
   });
 };
