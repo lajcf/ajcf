@@ -36,6 +36,8 @@ const serverlessConfig: Serverless = {
       MAILJET_API_SECRET: "${env:MAILJET_API_SECRET}",
       HELLOASSO_USERNAME: "${env:HELLOASSO_USERNAME}",
       HELLOASSO_PASSWORD: "${env:HELLOASSO_PASSWORD}",
+      TEMPLATE_SUBSCRIPTION_REMINDER_ID: "${env:TEMPLATE_SUBSCRIPTION_REMINDER_ID}",
+      TEMPLATE_WELCOME_ID: "${env:TEMPLATE_WELCOME_ID}",
     },
     memorySize: 3008,
     logRetentionInDays: 30,
