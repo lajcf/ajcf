@@ -10,10 +10,11 @@ type EmailPayload = {
 };
 
 export const sendEmail = async ({ templateId, emailBcc, emailTo, emailCc, attributes }: EmailPayload) => {
-  const to =
-    process.env.ENV === "prod"
-      ? emailTo.map((email) => [{ name: attributes?.PRENOM, email }])
-      : [{ name: attributes?.PRENOM, email: "nicolas.li@hotmail.fr" }];
+  if (process.env.ENV !== "prod") {
+    console.log("DEV: do not send email.");
+    return;
+  }
+  const to = emailTo.map((email) => [{ name: attributes?.PRENOM, email }]);
 
   sdk.ApiClient.instance.authentications["api-key"].apiKey = process.env.SENDINBLUE_API_KEY;
 
