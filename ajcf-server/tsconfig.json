@@ -2,8 +2,7 @@
   "compilerOptions": {
     "sourceMap": true,
     "lib": [
-      "esnext",
-      "es2015"
+      "esnext"
     ],
     "target": "es5",
     "outDir": ".build",
@@ -12,19 +11,16 @@
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
     "allowJs": true,
+    "skipLibCheck": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
     "strict": true,
-    "rootDir": ".",
-    "typeRoots": [
-      "node_modules/@types",
-      "src/@types"
-    ]
+    "rootDir": "."
   },
   "files": ["globals.d.ts"],
   "include": ["src"],
   "exclude": [
-    "node_modules"
+    "node_modules", "**/__tests__/", ".build"
   ]
 }

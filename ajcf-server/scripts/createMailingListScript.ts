@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import { createMailingList } from "../src/services/mailjet/createMailingList";
+import { createMailingList } from "../src/services/mailClient/createMailingList";
 
 dotenv.config();
 

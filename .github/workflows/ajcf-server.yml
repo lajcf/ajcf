@@ -53,5 +53,5 @@ jobs:
           path: ajcf-server/node_modules
           key: ajcf-server-${{ hashFiles('ajcf-server/yarn.lock') }}
       - name: Deploy
-        run: cd ajcf-server && yarn sls deploy -s prod
+        run: cd ajcf-server && echo "Need to implement deploy"
 

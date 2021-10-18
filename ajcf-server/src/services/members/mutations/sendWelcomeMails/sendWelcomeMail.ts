@@ -1,26 +1,15 @@
 import { Member } from "../../../../entities/Member";
-import { sendEmail } from "../../../mailjet/sendEmail";
+import { sendEmail } from "../../../mailClient/sendEmail";
 import { TEMPLATE_WELCOME } from "../../../../constants";
 
 export const sendWelcomeMail = async (member: Member) => {
   await sendEmail({
-    To: [
-      {
-        Email: member.email,
-        Name: member.firstName,
-      },
-    ],
-    Bcc: [
-      {
-        Email: "nicolas.li@hotmail.fr",
-        Name: "Nicolas",
-      },
-    ],
-    From: {
-      Email: "bureau@lajcf.fr",
-      Name: "Association des Jeunes Chinois de France",
+    attributes: {
+      PRENOM: member.firstName,
     },
-    Subject: "Bienvenue à l'AJCF !",
-    TemplateID: TEMPLATE_WELCOME,
+    emailTo: [member.email],
+    emailBcc: ["nicolas.li@hotmail.fr"],
+    emailCc: [],
+    templateId: TEMPLATE_WELCOME,
   });
 };

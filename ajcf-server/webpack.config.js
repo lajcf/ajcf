@@ -6,12 +6,17 @@ module.exports = {
   entry: slsw.lib.entries,
   target: "node",
   resolve: {
-    extensions: [".ts", ".js", ".json"],
+    extensions: [".mjs", ".js", ".ts", ".json"],
   },
   devtool: "eval",
   mode: "development",
   module: {
     rules: [
+      {//required by send-in-blue client
+        parser: {
+          amd: false
+        }
+      },
       {
         test: /\.ts$/,
         loader: "ts-loader",
