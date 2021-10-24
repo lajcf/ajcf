@@ -1,7 +1,7 @@
 /* eslint-disable no-await-in-loop,immutable/no-let */
 import axios from "axios";
 import { orderBy } from "lodash";
-import { GET_ACTIONS_URL, HelloAssoAction, HelloAssoActionType } from "./resources";
+import { GET_ACTIONS_URL, HelloAssoAction, HelloAssoActionType, RESULTS_PER_PAGE } from "./resources";
 
 interface GetActionsInterface {
   campaignId: string;
@@ -21,9 +21,18 @@ export const fetchActions = async (args: GetActionsInterface): Promise<HelloAsso
     let actionsFetched: HelloAssoAction[] = [];
     let currentActionsFetched: HelloAssoAction[] = [];
     let pageIndex = 1;
-    while (pageIndex === 1 || currentActionsFetched.length !== 0) {
+    while (
+      pageIndex === 1 ||
+      // it seems HelloAsso's API returns every action even if RESULTS_PER_PAGE is specified... Here, one edge-cae is NOT covered, when the length is effectively === RESUMTS_PER_PAGE
+      (currentActionsFetched.length !== 0 && currentActionsFetched.length === RESULTS_PER_PAGE)
+    ) {
       const result = await axios.get<HelloAssoActionsQueryResponse>(
-        GET_ACTIONS_URL(args.campaignId, pageIndex, args.actionType),
+        GET_ACTIONS_URL({
+          campaignId: args.campaignId,
+          pageIndex,
+          resultsPerPage: RESULTS_PER_PAGE,
+          actionType: args.actionType,
+        }),
         {
           headers: {
             Authorization: `Basic ${encodedAuth}`,

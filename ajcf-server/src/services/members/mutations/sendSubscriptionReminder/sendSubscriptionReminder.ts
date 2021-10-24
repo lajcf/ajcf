@@ -9,7 +9,7 @@ export const sendSubscriptionReminder = async (member: Member) => {
     emailTo: [member.email],
     emailBcc: ["nicolas.li@hotmail.fr"],
     emailCc: [],
-    templateId: parseInt(process.env.TEMPLATE_SUBSCRIPTION_REMINDER_ID!, 10),
+    templateId: parseInt(process.env.TEMPLATE_SUBSCRIPTION_REMINDER_ID, 10),
   });
   return member;
 };

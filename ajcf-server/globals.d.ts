@@ -16,6 +16,8 @@ declare global {
       SENDINBLUE_API_KEY: string;
       HELLOASSO_USERNAME: string;
       HELLOASSO_PASSWORD: string;
+      TEMPLATE_WELCOME_ID: string;
+      TEMPLATE_SUBSCRIPTION_REMINDER_ID: string;
     }
   }
 }

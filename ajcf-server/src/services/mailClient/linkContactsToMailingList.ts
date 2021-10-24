@@ -39,7 +39,7 @@ export const linkContactsToMailingList = async (args: LinkContactsToMailingListA
         },
       ],
     };
-    const mailjetClient = mailjet.connect(process.env.MAILJET_API_KEY!, process.env.MAILJET_API_SECRET!);
+    const mailjetClient = mailjet.connect(process.env.MAILJET_API_KEY, process.env.MAILJET_API_SECRET);
     await mailjetClient.post("contact", { version: "v3" }).action("managemanycontacts").request(mailjetArgs);
   } catch (e) {
     console.log(e);

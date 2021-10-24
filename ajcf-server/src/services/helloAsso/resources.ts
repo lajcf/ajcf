@@ -83,14 +83,26 @@ export interface HelloAssoPayment {
 
 export const ID_HELLOASSO_AJCF = "000001697101";
 
+export const RESULTS_PER_PAGE = 100;
+
 export const GET_CAMPAIGN_URL = (campaignType?: HelloAssoCampaignType) =>
   `https://api.helloasso.com/v3/organizations/${ID_HELLOASSO_AJCF}/campaigns.json${
     campaignType ? `?type=${campaignType}` : ""
   }`;
-export const GET_ACTIONS_URL = (campaignId: string, pageIndex = 1, actionType?: HelloAssoActionType) =>
+export const GET_ACTIONS_URL = ({
+  campaignId,
+  pageIndex = 1,
+  resultsPerPage = RESULTS_PER_PAGE,
+  actionType,
+}: {
+  campaignId: string;
+  pageIndex: number;
+  resultsPerPage: number;
+  actionType?: HelloAssoActionType;
+}) =>
   `https://api.helloasso.com/v3/campaigns/${campaignId}/actions.json${
     actionType ? `?type=${actionType}` : ""
-  }&page=${pageIndex}&results_per_page=100`;
+  }&page=${pageIndex}&results_per_page=${resultsPerPage}`;
 export const GET_PAYMENTS_URL = (campaignId: string, paymentType?: HelloAssoPaymentType) =>
   `https://api.helloasso.com/v3/organizations/${ID_HELLOASSO_AJCF}/campaigns/${campaignId}/payments.json${
     paymentType ? `?type=${paymentType}` : ""
