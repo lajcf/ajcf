@@ -58,7 +58,7 @@ const serverlessConfig: Serverless = {
       handler: "src/handlers/updateMembers.handler",
       events: [
         {
-          schedule: "rate(1 hour)",
+          schedule: "rate(3 hour)",
         },
       ],
     },
