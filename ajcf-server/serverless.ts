@@ -79,6 +79,85 @@ const serverlessConfig: Serverless = {
       ],
     },
   },
+  resources: {
+    Resources: {
+      // Send an email on error
+      LambdaErrorTopic: {
+        Properties: {
+          TopicName: `LambdaErrorTopic-prod`,
+        },
+        Type: "AWS::SNS::Topic",
+      },
+      TopicCloudwatchAlarmSubscription1: {
+        Properties: {
+          Endpoint: "nicolas.li@hotmail.fr",
+          Protocol: "email",
+          TopicArn: { Ref: "LambdaErrorTopic" },
+        },
+        Type: "AWS::SNS::Subscription",
+      },
+      ErrorAlarmUpdateMembers: {
+        Properties: {
+          AlarmActions: [{ Ref: "LambdaErrorTopic" }],
+          AlarmDescription: `Error on updateMembers`,
+          ComparisonOperator: "GreaterThanOrEqualToThreshold",
+          Dimensions: [
+            {
+              Name: "FunctionName",
+              Value: `ajcf-server-prod-updateMembers`,
+            },
+          ],
+          EvaluationPeriods: 1,
+          MetricName: "Errors",
+          Namespace: "AWS/Lambda",
+          Period: 60,
+          Statistic: "Maximum",
+          Threshold: 1,
+        },
+        Type: "AWS::CloudWatch::Alarm",
+      },
+      ErrorAlarmUpdateEvents: {
+        Properties: {
+          AlarmActions: [{ Ref: "LambdaErrorTopic" }],
+          AlarmDescription: `Error on updateEvents`,
+          ComparisonOperator: "GreaterThanOrEqualToThreshold",
+          Dimensions: [
+            {
+              Name: "FunctionName",
+              Value: `ajcf-server-prod-updateEvents`,
+            },
+          ],
+          EvaluationPeriods: 1,
+          MetricName: "Errors",
+          Namespace: "AWS/Lambda",
+          Period: 60,
+          Statistic: "Maximum",
+          Threshold: 1,
+        },
+        Type: "AWS::CloudWatch::Alarm",
+      },
+      ErrorAlarmSendSubscriptionReminders: {
+        Properties: {
+          AlarmActions: [{ Ref: "LambdaErrorTopic" }],
+          AlarmDescription: `Error on sendSubscriptionReminders`,
+          ComparisonOperator: "GreaterThanOrEqualToThreshold",
+          Dimensions: [
+            {
+              Name: "FunctionName",
+              Value: `ajcf-server-prod-sendSubscriptionReminders`,
+            },
+          ],
+          EvaluationPeriods: 1,
+          MetricName: "Errors",
+          Namespace: "AWS/Lambda",
+          Period: 60,
+          Statistic: "Maximum",
+          Threshold: 1,
+        },
+        Type: "AWS::CloudWatch::Alarm",
+      },
+    },
+  },
 };
 
 module.exports = serverlessConfig;
