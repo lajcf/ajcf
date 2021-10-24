@@ -5,6 +5,7 @@ import { fetchActions } from "../../helloAsso/fetchActions";
 import { HelloAssoAction } from "../../helloAsso/resources";
 import { Member } from "../../../entities/Member";
 import dayjs from "../../../utils/dayjs";
+import { validateEmail } from "../../../utils/validateMail";
 
 export enum CustomInfoEnum {
   birthDate = "Date de naissance",
@@ -35,10 +36,11 @@ export const fetchHelloAssoMembers = async (): Promise<HelloAssoAction[]> => {
   if (campaigns.length === 0)
     throw new Error(`No membership campaign found for organismId ${process.env.ID_HELLOASSO_AJCF}`);
   console.log(`Membership campaign: ${JSON.stringify(campaigns, null, 2)}`);
-  return fetchActions({
+  const subscriptions = await fetchActions({
     campaignId: campaigns[0].id,
     actionType: "SUBSCRIPTION",
   });
+  return subscriptions.filter((subscription) => validateEmail(subscription.email));
 };
 
 const keepLastSubscriptions = (helloAssoMembers: HelloAssoAction[]) => {

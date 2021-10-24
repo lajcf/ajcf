@@ -3,12 +3,7 @@ import { fetchOutdatedMembers } from "./fetchOutdatedMembers";
 import { fetchSendSubscriptionReminderActivities } from "./fetchSendSubscriptionReminderActivities";
 import { keepMembersWhoNeedReminder } from "./keepMembersWhoNeedReminder";
 import { createSendReminderActivities } from "./createSendReminderActivities";
-
-const isFullfilled = <T>(promise: PromiseSettledResult<T>): promise is PromiseFulfilledResult<T> =>
-  promise.status === "fulfilled";
-
-const isRejected = <T>(promise: PromiseSettledResult<T>): promise is PromiseRejectedResult =>
-  promise.status === "rejected";
+import { isFullfilled, isRejected } from "../../../../utils/promiseUtils";
 
 export const sendSubscriptionReminders = async () => {
   const outdatedMembers = await fetchOutdatedMembers();
