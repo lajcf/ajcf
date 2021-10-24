@@ -17,7 +17,9 @@ export const extractDateInfo = (member: HelloAssoAction, infoType: CustomInfoEnu
   const date = member.custom_infos.find((e) => e.label === infoType);
   if (date) {
     const parsedDateInFrench = dayjs.utc(date.value, "DD/MM/YYYY");
-    if (parsedDateInFrench.isValid()) return parsedDateInFrench.toDate();
+    if (parsedDateInFrench.isValid()) {
+      return parsedDateInFrench.toDate();
+    }
     return dayjs.utc(date.value).toDate();
   }
   return null;
