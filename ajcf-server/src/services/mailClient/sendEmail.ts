@@ -14,7 +14,7 @@ export const sendEmail = async ({ templateId, emailBcc, emailTo, emailCc, attrib
     console.log("DEV: do not send email.");
     return;
   }
-  const to = emailTo.map((email) => [{ name: attributes?.PRENOM, email }]);
+  const to = emailTo.map((email) => ({ name: attributes?.PRENOM, email }));
 
   sdk.ApiClient.instance.authentications["api-key"].apiKey = process.env.SENDINBLUE_API_KEY;
 

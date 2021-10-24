@@ -7,6 +7,7 @@ export const sendWelcomeMails = async (members: Member[]) => {
   const newMembers = members.filter((member) => !member.welcomeMailSent);
   try {
     const result = await Promise.allSettled(newMembers.map(sendWelcomeMail));
+    console.log("Promise results: ", JSON.stringify(result, null, 2));
     const failures = result.filter(isRejected);
     const success = result.filter(isFullfilled);
     if (failures.length) {
