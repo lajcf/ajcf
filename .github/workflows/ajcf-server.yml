@@ -14,17 +14,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Cache node modules
-        uses: actions/cache@v2
-        with:
-          path: ajcf-server/node_modules
-          key: ajcf-server-${{ hashFiles('ajcf-server/yarn.lock') }}
       - name: Install node & yarn
         uses: actions/setup-node@v2
         with:
           node-version: '12'
       - name: Instal packages
         run: cd ajcf-server && yarn install
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: ajcf-server/node_modules
+          key: ajcf-server-${{ hashFiles('ajcf-server/yarn.lock') }}
 
   test:
     name: Test ajcf-server
