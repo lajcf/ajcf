@@ -18,6 +18,7 @@ jest.mock("../../mutations/utils/subscribeAttendeesToEventMailingList");
 const { subscribeAttendeesToEventMailingList } = require("../utils/subscribeAttendeesToEventMailingList");
 
 const event = {
+  id: "0",
   mailjetListId: "0",
   name: "test",
 };
