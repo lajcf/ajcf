@@ -77,6 +77,7 @@ const tickets = [
       lastParticipationDate: dayjs.utc("2020-06-11").toDate(),
     },
     event: {
+      id: "0",
       mailjetListId: "0",
       name: "test",
     },
@@ -93,6 +94,7 @@ const tickets = [
       lastParticipationDate: dayjs.utc("2020-06-10").toDate(),
     },
     event: {
+      id: "0",
       mailjetListId: "0",
       name: "test",
     },
@@ -109,6 +111,7 @@ const tickets = [
       lastParticipationDate: dayjs.utc("2020-06-11").toDate(),
     },
     event: {
+      id: "0",
       mailjetListId: "0",
       name: "test",
     },
