@@ -39,7 +39,7 @@ jobs:
       #     path: ajcf-server/node_modules
       #     key: ajcf-server-${{ hashFiles('ajcf-server/yarn.lock') }}
       - name: Test
-        run: yarn test
+        run: cd ajcf-server && yarn test
 
   deploy:
     name: Deploy ajcf-server
