@@ -5,11 +5,16 @@ import { Ticket } from "./Ticket";
 // TODO: ajouter id du pole
 @Entity("Event")
 export class Event extends AjcfBaseEntity {
-  @PrimaryColumn({
+  @Column("bigint", {
     name: "id",
-    type: "bigint",
+    nullable: true,
   })
-  id: string;
+  id: string | null;
+
+  @PrimaryColumn("varchar", {
+    name: "slug",
+  })
+  slug: string;
 
   @Column("varchar", {
     name: "name",

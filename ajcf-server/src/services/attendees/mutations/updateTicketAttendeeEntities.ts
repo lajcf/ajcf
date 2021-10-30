@@ -13,6 +13,12 @@ import { Attendee } from "../../../entities/Attendee";
 import { subscribeAttendeesToEventMailingList } from "./utils/subscribeAttendeesToEventMailingList";
 
 export const updateSingleEventTicketAttendeeEntities = async (event: Event) => {
+  if (!event.id) {
+    return {
+      attendees: [],
+      tickets: [],
+    };
+  }
   const helloAssoActions = await fetchActions({ actionType: "INSCRIPTION", campaignId: `00000${event.id}` });
   const attendees = await upsertAttendees(uniqBy(helloAssoActions, (t) => t.email).map(formatTicketToAttendee));
   const tickets = await upsertTickets(helloAssoActions.map(formatHelloAssoTicketToTicket(event, attendees)));
