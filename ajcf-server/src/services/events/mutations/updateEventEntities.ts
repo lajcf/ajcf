@@ -3,12 +3,12 @@ import { orderBy } from "lodash";
 import { HelloAssoCampaign } from "../../helloAsso/v3_deprecated/resources";
 import { Event } from "../../../entities/Event";
 import { fetchCampaigns } from "../../helloAsso/v3_deprecated/fetchCampaigns";
-import { createMailingListsForEvents } from "./createMailingListsForEvents";
 import { saveMultipleEntities } from "../../../utils/saveUtils";
 import dayjs from "../../../utils/dayjs";
+import { createMailingListsForEvents } from "./createMailingListsForEvents";
 
 export const formatHelloAssoEvent = (campaign: HelloAssoCampaign) => ({
-  id: parseInt(campaign.id, 10).toString(),
+  slug: campaign.slug,
   name: campaign.name,
   funding: campaign.funding,
   supporters: campaign.supporters,
@@ -27,7 +27,7 @@ export const updateEventEntities = async (): Promise<Event[]> => {
   const helloAssoEvents = await fetchCampaigns({ campaignType: "EVENT" });
   const formattedHelloAssoEvents = helloAssoEvents.map(formatHelloAssoEvent);
   const currentEvents = formattedHelloAssoEvents.filter((event) => event.startDate > new Date());
-  const updatedEvents = await saveMultipleEntities(currentEvents, getRepository(Event), "id");
+  const updatedEvents = await saveMultipleEntities(currentEvents, getRepository(Event), "slug");
   console.log(`Upserted ${updatedEvents.length} events into DB`);
   const updatedEventsWithMailingList = await createMailingListsForEvents(updatedEvents);
   console.log(`Upserted ${updatedEventsWithMailingList.length} mailing lists on MailJet`);

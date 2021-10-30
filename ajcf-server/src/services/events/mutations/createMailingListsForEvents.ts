@@ -12,7 +12,7 @@ export const createAndSaveMailingListId = async (event: Event) => {
       mailjetListId,
     },
     getRepository(Event),
-    "id"
+    "slug"
   );
 };
 
