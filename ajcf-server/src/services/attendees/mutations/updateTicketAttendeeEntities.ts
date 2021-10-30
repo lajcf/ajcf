@@ -2,7 +2,7 @@ import waait from "waait";
 import { uniqBy } from "lodash";
 import { Ticket } from "../../../entities/Ticket";
 import { Event } from "../../../entities/Event";
-import { fetchActions } from "../../helloAsso/fetchActions";
+import { fetchActions } from "../../helloAsso/v3_deprecated/fetchActions";
 import { limit } from "../../../utils/pLimit";
 import { upsertAttendees } from "./upsertAttendees";
 import { updateEvent } from "../../events/mutations/updateEvent";

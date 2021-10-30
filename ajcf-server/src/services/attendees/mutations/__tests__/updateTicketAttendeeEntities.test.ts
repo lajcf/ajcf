@@ -2,8 +2,8 @@
 import dayjs from "../../../../utils/dayjs";
 import { updateSingleEventTicketAttendeeEntities } from "../updateTicketAttendeeEntities";
 
-jest.mock("../../../helloAsso/fetchActions");
-const { fetchActions } = require("../../../helloAsso/fetchActions");
+jest.mock("../../../helloAsso/v3_deprecated/fetchActions");
+const { fetchActions } = require("../../../helloAsso/v3_deprecated/fetchActions");
 
 jest.mock("../upsertAttendees");
 const { upsertAttendees } = require("../upsertAttendees");

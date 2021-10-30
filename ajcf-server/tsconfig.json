@@ -16,7 +16,8 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "strict": true,
-    "rootDir": "."
+    "rootDir": ".",
+    "noEmit": false
   },
   "files": ["globals.d.ts"],
   "include": ["src"],

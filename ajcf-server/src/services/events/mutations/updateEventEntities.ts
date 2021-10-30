@@ -1,8 +1,8 @@
 import { getRepository } from "typeorm";
 import { orderBy } from "lodash";
-import { HelloAssoCampaign } from "../../helloAsso/resources";
+import { HelloAssoCampaign } from "../../helloAsso/v3_deprecated/resources";
 import { Event } from "../../../entities/Event";
-import { fetchCampaigns } from "../../helloAsso/fetchCampaigns";
+import { fetchCampaigns } from "../../helloAsso/v3_deprecated/fetchCampaigns";
 import { createMailingListsForEvents } from "./createMailingListsForEvents";
 import { saveMultipleEntities } from "../../../utils/saveUtils";
 import dayjs from "../../../utils/dayjs";

@@ -1,6 +1,6 @@
 import { Event } from "../../../../entities/Event";
 import { Attendee } from "../../../../entities/Attendee";
-import { HelloAssoAction } from "../../../helloAsso/resources";
+import { HelloAssoAction } from "../../../helloAsso/v3_deprecated/resources";
 import dayjs from "../../../../utils/dayjs";
 
 export const formatHelloAssoTicketToTicket = (event: Event, attendees: Attendee[]) => (action: HelloAssoAction) => {

@@ -1,11 +1,10 @@
 import { getRepository } from "typeorm";
 import { capitalize, orderBy, uniqBy } from "lodash";
-import { fetchCampaigns } from "../../helloAsso/fetchCampaigns";
-import { fetchActions } from "../../helloAsso/fetchActions";
-import { HelloAssoAction } from "../../helloAsso/resources";
 import { Member } from "../../../entities/Member";
 import dayjs from "../../../utils/dayjs";
 import { validateEmail } from "../../../utils/validateMail";
+import { fetchMembers } from "../../helloAsso/v5/fetchMembers";
+import { HelloAssoSoldItem } from "../../helloAsso/v5/resources";
 
 export enum CustomInfoEnum {
   birthDate = "Date de naissance",
@@ -14,55 +13,53 @@ export enum CustomInfoEnum {
   motivation = "Pourquoi veux-tu rejoindre l'AJCF ?",
 }
 
-export const extractDateInfo = (member: HelloAssoAction, infoType: CustomInfoEnum): Date | null => {
-  const date = member.custom_infos.find((e) => e.label === infoType);
+export const extractDateInfo = (member: HelloAssoSoldItem, infoType: CustomInfoEnum): Date | null => {
+  const date = member.customFields.find((e) => e.name === infoType);
   if (date) {
-    const parsedDateInFrench = dayjs.utc(date.value, "DD/MM/YYYY");
+    const parsedDateInFrench = dayjs.utc(date.answer, "DD/MM/YYYY");
     if (parsedDateInFrench.isValid()) {
       return parsedDateInFrench.toDate();
     }
-    return dayjs.utc(date.value).toDate();
+    return dayjs.utc(date.answer).toDate();
   }
   return null;
 };
 
-export const extractStringInfo = (member: HelloAssoAction, infoType: CustomInfoEnum): string | null => {
-  const info = member.custom_infos.find((e) => e.label === infoType);
-  return info ? info.value : null;
+export const extractStringInfo = (member: HelloAssoSoldItem, infoType: CustomInfoEnum): string | null => {
+  const info = member.customFields.find((e) => e.name === infoType);
+  return info ? info.answer : null;
 };
 
-export const fetchHelloAssoMembers = async (): Promise<HelloAssoAction[]> => {
-  const campaigns = await fetchCampaigns({ campaignType: "MEMBERSHIP" });
-  if (campaigns.length === 0)
-    throw new Error(`No membership campaign found for organismId ${process.env.ID_HELLOASSO_AJCF}`);
-  console.log(`Membership campaign: ${JSON.stringify(campaigns, null, 2)}`);
-  const subscriptions = await fetchActions({
-    campaignId: campaigns[0].id,
-    actionType: "SUBSCRIPTION",
-  });
-  return subscriptions.filter((subscription) => validateEmail(subscription.email));
+export const fetchHelloAssoMembers = async (): Promise<HelloAssoSoldItem[]> => {
+  console.log("Fetch Hello Asso Members...");
+  const subscriptions = await fetchMembers();
+  console.log(`Fetched ${subscriptions.length} Hello Asso Members...`);
+  return subscriptions.filter((subscription) => validateEmail(subscription.payer.email));
 };
 
-const keepLastSubscriptions = (helloAssoMembers: HelloAssoAction[]) => {
-  const orderedHelloAssoMembers = orderBy(helloAssoMembers, (member) => dayjs.utc(member.date).toDate(), "desc");
-  return uniqBy(orderedHelloAssoMembers, (member) => `${member.email.toLowerCase()}-${capitalize(member.first_name)}`);
+const keepLastSubscriptions = (helloAssoMembers: HelloAssoSoldItem[]) => {
+  const orderedHelloAssoMembers = orderBy(helloAssoMembers, (member) => dayjs.utc(member.order.date).toDate(), "desc");
+  return uniqBy(
+    orderedHelloAssoMembers,
+    (member) => `${member.payer.email.toLowerCase()}-${capitalize(member.payer.firstName)}`
+  );
 };
 
-export const formatHelloAssoMembersForDb = (helloAssoMembers: HelloAssoAction[]): Partial<Member>[] => {
+export const formatHelloAssoMembersForDb = (helloAssoMembers: HelloAssoSoldItem[]): Partial<Member>[] => {
   const uniqueHelloAssoMembers = keepLastSubscriptions(helloAssoMembers);
   return uniqueHelloAssoMembers.map((helloAssoMember) => {
     return {
       createdAt: new Date(),
-      updatedAt: dayjs.utc(helloAssoMember.date).toDate(),
-      email: helloAssoMember.email.toLowerCase(),
-      firstName: capitalize(helloAssoMember.first_name),
-      lastName: capitalize(helloAssoMember.last_name),
+      updatedAt: dayjs.utc(helloAssoMember.order.date).toDate(),
+      email: helloAssoMember.payer.email.toLowerCase(),
+      firstName: capitalize(helloAssoMember.payer.firstName),
+      lastName: capitalize(helloAssoMember.payer.lastName),
       birthDate: extractDateInfo(helloAssoMember, CustomInfoEnum.birthDate),
       phone: extractStringInfo(helloAssoMember, CustomInfoEnum.phone),
       jobStudy: extractStringInfo(helloAssoMember, CustomInfoEnum.jobStudy),
       motivation: extractStringInfo(helloAssoMember, CustomInfoEnum.motivation),
-      firstSubscriptionDate: dayjs.utc(helloAssoMember.date).toDate(),
-      lastSubscriptionDate: dayjs.utc(helloAssoMember.date).toDate(),
+      firstSubscriptionDate: dayjs.utc(helloAssoMember.order.date).toDate(),
+      lastSubscriptionDate: dayjs.utc(helloAssoMember.order.date).toDate(),
       activeMember: false,
     };
   });
@@ -77,10 +74,7 @@ export const upsertHelloAssoMembers = async () => {
     .insert()
     .into(Member)
     .values(membersToUpsert)
-    .orUpdate({
-      conflict_target: ["email", "first_name"],
-      overwrite: ["updated_at", "birth_date", "phone", "job_study", "last_subscription_date"],
-    })
+    .orUpdate(["updated_at", "birth_date", "phone", "job_study", "last_subscription_date"], ["email", "first_name"])
     .execute();
   console.log(`Upserted ${JSON.stringify(upsertResult, null, 2)} members into DB`);
   return true;

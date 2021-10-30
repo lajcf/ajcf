@@ -1,4 +1,4 @@
-import { HelloAssoAction } from "../../../helloAsso/resources";
+import { HelloAssoAction } from "../../../helloAsso/v3_deprecated/resources";
 import dayjs from "../../../../utils/dayjs";
 
 export const formatTicketToAttendee = (action: HelloAssoAction) => ({
