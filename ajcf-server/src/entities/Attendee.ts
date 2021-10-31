@@ -1,9 +1,25 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  Unique,
+  UpdateDateColumn,
+} from "typeorm";
 import { Ticket } from "./Ticket";
 
 @Entity("Attendee")
+@Unique("unicity_on_email_first_name", ["email", "firstName"])
 export class Attendee extends BaseEntity {
-  @PrimaryColumn("varchar", {
+  @PrimaryGeneratedColumn({
+    type: "bigint",
+    name: "id",
+  })
+  id: string;
+
+  @Column("varchar", {
     name: "email",
   })
   email: string;

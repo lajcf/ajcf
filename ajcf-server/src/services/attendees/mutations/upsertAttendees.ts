@@ -6,14 +6,12 @@ export const upsertAttendees = async (attendees: Partial<Attendee>[]): Promise<A
     .createQueryBuilder()
     .insert()
     .into(Attendee)
-    .values(attendees.map((attendee) => ({ ...attendee, updatedAt: new Date() })))
-    .orUpdate({
-      conflict_target: ["email"],
-      overwrite: ["updated_at", "first_name", "last_name", "last_participation_date"],
-    })
+    .values(attendees)
+    .orUpdate(["updated_at", "first_name", "last_name", "last_participation_date"], ["email", "first_name"])
     .execute();
-  const attendeesInserted = insertResult.identifiers as { email: string }[];
-  const attendeesEmails = attendeesInserted.map((attendee) => attendee.email);
+  // it seems returned IDs by typeorm are not relevant!
+  console.log(`Upserted ${JSON.stringify(insertResult, null, 2)} members into DB`);
+  const attendeesEmails = attendees.map((attendee) => attendee.email);
   if (attendeesEmails.length === 0) return [];
   return getRepository(Attendee).find({ where: { email: In(attendeesEmails) } });
 };
