@@ -2,8 +2,8 @@
 import dayjs from "../../../../utils/dayjs";
 import { updateSingleEventTicketAttendeeEntities } from "../updateTicketAttendeeEntities";
 
-jest.mock("../../../helloAsso/v3_deprecated/fetchActions");
-const { fetchActions } = require("../../../helloAsso/v3_deprecated/fetchActions");
+jest.mock("../../../helloAsso/v5/fetchEventTickets");
+const { fetchEventTickets } = require("../../../helloAsso/v5/fetchEventTickets");
 
 jest.mock("../upsertAttendees");
 const { upsertAttendees } = require("../upsertAttendees");
@@ -25,30 +25,48 @@ const event = {
 const helloAssoTickets = [
   {
     id: "2",
-    date: dayjs.utc("2020-06-11").format("YYYY-MM-DD"),
-    first_name: "Nicolas",
-    last_name: "Li",
-    email: "premierhomme@gmail.com",
-    amount: 3,
-    option_label: "label_3",
+    order: {
+      date: dayjs.utc("2020-06-11").format("YYYY-MM-DD"),
+    },
+    user: {
+      firstName: "Nicolas",
+      lastName: "Li",
+    },
+    payer: {
+      email: "premierhomme@gmail.com",
+    },
+    amount: 300,
+    name: "label_3",
   },
   {
     id: "0",
-    date: dayjs.utc("2020-06-10").format("YYYY-MM-DD"),
-    first_name: "Laetitia",
-    last_name: "Chhiv",
-    email: "dictatriceajcf@gmail.com",
-    amount: 1,
-    option_label: "label_1",
+    order: {
+      date: dayjs.utc("2020-06-10").format("YYYY-MM-DD"),
+    },
+    user: {
+      firstName: "Laetitia",
+      lastName: "Chhiv",
+    },
+    payer: {
+      email: "dictatriceajcf@gmail.com",
+    },
+    amount: 100,
+    name: "label_1",
   },
   {
     id: "1",
-    date: dayjs.utc("2020-06-08").format("YYYY-MM-DD"),
-    first_name: "Nicolas",
-    last_name: "Li",
-    email: "premierhomme@gmail.com",
-    amount: 2,
-    option_label: "label_2",
+    order: {
+      date: dayjs.utc("2020-06-08").format("YYYY-MM-DD"),
+    },
+    user: {
+      firstName: "Nicolas",
+      lastName: "Li",
+    },
+    payer: {
+      email: "premierhomme@gmail.com",
+    },
+    amount: 200,
+    name: "label_2",
   },
 ];
 
@@ -123,7 +141,7 @@ const tickets = [
 
 describe("updateTicketAttendeeEntities", () => {
   test("updateSingleEventTicketAttendeeEntities", async () => {
-    fetchActions.mockImplementation(async () => helloAssoTickets);
+    fetchEventTickets.mockImplementation(async () => helloAssoTickets);
     upsertAttendees.mockImplementation(async () => attendees);
     upsertTickets.mockImplementation(async () => tickets);
     // @ts-ignore

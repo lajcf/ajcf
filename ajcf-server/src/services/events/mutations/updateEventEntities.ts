@@ -1,30 +1,30 @@
 import { getRepository } from "typeorm";
 import { orderBy } from "lodash";
-import { HelloAssoCampaign } from "../../helloAsso/v3_deprecated/resources";
 import { Event } from "../../../entities/Event";
-import { fetchCampaigns } from "../../helloAsso/v3_deprecated/fetchCampaigns";
+import { createMailingListsForEvents } from "./createMailingListsForEvents";
 import { saveMultipleEntities } from "../../../utils/saveUtils";
 import dayjs from "../../../utils/dayjs";
-import { createMailingListsForEvents } from "./createMailingListsForEvents";
+import { fetchEvents } from "../../helloAsso/v5/fetchEvents";
+import { HelloAssoEvent } from "../../helloAsso/v5/resources";
 
-export const formatHelloAssoEvent = (campaign: HelloAssoCampaign) => ({
-  slug: campaign.slug,
-  name: campaign.name,
-  funding: campaign.funding,
-  supporters: campaign.supporters,
-  placeName: campaign.place_name,
-  placeAddress: campaign.place_address,
-  placeCity: campaign.place_city,
-  placeZipcode: campaign.place_zipcode,
-  placeCountry: campaign.place_country,
-  startDate: dayjs.utc(campaign.start_date).toDate(),
-  endDate: dayjs.utc(campaign.end_date).toDate(),
-  creationDate: dayjs.utc(campaign.creation_date).toDate(),
-  lastUpdateOnHelloAsso: dayjs.utc(campaign.last_update).toDate(),
+export const formatHelloAssoEvent = (event: HelloAssoEvent) => ({
+  slug: event.formSlug,
+  name: event.title,
+  funding: 0,
+  supporters: 0,
+  placeName: null,
+  placeAddress: null,
+  placeCity: null,
+  placeZipcode: null,
+  placeCountry: null,
+  startDate: dayjs.utc(event.startDate).toDate(),
+  endDate: dayjs.utc(event.endDate).toDate(),
+  creationDate: event.meta?.createdAt && dayjs.utc(event.meta?.createdAt).toDate(),
+  lastUpdateOnHelloAsso: event.meta?.updatedAt && dayjs.utc(event.meta?.updatedAt).toDate(),
 });
 
 export const updateEventEntities = async (): Promise<Event[]> => {
-  const helloAssoEvents = await fetchCampaigns({ campaignType: "EVENT" });
+  const helloAssoEvents = await fetchEvents();
   const formattedHelloAssoEvents = helloAssoEvents.map(formatHelloAssoEvent);
   const currentEvents = formattedHelloAssoEvents.filter((event) => event.startDate > new Date());
   const updatedEvents = await saveMultipleEntities(currentEvents, getRepository(Event), "slug");

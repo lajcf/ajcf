@@ -2,7 +2,6 @@ import waait from "waait";
 import { uniqBy } from "lodash";
 import { Ticket } from "../../../entities/Ticket";
 import { Event } from "../../../entities/Event";
-import { fetchActions } from "../../helloAsso/v3_deprecated/fetchActions";
 import { limit } from "../../../utils/pLimit";
 import { upsertAttendees } from "./upsertAttendees";
 import { updateEvent } from "../../events/mutations/updateEvent";
@@ -11,6 +10,7 @@ import { formatTicketToAttendee } from "./utils/formatHelloAssoActionToAttendee"
 import { formatHelloAssoTicketToTicket } from "./utils/formatHelloAssoActionToTicket";
 import { Attendee } from "../../../entities/Attendee";
 import { subscribeAttendeesToEventMailingList } from "./utils/subscribeAttendeesToEventMailingList";
+import { fetchEventTickets } from "../../helloAsso/v5/fetchEventTickets";
 
 export const updateSingleEventTicketAttendeeEntities = async (event: Event) => {
   if (!event.id) {
@@ -19,8 +19,10 @@ export const updateSingleEventTicketAttendeeEntities = async (event: Event) => {
       tickets: [],
     };
   }
-  const helloAssoActions = await fetchActions({ actionType: "INSCRIPTION", campaignId: `00000${event.id}` });
-  const attendees = await upsertAttendees(uniqBy(helloAssoActions, (t) => t.email).map(formatTicketToAttendee));
+  const helloAssoActions = await fetchEventTickets(event.slug);
+  const attendees = await upsertAttendees(
+    uniqBy(helloAssoActions, (t) => `${t.payer.email} ${t.user.firstName}`).map(formatTicketToAttendee)
+  );
   const tickets = await upsertTickets(helloAssoActions.map(formatHelloAssoTicketToTicket(event, attendees)));
   await updateEvent({
     ...event,

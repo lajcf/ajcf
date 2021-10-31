@@ -14,7 +14,7 @@ export enum CustomInfoEnum {
 }
 
 export const extractDateInfo = (member: HelloAssoSoldItem, infoType: CustomInfoEnum): Date | null => {
-  const date = member.customFields.find((e) => e.name === infoType);
+  const date = member.customFields?.find((e) => e.name === infoType);
   if (date) {
     const parsedDateInFrench = dayjs.utc(date.answer, "DD/MM/YYYY");
     if (parsedDateInFrench.isValid()) {
@@ -26,7 +26,7 @@ export const extractDateInfo = (member: HelloAssoSoldItem, infoType: CustomInfoE
 };
 
 export const extractStringInfo = (member: HelloAssoSoldItem, infoType: CustomInfoEnum): string | null => {
-  const info = member.customFields.find((e) => e.name === infoType);
+  const info = member.customFields?.find((e) => e.name === infoType);
   return info ? info.answer : null;
 };
 
@@ -52,8 +52,8 @@ export const formatHelloAssoMembersForDb = (helloAssoMembers: HelloAssoSoldItem[
       createdAt: new Date(),
       updatedAt: dayjs.utc(helloAssoMember.order.date).toDate(),
       email: helloAssoMember.payer.email.toLowerCase(),
-      firstName: capitalize(helloAssoMember.payer.firstName),
-      lastName: capitalize(helloAssoMember.payer.lastName),
+      firstName: capitalize(helloAssoMember.user.firstName),
+      lastName: capitalize(helloAssoMember.user.lastName),
       birthDate: extractDateInfo(helloAssoMember, CustomInfoEnum.birthDate),
       phone: extractStringInfo(helloAssoMember, CustomInfoEnum.phone),
       jobStudy: extractStringInfo(helloAssoMember, CustomInfoEnum.jobStudy),
