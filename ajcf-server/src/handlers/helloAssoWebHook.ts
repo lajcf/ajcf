@@ -19,9 +19,22 @@ const saveEvent = async (body: HelloAssoNotificationRequestBody) => {
   }
 };
 
+const sanityCheck = (body: Partial<HelloAssoNotificationRequestBody>) => {
+  if (!body.eventType) {
+    throw new Error("No eventType in body");
+  }
+  if (!["Order", "Payment", "Form"].includes(body.eventType)) {
+    throw new Error("eventType incorrect");
+  }
+  if (!body.data) {
+    throw new Error("No data in body");
+  }
+};
+
 export const handler = async (event: any) => {
   console.log("Event received: ", event);
   const data: HelloAssoNotificationRequestBody = JSON.parse(event.body);
   console.log("Body parsed: ", data);
+  sanityCheck(data);
   await saveEvent(data);
 };

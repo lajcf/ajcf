@@ -84,6 +84,7 @@ const serverlessConfig: Serverless = {
     },
     helloAssoWebHook: {
       handler: "src/handlers/helloAssoWebHook.handler",
+      reservedConcurrency: 5,
       events: [
         {
           http: {
