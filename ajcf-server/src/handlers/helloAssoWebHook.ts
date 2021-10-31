@@ -11,6 +11,7 @@ const saveEvent = async (body: HelloAssoNotificationRequestBody) => {
   try {
     await openConnectionToDb();
     await getRepository(HelloAssoNotification).save({ data: body.data, notificationType: body.eventType });
+    console.log("Saved event");
     await closeConnectionToDb();
   } catch (e) {
     console.log(e);
@@ -32,9 +33,20 @@ const sanityCheck = (body: Partial<HelloAssoNotificationRequestBody>) => {
 };
 
 export const handler = async (event: any) => {
+  if (process.env.ENV !== "prod") {
+    console.log("Dev, do nothing");
+    return;
+  }
   console.log("Event received: ", event);
   const data: HelloAssoNotificationRequestBody = JSON.parse(event.body);
   console.log("Body parsed: ", data);
   sanityCheck(data);
   await saveEvent(data);
+  return {
+    body: JSON.stringify({ message: "ok" }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+    statusCode: "200",
+  };
 };
