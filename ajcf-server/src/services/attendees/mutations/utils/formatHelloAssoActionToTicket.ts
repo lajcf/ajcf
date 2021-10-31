@@ -1,24 +1,24 @@
 import { Event } from "../../../../entities/Event";
 import { Attendee } from "../../../../entities/Attendee";
-import { HelloAssoAction } from "../../../helloAsso/v3_deprecated/resources";
 import dayjs from "../../../../utils/dayjs";
+import { HelloAssoSoldItem } from "../../../helloAsso/v5/resources";
 
-export const formatHelloAssoTicketToTicket = (event: Event, attendees: Attendee[]) => (action: HelloAssoAction) => {
-  const relatedAttendee = attendees.find((attendee) => attendee.email.toLowerCase() === action.email.toLowerCase());
+export const formatHelloAssoTicketToTicket = (event: Event, attendees: Attendee[]) => (item: HelloAssoSoldItem) => {
+  const relatedAttendee = attendees.find((attendee) => attendee.email.toLowerCase() === item.payer.email.toLowerCase());
   if (!relatedAttendee)
     throw new Error(
-      `Attendee with email ${action.email} could not be found among attendees of event: ${JSON.stringify(
+      `Attendee with email ${item.payer.email} could not be found among attendees of event: ${JSON.stringify(
         event,
         null,
         2
       )}`
     );
   return {
-    id: parseInt(action.id, 10).toString(),
+    id: item.id.toString(),
     attendee: relatedAttendee,
     event,
-    date: dayjs.utc(action.date).toDate(),
-    amount: action.amount,
-    ticketType: action.option_label,
+    date: dayjs.utc(item.order.date).toDate(),
+    amount: item.amount / 100,
+    ticketType: item.name,
   };
 };
