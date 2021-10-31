@@ -82,6 +82,17 @@ const serverlessConfig: Serverless = {
         },
       ],
     },
+    helloAssoWebHook: {
+      handler: "src/handlers/helloAssoWebHook.handler",
+      events: [
+        {
+          http: {
+            method: "post",
+            path: "notification",
+          },
+        },
+      ],
+    },
   },
   resources: {
     Resources: {
@@ -99,6 +110,26 @@ const serverlessConfig: Serverless = {
           TopicArn: { Ref: "LambdaErrorTopic" },
         },
         Type: "AWS::SNS::Subscription",
+      },
+      ErrorAlarmHelloAssoWebHook: {
+        Properties: {
+          AlarmActions: [{ Ref: "LambdaErrorTopic" }],
+          AlarmDescription: `Error on helloAssoWebHook`,
+          ComparisonOperator: "GreaterThanOrEqualToThreshold",
+          Dimensions: [
+            {
+              Name: "FunctionName",
+              Value: `ajcf-server-${STAGE}-helloAssoWebHook`,
+            },
+          ],
+          EvaluationPeriods: 1,
+          MetricName: "Errors",
+          Namespace: "AWS/Lambda",
+          Period: 60,
+          Statistic: "Maximum",
+          Threshold: 1,
+        },
+        Type: "AWS::CloudWatch::Alarm",
       },
       ErrorAlarmUpdateMembers: {
         Properties: {
