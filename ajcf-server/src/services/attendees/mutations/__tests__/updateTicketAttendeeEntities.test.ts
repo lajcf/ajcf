@@ -21,6 +21,7 @@ const event = {
   id: "0",
   mailjetListId: "0",
   name: "test",
+  slug: "test",
 };
 const helloAssoTickets = [
   {
@@ -98,6 +99,7 @@ const tickets = [
       id: "0",
       mailjetListId: "0",
       name: "test",
+      slug: "test",
     },
     date: dayjs.utc("2020-06-11").toDate(),
     amount: 3,
@@ -115,6 +117,7 @@ const tickets = [
       id: "0",
       mailjetListId: "0",
       name: "test",
+      slug: "test",
     },
     date: dayjs.utc("2020-06-10").toDate(),
     amount: 1,
@@ -132,6 +135,7 @@ const tickets = [
       id: "0",
       mailjetListId: "0",
       name: "test",
+      slug: "test",
     },
     date: dayjs.utc("2020-06-08").toDate(),
     amount: 2,
