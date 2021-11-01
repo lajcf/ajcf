@@ -8,7 +8,7 @@ export const createAndSaveMailingListId = async (event: Event) => {
   // TODO: change mailjetListId column name
   const mailjetListId = await createMailingList({
     listName: event.name,
-    folderId: parseInt(process.env.EVENTS_LISTS_FOLDER_ID, 10),
+    folderId: parseInt(process.env.SEND_IN_BLUE_EVENTS_LISTS_FOLDER_ID, 10),
   });
   return saveSingleEntity(
     {

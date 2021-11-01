@@ -9,7 +9,7 @@ export const sendWelcomeMail = async (member: Member) => {
     emailTo: [member.email],
     emailBcc: ["nicolas.li@hotmail.fr"],
     emailCc: [],
-    templateId: parseInt(process.env.TEMPLATE_WELCOME_ID, 10),
+    templateId: parseInt(process.env.SEND_IN_BLUE_TEMPLATE_WELCOME_ID, 10),
   });
   return member;
 };
