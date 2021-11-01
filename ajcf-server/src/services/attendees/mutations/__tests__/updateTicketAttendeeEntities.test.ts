@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import dayjs from "../../../../utils/dayjs";
-import { updateSingleEventTicketAttendeeEntities } from "../updateTicketAttendeeEntities";
+import { updateSingleEventTicketsAttendees } from "../updateAllEventsTicketsAttendees";
 
-jest.mock("../../../helloAsso/v5/fetchEventTickets");
-const { fetchEventTickets } = require("../../../helloAsso/v5/fetchEventTickets");
+jest.mock("../../../helloAsso/v5/fetchEventHelloAssoTickets");
+const { fetchEventHelloAssoTickets } = require("../../../helloAsso/v5/fetchEventHelloAssoTickets");
 
 jest.mock("../upsertAttendees");
 const { upsertAttendees } = require("../upsertAttendees");
@@ -141,11 +141,11 @@ const tickets = [
 
 describe("updateTicketAttendeeEntities", () => {
   test("updateSingleEventTicketAttendeeEntities", async () => {
-    fetchEventTickets.mockImplementation(async () => helloAssoTickets);
+    fetchEventHelloAssoTickets.mockImplementation(async () => helloAssoTickets);
     upsertAttendees.mockImplementation(async () => attendees);
     upsertTickets.mockImplementation(async () => tickets);
     // @ts-ignore
-    await updateSingleEventTicketAttendeeEntities(event);
+    await updateSingleEventTicketsAttendees(event);
     expect(upsertAttendees).toHaveBeenCalledWith(attendees);
     expect(upsertTickets).toHaveBeenCalledWith(tickets);
     expect(updateEvent).toHaveBeenCalled();

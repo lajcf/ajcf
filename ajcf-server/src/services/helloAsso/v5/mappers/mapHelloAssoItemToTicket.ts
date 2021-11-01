@@ -1,9 +1,12 @@
 import { Event } from "../../../../entities/Event";
 import { Attendee } from "../../../../entities/Attendee";
 import dayjs from "../../../../utils/dayjs";
-import { HelloAssoSoldItem } from "../../../helloAsso/v5/resources";
+import { HelloAssoSoldItem } from "../resources";
+import { Ticket } from "../../../../entities/Ticket";
 
-export const formatHelloAssoTicketToTicket = (event: Event, attendees: Attendee[]) => (item: HelloAssoSoldItem) => {
+export const formatHelloAssoTicketToTicket = (event: Event, attendees: Attendee[]) => (
+  item: HelloAssoSoldItem
+): Partial<Ticket> => {
   const relatedAttendee = attendees.find((attendee) => attendee.email.toLowerCase() === item.payer.email.toLowerCase());
   if (!relatedAttendee)
     throw new Error(

@@ -1,12 +1,12 @@
 import { closeConnectionToDb, openConnectionToDb } from "../utils/dbHandlers";
 import { updateEventEntities } from "../services/events/mutations/updateEventEntities";
-import { updateTicketAttendeeEntities } from "../services/attendees/mutations/updateTicketAttendeeEntities";
+import { updateAllEventsTicketsAttendees } from "../services/attendees/mutations/updateAllEventsTicketsAttendees";
 
 export const updateEvents = async () => {
   try {
     await openConnectionToDb();
     const events = await updateEventEntities();
-    await updateTicketAttendeeEntities(events);
+    await updateAllEventsTicketsAttendees(events);
     await closeConnectionToDb();
   } catch (e) {
     console.log(e);
