@@ -23,5 +23,5 @@ export const addContactsToMailingList = async ({
 
   const result = await apiInstance.addContactToList(listId, contactEmails);
 
-  console.log(`Contacts added successfully to mailing list with ID ${listId}: ${result}`);
+  console.log(`Contacts added successfully to mailing list with ID ${listId}: ${JSON.stringify(result, null, 2)}`);
 };

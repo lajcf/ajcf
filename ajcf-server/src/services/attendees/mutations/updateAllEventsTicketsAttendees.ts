@@ -29,7 +29,7 @@ const upsertTicketsFromHelloAssoTickets = async (
 };
 
 export const updateSingleEventTicketsAttendees = async (event: Event) => {
-  if (!event.id) {
+  if (!event.slug) {
     return {
       attendees: [],
       tickets: [],
