@@ -3,6 +3,8 @@ import limit from "p-limit";
 import { flatten } from "lodash";
 import { memoizedAccessToken } from "./fetchAccessToken";
 import { HelloAssoEventsResponse } from "./resources";
+import { Event } from "../../../entities/Event";
+import { mapHelloAssoEventToEvent } from "./mappers/mapHelloAssoEventToEvent";
 
 const pLimit = limit(1);
 
@@ -32,7 +34,7 @@ const fetchTotalPages = async () => {
   return result.pagination.totalPages;
 };
 
-export const fetchEvents = async () => {
+export const fetchEvents = async (): Promise<Partial<Event>[]> => {
   const totalNumberOfPagesToFetch = await fetchTotalPages();
 
   const pagesIndices = Array.from(Array(totalNumberOfPagesToFetch).keys()).map((i) => i + 1);
@@ -41,5 +43,5 @@ export const fetchEvents = async () => {
     pagesIndices.map((pageIndex) => pLimit(() => fetchPaginatedEvents({ pageIndex, pageSize: PAGE_SIZE })))
   );
 
-  return flatten(eventsPages.map((page) => page.data));
+  return flatten(eventsPages.map((page) => page.data)).map(mapHelloAssoEventToEvent);
 };

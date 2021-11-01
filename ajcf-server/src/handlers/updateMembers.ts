@@ -1,7 +1,6 @@
 import dotenv from "dotenv";
 import { upsertHelloAssoMembers } from "../services/members/mutations/upsertHelloAssoMembers";
 import { closeConnectionToDb, openConnectionToDb } from "../utils/dbHandlers";
-import { fetchAllMembersFromDb } from "../services/members/queries/fetchAllMembersFromDb";
 import { sendWelcomeMails } from "../services/members/mutations/sendWelcomeMails/sendWelcomeMails";
 import { subscribeMembersToNewsletter } from "../services/members/mutations/subscribeMembersToNewsletter";
 
@@ -10,10 +9,9 @@ dotenv.config();
 export const updateMembers = async () => {
   try {
     await openConnectionToDb();
-    await upsertHelloAssoMembers();
-    const membersFromDb = await fetchAllMembersFromDb();
-    await sendWelcomeMails(membersFromDb);
-    await subscribeMembersToNewsletter(membersFromDb);
+    const upsertedMembers = await upsertHelloAssoMembers();
+    await sendWelcomeMails(upsertedMembers);
+    await subscribeMembersToNewsletter(upsertedMembers);
     await closeConnectionToDb();
   } catch (e) {
     console.log(e);

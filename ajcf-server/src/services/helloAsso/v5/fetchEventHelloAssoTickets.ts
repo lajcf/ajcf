@@ -34,14 +34,14 @@ const fetchTotalPages = async (eventSlug: string) => {
   return result.pagination.totalPages;
 };
 
-export const fetchEventTickets = async (eventSlug: string) => {
+export const fetchEventHelloAssoTickets = async (eventSlug: string) => {
   const totalNumberOfPagesToFetch = await fetchTotalPages(eventSlug);
 
   const pagesIndices = Array.from(Array(totalNumberOfPagesToFetch).keys()).map((i) => i + 1);
 
-  const membersPages = await Promise.all(
+  const ticketsPages = await Promise.all(
     pagesIndices.map((pageIndex) => pLimit(() => fetchPaginatedTickets({ pageIndex, pageSize: PAGE_SIZE, eventSlug })))
   );
 
-  return flatten(membersPages.map((page) => page.data));
+  return flatten(ticketsPages.map((page) => page.data));
 };

@@ -3,6 +3,7 @@ import limit from "p-limit";
 import { flatten } from "lodash";
 import { memoizedAccessToken } from "./fetchAccessToken";
 import { HelloAssoSoldItemsFromForm } from "./resources";
+import { validateEmail } from "../../../utils/validateMail";
 
 const pLimit = limit(1);
 
@@ -32,7 +33,7 @@ const fetchTotalPages = async () => {
   return result.pagination.totalPages;
 };
 
-export const fetchMembers = async () => {
+export const fetchHelloAssoMembers = async () => {
   const totalNumberOfPagesToFetch = await fetchTotalPages();
 
   const pagesIndices = Array.from(Array(totalNumberOfPagesToFetch).keys()).map((i) => i + 1);
@@ -41,5 +42,7 @@ export const fetchMembers = async () => {
     pagesIndices.map((pageIndex) => pLimit(() => fetchPaginatedMembers({ pageIndex, pageSize: PAGE_SIZE })))
   );
 
-  return flatten(membersPages.map((page) => page.data));
+  return flatten(membersPages.map((page) => page.data)).filter((subscription) =>
+    validateEmail(subscription.payer.email)
+  );
 };
