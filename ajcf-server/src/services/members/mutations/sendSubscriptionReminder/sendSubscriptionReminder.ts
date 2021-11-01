@@ -1,5 +1,5 @@
 import { Member } from "../../../../entities/Member";
-import { sendEmail } from "../../../mailClient/sendEmail";
+import { sendEmail } from "../../../mailClient/sendInBlue/sendEmail";
 
 export const sendSubscriptionReminder = async (member: Member) => {
   await sendEmail({

@@ -20,6 +20,7 @@ declare global {
       HELLOASSO_V5_CLIENT_SECRET: string;
       TEMPLATE_WELCOME_ID: string;
       TEMPLATE_SUBSCRIPTION_REMINDER_ID: string;
+      EVENTS_LISTS_FOLDER_ID: string;
     }
   }
 }

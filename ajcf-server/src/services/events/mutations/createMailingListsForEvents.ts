@@ -1,11 +1,15 @@
 import { getRepository } from "typeorm";
 import { Event } from "../../../entities/Event";
-import { createMailingList } from "../../mailClient/createMailingList";
 import { saveSingleEntity } from "../../../utils/saveUtils";
+import { createMailingList } from "../../mailClient/sendInBlue/createMailingList";
 
 export const createAndSaveMailingListId = async (event: Event) => {
   console.log(`Processing event ${JSON.stringify(event, null, 2)}...`);
-  const mailjetListId = await createMailingList(event.name);
+  // TODO: change mailjetListId column name
+  const mailjetListId = await createMailingList({
+    listName: event.name,
+    folderId: parseInt(process.env.EVENTS_LISTS_FOLDER_ID, 10),
+  });
   return saveSingleEntity(
     {
       ...event,
