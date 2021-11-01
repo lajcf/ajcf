@@ -8,9 +8,9 @@ import { upsertTickets } from "../../tickets/upsertTickets";
 import { formatTicketToAttendee } from "../../helloAsso/v5/mappers/mapHelloAssoItemToAttendee";
 import { formatHelloAssoTicketToTicket } from "../../helloAsso/v5/mappers/mapHelloAssoItemToTicket";
 import { Attendee } from "../../../entities/Attendee";
-import { subscribeAttendeesToEventMailingList } from "./utils/subscribeAttendeesToEventMailingList";
 import { fetchEventHelloAssoTickets } from "../../helloAsso/v5/fetchEventHelloAssoTickets";
 import { HelloAssoSoldItem } from "../../helloAsso/v5/resources";
+import { addContactsToMailingList } from "../../mailClient/sendInBlue/addContactsToMailingList";
 
 const upsertAttendeesFromHelloAssoTickets = async (helloAssoTickets: HelloAssoSoldItem[]) => {
   const attendeesToUpsert = uniqBy(helloAssoTickets, (t) => `${t.payer.email} ${t.user.firstName}`).map(
@@ -29,7 +29,7 @@ const upsertTicketsFromHelloAssoTickets = async (
 };
 
 export const updateSingleEventTicketsAttendees = async (event: Event) => {
-  if (!event.id) {
+  if (!event.slug) {
     return {
       attendees: [],
       tickets: [],
@@ -46,7 +46,10 @@ export const updateSingleEventTicketsAttendees = async (event: Event) => {
     tickets: upsertedTickets,
   });
 
-  await subscribeAttendeesToEventMailingList({ attendees: upsertedAttendees, event });
+  await addContactsToMailingList({
+    contactsMails: upsertedAttendees.map((attendee) => attendee.email),
+    listId: event.mailjetListId,
+  });
   console.log(`Processed attendees and tickets of event ${event.name}`);
   await waait(2000);
 

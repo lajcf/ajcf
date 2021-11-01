@@ -1,5 +1,5 @@
 import { Member } from "../../../../entities/Member";
-import { sendEmail } from "../../../mailClient/sendEmail";
+import { sendEmail } from "../../../mailClient/sendInBlue/sendEmail";
 
 export const sendSubscriptionReminder = async (member: Member) => {
   await sendEmail({
@@ -9,7 +9,7 @@ export const sendSubscriptionReminder = async (member: Member) => {
     emailTo: [member.email],
     emailBcc: ["nicolas.li@hotmail.fr"],
     emailCc: [],
-    templateId: parseInt(process.env.TEMPLATE_SUBSCRIPTION_REMINDER_ID, 10),
+    templateId: parseInt(process.env.SEND_IN_BLUE_TEMPLATE_SUBSCRIPTION_REMINDER_ID, 10),
   });
   return member;
 };

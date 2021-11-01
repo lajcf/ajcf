@@ -18,8 +18,9 @@ declare global {
       HELLOASSO_PASSWORD: string;
       HELLOASSO_V5_CLIENT_ID: string;
       HELLOASSO_V5_CLIENT_SECRET: string;
-      TEMPLATE_WELCOME_ID: string;
-      TEMPLATE_SUBSCRIPTION_REMINDER_ID: string;
+      SEND_IN_BLUE_TEMPLATE_WELCOME_ID: string;
+      SEND_IN_BLUE_TEMPLATE_SUBSCRIPTION_REMINDER_ID: string;
+      SEND_IN_BLUE_EVENTS_LISTS_FOLDER_ID: string;
     }
   }
 }

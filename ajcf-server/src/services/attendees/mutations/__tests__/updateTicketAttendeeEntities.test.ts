@@ -14,13 +14,14 @@ const { upsertTickets } = require("../../../tickets/upsertTickets");
 jest.mock("../../../events/mutations/updateEvent");
 const { updateEvent } = require("../../../events/mutations/updateEvent");
 
-jest.mock("../../mutations/utils/subscribeAttendeesToEventMailingList");
-const { subscribeAttendeesToEventMailingList } = require("../utils/subscribeAttendeesToEventMailingList");
+jest.mock("../../../mailClient/sendInBlue/addContactsToMailingList");
+const { addContactsToMailingList } = require("../../../mailClient/sendInBlue/addContactsToMailingList");
 
 const event = {
   id: "0",
   mailjetListId: "0",
   name: "test",
+  slug: "test",
 };
 const helloAssoTickets = [
   {
@@ -98,6 +99,7 @@ const tickets = [
       id: "0",
       mailjetListId: "0",
       name: "test",
+      slug: "test",
     },
     date: dayjs.utc("2020-06-11").toDate(),
     amount: 3,
@@ -115,6 +117,7 @@ const tickets = [
       id: "0",
       mailjetListId: "0",
       name: "test",
+      slug: "test",
     },
     date: dayjs.utc("2020-06-10").toDate(),
     amount: 1,
@@ -132,6 +135,7 @@ const tickets = [
       id: "0",
       mailjetListId: "0",
       name: "test",
+      slug: "test",
     },
     date: dayjs.utc("2020-06-08").toDate(),
     amount: 2,
@@ -149,6 +153,9 @@ describe("updateTicketAttendeeEntities", () => {
     expect(upsertAttendees).toHaveBeenCalledWith(attendees);
     expect(upsertTickets).toHaveBeenCalledWith(tickets);
     expect(updateEvent).toHaveBeenCalled();
-    expect(subscribeAttendeesToEventMailingList).toHaveBeenCalledWith({ attendees, event });
+    expect(addContactsToMailingList).toHaveBeenCalledWith({
+      contactsMails: attendees.map((attendee) => attendee.email),
+      listId: event.mailjetListId,
+    });
   });
 });
