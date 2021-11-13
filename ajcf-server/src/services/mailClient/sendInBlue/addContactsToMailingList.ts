@@ -15,6 +15,11 @@ export const addContactsToMailingList = async ({
     console.log("No list ID for this event");
     return;
   }
+
+  if (!contactsMails.length) {
+    console.log(`No one to add to event with listId ${listId}`);
+    return;
+  }
   const apiInstance = new sendInBlueClient.ContactsApi();
 
   const contactEmails = new sendInBlueClient.AddContactToList();
