@@ -16,7 +16,7 @@ export const updateEventEntities = async (): Promise<Event[]> => {
   console.log(`Upserted ${updatedEvents.length} events into DB`);
 
   const updatedEventsWithMailingList = await createMailingListsForEvents(updatedEvents);
-  console.log(`Upserted ${updatedEventsWithMailingList.length} mailing lists on MailJet`);
+  console.log(`Upserted ${updatedEventsWithMailingList.length} mailing lists on Sendinblue`);
 
   return orderBy(updatedEventsWithMailingList, (event) => event.creationDate);
 };
