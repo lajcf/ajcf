@@ -24,6 +24,9 @@ export const sendEmail = async ({ templateId, emailBcc, emailTo, emailCc, attrib
       sender: { email: "contact@lajcf.fr", name: "L'équipe de l'AJCF" },
       replyTo: { email: "contact@lajcf.fr", name: "L'équipe de l'AJCF" },
       to,
+      params: {
+        PRENOM: attributes?.PRENOM || undefined,
+      },
       cc: emailCc.length ? emailCc.map((email) => ({ email })) : undefined,
       bcc: emailBcc.length ? emailBcc.map((email) => ({ email })) : undefined,
     })
