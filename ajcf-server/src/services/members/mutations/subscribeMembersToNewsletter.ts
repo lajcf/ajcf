@@ -1,15 +1,10 @@
 import { Member } from "../../../entities/Member";
-import { MAILJET_MEMBERS_ID, MAILJET_NEWSLETTER_ID } from "../../../constants";
-import { linkContactsToMailingList } from "../../mailClient/mailjet/linkContactsToMailingList";
+import { SIB_MEMBERS_ID, SIB_NEWSLETTER_ID } from "../../../constants";
+import { addContactsToMailingList } from "../../mailClient/sendInBlue/addContactsToMailingList";
 
 export const subscribeMembersToNewsletter = async (members: Member[]) => {
-  await linkContactsToMailingList({
-    emails: members.map((member) => member.email),
-    mailjetListId: MAILJET_NEWSLETTER_ID,
-  });
-  await linkContactsToMailingList({
-    emails: members.map((member) => member.email),
-    mailjetListId: MAILJET_MEMBERS_ID,
-  });
+  await addContactsToMailingList({ listId: SIB_NEWSLETTER_ID, contactsMails: members.map((member) => member.email) });
+  await addContactsToMailingList({ listId: SIB_MEMBERS_ID, contactsMails: members.map((member) => member.email) });
+
   console.log(`${members.length} added to newsletter & members list!`);
 };
