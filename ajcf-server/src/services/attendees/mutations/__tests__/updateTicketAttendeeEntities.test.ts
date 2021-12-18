@@ -154,7 +154,7 @@ describe("updateTicketAttendeeEntities", () => {
     expect(upsertTickets).toHaveBeenCalledWith(tickets);
     expect(updateEvent).toHaveBeenCalled();
     expect(addContactsToMailingList).toHaveBeenCalledWith({
-      contactsMails: attendees.map((attendee) => attendee.email),
+      contactsMailsToAdd: attendees.map((attendee) => attendee.email),
       listId: event.mailjetListId,
     });
   });
