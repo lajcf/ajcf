@@ -1,5 +1,5 @@
 import waait from "waait";
-import {uniq, uniqBy} from "lodash";
+import { uniq, uniqBy } from "lodash";
 import { Event } from "../../../entities/Event";
 import { limit } from "../../../utils/pLimit";
 import { upsertAttendees } from "./upsertAttendees";
@@ -47,7 +47,7 @@ export const updateSingleEventTicketsAttendees = async (event: Event) => {
   });
 
   await addContactsToMailingList({
-    contactsMails: uniq(upsertedAttendees.map((attendee) => attendee.email)),
+    contactsMailsToAdd: uniq(upsertedAttendees.map((attendee) => attendee.email)),
     listId: event.mailjetListId,
   });
   console.log(`Processed attendees and tickets of event ${event.name}`);
