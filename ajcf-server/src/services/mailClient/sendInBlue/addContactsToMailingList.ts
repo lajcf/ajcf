@@ -5,7 +5,9 @@ import { fetchListContacts } from "./fetchListContacts";
 const selectContactsNotInListYet = async (listId: string, contactsMailsToAdd: string[]): Promise<string[]> => {
   const contactsAlreadyThere = await fetchListContacts(listId);
 
-  return contactsMailsToAdd.filter((contactMail) => !map(contactsAlreadyThere, "email").includes(contactMail));
+  return contactsMailsToAdd.filter(
+    (contactMail) => !map(contactsAlreadyThere, "email").includes(contactMail.toLowerCase())
+  );
 };
 
 export const addContactsToMailingList = async ({
