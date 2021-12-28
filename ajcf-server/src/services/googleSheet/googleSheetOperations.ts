@@ -70,7 +70,7 @@ export const fetchGoogleSheet = async (sheetId: string): Promise<FetchGoogleShee
         },
       });
     return response.data;
-  } catch (e) {
+  } catch (e: any) {
     console.log(`Error in fetching gsheet: ${JSON.stringify(e.response.data, null, 2)}.`);
     return null;
   }
