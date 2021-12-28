@@ -21,7 +21,7 @@
     "serverless-plugin-aws-alerts": "^1.4.0",
     "serverless-webpack": "^5.3.1",
     "sib-api-v3-sdk": "^8.2.1",
-    "ts-jest": "27.1.2",
+    "ts-jest": "26.5.6",
     "ts-loader": "9.2.6",
     "ts-node": "^8.4.1",
     "tsconfig-paths": "^3.9.0",
