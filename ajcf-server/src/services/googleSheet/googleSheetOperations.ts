@@ -52,7 +52,7 @@ export const createGoogleSheet = async (sheetName: string): Promise<string> => {
       },
     });
   console.log(response.data);
-  if (response.data && response.data.id) {
+  if (response.data?.id) {
     return response.data.id;
   }
   throw new Error("Error while creating file in google drive");
