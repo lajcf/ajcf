@@ -42,7 +42,8 @@
     "db:migrate": "yarn ts-node ./node_modules/typeorm/cli.js migration:run",
     "db:revert": "yarn ts-node ./node_modules/typeorm/cli.js migration:revert",
     "deploy": "node --max-old-space-size=4096 node_modules/serverless/bin/serverless deploy",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "husky install"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
