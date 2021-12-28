@@ -75,6 +75,7 @@ export const fetchGoogleSheet = async (sheetId: string): Promise<FetchGoogleShee
     return null;
   }
 };
+const foo = {}
 
 export const convertGoogleSheetToObjectArray = (rowData: RowData[]) => {
   if (rowData.length === 0) return [];

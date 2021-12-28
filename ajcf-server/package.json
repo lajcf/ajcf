@@ -30,11 +30,6 @@
     "waait": "^1.0.5",
     "webpack": "4.46.0"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "scripts": {
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "db:generate": "yarn typeorm migration:generate",
