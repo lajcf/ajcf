@@ -1,7 +1,7 @@
 import { EventBridgeEvent } from "aws-lambda";
 import { HelloAssoOrder } from "../types";
 import { upsertMembers } from "../services/members/mutations/upsertMembers";
-import { mapHelloAssoOrdersToMembers } from "../services/helloAsso/v5/mappers/mapHelloAssoItemToMember";
+import { mapHelloAssoOrderToMembers } from "../services/helloAsso/v5/mappers/mapHelloAssoItemToMember";
 import { sendWelcomeMails } from "../services/members/mutations/sendWelcomeMails/sendWelcomeMails";
 import { subscribeMembersToNewsletter } from "../services/members/mutations/subscribeMembersToNewsletter";
 
@@ -18,7 +18,7 @@ export const handler = async (event: EventBridgeEvent<"newMember" | "newAttendee
     console.log(`Cannot process eventType: ${event["detail-type"]}`);
     return;
   }
-  const upsertedMembers = await upsertMembers(mapHelloAssoOrdersToMembers(event.detail));
+  const upsertedMembers = await upsertMembers(mapHelloAssoOrderToMembers(event.detail));
   await sendWelcomeMails(upsertedMembers);
   await subscribeMembersToNewsletter(upsertedMembers);
   return event;

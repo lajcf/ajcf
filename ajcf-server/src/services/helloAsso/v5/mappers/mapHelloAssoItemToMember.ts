@@ -63,7 +63,7 @@ export const mapHelloAssoItemsToMembers = (helloAssoMembers: HelloAssoSoldItem[]
   });
 };
 
-export const mapHelloAssoOrdersToMembers = (helloAssoOrder: HelloAssoOrder) => {
+export const mapHelloAssoOrderToMembers = (helloAssoOrder: HelloAssoOrder) => {
   return helloAssoOrder.items.map((order) => ({
     createdAt: new Date(),
     updatedAt: dayjs.utc(helloAssoOrder.date).toDate(),
