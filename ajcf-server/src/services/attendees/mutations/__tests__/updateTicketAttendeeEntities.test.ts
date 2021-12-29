@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+import { uniqBy } from "lodash";
 import dayjs from "../../../../utils/dayjs";
 import { updateSingleEventTicketsAttendees } from "../updateAllEventsTicketsAttendees";
 
@@ -14,7 +15,7 @@ const { upsertTickets } = require("../../../tickets/upsertTickets");
 jest.mock("../../../events/mutations/updateEvent");
 const { updateEvent } = require("../../../events/mutations/updateEvent");
 
-jest.mock("../../../mailClient/sendInBlue/addContactsToMailingList");
+jest.mock("../../../mailClient/sendInBlue/addContactsToMailingList/addContactsToMailingList");
 const {
   addContactsToMailingList,
 } = require("../../../mailClient/sendInBlue/addContactsToMailingList/addContactsToMailingList");
@@ -78,6 +79,12 @@ const attendees = [
     email: "premierhomme@gmail.com",
     firstName: "Nicolas",
     lastName: "Li",
+    lastParticipationDate: dayjs.utc("2020-06-11").toDate(),
+  },
+  {
+    email: "premierhomme@gmail.com",
+    firstName: "Nicolas2",
+    lastName: "Li2",
     lastParticipationDate: dayjs.utc("2020-06-11").toDate(),
   },
   {
@@ -152,11 +159,11 @@ describe("updateTicketAttendeeEntities", () => {
     upsertTickets.mockImplementation(async () => tickets);
     // @ts-ignore
     await updateSingleEventTicketsAttendees(event);
-    expect(upsertAttendees).toHaveBeenCalledWith(attendees);
+    expect(upsertAttendees).toHaveBeenCalledWith(uniqBy(attendees, (attendee) => attendee.email));
     expect(upsertTickets).toHaveBeenCalledWith(tickets);
     expect(updateEvent).toHaveBeenCalled();
     expect(addContactsToMailingList).toHaveBeenCalledWith({
-      contactsMailsToAdd: attendees.map((attendee) => attendee.email),
+      contactsToAdd: uniqBy(attendees, (attendee) => attendee.email),
       listId: event.mailjetListId,
     });
   });
