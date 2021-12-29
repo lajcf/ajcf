@@ -73,7 +73,7 @@ const serverlessConfig: Serverless = {
         },
       ],
     },
-    insertNewEvent: {
+    /*    insertNewEvent: {
       handler: "src/handlers/insertNewEvent.handler",
       events: [
         {
@@ -98,7 +98,7 @@ const serverlessConfig: Serverless = {
           },
         },
       ],
-    },
+    }, */
     updateMembers: {
       handler: "src/handlers/updateMembers.handler",
     },
