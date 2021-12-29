@@ -75,12 +75,14 @@ const serverlessConfig: Serverless = {
         },
       ],
     },
-    /*    insertNewEvent: {
+    insertNewEvent: {
       handler: "src/handlers/insertNewEvent.handler",
+      // @ts-ignore
+      maximumRetryAttempts: 1,
       events: [
         {
           eventBridge: {
-            eventBus: "ajcf-server-bus",
+            eventBus: `ajcf-server-bus-${STAGE}`,
             pattern: {
               source: ["helloasso.form"],
             },
@@ -90,17 +92,19 @@ const serverlessConfig: Serverless = {
     },
     insertNewAttendee: {
       handler: "src/handlers/insertNewAttendee.handler",
+      // @ts-ignore
+      maximumRetryAttempts: 1,
       events: [
         {
           eventBridge: {
-            eventBus: "ajcf-server-bus",
+            eventBus: `ajcf-server-bus-${STAGE}`,
             pattern: {
               source: ["helloasso.order"],
             },
           },
         },
       ],
-    }, */
+    },
     updateMembers: {
       handler: "src/handlers/updateMembers.handler",
     },

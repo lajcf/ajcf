@@ -1,9 +1,14 @@
-type HelloAssoFormType = "Membership" | "Donation" | "Event";
+type HelloAssoOrderFormType = "Membership" | "Donation" | "Event";
+type HelloAssoFormFormType = "Event";
 
-export const mapHelloAssoFormTypeToEventBridgeDetailType: { [key in HelloAssoFormType]: string } = {
+export const mapHelloAssoOrderFormTypeToEventBridgeDetailType: { [key in HelloAssoOrderFormType | string]: string } = {
   Membership: "newMember",
   Donation: "donation",
   Event: "newAttendee",
+};
+
+export const mapHelloAssoFormFormTypeToEventBridgeDetailType: { [key in HelloAssoFormFormType | string]: string } = {
+  Event: "newEvent",
 };
 
 export type HelloAssoPayment = {
@@ -79,7 +84,7 @@ export type HelloAssoOrder = {
     discount: number; // 0;
   };
   formSlug: string; // "adhesion";
-  formType: HelloAssoFormType;
+  formType: HelloAssoOrderFormType | string;
   payments: HelloAssoPayment[];
   organizationSlug: "ajcf";
 };
@@ -103,7 +108,7 @@ export type HelloAssoForm = {
   endDate: string; // "2021-12-19T18:00:00+01:00";
   currency: "EUR";
   formSlug: string;
-  formType: "Event" | string;
+  formType: HelloAssoFormFormType | string;
   startDate: string; // "2021-12-18T10:00:00+01:00";
   description: "";
   activityType: string;
