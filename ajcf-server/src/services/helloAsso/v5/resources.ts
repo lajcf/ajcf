@@ -48,6 +48,12 @@ export type HelloAssoSoldItem = {
         type: "FreeText";
         answer: string; // "Lorem ipsum";
       }
+    | {
+        name: "Justificatif étudiant / chômeur";
+        type: "File";
+        answer: string;
+      }
+    | Record<string, string>
   )[];
   id: number; // 27125350,
   amount: number; // 2000,
