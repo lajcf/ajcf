@@ -2,7 +2,12 @@ import { getRepository } from "typeorm";
 import { closeConnectionToDb, openConnectionToDb } from "../utils/dbHandlers";
 import { HelloAssoNotification } from "../entities/HelloAssoNotification";
 import { publishEvent } from "../services/helloAsso/v5/pubsub";
-import { HelloAssoForm, HelloAssoOrder, mapHelloAssoFormTypeToEventBridgeDetailType } from "../types";
+import {
+  HelloAssoForm,
+  HelloAssoOrder,
+  mapHelloAssoFormFormTypeToEventBridgeDetailType,
+  mapHelloAssoOrderFormTypeToEventBridgeDetailType,
+} from "../types";
 
 type HelloAssoNotificationRequestBody =
   | { eventType: "Order"; data: HelloAssoOrder }
@@ -21,13 +26,13 @@ const publishHelloAssoNotification = async (body: HelloAssoNotificationRequestBo
       return publishEvent({
         source: "helloasso.form",
         detail: body.data,
-        detailType: "newEvent",
+        detailType: mapHelloAssoFormFormTypeToEventBridgeDetailType[body.data.formType] || body.data.formType,
       });
     case "Order":
       return publishEvent({
         source: "helloasso.order",
         detail: body.data,
-        detailType: mapHelloAssoFormTypeToEventBridgeDetailType[body.data.formType],
+        detailType: mapHelloAssoOrderFormTypeToEventBridgeDetailType[body.data.formType] || body.data.formType,
       });
     default:
       console.log("Do not publish payment event");
