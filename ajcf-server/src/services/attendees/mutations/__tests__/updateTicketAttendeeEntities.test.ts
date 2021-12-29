@@ -15,7 +15,9 @@ jest.mock("../../../events/mutations/updateEvent");
 const { updateEvent } = require("../../../events/mutations/updateEvent");
 
 jest.mock("../../../mailClient/sendInBlue/addContactsToMailingList");
-const { addContactsToMailingList } = require("../../../mailClient/sendInBlue/addContactsToMailingList");
+const {
+  addContactsToMailingList,
+} = require("../../../mailClient/sendInBlue/addContactsToMailingList/addContactsToMailingList");
 
 const event = {
   id: "0",

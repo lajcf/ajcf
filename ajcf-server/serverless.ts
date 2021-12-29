@@ -99,22 +99,6 @@ const serverlessConfig: Serverless = {
         },
       ],
     },
-    updateMembers: {
-      handler: "src/handlers/updateMembers.handler",
-      events: [
-        {
-          schedule: "rate(3 hours)",
-        },
-      ],
-    },
-    updateEvents: {
-      handler: "src/handlers/updateEvents.handler",
-      events: [
-        {
-          schedule: "rate(1 day)",
-        },
-      ],
-    },
     sendSubscriptionReminders: {
       handler: "src/handlers/sendSubscriptionReminders.handler",
       events: [

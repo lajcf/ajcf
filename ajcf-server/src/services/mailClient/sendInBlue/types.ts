@@ -8,3 +8,5 @@ export type SibContact = {
   listIds: number[];
   attributes: Record<string, any>;
 };
+
+export type ContactToAdd = { email: string; firstName?: string | null; lastName?: string | null };
