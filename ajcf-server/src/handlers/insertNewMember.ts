@@ -4,6 +4,7 @@ import { upsertMembers } from "../services/members/mutations/upsertMembers";
 import { mapHelloAssoOrderToMembers } from "../services/helloAsso/v5/mappers/mapHelloAssoItemToMember";
 import { sendWelcomeMails } from "../services/members/mutations/sendWelcomeMails/sendWelcomeMails";
 import { subscribeMembersToNewsletter } from "../services/members/mutations/subscribeMembersToNewsletter";
+import { closeConnectionToDb, openConnectionToDb } from "../utils/dbHandlers";
 
 const shouldProcessEvent = (eventType: "newMember" | "newAttendee" | string) => {
   if (eventType === "newMember") {
@@ -18,8 +19,15 @@ export const handler = async (event: EventBridgeEvent<"newMember" | "newAttendee
     console.log(`Cannot process eventType: ${event["detail-type"]}`);
     return;
   }
-  const upsertedMembers = await upsertMembers(mapHelloAssoOrderToMembers(event.detail));
-  await sendWelcomeMails(upsertedMembers);
-  await subscribeMembersToNewsletter(upsertedMembers);
-  return event;
+  try {
+    await openConnectionToDb();
+    const upsertedMembers = await upsertMembers(mapHelloAssoOrderToMembers(event.detail));
+    await sendWelcomeMails(upsertedMembers);
+    await subscribeMembersToNewsletter(upsertedMembers);
+    await closeConnectionToDb();
+  } catch (e) {
+    console.log(e);
+    await closeConnectionToDb();
+    throw e;
+  }
 };
