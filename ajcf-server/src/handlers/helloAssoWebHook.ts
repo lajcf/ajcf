@@ -1,10 +1,37 @@
 import { getRepository } from "typeorm";
 import { closeConnectionToDb, openConnectionToDb } from "../utils/dbHandlers";
 import { HelloAssoNotification } from "../entities/HelloAssoNotification";
+import { publishEvent } from "../services/helloAsso/v5/pubsub";
+import { HelloAssoForm, HelloAssoOrder, mapHelloAssoFormTypeToEventBridgeDetailType } from "../types";
 
-type HelloAssoNotificationRequestBody = {
-  eventType: "Order" | "Payment" | "Form";
-  data: object;
+type HelloAssoNotificationRequestBody =
+  | { eventType: "Order"; data: HelloAssoOrder }
+  | {
+      eventType: "Form";
+      data: HelloAssoForm;
+    }
+  | {
+      eventType: "Payment";
+      data: any;
+    };
+
+const publishHelloAssoNotification = async (body: HelloAssoNotificationRequestBody) => {
+  switch (body.eventType) {
+    case "Form":
+      return publishEvent({
+        source: "helloasso.form",
+        detail: body.data,
+        detailType: "newEvent",
+      });
+    case "Order":
+      return publishEvent({
+        source: "helloasso.order",
+        detail: body.data,
+        detailType: mapHelloAssoFormTypeToEventBridgeDetailType[body.data.formType],
+      });
+    default:
+      console.log("Do not publish payment event");
+  }
 };
 
 const saveEvent = async (body: HelloAssoNotificationRequestBody) => {
@@ -12,6 +39,7 @@ const saveEvent = async (body: HelloAssoNotificationRequestBody) => {
     await openConnectionToDb();
     await getRepository(HelloAssoNotification).save({ data: body.data, notificationType: body.eventType });
     console.log("Saved event");
+    await publishEvent(body.data).promise();
     await closeConnectionToDb();
   } catch (e) {
     console.log(e);
@@ -42,6 +70,7 @@ export const handler = async (event: any) => {
   console.log("Body parsed: ", data);
   sanityCheck(data);
   await saveEvent(data);
+  await publishHelloAssoNotification(data);
   return {
     body: JSON.stringify({ message: "ok" }),
     headers: {

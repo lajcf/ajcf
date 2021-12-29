@@ -1,5 +1,5 @@
 import waait from "waait";
-import { uniq, uniqBy } from "lodash";
+import { uniqBy } from "lodash";
 import { Event } from "../../../entities/Event";
 import { limit } from "../../../utils/pLimit";
 import { upsertAttendees } from "./upsertAttendees";
@@ -10,7 +10,7 @@ import { formatHelloAssoTicketToTicket } from "../../helloAsso/v5/mappers/mapHel
 import { Attendee } from "../../../entities/Attendee";
 import { fetchEventHelloAssoTickets } from "../../helloAsso/v5/fetchEventHelloAssoTickets";
 import { HelloAssoSoldItem } from "../../helloAsso/v5/resources";
-import { addContactsToMailingList } from "../../mailClient/sendInBlue/addContactsToMailingList";
+import { addContactsToMailingList } from "../../mailClient/sendInBlue/addContactsToMailingList/addContactsToMailingList";
 
 const upsertAttendeesFromHelloAssoTickets = async (helloAssoTickets: HelloAssoSoldItem[]) => {
   const attendeesToUpsert = uniqBy(helloAssoTickets, (t) => `${t.payer.email} ${t.user.firstName}`).map(
@@ -47,7 +47,7 @@ export const updateSingleEventTicketsAttendees = async (event: Event) => {
   });
 
   await addContactsToMailingList({
-    contactsMailsToAdd: uniq(upsertedAttendees.map((attendee) => attendee.email)),
+    contactsToAdd: uniqBy(upsertedAttendees, (attendee) => attendee.email),
     listId: event.mailjetListId,
   });
   console.log(`Processed attendees and tickets of event ${event.name}`);

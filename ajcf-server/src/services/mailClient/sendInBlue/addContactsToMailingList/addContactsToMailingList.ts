@@ -1,21 +1,14 @@
-import { map } from "lodash";
-import { sendInBlueClient } from "./sdk";
-import { fetchListContacts } from "./fetchListContacts";
-
-const selectContactsNotInListYet = async (listId: string, contactsMailsToAdd: string[]): Promise<string[]> => {
-  const contactsAlreadyThere = await fetchListContacts(listId);
-
-  return contactsMailsToAdd.filter(
-    (contactMail) => !map(contactsAlreadyThere, "email").includes(contactMail.toLowerCase())
-  );
-};
+import { sendInBlueClient } from "../sdk";
+import { createNotExistingContacts } from "./createNotExistingContacts";
+import { ContactToAdd } from "../types";
+import { selectContactsNotInListYet } from "./selectContactsNotInListYet";
 
 export const addContactsToMailingList = async ({
   listId,
-  contactsMailsToAdd,
+  contactsToAdd,
 }: {
   listId: string | null;
-  contactsMailsToAdd: string[];
+  contactsToAdd: ContactToAdd[];
 }) => {
   if (process.env.ENV !== "prod") {
     console.log("Development environment, do not link contacts to mailing list");
@@ -26,7 +19,9 @@ export const addContactsToMailingList = async ({
     return;
   }
 
-  const contactsNotInListYet = await selectContactsNotInListYet(listId, contactsMailsToAdd);
+  await createNotExistingContacts(contactsToAdd);
+
+  const contactsNotInListYet = await selectContactsNotInListYet(listId, contactsToAdd);
 
   if (!contactsNotInListYet.length) {
     console.log(`No new contact to add to event with listId ${listId}`);
@@ -36,7 +31,7 @@ export const addContactsToMailingList = async ({
 
   const contactEmails = new sendInBlueClient.AddContactToList();
 
-  contactEmails.emails = contactsNotInListYet;
+  contactEmails.emails = contactsNotInListYet.map((contact) => contact.email);
 
   const result = await apiInstance.addContactToList(listId, contactEmails);
 

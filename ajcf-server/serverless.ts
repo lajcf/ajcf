@@ -1,4 +1,5 @@
 /* eslint-disable no-template-curly-in-string */
+// eslint-disable-next-line import/no-import-module-exports
 import { Serverless } from "serverless/aws";
 
 const STAGE = "${self:provider.stage}";
@@ -59,13 +60,49 @@ const serverlessConfig: Serverless = {
     ],
   },
   functions: {
-    updateMembers: {
-      handler: "src/handlers/updateMembers.handler",
+    insertNewMember: {
+      handler: "src/handlers/insertNewMember.handler",
+      // @ts-ignore
+      maximumRetryAttempts: 1,
       events: [
         {
-          schedule: "rate(3 hours)",
+          eventBridge: {
+            eventBus: `ajcf-server-bus-${STAGE}`,
+            pattern: {
+              source: ["helloasso.order"],
+            },
+          },
         },
       ],
+    },
+    /*    insertNewEvent: {
+      handler: "src/handlers/insertNewEvent.handler",
+      events: [
+        {
+          eventBridge: {
+            eventBus: "ajcf-server-bus",
+            pattern: {
+              source: ["helloasso.form"],
+            },
+          },
+        },
+      ],
+    },
+    insertNewAttendee: {
+      handler: "src/handlers/insertNewAttendee.handler",
+      events: [
+        {
+          eventBridge: {
+            eventBus: "ajcf-server-bus",
+            pattern: {
+              source: ["helloasso.order"],
+            },
+          },
+        },
+      ],
+    }, */
+    updateMembers: {
+      handler: "src/handlers/updateMembers.handler",
     },
     updateEvents: {
       handler: "src/handlers/updateEvents.handler",

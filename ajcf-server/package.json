@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "@bearer/node": "^2.0.0",
+    "@types/aws-lambda": "^8.10.89",
     "acorn": "^7.1.1",
+    "aws-lambda": "^1.0.7",
     "aws-sdk": "^2.638.0",
     "axios": "^0.24.0",
     "babel-jest": "^25.4.0",
@@ -17,12 +19,12 @@
     "minimist": "^1.2.5",
     "mysql": "^2.18.1",
     "p-limit": "^2.2.2",
-    "serverless": "^2.54.0",
+    "serverless": "^2.70.0",
     "serverless-plugin-aws-alerts": "^1.4.0",
-    "serverless-webpack": "^5.3.1",
+    "serverless-webpack": "5.6.0",
     "sib-api-v3-sdk": "^8.2.1",
     "ts-jest": "26.5.6",
-    "ts-loader": "9.2.6",
+    "ts-loader": "8.3.0",
     "ts-node": "^8.4.1",
     "tsconfig-paths": "^3.9.0",
     "typeorm": "^0.2.32",
@@ -52,7 +54,7 @@
     "@types/lodash": "^4.14.149",
     "@types/node": "^16.11.1",
     "@types/p-limit": "^2.2.0",
-    "@types/serverless": "^1.78.34",
+    "@types/serverless": "^1.78.40",
     "babel-loader": "^8.0.6"
   }
 }
