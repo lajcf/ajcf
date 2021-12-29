@@ -10,6 +10,7 @@ export enum CustomInfoEnum {
   phone = "Numéro de téléphone",
   jobStudy = "Profession / Etudes",
   motivation = "Pourquoi veux-tu rejoindre l'AJCF ?",
+  email = "Email",
 }
 
 export const extractDateInfo = (
@@ -49,7 +50,9 @@ export const mapHelloAssoItemsToMembers = (helloAssoMembers: HelloAssoSoldItem[]
     return {
       createdAt: new Date(),
       updatedAt: dayjs.utc(helloAssoMember.order.date).toDate(),
-      email: helloAssoMember.payer.email.toLowerCase(),
+      email:
+        extractStringInfo(helloAssoMember.customFields, CustomInfoEnum.email) ||
+        helloAssoMember.payer.email.toLowerCase(),
       firstName: capitalize(helloAssoMember.user.firstName),
       lastName: capitalize(helloAssoMember.user.lastName),
       birthDate: extractDateInfo(helloAssoMember.customFields, CustomInfoEnum.birthDate),
@@ -67,7 +70,7 @@ export const mapHelloAssoOrderToMembers = (helloAssoOrder: HelloAssoOrder) => {
   return helloAssoOrder.items.map((order) => ({
     createdAt: new Date(),
     updatedAt: dayjs.utc(helloAssoOrder.date).toDate(),
-    email: helloAssoOrder.payer.email.toLowerCase(),
+    email: extractStringInfo(order.customFields, CustomInfoEnum.email) || helloAssoOrder.payer.email.toLowerCase(),
     firstName: capitalize(order.user.firstName),
     lastName: capitalize(order.user.lastName),
     birthDate: extractDateInfo(order.customFields, CustomInfoEnum.birthDate),
