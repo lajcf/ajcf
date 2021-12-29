@@ -3,7 +3,7 @@ import { HelloAssoForm, HelloAssoOrder } from "../../../types";
 
 const AjcfEventBridge = new EventBridge({ region: "eu-west-3" });
 
-const AjcfBus = "ajcf-server-bus";
+const AjcfBus = `ajcf-server-bus-${process.env.ENV}`;
 
 type HelloAssoOrderEvent = {
   detail: HelloAssoOrder;
