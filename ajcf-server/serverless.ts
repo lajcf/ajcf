@@ -67,7 +67,6 @@ const serverlessConfig: Serverless = {
       events: [
         {
           eventBridge: {
-            eventBus: `ajcf-server-bus-${STAGE}`,
             pattern: {
               source: ["helloasso.order"],
             },
@@ -82,7 +81,6 @@ const serverlessConfig: Serverless = {
       events: [
         {
           eventBridge: {
-            eventBus: `ajcf-server-bus-${STAGE}`,
             pattern: {
               source: ["helloasso.form"],
             },
@@ -97,7 +95,6 @@ const serverlessConfig: Serverless = {
       events: [
         {
           eventBridge: {
-            eventBus: `ajcf-server-bus-${STAGE}`,
             pattern: {
               source: ["helloasso.order"],
             },
