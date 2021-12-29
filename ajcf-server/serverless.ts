@@ -62,6 +62,8 @@ const serverlessConfig: Serverless = {
   functions: {
     insertNewMember: {
       handler: "src/handlers/insertNewMember.handler",
+      // @ts-ignore
+      maximumRetryAttempts: 1,
       events: [
         {
           eventBridge: {
