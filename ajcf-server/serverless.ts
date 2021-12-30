@@ -52,6 +52,11 @@ const serverlessConfig: Serverless = {
         Action: ["secretsmanager:GetSecretValue"],
         Resource: ["arn:aws:secretsmanager:eu-west-3:071879949813:secret:*"],
       },
+      {
+        Effect: "Allow",
+        Action: ["events:*"],
+        Resource: ["*"],
+      },
     ],
   },
   functions: {
