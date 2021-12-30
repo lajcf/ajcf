@@ -1,7 +1,7 @@
 import { EventBridgeEvent } from "aws-lambda";
 import { HelloAssoOrder } from "../types";
 import { upsertMembers } from "../services/members/mutations/upsertMembers";
-import { mapHelloAssoOrderToMembers } from "../services/helloAsso/v5/mappers/mapHelloAssoItemToMember";
+import { mapHelloAssoOrderToMembers } from "../utils/helloAsso/mappers/mapHelloAssoItemToMember";
 import { sendWelcomeMails } from "../services/members/mutations/sendWelcomeMails/sendWelcomeMails";
 import { subscribeMembersToNewsletter } from "../services/members/mutations/subscribeMembersToNewsletter";
 import { closeConnectionToDb, openConnectionToDb } from "../utils/dbHandlers";

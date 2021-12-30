@@ -1,7 +1,7 @@
 import { uniqBy } from "lodash";
 import { Member } from "../../../entities/Member";
 import { SIB_MEMBERS_ID, SIB_NEWSLETTER_ID } from "../../../constants";
-import { addContactsToMailingList } from "../../mailClient/sendInBlue/addContactsToMailingList/addContactsToMailingList";
+import { addContactsToMailingList } from "../../../utils/mailClient/sendInBlue/addContactsToMailingList/addContactsToMailingList";
 
 export const subscribeMembersToNewsletter = async (members: Member[]) => {
   await addContactsToMailingList({

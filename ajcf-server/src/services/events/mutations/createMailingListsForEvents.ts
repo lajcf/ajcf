@@ -1,7 +1,7 @@
 import { getRepository } from "typeorm";
 import { Event } from "../../../entities/Event";
 import { saveSingleEntity } from "../../../utils/saveUtils";
-import { createMailingList } from "../../mailClient/sendInBlue/createMailingList";
+import { createMailingList } from "../../../utils/mailClient/sendInBlue/createMailingList";
 
 export const createAndSaveMailingListId = async (event: Event) => {
   console.log(`Processing event ${JSON.stringify(event, null, 2)}...`);

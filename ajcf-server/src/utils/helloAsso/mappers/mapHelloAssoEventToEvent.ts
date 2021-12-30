@@ -1,7 +1,7 @@
 import { HelloAssoEvent } from "../resources";
-import { Event } from "../../../../entities/Event";
-import dayjs from "../../../../utils/dayjs";
-import { HelloAssoForm } from "../../../../types";
+import { Event } from "../../../entities/Event";
+import dayjs from "../../dayjs";
+import { HelloAssoForm } from "../../../types";
 
 export const mapHelloAssoEventToEvent = (event: HelloAssoEvent): Partial<Event> => ({
   slug: event.formSlug,

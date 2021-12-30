@@ -3,8 +3,8 @@ import { uniqBy } from "lodash";
 import dayjs from "../../../../utils/dayjs";
 import { updateSingleEventTicketsAttendees } from "../updateAllEventsTicketsAttendees";
 
-jest.mock("../../../helloAsso/v5/fetchEventHelloAssoTickets");
-const { fetchEventHelloAssoTickets } = require("../../../helloAsso/v5/fetchEventHelloAssoTickets");
+jest.mock("../../../../utils/helloAsso/fetchEventHelloAssoTickets");
+const { fetchEventHelloAssoTickets } = require("../../../../utils/helloAsso/fetchEventHelloAssoTickets");
 
 jest.mock("../upsertAttendees");
 const { upsertAttendees } = require("../upsertAttendees");
@@ -15,10 +15,10 @@ const { upsertTickets } = require("../../../tickets/upsertTickets");
 jest.mock("../../../events/mutations/updateEvent");
 const { updateEvent } = require("../../../events/mutations/updateEvent");
 
-jest.mock("../../../mailClient/sendInBlue/addContactsToMailingList/addContactsToMailingList");
+jest.mock("../../../../utils/mailClient/sendInBlue/addContactsToMailingList/addContactsToMailingList");
 const {
   addContactsToMailingList,
-} = require("../../../mailClient/sendInBlue/addContactsToMailingList/addContactsToMailingList");
+} = require("../../../../utils/mailClient/sendInBlue/addContactsToMailingList/addContactsToMailingList");
 
 const event = {
   id: "0",

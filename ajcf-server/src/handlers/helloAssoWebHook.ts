@@ -1,7 +1,7 @@
 import { getRepository } from "typeorm";
 import { closeConnectionToDb, openConnectionToDb } from "../utils/dbHandlers";
 import { HelloAssoNotification } from "../entities/HelloAssoNotification";
-import { publishEvent } from "../services/helloAsso/v5/pubsub";
+import { publishEvent } from "../utils/pubsub";
 import {
   HelloAssoForm,
   HelloAssoOrder,

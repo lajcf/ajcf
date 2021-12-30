@@ -1,9 +1,9 @@
-import { Event } from "../../../../entities/Event";
-import { Attendee } from "../../../../entities/Attendee";
-import dayjs from "../../../../utils/dayjs";
+import { Event } from "../../../entities/Event";
+import { Attendee } from "../../../entities/Attendee";
+import dayjs from "../../dayjs";
 import { HelloAssoSoldItem } from "../resources";
-import { Ticket } from "../../../../entities/Ticket";
-import { HelloAssoOrder } from "../../../../types";
+import { Ticket } from "../../../entities/Ticket";
+import { HelloAssoOrder } from "../../../types";
 
 export const formatHelloAssoTicketToTicket =
   (event: Event, attendees: Attendee[]) =>

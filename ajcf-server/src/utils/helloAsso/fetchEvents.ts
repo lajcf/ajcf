@@ -3,7 +3,7 @@ import limit from "p-limit";
 import { flatten } from "lodash";
 import { memoizedAccessToken } from "./fetchAccessToken";
 import { HelloAssoEventsResponse } from "./resources";
-import { Event } from "../../../entities/Event";
+import { Event } from "../../entities/Event";
 import { mapHelloAssoEventToEvent } from "./mappers/mapHelloAssoEventToEvent";
 
 const pLimit = limit(1);

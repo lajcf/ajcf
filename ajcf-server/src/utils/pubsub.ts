@@ -1,5 +1,5 @@
 import { EventBridge } from "aws-sdk";
-import { HelloAssoForm, HelloAssoOrder } from "../../../types";
+import { HelloAssoForm, HelloAssoOrder } from "../types";
 
 const AjcfEventBridge = new EventBridge({ region: "eu-west-3" });
 
