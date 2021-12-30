@@ -2,6 +2,24 @@
 // eslint-disable-next-line import/no-import-module-exports
 import { Serverless } from "serverless/aws";
 
+export const environmentVariables: typeof process.env = {
+  ENV: "${env:ENV}",
+  STAGE: "${env:STAGE}",
+  DB_HOST: "${env:DB_HOST}",
+  DB_PASSWORD: "${env:DB_PASSWORD}",
+  DB_USERNAME: "${env:DB_USERNAME}",
+  DB_PORT: "${env:DB_PORT}",
+  DB_NAME: "${env:DB_NAME}",
+  SENDINBLUE_API_KEY: "${env:SENDINBLUE_API_KEY}",
+  HELLOASSO_USERNAME: "${env:HELLOASSO_USERNAME}",
+  HELLOASSO_PASSWORD: "${env:HELLOASSO_PASSWORD}",
+  HELLOASSO_V5_CLIENT_ID: "${env:HELLOASSO_V5_CLIENT_ID}",
+  HELLOASSO_V5_CLIENT_SECRET: "${env:HELLOASSO_V5_CLIENT_SECRET}",
+  SEND_IN_BLUE_TEMPLATE_SUBSCRIPTION_REMINDER_ID: "${env:SEND_IN_BLUE_TEMPLATE_SUBSCRIPTION_REMINDER_ID}",
+  SEND_IN_BLUE_TEMPLATE_WELCOME_ID: "${env:SEND_IN_BLUE_TEMPLATE_WELCOME_ID}",
+  SEND_IN_BLUE_EVENTS_LISTS_FOLDER_ID: "${env:SEND_IN_BLUE_EVENTS_LISTS_FOLDER_ID}",
+};
+
 const serverlessConfig: Serverless = {
   service: "ajcf-server",
   frameworkVersion: ">=2.0.0 <3.0.0",
@@ -23,23 +41,7 @@ const serverlessConfig: Serverless = {
     stage: "${env:STAGE}",
     region: "eu-west-3",
     profile: "ajcf",
-    environment: {
-      ENV: "${env:ENV}",
-      STAGE: "${env:STAGE}",
-      DB_HOST: "${env:DB_HOST}",
-      DB_PASSWORD: "${env:DB_PASSWORD}",
-      DB_USERNAME: "${env:DB_USERNAME}",
-      DB_PORT: "${env:DB_PORT}",
-      DB_NAME: "${env:DB_NAME}",
-      SENDINBLUE_API_KEY: "${env:SENDINBLUE_API_KEY}",
-      HELLOASSO_USERNAME: "${env:HELLOASSO_USERNAME}",
-      HELLOASSO_PASSWORD: "${env:HELLOASSO_PASSWORD}",
-      HELLOASSO_V5_CLIENT_ID: "${env:HELLOASSO_V5_CLIENT_ID}",
-      HELLOASSO_V5_CLIENT_SECRET: "${env:HELLOASSO_V5_CLIENT_SECRET}",
-      SEND_IN_BLUE_TEMPLATE_SUBSCRIPTION_REMINDER_ID: "${env:SEND_IN_BLUE_TEMPLATE_SUBSCRIPTION_REMINDER_ID}",
-      SEND_IN_BLUE_TEMPLATE_WELCOME_ID: "${env:SEND_IN_BLUE_TEMPLATE_WELCOME_ID}",
-      SEND_IN_BLUE_EVENTS_LISTS_FOLDER_ID: "${env:SEND_IN_BLUE_EVENTS_LISTS_FOLDER_ID}",
-    },
+    environment: environmentVariables,
     memorySize: 3008,
     logRetentionInDays: 30,
     timeout: 300,

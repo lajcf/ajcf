@@ -54,19 +54,24 @@ jobs:
       #   with:
       #     path: ajcf-server/node_modules
       #     key: ajcf-server-${{ hashFiles('ajcf-server/yarn.lock') }}
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-3
       - name: Deploy
         env:
+          ENV: prod
+          STAGE: prod
+          DB_USERNAME: admin
+          DB_PORT: 35896
+          DB_NAME: ajcf-server-prod
+          HELLOASSO_USERNAME: ajcf
+          SEND_IN_BLUE_TEMPLATE_WELCOME_ID: 4
+          SEND_IN_BLUE_TEMPLATE_SUBSCRIPTION_REMINDER_ID: 5
+          SEND_IN_BLUE_EVENTS_LISTS_FOLDER_ID: 12
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           DB_HOST: ${{ secrets.DB_HOST }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           SENDINBLUE_API_KEY: ${{ secrets.SENDINBLUE_API_KEY }}
           HELLOASSO_PASSWORD: ${{ secrets.HELLOASSO_PASSWORD }}
           HELLOASSO_V5_CLIENT_ID: ${{ secrets.HELLOASSO_V5_CLIENT_ID }}
           HELLOASSO_V5_CLIENT_SECRET: ${{ secrets.HELLOASSO_V5_CLIENT_SECRET }}
-        run: cd ajcf-server && cp .env.prod .env && yarn sls deploy
+        run: cd ajcf-server && yarn sls deploy
 
