@@ -40,7 +40,6 @@ const serverlessConfig: Serverless = {
     runtime: "nodejs14.x",
     stage: "${env:STAGE}",
     region: "eu-west-3",
-    profile: "ajcf",
     environment: environmentVariables,
     memorySize: 3008,
     logRetentionInDays: 30,
