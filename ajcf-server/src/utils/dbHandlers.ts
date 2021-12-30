@@ -12,11 +12,11 @@ export const openConnectionToDb = async () => {
   try {
     await createConnection({
       type: "mysql",
-      host: process.env.DB_HOST!,
-      port: parseInt(process.env.DB_PORT!, 10),
-      username: process.env.DB_USERNAME!,
-      password: process.env.DB_PASSWORD!,
-      database: process.env.DB_NAME!,
+      host: process.env.DB_HOST,
+      port: parseInt(process.env.DB_PORT, 10),
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
       entities: [Member, Event, Ticket, Attendee, Activity, HelloAssoNotification],
       migrations: ["../migrations/*.ts"],
       synchronize: false,

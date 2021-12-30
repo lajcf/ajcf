@@ -19,8 +19,7 @@
     "rootDir": ".",
     "noEmit": true
   },
-  "files": ["globals.d.ts"],
-  "include": ["src"],
+  "include": ["src", "globals.d.ts", "env.d.ts"],
   "exclude": [
     "node_modules", "**/__tests__/", ".build"
   ]
