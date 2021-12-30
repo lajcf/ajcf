@@ -4,11 +4,11 @@ import { getRepository } from "typeorm";
 import { HelloAssoOrder } from "../types";
 import { closeConnectionToDb, openConnectionToDb } from "../utils/dbHandlers";
 import { upsertAttendees } from "../services/attendees/mutations/upsertAttendees";
-import { formatOrderToAttendees } from "../services/helloAsso/v5/mappers/mapHelloAssoItemToAttendee";
-import { addContactsToMailingList } from "../services/mailClient/sendInBlue/addContactsToMailingList/addContactsToMailingList";
+import { formatOrderToAttendees } from "../utils/helloAsso/mappers/mapHelloAssoItemToAttendee";
+import { addContactsToMailingList } from "../utils/mailClient/sendInBlue/addContactsToMailingList/addContactsToMailingList";
 import { Event } from "../entities/Event";
 import { upsertTickets } from "../services/tickets/upsertTickets";
-import { formatOrderToTickets } from "../services/helloAsso/v5/mappers/mapHelloAssoItemToTicket";
+import { formatOrderToTickets } from "../utils/helloAsso/mappers/mapHelloAssoItemToTicket";
 import { updateEvent } from "../services/events/mutations/updateEvent";
 
 const shouldProcessEvent = (eventType: "newMember" | "newAttendee" | string) => {

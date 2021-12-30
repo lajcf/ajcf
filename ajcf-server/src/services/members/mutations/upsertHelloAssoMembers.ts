@@ -1,5 +1,5 @@
-import { fetchHelloAssoMembers } from "../../helloAsso/v5/fetchHelloAssoMembers";
-import { mapHelloAssoItemsToMembers } from "../../helloAsso/v5/mappers/mapHelloAssoItemToMember";
+import { fetchHelloAssoMembers } from "../../../utils/helloAsso/fetchHelloAssoMembers";
+import { mapHelloAssoItemsToMembers } from "../../../utils/helloAsso/mappers/mapHelloAssoItemToMember";
 import { upsertMembers } from "./upsertMembers";
 import { Member } from "../../../entities/Member";
 

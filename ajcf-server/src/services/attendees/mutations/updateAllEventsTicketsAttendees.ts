@@ -5,12 +5,12 @@ import { limit } from "../../../utils/pLimit";
 import { upsertAttendees } from "./upsertAttendees";
 import { updateEvent } from "../../events/mutations/updateEvent";
 import { upsertTickets } from "../../tickets/upsertTickets";
-import { formatTicketToAttendee } from "../../helloAsso/v5/mappers/mapHelloAssoItemToAttendee";
-import { formatHelloAssoTicketToTicket } from "../../helloAsso/v5/mappers/mapHelloAssoItemToTicket";
+import { formatTicketToAttendee } from "../../../utils/helloAsso/mappers/mapHelloAssoItemToAttendee";
+import { formatHelloAssoTicketToTicket } from "../../../utils/helloAsso/mappers/mapHelloAssoItemToTicket";
 import { Attendee } from "../../../entities/Attendee";
-import { fetchEventHelloAssoTickets } from "../../helloAsso/v5/fetchEventHelloAssoTickets";
-import { HelloAssoSoldItem } from "../../helloAsso/v5/resources";
-import { addContactsToMailingList } from "../../mailClient/sendInBlue/addContactsToMailingList/addContactsToMailingList";
+import { fetchEventHelloAssoTickets } from "../../../utils/helloAsso/fetchEventHelloAssoTickets";
+import { HelloAssoSoldItem } from "../../../utils/helloAsso/resources";
+import { addContactsToMailingList } from "../../../utils/mailClient/sendInBlue/addContactsToMailingList/addContactsToMailingList";
 
 const upsertAttendeesFromHelloAssoTickets = async (helloAssoTickets: HelloAssoSoldItem[]) => {
   const attendeesToUpsert = uniqBy(helloAssoTickets, (t) => `${t.payer.email} ${t.user.firstName}`).map(

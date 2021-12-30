@@ -3,7 +3,7 @@ import limit from "p-limit";
 import { flatten } from "lodash";
 import { memoizedAccessToken } from "./fetchAccessToken";
 import { HelloAssoSoldItemsFromForm } from "./resources";
-import { validateEmail } from "../../../utils/validateMail";
+import { validateEmail } from "../validateMail";
 
 const pLimit = limit(1);
 

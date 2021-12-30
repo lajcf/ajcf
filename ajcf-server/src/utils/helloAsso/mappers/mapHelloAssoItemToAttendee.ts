@@ -1,8 +1,8 @@
 import { uniqBy } from "lodash";
-import dayjs from "../../../../utils/dayjs";
+import dayjs from "../../dayjs";
 import { HelloAssoSoldItem } from "../resources";
-import { Attendee } from "../../../../entities/Attendee";
-import { HelloAssoOrder } from "../../../../types";
+import { Attendee } from "../../../entities/Attendee";
+import { HelloAssoOrder } from "../../../types";
 
 export const formatTicketToAttendee = (action: HelloAssoSoldItem): Partial<Attendee> => ({
   email: action.payer.email.toLowerCase(),

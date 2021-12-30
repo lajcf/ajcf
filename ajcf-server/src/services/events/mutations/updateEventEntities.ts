@@ -3,7 +3,7 @@ import { orderBy } from "lodash";
 import { Event } from "../../../entities/Event";
 import { createMailingListsForEvents } from "./createMailingListsForEvents";
 import { saveMultipleEntities } from "../../../utils/saveUtils";
-import { fetchEvents } from "../../helloAsso/v5/fetchEvents";
+import { fetchEvents } from "../../../utils/helloAsso/fetchEvents";
 
 const keepCurrentEvents = (events: Partial<Event>[]) =>
   events.filter((event) => event.startDate && event.startDate > new Date());

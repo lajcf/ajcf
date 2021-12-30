@@ -1,8 +1,8 @@
 import { capitalize, orderBy, uniqBy } from "lodash";
 import { HelloAssoSoldItem } from "../resources";
-import { Member } from "../../../../entities/Member";
-import dayjs from "../../../../utils/dayjs";
-import { HelloAssoOrder } from "../../../../types";
+import { Member } from "../../../entities/Member";
+import dayjs from "../../dayjs";
+import { HelloAssoOrder } from "../../../types";
 
 // eslint-disable-next-line no-shadow
 export enum CustomInfoEnum {
