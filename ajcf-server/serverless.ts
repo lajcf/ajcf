@@ -2,8 +2,6 @@
 // eslint-disable-next-line import/no-import-module-exports
 import { Serverless } from "serverless/aws";
 
-const STAGE = "${self:provider.stage}";
-
 const serverlessConfig: Serverless = {
   service: "ajcf-server",
   frameworkVersion: ">=2.0.0 <3.0.0",
@@ -22,21 +20,18 @@ const serverlessConfig: Serverless = {
   provider: {
     name: "aws",
     runtime: "nodejs14.x",
-    stage: "${opt:stage, 'dev'}",
+    stage: "${env:STAGE}",
     region: "eu-west-3",
     profile: "ajcf",
     environment: {
-      ENV: STAGE,
-      STAGE,
+      ENV: "${env:ENV}",
+      STAGE: "${env:STAGE}",
       DB_HOST: "${env:DB_HOST}",
       DB_PASSWORD: "${env:DB_PASSWORD}",
       DB_USERNAME: "${env:DB_USERNAME}",
       DB_PORT: "${env:DB_PORT}",
-      DB_NAME_PROD: "${env:DB_NAME_PROD}",
-      DB_NAME_DEV: "${env:DB_NAME_DEV}",
+      DB_NAME: "${env:DB_NAME}",
       SENDINBLUE_API_KEY: "${env:SENDINBLUE_API_KEY}",
-      MAILJET_API_KEY: "${env:MAILJET_API_KEY}",
-      MAILJET_API_SECRET: "${env:MAILJET_API_SECRET}",
       HELLOASSO_USERNAME: "${env:HELLOASSO_USERNAME}",
       HELLOASSO_PASSWORD: "${env:HELLOASSO_PASSWORD}",
       HELLOASSO_V5_CLIENT_ID: "${env:HELLOASSO_V5_CLIENT_ID}",
@@ -134,7 +129,7 @@ const serverlessConfig: Serverless = {
       // Send an email on error
       LambdaErrorTopic: {
         Properties: {
-          TopicName: `LambdaErrorTopic-${STAGE}`,
+          TopicName: "LambdaErrorTopic-${self:provider.stage}",
         },
         Type: "AWS::SNS::Topic",
       },
@@ -154,7 +149,7 @@ const serverlessConfig: Serverless = {
           Dimensions: [
             {
               Name: "FunctionName",
-              Value: `ajcf-server-${STAGE}-helloAssoWebHook`,
+              Value: "ajcf-server-${self:provider.stage}-helloAssoWebHook",
             },
           ],
           EvaluationPeriods: 1,
@@ -174,7 +169,7 @@ const serverlessConfig: Serverless = {
           Dimensions: [
             {
               Name: "FunctionName",
-              Value: `ajcf-server-${STAGE}-updateMembers`,
+              Value: "ajcf-server-${self:provider.stage}-updateMembers",
             },
           ],
           EvaluationPeriods: 1,
@@ -194,7 +189,7 @@ const serverlessConfig: Serverless = {
           Dimensions: [
             {
               Name: "FunctionName",
-              Value: `ajcf-server-${STAGE}-updateEvents`,
+              Value: "ajcf-server-${self:provider.stage}-updateEvents",
             },
           ],
           EvaluationPeriods: 1,
@@ -214,7 +209,7 @@ const serverlessConfig: Serverless = {
           Dimensions: [
             {
               Name: "FunctionName",
-              Value: `ajcf-server-${STAGE}-sendSubscriptionReminders`,
+              Value: "ajcf-server-${self:provider.stage}-sendSubscriptionReminders",
             },
           ],
           EvaluationPeriods: 1,

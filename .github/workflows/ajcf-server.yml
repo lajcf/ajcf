@@ -55,5 +55,12 @@ jobs:
       #     path: ajcf-server/node_modules
       #     key: ajcf-server-${{ hashFiles('ajcf-server/yarn.lock') }}
       - name: Deploy
-        run: echo "Need to implement deploy"
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          SENDINBLUE_API_KEY: ${{ secrets.SENDINBLUE_API_KEY }}
+          HELLOASSO_PASSWORD: ${{ secrets.HELLOASSO_PASSWORD }}
+          HELLOASSO_V5_CLIENT_ID: ${{ secrets.HELLOASSO_V5_CLIENT_ID }}
+          HELLOASSO_V5_CLIENT_SECRET: ${{ secrets.HELLOASSO_V5_CLIENT_SECRET }}
+        run: cd ajcf-server && cp .env.prod .env && yarn sls deploy
 

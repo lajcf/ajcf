@@ -16,7 +16,7 @@ export const openConnectionToDb = async () => {
       port: parseInt(process.env.DB_PORT!, 10),
       username: process.env.DB_USERNAME!,
       password: process.env.DB_PASSWORD!,
-      database: process.env.ENV === "prod" ? process.env.DB_NAME_PROD! : process.env.DB_NAME_DEV!,
+      database: process.env.DB_NAME!,
       entities: [Member, Event, Ticket, Attendee, Activity, HelloAssoNotification],
       migrations: ["../migrations/*.ts"],
       synchronize: false,
