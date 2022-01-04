@@ -27,5 +27,5 @@ export const publishEvent = <T extends HelloAssoOrderEvent | HelloAssoFormEvent>
         Detail: JSON.stringify(event.detail),
       },
     ],
-  });
+  }).promise();
 };

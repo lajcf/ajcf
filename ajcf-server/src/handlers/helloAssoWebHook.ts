@@ -44,8 +44,6 @@ const saveEvent = async (body: HelloAssoNotificationRequestBody) => {
     await openConnectionToDb();
     await getRepository(HelloAssoNotification).save({ data: body.data, notificationType: body.eventType });
     console.log("Saved event");
-    await publishEvent(body.data).promise();
-    console.log("Published event");
     await closeConnectionToDb();
   } catch (e) {
     console.log(e);
