@@ -3,8 +3,8 @@ import { sendWelcomeMail } from "../src/services/members/mutations/sendWelcomeMa
 export const sendWelcomeMailScript = async () => {
   // @ts-ignore
   await sendWelcomeMail({
-    email: "nicolas.li@hotmail.fr",
-    firstName: "Nicolas",
+    email: "john.doe@email.com",
+    firstName: "John",
   });
 };
 
