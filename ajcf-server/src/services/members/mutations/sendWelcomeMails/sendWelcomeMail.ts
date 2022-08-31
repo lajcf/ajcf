@@ -7,7 +7,7 @@ export const sendWelcomeMail = async (member: Member) => {
       PRENOM: member.firstName,
     },
     emailTo: [member.email],
-    emailBcc: ["nicolas.li@hotmail.fr"],
+    emailBcc: [],
     emailCc: [],
     templateId: parseInt(process.env.SEND_IN_BLUE_TEMPLATE_WELCOME_ID, 10),
   });

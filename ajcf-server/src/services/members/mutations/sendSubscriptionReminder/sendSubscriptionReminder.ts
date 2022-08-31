@@ -7,7 +7,7 @@ export const sendSubscriptionReminder = async (member: Member) => {
       PRENOM: member.firstName,
     },
     emailTo: [member.email],
-    emailBcc: ["nicolas.li@hotmail.fr"],
+    emailBcc: [],
     emailCc: [],
     templateId: parseInt(process.env.SEND_IN_BLUE_TEMPLATE_SUBSCRIPTION_REMINDER_ID, 10),
   });
